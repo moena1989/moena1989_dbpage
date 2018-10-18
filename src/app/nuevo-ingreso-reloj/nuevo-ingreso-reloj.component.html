@@ -1,3 +1,34 @@
-<p>
-  nuevo-ingreso-reloj works!
-</p>
+<h1>REGISTRO DE NUEVOS RELOJES</h1>
+
+
+
+<div class="options">
+  <app-selecter [titulo]="'Mano'" [opciones]="['FCM']"></app-selecter>
+  <app-selecter [titulo]="'# Lote'" [opciones]="['1']"></app-selecter>
+  <app-selecter [titulo]="'No. piezas'" [opciones]="['1-100']"></app-selecter>
+</div>
+
+<div class="options">
+  <app-selecter [titulo]="'Modelo'" [opciones]="['Origen',' Slim',' Vira',' Inti',' Aros',' One']"></app-selecter>
+  <app-selecter [titulo]="'Colección'"
+                [opciones]="['Luxury',' Hawaii',' Animal Print',' Frutas, Telas',' Vintage',' Edición Especial']"></app-selecter>
+  <app-selecter [titulo]="'Material'"
+                [opciones]="['Madera', 'Acero inoxidable',' Oro', 'Plata',' Esmeraldas',' Tagua']"></app-selecter>
+  <app-selecter [titulo]="'Maquinaria'" [opciones]="['Miy ota','Seagull','ETA']"></app-selecter>
+  <app-selecter [titulo]="'Color Maq.'" [opciones]="['Oro',' Plata']"></app-selecter>
+  <app-selecter [titulo]="'material pulso'" [opciones]="['Acero inoxidable',' Cuero']"></app-selecter>
+
+  <app-selecter [titulo]="'Tipo de Madera'"
+                [opciones]="['Granadillo',' Nazareno', 'Palo de Mora','Palo de Sangre','Nogal','Cedro','Achapo','Ébano','Flor Morado','Teka','Canelo Moena','Zapan','Amargo','Comino crespo','Pino', 'Abarco','algarrobo','Cumaru']"></app-selecter>
+
+  <app-selecter [titulo]="'Color pulso'"
+                [opciones]="['Negro','Azul','Gris', 'Blanco','Amarillo','Rojo','Verde','Naranja','Café','Violeta','Oro','Plata','Multicolor']"></app-selecter>
+
+</div>
+
+
+<button class="bt-n-ref">
+  Crear nuevo registro
+</button>
+
+
