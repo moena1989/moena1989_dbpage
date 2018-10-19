@@ -2,41 +2,135 @@
 <p class="msg">Los seriales mostrados aqui están solo para pruebas y no corresponde a resultados finales.</p>
 
 <div class="package_options">
-
   <div class="options">
-    <app-selecter [titulo]="'Mano'" [opciones]="this.db.manos" (SelectedValue)="manos=$event"></app-selecter>
-    <app-selecter [titulo]="'# Lote'" [opciones]="this.db.lotes" (SelectedValue)="lote=$event"></app-selecter>
-    <app-selecter [titulo]="'No. piezas'" [opciones]="this.db.piezas"
-                  (SelectedValue)="piezas=$event"></app-selecter>
-  </div>
 
+    <div class="selc">
+      <p class="sl-ttl">Mano</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="manos">
+          <option *ngFor="let opc of this.db.manos" [ngValue]="opc">{{opc.name}}</option>
+          <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+        </select>
+      </div>
+    </div>
+
+
+    <div class="selc">
+      <p class="sl-ttl">Lote</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="lote">
+          <option *ngFor="let opc of this.db.lotes" [ngValue]="opc">{{opc.name}}</option>
+          <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+        </select>
+      </div>
+    </div>
+
+    <div class="selc">
+      <p class="sl-ttl">No. piezas</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="piezas">
+          <option *ngFor="let opc of this.db.piezas" [ngValue]="opc">{{opc.name}}</option>
+          <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+        </select>
+      </div>
+    </div>
+  </div>
   <div class="options">
-    <app-selecter (SelectedValue)="modelo=$event" [titulo]="'Modelo'" [opciones]="this.db.modelos"></app-selecter>
-    <app-selecter (SelectedValue)="coleccion=$event" [titulo]="'Colección'"
-                  [opciones]="this.db.colecciones"></app-selecter>
-    <app-selecter (SelectedValue)="material=$event" [titulo]="'Material'"
-                  [opciones]="this.db.materiales"></app-selecter>
-    <app-selecter (SelectedValue)="maquinaria= $event" [titulo]="'Maquinaria'"
-                  [opciones]="this.db.maquinarias"></app-selecter>
-    <app-selecter (SelectedValue)="color_maq= $event" [titulo]="'Color Maq.'"
-                  [opciones]="this.db.color_maquinaria"></app-selecter>
-    <app-selecter (SelectedValue)="mat_pulso= $event" [titulo]="'material pulso'"
-                  [opciones]="this.db.material_pulso"></app-selecter>
-    <app-selecter (SelectedValue)="madera= $event" [titulo]="'Tipo de Madera'"
-                  [opciones]="this.db.maderas"></app-selecter>
-    <app-selecter (SelectedValue)="color_pulso= $event" [titulo]="'Color pulso'" [opciones]="this.db.color_pulsos">
-    </app-selecter>
-  </div>
 
+    <div class="options">
+      <div class="selc">
+        <p class="sl-ttl">Modelo</p>
+        <div class="custom-select">
+          <select class="ss" [(ngModel)]="modelo">
+            <option *ngFor="let opc of this.db.modelos" [ngValue]="opc">{{opc.name}}</option>
+          </select>
+        </div>
+      </div>
+
+      <div class="selc">
+        <p class="sl-ttl">Colección</p>
+        <div class="custom-select">
+          <select class="ss" [(ngModel)]="coleccion">
+            <option *ngFor="let opc of this.db.colecciones" [ngValue]="opc">{{opc.name}}</option>
+            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+          </select>
+        </div>
+      </div>
+
+      <div class="selc">
+        <p class="sl-ttl">Material</p>
+        <div class="custom-select">
+          <select class="ss" [(ngModel)]="material">
+            <option *ngFor="let opc of this.db.materiales" [ngValue]="opc">{{opc.name}}</option>
+            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+          </select>
+        </div>
+      </div>
+
+      <div class="selc">
+        <p class="sl-ttl">Maquinaria</p>
+        <div class="custom-select">
+          <select class="ss" [(ngModel)]="maquinaria">
+            <option *ngFor="let opc of this.db.maquinarias" [ngValue]="opc">{{opc.name}}</option>
+            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+          </select>
+        </div>
+      </div>
+
+      <div class="selc">
+        <p class="sl-ttl">Color Maq.</p>
+        <div class="custom-select">
+          <select class="ss" [(ngModel)]="color_maq">
+            <option *ngFor="let opc of this.db.color_maquinaria" [ngValue]="opc">{{opc.name}}</option>
+            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+          </select>
+        </div>
+      </div>
+
+      <div class="selc">
+        <p class="sl-ttl">Material pulso</p>
+        <div class="custom-select">
+          <select class="ss" [(ngModel)]="mat_pulso">
+            <option *ngFor="let opc of this.db.material_pulso" [ngValue]="opc">{{opc.name}}</option>
+            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+          </select>
+        </div>
+      </div>
+
+
+      <div class="selc">
+        <p class="sl-ttl">Tipo Madera</p>
+        <div class="custom-select">
+          <select class="ss" [(ngModel)]="madera">
+            <option *ngFor="let opc of this.db.maderas" [ngValue]="opc">{{opc.name}}</option>
+            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+          </select>
+        </div>
+      </div>
+
+      <div class="selc">
+        <p class="sl-ttl">Color pulso</p>
+        <div class="custom-select">
+          <select class="ss" [(ngModel)]="color_pulso">
+            <option *ngFor="let opc of this.db.material_pulso" [ngValue]="opc">{{opc.name}}</option>
+            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+          </select>
+        </div>
+      </div>
+
+
+    </div>
+
+  </div>
   <div class="bt-n-ref" (click)="iniciarNuevoRegistro()"> Crear nuevo registro
-  </div>
 
+  </div>
 </div>
+
 <div class="pack">
   <p>SERIAL RAW {{serial_raw}}</p>
   <p>SERIAL MD5: {{serial_md5}}</p>
 </div>
 <div class="bb">
-
-  <p class="msg">0.3v alpha</p>
+  ng
 </div>

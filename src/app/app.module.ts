@@ -3,13 +3,13 @@ import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {NuevoIngresoRelojComponent} from './nuevo-ingreso-reloj/nuevo-ingreso-reloj.component';
 import {NavbarComponent} from './navbar/navbar.component';
-import {SelecterComponent} from './utils/selecter/selecter.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BusquedaComponent} from './busqueda/busqueda.component';
+import {FormsModule, ReactiveFormsModule} from '@angular/forms';
 
 
 const appRoutes: Routes = [
@@ -30,7 +30,6 @@ const config = {
     AppComponent,
     NuevoIngresoRelojComponent,
     NavbarComponent,
-    SelecterComponent,
     BusquedaComponent
   ],
   imports: [
@@ -38,7 +37,7 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
     AngularFireAuthModule,
-    BrowserModule
+    BrowserModule, FormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]

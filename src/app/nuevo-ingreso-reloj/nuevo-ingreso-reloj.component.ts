@@ -13,6 +13,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
   variables de seleccion
    */
 
+  pr = true;
   modelo: any = '';
   coleccion: any = '';
   material: any = '';
@@ -26,6 +27,10 @@ export class NuevoIngresoRelojComponent implements OnInit {
   piezas: any = '';
   serial_raw: string;
   serial_md5: string;
+
+  tst() {
+    console.log('testing');
+  }
 
   constructor(private hasher: HasherService, public db: DbService) {
   }
@@ -43,48 +48,51 @@ export class NuevoIngresoRelojComponent implements OnInit {
     }
   }
 
+
   comprobarCampos(): boolean {
     console.log('Se comprueban los campos');
+    this.pr = true;
     if (this.modelo === null) {
       console.log(1);
 
-      return false;
+      this.pr = false;
     }
 
     if (this.coleccion === '') {
       console.log(2);
-      return false;
+      this.pr = false;
     }
 
     if (this.material === '') {
       console.log(3);
-      return false;
+      this.pr = false;
     }
 
     if (this.maquinaria === '') {
       console.log(4);
-      return false;
+      this.pr = false;
     }
 
     if (this.color_maq === '') {
       console.log(5);
-      return false;
+      this.pr = false;
     }
 
     if (this.mat_pulso === '') {
       console.log(6);
-      return false;
+      this.pr = false;
     }
 
     if (this.madera === '') {
       console.log(7);
-      return false;
+      this.pr = false;
     }
     if (this.color_pulso === '') {
       console.log(8);
-      return false;
+      this.pr = false;
     }
-    return true;
+    console.log(this.piezas);
+    return this.pr;
   }
 
   private gestinarDatos() {
