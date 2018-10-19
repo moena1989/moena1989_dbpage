@@ -38,10 +38,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
 
     // se confirma que todos los datos fueron ingresados
     if (this.comprobarCampos()) {
-
       this.organizarData();
-
-
     } else {
       console.log('Revisa todos los campos para poder continuar!');
     }
@@ -94,8 +91,9 @@ export class NuevoIngresoRelojComponent implements OnInit {
       this.color_maq +
       this.mat_pulso +
       this.madera;
-    this.serial_md5 = this.hasher.encriptarSerial(this.serial_raw);
+    // this.serial_md5 = this.hasher.encriptarSerial(this.serial_raw);
     console.log(this.serial_raw);
+    this.serial_md5 = 'tesing';
     console.log(formatDate(Date.now(), 'dd-MM-yyyy hh:mm:ss a', 'en-US', '-500'));
   }
 }
