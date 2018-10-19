@@ -13,18 +13,17 @@ export class NuevoIngresoRelojComponent implements OnInit {
   variables de seleccion
    */
 
-  modelo = '';
-  coleccion = '';
-  material = '';
-  maquinaria = '';
-  color_maq = '';
-  mat_pulso = '';
-  madera = '';
-  color_pulso = '';
-  manos = '';
-  lote = '';
-  piezas = '';
-
+  modelo: any = '';
+  coleccion: any = '';
+  material: any = '';
+  maquinaria: any = '';
+  color_maq: any = '';
+  mat_pulso: any = '';
+  madera: any = '';
+  color_pulso: any = '';
+  manos: any = '';
+  lote: any = '';
+  piezas: any = '';
   serial_raw: string;
   serial_md5: string;
 
@@ -38,7 +37,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
 
     // se confirma que todos los datos fueron ingresados
     if (this.comprobarCampos()) {
-      this.organizarData();
+      this.gestinarDatos();
     } else {
       console.log('Revisa todos los campos para poder continuar!');
     }
@@ -79,21 +78,47 @@ export class NuevoIngresoRelojComponent implements OnInit {
     return true;
   }
 
-  private organizarData() {
+  private gestinarDatos() {
     this.serial_raw =
-      this.manos +
-      this.lote +
-      this.piezas + '-' +
-      this.modelo +
-      this.coleccion +
-      this.material +
-      this.maquinaria +
-      this.color_maq +
-      this.mat_pulso +
-      this.madera;
+      this.manos.salt +
+      this.lote.salt +
+      this.piezas.salt +
+
+      Math.round(Math.random() * 1000) +
+      '-'
+      +
+      this.modelo.salt +
+      this.coleccion.salt +
+      this.material.salt +
+      this.maquinaria.salt +
+      this.color_maq.salt +
+      this.mat_pulso.salt +
+      this.madera.salt;
+
     // this.serial_md5 = this.hasher.encriptarSerial(this.serial_raw);
     console.log(this.serial_raw);
-    this.serial_md5 = 'tesing';
-    console.log(formatDate(Date.now(), 'dd-MM-yyyy hh:mm:ss a', 'en-US', '-500'));
+    this.serial_md5 = 'Pruebas  ';
+
+    const date = formatDate(Date.now(), 'dd-MM-yyyy hh:mm:ss a', 'en-US', '-500');
+
+    const relojData = {
+      serial: this.serial_raw,
+      ref_md: this.serial_md5,
+      modelo: this.modelo.name,
+      coleccion: this.coleccion.name,
+      material_principal: this.material.name,
+      maquinaria: this.maquinaria.name,
+      color_maquinaria: this.color_maq.name,
+      material_pulso: this.mat_pulso.name,
+      madera: this.madera.name,
+      fecha: date,
+      lote: this.lote.name,
+      piezas: this.piezas.name,
+      manos: this.manos.name
+    };
+
+    console.log(relojData);
+    this.db.subirNuevoRegistroReloj(relojData);
+    console.log('probando en fb');
   }
 }

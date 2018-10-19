@@ -1,4 +1,5 @@
 import {Injectable} from '@angular/core';
+import {AngularFireDatabase} from '@angular/fire/database';
 
 @Injectable({
   providedIn: 'root'
@@ -10,7 +11,6 @@ export class DbService {
    */
   manos: any[] = [{name: 'FCM', salt: 'FCM'}];
   lotes: any[] = [{name: '1', salt: '1'}];
-
   piezas: any[] = [{name: '1-100', salt: '95'}];
   modelos: any[] = [
     {name: 'Origen', salt: 'OG'},
@@ -82,6 +82,26 @@ export class DbService {
     {name: 'Cumaru', salt: 'CM'}
   ];
 
-  constructor() {
+// TODO buscar una manera mas organizada de manejar, los objetos de las páginas routiadas.
+  relojBuscado: any;
+
+  constructor(public af: AngularFireDatabase) {
+  }
+
+  subirNuevoRegistroReloj(reloj: any): void {
+    const key = this.af.list('relojes').push(reloj).key;
+    this.af.object('seriales/' + reloj.serial).set(key);
+    console.log('se intenta subir datos');
+  }
+
+  buscarReloj(serial: string, callback: (result: any) => any) {
+    this.af.object('seriales/' + serial).valueChanges().subscribe(value => {
+      console.log('SI EXISTE SERIAL');
+
+      this.af.object('relojes/' + value).valueChanges().subscribe(datosReloj => {
+        // significa que el serial si existe en la base, ahora se busca la info de ese puntualmente
+        callback(datosReloj);
+      });
+    });
   }
 }
