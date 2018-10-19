@@ -44,4 +44,5 @@ const config = {
   bootstrap: [AppComponent]
 })
 export class AppModule {
+
 }

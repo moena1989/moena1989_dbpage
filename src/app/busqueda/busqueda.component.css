@@ -1,0 +1,11 @@
+.main_card {
+  width: auto;
+  display: flex;
+  position: relative;
+  /*height: 5em;*/
+  background-color: #f7f7f7;
+  border-radius: .2em;
+  margin: .5em;
+  padding: .5em;
+  flex-direction: column;
+}

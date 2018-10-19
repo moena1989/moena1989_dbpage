@@ -46,33 +46,42 @@ export class NuevoIngresoRelojComponent implements OnInit {
   comprobarCampos(): boolean {
     console.log('Se comprueban los campos');
     if (this.modelo === null) {
+      console.log(1);
+
       return false;
     }
 
     if (this.coleccion === '') {
+      console.log(2);
       return false;
     }
 
     if (this.material === '') {
+      console.log(3);
       return false;
     }
 
     if (this.maquinaria === '') {
+      console.log(4);
       return false;
     }
 
     if (this.color_maq === '') {
+      console.log(5);
       return false;
     }
 
     if (this.mat_pulso === '') {
+      console.log(6);
       return false;
     }
 
     if (this.madera === '') {
+      console.log(7);
       return false;
     }
     if (this.color_pulso === '') {
+      console.log(8);
       return false;
     }
     return true;
