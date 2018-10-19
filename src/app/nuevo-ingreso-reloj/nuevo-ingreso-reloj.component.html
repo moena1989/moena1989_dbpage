@@ -1,32 +1,42 @@
 <h1>REGISTRO DE NUEVOS RELOJES</h1>
+<p class="msg">Los seriales mostrados aqui están solo para pruebas y no corresponde a resultados finales.</p>
 
+<div class="package_options">
 
-<div class="options">
-  <app-selecter [titulo]="'Mano'" [opciones]="this.db.manos" (SelectedValue)="manos=$event"></app-selecter>
-  <app-selecter [titulo]="'# Lote'" [opciones]="this.db.lotes" (SelectedValue)="lote=$event"></app-selecter>
-  <app-selecter [titulo]="'No. piezas'" [opciones]="this.db.piezas" (SelectedValue)="piezas=$event"></app-selecter>
+  <div class="options">
+    <app-selecter [titulo]="'Mano'" [opciones]="this.db.manos" (SelectedValue)="manos=$event.salt"></app-selecter>
+    <app-selecter [titulo]="'# Lote'" [opciones]="this.db.lotes" (SelectedValue)="lote=$event.salt"></app-selecter>
+    <app-selecter [titulo]="'No. piezas'" [opciones]="this.db.piezas"
+                  (SelectedValue)="piezas=$event.salt"></app-selecter>
+  </div>
+
+  <div class="options">
+    <app-selecter (SelectedValue)="modelo=$event.salt" [titulo]="'Modelo'" [opciones]="this.db.modelos"></app-selecter>
+    <app-selecter (SelectedValue)="coleccion=$event.salt" [titulo]="'Colección'"
+                  [opciones]="this.db.colecciones"></app-selecter>
+    <app-selecter (SelectedValue)="material=$event.salt" [titulo]="'Material'"
+                  [opciones]="this.db.materiales"></app-selecter>
+    <app-selecter (SelectedValue)="maquinaria= $event.salt" [titulo]="'Maquinaria'"
+                  [opciones]="this.db.maquinarias"></app-selecter>
+    <app-selecter (SelectedValue)="color_maq= $event.salt" [titulo]="'Color Maq.'"
+                  [opciones]="this.db.color_maquinaria"></app-selecter>
+    <app-selecter (SelectedValue)="mat_pulso= $event.salt" [titulo]="'material pulso'"
+                  [opciones]="this.db.material_pulso"></app-selecter>
+    <app-selecter (SelectedValue)="madera= $event.salt" [titulo]="'Tipo de Madera'"
+                  [opciones]="this.db.maderas"></app-selecter>
+    <app-selecter (SelectedValue)="color_pulso= $event.salt" [titulo]="'Color pulso'" [opciones]="this.db.color_pulsos">
+    </app-selecter>
+  </div>
+
+  <div class="bt-n-ref" (click)="iniciarNuevoRegistro()"> Crear nuevo registro
+  </div>
+
 </div>
-
-<div class="options">
-
-  <app-selecter (SelectedValue)="modelo=$event" [titulo]="'Modelo'" [opciones]="this.db.modelos"></app-selecter>
-  <app-selecter (SelectedValue)="coleccion=$event" [titulo]="'Colección'"
-                [opciones]="this.db.colecciones"></app-selecter>
-  <app-selecter (SelectedValue)="material=$event" [titulo]="'Material'" [opciones]="this.db.materiales"></app-selecter>
-  <app-selecter (SelectedValue)="maquinaria= $event" [titulo]="'Maquinaria'"
-                [opciones]="this.db.maquinarias"></app-selecter>
-  <app-selecter (SelectedValue)="color_maq= $event" [titulo]="'Color Maq.'"
-                [opciones]="this.db.color_maquinaria"></app-selecter>
-  <app-selecter (SelectedValue)="mat_pulso= $event" [titulo]="'material pulso'"
-                [opciones]="this.db.material_pulso"></app-selecter>
-  <app-selecter (SelectedValue)="madera= $event" [titulo]="'Tipo de Madera'"
-                [opciones]="this.db.maderas"></app-selecter>
-  <app-selecter (SelectedValue)="color_pulso= $event" [titulo]="'Color pulso'" [opciones]="this.db.color_pulsos">
-  </app-selecter>
+<div class="pack">
+  <p>SERIAL RAW {{serial_raw}}</p>
+  <p>SERIAL MD5: {{serial_md5}}</p>
 </div>
+<div class="bb">
 
-<button class="bt-n-ref" (click)="iniciarNuevoRegistro()"> Crear nuevo registro
-</button>
-
-
-<p>NUEVO SERIAL: {{serial_raw}}</p>
+  <p class="msg">0.3v alpha</p>
+</div>

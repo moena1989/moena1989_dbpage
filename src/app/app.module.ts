@@ -1,10 +1,10 @@
-import { BrowserModule } from '@angular/platform-browser';
-import { NgModule } from '@angular/core';
+import {BrowserModule} from '@angular/platform-browser';
+import {NgModule} from '@angular/core';
 
-import { AppComponent } from './app.component';
-import { NuevoIngresoRelojComponent } from './nuevo-ingreso-reloj/nuevo-ingreso-reloj.component';
-import { NavbarComponent } from './navbar/navbar.component';
-import { SelecterComponent } from './utils/selecter/selecter.component';
+import {AppComponent} from './app.component';
+import {NuevoIngresoRelojComponent} from './nuevo-ingreso-reloj/nuevo-ingreso-reloj.component';
+import {NavbarComponent} from './navbar/navbar.component';
+import {SelecterComponent} from './utils/selecter/selecter.component';
 
 @NgModule({
   declarations: [
@@ -19,4 +19,5 @@ import { SelecterComponent } from './utils/selecter/selecter.component';
   providers: [],
   bootstrap: [AppComponent]
 })
-export class AppModule { }
+export class AppModule {
+}
