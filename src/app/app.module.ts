@@ -10,11 +10,23 @@ import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BusquedaComponent} from './busqueda/busqueda.component';
 import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {LoginComponent} from './login/login.component';
+import {MainComponent} from './main/main.component';
+import {WorkerRegComponent} from './worker-reg/worker-reg.component';
+import {SnackbarComponent} from './snackbar/snackbar.component';
+import {AuthGuardService} from './auth-guard.service';
 
 
 const appRoutes: Routes = [
-  {path: '', component: NuevoIngresoRelojComponent},
-  {path: 'busqueda', component: BusquedaComponent}];
+  {path: 'login', component: LoginComponent},
+  {path: 'sign_up', component: WorkerRegComponent},
+  {
+    path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
+      {path: 'busqueda', component: BusquedaComponent},
+      {path: 'reg', component: NuevoIngresoRelojComponent},
+    ]
+  }
+];
 
 const config = {
   apiKey: 'AIzaSyAh48TUW_EdI6fI6om3EMRCdlCC4U3n9U8',
@@ -30,7 +42,11 @@ const config = {
     AppComponent,
     NuevoIngresoRelojComponent,
     NavbarComponent,
-    BusquedaComponent
+    BusquedaComponent,
+    LoginComponent,
+    MainComponent,
+    WorkerRegComponent,
+    SnackbarComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),

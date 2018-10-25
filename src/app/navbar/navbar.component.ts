@@ -37,4 +37,9 @@ export class NavbarComponent implements OnInit {
     }
   }
 
+  cerrarCuenta() {
+    this.db.logout();
+    this.router.navigate(['/login']);
+
+  }
 }

@@ -2413,7 +2413,7 @@ function getPluralCase(locale, nLike) {
     var t = parseInt(n.toString().replace(/^[^.]*\.?|0+$/g, ''), 10) || 0;
     var lang = locale.split('-')[0].toLowerCase();
     switch (lang) {
-        case 'af':
+        case 'db':
         case 'asa':
         case 'az':
         case 'bem':
@@ -22611,7 +22611,7 @@ var VIEW_VAR = variable('_v');
 var CHECK_VAR = variable('_ck');
 var COMP_VAR = variable('_co');
 var EVENT_NAME_VAR = variable('en');
-var ALLOW_DEFAULT_VAR = variable("ad");
+var ALLOW_DEFAULT_VAR = variable("db");
 var ViewBuilder$1 = /** @class */ (function () {
     function ViewBuilder(reflector, outputCtx, parent, component, embeddedViewIndex, usedPipes, staticQueryIds, viewBuilderFactory) {
         this.reflector = reflector;

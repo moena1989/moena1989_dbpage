@@ -2,8 +2,8 @@
 <p class="msg">Los seriales mostrados aqui están solo para pruebas y no corresponde a resultados finales.</p>
 
 <div class="package_options">
-  <div class="options">
 
+  <div class="options">
     <div class="selc">
       <p class="sl-ttl">Mano</p>
       <div class="custom-select">
@@ -13,8 +13,6 @@
         </select>
       </div>
     </div>
-
-
     <div class="selc">
       <p class="sl-ttl">Lote</p>
       <div class="custom-select">
@@ -24,7 +22,6 @@
         </select>
       </div>
     </div>
-
     <div class="selc">
       <p class="sl-ttl">No. piezas</p>
       <div class="custom-select">
@@ -34,94 +31,94 @@
         </select>
       </div>
     </div>
+    <div class="selc">
+
+      <p class="sl-ttl">Modelo</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="modelo">
+          <option *ngFor="let opc of this.db.modelos" [ngValue]="opc">{{opc.name}}</option>
+        </select>
+      </div>
+    </div>
   </div>
+
   <div class="options">
 
-    <div class="options">
-      <div class="selc">
-        <p class="sl-ttl">Modelo</p>
-        <div class="custom-select">
-          <select class="ss" [(ngModel)]="modelo">
-            <option *ngFor="let opc of this.db.modelos" [ngValue]="opc">{{opc.name}}</option>
-          </select>
-        </div>
+
+    <div class="selc">
+      <p class="sl-ttl">Colección</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="coleccion">
+          <option *ngFor="let opc of this.db.colecciones" [ngValue]="opc">{{opc.name}}</option>
+          <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+        </select>
       </div>
-
-      <div class="selc">
-        <p class="sl-ttl">Colección</p>
-        <div class="custom-select">
-          <select class="ss" [(ngModel)]="coleccion">
-            <option *ngFor="let opc of this.db.colecciones" [ngValue]="opc">{{opc.name}}</option>
-            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-          </select>
-        </div>
-      </div>
-
-      <div class="selc">
-        <p class="sl-ttl">Material</p>
-        <div class="custom-select">
-          <select class="ss" [(ngModel)]="material">
-            <option *ngFor="let opc of this.db.materiales" [ngValue]="opc">{{opc.name}}</option>
-            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-          </select>
-        </div>
-      </div>
-
-      <div class="selc">
-        <p class="sl-ttl">Maquinaria</p>
-        <div class="custom-select">
-          <select class="ss" [(ngModel)]="maquinaria">
-            <option *ngFor="let opc of this.db.maquinarias" [ngValue]="opc">{{opc.name}}</option>
-            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-          </select>
-        </div>
-      </div>
-
-      <div class="selc">
-        <p class="sl-ttl">Color Maq.</p>
-        <div class="custom-select">
-          <select class="ss" [(ngModel)]="color_maq">
-            <option *ngFor="let opc of this.db.color_maquinaria" [ngValue]="opc">{{opc.name}}</option>
-            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-          </select>
-        </div>
-      </div>
-
-      <div class="selc">
-        <p class="sl-ttl">Material pulso</p>
-        <div class="custom-select">
-          <select class="ss" [(ngModel)]="mat_pulso">
-            <option *ngFor="let opc of this.db.material_pulso" [ngValue]="opc">{{opc.name}}</option>
-            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-          </select>
-        </div>
-      </div>
-
-
-      <div class="selc">
-        <p class="sl-ttl">Tipo Madera</p>
-        <div class="custom-select">
-          <select class="ss" [(ngModel)]="madera">
-            <option *ngFor="let opc of this.db.maderas" [ngValue]="opc">{{opc.name}}</option>
-            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-          </select>
-        </div>
-      </div>
-
-      <div class="selc">
-        <p class="sl-ttl">Color pulso</p>
-        <div class="custom-select">
-          <select class="ss" [(ngModel)]="color_pulso">
-            <option *ngFor="let opc of this.db.material_pulso" [ngValue]="opc">{{opc.name}}</option>
-            <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-          </select>
-        </div>
-      </div>
-
-
     </div>
 
+    <div class="selc">
+      <p class="sl-ttl">Material</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="material">
+          <option *ngFor="let opc of this.db.materiales" [ngValue]="opc">{{opc.name}}</option>
+          <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+        </select>
+      </div>
+    </div>
+
+    <div class="selc">
+      <p class="sl-ttl">Maquinaria</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="maquinaria">
+          <option *ngFor="let opc of this.db.maquinarias" [ngValue]="opc">{{opc.name}}</option>
+          <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+        </select>
+      </div>
+    </div>
+
+    <div class="selc">
+      <p class="sl-ttl">Color Maq.</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="color_maq">
+          <option *ngFor="let opc of this.db.color_maquinaria" [ngValue]="opc">{{opc.name}}</option>
+          <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+        </select>
+      </div>
+    </div>
+
+    <div class="selc">
+      <p class="sl-ttl">Material pulso</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="mat_pulso">
+          <option *ngFor="let opc of this.db.material_pulso" [ngValue]="opc">{{opc.name}}</option>
+          <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+        </select>
+      </div>
+    </div>
+
+
+    <div class="selc">
+      <p class="sl-ttl">Tipo Madera</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="madera">
+          <option *ngFor="let opc of this.db.maderas" [ngValue]="opc">{{opc.name}}</option>
+          <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+        </select>
+      </div>
+    </div>
+
+    <div class="selc">
+      <p class="sl-ttl">Color pulso</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="color_pulso">
+          <option *ngFor="let opc of this.db.material_pulso" [ngValue]="opc">{{opc.name}}</option>
+          <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
+        </select>
+      </div>
+    </div>
+
+
   </div>
+
   <div class="bt-n-ref" (click)="iniciarNuevoRegistro()"> Crear nuevo registro
 
   </div>
@@ -131,6 +128,4 @@
   <p>SERIAL RAW {{serial_raw}}</p>
   <p>SERIAL MD5: {{serial_md5}}</p>
 </div>
-<div class="bb">
-  ng
-</div>
+

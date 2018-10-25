@@ -28,10 +28,6 @@ export class NuevoIngresoRelojComponent implements OnInit {
   serial_raw: string;
   serial_md5: string;
 
-  tst() {
-    console.log('testing');
-  }
-
   constructor(private hasher: HasherService, public db: DbService) {
   }
 
@@ -112,9 +108,9 @@ export class NuevoIngresoRelojComponent implements OnInit {
       this.mat_pulso.salt +
       this.madera.salt;
 
-    // this.serial_md5 = this.hasher.encriptarSerial(this.serial_raw);
+    this.serial_md5 = this.hasher.encriptarSerial(this.serial_raw);
     console.log(this.serial_raw);
-    this.serial_md5 = 'Pruebas  ';
+    // this.serial_md5 = 'Pruebas  ';
 
     const date = formatDate(Date.now(), 'dd-MM-yyyy hh:mm:ss a', 'en-US', '-500');
 
