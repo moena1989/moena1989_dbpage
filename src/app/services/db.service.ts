@@ -139,6 +139,7 @@ export class DbService {
 // TODO buscar una manera mas organizada de manejar, los objetos de las páginas routiadas.
   relojBuscado: any;
   private authState = null;
+  userLogueado: any;
 
   constructor(public db: AngularFireDatabase, private firebaseAuth: AngularFireAuth, private router: Router) {
 
@@ -156,7 +157,11 @@ export class DbService {
   login(email: string, pass: string, result: (ho: any) => any) {
     this.firebaseAuth.auth.signInWithEmailAndPassword(email, pass)
       .then(auth => {
-          result(auth);
+          console.log('hooooooooo');
+          console.log(auth.user.uid);
+          this.traerDatosUsuario(auth.user.uid, value => {
+            result(auth.user.uid);
+          });
         }
       )
       .catch(err => {
@@ -165,6 +170,16 @@ export class DbService {
       });
   }
 
+
+  traerDatosUsuario(uid: string, ff: (d: boolean) => void) {
+    console.log(uid);
+    this.db.object('workers/' + uid).valueChanges().subscribe(value => {
+      this.userLogueado = value;
+      console.log('se trae la info del usuario');
+      console.log(this.userLogueado);
+      ff(true);
+    });
+  }
 
   subirNuevoRegistroReloj(reloj: any): void {
     const key = this.db.list('relojes').push(reloj).key;
@@ -183,12 +198,14 @@ export class DbService {
     });
   }
 
-  registro_worker(email: string, pass: string) {
+  registro_worker(usr: any, pass: string) {
     this.firebaseAuth
       .auth
-      .createUserWithEmailAndPassword(email, pass)
+      .createUserWithEmailAndPassword(usr.mail, pass)
       .then(value => {
-        console.log('Success!');
+        console.log('Registro exitoso');
+        console.log(value);
+        this.pushAllNewUserInfo(usr, value.user.uid);
         this.router.navigate(['login']);
       })
       .catch(err => {
@@ -196,10 +213,10 @@ export class DbService {
       });
   }
 
-  private pushAllNewUserInfo(user: any) {
-    const itemRef = this.db.object('workers/' + user.uid);
+  private pushAllNewUserInfo(user: any, uid: string) {
+    const itemRef = this.db.object('workers/' + uid);
     itemRef.set({
-      email: 'testing too',
+      mail: 'testing too',
       nombres: 'tt',
       apellidos: 'tt',
       sexo: 'testing',
@@ -207,7 +224,6 @@ export class DbService {
     });
     this.router.navigate(['/login']);
   }
-
 
   get authenticated(): boolean {
     return this.authState !== null;
