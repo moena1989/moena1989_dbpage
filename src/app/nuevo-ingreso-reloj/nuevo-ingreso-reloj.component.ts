@@ -33,6 +33,8 @@ export class NuevoIngresoRelojComponent implements OnInit {
   colecciones_del_modelos: any[];
   est_modelo_selected: any;
   colecciones_del_modelo_selected: any[];
+  private _colecc_del_modelo_selected: any[];
+  private opciones_por_ver: any[];
 
 
   constructor(private estructura: ModelsService, private hasher: HasherService, public db: DbService) {
@@ -46,38 +48,38 @@ export class NuevoIngresoRelojComponent implements OnInit {
   @Input() set modelo_seleccionado(_modelo_seleccionado: any) {
     // TODO buscar la manera de eliminar el [0] al final de la linea
     const est_modelo_selected = this.estructura.estr.filter(value => value.id_modelo === _modelo_seleccionado.id)[0];
-    const _colecc_del_modelo_selected: any[] = est_modelo_selected.colecciones;
-
+    this._colecc_del_modelo_selected = est_modelo_selected.colecciones;
     const todas_colecciones = this.estructura.colecciones;
 
     console.log('Selecciona modelo ' + _modelo_seleccionado.id + ' ' + _modelo_seleccionado.name);
-    // console.log(_colecc_del_modelo_selected);
-
-    // TRAER LAS PUTAS COLECCIONES
-    // const holi = _colecc_del_modelo_selected.find(colec_model => colec_model.id_coleccion === 1);
 
     this.colecciones_del_modelo_selected = todas_colecciones.filter(_colec => {
 
-      const oo = _colecc_del_modelo_selected.find(value => {
-        // console.log(value.id_coleccion === _colec.id);
+      const oo = this._colecc_del_modelo_selected.find(value => {
         return value.id_coleccion === _colec.id;
       });
       return oo != null;
     });
   }
 
+  @Input() set colecc_select(raw_colecc_select: any) {
+    const coleccion_selected: any = this._colecc_del_modelo_selected.filter(value => value.id_coleccion === raw_colecc_select.id)[0];
 
-  @Input() set colecc_select(raw_colecc_select: string) {
-    const est_opcs_selected: any[] = this.est_modelo_selected.opciones;
-    const est_opcs: any[] = this.estructura.opciones;
+    const nOptions: any[] = coleccion_selected.opciones;
+    console.log('se buscan las opciones de la colección');
+    console.log(coleccion_selected);
+    const todas_opciones = this.estructura.opciones;
 
-    const opciones_de_coleccion = est_opcs.filter(est_opc => {
-      return est_opc.id === est_opcs_selected.find(value => est_opc.id === value.id_opc).id_opc;
+
+    this.opciones_por_ver = this.estructura.opciones.filter(_opc => {
+
+      const oo = nOptions.find(value => {
+        // console.log(value.id_coleccion === _colec.id);
+        return value.id_opc === _opc.id;
+      });
+      return oo != null;
     });
-
-    console.log(opciones_de_coleccion);
-
-    // est_cole_selected = this.est_modelo_selected.opciones.find(l);
+    console.log(this.opciones_por_ver);
   }
 
 
