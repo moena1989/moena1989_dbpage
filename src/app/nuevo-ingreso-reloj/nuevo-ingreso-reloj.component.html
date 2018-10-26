@@ -26,7 +26,6 @@
 
 
   <div class="options">
-
     <div class="selc">
       <p class="sl-ttl">Modelo</p>
       <div class="custom-select">
@@ -46,6 +45,15 @@
       </div>
     </div>
 
+
+    <div class="selc">
+      <p class="sl-ttl">Colección</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="coleccionSelccionada">
+          <option *ngFor="let opc of colecciones" [ngValue]="opc">{{opc.name}}</option>
+        </select>
+      </div>
+    </div>
 
   </div>
 

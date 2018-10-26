@@ -15,6 +15,7 @@ import {MainComponent} from './main/main.component';
 import {WorkerRegComponent} from './worker-reg/worker-reg.component';
 import {SnackbarComponent} from './snackbar/snackbar.component';
 import {AuthGuardService} from './auth-guard.service';
+import {RegistroComponent} from './registro/registro.component';
 
 
 const appRoutes: Routes = [
@@ -23,7 +24,10 @@ const appRoutes: Routes = [
   {
     path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
       {path: 'busqueda', component: BusquedaComponent},
-      {path: 'reg', component: NuevoIngresoRelojComponent},
+      {
+        path: 'registro', component: RegistroComponent, children:
+          [{path: 'reloj', component: NuevoIngresoRelojComponent}]
+      },
     ]
   }
 ];
@@ -46,7 +50,8 @@ const config = {
     LoginComponent,
     MainComponent,
     WorkerRegComponent,
-    SnackbarComponent
+    SnackbarComponent,
+    RegistroComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes),
