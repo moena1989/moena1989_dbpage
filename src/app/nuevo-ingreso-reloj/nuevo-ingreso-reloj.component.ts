@@ -30,6 +30,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
   serial_md5: string;
   est: ModelsService;
   colecciones: any;
+  colecciones_del_modelos: any[];
 
 
   constructor(private estructura: ModelsService, private hasher: HasherService, public db: DbService) {
@@ -41,18 +42,18 @@ export class NuevoIngresoRelojComponent implements OnInit {
 
 
   @Input() set modelo_seleccionado(ob: any) {
-    // const ob = this.estructura.modelos.find(v => v.name === ma);
-
-    const id_colecciones = this.estructura.estr.filter(value => value.id_modelo === ob.id)[0];
+    const est_modelo = this.estructura.estr.filter(value => value.id_modelo === ob.id)[0];
     // PUTA OBRA MAESTRA DE LINEA :3
-    this.colecciones = this.estructura.colecciones.filter(colec => {
-      return colec.id === (id_colecciones.colecciones.find(value => value.id_coleccion === colec.id).id_coleccion);
+    console.log(est_modelo);
+
+    this.colecciones_del_modelos = this.estructura.colecciones.filter(colec => {
+      return colec.id === (est_modelo.colecciones.find(value => value.id_coleccion === colec.id).id_coleccion);
     });
-    this.coleccion = '';
+
   }
 
 
-  @Input() set coleccionSelccionada(value: string) {
+  @Input() set colecc_select(value: string) {
     console.log(value);
     this.buscarOpciones();
   }

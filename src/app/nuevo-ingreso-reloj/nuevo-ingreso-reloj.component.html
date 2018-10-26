@@ -39,21 +39,21 @@
     <div class="selc">
       <p class="sl-ttl">Colección</p>
       <div class="custom-select">
-        <select class="ss" [(ngModel)]="coleccionSelccionada">
-          <option *ngFor="let opc of colecciones" [ngValue]="opc">{{opc.name}}</option>
+        <select class="ss" [(ngModel)]="colecc_select">
+          <option *ngFor="let opc of colecciones_del_modelos" [ngValue]="opc">{{opc.name}}</option>
         </select>
       </div>
     </div>
 
 
-    <div class="selc">
-      <p class="sl-ttl">Colección</p>
-      <div class="custom-select">
-        <select class="ss" [(ngModel)]="coleccionSelccionada">
-          <option *ngFor="let opc of colecciones" [ngValue]="opc">{{opc.name}}</option>
-        </select>
-      </div>
-    </div>
+    <!--<div class="selc">-->
+      <!--<p class="sl-ttl">Colección</p>-->
+      <!--<div class="custom-select">-->
+        <!--<select class="ss" [(ngModel)]="colecc_select">-->
+          <!--<option *ngFor="let opc of colecciones_del_modelo" [ngValue]="opc">{{opc.name}}</option>-->
+        <!--</select>-->
+      <!--</div>-->
+    <!--</div>-->
 
   </div>
 
