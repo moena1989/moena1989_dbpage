@@ -116,15 +116,22 @@ export class DbService {
   // TODO buscar una manera mas organizada de manejar, los objetos de las páginas routiadas.
   relojBuscado: any;
 
-  private authState = null;
+  authState = null;
   userLogueado: any;
 
   constructor(public db: AngularFireDatabase, private firebaseAuth: AngularFireAuth, private router: Router) {
 
-    // console.log('holi holi');
     this.firebaseAuth.authState.subscribe(value => {
-      // console.log('probando auth');
-      // console.log(value);
+      console.log('Comprobando auth fiirebase...');
+
+      // const ob = localStorage.getItem('ob_login');
+      //
+      // if (ob != null) {
+      //   console.log('Se encontró el ob_log y se cargo :D');
+      //   this.authState = ob;
+      // } else {
+      //   console.log('no existe save guardado');
+      // }
       this.authState = value;
     });
   }
@@ -204,7 +211,7 @@ export class DbService {
   }
 
   get authenticated(): boolean {
-    return this.authState !== null;
+    return (this.authState !== null);
   }
 
   logout() {

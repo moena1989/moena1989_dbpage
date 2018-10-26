@@ -53,6 +53,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
 
 
   @Input() set coleccionSelccionada(value: string) {
+    console.log(value);
     this.buscarOpciones();
   }
 
