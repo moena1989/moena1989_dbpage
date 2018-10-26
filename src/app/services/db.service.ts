@@ -12,132 +12,110 @@ export class DbService {
   /*
   Servicio encargado de traer, y organizar los datos para la creación de cada reloj, contiene la estructura de cada uno de los registros.
    */
-  manos: any[] = [{name: 'FCM', salt: 'FCM'}];
-  lotes: any[] = [{name: '1', salt: '1'}];
-  piezas: any[] = [{name: '1-100', salt: '95'}];
 
+  modeloFile: any[] = [];
 
-  opciones: any[] = [];
-
-  modelosFile: any[] = [
-    {
-      name: 'Origen', salt: 'OG',
-      colecciones: [
-        {id: 1, name: 'Luxury'},
-        {id: 2, name: 'Hawaii'},
-        {id: 3, name: 'Animal Print'},
-        {id: 4, name: 'Frutas'},
-        {id: 5, name: 'Telas'},
-        {id: 6, name: 'Vintaje'},
-        {id: 6, name: 'Edición Especial'},
-      ]
-    },
-    {
-      name: 'Inti', salt: 'OG',
-      colecciones: [
-        {id: 1, name: 'Luxury'},
-        {id: 2, name: 'Hawaii'},
-        {id: 3, name: 'Animal Print'},
-        {id: 4, name: 'Frutas'},
-        {id: 5, name: 'Telas'},
-        {id: 6, name: 'Vintaje'},
-        {id: 6, name: 'Edición Especial'},
-      ]
-    },
+// Done
+  maderas: any[] = [
+    {salt: 'GD', id: '', name: 'Granadillo'},
+    {salt: 'NR', id: '', name: 'Nazareno'},
+    {salt: 'PM', id: '', name: 'Palo de Mora'},
+    {salt: 'PS', id: '', name: 'Palo de Sangre'},
+    {salt: 'NG', id: '', name: 'Nogal'},
+    {salt: 'CD', id: '', name: 'Cedro'},
+    {salt: 'AP', id: '', name: 'Achapo'},
+    {salt: 'EB', id: '', name: 'Ébano'},
+    {salt: 'FM', id: '', name: 'Flor Morado'},
+    {salt: 'TK', id: '', name: 'Teca'},
+    {salt: 'CM', id: '', name: 'Canelo Moena'},
+    {salt: 'ZP', id: '', name: 'Zapan'},
+    {salt: 'AM', id: '', name: 'Amargo'},
+    {salt: 'CM', id: '', name: 'Comino Crespo'},
+    {salt: 'PN', id: '', name: 'Pino'},
+    {salt: 'AC', id: '', name: 'Abarco'},
+    {salt: 'AR', id: '', name: 'algarrobo'},
+    {salt: 'CM', id: '', name: 'Cumaru'}
   ];
-
-  modelos: any[] = [
-    {
-      name: 'Origen', salt: 'OG'
-    },
-    {
-      name: 'Slim', salt: 'SL',
-      options: {}
-    },
-    {
-      name: 'Vira', salt: 'VR',
-      options: {}
-    },
-    {
-      name: 'Inti', salt: 'IT',
-      options: {}
-    },
-    {
-      name: 'Aros', salt: 'AR',
-      options: {}
-    },
-    {
-      name: 'One', salt: 'ON',
-      options: {}
-    }];
-
-  colecciones: any[] = [
-    {name: 'Luxury', salt: 'LX'},
-    {name: 'Hawaii', salt: 'HW'},
-    {name: 'Animal Print', salt: 'AP'},
-    {name: 'Frutas', salt: 'FT'},
-    {name: 'Telas', salt: 'TL'},
-    {name: 'Vintage', salt: 'VT'},
-    {name: 'Ed. Especial', salt: 'EE'}];
-
-  materiales: any[] = [
-    {name: 'Madera', salt: 'MD'},
-    {name: 'Acero', salt: 'AC'},
-    {name: 'Oro', salt: 'OR'},
-    {name: 'Plata', salt: 'PL'},
-    {name: 'Esmeraldas', salt: 'EM'},
-    {name: 'Tagua', salt: 'TG'}];
-
+  organicos: any[] = [
+    {salt: 'MD', id: 0, name: 'Madera'},
+    {salt: 'TG', id: 1, name: 'Tagua'},
+    {salt: 'MA', id: 2, name: 'Mármol'}
+  ];
+  metales: any[] = [
+    {salt: 'AC', id: 0, name: 'Acero'},
+    {salt: 'AL', id: 1, name: 'Aluminio'},
+    {salt: 'CR', id: 2, name: 'Cromo'},
+    {salt: 'NQ', id: 3, name: 'Níquel'},
+    {salt: 'TT', id: 4, name: 'Titanio'},
+    {salt: 'PL', id: 5, name: 'Platino'},
+    {salt: 'AL', id: 6, name: 'Alpaca'}
+  ];
+  preciosos: any[] = [
+    {salt: 'OR', id: 0, name: 'Oro'},
+    {salt: 'PL', id: 1, name: 'Plata'},
+    {salt: 'EM', id: 2, name: 'Esmeraldas'}
+  ];
+  plasticos: any[] = [
+    {salt: 'RS', id: 0, name: 'Resina '},
+    {salt: 'CB', id: 1, name: 'Carbono'},
+    {salt: 'FV', id: 2, name: 'Fibra de vidrio'}
+  ];
   maquinarias: any[] = [
-    {name: 'Miyota', salt: 'MY'},
-    {name: 'Seagul', salt: 'SG'},
-    {name: 'ETA', salt: 'ET'}
+    {salt: 'MY', id: 0, name: 'Miyota'},
+    {salt: 'SG', id: 1, name: 'Seagull'},
+    {salt: 'ET', id: 2, name: 'ETA'}
   ];
   color_maquinaria: any[] = [
-    {name: 'Oro', salt: 'OR'},
-    {name: 'Plata', salt: 'PT'}
+    {salt: 'OR', id: 1, name: 'Oro'},
+    {salt: 'PT', id: 2, name: 'Plata'}
   ];
   material_pulso: any[] = [
-    {name: 'Acero inoxidable', salt: 'AI'},
-    {name: 'Cuero', salt: 'CR'},
+    {salt: 'AI', id: 0, name: 'Acero inoxidable'},
+    {salt: 'CR', id: 1, name: 'Cuero'},
+    {salt: 'TL', id: 2, name: 'Tela'}
   ];
   color_pulsos: any[] = [
-    {name: 'Negro', salt: 'NG'},
-    {name: 'Azul', salt: 'AZ'},
-    {name: 'Gris', salt: 'GS'},
-    {name: 'Blanco', salt: 'BL'},
-    {name: 'Amarillo', salt: 'AM'},
-    {name: 'Rojo', salt: 'RJ'},
-    {name: 'Verde', salt: 'VD'},
-    {name: 'Naranja', salt: 'NJ'},
-    {name: 'Cafe', salt: 'CF'},
-    {name: 'Violeta', salt: 'VT'},
-    {name: 'Oro', salt: 'OR'},
-    {name: 'Plata', salt: 'PL'},
-    {name: 'Multicolor', salt: 'MC'},
+    {salt: 'NG', id: 0, name: 'Negro'},
+    {salt: 'AZ', id: 1, name: 'Azul'},
+    {salt: 'GS', id: 2, name: 'Gris'},
+    {salt: 'BL', id: 3, name: 'Blanco'},
+    {salt: 'AM', id: 4, name: 'Amarillo'},
+    {salt: 'RJ', id: 5, name: 'Rojo'},
+    {salt: 'VD', id: 6, name: 'Verde'},
+    {salt: 'NJ', id: 7, name: 'Naranja'},
+    {salt: 'CF', id: 8, name: 'Cafe'},
+    {salt: 'VT', id: 9, name: 'Violeta'},
+    {salt: 'OR', id: 10, name: 'Oro'},
+    {salt: 'PL', id: 11, name: 'Plata'},
+    {salt: 'MC', id: 12, name: 'Multicolor'},
+    {salt: 'SL', id: 13, name: 'Salomo'},
+    {salt: 'VM', id: 14, name: 'Verde menta'},
+    {salt: 'RS', id: 15, name: 'Rosadoo'},
+    {salt: 'BG', id: 16, name: 'Beige'}
   ];
-  maderas: any[] = [
-    {name: 'Granadillo', salt: 'GD'},
-    {name: 'Nazareno', salt: 'NR'},
-    {name: 'Palo de Mora', salt: 'PM'},
-    {name: 'Palo de Sangre', salt: 'PS'},
-    {name: 'Nogal', salt: 'NG'},
-    {name: 'Cedro', salt: 'CD'},
-    {name: 'Achapo', salt: 'AP'},
-    {name: 'Ébano', salt: 'EB'},
-    {name: 'Flor Morado', salt: 'FM'},
-    {name: 'Teka', salt: 'TK'},
-    {name: 'Canelo Moena', salt: 'CM'},
-    {name: 'Zapan', salt: 'ZP'},
-    {name: 'Amargo', salt: 'AM'},
-    {name: 'Pino', salt: 'PN'},
-    {name: 'Abarco', salt: 'AC'},
-    {name: 'algarrobo', salt: 'AR'},
-    {name: 'Cumaru', salt: 'CM'}
-  ];
+  modelos: any[] = [
+    {salt: 'OG', id: 0, name: 'Origen'},
+    {salt: 'SL', id: 1, name: 'Slim'},
+    {salt: 'VR', id: 2, name: 'Vira Aros'},
+    {salt: 'IT', id: 3, name: 'Inti'},
+    {salt: 'AR', id: 4, name: 'Aros'},
+    {salt: 'ON', id: 5, name: 'One'}];
+  colecciones: any[] = [
+    {salt: 'LX', id: 0, name: 'Luxury'},
+    {salt: 'HW', id: 1, name: 'Hawaii'},
+    {salt: 'AP', id: 2, name: 'Animal Print'},
+    {salt: 'FT', id: 3, name: 'Frutas'},
+    {salt: 'TL', id: 4, name: 'Telas'},
+    {salt: 'VT', id: 5, name: 'Vintage'},
+    {salt: 'EE', id: 6, name: 'Ed. Especial'}];
+  ///////////////////////////////////////////
+  manos: any[] = [{name: 'FCM', salt: 'FCM'}];
+  lotes: any[] = [{name: '1', salt: '1'}];
 
-// TODO buscar una manera mas organizada de manejar, los objetos de las páginas routiadas.
+
+  // TODO buscar una manera mas organizada de manejar, los objetos de las páginas routiadas.
   relojBuscado: any;
+
   private authState = null;
   userLogueado: any;
 

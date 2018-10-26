@@ -1,7 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, Input, OnInit} from '@angular/core';
 import {HasherService} from '../services/hasher.service';
 import {DbService} from '../services/db.service';
 import {formatDate} from '@angular/common';
+import {ModelsService} from '../models.service';
 
 @Component({
   selector: 'app-nuevo-ingreso-reloj',
@@ -27,69 +28,91 @@ export class NuevoIngresoRelojComponent implements OnInit {
   piezas: any = '';
   serial_raw: string;
   serial_md5: string;
+  est: ModelsService;
+  colecciones: any;
 
-  constructor(private hasher: HasherService, public db: DbService) {
+
+  constructor(private estructura: ModelsService, private hasher: HasherService, public db: DbService) {
+    this.est = estructura;
   }
 
   ngOnInit() {
   }
 
+
+  @Input() set modelo_seleccionado(ob: any) {
+    // const ob = this.estructura.modelos.find(v => v.name === ma);
+
+    const id_colecciones = this.estructura.estr.filter(value => value.id_modelo === ob.id)[0];
+    // PUTA OBRA MAESTRA DE LINEA :3
+    this.colecciones = this.estructura.colecciones.filter(colec => {
+      return colec.id === (id_colecciones.colecciones.find(value => value.id_coleccion === colec.id).id_coleccion);
+    });
+    this.coleccion = '';
+  }
+
+
+  @Input() set coleccionSelccionada(value: string) {
+    // this._modelo_seleccionado = value;
+    this.buscarOpciones();
+  }
+
+
   iniciarNuevoRegistro() {
-
     // se confirma que todos los datos fueron ingresados
-    if (this.comprobarCampos()) {
-      this.gestinarDatos();
-    } else {
-      console.log('Revisa todos los campos para poder continuar!');
-    }
+    // if (this.comprobarCampos()) {
+    //   this.gestinarDatos();
+    // } else {
+    //   console.log('Revisa todos los campos para poder continuar!');
+    // }
   }
 
 
-  comprobarCampos(): boolean {
-    console.log('Se comprueban los campos');
-    this.pr = true;
-    if (this.modelo === null) {
-      console.log(1);
-
-      this.pr = false;
-    }
-
-    if (this.coleccion === '') {
-      console.log(2);
-      this.pr = false;
-    }
-
-    if (this.material === '') {
-      console.log(3);
-      this.pr = false;
-    }
-
-    if (this.maquinaria === '') {
-      console.log(4);
-      this.pr = false;
-    }
-
-    if (this.color_maq === '') {
-      console.log(5);
-      this.pr = false;
-    }
-
-    if (this.mat_pulso === '') {
-      console.log(6);
-      this.pr = false;
-    }
-
-    if (this.madera === '') {
-      console.log(7);
-      this.pr = false;
-    }
-    if (this.color_pulso === '') {
-      console.log(8);
-      this.pr = false;
-    }
-    console.log(this.piezas);
-    return this.pr;
-  }
+  // comprobarCampos(): boolean {
+  //   console.log('Se comprueban los campos');
+  //   this.pr = true;
+  //   if (this.modelo === null) {
+  //     console.log(1);
+  //
+  //     this.pr = false;
+  //   }
+  //
+  //   if (this.coleccion === '') {
+  //     console.log(2);
+  //     this.pr = false;
+  //   }
+  //
+  //   if (this.material === '') {
+  //     console.log(3);
+  //     this.pr = false;
+  //   }
+  //
+  //   if (this.maquinaria === '') {
+  //     console.log(4);
+  //     this.pr = false;
+  //   }
+  //
+  //   if (this.color_maq === '') {
+  //     console.log(5);
+  //     this.pr = false;
+  //   }
+  //
+  //   if (this.mat_pulso === '') {
+  //     console.log(6);
+  //     this.pr = false;
+  //   }
+  //
+  //   if (this.madera === '') {
+  //     console.log(7);
+  //     this.pr = false;
+  //   }
+  //   if (this.color_pulso === '') {
+  //     console.log(8);
+  //     this.pr = false;
+  //   }
+  //   console.log(this.piezas);
+  //   return this.pr;
+  // }
 
   private gestinarDatos() {
     this.serial_raw =
@@ -134,4 +157,14 @@ export class NuevoIngresoRelojComponent implements OnInit {
     this.db.subirNuevoRegistroReloj(relojData);
     console.log('probando en fb');
   }
+
+  traerColecciones() {
+
+  }
+
+  private buscarOpciones() {
+    console.log('se buscan las opciones');
+  }
+
+
 }
