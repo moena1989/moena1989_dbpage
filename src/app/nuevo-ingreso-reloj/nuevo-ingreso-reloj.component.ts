@@ -34,7 +34,11 @@ export class NuevoIngresoRelojComponent implements OnInit {
   est_modelo_selected: any;
   colecciones_del_modelo_selected: any[];
   private _colecc_del_modelo_selected: any[];
-  private opciones_por_ver: any[];
+  opciones_por_ver: any[];
+
+
+  obj: any[] = [];
+  opcionesFiltradas: any[];
 
 
   constructor(private estructura: ModelsService, private hasher: HasherService, public db: DbService) {
@@ -54,32 +58,57 @@ export class NuevoIngresoRelojComponent implements OnInit {
     console.log('Selecciona modelo ' + _modelo_seleccionado.id + ' ' + _modelo_seleccionado.name);
 
     this.colecciones_del_modelo_selected = todas_colecciones.filter(_colec => {
-
       const oo = this._colecc_del_modelo_selected.find(value => {
         return value.id_coleccion === _colec.id;
       });
       return oo != null;
     });
+    this.obj = [];
+    this.obj['Colección'] = _modelo_seleccionado.name;
+    // var obj = {};
+    console.log(this.obj);
   }
 
   @Input() set colecc_select(raw_colecc_select: any) {
+    this.opciones_por_ver = [];
     const coleccion_selected: any = this._colecc_del_modelo_selected.filter(value => value.id_coleccion === raw_colecc_select.id)[0];
+    console.log('coleccion seleccionada ' + raw_colecc_select.name);
 
     const nOptions: any[] = coleccion_selected.opciones;
-    console.log('se buscan las opciones de la colección');
-    console.log(coleccion_selected);
+    console.log('se selecciona colección: ');
+    // console.log(coleccion_selected);
     const todas_opciones = this.estructura.opciones;
 
+    this.estructura.opciones.forEach(_opc => {
 
-    this.opciones_por_ver = this.estructura.opciones.filter(_opc => {
+        const oo = nOptions.find(value => {
+          // console.log(value.id_coleccion === _colec.id);
+          return value.id_opc === _opc.id;
+        });
+        // AQUI SE DEBEN REMOVER LOS OBJETOS DEL
+        if (oo != null) {
+          const c: any[] = oo.ids;
+          console.log('holi');
+          // contiene las opciones qie deben ser visibles [1,2,3]...
+          const oopps: any[] = oo.id_opc;
 
-      const oo = nOptions.find(value => {
-        // console.log(value.id_coleccion === _colec.id);
-        return value.id_opc === _opc.id;
-      });
-      return oo != null;
-    });
-    console.log(this.opciones_por_ver);
+          // console.log(c);
+          // console.log(_opc);
+          //
+          _opc.ops = _opc.ops.filter(valu => {
+            return valu.id === c.find(val => valu.id === val);
+          });
+          // ~removeIndex && array.splice(removeIndex, 1);
+          // console.log('AHÁ');
+          // console.log(_opc.ops);
+          this.opciones_por_ver.push(_opc);
+        }
+      }
+    );
+
+
+    this.obj[raw_colecc_select.name] = '';
+    this.obj['Modelo'] = raw_colecc_select.name;
   }
 
 
@@ -192,4 +221,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
   }
 
 
+  rdas() {
+    console.log(this.obj);
+  }
 }

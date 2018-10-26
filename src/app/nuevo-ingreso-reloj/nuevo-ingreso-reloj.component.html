@@ -3,26 +3,26 @@
 
 <div class="package_options">
 
-  <div class="options">
-    <div class="selc">
-      <p class="sl-ttl">Mano</p>
-      <div class="custom-select">
-        <select class="ss" [(ngModel)]="manos">
-          <option *ngFor="let opc of this.db.manos" [ngValue]="opc">{{opc.name}}</option>
-          <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-        </select>
-      </div>
-    </div>
-    <div class="selc">
-      <p class="sl-ttl">Lote</p>
-      <div class="custom-select">
-        <select class="ss" [(ngModel)]="lote">
-          <option *ngFor="let opc of this.db.lotes" [ngValue]="opc">{{opc.name}}</option>
-          <!--<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>-->
-        </select>
-      </div>
-    </div>
-  </div>
+  <!--<div class="options">-->
+  <!--<div class="selc">-->
+  <!--<p class="sl-ttl">Mano</p>-->
+  <!--<div class="custom-select">-->
+  <!--<select class="ss" [(ngModel)]="manos">-->
+  <!--<option *ngFor="let opc of this.db.manos" [ngValue]="opc">{{opc.name}}</option>-->
+  <!--&lt;!&ndash;<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>&ndash;&gt;-->
+  <!--</select>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--<div class="selc">-->
+  <!--<p class="sl-ttl">Lote</p>-->
+  <!--<div class="custom-select">-->
+  <!--<select class="ss" [(ngModel)]="lote">-->
+  <!--<option *ngFor="let opc of this.db.lotes" [ngValue]="opc">{{opc.name}}</option>-->
+  <!--&lt;!&ndash;<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>&ndash;&gt;-->
+  <!--</select>-->
+  <!--</div>-->
+  <!--</div>-->
+  <!--</div>-->
 
 
   <div class="options">
@@ -30,7 +30,7 @@
       <p class="sl-ttl">Modelo</p>
       <div class="custom-select">
         <select class="ss" [(ngModel)]="modelo_seleccionado">
-          <option *ngFor="let opc of est.modelos" [ngValue]="opc">{{opc.id}} {{opc.name}}</option>
+          <option *ngFor="let opc of est.modelos" [ngValue]="opc">{{opc.name}}</option>
         </select>
       </div>
     </div>
@@ -40,23 +40,22 @@
       <p class="sl-ttl">Colección</p>
       <div class="custom-select">
         <select class="ss" [(ngModel)]="colecc_select">
-          <option *ngFor="let opc of colecciones_del_modelo_selected " [ngValue]="opc">{{opc.id}} {{opc.name}}</option>
+          <option *ngFor="let opc of colecciones_del_modelo_selected" [ngValue]="opc">{{opc.name}}</option>
         </select>
       </div>
     </div>
 
-
-    <!--<div class="selc">-->
-    <!--<p class="sl-ttl">Colección</p>-->
-    <!--<div class="custom-select">-->
-    <!--<select class="ss" [(ngModel)]="colecc_select">-->
-    <!--<option *ngFor="let opc of colecciones_del_modelo" [ngValue]="opc">{{opc.name}}</option>-->
-    <!--</select>-->
-    <!--</div>-->
-    <!--</div>-->
+    <div class="selc" *ngFor="let opc of opciones_por_ver">
+      <p class="sl-ttl">{{opc.nombre}}</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="obj[opc.nombre]">
+          <option *ngFor="let op of opc.ops">{{op.name}}</option>
+        </select>
+      </div>
+    </div>
 
   </div>
-
+  <div (click)="rdas()">asldv</div>
   <!--<div class="bt-n-ref" (click)="iniciarNuevoRegistro()"> Crear nuevo registro-->
 
   <!--</div>-->
