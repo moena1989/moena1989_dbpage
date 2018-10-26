@@ -31,6 +31,8 @@ export class NuevoIngresoRelojComponent implements OnInit {
   est: ModelsService;
   colecciones: any;
   colecciones_del_modelos: any[];
+  est_modelo_selected: any;
+  colecciones_del_modelo_selected: any[];
 
 
   constructor(private estructura: ModelsService, private hasher: HasherService, public db: DbService) {
@@ -41,21 +43,41 @@ export class NuevoIngresoRelojComponent implements OnInit {
   }
 
 
-  @Input() set modelo_seleccionado(ob: any) {
-    const est_modelo = this.estructura.estr.filter(value => value.id_modelo === ob.id)[0];
-    // PUTA OBRA MAESTRA DE LINEA :3
-    console.log(est_modelo);
+  @Input() set modelo_seleccionado(_modelo_seleccionado: any) {
+    // TODO buscar la manera de eliminar el [0] al final de la linea
+    const est_modelo_selected = this.estructura.estr.filter(value => value.id_modelo === _modelo_seleccionado.id)[0];
+    const _colecc_del_modelo_selected: any[] = est_modelo_selected.colecciones;
 
-    this.colecciones_del_modelos = this.estructura.colecciones.filter(colec => {
-      return colec.id === (est_modelo.colecciones.find(value => value.id_coleccion === colec.id).id_coleccion);
+    const todas_colecciones = this.estructura.colecciones;
+
+    console.log('Selecciona modelo ' + _modelo_seleccionado.id + ' ' + _modelo_seleccionado.name);
+    // console.log(_colecc_del_modelo_selected);
+
+    // TRAER LAS PUTAS COLECCIONES
+    // const holi = _colecc_del_modelo_selected.find(colec_model => colec_model.id_coleccion === 1);
+
+    this.colecciones_del_modelo_selected = todas_colecciones.filter(_colec => {
+
+      const oo = _colecc_del_modelo_selected.find(value => {
+        // console.log(value.id_coleccion === _colec.id);
+        return value.id_coleccion === _colec.id;
+      });
+      return oo != null;
     });
-
   }
 
 
-  @Input() set colecc_select(value: string) {
-    console.log(value);
-    this.buscarOpciones();
+  @Input() set colecc_select(raw_colecc_select: string) {
+    const est_opcs_selected: any[] = this.est_modelo_selected.opciones;
+    const est_opcs: any[] = this.estructura.opciones;
+
+    const opciones_de_coleccion = est_opcs.filter(est_opc => {
+      return est_opc.id === est_opcs_selected.find(value => est_opc.id === value.id_opc).id_opc;
+    });
+
+    console.log(opciones_de_coleccion);
+
+    // est_cole_selected = this.est_modelo_selected.opciones.find(l);
   }
 
 
