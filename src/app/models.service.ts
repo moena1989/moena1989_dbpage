@@ -1,0 +1,402 @@
+import {Injectable} from '@angular/core';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class ModelsService {
+  /*
+   CLASE ENCARGGADA DE CONTENER LA ESTRUCTURA DE LOS DATOS NECESARIOS PARA LA DB.
+   */
+
+  constructor() {
+  }
+
+  modelos: any[] = [
+    {
+      salt: 'OG', id: 0, name: 'Origen',
+      colecciones: [
+        {
+          id_coleccion: 1,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+          ]
+        },
+        {
+          id_coleccion: 2,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+
+          ]
+        },
+        {
+          id_coleccion: 3,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+          ]
+        }
+      ]
+    },
+    {
+      salt: 'SL', id: 1, name: 'Slim',
+      colecciones: [{
+        id_coleccion: 1,
+        opciones: [
+          {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+          {id_opc: 1, ids: [0, 1, 2]},
+          {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+          {id_opc: 3, ids: [0, 1, 2]},
+          {id_opc: 4, ids: [0, 1, 2]},
+          {id_opc: 5, ids: [0, 1, 2]},
+          {id_opc: 6, ids: [0, 1]},
+          {id_opc: 7, ids: [0, 1, 2]},
+          {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+        ]
+      },
+        {
+          id_coleccion: 2,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+
+          ]
+        },
+        {
+          id_coleccion: 3,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+          ]
+        }
+      ]
+    },
+    {
+      salt: 'VR', id: 2, name: 'Vira Aros',
+      colecciones: [{
+        id_coleccion: 1,
+        opciones: [
+          {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+          {id_opc: 1, ids: [0, 1, 2]},
+          {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+          {id_opc: 3, ids: [0, 1, 2]},
+          {id_opc: 4, ids: [0, 1, 2]},
+          {id_opc: 5, ids: [0, 1, 2]},
+          {id_opc: 6, ids: [0, 1]},
+          {id_opc: 7, ids: [0, 1, 2]},
+          {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+        ]
+      },
+        {
+          id_coleccion: 2,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+
+          ]
+        },
+        {
+          id_coleccion: 3,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+          ]
+        }
+      ]
+    },
+    {
+      salt: 'IT', id: 3, name: 'Inti',
+      colecciones: [{
+        id_coleccion: 1,
+        opciones: [
+          {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+          {id_opc: 1, ids: [0, 1, 2]},
+          {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+          {id_opc: 3, ids: [0, 1, 2]},
+          {id_opc: 4, ids: [0, 1, 2]},
+          {id_opc: 5, ids: [0, 1, 2]},
+          {id_opc: 6, ids: [0, 1]},
+          {id_opc: 7, ids: [0, 1, 2]},
+          {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+        ]
+      },
+        {
+          id_coleccion: 2,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+
+          ]
+        },
+        {
+          id_coleccion: 3,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+          ]
+        }
+      ]
+    },
+    {
+      salt: 'AR', id: 4, name: 'Aros',
+      colecciones: [{
+        id_coleccion: 1,
+        opciones: [
+          {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+          {id_opc: 1, ids: [0, 1, 2]},
+          {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+          {id_opc: 3, ids: [0, 1, 2]},
+          {id_opc: 4, ids: [0, 1, 2]},
+          {id_opc: 5, ids: [0, 1, 2]},
+          {id_opc: 6, ids: [0, 1]},
+          {id_opc: 7, ids: [0, 1, 2]},
+          {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+        ]
+      },
+        {
+          id_coleccion: 2,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+
+          ]
+        },
+        {
+          id_coleccion: 3,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+          ]
+        }
+      ]
+    },
+    {
+      salt: 'ON', id: 5, name: 'One',
+      colecciones: [{
+        id_coleccion: 1,
+        opciones: [
+          {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+          {id_opc: 1, ids: [0, 1, 2]},
+          {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+          {id_opc: 3, ids: [0, 1, 2]},
+          {id_opc: 4, ids: [0, 1, 2]},
+          {id_opc: 5, ids: [0, 1, 2]},
+          {id_opc: 6, ids: [0, 1]},
+          {id_opc: 7, ids: [0, 1, 2]},
+          {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+        ]
+      },
+        {
+          id_coleccion: 2,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+
+          ]
+        },
+        {
+          id_coleccion: 3,
+          opciones: [
+            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
+            {id_opc: 1, ids: [0, 1, 2]},
+            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
+            {id_opc: 3, ids: [0, 1, 2]},
+            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [0, 1, 2]},
+            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+          ]
+        }
+      ]
+    }];
+
+  colecciones: any[] = [
+    {salt: 'LX', id: 0, name: 'Luxury'},
+    {salt: 'HW', id: 1, name: 'Hawaii'},
+    {salt: 'AP', id: 2, name: 'Animal Print'},
+    {salt: 'FT', id: 3, name: 'Frutas'},
+    {salt: 'TL', id: 4, name: 'Telas'},
+    {salt: 'VT', id: 5, name: 'Vintage'},
+    {salt: 'EE', id: 6, name: 'Ed. Especial'}];
+  ///////////////////////////////////////////
+  manos: any[] = [{name: 'FCM', salt: 'FCM'}];
+  lotes: any[] = [{name: '1', salt: '1'}];
+
+
+  opciones: any[] = [
+    {
+      id: 0, nombre: 'Maderas', ops: [
+        {salt: 'GD', id: 0, name: 'Granadillo'},
+        {salt: 'NR', id: 1, name: 'Nazareno'},
+        {salt: 'PM', id: 2, name: 'Palo de Mora'},
+        {salt: 'PS', id: 3, name: 'Palo de Sangre'},
+        {salt: 'NG', id: 4, name: 'Nogal'},
+        {salt: 'CD', id: 5, name: 'Cedro'},
+        {salt: 'AP', id: 6, name: 'Achapo'},
+        {salt: 'EB', id: 7, name: 'Ébano'},
+        {salt: 'FM', id: 8, name: 'Flor Morado'},
+        {salt: 'TK', id: 9, name: 'Teca'},
+        {salt: 'CM', id: 10, name: 'Canelo Moena'},
+        {salt: 'ZP', id: 11, name: 'Zapan'},
+        {salt: 'AM', id: 12, name: 'Amargo'},
+        {salt: 'CM', id: 13, name: 'Comino Crespo'},
+        {salt: 'PN', id: 14, name: 'Pino'},
+        {salt: 'AC', id: 15, name: 'Abarco'},
+        {salt: 'AR', id: 16, name: 'algarrobo'},
+        {salt: 'CM', id: 17, name: 'Cumaru'}
+      ]
+    },
+    {
+      id: 1, nombre: 'Material Orgánico', ops: [
+        {salt: 'MD', id: 0, name: 'Madera'},
+        {salt: 'TG', id: 1, name: 'Tagua'},
+        {salt: 'MA', id: 2, name: 'Mármol'}
+      ]
+    }, {
+      id: 2, nombre: 'Material Metálico', ops: [
+        {salt: 'AC', id: 0, name: 'Acero'},
+        {salt: 'AL', id: 1, name: 'Aluminio'},
+        {salt: 'CR', id: 2, name: 'Cromo'},
+        {salt: 'NQ', id: 3, name: 'Níquel'},
+        {salt: 'TT', id: 4, name: 'Titanio'},
+        {salt: 'PL', id: 5, name: 'Platino'},
+        {salt: 'AL', id: 6, name: 'Alpaca'}
+      ]
+    }, {
+      id: 3, nombre: 'Material precioso', ops: [
+        {salt: 'OR', id: 0, name: 'Oro'},
+        {salt: 'PL', id: 1, name: 'Plata'},
+        {salt: 'EM', id: 2, name: 'Esmeraldas'}
+      ]
+    }, {
+      id: 4, nombre: 'Material Plástico', ops: [
+        {salt: 'RS', id: 0, name: 'Resina '},
+        {salt: 'CB', id: 1, name: 'Carbono'},
+        {salt: 'FV', id: 2, name: 'Fibra de vidrio'}
+      ]
+    }, {
+      id: 5, nombre: 'Maquinaria', ops: [
+        {salt: 'MY', id: 0, name: 'Miyota'},
+        {salt: 'SG', id: 1, name: 'Seagull'},
+        {salt: 'ET', id: 2, name: 'ETA'}]
+    }, {
+      id: 6, nombre: 'Color Maquinaria', ops: [
+        {salt: 'OR', id: 0, name: 'Oro'},
+        {salt: 'PT', id: 1, name: 'Plata'}
+      ]
+    }, {
+      id: 7, nombre: 'Material Pulso', ops: [
+        {salt: 'AI', id: 0, name: 'Acero inoxidable'},
+        {salt: 'CR', id: 1, name: 'Cuero'},
+        {salt: 'TL', id: 2, name: 'Tela'}
+      ]
+    }, {
+      id: 8, nombre: 'Color Pulso', ops: [
+        {salt: 'NG', id: 0, name: 'Negro'},
+        {salt: 'AZ', id: 1, name: 'Azul'},
+        {salt: 'GS', id: 2, name: 'Gris'},
+        {salt: 'BL', id: 3, name: 'Blanco'},
+        {salt: 'AM', id: 4, name: 'Amarillo'},
+        {salt: 'RJ', id: 5, name: 'Rojo'},
+        {salt: 'VD', id: 6, name: 'Verde'},
+        {salt: 'NJ', id: 7, name: 'Naranja'},
+        {salt: 'CF', id: 8, name: 'Cafe'},
+        {salt: 'VT', id: 9, name: 'Violeta'},
+        {salt: 'OR', id: 10, name: 'Oro'},
+        {salt: 'PL', id: 11, name: 'Plata'},
+        {salt: 'MC', id: 12, name: 'Multicolor'},
+        {salt: 'SL', id: 13, name: 'Salomo'},
+        {salt: 'VM', id: 14, name: 'Verde menta'},
+        {salt: 'RS', id: 15, name: 'Rosadoo'},
+        {salt: 'BG', id: 16, name: 'Beige'}
+      ]
+    }
+  ];
+
+}
