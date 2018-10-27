@@ -107,7 +107,7 @@ export class DbService {
       nombres: user.name,
       apellidos: user.last_name,
       sexo: 'asd',
-      cargo: 'Jefaso'
+      cargo: user.cargo
     });
     this.router.navigate(['/login']);
   }
