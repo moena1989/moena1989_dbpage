@@ -51,7 +51,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
 
   @Input() set modelo_seleccionado(_modelo_seleccionado: any) {
     // TODO buscar la manera de eliminar el [0] al final de la linea
-    const est_modelo_selected = this.estructura.estr.filter(value => value.id_modelo === _modelo_seleccionado.id)[0];
+    const est_modelo_selected = this.estructura.modelos.filter(value => value.id === _modelo_seleccionado.id)[0];
     this._colecc_del_modelo_selected = est_modelo_selected.colecciones;
     const todas_colecciones = this.estructura.colecciones;
 
