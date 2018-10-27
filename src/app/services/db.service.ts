@@ -84,12 +84,12 @@ export class DbService {
   registro_worker(usr: any, pass: string) {
     this.firebaseAuth
       .auth
-      .createUserWithEmailAndPassword(usr.mail, pass)
+      .createUserWithEmailAndPassword(usr.email, pass)
       .then(value => {
-        console.log('Registro exitoso');
+        console.log('Registro exitoso__');
         console.log(value);
         this.pushAllNewUserInfo(usr, value.user.uid);
-        this.router.navigate(['login']);
+        this.router.navigate(['/login']);
       })
       .catch(err => {
 
@@ -103,10 +103,10 @@ export class DbService {
   private pushAllNewUserInfo(user: any, uid: string) {
     const itemRef = this.db.object('workers/' + uid);
     itemRef.set({
-      mail: 'testing too',
-      nombres: 'tt',
-      apellidos: 'tt',
-      sexo: 'testing',
+      email: user.email,
+      nombres: user.name,
+      apellidos: user.last_name,
+      sexo: 'asd',
       cargo: 'Jefaso'
     });
     this.router.navigate(['/login']);

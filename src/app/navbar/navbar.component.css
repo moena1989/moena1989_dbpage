@@ -1,11 +1,13 @@
 :host {
   width: 100%;
   height: 100%;
-  background-color: #f7f7f7;
+  background-color: #3a3a3a;
   display: flex;
   flex-direction: row;
   align-items: center;
-  justify-items: center;
+  -webkit-box-shadow: 0px 0px 23px -6px rgba(0, 0, 0, 0.75);
+  -moz-box-shadow: 0px 0px 23px -6px rgba(0, 0, 0, 0.75);
+  box-shadow: 0px 0px 23px -6px rgba(0, 0, 0, 0.75);
 }
 
 .logo {
@@ -13,14 +15,53 @@
   justify-self: center;
   display: flex;
   width: 15em;
-  padding: 1em;
+  padding: .5em;
   justify-self: center;
 }
 
 .bts {
   margin: .5em;
-  font-weight: bold;
+  /*font-weight: bold;*/
   cursor: pointer;
+  color: white;
+  opacity: .2;
+}
+
+
+
+.l_pack {
+  display: flex;
+  justify-content: center;
+}
+
+.r_pack {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #f3f3f3;
+  margin-right: .5em;
+}
+
+.bts:hover {
+  opacity: .9;
+}
+
+.bt_cerrar {
+  background-color: black;
+  padding: .5em;
+  border-radius: .2em;
+  cursor: pointer;
+}
+
+.bt_cerrar:hover {
+  /*border-radius: .2em;*/
+  background-color: coral;
+}
+
+.current_email {
+  opacity: .5;
+  margin: .5em;
+  font-size: .9em;
 }
 
 .buscador {
@@ -51,5 +92,7 @@
   /*background-color: black;*/
   display: flex;
   flex-direction: row;
+  width: 100%;
   justify-content: space-between;
+  /*background-color: #e93c30;*/
 }

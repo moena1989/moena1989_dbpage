@@ -152,7 +152,7 @@ module.exports = ":host {\r\n  width: 100%;\r\n  height: 100%;\r\n  background-c
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<img class=\"logo\" src=\"assets/common/logo.svg\" alt=\"Moena 1989\">\n"
+module.exports = "<img class=\"logo\" src=\"assets/common/logo_bb.svg\" alt=\"Moena 1989\">\n"
 
 /***/ }),
 

@@ -34,6 +34,7 @@ export class NavbarComponent implements OnInit {
       });
     } else {
       console.log('no se escribió ningun serial');
+      console.log('');
     }
   }
 

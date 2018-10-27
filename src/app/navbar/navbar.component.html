@@ -1,11 +1,18 @@
-<img class="logo" src="assets/common/logo.svg" alt="Moena 1989">
-
+<img class="logo" src="assets/common/logo_w.svg" alt="Moena 1989">
 <div class="nav_options">
-  <div [routerLink]="['./']" class="bts">Registro</div>
-  <div class="inp_pack">
-    <input type="search" class="buscador" #serial placeholder="Busqueda de Seriales">
-    <div class="bts bs" (click)="buscarSerial(serial)">Buscar</div>
+  <div class="l_pack">
+    <div [routerLink]="['./']" class="bts">REGISTRO</div>
+    <div [routerLink]="['./']" class="bts">BUSQUEDA</div>
   </div>
-  <!--<div>Usuario: {{this.db.userLogueado.mail}}</div>-->
-  <div (click)="cerrarCuenta()">Cerrar cuenta</div>
+
+
+  <div class="r_pack">
+
+    <div class="current_email">{{this.db.userLogueado.email}}</div>
+    <div class="bt_cerrar" (click)="cerrarCuenta()">Cerrar sesión</div>
+  </div>
+
+  <!--<input type="search" class="buscador" #serial placeholder="Busqueda de Seriales">-->
+  <!--<div class="bts bs" (click)="buscarSerial(serial)">Buscar</div>-->
+
 </div>

@@ -1,28 +1,44 @@
-<h1>REGISTRO DE NUEVOS RELOJES</h1>
-<p class="msg">Los seriales mostrados aqui están solo para pruebas y no corresponde a resultados finales.</p>
-
 <div class="package_options">
+  <h1>NUEVO REGISTRO</h1>
+  <div>
 
-  <!--<div class="options">-->
-  <!--<div class="selc">-->
-  <!--<p class="sl-ttl">Mano</p>-->
-  <!--<div class="custom-select">-->
-  <!--<select class="ss" [(ngModel)]="manos">-->
-  <!--<option *ngFor="let opc of this.db.manos" [ngValue]="opc">{{opc.name}}</option>-->
-  <!--&lt;!&ndash;<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>&ndash;&gt;-->
-  <!--</select>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--<div class="selc">-->
-  <!--<p class="sl-ttl">Lote</p>-->
-  <!--<div class="custom-select">-->
-  <!--<select class="ss" [(ngModel)]="lote">-->
-  <!--<option *ngFor="let opc of this.db.lotes" [ngValue]="opc">{{opc.name}}</option>-->
-  <!--&lt;!&ndash;<option selected disabled hidden >-&#45;&#45;&#45;&#45;&#45;&#45;</option>&ndash;&gt;-->
-  <!--</select>-->
-  <!--</div>-->
-  <!--</div>-->
-  <!--</div>-->
+    <p class="msg">Hey, Hola!</p>
+    <p class="msg">1.Los seriales aún no funciona ya que se reestructuró la db para solucionar el problema de los
+      registros</p>
+    <p class="msg">2.Las restricciones ya existen, pero por pruebas aún tengo todas las opciones para todos los
+      modelos/colecciones</p>
+
+    <p class="msg">3.Estoy haciendo unos cambios en el diseño para ir dandole un toque de peronsalidad a esta parte tan
+      gris
+      que es el registro de inventario ._. jaja
+    </p>
+  </div>
+
+
+
+  <div class="options">
+    <div class="selc">
+      <p class="sl-ttl">Mano</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="manos">
+          <option *ngFor="let opc of this.est.manos" [ngValue]="opc">{{opc.name}}</option>
+          <!--<option selected disabled hidden >-------</option>-->
+        </select>
+      </div>
+    </div>
+    <div class="selc">
+      <p class="sl-ttl">Lote</p>
+      <div class="custom-select">
+        <select class="ss" [(ngModel)]="lote">
+          <option *ngFor="let opc of this.est.lotes" [ngValue]="opc">{{opc.name}}</option>
+          <!--<option selected disabled hidden >-------</option>-->
+        </select>
+      </div>
+    </div>
+  </div>
+
+  <h4 class="ttt">Caracteristicas de Personalización</h4>
+  <div class="_ln"></div>
 
 
   <div class="options">
@@ -44,7 +60,16 @@
         </select>
       </div>
     </div>
+  </div>
 
+  <!--<div class="bt-n-ref" (click)="iniciarNuevoRegistro()"> Crear nuevo registro-->
+  <!--</div>-->
+
+
+  <h4 class="ttt">Caracteristicas de Personalización</h4>
+  <div class="_ln"></div>
+
+  <div class="options">
     <div class="selc" *ngFor="let opc of opciones_por_ver">
       <p class="sl-ttl">{{opc.nombre}}</p>
       <div class="custom-select">
@@ -54,12 +79,11 @@
       </div>
     </div>
 
-  </div>
-  <div (click)="rdas()">asldv</div>
-  <!--<div class="bt-n-ref" (click)="iniciarNuevoRegistro()"> Crear nuevo registro-->
 
-  <!--</div>-->
+  </div>
+
 </div>
+
 
 <div class="pack">
   <p>SERIAL RAW {{serial_raw}}</p>
