@@ -104,9 +104,9 @@ export class DbService {
     const itemRef = this.db.object('workers/' + uid);
     itemRef.set({
       email: user.email,
-      nombres: user.name,
-      apellidos: user.last_name,
-      sexo: 'asd',
+      name: user.name,
+      last_name: user.last_name,
+      sex: 'asd',
       cargo: user.cargo
     });
     this.router.navigate(['/login']);
