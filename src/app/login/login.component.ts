@@ -21,7 +21,7 @@ export class LoginComponent implements OnInit {
         this.tool.snack.show('Datos incorrectas :/ o usuario inexistente');
       } else {
         // el ingreso fue exitoso :D
-        this.tool.snack.show('Hola,' + this.db.userLogueado.nombres);
+        this.tool.snack.show('Bienvenido de nuevo ' + this.db.userLogueado.name);
         this.tool.router.navigate(['/registro/reloj']);
         console.log('testing keep log');
         localStorage.setItem('ob_login', result);
