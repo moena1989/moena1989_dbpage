@@ -1,0 +1,31 @@
+:host {
+  width: auto;
+  margin: .5em;
+  background: #f3f3f3;
+  display: flex;
+  border-radius: .2em;
+  padding: 1em;
+  flex-direction: column;
+}
+
+.img-rj-buscado {
+  width: 18em;
+  height: 18em;
+  background: white;
+  border-radius: .2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.rjb-cnt {
+  display: flex;
+  flex-direction: row;
+}
+
+.rjb-datos {
+  width: auto;
+  margin-left: 1em;
+  display: flex;
+  flex-direction: column;
+}
