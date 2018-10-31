@@ -1,7 +1,6 @@
 <div class="package_options">
   <h1>NUEVO REGISTRO</h1>
   <div>
-
     <p class="msg">Hey, Hola!</p>
     <p class="msg">1.Los seriales aún no funciona ya que se reestructuró la db para solucionar el problema de los
       registros</p>
@@ -14,7 +13,8 @@
     </p>
   </div>
 
-
+  <h4 class="ttt">Del Registro</h4>
+  <div class="_ln"></div>
 
   <div class="options">
     <div class="selc">
@@ -37,10 +37,8 @@
     </div>
   </div>
 
-  <h4 class="ttt">Caracteristicas de Personalización</h4>
+  <h4 class="ttt">Base</h4>
   <div class="_ln"></div>
-
-
   <div class="options">
     <div class="selc">
       <p class="sl-ttl">Modelo</p>
@@ -62,31 +60,28 @@
     </div>
   </div>
 
-  <!--<div class="bt-n-ref" (click)="iniciarNuevoRegistro()"> Crear nuevo registro-->
-  <!--</div>-->
-
 
   <h4 class="ttt">Caracteristicas de Personalización</h4>
   <div class="_ln"></div>
-
+  <!--[(ngModel)]="obj[{id:'',nombre: opc.nombre, val:$event.value}]-->
   <div class="options">
     <div class="selc" *ngFor="let opc of opciones_por_ver">
       <p class="sl-ttl">{{opc.nombre}}</p>
       <div class="custom-select">
-        <select class="ss" [(ngModel)]="obj[opc.nombre]">
-          <option *ngFor="let op of opc.ops">{{op.name}}</option>
+        <select class="ss" [(ngModel)]="_caracteristicas[opc.id]">
+          <option *ngFor="let op of opc.ops" [ngValue]="op">{{op.name}}</option>
         </select>
       </div>
+
     </div>
-
-
   </div>
 
+  <div class="bt-n-ref" (click)="iniciarNuevoRegistro()"> Crear nuevo registro</div>
 </div>
 
 
 <div class="pack">
-  <p>SERIAL RAW {{serial_raw}}</p>
-  <p>SERIAL MD5: {{serial_md5}}</p>
+  <p><strong>SERIAL RAW </strong>{{serial_raw}}</p>
+  <p><strong>SERIAL MD5:</strong> {{serial_md5}}</p>
 </div>
 

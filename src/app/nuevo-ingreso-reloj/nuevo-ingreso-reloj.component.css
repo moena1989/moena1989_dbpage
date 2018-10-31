@@ -42,13 +42,16 @@
 
 .bt-n-ref {
   margin: .5em;
-  background: #f7f7f7;
-  border: 1px solid black;
+  background: rgba(58, 58, 58, 0.91);
+  /*border: 1px solid black;*/
   border-radius: .2em;
   padding: .5em;
   cursor: pointer;
-  width: available;
+  width: 20em;
   text-align: center;
+  color: #f7f7f7;
+  font-weight: normal;
+
 }
 
 .pack {
@@ -114,9 +117,11 @@
   -webkit-appearance: none;
   padding: .5em;
   font-family: 'K2D', sans-serif;
-  border: none;
+  border: 1px solid #e4e4e4;
   background: #f7f7f7;
   width: 10em;
+  border-radius: .2em;
+
 }
 
 

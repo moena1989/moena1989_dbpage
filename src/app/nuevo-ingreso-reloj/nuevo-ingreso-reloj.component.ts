@@ -10,35 +10,23 @@ import {ModelsService} from '../models.service';
   styleUrls: ['./nuevo-ingreso-reloj.component.css']
 })
 export class NuevoIngresoRelojComponent implements OnInit {
-  /*/
-  variables de seleccion
-   */
-
   pr = true;
-  modelo: any = '';
-  coleccion: any = '';
-  material: any = '';
-  maquinaria: any = '';
-  color_maq: any = '';
-  mat_pulso: any = '';
-  madera: any = '';
-  color_pulso: any = '';
   manos: any = '';
   lote: any = '';
-  piezas: any = '';
   serial_raw: string;
   serial_md5: string;
   est: ModelsService;
   colecciones: any;
-  colecciones_del_modelos: any[];
-  est_modelo_selected: any;
   colecciones_del_modelo_selected: any[];
   private _colecc_del_modelo_selected: any[];
   opciones_por_ver: any[];
 
 
-  obj: any[] = [];
-  opcionesFiltradas: any[];
+  obj: any = [];
+  _caracteristicas: any[] = [];
+  opcionesFiltradas: any;
+  private ob_final: {};
+  private serial_salt: string;
 
 
   constructor(private estructura: ModelsService, private hasher: HasherService, public db: DbService) {
@@ -65,8 +53,12 @@ export class NuevoIngresoRelojComponent implements OnInit {
     });
     this.obj = [];
     this.obj['Colección'] = _modelo_seleccionado.name;
+    this.obj['coleccion_id'] = _modelo_seleccionado.name;
+    this.obj['coleccion_salt'] = _modelo_seleccionado.salt;
+
     // var obj = {};
     console.log(this.obj);
+    console.log(_modelo_seleccionado);
   }
 
   @Input() set colecc_select(raw_colecc_select: any) {
@@ -107,121 +99,67 @@ export class NuevoIngresoRelojComponent implements OnInit {
     );
 
 
-    this.obj[raw_colecc_select.name] = '';
     this.obj['Modelo'] = raw_colecc_select.name;
+    this.obj['Modelo_id'] = raw_colecc_select.id;
+    this.obj['Modelo_salt'] = raw_colecc_select.salt;
   }
 
-
+  /* la idea seríai no enviar el nombre, sino sacarlo del id, pues esto permite separar la opción del idioma, sin embargo por facilidad de impresión al buscar, usaré esta
+             */
   iniciarNuevoRegistro() {
-    // se confirma que todos los datos fueron ingresados
-    // if (this.comprobarCampos()) {
-    //   this.gestinarDatos();
-    // } else {
-    //   console.log('Revisa todos los campos para poder continuar!');
-    // }
-  }
+    console.log('caracterizando');
+    console.log(this._caracteristicas);
+    const caracteristicas_seleccionadas = [];
+    this.serial_raw = '';
+    this.ob_final = {};
+    this.serial_salt = '';
+    this._caracteristicas.forEach((item, index) => {
+      if (item) {
+        const nombre_caracteristica = this.obtenerNombreCaracteristica(index).nombre;
+        const id_caracteristica = this.obtenerNombreCaracteristica(index).id;
+        const id_opcion = item.id;
+        const name_opcion = item.name;
 
+        caracteristicas_seleccionadas.push({
+          nombre_caracteristica: nombre_caracteristica,
+          id_caracteristica: id_caracteristica,
+          id_opcion: id_opcion,
+          nombre_opcion: name_opcion
+        });
+        this.serial_salt += item.salt;
+      }
+    });
 
-  // comprobarCampos(): boolean {
-  //   console.log('Se comprueban los campos');
-  //   this.pr = true;
-  //   if (this.modelo === null) {
-  //     console.log(1);
-  //
-  //     this.pr = false;
-  //   }
-  //
-  //   if (this.coleccion === '') {
-  //     console.log(2);
-  //     this.pr = false;
-  //   }
-  //
-  //   if (this.material === '') {
-  //     console.log(3);
-  //     this.pr = false;
-  //   }
-  //
-  //   if (this.maquinaria === '') {
-  //     console.log(4);
-  //     this.pr = false;
-  //   }
-  //
-  //   if (this.color_maq === '') {
-  //     console.log(5);
-  //     this.pr = false;
-  //   }
-  //
-  //   if (this.mat_pulso === '') {
-  //     console.log(6);
-  //     this.pr = false;
-  //   }
-  //
-  //   if (this.madera === '') {
-  //     console.log(7);
-  //     this.pr = false;
-  //   }
-  //   if (this.color_pulso === '') {
-  //     console.log(8);
-  //     this.pr = false;
-  //   }
-  //   console.log(this.piezas);
-  //   return this.pr;
-  // }
-
-  private gestinarDatos() {
-    this.serial_raw =
-      this.manos.salt +
-      this.lote.salt +
-      this.piezas.salt +
-
-      Math.round(Math.random() * 1000) +
-      '-'
-      +
-      this.modelo.salt +
-      this.coleccion.salt +
-      this.material.salt +
-      this.maquinaria.salt +
-      this.color_maq.salt +
-      this.mat_pulso.salt +
-      this.madera.salt;
-
+    this.serial_raw = this.obj['coleccion_salt'] + this.obj['Modelo_salt'] + '-' + Math.round(Math.random() * 100) + '-' + this.serial_salt;
     this.serial_md5 = this.hasher.encriptarSerial(this.serial_raw);
-    console.log(this.serial_raw);
-    // this.serial_md5 = 'Pruebas  ';
-
+    this.ob_final['caracteristicas'] = caracteristicas_seleccionadas;
+    this.ob_final['base'] = [{
+      nombre_base: 'Colección',
+      id_base: '',
+      id_seleccion: '',
+      nombre_seleccion: this.obj['Colección']
+    }, {
+      nombre_base: 'Modelo',
+      id_base: '',
+      id_seleccion: '',
+      nombre_seleccion: this.obj['Modelo']
+    }];
     const date = formatDate(Date.now(), 'dd-MM-yyyy hh:mm:ss a', 'en-US', '-500');
-
-    const relojData = {
-      serial: this.serial_raw,
-      ref_md: this.serial_md5,
-      modelo: this.modelo.name,
-      coleccion: this.coleccion.name,
-      material_principal: this.material.name,
-      maquinaria: this.maquinaria.name,
-      color_maquinaria: this.color_maq.name,
-      material_pulso: this.mat_pulso.name,
-      madera: this.madera.name,
-      fecha: date,
-      lote: this.lote.name,
-      piezas: this.piezas.name,
-      manos: this.manos.name
+    this.ob_final['metadata'] = {
+      'fecha': date,
+      'serial_raw': this.serial_raw,
+      'serial_md5': this.serial_md5
     };
 
-    console.log(relojData);
-    this.db.subirNuevoRegistroReloj(relojData);
-    console.log('probando en fb');
-  }
-
-  traerColecciones() {
-
-  }
-
-  private buscarOpciones() {
-    console.log('se buscan las opciones');
-  }
-
-
-  rdas() {
+    this.db.pushReloj(this.ob_final);
+    this.ob_final = {};
+    this.obj = [];
+    // this.col
     console.log(this.obj);
+    console.log(this.ob_final);
+  }
+
+  obtenerNombreCaracteristica(th: any): any {
+    return this.estructura.opciones.find(value => value.id === th);
   }
 }

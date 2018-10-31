@@ -9,3 +9,32 @@
   padding: .5em;
   flex-direction: column;
 }
+
+.nv {
+  padding-left: 1em;
+  width: 100%;
+  flex-direction: row;
+  display: flex;
+  background: #f7f7f7;
+  /*justify-items: center;*/
+  align-items: center;
+}
+
+.in_buscar {
+  width: 100%;
+  padding: 2em;
+  background: rgba(243, 217, 179, 0);
+  font-size: 1.1em;
+  border: rgba(166, 118, 247, 0);
+}
+
+.bt_buscar {
+  margin: 1em;
+  font-weight: bold;
+  cursor: pointer;
+  opacity: .6;
+}
+
+.bt_buscar:hover {
+  opacity: 1;
+}

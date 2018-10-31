@@ -39694,7 +39694,7 @@ function renderDetachView(view) {
     visitRootRenderNodes(view, 3 /* RemoveChild */, null, null, undefined);
 }
 function addToArray(arr, index, value) {
-    // perf: array.push is faster than array.splice!
+    // perf: array.pushReloj is faster than array.splice!
     if (index >= arr.length) {
         arr.push(value);
     }

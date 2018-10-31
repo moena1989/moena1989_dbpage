@@ -5,17 +5,17 @@ import {NuevoIngresoRelojComponent} from './nuevo-ingreso-reloj/nuevo-ingreso-re
 import {NavbarComponent} from './navbar/navbar.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
-import {AngularFirestoreModule} from '@angular/fire/firestore';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
 import {BusquedaComponent} from './busqueda/busqueda.component';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
 import {WorkerRegComponent} from './worker-reg/worker-reg.component';
 import {SnackbarComponent} from './snackbar/snackbar.component';
 import {AuthGuardService} from './auth-guard.service';
 import {RegistroComponent} from './registro/registro.component';
+import {RelojBuscadoComponent} from './reloj-buscado/reloj-buscado.component';
 
 
 const appRoutes: Routes = [
@@ -23,7 +23,7 @@ const appRoutes: Routes = [
   {path: 'sign_up', component: WorkerRegComponent},
   {
     path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
-      {path: 'busqueda', component: BusquedaComponent},
+      {path: 'buscar', component: BusquedaComponent},
       {
         path: 'registro', component: RegistroComponent, children:
           [{path: 'reloj', component: NuevoIngresoRelojComponent}]
@@ -51,10 +51,11 @@ const config = {
     MainComponent,
     WorkerRegComponent,
     SnackbarComponent,
-    RegistroComponent
+    RegistroComponent,
+    RelojBuscadoComponent
   ],
   imports: [
-    RouterModule.forRoot(appRoutes),
+    RouterModule.forRoot(appRoutes, {enableTracing: false}),
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
     AngularFireAuthModule,

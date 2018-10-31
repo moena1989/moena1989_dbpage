@@ -25,7 +25,6 @@ export class LoginComponent implements OnInit {
         this.tool.router.navigate(['/registro/reloj']);
         console.log('testing keep log');
         localStorage.setItem('ob_login', result);
-
       }
     });
   }

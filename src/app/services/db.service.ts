@@ -64,9 +64,9 @@ export class DbService {
     });
   }
 
-  subirNuevoRegistroReloj(reloj: any): void {
+  pushReloj(reloj: any): void {
     const key = this.db.list('relojes').push(reloj).key;
-    this.db.object('seriales/' + reloj.serial).set(key);
+    this.db.object('seriales/' + reloj.metadata.serial_raw).set(key);
     console.log('se intenta subir datos');
   }
 
@@ -92,7 +92,6 @@ export class DbService {
         this.router.navigate(['/login']);
       })
       .catch(err => {
-
         if (err) {
         } else {
           console.log('Something went wrong:');

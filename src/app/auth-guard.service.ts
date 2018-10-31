@@ -17,9 +17,12 @@ export class AuthGuardService implements CanActivate {
     // TODO revisar bien como funciona el auth del log, para evitar recargar la pagina todo el tiempo
 
     if (!this.db.authenticated) {
+
       this.router.navigate(['/login']);
+
       console.log('Usuario sin autenticar. Redireccionando...');
-      return false;
+      // TODO, cambiar al hcaer las pruebas
+      return true;
     }
 
     //   const osb = localStorage.getItem('ob_login');
@@ -38,6 +41,7 @@ export class AuthGuardService implements CanActivate {
     // } else {
     //   console.log('no existe save guardado');
     // }
+    console.log('holi');
 
     return true;
   }
