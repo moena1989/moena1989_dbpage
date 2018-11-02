@@ -13,8 +13,9 @@ export class NuevoIngresoRelojComponent implements OnInit {
   pr = true;
   manos: any = '';
   lote: any = '';
+  num_en_lote: any = '';
   serial_raw: string;
-  serial_md5: string;
+  serial_hash: string;
   est: ModelsService;
   colecciones: any;
   colecciones_del_modelo_selected: any[];
@@ -26,15 +27,16 @@ export class NuevoIngresoRelojComponent implements OnInit {
   _caracteristicas: any[] = [];
   private ob_final: {};
   private serial_salt: string;
-
+  serial_def: string;
 
   constructor(private estructura: ModelsService, private hasher: HasherService, public db: DbService) {
     this.est = estructura;
   }
 
   selectLote(lote: any) {
-    console.log(lote);
-
+    // console.log(lote);
+    this.lote = Math.round(Math.random() * 100);
+    this.num_en_lote = Math.round(Math.random() * 100);
   }
 
   ngOnInit() {
@@ -97,6 +99,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
     console.log('caracterizando');
     console.log(this._caracteristicas);
     const caracteristicas_seleccionadas = [];
+
     this.serial_raw = '';
     this.ob_final = {};
     this.serial_salt = '';
@@ -117,8 +120,12 @@ export class NuevoIngresoRelojComponent implements OnInit {
       }
     });
 
-    this.serial_raw = this.obj['coleccion_salt'] + this.obj['Modelo_salt'] + '-' + Math.round(Math.random() * 100) + '-' + this.serial_salt;
-    this.serial_md5 = this.hasher.encriptarSerial(this.serial_raw);
+
+    // TODO #lote, #product, #tam
+    this.serial_raw = this.obj['coleccion_salt'] + this.obj['Modelo_salt'] + '-' + this.lote + '-' + this.num_en_lote + '-' + this.serial_salt;
+    this.serial_hash = this.hasher.encriptarSerial(this.serial_raw, this.lote, this.num_en_lote);
+    this.serial_def = this.obj['coleccion_salt'] + this.obj['Modelo_salt'] + '-' + this.serial_hash;
+
     this.ob_final['caracteristicas'] = caracteristicas_seleccionadas;
     this.ob_final['base'] = [{
       nombre_base: 'Colección',
@@ -135,7 +142,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
     this.ob_final['metadata'] = {
       'fecha': date,
       'serial_raw': this.serial_raw,
-      'serial_md5': this.serial_md5
+      'serial_def': this.serial_def
     };
 
     this.db.pushReloj(this.ob_final);
@@ -151,7 +158,6 @@ export class NuevoIngresoRelojComponent implements OnInit {
   }
 
   selectCaracteristica(op: any) {
-    console.log('se selecciona categoria');
-    console.log(op);
+    this._caracteristicas.push(op);
   }
 }

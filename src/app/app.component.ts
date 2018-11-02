@@ -1,6 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SnackbarComponent} from './snackbar/snackbar.component';
 import {ToolsService} from './tools.service';
+import {DbService} from './services/db.service';
+import {ModelsService} from './models.service';
 
 @Component({
   selector: 'app-root',
@@ -16,8 +18,7 @@ export class AppComponent implements OnInit {
    * Contiene el snakBar
    */
 
-  constructor(private tools: ToolsService) {
-    console.log('hhoooli');
+  constructor(private tools: ToolsService, private db: DbService, private models: ModelsService) {
   }
 
   ngOnInit() {

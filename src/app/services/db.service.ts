@@ -65,16 +65,23 @@ export class DbService {
   }
 
   pushReloj(reloj: any): void {
-    const key = this.db.list('relojes').push(reloj).key;
-    this.db.object('seriales/' + reloj.metadata.serial_raw).set(key);
+    const key = this.db.list('relojes/data').push(reloj).key;
+    this.db.object('relojes/seriales/' + reloj.metadata.serial_def).set(key);
     console.log('se intenta subir datos');
   }
 
+
+  pushData(route: string, data: any): void {
+    this.db.object('data/' + route).set(data);
+    console.log('se intenta subir datos');
+  }
+
+
   buscarReloj(serial: string, callback: (result: any) => any) {
-    this.db.object('seriales/' + serial).valueChanges().subscribe(value => {
+    this.db.object('relojes/seriales/' + serial).valueChanges().subscribe(value => {
       console.log('SI EXISTE SERIAL');
 
-      this.db.object('relojes/' + value).valueChanges().subscribe(datosReloj => {
+      this.db.object('relojes/data/' + value).valueChanges().subscribe(datosReloj => {
         // significa que el serial si existe en la base, ahora se busca la info de ese puntualmente
         callback(datosReloj);
       });

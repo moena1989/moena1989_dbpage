@@ -7,13 +7,12 @@ export class ModelsService {
   /*
    CLASE ENCARGGADA DE CONTENER LA ESTRUCTURA DE LOS DATOS NECESARIOS PARA LA DB.
    */
-
   constructor() {
   }
 
   modelos: any[] = [
     {
-      salt: 'OG', id: 0, name: 'Origen',
+      salt: 'G', id: 0, name: 'Origen',
       colecciones: [
         {
           id_coleccion: 0,
@@ -82,7 +81,7 @@ export class ModelsService {
       ]
     },
     {
-      salt: 'SL', id: 1, name: 'Slim',
+      salt: 'S', id: 1, name: 'Slim',
       colecciones: [
         {
           id_coleccion: 0,
@@ -99,7 +98,7 @@ export class ModelsService {
       ]
     },
     {
-      salt: 'VR', id: 2, name: 'Vira Aros',
+      salt: 'A', id: 2, name: 'Vira Aros',
 
       colecciones: [
         {
@@ -117,7 +116,7 @@ export class ModelsService {
       ]
     },
     {
-      salt: 'IT', id: 3, name: 'Inti',
+      salt: 'I', id: 3, name: 'Inti',
       colecciones: [
         {
           id_coleccion: 0,
@@ -148,7 +147,6 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 3, 5, 6, 8, 10]},
             {id_opc: 1, ids: [0]}, {id_opc: 2, ids: [6]},
-
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -185,43 +183,37 @@ export class ModelsService {
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [1]},
-            {id_opc: 8, ids: [0, 3, 13, 14, 15, 16]}
-          ]
-        }
-      ]
+            {id_opc: 8, ids: [0, 3, 13, 14, 15, 16]}]
+        }]
     },
     {
-      salt: 'ON', id: 5, name: 'One',
-      colecciones: [
-        {
-          id_coleccion: 0,
-          opciones: [
-            {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
-            {id_opc: 1, ids: [0]},
-            {id_opc: 1, ids: [0, 1, 4, 5]},
-            {id_opc: 3, ids: [-1, 2]},
-            {id_opc: 5, ids: [0, 1, 2]},
-            {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1]},
-            {id_opc: 8, ids: [0, 1, 2, 8, 10, 11]}
-          ]
-        }
-      ]
+      salt: 'N', id: 5, name: 'One',
+      colecciones: [{
+        id_coleccion: 0,
+        opciones: [
+          {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
+          {id_opc: 1, ids: [0]},
+          {id_opc: 1, ids: [0, 1, 4, 5]},
+          {id_opc: 3, ids: [-1, 2]},
+          {id_opc: 5, ids: [0, 1, 2]},
+          {id_opc: 6, ids: [0, 1]},
+          {id_opc: 7, ids: [0, 1]},
+          {id_opc: 8, ids: [0, 1, 2, 8, 10, 11]}
+        ]
+      }]
     }];
 
   colecciones: any[] = [
-    {salt: 'LX', id: 0, name: 'Luxury'},
-    {salt: 'HW', id: 1, name: 'Hawaii'},
-    {salt: 'AP', id: 2, name: 'Animal Print'},
-    {salt: 'FT', id: 3, name: 'Frutas'},
-    {salt: 'TL', id: 4, name: 'Telas'},
-    {salt: 'VT', id: 5, name: 'Vintage'},
-    {salt: 'EE', id: 6, name: 'Ed. Especial'}];
+    {salt: 'X', id: 0, name: 'Luxury'},
+    {salt: 'H', id: 1, name: 'Hawaii'},
+    {salt: 'A', id: 2, name: 'Animal Print'},
+    {salt: 'F', id: 3, name: 'Frutas'},
+    {salt: 'T', id: 4, name: 'Telas'},
+    {salt: 'V', id: 5, name: 'Vintage'},
+    {salt: 'E', id: 6, name: 'Ed. Especial'}];
   ///////////////////////////////////////////
   manos: any[] = [{name: 'FCM', salt: 'FCM'}];
   lotes: any[] = [{name: '1', salt: '1'}];
-
-
   opciones: any[] = [
     {
       id: 0, nombre: 'Maderas', ops: [
@@ -263,6 +255,7 @@ export class ModelsService {
       ]
     }, {
       id: 3, nombre: 'Material precioso', ops: [
+        {salt: 'NG', id: -1, name: 'Ninguno'},
         {salt: 'OR', id: 0, name: 'Oro'},
         {salt: 'PL', id: 1, name: 'Plata'},
         {salt: 'EM', id: 2, name: 'Esmeraldas'}
@@ -311,5 +304,4 @@ export class ModelsService {
       ]
     }
   ];
-
 }

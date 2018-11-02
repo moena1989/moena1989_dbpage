@@ -11,6 +11,7 @@
 
   <h4 class="ttt">Base</h4>
   <div class="_ln"></div>
+
   <div class="options">
     <app-m-select ttl="Modelo" [sValues]="est.modelos" (obSelected)="modelo_seleccionado($event)"></app-m-select>
     <app-m-select ttl="Colección" [sValues]="colecciones_del_modelo_selected"
@@ -18,21 +19,18 @@
   </div>
 
   <h4 class="ttt">Caracteristicas de Personalización</h4>
-
   <div class="_ln"></div>
+
   <div class="options">
-
-    <!--<app-m-select *ngFor="let opc of opciones_por_ver" ttl="{{opc.nombre}}" [sValues]="opc.ops"-->
-    <!--(obSelected)="selectCaracteristica($event)"></app-m-select>-->
-
+    <app-m-select *ngFor="let opc of opciones_por_ver" ttl="{{opc.nombre}}" [sValues]="opc.ops"
+                  (obSelected)="selectCaracteristica($event)"></app-m-select>
   </div>
-
-  <!--<div class="bt-n-ref" (click)="iniciarNuevoRegistro()"> Crear nuevo registro</div>-->
+  <div class="bt-n-ref" (click)="iniciarNuevoRegistro()"> Crear nuevo registro</div>
 </div>
-
 
 <div class="pack">
   <p><strong>SERIAL RAW </strong>{{serial_raw}}</p>
-  <p><strong>SERIAL MD5:</strong> {{serial_md5}}</p>
+  <p><strong>SERIAL HASH:</strong> {{serial_hash}}</p>
+  <p><strong>SERIAL DEFINITIVO:</strong> {{serial_def}}</p>
 </div>
 
