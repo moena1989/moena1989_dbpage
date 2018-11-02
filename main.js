@@ -215,7 +215,7 @@ module.exports = ":host {\r\n  width: auto;\r\n  height: auto;\r\n  /*background
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>REGISTRO DE NUEVOS RELOJES</h1>\n\n\n\n<div class=\"options\">\n  <app-selecter [titulo]=\"'Mano'\" [opciones]=\"['FCM']\"></app-selecter>\n  <app-selecter [titulo]=\"'# Lote'\" [opciones]=\"['1']\"></app-selecter>\n  <app-selecter [titulo]=\"'No. piezas'\" [opciones]=\"['1-100']\"></app-selecter>\n</div>\n\n<div class=\"options\">\n  <app-selecter [titulo]=\"'Modelo'\" [opciones]=\"['Origen',' Slim',' Vira',' Inti',' Aros',' One']\"></app-selecter>\n  <app-selecter [titulo]=\"'Colección'\"\n                [opciones]=\"['Luxury',' Hawaii',' Animal Print',' Frutas, Telas',' Vintage',' Edición Especial']\"></app-selecter>\n  <app-selecter [titulo]=\"'Material'\"\n                [opciones]=\"['Madera', 'Acero inoxidable',' Oro', 'Plata',' Esmeraldas',' Tagua']\"></app-selecter>\n  <app-selecter [titulo]=\"'Maquinaria'\" [opciones]=\"['Miy ota','Seagull','ETA']\"></app-selecter>\n  <app-selecter [titulo]=\"'Color Maq.'\" [opciones]=\"['Oro',' Plata']\"></app-selecter>\n  <app-selecter [titulo]=\"'material pulso'\" [opciones]=\"['Acero inoxidable',' Cuero']\"></app-selecter>\n\n  <app-selecter [titulo]=\"'Tipo de Madera'\"\n                [opciones]=\"['Granadillo',' Nazareno', 'Palo de Mora','Palo de Sangre','Nogal','Cedro','Achapo','Ébano','Flor Morado','Teka','Canelo Moena','Zapan','Amargo','Comino crespo','Pino', 'Abarco','algarrobo','Cumaru']\"></app-selecter>\n\n  <app-selecter [titulo]=\"'Color pulso'\"\n                [opciones]=\"['Negro','Azul','Gris', 'Blanco','Amarillo','Rojo','Verde','Naranja','Café','Violeta','Oro','Plata','Multicolor']\"></app-selecter>\n\n</div>\n\n\n<button class=\"bt-n-ref\">\n  Crear nuevo registro\n</button>\n\n\n"
+module.exports = "<h1>REGISTRO DE NUEVOS RELOJES</h1>\n\n\n\n<div class=\"options\">\n  <app-selecter [ttl]=\"'Mano'\" [opciones]=\"['FCM']\"></app-selecter>\n  <app-selecter [ttl]=\"'# Lote'\" [opciones]=\"['1']\"></app-selecter>\n  <app-selecter [ttl]=\"'No. piezas'\" [opciones]=\"['1-100']\"></app-selecter>\n</div>\n\n<div class=\"options\">\n  <app-selecter [ttl]=\"'Modelo'\" [opciones]=\"['Origen',' Slim',' Vira',' Inti',' Aros',' One']\"></app-selecter>\n  <app-selecter [ttl]=\"'Colección'\"\n                [opciones]=\"['Luxury',' Hawaii',' Animal Print',' Frutas, Telas',' Vintage',' Edición Especial']\"></app-selecter>\n  <app-selecter [ttl]=\"'Material'\"\n                [opciones]=\"['Madera', 'Acero inoxidable',' Oro', 'Plata',' Esmeraldas',' Tagua']\"></app-selecter>\n  <app-selecter [ttl]=\"'Maquinaria'\" [opciones]=\"['Miy ota','Seagull','ETA']\"></app-selecter>\n  <app-selecter [ttl]=\"'Color Maq.'\" [opciones]=\"['Oro',' Plata']\"></app-selecter>\n  <app-selecter [ttl]=\"'material pulso'\" [opciones]=\"['Acero inoxidable',' Cuero']\"></app-selecter>\n\n  <app-selecter [ttl]=\"'Tipo de Madera'\"\n                [opciones]=\"['Granadillo',' Nazareno', 'Palo de Mora','Palo de Sangre','Nogal','Cedro','Achapo','Ébano','Flor Morado','Teka','Canelo Moena','Zapan','Amargo','Comino crespo','Pino', 'Abarco','algarrobo','Cumaru']\"></app-selecter>\n\n  <app-selecter [ttl]=\"'Color pulso'\"\n                [opciones]=\"['Negro','Azul','Gris', 'Blanco','Amarillo','Rojo','Verde','Naranja','Café','Violeta','Oro','Plata','Multicolor']\"></app-selecter>\n\n</div>\n\n\n<button class=\"bt-n-ref\">\n  Crear nuevo registro\n</button>\n\n\n"
 
 /***/ }),
 
@@ -278,7 +278,7 @@ module.exports = ":host {\r\n\r\n  height: 4em;\r\n  /*background: aquamarine;*/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p class=\"sl-ttl\">\n  {{titulo}}\n</p>\n\n<div class=\"custom-select\">\n\n\n  <select class=\"ss\">\n    <option *ngFor=\"let opc of opciones\">{{opc}}</option>\n  </select>\n\n</div>\n"
+module.exports = "<p class=\"sl-ttl\">\n  {{ttl}}\n</p>\n\n<div class=\"custom-select\">\n\n\n  <select class=\"ss\">\n    <option *ngFor=\"let opc of opciones\">{{opc}}</option>\n  </select>\n\n</div>\n"
 
 /***/ }),
 
@@ -313,7 +313,7 @@ var SelecterComponent = /** @class */ (function () {
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
-    ], SelecterComponent.prototype, "titulo", void 0);
+    ], SelecterComponent.prototype, "ttl", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)

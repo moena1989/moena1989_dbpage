@@ -16,281 +16,194 @@ export class ModelsService {
       salt: 'OG', id: 0, name: 'Origen',
       colecciones: [
         {
-          id_coleccion: 1,
+          id_coleccion: 0,
           opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 3, ids: [-1, 2]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+            {id_opc: 7, ids: [1]},
+            {id_opc: 8, ids: [0, 1, 2, 8]}
+          ]
+        },
+        {
+          id_coleccion: 1,
+          opciones: [
+            {id_opc: 0, ids: [0, 5, 6, 14]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 5, ids: [0]},
+            {id_opc: 6, ids: [1]},
+            {id_opc: 7, ids: [1]},
+            {id_opc: 8, ids: [12]}
           ]
         },
         {
           id_coleccion: 2,
           opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
-            {id_opc: 5, ids: [0, 1, 2]},
-            {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
-
-          ]
+            {id_opc: 0, ids: [0, 3, 5, 6, 8, 10]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 5, ids: [0]},
+            {id_opc: 6, ids: [1]},
+            {id_opc: 7, ids: [1]},
+            {id_opc: 8, ids: [12]}]
         },
         {
           id_coleccion: 3,
           opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
-            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 5, ids: [0]},
+            {id_opc: 6, ids: [1]},
+            {id_opc: 7, ids: [1]},
+            {id_opc: 8, ids: [1, 4, 5, 6, 7, 9]}]
+        }, {
+          id_coleccion: 4,
+          opciones: [
+            {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 5, ids: [0]},
+            {id_opc: 6, ids: [1]},
+            {id_opc: 7, ids: [2]},
+            {id_opc: 8, ids: [0, 1, 3]}
+          ]
+        }
+        , {
+          id_coleccion: 5,
+          opciones: [
+            {id_opc: 0, ids: [0, 5, 6, 8, 9, 10, 14]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+            {id_opc: 7, ids: [1]},
+            {id_opc: 8, ids: [0, 3, 13, 14, 15, 16]}
           ]
         }
       ]
     },
     {
       salt: 'SL', id: 1, name: 'Slim',
-      colecciones: [{
-        id_coleccion: 1,
-        opciones: [
-          {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-          {id_opc: 1, ids: [0, 1, 2]},
-          {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-          {id_opc: 3, ids: [0, 1, 2]},
-          {id_opc: 4, ids: [0, 1, 2]},
-          {id_opc: 5, ids: [0, 1, 2]},
-          {id_opc: 6, ids: [0, 1]},
-          {id_opc: 7, ids: [0, 1, 2]},
-          {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
-        ]
-      },
+      colecciones: [
         {
-          id_coleccion: 2,
+          id_coleccion: 0,
           opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 2, ids: [0, 1, 5, 4]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
-
-          ]
-        },
-        {
-          id_coleccion: 3,
-          opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
-            {id_opc: 5, ids: [0, 1, 2]},
-            {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+            {id_opc: 7, ids: [0, 1]},
+            {id_opc: 8, ids: [0, 1, 2, 8, 10, 11]}
           ]
         }
       ]
     },
     {
       salt: 'VR', id: 2, name: 'Vira Aros',
-      colecciones: [{
-        id_coleccion: 1,
-        opciones: [
-          {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-          {id_opc: 1, ids: [0, 1, 2]},
-          {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-          {id_opc: 3, ids: [0, 1, 2]},
-          {id_opc: 4, ids: [0, 1, 2]},
-          {id_opc: 5, ids: [0, 1, 2]},
-          {id_opc: 6, ids: [0, 1]},
-          {id_opc: 7, ids: [0, 1, 2]},
-          {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
-        ]
-      },
-        {
-          id_coleccion: 2,
-          opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
-            {id_opc: 5, ids: [0, 1, 2]},
-            {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
 
-          ]
-        },
+      colecciones: [
         {
-          id_coleccion: 3,
+          id_coleccion: 0,
           opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 15, 16, 17]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+            {id_opc: 7, ids: [1]},
+            {id_opc: 8, ids: [0, 1, 2, 8]}
           ]
         }
       ]
     },
     {
       salt: 'IT', id: 3, name: 'Inti',
-      colecciones: [{
-        id_coleccion: 1,
-        opciones: [
-          {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-          {id_opc: 1, ids: [0, 1, 2]},
-          {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-          {id_opc: 3, ids: [0, 1, 2]},
-          {id_opc: 4, ids: [0, 1, 2]},
-          {id_opc: 5, ids: [0, 1, 2]},
-          {id_opc: 6, ids: [0, 1]},
-          {id_opc: 7, ids: [0, 1, 2]},
-          {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
-        ]
-      },
+      colecciones: [
+        {
+          id_coleccion: 0,
+          opciones: [
+            {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 3, ids: [-1, 2]},
+            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 6, ids: [0, 1]},
+            {id_opc: 7, ids: [1]},
+            {id_opc: 8, ids: [0, 1, 2, 8]}
+          ]
+        },
+        {
+          id_coleccion: 1,
+          opciones: [
+            {id_opc: 0, ids: [0, 5, 6, 14]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 2, ids: [6]},
+            {id_opc: 5, ids: [0]},
+            {id_opc: 6, ids: [1]},
+            {id_opc: 7, ids: [1]},
+            {id_opc: 8, ids: [12]}
+          ]
+        },
         {
           id_coleccion: 2,
           opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
-            {id_opc: 5, ids: [0, 1, 2]},
-            {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+            {id_opc: 0, ids: [0, 3, 5, 6, 8, 10]},
+            {id_opc: 1, ids: [0]}, {id_opc: 2, ids: [6]},
 
-          ]
+            {id_opc: 5, ids: [0]},
+            {id_opc: 6, ids: [1]},
+            {id_opc: 7, ids: [1]},
+            {id_opc: 8, ids: [12]}]
         },
         {
           id_coleccion: 3,
           opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
-            {id_opc: 5, ids: [0, 1, 2]},
-            {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+            {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 2, ids: [6]},
+            {id_opc: 5, ids: [0]},
+            {id_opc: 6, ids: [1]},
+            {id_opc: 7, ids: [1]},
+            {id_opc: 8, ids: [1, 4, 5, 6, 7, 9]}]
+        }, {
+          id_coleccion: 4,
+          opciones: [
+            {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 2, ids: [6]},
+            {id_opc: 5, ids: [0]},
+            {id_opc: 6, ids: [1]},
+            {id_opc: 7, ids: [2]},
+            {id_opc: 8, ids: [0, 1, 3]}
           ]
         }
-      ]
-    },
-    {
-      salt: 'AR', id: 4, name: 'Aros',
-      colecciones: [{
-        id_coleccion: 1,
-        opciones: [
-          {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-          {id_opc: 1, ids: [0, 1, 2]},
-          {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-          {id_opc: 3, ids: [0, 1, 2]},
-          {id_opc: 4, ids: [0, 1, 2]},
-          {id_opc: 5, ids: [0, 1, 2]},
-          {id_opc: 6, ids: [0, 1]},
-          {id_opc: 7, ids: [0, 1, 2]},
-          {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
-        ]
-      },
-        {
-          id_coleccion: 2,
+        , {
+          id_coleccion: 5,
           opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
-            {id_opc: 5, ids: [0, 1, 2]},
+            {id_opc: 0, ids: [0, 5, 6, 8, 9, 10, 14]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 2, ids: [6]},
+            {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
-
-          ]
-        },
-        {
-          id_coleccion: 3,
-          opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
-            {id_opc: 5, ids: [0, 1, 2]},
-            {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+            {id_opc: 7, ids: [1]},
+            {id_opc: 8, ids: [0, 3, 13, 14, 15, 16]}
           ]
         }
       ]
     },
     {
       salt: 'ON', id: 5, name: 'One',
-      colecciones: [{
-        id_coleccion: 1,
-        opciones: [
-          {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-          {id_opc: 1, ids: [0, 1, 2]},
-          {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-          {id_opc: 3, ids: [0, 1, 2]},
-          {id_opc: 4, ids: [0, 1, 2]},
-          {id_opc: 5, ids: [0, 1, 2]},
-          {id_opc: 6, ids: [0, 1]},
-          {id_opc: 7, ids: [0, 1, 2]},
-          {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
-        ]
-      },
+      colecciones: [
         {
-          id_coleccion: 2,
+          id_coleccion: 0,
           opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
+            {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
+            {id_opc: 1, ids: [0]},
+            {id_opc: 1, ids: [0, 1, 4, 5]},
+            {id_opc: 3, ids: [-1, 2]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
-
-          ]
-        },
-        {
-          id_coleccion: 3,
-          opciones: [
-            {id_opc: 0, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16, 17, 18]},
-            {id_opc: 1, ids: [0, 1, 2]},
-            {id_opc: 2, ids: [0, 1, 2, 3, 4, 5, 6]},
-            {id_opc: 3, ids: [0, 1, 2]},
-            {id_opc: 4, ids: [0, 1, 2]},
-            {id_opc: 5, ids: [0, 1, 2]},
-            {id_opc: 6, ids: [0, 1]},
-            {id_opc: 7, ids: [0, 1, 2]},
-            {id_opc: 8, ids: [0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 15, 16]}
+            {id_opc: 7, ids: [0, 1]},
+            {id_opc: 8, ids: [0, 1, 2, 8, 10, 11]}
           ]
         }
       ]

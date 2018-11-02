@@ -12,11 +12,10 @@
 
 .nv {
   padding-left: 1em;
-  width: 100%;
+  width: auto;
   flex-direction: row;
   display: flex;
   background: #f7f7f7;
-  /*justify-items: center;*/
   align-items: center;
 }
 
