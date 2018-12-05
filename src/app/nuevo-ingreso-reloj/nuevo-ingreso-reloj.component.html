@@ -1,19 +1,36 @@
-<div class="package_options">
+<div class="package_options" *ngIf="!registrable && !registrado">
+  <h1>INFORMACIÓN DE LOTE</h1>
+  <p>Selecciona la cantidad de items que se registrarán para el nuevo lote</p>
+  <div class="options">
+    <app-m-select ttl="Mano" [sValues]="this.est.manos"></app-m-select>
+    <app-m-select ttl="Lote #" [sValues]="[{name: info_lotes.finalizados}]"></app-m-select>
+    <div class="selc">
+      <p class="sl-ttl">Cantidad</p>
+      <div class="custom-select">
+        <input class="ss" #ss>
+      </div>
+    </div>
+  </div>
+  <div class="bt-n-ref" (click)="IniciarNuevoLote(ss.value)">Iniciar nuevo lote</div>
+</div>
+
+
+<div class="package_options" *ngIf="registrable && !registrado">
   <h1>NUEVO REGISTRO</h1>
 
   <h4 class="ttt">Del Registro</h4>
-  <div class="_ln"></div>
-
   <div class="options">
-    <app-m-select ttl="Mano" [sValues]="this.est.manos"></app-m-select>
-    <app-m-select ttl="Lote" [sValues]="this.est.lotes" (obSelected)="selectLote($event)"></app-m-select>
-  </div>
 
+    <app-m-select ttl="Mano" [sValues]="this.est.manos"></app-m-select>
+    <app-m-select ttl="Lote #" [sValues]="[{name: info_lotes.current.lote_num}]"></app-m-select>
+    <app-m-select ttl="Items por lote" [sValues]="[{name: info_lotes.current.cantidad_por_lote}]"></app-m-select>
+    <app-m-select ttl="Reg #" [sValues]="[{name: info_lotes.current.item_actual}]"></app-m-select>
+  </div>
   <h4 class="ttt">Base</h4>
   <div class="_ln"></div>
 
   <div class="options">
-    <app-m-select ttl="Modelo" [sValues]="est.modelos" (obSelected)="modelo_seleccionado($event)"></app-m-select>
+    <app-m-select ttl="Modelo" [sValues]="est.modelos" (obSelected)="selectModel($event)"></app-m-select>
     <app-m-select ttl="Colección" [sValues]="colecciones_del_modelo_selected"
                   (obSelected)="seleccionarColeccion($event)"></app-m-select>
   </div>
@@ -23,14 +40,18 @@
 
   <div class="options">
     <app-m-select *ngFor="let opc of opciones_por_ver" ttl="{{opc.nombre}}" [sValues]="opc.ops"
-                  (obSelected)="selectCaracteristica($event)"></app-m-select>
+                  (obSelected)="selectCaracteristica($event,opc.id)"></app-m-select>
   </div>
-  <div class="bt-n-ref" (click)="iniciarNuevoRegistro()"> Crear nuevo registro</div>
+
+  <div class="bt-n-ref" (click)="validarRegistro()">Crear nuevo registro</div>
 </div>
 
-<div class="pack">
+<div class="pack" *ngIf="registrado">
   <p><strong>SERIAL RAW </strong>{{serial_raw}}</p>
   <p><strong>SERIAL HASH:</strong> {{serial_hash}}</p>
   <p><strong>SERIAL DEFINITIVO:</strong> {{serial_def}}</p>
-</div>
+  <app-reloj-buscado [dataReloj]="relojReg"></app-reloj-buscado>
+  <div class="bt-n-ref" (click)="iniciarNuevoRegistro()">Iniciar Nuevo registro</div>
 
+
+</div>

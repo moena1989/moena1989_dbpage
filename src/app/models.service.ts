@@ -19,11 +19,12 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 3, ids: [-1, 2]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [1]},
-            {id_opc: 8, ids: [0, 1, 2, 8]}
+            {id_opc: 8, ids: [0, 1, 2, 8, 17]}
           ]
         },
         {
@@ -31,6 +32,7 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 5, 6, 14]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -42,6 +44,7 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 3, 5, 6, 8, 10]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -50,8 +53,9 @@ export class ModelsService {
         {
           id_coleccion: 3,
           opciones: [
-            {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
+            {id_opc: 0, ids: [0, 5, 6, 7, 8, 9, 14]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -61,6 +65,7 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [2]},
@@ -72,6 +77,7 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 5, 6, 8, 9, 10, 14]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [1]},
@@ -88,11 +94,12 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 2, ids: [0, 1, 5, 4]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [0, 1]},
-            {id_opc: 8, ids: [0, 1, 2, 8, 10, 11]}
+            {id_opc: 8, ids: [0, 1, 2, 8, 10, 11, 17]}
           ]
         }
       ]
@@ -106,11 +113,12 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 15, 16, 17]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [1]},
-            {id_opc: 8, ids: [0, 1, 2, 8]}
+            {id_opc: 8, ids: [0, 1, 2, 8, 17]}
           ]
         }
       ]
@@ -123,11 +131,12 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 3, ids: [-1, 2]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [1]},
-            {id_opc: 8, ids: [0, 1, 2, 8]}
+            {id_opc: 8, ids: [0, 1, 2, 8, 17]}
           ]
         },
         {
@@ -135,6 +144,7 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 5, 6, 14]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
@@ -147,6 +157,7 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 3, 5, 6, 8, 10]},
             {id_opc: 1, ids: [0]}, {id_opc: 2, ids: [6]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -157,6 +168,7 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
@@ -167,6 +179,7 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
@@ -179,6 +192,7 @@ export class ModelsService {
           opciones: [
             {id_opc: 0, ids: [0, 5, 6, 8, 9, 10, 14]},
             {id_opc: 1, ids: [0]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [0, 1]},
@@ -193,12 +207,13 @@ export class ModelsService {
         opciones: [
           {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
           {id_opc: 1, ids: [0]},
-          {id_opc: 1, ids: [0, 1, 4, 5]},
+          {id_opc: 9, ids: [0, 1, 2, 3, 4]},
+          {id_opc: 2, ids: [0, 1, 4, 5]},
           {id_opc: 3, ids: [-1, 2]},
           {id_opc: 5, ids: [0, 1, 2]},
           {id_opc: 6, ids: [0, 1]},
           {id_opc: 7, ids: [0, 1]},
-          {id_opc: 8, ids: [0, 1, 2, 8, 10, 11]}
+          {id_opc: 8, ids: [0, 1, 2, 8, 10, 11, 17]}
         ]
       }]
     }];
@@ -216,7 +231,7 @@ export class ModelsService {
   lotes: any[] = [{name: '1', salt: '1'}];
   opciones: any[] = [
     {
-      id: 0, nombre: 'Maderas', ops: [
+      id: 0, nombre: 'Material principal', ops: [
         {salt: 'GD', id: 0, name: 'Granadillo'},
         {salt: 'NR', id: 1, name: 'Nazareno'},
         {salt: 'PM', id: 2, name: 'Palo de Mora'},
@@ -238,13 +253,13 @@ export class ModelsService {
       ]
     },
     {
-      id: 1, nombre: 'Material Orgánico', ops: [
+      id: 1, nombre: 'Material orgánico', ops: [
         {salt: 'MD', id: 0, name: 'Madera'},
         {salt: 'TG', id: 1, name: 'Tagua'},
-        {salt: 'MA', id: 2, name: 'Mármol'}
+        {salt: 'MA', id: 2, name: 'Mármol'},
       ]
     }, {
-      id: 2, nombre: 'Material Metálico', ops: [
+      id: 2, nombre: 'Material metálico', ops: [
         {salt: 'AC', id: 0, name: 'Acero'},
         {salt: 'AL', id: 1, name: 'Aluminio'},
         {salt: 'CR', id: 2, name: 'Cromo'},
@@ -261,29 +276,29 @@ export class ModelsService {
         {salt: 'EM', id: 2, name: 'Esmeraldas'}
       ]
     }, {
-      id: 4, nombre: 'Material Plástico', ops: [
+      id: 4, nombre: 'Material plástico', ops: [
         {salt: 'RS', id: 0, name: 'Resina '},
         {salt: 'CB', id: 1, name: 'Carbono'},
         {salt: 'FV', id: 2, name: 'Fibra de vidrio'}
       ]
     }, {
-      id: 5, nombre: 'Maquinaria', ops: [
+      id: 5, nombre: 'Tipo de maquinaria', ops: [
         {salt: 'MY', id: 0, name: 'Miyota'},
         {salt: 'SG', id: 1, name: 'Seagull'},
         {salt: 'ET', id: 2, name: 'ETA'}]
     }, {
-      id: 6, nombre: 'Color Maquinaria', ops: [
+      id: 6, nombre: 'Color maquinaria', ops: [
         {salt: 'OR', id: 0, name: 'Oro'},
         {salt: 'PT', id: 1, name: 'Plata'}
       ]
     }, {
-      id: 7, nombre: 'Material Pulso', ops: [
+      id: 7, nombre: 'Material pulso', ops: [
         {salt: 'AI', id: 0, name: 'Acero inoxidable'},
         {salt: 'CR', id: 1, name: 'Cuero'},
         {salt: 'TL', id: 2, name: 'Tela'}
       ]
     }, {
-      id: 8, nombre: 'Color Pulso', ops: [
+      id: 8, nombre: 'Color pulso', ops: [
         {salt: 'NG', id: 0, name: 'Negro'},
         {salt: 'AZ', id: 1, name: 'Azul'},
         {salt: 'GS', id: 2, name: 'Gris'},
@@ -300,8 +315,18 @@ export class ModelsService {
         {salt: 'SL', id: 13, name: 'Salomo'},
         {salt: 'VM', id: 14, name: 'Verde menta'},
         {salt: 'RS', id: 15, name: 'Rosadoo'},
-        {salt: 'BG', id: 16, name: 'Beige'}
+        {salt: 'BG', id: 16, name: 'Beige'},
+        {salt: 'VT', id: 17, name: 'Verde militar'}
+
       ]
-    }
+    }, {
+      id: 9, nombre: 'Diámetro', ops: [
+        {salt: '36', id: 0, name: '36'},
+        {salt: '38', id: 1, name: '38'},
+        {salt: '40', id: 2, name: '40'},
+        {salt: '42', id: 3, name: '42'},
+        {salt: '43', id: 4, name: '43'}
+      ]
+    },
   ];
 }

@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
+import {Observable} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -11,11 +12,11 @@ export class DbService {
   /*
   Servicio encargado de traer, y organizar los datos para la creación de cada reloj, contiene la estructura de cada uno de los registros.
    */
-  // TODO buscar una manera mas organizada de manejar, los objetos de las páginas routiadas.
+  /// TODO buscar una manera mas organizada de manejar, los objetos de las páginas routiadas.
   relojBuscado: any;
 
   authState = null;
-  userLogueado: any;
+  userLogueado: any = {};
 
   constructor(public db: AngularFireDatabase, private firebaseAuth: AngularFireAuth, private router: Router) {
 
@@ -40,7 +41,6 @@ export class DbService {
   login(email: string, pass: string, result: (ho: any) => any) {
     this.firebaseAuth.auth.signInWithEmailAndPassword(email, pass)
       .then(auth => {
-          console.log('hooooooooo');
           console.log(auth.user.uid);
           this.traerDatosUsuario(auth.user.uid, () => {
             result(auth.user.uid);
@@ -52,7 +52,6 @@ export class DbService {
         result(null);
       });
   }
-
 
   traerDatosUsuario(uid: string, ff: () => void) {
     console.log(uid);
@@ -88,6 +87,7 @@ export class DbService {
     });
   }
 
+
   registro_worker(usr: any, pass: string) {
     this.firebaseAuth
       .auth
@@ -105,6 +105,12 @@ export class DbService {
         }
       });
   }
+
+
+  info_current_lote(): Observable<any | null> {
+    return this.db.object('general_info/lots').valueChanges();
+  }
+
 
   private pushAllNewUserInfo(user: any, uid: string) {
     const itemRef = this.db.object('workers/' + uid);
@@ -127,5 +133,19 @@ export class DbService {
       .auth
       .signOut();
     this.authState = null;
+  }
+
+  info_lotes_general(): Observable<any | null> {
+    return this.db.object('general_info/lots').valueChanges();
+
+  }
+
+  actualizarCurrentLote(current_lot: any) {
+    this.db.object('general_info/lots/current').update(current_lot);
+  }
+
+  updateLotesRegistrados(com: any) {
+    this.db.object('general_info/lots/finalizados').set(com);
+
   }
 }

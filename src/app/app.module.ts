@@ -16,13 +16,15 @@ import {SnackbarComponent} from './snackbar/snackbar.component';
 import {AuthGuardService} from './auth-guard.service';
 import {RegistroComponent} from './registro/registro.component';
 import {RelojBuscadoComponent} from './reloj-buscado/reloj-buscado.component';
-import { MSelectComponent } from './m-select/m-select.component';
+import {MSelectComponent} from './m-select/m-select.component';
+import {TstComponent} from './tst/tst.component';
 
 // ng build --prod --base-href https://moena1989.github.io/moena_reg_page/
 // ngh --dir dist/moena1989
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
+  {path: 'tst', component: TstComponent},
   {path: 'sign_up', component: WorkerRegComponent},
   {
     path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
@@ -56,7 +58,7 @@ const config = {
     SnackbarComponent,
     RegistroComponent,
     RelojBuscadoComponent,
-    MSelectComponent
+    MSelectComponent, TstComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, {enableTracing: false}),

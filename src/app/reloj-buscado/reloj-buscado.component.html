@@ -1,7 +1,6 @@
 <!--<div class="main_card">-->
 <div class="rjb-ttl">
-  <h2>Reloj Encontrado:</h2>
-  <p>Serial: {{dataReloj.metadata.serial_raw}}</p>
+  <h2>Serial: {{dataReloj.metadata.serial_raw}}</h2>
 </div>
 <div class="_ln"></div>
 <div class="rjb-cnt">
@@ -13,7 +12,7 @@
     <!--<h3>{{dataReloj.metadata.serial_raw}}</h3>-->
 
     <div><strong>Fecha de registro: </strong>{{dataReloj.metadata.fecha}}</div>
-    <div><strong>MD5: </strong>{{dataReloj.metadata.serial_hash}}</div>
+    <div><strong>DEF: </strong>{{dataReloj.metadata.serial_def}}</div>
     <div><strong>Raw: </strong>{{dataReloj.metadata.serial_raw}}</div>
     <div class="_ln"></div>
     <p>Aquí irá las piezas, la mmano de obra, el lote, etc... todas esas variables de construcción del reloj</p>
@@ -25,4 +24,5 @@
     <div *ngFor="let c of dataReloj.caracteristicas"><strong>{{c.nombre_caracteristica}}: </strong>{{c.nombre_opcion}}
     </div>
   </div>
+
 </div>
