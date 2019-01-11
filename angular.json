@@ -123,5 +123,10 @@
       }
     }
   },
-  "defaultProject": "moena1989"
+  "defaultProject": "moena1989",
+  "schematics": {
+    "@schematics/angular:component": {
+      "styleext": "scss"
+    }
+  }
 }

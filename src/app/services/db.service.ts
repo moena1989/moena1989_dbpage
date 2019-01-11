@@ -3,6 +3,10 @@ import {AngularFireDatabase} from '@angular/fire/database';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
+import {AngularFireStorage} from '@angular/fire/storage';
+import {UploadService} from '../uploads/shared/upload.service';
+import {ClockModel} from '../uploads/shared/clockModel';
+import * as firebase from 'firebase';
 
 @Injectable({
   providedIn: 'root'
@@ -18,19 +22,11 @@ export class DbService {
   authState = null;
   userLogueado: any = {};
 
-  constructor(public db: AngularFireDatabase, private firebaseAuth: AngularFireAuth, private router: Router) {
+  constructor(public upload: UploadService, public db: AngularFireDatabase, private afStorage: AngularFireStorage, private firebaseAuth: AngularFireAuth, private router: Router) {
 
     this.firebaseAuth.authState.subscribe(value => {
       console.log('Comprobando auth fiirebase...');
 
-      // const ob = localStorage.getItem('ob_login');
-      //
-      // if (ob != null) {
-      //   console.log('Se encontró el ob_log y se cargo :D');
-      //   this.authState = ob;
-      // } else {
-      //   console.log('no existe save guardado');
-      // }
       this.authState = value;
     });
   }
@@ -63,10 +59,28 @@ export class DbService {
     });
   }
 
-  pushReloj(reloj: any): void {
+  pushReloj(reloj: ClockModel, img_clock: File, alFinalizar: (url: string) => void): void {
     const key = this.db.list('relojes/data').push(reloj).key;
     this.db.object('relojes/seriales/' + reloj.metadata.serial_def).set(key);
-    console.log('se intenta subir datos');
+
+    const storageRef = firebase.storage().ref();
+    const uploadTask = storageRef.child('clocks_imgs/' + key).put(img_clock);
+    console.log('se inicia subida');
+    uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
+      (snapshot) => {
+      },
+      (error) => {
+        console.log(error);
+      },
+      () => {
+        firebase.storage().ref('clocks_imgs/' + key).getDownloadURL().then(url => {
+          console.log('la url es:' + url);
+          this.db.object('relojes/data/' + key + '/metadata/img_url').set(url);
+          // agrego la url al objeto de acá. la img, es lo único que funciona de forma distinta.
+          alFinalizar(url);
+        });
+      }
+    );
   }
 
 
@@ -106,7 +120,6 @@ export class DbService {
       });
   }
 
-
   info_current_lote(): Observable<any | null> {
     return this.db.object('general_info/lots').valueChanges();
   }
@@ -137,7 +150,6 @@ export class DbService {
 
   info_lotes_general(): Observable<any | null> {
     return this.db.object('general_info/lots').valueChanges();
-
   }
 
   actualizarCurrentLote(current_lot: any) {
@@ -146,6 +158,10 @@ export class DbService {
 
   updateLotesRegistrados(com: any) {
     this.db.object('general_info/lots/finalizados').set(com);
-
   }
+
+  updateLoteN(com: any) {
+    this.db.object('general_info/lots/num_nuevo_lote').set(com);
+  }
+
 }

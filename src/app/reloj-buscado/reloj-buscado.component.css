@@ -9,18 +9,32 @@
 }
 
 .img-rj-buscado {
-  width: 18em;
-  height: 18em;
-  background: white;
   border-radius: .2em;
+  flex-grow: 1;
+  height: available;
+  overflow: hidden;
+  object-fit: contain;
+  background-position: center;
+  /*flex-grow: 1;*/
+}
+
+.bjos {
+  background: #f6f6f6;
+  height: 25em;
   display: flex;
-  align-items: center;
-  justify-content: center;
+  flex-direction: column;
+  /*margin: .5em;*/
+  border-radius: .4em;
+  flex-grow: 1;
+  width: 100%;
+  max-width: 25em;
+  /*padding: 1em;*/
 }
 
 .rjb-cnt {
   display: flex;
   flex-direction: row;
+  flex-wrap: wrap;
 }
 
 .rjb-datos {
@@ -28,4 +42,5 @@
   margin-left: 1em;
   display: flex;
   flex-direction: column;
+  flex-grow: 2;
 }

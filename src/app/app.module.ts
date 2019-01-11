@@ -18,9 +18,14 @@ import {RegistroComponent} from './registro/registro.component';
 import {RelojBuscadoComponent} from './reloj-buscado/reloj-buscado.component';
 import {MSelectComponent} from './m-select/m-select.component';
 import {TstComponent} from './tst/tst.component';
-
+import {AngularFireStorageModule} from '@angular/fire/storage';
+import {VisualizerComponent} from './visualizer/visualizer.component';
+import {UploaderComponent} from './uploader/uploader.component';
+import {NgxSmartModalModule, NgxSmartModalService} from 'ngx-smart-modal';
+import {UnomComponent} from './unom/unom.component';
+// import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // ng build --prod --base-href https://moena1989.github.io/moena_reg_page/
-// ngh --dir dist/moena1989
+// npx ngh --dir=dist/moena1989
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
@@ -37,15 +42,30 @@ const appRoutes: Routes = [
   }
 ];
 
+
+// REAL DATABASE
+// const config = {
+//   apiKey: 'AIzaSyAh48TUW_EdI6fI6om3EMRCdlCC4U3n9U8',
+//   authDomain: 'moenamaindb.firebaseapp.com',
+//   databaseURL: 'https://moenamaindb.firebaseio.com',
+//   projectId: 'moenamaindb',
+//   storageBucket: 'moenamaindb.appspot.com',
+//   messagingSenderId: '427343243507'
+// };
+
+// TEST DATABASE
 const config = {
-  apiKey: 'AIzaSyAh48TUW_EdI6fI6om3EMRCdlCC4U3n9U8',
-  authDomain: 'moenamaindb.firebaseapp.com',
-  databaseURL: 'https://moenamaindb.firebaseio.com',
-  projectId: 'moenamaindb',
-  storageBucket: 'moenamaindb.appspot.com',
-  messagingSenderId: '427343243507'
+  apiKey: 'AIzaSyD3mN3H_wzfhYtDsyzb0N4ToVI22Wdu4ME',
+  authDomain: 'moenadbtst.firebaseapp.com',
+  databaseURL: 'https://moenadbtst.firebaseio.com',
+  projectId: 'moenadbtst',
+  storageBucket: 'moenadbtst.appspot.com',
+  messagingSenderId: '574556298528'
 };
 
+// var
+// s
+// s
 @NgModule({
   declarations: [
     AppComponent,
@@ -58,16 +78,16 @@ const config = {
     SnackbarComponent,
     RegistroComponent,
     RelojBuscadoComponent,
-    MSelectComponent, TstComponent
+    MSelectComponent, TstComponent, VisualizerComponent, UploaderComponent, UnomComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
-    AngularFireAuthModule,
-    BrowserModule, FormsModule
+    AngularFireAuthModule, AngularFireStorageModule,
+    BrowserModule, FormsModule, NgxSmartModalModule.forRoot()
   ],
-  providers: [],
+  providers: [NgxSmartModalService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

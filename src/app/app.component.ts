@@ -4,6 +4,9 @@ import {ToolsService} from './tools.service';
 import {DbService} from './services/db.service';
 import {ModelsService} from './models.service';
 
+import './_content/app.css';
+import './_content/modal.css';
+
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',

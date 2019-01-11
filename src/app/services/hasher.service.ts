@@ -15,4 +15,5 @@ export class HasherService {
     const id = hashids.encode(lote, num_lote);
     return id;
   }
+
 }

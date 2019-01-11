@@ -4,9 +4,12 @@ import {DbService} from '../services/db.service';
 import {formatDate} from '@angular/common';
 import {ModelsService} from '../models.service';
 import {Subscription} from 'rxjs';
-import {NavigationEnd, Router} from '@angular/router';
+import {Router} from '@angular/router';
 import {MSelectComponent} from '../m-select/m-select.component';
 import {ToolsService} from '../tools.service';
+import {ModalService} from '../modal.service';
+import {Base, Caracteristica, ClockModel, Metadata} from '../uploads/shared/clockModel';
+import {NgxSmartModalService} from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-nuevo-ingreso-reloj',
@@ -29,7 +32,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
 
   obj: any = [];
   _caracteristicas: any[] = [];
-  private ob_final: {};
+  private ob_final: ClockModel;
   private serial_salt: string;
   serial_def: string;
   private num_en_lote: number;
@@ -40,44 +43,59 @@ export class NuevoIngresoRelojComponent implements OnInit {
   ultimo_item = false;
   registrado = false;
   relojReg: {} = {};
+  img_clock_front: File;
+  // img_clock_der: File;
+  // img_clock_izq: File;
+  bodyText: string;
 
-  constructor(private estructura: ModelsService, private hasher: HasherService, public db: DbService, private _router: Router, private tools: ToolsService) {
+  constructor(private estructura: ModelsService, private hasher: HasherService, public ngxSmartModalService: NgxSmartModalService,
+              public db: DbService, private _router: Router, private tools: ToolsService, private modalService: ModalService) {
     this.est = estructura;
   }
-
 
   ngOnInit() {
 
     // todo buscar info del lote actual si este existe, en cado se que no, iniciar nuevo lote
     this.buscarCurrentLote();
 
-
+    this.bodyText = 'This text can be updated in modal 1';
   }
 
+  openModal(id: string) {
+    this.modalService.open(id);
+  }
+
+  closeModal(id: string) {
+    this.modalService.close(id);
+  }
 
   buscarCurrentLote() {
     console.log('iniciando busqueda de registro');
-    this._current_reg = this.db.info_current_lote().subscribe(info_lotes => {
-      console.log(this.info_lotes.current);
-      this.info_lotes = info_lotes;
-      if (this.info_lotes.current === undefined) {
-        console.log('no existe ningun lote por completar');
-        this.registrable = false;
-        this.info_lotes.finalizados++;
-      } else {
-        console.log(this.info_lotes);
-        this.registrable = true;
+    this._current_reg = this.db.info_current_lote().subscribe(_info_lotes => {
+      console.log('Buscando datos lote...');
+      this.info_lotes = _info_lotes;
+      console.log(this.info_lotes);
 
+      // ¿Existe algún dato en la db?
+      if (this.info_lotes === null) {
+        console.log('Primera vez que se utiliza la db, iniciando lote 0');
+        this.info_lotes = {};
+        this.info_lotes = {finalizados: 0};
+        this.info_lotes = {num_nuevo_lote: this.info_lotes.finalizados + 1};
+      } else {
+
+        // ¿ese lote ya está lleno?
         if (this.info_lotes.current.item_actual >= this.info_lotes.current.cantidad_por_lote) {
-          // es hora de iniciar un nuevo lote
+          console.log('LOTE FINALIZADO !');
           this.registrable = false;
-          var s = +this.info_lotes.finalizados++;
-          console.log(s);
-          console.log(s);
-          this.info_lotes.finalizados++;
+          const s = +this.info_lotes.finalizados++;
+          this.info_lotes.finalizados = s;
+          this.info_lotes.num_nuevo_lote = s + 1;
+        } else {
+          console.log('Lote sin llenar');
+          this.registrable = true;
+          this.info_lotes.current.item_actual++;
         }
-        // AUMENTARÉ DE UNA VEZ EL NUMERO DEL REGISTRO AQUÍ
-        this.info_lotes.current.item_actual++;
       }
 
     });
@@ -132,126 +150,111 @@ export class NuevoIngresoRelojComponent implements OnInit {
         }
       }
     );
-
-
+    
     this.obj['Modelo'] = raw_colecc_select.name;
     this.obj['Modelo_id'] = raw_colecc_select.id;
     this.obj['Modelo_salt'] = raw_colecc_select.salt;
   }
 
-
-  validarRegistro() {
-    var validado = true;
-
-    for (var i = 0; i < this.selects.length; i++) {
-      // if (this.selects[i] === false) {
-      //   validado = false;
-      //   break;
-      // }
-      console.log(this.selects[i]);
-    }
-
-
-    this.finalizarRegistro();
-    this.tools.snack.show('Registro exitoso :)');
-
-    // if (validado) {
-    // } else {
-    // }
-
-
-  }
-
-
-  finalizarRegistro() {
+  finalizarNuevoRegistro(validar: any) {
     const caracteristicas_seleccionadas = [];
-
     this.serial_raw = '';
-    this.ob_final = {};
+    this.ob_final = new ClockModel();
     this.serial_salt = '';
+
     this._caracteristicas.forEach((caracteristicass, index) => {
       if (caracteristicass) {
         const nombre_caracteristica = this.obtenerNombreCaracteristica(caracteristicass.id_caracteristica).nombre;
         const id_caracteristica = this.obtenerNombreCaracteristica(caracteristicass.id_caracteristica).id;
+
         const id_opcion = caracteristicass.id;
         const name_opcion = caracteristicass.name;
+        const c = new Caracteristica(id_caracteristica, id_opcion, nombre_caracteristica, name_opcion);
 
-        caracteristicas_seleccionadas.push({
-          nombre_caracteristica: nombre_caracteristica,
-          id_caracteristica: id_caracteristica,
-          id_opcion: id_opcion,
-          nombre_opcion: name_opcion
-        });
+        caracteristicas_seleccionadas.push(c);
         this.serial_salt += caracteristicass.salt;
       }
     });
+
     this.lote = this.info_lotes.current.lote_num;
-    this.num_en_lote = this.info_lotes.current.cantidad_por_lote;
-    // TODO #lote, #product, #tam
-    this.serial_raw = this.obj['coleccion_salt'] + this.obj['Modelo_salt'] + '-' + this.lote + '-' + this.num_en_lote + '-' + this.serial_salt;
-    this.serial_hash = this.hasher.encriptarSerial(this.serial_raw, this.lote, this.num_en_lote);
+    this.num_en_lote = this.info_lotes.current.item_actual;
+    const nSalt = Math.round(Math.random() * 10000);
+
+    this.serial_raw = this.obj['coleccion_salt'] + this.obj['Modelo_salt'] +
+      '-' + this.lote + '-' + this.info_lotes.current.item_actual + '-' + this.serial_salt + nSalt;
+    this.serial_hash = this.hasher.encriptarSerial(this.serial_raw, this.lote, this.info_lotes.current.item_actual);
     this.serial_def = this.obj['coleccion_salt'] + this.obj['Modelo_salt'] + '-' + this.serial_hash;
 
     this.ob_final['caracteristicas'] = caracteristicas_seleccionadas;
-    this.ob_final['base'] = [{
-      nombre_base: 'Colección',
-      id_base: '',
-      id_seleccion: '',
-      nombre_seleccion: this.obj['Colección']
-    }, {
-      nombre_base: 'Modelo',
-      id_base: '',
-      id_seleccion: '',
-      nombre_seleccion: this.obj['Modelo']
-    }];
-    const date = formatDate(Date.now(), 'dd-MM-yyyy hh:mm:ss a', 'en-US', '-500');
-    this.ob_final['metadata'] = {
-      'fecha': date,
-      'serial_raw': this.serial_raw,
-      'serial_def': this.serial_def
-    };
+    this.ob_final['base'] = [
 
+      new Base('Colección', this.obj['Colección'], '', ''),
+      new Base('Modelo', this.obj['Modelo'], '', '')];
+
+    const date = formatDate(Date.now(), 'dd-MM-yyyy hh:mm:ss a', 'en-US', '-500');
+    // 'user_key': this.db.authState,
+    this.ob_final.metadata = new Metadata(date, this.serial_def, this.serial_raw);
 
     // actualizo al registroo del lote actual
-    var currentLote = {
+    const currentLote = {
       fecha_ultimo_reg: Date.now(),
       item_actual: this.info_lotes.current.item_actual
     };
-
     this.db.actualizarCurrentLote(currentLote);
+    console.log('aquí empieza a subir');
 
-    console.log(this.ob_final);
-    this.db.pushReloj(this.ob_final);
-    this.relojReg = this.ob_final;
-    this.ob_final = {};
-    this.obj = [];
+    this.db.pushReloj(this.ob_final, this.img_clock_front, (url) => {
+      this.registrado = true;
+      this.tools.snack.show('Registro exitoso');
+      this.ob_final.metadata.img_url = url;
+      this.relojReg = this.ob_final;
 
-    if (this.info_lotes.current.item_actual === this.info_lotes.current.cantidad_por_lote) {
-      console.log('Reloj registrado corresponde al último del lote');
-      this.db.updateLotesRegistrados(this.info_lotes.current.lote_num);
-    }
+      this.ob_final = new ClockModel();
+      this.obj = [];
 
-    this.registrado = true;
-    this.tools.snack.show('Registro exitoso');
-
+      if (this.info_lotes.current.item_actual === this.info_lotes.current.cantidad_por_lote) {
+        console.log('Reloj registrado corresponde al último del lote');
+        this.db.updateLotesRegistrados(this.info_lotes.current.lote_num);
+      }
+      // el que le dice al modal que ya se puede  cerrar
+      console.log(validar);
+      // validar();
+    });
   }
 
   obtenerNombreCaracteristica(th: any): any {
     return this.estructura.opciones.find(value => value.id === th);
   }
 
-  selectCaracteristica(op: any, id_caracteristica: number) {
-    // console.log('se selecciona la siguiente caracteristica: ');
-    // console.log(op);
-    op['id_caracteristica'] = id_caracteristica;
-    this._caracteristicas.push(op);
+  selectCaracteristica(opcion_seleccionada: any, id_caracteristica_selected: number) {
+    // console.log('::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::');
+    // console.log(opcion_seleccionada);
+    // console.log(id_caracteristica_selected);
+    opcion_seleccionada['id_caracteristica'] = id_caracteristica_selected;
+
+    var exist = false;
+    for (var i = 0; i < this._caracteristicas.length; i++) {
+      // console.log(this._caracteristicas[i]);
+      if (this._caracteristicas[i].id_caracteristica === id_caracteristica_selected) {
+        console.log('se encontró repetido, intentando remplazar');
+        this._caracteristicas[i] = opcion_seleccionada;
+        exist = true;
+        break;
+      }
+    }
+
+    if (!exist) {
+      this._caracteristicas.push(opcion_seleccionada);
+    }
+
+    console.log(this._caracteristicas);
   }
 
   IniciarNuevoLote(cantidad_por_lote) {
     console.log(cantidad_por_lote);
-
-    var currentLote = {
-      lote_num: this.info_lotes.finalizados,
+    // Se crea la estructura del nuevo lote a llenar
+    const currentLote = {
+      lote_num: this.info_lotes.num_nuevo_lote,
       fecha_inicio: Date.now(),
       fecha_ultimo_reg: Date.now(),
       cantidad_por_lote: +cantidad_por_lote,
@@ -259,12 +262,32 @@ export class NuevoIngresoRelojComponent implements OnInit {
     };
 
     this.db.actualizarCurrentLote(currentLote);
+    this.db.updateLotesRegistrados(this.info_lotes.num_nuevo_lote);
+    this.db.updateLoteN(this.info_lotes.num_nuevo_lote);
   }
 
-
   iniciarNuevoRegistro() {
-    // se reinicia
-    // this.registrado = false;
     window.location.reload();
+  }
+
+  onFileChanged(evnt: File, typeImage: string) {
+    // aquí se escoge
+
+    switch (typeImage) {
+      case 'frontal':
+        this.img_clock_front = evnt;
+        console.log('frontal');
+        break;
+
+      // case 'lateral_der':
+      //   console.log('der');
+      //   this.img_clock_der = evnt;
+      //
+      //   break;
+      // case 'lateral_izq':
+      //   console.log('izq');
+      //   this.img_clock_izq = evnt;
+      //   break;
+    }
   }
 }
