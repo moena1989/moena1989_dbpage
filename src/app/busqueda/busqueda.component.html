@@ -1,6 +1,2 @@
-<div class="nv">
-  <h1>Buscar: </h1>
-  <input type="text" value="" #pass placeholder="Escribe el serial" class="in_buscar">
-  <div class="bt_buscar" (click)="buscarBySerial(pass.value)">Buscar</div>
-</div>
-<app-reloj-buscado *ngIf="act" [dataReloj]="rj"></app-reloj-buscado>
+<app-reloj-buscado [dataReloj]="currentStorage.relojDisponible"></app-reloj-buscado>
+<div class="bt_cerrar" routerLink="/" (click)="cerrar()">Cerrar busqueda</div>

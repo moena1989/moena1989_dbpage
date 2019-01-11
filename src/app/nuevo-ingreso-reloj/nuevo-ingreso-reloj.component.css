@@ -24,6 +24,41 @@
 
 }
 
+.c {
+  background: #e03e3e;
+}
+
+.b {
+  background: rgba(58, 58, 58, 0.91);
+}
+
+.bt {
+  /*margin: .5em;*/
+  /*border: 1px solid black;*/
+  border-radius: .2em;
+  padding: .5em;
+  display: flex;
+  width: auto;
+  /*height: 5em;*/
+  cursor: pointer;
+  text-align: center;
+  color: #f7f7f7;
+  font-weight: bold;
+  margin: .2em;
+
+}
+
+
+.bt:hover {
+  background: #3a3a3a;
+  color: #f7f7f7;
+}
+
+.bt_opts {
+  margin-top: .5em;
+  display: flex;
+}
+
 @media (min-width: 45em) {
   .visuals {
     flex-wrap: nowrap;

@@ -1,8 +1,17 @@
-<img class="logo" src="assets/common/logo_w.svg" alt="Moena 1989">
+<ngx-smart-modal #modal identifier="buscador">
+  <h1>Buscar por serial:</h1>
+  <div class="nv">
+    <input type="text" value="" #serial placeholder="Escribe el serial" class="in_buscar">
+    <div class="bt_buscar" (click)="buscarBySerial(serial.value)">Buscar</div>
+    <div class="err">{{err_msg}}</div>
+  </div>
+</ngx-smart-modal>
+
+<img class="logo" routerLink="/" src="assets/common/logo_w.svg" alt="Moena 1989">
 <div class="nav_options">
   <div class="l_pack">
-    <div routerLink="/registro/reloj" class="bts">REGISTRO</div>
-    <div routerLink="/buscar" class="bts">BUSQUEDA</div>
+    <div routerLink="/registro/reloj" class="bts" [routerLinkActive]="'acti'">REGISTRO</div>
+    <div (click)="abriModal()" class="bts" [routerLinkActive]="'acti'">BUSQUEDA</div>
   </div>
 
   <div class="r_pack">

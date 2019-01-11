@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DbService} from '../services/db.service';
-import {ToolsService} from '../tools.service';
+import {ToolsService} from '../_services/tools.service';
 
 @Component({
   selector: 'app-login',

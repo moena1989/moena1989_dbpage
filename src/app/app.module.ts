@@ -13,16 +13,17 @@ import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
 import {WorkerRegComponent} from './worker-reg/worker-reg.component';
 import {SnackbarComponent} from './snackbar/snackbar.component';
-import {AuthGuardService} from './auth-guard.service';
+import {AuthGuardService} from './_services/auth-guard.service';
 import {RegistroComponent} from './registro/registro.component';
 import {RelojBuscadoComponent} from './reloj-buscado/reloj-buscado.component';
 import {MSelectComponent} from './m-select/m-select.component';
 import {TstComponent} from './tst/tst.component';
 import {AngularFireStorageModule} from '@angular/fire/storage';
 import {VisualizerComponent} from './visualizer/visualizer.component';
-import {UploaderComponent} from './uploader/uploader.component';
 import {NgxSmartModalModule, NgxSmartModalService} from 'ngx-smart-modal';
-import {UnomComponent} from './unom/unom.component';
+import {CurrentStorageService} from './_services/current-storage.service';
+import {HomeComponent} from './home/home.component';
+
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // ng build --prod --base-href https://moena1989.github.io/moena_reg_page/
 // npx ngh --dir=dist/moena1989
@@ -33,7 +34,8 @@ const appRoutes: Routes = [
   {path: 'sign_up', component: WorkerRegComponent},
   {
     path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
-      {path: 'buscar', component: BusquedaComponent},
+      {path: '', component: HomeComponent},
+      {path: 'busqueda', component: BusquedaComponent},
       {
         path: 'registro', component: RegistroComponent, children:
           [{path: 'reloj', component: NuevoIngresoRelojComponent}]
@@ -78,7 +80,7 @@ const config = {
     SnackbarComponent,
     RegistroComponent,
     RelojBuscadoComponent,
-    MSelectComponent, TstComponent, VisualizerComponent, UploaderComponent, UnomComponent
+    MSelectComponent, TstComponent, VisualizerComponent,HomeComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
@@ -87,7 +89,7 @@ const config = {
     AngularFireAuthModule, AngularFireStorageModule,
     BrowserModule, FormsModule, NgxSmartModalModule.forRoot()
   ],
-  providers: [NgxSmartModalService],
+  providers: [NgxSmartModalService, CurrentStorageService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

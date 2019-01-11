@@ -1,6 +1,8 @@
 import {Component, OnInit} from '@angular/core';
 import {DbService} from '../services/db.service';
-import {ToolsService} from '../tools.service';
+import {ToolsService} from '../_services/tools.service';
+import {CurrentStorageService} from '../_services/current-storage.service';
+import {Route, Router} from '@angular/router';
 
 @Component({
   selector: 'app-busqueda',
@@ -8,40 +10,23 @@ import {ToolsService} from '../tools.service';
   styleUrls: ['./busqueda.component.css']
 })
 export class BusquedaComponent implements OnInit {
-  rj: any;
   act = false;
 
   /*
   En teoría, siempre se llegará a esta página cuando ya se halla encontrado un reloj, y deba proyectarse, el objeto buscado está en db
   TODO buscar una manera más opptima sin tener que guardarlo y traerlo de db.
    */
-  constructor(public db: DbService, private tool: ToolsService) {
+  constructor(public db: DbService, private tool: ToolsService, private currentStorage: CurrentStorageService, private router: Router) {
+    console.log(this.currentStorage.relojDisponible);
+    if (this.currentStorage.relojDisponible === undefined) {
+      this.router.navigate(['/']);
+    }
   }
 
   ngOnInit() {
   }
 
-  buscarBySerial(serial: any) {
-    console.log(serial);
-    if (serial !== '') {
-      this.db.buscarReloj(serial, (result: any) => {
-        // aún no sé si es mejor enviar los datos desde aquí o desde la func buscarReloj
-        if (result) {
-          console.log('Producto encontrado');
-          console.log(result);
-          this.rj = result;
-          this.act = true;
-          serial = '';
-        } else {
-          // no existe serial
-          console.log('ese serial no existe');
-          this.tool.snack.show('No se encontró producto');
-          this.act = false;
-        }
-      });
-    } else {
-      console.log('no se escribió ningun serial');
-      this.tool.snack.show('No has ingreado ningún serial');
-    }
+  cerrar() {
+    this.currentStorage.relojDisponible = null;
   }
 }

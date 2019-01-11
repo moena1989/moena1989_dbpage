@@ -1,8 +1,8 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SnackbarComponent} from './snackbar/snackbar.component';
-import {ToolsService} from './tools.service';
+import {ToolsService} from './_services/tools.service';
 import {DbService} from './services/db.service';
-import {ModelsService} from './models.service';
+import {ModelsService} from './_services/models.service';
 
 import './_content/app.css';
 import './_content/modal.css';

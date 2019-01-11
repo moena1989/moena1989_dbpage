@@ -24,7 +24,7 @@ body.dialog-open {
   overflow-y: auto;
   transition: background-color 500ms;
   background-color: transparent;
-  z-index: 999;
+  z-index: 100;
 }
 
 .overlay.nsm-overlay-open {

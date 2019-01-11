@@ -16,5 +16,4 @@ export class RelojBuscadoComponent implements OnInit {
     console.log('Se inicio el reloj buscado');
     console.log(this.dataReloj);
   }
-
 }

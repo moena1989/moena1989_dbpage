@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SnackbarComponent} from '../snackbar/snackbar.component';
-import {ToolsService} from '../tools.service';
+import {ToolsService} from '../_services/tools.service';
 
 @Component({
   selector: 'app-main',

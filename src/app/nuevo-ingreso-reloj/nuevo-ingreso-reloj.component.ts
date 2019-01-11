@@ -1,15 +1,14 @@
-import {Component, Input, OnInit, QueryList, ViewChildren} from '@angular/core';
+import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {HasherService} from '../services/hasher.service';
 import {DbService} from '../services/db.service';
 import {formatDate} from '@angular/common';
-import {ModelsService} from '../models.service';
+import {ModelsService} from '../_services/models.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {MSelectComponent} from '../m-select/m-select.component';
-import {ToolsService} from '../tools.service';
-import {ModalService} from '../modal.service';
+import {ToolsService} from '../_services/tools.service';
 import {Base, Caracteristica, ClockModel, Metadata} from '../uploads/shared/clockModel';
-import {NgxSmartModalService} from 'ngx-smart-modal';
+import {NgxSmartModalComponent} from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-nuevo-ingreso-reloj',
@@ -29,6 +28,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
   opciones_por_ver: any[];
 
   @ViewChildren(MSelectComponent) selects: QueryList<MSelectComponent>;
+  @ViewChild('modal') modal: NgxSmartModalComponent;
 
   obj: any = [];
   _caracteristicas: any[] = [];
@@ -47,9 +47,10 @@ export class NuevoIngresoRelojComponent implements OnInit {
   // img_clock_der: File;
   // img_clock_izq: File;
   bodyText: string;
+  validando = false;
 
-  constructor(private estructura: ModelsService, private hasher: HasherService, public ngxSmartModalService: NgxSmartModalService,
-              public db: DbService, private _router: Router, private tools: ToolsService, private modalService: ModalService) {
+  constructor(private estructura: ModelsService, private hasher: HasherService,
+              public db: DbService, private _router: Router, private tools: ToolsService) {
     this.est = estructura;
   }
 
@@ -61,13 +62,6 @@ export class NuevoIngresoRelojComponent implements OnInit {
     this.bodyText = 'This text can be updated in modal 1';
   }
 
-  openModal(id: string) {
-    this.modalService.open(id);
-  }
-
-  closeModal(id: string) {
-    this.modalService.close(id);
-  }
 
   buscarCurrentLote() {
     console.log('iniciando busqueda de registro');
@@ -156,12 +150,12 @@ export class NuevoIngresoRelojComponent implements OnInit {
     this.obj['Modelo_salt'] = raw_colecc_select.salt;
   }
 
-  finalizarNuevoRegistro(validar: any) {
+  finalizarNuevoRegistro() {
     const caracteristicas_seleccionadas = [];
     this.serial_raw = '';
     this.ob_final = new ClockModel();
     this.serial_salt = '';
-
+    this.validando = true;
     this._caracteristicas.forEach((caracteristicass, index) => {
       if (caracteristicass) {
         const nombre_caracteristica = this.obtenerNombreCaracteristica(caracteristicass.id_caracteristica).nombre;
@@ -216,9 +210,9 @@ export class NuevoIngresoRelojComponent implements OnInit {
         console.log('Reloj registrado corresponde al último del lote');
         this.db.updateLotesRegistrados(this.info_lotes.current.lote_num);
       }
-      // el que le dice al modal que ya se puede  cerrar
-      console.log(validar);
-      validar('holi');
+      // se cierra modal
+      this.modal.close();
+      // this.validando = false;
     });
   }
 
