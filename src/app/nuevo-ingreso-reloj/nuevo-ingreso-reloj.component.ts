@@ -150,7 +150,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
         }
       }
     );
-    
+
     this.obj['Modelo'] = raw_colecc_select.name;
     this.obj['Modelo_id'] = raw_colecc_select.id;
     this.obj['Modelo_salt'] = raw_colecc_select.salt;
@@ -218,7 +218,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
       }
       // el que le dice al modal que ya se puede  cerrar
       console.log(validar);
-      // validar();
+      validar('holi');
     });
   }
 
