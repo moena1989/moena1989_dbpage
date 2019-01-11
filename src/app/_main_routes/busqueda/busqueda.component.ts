@@ -1,8 +1,10 @@
 import {Component, OnInit} from '@angular/core';
-import {DbService} from '../services/db.service';
-import {ToolsService} from '../_services/tools.service';
-import {CurrentStorageService} from '../_services/current-storage.service';
-import {Route, Router} from '@angular/router';
+
+import {Router} from '@angular/router';
+import {DbService} from '../../_services/db.service';
+import {ToolsService} from '../../_services/tools.service';
+import {CurrentStorageService} from '../../_services/current-storage.service';
+
 
 @Component({
   selector: 'app-busqueda',
@@ -10,7 +12,6 @@ import {Route, Router} from '@angular/router';
   styleUrls: ['./busqueda.component.css']
 })
 export class BusquedaComponent implements OnInit {
-  act = false;
 
   /*
   En teoría, siempre se llegará a esta página cuando ya se halla encontrado un reloj, y deba proyectarse, el objeto buscado está en db

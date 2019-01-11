@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {SnackbarComponent} from '../snackbar/snackbar.component';
+import {SnackbarComponent} from '../tools/snackbar/snackbar.component';
 import {CanActivate, Router} from '@angular/router';
 
 @Injectable({

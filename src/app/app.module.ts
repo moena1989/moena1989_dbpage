@@ -1,28 +1,27 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
-import {NuevoIngresoRelojComponent} from './nuevo-ingreso-reloj/nuevo-ingreso-reloj.component';
-import {NavbarComponent} from './navbar/navbar.component';
+import {NuevoIngresoRelojComponent} from './tools/nuevo-ingreso-reloj/nuevo-ingreso-reloj.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
-import {BusquedaComponent} from './busqueda/busqueda.component';
 import {FormsModule} from '@angular/forms';
-import {LoginComponent} from './login/login.component';
 import {MainComponent} from './main/main.component';
-import {WorkerRegComponent} from './worker-reg/worker-reg.component';
-import {SnackbarComponent} from './snackbar/snackbar.component';
+import {WorkerRegComponent} from './_main_routes/worker-reg/worker-reg.component';
+import {SnackbarComponent} from './tools/snackbar/snackbar.component';
 import {AuthGuardService} from './_services/auth-guard.service';
-import {RegistroComponent} from './registro/registro.component';
-import {RelojBuscadoComponent} from './reloj-buscado/reloj-buscado.component';
-import {MSelectComponent} from './m-select/m-select.component';
-import {TstComponent} from './tst/tst.component';
+import {RelojBuscadoComponent} from './tools/reloj-buscado/reloj-buscado.component';
+import {MSelectComponent} from './tools/m-select/m-select.component';
 import {AngularFireStorageModule} from '@angular/fire/storage';
-import {VisualizerComponent} from './visualizer/visualizer.component';
+import {VisualizerComponent} from './tools/visualizer/visualizer.component';
 import {NgxSmartModalModule, NgxSmartModalService} from 'ngx-smart-modal';
 import {CurrentStorageService} from './_services/current-storage.service';
-import {HomeComponent} from './home/home.component';
+import {LoginComponent} from './_main_routes/login/login.component';
+import {HomeComponent} from './_main_routes/home/home.component';
+import {NavbarComponent} from './_main_routes/navbar/navbar.component';
+import {RegistroComponent} from './_main_routes/registro/registro.component';
+import {BusquedaComponent} from './_main_routes/busqueda/busqueda.component';
 
 // import {NgbModule} from '@ng-bootstrap/ng-bootstrap';
 // ng build --prod --base-href https://moena1989.github.io/moena_reg_page/
@@ -30,7 +29,6 @@ import {HomeComponent} from './home/home.component';
 
 const appRoutes: Routes = [
   {path: 'login', component: LoginComponent},
-  {path: 'tst', component: TstComponent},
   {path: 'sign_up', component: WorkerRegComponent},
   {
     path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
@@ -43,7 +41,6 @@ const appRoutes: Routes = [
     ]
   }
 ];
-
 
 // REAL DATABASE
 // const config = {
@@ -80,7 +77,7 @@ const config = {
     SnackbarComponent,
     RegistroComponent,
     RelojBuscadoComponent,
-    MSelectComponent, TstComponent, VisualizerComponent,HomeComponent
+    MSelectComponent, VisualizerComponent, HomeComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, {enableTracing: false}),

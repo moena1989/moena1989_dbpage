@@ -1,5 +1,5 @@
 import {Component, Input, OnInit} from '@angular/core';
-import {ClockModel} from '../uploads/shared/clockModel';
+import {ClockModel} from '../../_models/clockModel';
 
 @Component({
   selector: 'app-reloj-buscado',

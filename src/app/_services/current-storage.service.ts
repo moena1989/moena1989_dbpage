@@ -1,5 +1,5 @@
 import {Injectable} from '@angular/core';
-import {ClockModel} from '../uploads/shared/clockModel';
+import {ClockModel} from '../_models/clockModel';
 
 @Injectable({
   providedIn: 'root'

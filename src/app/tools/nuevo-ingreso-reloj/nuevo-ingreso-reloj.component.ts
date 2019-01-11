@@ -1,14 +1,14 @@
 import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {HasherService} from '../services/hasher.service';
-import {DbService} from '../services/db.service';
+import {HasherService} from '../../_services/hasher.service';
+import {DbService} from '../../_services/db.service';
 import {formatDate} from '@angular/common';
-import {ModelsService} from '../_services/models.service';
+import {ModelsService} from '../../_services/models.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {MSelectComponent} from '../m-select/m-select.component';
-import {ToolsService} from '../_services/tools.service';
-import {Base, Caracteristica, ClockModel, Metadata} from '../uploads/shared/clockModel';
+import {ToolsService} from '../../_services/tools.service';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
+import {Base, Caracteristica, ClockModel, Metadata} from '../../_models/clockModel';
 
 @Component({
   selector: 'app-nuevo-ingreso-reloj',

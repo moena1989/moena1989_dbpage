@@ -4,9 +4,8 @@ import {AngularFireAuth} from '@angular/fire/auth';
 import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
-import {UploadService} from '../uploads/shared/upload.service';
-import {ClockModel} from '../uploads/shared/clockModel';
 import * as firebase from 'firebase';
+import {ClockModel} from '../_models/clockModel';
 
 @Injectable({
   providedIn: 'root'
@@ -22,7 +21,7 @@ export class DbService {
   authState = null;
   userLogueado: any = {};
 
-  constructor(public upload: UploadService, public db: AngularFireDatabase, private afStorage: AngularFireStorage, private firebaseAuth: AngularFireAuth, private router: Router) {
+  constructor(public db: AngularFireDatabase, private afStorage: AngularFireStorage, private firebaseAuth: AngularFireAuth, private router: Router) {
 
     this.firebaseAuth.authState.subscribe(value => {
       console.log('Comprobando auth fiirebase...');

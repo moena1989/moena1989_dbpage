@@ -1,5 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {SnackbarComponent} from '../snackbar/snackbar.component';
+import {SnackbarComponent} from '../tools/snackbar/snackbar.component';
 import {ToolsService} from '../_services/tools.service';
 
 @Component({

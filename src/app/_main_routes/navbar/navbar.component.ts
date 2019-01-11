@@ -1,10 +1,10 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
-import {DbService} from '../services/db.service';
 
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
-import {ToolsService} from '../_services/tools.service';
-import {CurrentStorageService} from '../_services/current-storage.service';
+import {DbService} from '../../_services/db.service';
+import {ToolsService} from '../../_services/tools.service';
+import {CurrentStorageService} from '../../_services/current-storage.service';
 
 @Component({
   selector: 'app-navbar',

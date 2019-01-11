@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
-import {DbService} from '../services/db.service';
-import {ToolsService} from '../_services/tools.service';
+import {DbService} from '../../_services/db.service';
+import {ToolsService} from '../../_services/tools.service';
 
 @Component({
   selector: 'app-worker-reg',
