@@ -18,14 +18,14 @@ export class AuthGuardService implements CanActivate {
     if (osb != null) {
       console.log('Se encontró el ob_log y se cargo :D');
       this.db.authState = osb;
-      this.db.traerDatosUsuario(osb, () => {
+      this.db.buscarDatosUsuarios(osb, () => {
       });
     } else {
       console.log('no existe save guardado');
     }
 
     if (!this.db.authenticated) {
-      this.router.navigate(['/login']);
+      this.router.navigate(['/logIn']);
       console.log('Usuario sin autenticar. Redireccionando...');
       // TODO, cambiar al hcaer las pruebas
       return true;

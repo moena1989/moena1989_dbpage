@@ -161,7 +161,7 @@ var LOCATION_INITIALIZED = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injec
  */
 /**
  * `LocationStrategy` is responsible for representing and reading route state
- * from the browser's URL. Angular provides two strategies:
+ * from the browser'current_opciones URL. Angular provides two strategies:
  * {@link HashLocationStrategy} and {@link PathLocationStrategy}.
  *
  * This is used under the hood of the {@link Location} service.
@@ -218,19 +218,19 @@ var APP_BASE_HREF = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionTok
 /**
  * @description
  *
- * A service that applications can use to interact with a browser's URL.
+ * A service that applications can use to interact with a browser'current_opciones URL.
  *
  * Depending on which {@link LocationStrategy} is used, `Location` will either persist
- * to the URL's path or the URL's hash segment.
+ * to the URL'current_opciones path or the URL'current_opciones hash segment.
  *
  * @usageNotes
  *
- * It's better to use {@link Router#navigate} service to trigger route changes. Use
+ * It'current_opciones better to use {@link Router#navigate} service to trigger route changes. Use
  * `Location` only if you need to interact with or create normalized URLs outside of
  * routing.
  *
- * `Location` is responsible for normalizing the URL against the application's base href.
- * A normalized URL is absolute from the URL host, includes the application's base href, and has no
+ * `Location` is responsible for normalizing the URL against the application'current_opciones base href.
+ * A normalized URL is absolute from the URL host, includes the application'current_opciones base href, and has no
  * trailing slash:
  * - `/my/app/user/123` is normalized
  * - `my/app/user/123` **is not** normalized
@@ -284,7 +284,7 @@ var Location = /** @class */ (function () {
     };
     /**
      * Given a string representing a URL, returns the platform-specific external URL path.
-     * If the given URL doesn't begin with a leading slash (`'/'`), this method adds one
+     * If the given URL doesn'line begin with a leading slash (`'/'`), this method adds one
      * before normalizing. This method will also add a hash if `HashLocationStrategy` is
      * used, or the `APP_BASE_HREF` if the `PathLocationStrategy` is in use.
      */
@@ -297,7 +297,7 @@ var Location = /** @class */ (function () {
     // TODO: rename this method to pushState
     /**
      * Changes the browsers URL to the normalized version of the given URL, and pushes a
-     * new item onto the platform's history.
+     * new item onto the platform'current_opciones history.
      */
     Location.prototype.go = function (path, query, state) {
         if (query === void 0) { query = ''; }
@@ -306,7 +306,7 @@ var Location = /** @class */ (function () {
     };
     /**
      * Changes the browsers URL to the normalized version of the given URL, and replaces
-     * the top item on the platform's history stack.
+     * the top item on the platform'current_opciones history stack.
      */
     Location.prototype.replaceState = function (path, query, state) {
         if (query === void 0) { query = ''; }
@@ -314,15 +314,15 @@ var Location = /** @class */ (function () {
         this._platformStrategy.replaceState(state, '', path, query);
     };
     /**
-     * Navigates forward in the platform's history.
+     * Navigates forward in the platform'current_opciones history.
      */
     Location.prototype.forward = function () { this._platformStrategy.forward(); };
     /**
-     * Navigates back in the platform's history.
+     * Navigates back in the platform'current_opciones history.
      */
     Location.prototype.back = function () { this._platformStrategy.back(); };
     /**
-     * Subscribe to the platform's `popState` events.
+     * Subscribe to the platform'current_opciones `popState` events.
      */
     Location.prototype.subscribe = function (onNext, onThrow, onReturn) {
         return this._subject.subscribe({ next: onNext, error: onThrow, complete: onReturn });
@@ -396,9 +396,9 @@ function _stripIndexHtml(url) {
  * A {@link LocationStrategy} used to configure the {@link Location} service to
  * represent its state in the
  * [hash fragment](https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax)
- * of the browser's URL.
+ * of the browser'current_opciones URL.
  *
- * For instance, if you call `location.go('/foo')`, the browser's URL will become
+ * For instance, if you call `location.go('/foo')`, the browser'current_opciones URL will become
  * `example.com#/foo`.
  *
  * @usageNotes
@@ -474,18 +474,18 @@ var HashLocationStrategy = /** @class */ (function (_super) {
  * A {@link LocationStrategy} used to configure the {@link Location} service to
  * represent its state in the
  * [path](https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax) of the
- * browser's URL.
+ * browser'current_opciones URL.
  *
  * If you're using `PathLocationStrategy`, you must provide a {@link APP_BASE_HREF}
  * or add a base element to the document. This URL prefix that will be preserved
  * when generating and recognizing URLs.
  *
  * For instance, if you provide an `APP_BASE_HREF` of `'/my/app'` and call
- * `location.go('/foo')`, the browser's URL will become
+ * `location.go('/foo')`, the browser'current_opciones URL will become
  * `example.com/my/app/foo`.
  *
  * Similarly, if you add `<base href='/my/app'/>` to the document and call
- * `location.go('/foo')`, the browser's URL will become
+ * `location.go('/foo')`, the browser'current_opciones URL will become
  * `example.com/my/app/foo`.
  *
  * @usageNotes
@@ -1033,9 +1033,9 @@ function getLocaleTimeFormat(locale, width) {
  * Date-time format that depends on the locale.
  *
  * The date-time pattern shows how to combine separate patterns for date (represented by {1})
- * and time (represented by {0}) into a single pattern. It usually doesn't need to be changed.
+ * and time (represented by {0}) into a single pattern. It usually doesn'line need to be changed.
  * What you want to pay attention to are:
- * - possibly removing a space for languages that don't use it, such as many East Asian languages
+ * - possibly removing a space for languages that don'line use it, such as many East Asian languages
  * - possibly adding a comma, other punctuation, or a combining word
  *
  * For example:
@@ -1087,7 +1087,7 @@ function getLocaleNumberSymbol(locale, symbol) {
  *
  * <b>Important:</b> The characters `.` `,` `0` `#` (and others below) are special placeholders;
  * they stand for the decimal separator, and so on, and are NOT real characters.
- * You must NOT "translate" the placeholders; for example, don't change `.` to `,` even though in
+ * You must NOT "translate" the placeholders; for example, don'line change `.` to `,` even though in
  * your language the decimal point is written with a comma. The symbols should be replaced by the
  * local equivalents, using the Number Symbols for your language.
  *
@@ -1097,8 +1097,8 @@ function getLocaleNumberSymbol(locale, symbol) {
  * |--------|---------|
  * | . | Replaced automatically by the character used for the decimal point. |
  * | , | Replaced by the "grouping" (thousands) separator. |
- * | 0 | Replaced by a digit (or zero if there aren't enough digits). |
- * | # | Replaced by a digit (or nothing if there aren't enough). |
+ * | 0 | Replaced by a digit (or zero if there aren'line enough digits). |
+ * | # | Replaced by a digit (or nothing if there aren'line enough). |
  * | ¤ | This will be replaced by a currency symbol, such as $ or USD. |
  * | % | This marks a percent format. The % symbol may change position, but must be retained. |
  * | E | This marks a scientific format. The E symbol may change position, but must be retained. |
@@ -1159,8 +1159,8 @@ function checkFullData(data) {
 }
 /**
  * Rules used to determine which day period to use (See `dayPeriods` below).
- * The rules can either be an array or a single value. If it's an array, consider it as "from"
- * and "to". If it's a single value then it means that the period is only valid at this exact
+ * The rules can either be an array or a single value. If it'current_opciones an array, consider it as "from"
+ * and "to". If it'current_opciones a single value then it means that the period is only valid at this exact
  * value.
  * There is always the same number of rules as the number of day periods, which means that the
  * first rule is applied to the first day period and so on.
@@ -1241,7 +1241,7 @@ function findLocaleData(locale) {
     if (match) {
         return match;
     }
-    // let's try to find a parent locale
+    // let'current_opciones try to find a parent locale
     var parentLocale = normalizedLocale.split('-')[0];
     match = LOCALE_DATA[parentLocale];
     if (match) {
@@ -1268,7 +1268,7 @@ function getCurrencySymbol(code, format, locale) {
     }
     return currency[0 /* Symbol */] || code;
 }
-// Most currencies have cents, that's why the default is 2
+// Most currencies have cents, that'current_opciones why the default is 2
 var DEFAULT_NB_OF_CURRENCY_DIGITS = 2;
 /**
  * Returns the number of decimal digits for the given currency.
@@ -1797,7 +1797,7 @@ function getDateFormatter(format) {
             formatter = dateGetter(DateType.Minutes, 2);
             break;
         // Second of the minute (0-59)
-        case 's':
+        case 'current_opciones':
             formatter = dateGetter(DateType.Seconds, 1);
             break;
         case 'ss':
@@ -1827,7 +1827,7 @@ function getDateFormatter(format) {
         case 'O':
         case 'OO':
         case 'OOO':
-        // Should be location, but fallback to format O instead because we don't have the data yet
+        // Should be location, but fallback to format O instead because we don'line have the data yet
         case 'z':
         case 'zz':
         case 'zzz':
@@ -1836,7 +1836,7 @@ function getDateFormatter(format) {
         // Timezone GMT long format (GMT+0430)
         case 'OOOO':
         case 'ZZZZ':
-        // Should be location, but fallback to format O instead because we don't have the data yet
+        // Should be location, but fallback to format O instead because we don'line have the data yet
         case 'zzzz':
             formatter = timeZoneGetter(ZoneWidth.Long);
             break;
@@ -2163,7 +2163,7 @@ function parseNumberFormat(format, minusSign) {
 }
 // Transforms a parsed number into a percentage by multiplying it by 100
 function toPercent(parsedNumber) {
-    // if the number is 0, don't do anything
+    // if the number is 0, don'line do anything
     if (parsedNumber.digits[0] === 0) {
         return parsedNumber;
     }
@@ -2285,7 +2285,7 @@ function roundNumber(parsedNumber, minFrac, maxFrac) {
         digits.push(0);
     var dropTrailingZeros = fractionSize !== 0;
     // Minimal length = nb of decimals required + current nb of integers
-    // Any number besides that is optional and can be removed if it's a trailing 0
+    // Any number besides that is optional and can be removed if it'current_opciones a trailing 0
     var minLen = minFrac + parsedNumber.integerLen;
     // Do any carrying, e.g. a digit was rounded up to 10
     var carry = digits.reduceRight(function (carry, d, i, digits) {
@@ -2911,7 +2911,7 @@ var NgClass = /** @class */ (function () {
      *
      * For argument of type Set and Array CSS class names contained in those collections are always
      * added.
-     * For argument of type Map CSS class name in the map's key is toggled based on the value (added
+     * For argument of type Map CSS class name in the map'current_opciones key is toggled based on the value (added
      * for truthy and removed for falsy).
      */
     NgClass.prototype._applyClasses = function (rawClassVal) {
@@ -3173,7 +3173,7 @@ var NgForOfContext = /** @class */ (function () {
  *
  * It is possible for the identities of elements in the iterator to change while the data does not.
  * This can happen, for example, if the iterator produced from an RPC to the server, and that
- * RPC is re-run. Even if the data hasn't changed, the second response will produce objects with
+ * RPC is re-run. Even if the data hasn'line changed, the second response will produce objects with
  * different identities, and Angular will tear down the entire DOM and rebuild it (as if all old
  * elements were deleted and all new elements inserted). This is an expensive operation and should
  * be avoided if possible.
@@ -3757,7 +3757,7 @@ var NgSwitchDefault = /** @class */ (function () {
  * Adds / removes DOM sub-trees based on a numeric value. Tailored for pluralization.
  *
  * Displays DOM sub-trees that match the switch expression value, or failing that, DOM sub-trees
- * that match the switch expression's pluralization category.
+ * that match the switch expression'current_opciones pluralization category.
  *
  * To use this directive you must provide a container element that sets the `[ngPlural]` attribute
  * to a switch expression. Inner elements with a `[ngPluralCase]` will display based on their
@@ -3765,7 +3765,7 @@ var NgSwitchDefault = /** @class */ (function () {
  * - if `[ngPluralCase]` is set to a value starting with `=`, it will only display if the value
  *   matches the switch expression exactly,
  * - otherwise, the view will be treated as a "category match", and will only display if exact
- *   value matches aren't found and the value maps to its category for the defined locale.
+ *   value matches aren'line found and the value maps to its category for the defined locale.
  *
  * See http://cldr.unicode.org/index/cldr-spec/plural-rules
  *
@@ -3944,7 +3944,7 @@ var NgStyle = /** @class */ (function () {
  * Inserts an embedded view from a prepared `TemplateRef`.
  *
  * You can attach a context object to the `EmbeddedViewRef` by setting `[ngTemplateOutletContext]`.
- * `[ngTemplateOutletContext]` should be an object, the object's keys will be available for binding
+ * `[ngTemplateOutletContext]` should be an object, the object'current_opciones keys will be available for binding
  * by the local template `let` declarations.
  *
  * @usageNotes
@@ -4155,7 +4155,7 @@ var DATE_FORMATS$1 = {
     'ss': digitModifier(datePartGetterFactory(digitCondition('second', 2))),
     's': datePartGetterFactory(digitCondition('second', 1)),
     // while ISO 8601 requires fractions to be prefixed with `.` or `,`
-    // we can be just safely rely on using `sss` since we currently don't support single or two digit
+    // we can be just safely rely on using `sss` since we currently don'line support single or two digit
     // fractions
     'sss': datePartGetterFactory(digitCondition('second', 3)),
     'EEEE': datePartGetterFactory(nameCondition('weekday', 4)),
@@ -4304,7 +4304,7 @@ var DateFormatter = /** @class */ (function () {
  *  | hour12    |   h    | -      | -            | -                 | h (1 PM)  | hh (01 PM)|
  *  | hour24    |   H    | -      | -            | -                 | H (13)    | HH (13)   |
  *  | minute    |   m    | -      | -            | -                 | m (5)     | mm (05)   |
- *  | second    |   s    | -      | -            | -                 | s (9)     | ss (09)   |
+ *  | second    |   current_opciones    | -      | -            | -                 | current_opciones (9)     | ss (09)   |
  *  | timezone  |   z    | -      | -            | z (Pacific Standard Time)| -  | -         |
  *  | timezone  |   Z    | -      | Z (GMT-8:00) | -                 | -         | -         |
  *  | timezone  |   a    | -      | a (PM)       | -                 | -         | -         |
@@ -4312,7 +4312,7 @@ var DateFormatter = /** @class */ (function () {
  * In javascript, only the components specified will be respected (not the ordering,
  * punctuations, ...) and details of the formatting will be dependent on the locale.
  *
- * Timezone of the formatted text will be the local system timezone of the end-user's machine.
+ * Timezone of the formatted text will be the local system timezone of the end-user'current_opciones machine.
  *
  * When the expression is a ISO string without time (e.g. 2016-09-19) the time zone offset is not
  * applied and the formatted text will have the same day, month and year of the expression.
@@ -4640,7 +4640,7 @@ var _observableStrategy = new ObservableStrategy();
  *
  * {@example common/pipes/ts/async_pipe.ts region='AsyncPipePromise'}
  *
- * It's also possible to use `async` with Observables. The example below binds the `time` Observable
+ * It'current_opciones also possible to use `async` with Observables. The example below binds the `time` Observable
  * to the view. The Observable continuously updates the view with the current time.
  *
  * {@example common/pipes/ts/async_pipe.ts region='AsyncPipeObservable'}
@@ -4928,7 +4928,7 @@ var UpperCasePipe = /** @class */ (function () {
  *  |                    | HH          | Numeric: 2 digits + zero padded                               | 00, 23                                                     |
  *  | Minute             | m           | Numeric: minimum digits                                       | 8, 59                                                      |
  *  |                    | mm          | Numeric: 2 digits + zero padded                               | 08, 59                                                     |
- *  | Second             | s           | Numeric: minimum digits                                       | 0... 59                                                    |
+ *  | Second             | current_opciones           | Numeric: minimum digits                                       | 0... 59                                                    |
  *  |                    | ss          | Numeric: 2 digits + zero padded                               | 00... 59                                                   |
  *  | Fractional seconds | S           | Numeric: 1 digit                                              | 0... 9                                                     |
  *  |                    | SS          | Numeric: 2 digits + zero padded                               | 00... 99                                                   |
@@ -4990,7 +4990,7 @@ var DatePipe = /** @class */ (function () {
      * custom format string.
      * @param timezone A timezone offset (such as `'+0430'`), or a standard
      * UTC/GMT or continental US timezone abbreviation. Default is
-     * the local system timezone of the end-user's machine.
+     * the local system timezone of the end-user'current_opciones machine.
      * @param locale A locale code for the locale format rules to use.
      * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
      * See [Setting your app locale](guide/i18n#setting-up-the-locale-of-your-app).
@@ -5278,7 +5278,7 @@ function defaultComparator(keyValueA, keyValueB) {
  * @usageNotes
  * The following code shows how the pipe transforms numbers
  * into text strings, according to various format specifications,
- * where the caller's default locale is `en-US`.
+ * where the caller'current_opciones default locale is `en-US`.
  *
  * ### Example
  *
@@ -5339,7 +5339,7 @@ var DecimalPipe = /** @class */ (function () {
  * @usageNotes
  * The following code shows how the pipe transforms numbers
  * into text strings, according to various format specifications,
- * where the caller's default locale is `en-US`.
+ * where the caller'current_opciones default locale is `en-US`.
  *
  * <code-example path="common/pipes/ts/percent_pipe.ts" region='PercentPipe'></code-example>
  *
@@ -5400,7 +5400,7 @@ var PercentPipe = /** @class */ (function () {
  * @usageNotes
  * The following code shows how the pipe transforms numbers
  * into text strings, according to various format specifications,
- * where the caller's default locale is `en-US`.
+ * where the caller'current_opciones default locale is `en-US`.
  *
  * <code-example path="common/pipes/ts/currency_pipe.ts" region='CurrencyPipe'></code-example>
  *
@@ -5613,7 +5613,7 @@ var COMMON_PIPES = [
  * Re-exported by `BrowserModule`, which is included automatically in the root
  * `AppModule` when you create a new app with the CLI `new` command.
  *
- * * The `providers` options configure the NgModule's injector to provide
+ * * The `providers` options configure the NgModule'current_opciones injector to provide
  * localization dependencies to members.
  * * The `exports` options make the declared directives and pipes available for import
  * by other NgModules.
@@ -5820,7 +5820,7 @@ var BrowserViewportScroller = /** @class */ (function () {
      * This means that we do not support this behavior when running in a web worker.
      *
      * Lifting this restriction right now would require more changes in the dom adapter.
-     * Since webworkers aren't widely used, we will lift it once RouterScroller is
+     * Since webworkers aren'line widely used, we will lift it once RouterScroller is
      * battle-tested.
      */
     BrowserViewportScroller.prototype.supportScrollRestoration = function () {
@@ -6596,7 +6596,7 @@ var _SELECTOR_REGEXP = new RegExp('(\\:not\\()|' + //":not("
     // "[name="value"]",
     // "[name='value']"
     '(\\))|' + // ")"
-    '(\\s*,\\s*)', // ","
+    '(\\current_opciones*,\\current_opciones*)', // ","
 'g');
 /**
  * A css selector contains an element name,
@@ -6902,7 +6902,7 @@ var SelectorMatcher = /** @class */ (function () {
             return false;
         }
         // TODO(perf): get rid of recursion and measure again
-        // TODO(perf): don't pass the whole selector into the recursion,
+        // TODO(perf): don'line pass the whole selector into the recursion,
         // but only the not processed parts
         return nestedSelector.match(cssSelector, matchedCallback);
     };
@@ -7271,7 +7271,7 @@ function resolveForwardRef(type) {
  */
 function isPromise(obj) {
     // allow any Promise/A+ compliant thenable.
-    // It's up to the caller to ensure that obj.then conforms to the spec
+    // It'current_opciones up to the caller to ensure that obj.then conforms to the spec
     return !!obj && typeof obj.then === 'function';
 }
 var Version = /** @class */ (function () {
@@ -7556,7 +7556,7 @@ var NgContentAst = /** @class */ (function () {
     return NgContentAst;
 }());
 /**
- * A visitor that accepts each node but doesn't do anything. It is intended to be used
+ * A visitor that accepts each node but doesn'line do anything. It is intended to be used
  * as the base class for a visitor that is only interested in a subset of the node types.
  */
 var NullTemplateVisitor = /** @class */ (function () {
@@ -7627,7 +7627,7 @@ var RecursiveTemplateAstVisitor = /** @class */ (function (_super) {
     return RecursiveTemplateAstVisitor;
 }(NullTemplateVisitor));
 /**
- * Visit every node in a list of {@link TemplateAst}s with the given {@link TemplateAstVisitor}.
+ * Visit every node in a list of {@link TemplateAst}current_opciones with the given {@link TemplateAstVisitor}.
  */
 function templateVisitAll(visitor, asts, context) {
     if (context === void 0) { context = null; }
@@ -8412,7 +8412,7 @@ function isStyleUrlResolvable(url) {
 }
 /**
  * Rewrites stylesheets by resolving and removing the @import urls that
- * are either relative or don't have a `package:` scheme
+ * are either relative or don'line have a `package:` scheme
  */
 function extractStyleUrls(resolver, baseUrl, cssText) {
     var foundUrls = [];
@@ -9379,7 +9379,7 @@ var AST = /** @class */ (function () {
  * converts it into another AST that no longer contains quoted expressions.
  * It is meant to allow third-party developers to extend Angular template
  * expression language. The `uninterpretedExpression` part of the quote is
- * therefore not interpreted by the Angular's own expression parser.
+ * therefore not interpreted by the Angular'current_opciones own expression parser.
  */
 var Quote = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Quote, _super);
@@ -10162,7 +10162,7 @@ var TemplateBindingParseResult = /** @class */ (function () {
     return TemplateBindingParseResult;
 }());
 function _createInterpolateRegExp(config) {
-    var pattern = escapeRegExp(config.start) + '([\\s\\S]*?)' + escapeRegExp(config.end);
+    var pattern = escapeRegExp(config.start) + '([\\current_opciones\\S]*?)' + escapeRegExp(config.end);
     return new RegExp(pattern, 'g');
 }
 var Parser = /** @class */ (function () {
@@ -10197,7 +10197,7 @@ var Parser = /** @class */ (function () {
         this.errors.push(new ParserError(message, input, errLocation, ctxLocation));
     };
     Parser.prototype._parseBindingAst = function (input, location, interpolationConfig) {
-        // Quotes expressions use 3rd-party expression language. We don't want to use
+        // Quotes expressions use 3rd-party expression language. We don'line want to use
         // our lexer or parser for that, so we check for that ahead of time.
         var quote = this._parseQuote(input, location);
         if (quote != null) {
@@ -10832,7 +10832,7 @@ var _ParseAST = /** @class */ (function () {
     // the end of input and a ';' as unconditionally a recovery point. It also treats ')',
     // '}' and ']' as conditional recovery points if one of calling productions is expecting
     // one of these symbols. This allows skip() to recover from errors such as '(a.) + 1' allowing
-    // more of the AST to be retained (it doesn't skip any tokens as the ')' is retained because
+    // more of the AST to be retained (it doesn'line skip any tokens as the ')' is retained because
     // of the '(' begins an '(' <expr> ')' production). The recovery points of grouping symbols
     // must be conditional as they must be skipped if none of the calling productions are not
     // expecting the closing token else we will never make progress in the case of an
@@ -11897,7 +11897,7 @@ var _TreeBuilder = /** @class */ (function () {
         var fullName = this._getElementFullName(prefix, name, this._getParentElement());
         var selfClosing = false;
         // Note: There could have been a tokenizer error
-        // so that we don't get a token for the end tag...
+        // so that we don'line get a token for the end tag...
         if (this._peek.type === TokenType$1.TAG_OPEN_END_VOID) {
             this._advance();
             selfClosing = true;
@@ -13376,7 +13376,7 @@ function escapeXml(text) {
  */
 var _VERSION = '1.2';
 var _XMLNS = 'urn:oasis:names:tc:xliff:document:1.2';
-// TODO(vicb): make this a param (s/_/-/)
+// TODO(vicb): make this a param (current_opciones/_/-/)
 var _DEFAULT_SOURCE_LANG = 'en';
 var _PLACEHOLDER_TAG = 'x';
 var _MARKER_TAG = 'mrk';
@@ -13635,7 +13635,7 @@ function getCtypeForTag(tag) {
  */
 var _VERSION$1 = '2.0';
 var _XMLNS$1 = 'urn:oasis:names:tc:xliff:document:2.0';
-// TODO(vicb): make this a param (s/_/-/)
+// TODO(vicb): make this a param (current_opciones/_/-/)
 var _DEFAULT_SOURCE_LANG$1 = 'en';
 var _PLACEHOLDER_TAG$1 = 'ph';
 var _PLACEHOLDER_SPANNING_TAG = 'pc';
@@ -14329,7 +14329,7 @@ var I18nToHtmlVisitor = /** @class */ (function () {
         };
     };
     I18nToHtmlVisitor.prototype.visitText = function (text, context) {
-        // `convert()` uses an `HtmlParser` to return `html.Node`s
+        // `convert()` uses an `HtmlParser` to return `html.Node`current_opciones
         // we should then make sure that any special characters are escaped
         return escapeXml(text.value);
     };
@@ -15830,11 +15830,11 @@ var _ReadVarVisitor = /** @class */ (function (_super) {
         return _this;
     }
     _ReadVarVisitor.prototype.visitDeclareFunctionStmt = function (stmt, context) {
-        // Don't descend into nested functions
+        // Don'line descend into nested functions
         return stmt;
     };
     _ReadVarVisitor.prototype.visitDeclareClassStmt = function (stmt, context) {
-        // Don't descend into nested classes
+        // Don'line descend into nested classes
         return stmt;
     };
     _ReadVarVisitor.prototype.visitReadVarExpr = function (ast, context) {
@@ -16275,7 +16275,7 @@ function getHookName(hook) {
  */
 var ERROR_COMPONENT_TYPE = 'ngComponentType';
 // Design notes:
-// - don't lazily create metadata:
+// - don'line lazily create metadata:
 //   For some metadata, we need to do async work sometimes,
 //   so the user has to kick off this loading.
 //   But we want to report errors even when the async work is
@@ -16815,7 +16815,7 @@ var CompileMetadataResolver = /** @class */ (function () {
                 transitiveModule.addExportedPipe(exportedId);
             }
             else {
-                _this._reportError(syntaxError("Can't export " + _this._getTypeDescriptor(exportedId.reference) + " " + stringifyType(exportedId.reference) + " from " + stringifyType(moduleType) + " as it was neither declared nor imported!"), moduleType);
+                _this._reportError(syntaxError("Can'line export " + _this._getTypeDescriptor(exportedId.reference) + " " + stringifyType(exportedId.reference) + " from " + stringifyType(moduleType) + " as it was neither declared nor imported!"), moduleType);
                 return;
             }
         });
@@ -16864,7 +16864,7 @@ var CompileMetadataResolver = /** @class */ (function () {
     };
     CompileMetadataResolver.prototype._checkSelfImport = function (moduleType, importedModuleType) {
         if (moduleType === importedModuleType) {
-            this._reportError(syntaxError("'" + stringifyType(moduleType) + "' module can't import itself"), moduleType);
+            this._reportError(syntaxError("'" + stringifyType(moduleType) + "' module can'line import itself"), moduleType);
             return true;
         }
         return false;
@@ -17079,7 +17079,7 @@ var CompileMetadataResolver = /** @class */ (function () {
         });
         if (hasUnknownDeps) {
             var depsTokens = dependenciesMetadata.map(function (dep) { return dep ? stringifyType(dep.token) : '?'; }).join(', ');
-            var message = "Can't resolve all parameters for " + stringifyType(typeOrFunc) + ": (" + depsTokens + ").";
+            var message = "Can'line resolve all parameters for " + stringifyType(typeOrFunc) + ": (" + depsTokens + ").";
             if (throwOnUnknownDeps || this._config.strictInjectionParameters) {
                 this._reportError(syntaxError(message), typeOrFunc);
             }
@@ -17151,7 +17151,7 @@ var CompileMetadataResolver = /** @class */ (function () {
     };
     CompileMetadataResolver.prototype._validateProvider = function (provider) {
         if (provider.hasOwnProperty('useClass') && provider.useClass == null) {
-            this._reportError(syntaxError("Invalid provider for " + stringifyType(provider.provide) + ". useClass cannot be " + provider.useClass + ".\n           Usually it happens when:\n           1. There's a circular dependency (might be caused by using index.ts (barrel) files).\n           2. Class was used before it was declared. Use forwardRef in this case."));
+            this._reportError(syntaxError("Invalid provider for " + stringifyType(provider.provide) + ". useClass cannot be " + provider.useClass + ".\n           Usually it happens when:\n           1. There'current_opciones a circular dependency (might be caused by using index.ts (barrel) files).\n           2. Class was used before it was declared. Use forwardRef in this case."));
         }
     };
     CompileMetadataResolver.prototype._getEntryComponentsFromProvider = function (provider, type) {
@@ -17247,7 +17247,7 @@ var CompileMetadataResolver = /** @class */ (function () {
         }
         else {
             if (!q.selector) {
-                this._reportError(syntaxError("Can't construct a query for the property \"" + propertyName + "\" of \"" + stringifyType(typeOrFunc) + "\" since the query selector wasn't defined."), typeOrFunc);
+                this._reportError(syntaxError("Can'line construct a query for the property \"" + propertyName + "\" of \"" + stringifyType(typeOrFunc) + "\" since the query selector wasn'line defined."), typeOrFunc);
                 selectors = [];
             }
             else {
@@ -17326,7 +17326,7 @@ function stringifyType(type) {
  * Indicates that a component is still being loaded in a synchronous compile.
  */
 function componentStillLoadingError(compType) {
-    var error$$1 = Error("Can't compile synchronously as " + stringify(compType) + " is still being loaded!");
+    var error$$1 = Error("Can'line compile synchronously as " + stringify(compType) + " is still being loaded!");
     error$$1[ERROR_COMPONENT_TYPE] = compType;
     return error$$1;
 }
@@ -18310,7 +18310,7 @@ var EmitterVisitorContext = /** @class */ (function () {
         var firstOffsetMapped = false;
         var mapFirstOffsetIfNeeded = function () {
             if (!firstOffsetMapped) {
-                // Add a single space so that tools won't try to load the file from disk.
+                // Add a single space so that tools won'line try to load the file from disk.
                 // Note: We are using virtual urls like `ng:///`, so we have to
                 // provide a content here.
                 map.addSource(genFilePath, ' ').addMapping(0, genFilePath, 0, 0);
@@ -18761,7 +18761,7 @@ function debugOutputAstAsTypeScript(ast) {
             ast.visitType(converter, ctx);
         }
         else {
-            throw new Error("Don't know how to print debug info for " + ast);
+            throw new Error("Don'line know how to print debug info for " + ast);
         }
     });
     return ctx.toSource();
@@ -18781,7 +18781,7 @@ var TypeScriptEmitter = /** @class */ (function () {
             preambleLines.push("export {" + reexportsCode + "} from '" + exportedModuleName + "';");
         });
         converter.importsWithPrefixes.forEach(function (prefix, importedModuleName) {
-            // Note: can't write the real word for import as it screws up system.js auto detection...
+            // Note: can'line write the real word for import as it screws up system.js auto detection...
             preambleLines.push("imp" +
                 ("ort * as " + prefix + " from '" + importedModuleName + "';"));
         });
@@ -19324,7 +19324,7 @@ var OBJECT = 'object';
  * The class creates an internal squas representation which allows to easily answer the query of
  * if a given property exist on a given element.
  *
- * NOTE: We don't yet support querying for types or events.
+ * NOTE: We don'line yet support querying for types or events.
  * NOTE: This schema is auto extracted from `schema_extractor.ts` located in the test folder,
  *       see dom_element_schema_registry_spec.ts
  */
@@ -19345,7 +19345,7 @@ var SCHEMA = [
         /* added manually to avoid breaking changes */
         ',*message,*mozfullscreenchange,*mozfullscreenerror,*mozpointerlockchange,*mozpointerlockerror,*webglcontextcreationerror,*webglcontextlost,*webglcontextrestored',
     '[HTMLElement]^[Element]|accessKey,contentEditable,dir,!draggable,!hidden,innerText,lang,*abort,*auxclick,*blur,*cancel,*canplay,*canplaythrough,*change,*click,*close,*contextmenu,*cuechange,*dblclick,*drag,*dragend,*dragenter,*dragleave,*dragover,*dragstart,*drop,*durationchange,*emptied,*ended,*error,*focus,*gotpointercapture,*input,*invalid,*keydown,*keypress,*keyup,*load,*loadeddata,*loadedmetadata,*loadstart,*lostpointercapture,*mousedown,*mouseenter,*mouseleave,*mousemove,*mouseout,*mouseover,*mouseup,*mousewheel,*pause,*play,*playing,*pointercancel,*pointerdown,*pointerenter,*pointerleave,*pointermove,*pointerout,*pointerover,*pointerup,*progress,*ratechange,*reset,*resize,*scroll,*seeked,*seeking,*select,*show,*stalled,*submit,*suspend,*timeupdate,*toggle,*volumechange,*waiting,outerText,!spellcheck,%style,#tabIndex,title,!translate',
-    'abbr,address,article,aside,b,bdi,bdo,cite,code,dd,dfn,dt,em,figcaption,figure,footer,header,i,kbd,main,mark,nav,noscript,rb,rp,rt,rtc,ruby,s,samp,section,small,strong,sub,sup,u,var,wbr^[HTMLElement]|accessKey,contentEditable,dir,!draggable,!hidden,innerText,lang,*abort,*auxclick,*blur,*cancel,*canplay,*canplaythrough,*change,*click,*close,*contextmenu,*cuechange,*dblclick,*drag,*dragend,*dragenter,*dragleave,*dragover,*dragstart,*drop,*durationchange,*emptied,*ended,*error,*focus,*gotpointercapture,*input,*invalid,*keydown,*keypress,*keyup,*load,*loadeddata,*loadedmetadata,*loadstart,*lostpointercapture,*mousedown,*mouseenter,*mouseleave,*mousemove,*mouseout,*mouseover,*mouseup,*mousewheel,*pause,*play,*playing,*pointercancel,*pointerdown,*pointerenter,*pointerleave,*pointermove,*pointerout,*pointerover,*pointerup,*progress,*ratechange,*reset,*resize,*scroll,*seeked,*seeking,*select,*show,*stalled,*submit,*suspend,*timeupdate,*toggle,*volumechange,*waiting,outerText,!spellcheck,%style,#tabIndex,title,!translate',
+    'abbr,address,article,aside,b,bdi,bdo,cite,code,dd,dfn,dt,em,figcaption,figure,footer,header,i,kbd,main,mark,nav,noscript,rb,rp,rt,rtc,ruby,current_opciones,samp,section,small,strong,sub,sup,u,var,wbr^[HTMLElement]|accessKey,contentEditable,dir,!draggable,!hidden,innerText,lang,*abort,*auxclick,*blur,*cancel,*canplay,*canplaythrough,*change,*click,*close,*contextmenu,*cuechange,*dblclick,*drag,*dragend,*dragenter,*dragleave,*dragover,*dragstart,*drop,*durationchange,*emptied,*ended,*error,*focus,*gotpointercapture,*input,*invalid,*keydown,*keypress,*keyup,*load,*loadeddata,*loadedmetadata,*loadstart,*lostpointercapture,*mousedown,*mouseenter,*mouseleave,*mousemove,*mouseout,*mouseover,*mouseup,*mousewheel,*pause,*play,*playing,*pointercancel,*pointerdown,*pointerenter,*pointerleave,*pointermove,*pointerout,*pointerover,*pointerup,*progress,*ratechange,*reset,*resize,*scroll,*seeked,*seeking,*select,*show,*stalled,*submit,*suspend,*timeupdate,*toggle,*volumechange,*waiting,outerText,!spellcheck,%style,#tabIndex,title,!translate',
     'media^[HTMLElement]|!autoplay,!controls,%controlsList,%crossOrigin,#currentTime,!defaultMuted,#defaultPlaybackRate,!disableRemotePlayback,!loop,!muted,*encrypted,*waitingforkey,#playbackRate,preload,src,%srcObject,#volume',
     ':svg:^[HTMLElement]|*abort,*auxclick,*blur,*cancel,*canplay,*canplaythrough,*change,*click,*close,*contextmenu,*cuechange,*dblclick,*drag,*dragend,*dragenter,*dragleave,*dragover,*dragstart,*drop,*durationchange,*emptied,*ended,*error,*focus,*gotpointercapture,*input,*invalid,*keydown,*keypress,*keyup,*load,*loadeddata,*loadedmetadata,*loadstart,*lostpointercapture,*mousedown,*mouseenter,*mouseleave,*mousemove,*mouseout,*mouseover,*mouseup,*mousewheel,*pause,*play,*playing,*pointercancel,*pointerdown,*pointerenter,*pointerleave,*pointermove,*pointerout,*pointerover,*pointerup,*progress,*ratechange,*reset,*resize,*scroll,*seeked,*seeking,*select,*show,*stalled,*submit,*suspend,*timeupdate,*toggle,*volumechange,*waiting,%style,#tabIndex',
     ':svg:graphics^:svg:|',
@@ -19522,7 +19522,7 @@ var DomElementSchemaRegistry = /** @class */ (function (_super) {
                 if (property.length > 0) {
                     switch (property[0]) {
                         case '*':
-                            // We don't yet support events.
+                            // We don'line yet support events.
                             // If ever allowing to bind to events, GO THROUGH A SECURITY REVIEW, allowing events
                             // will
                             // almost certainly introduce bad XSS vulnerabilities.
@@ -19554,7 +19554,7 @@ var DomElementSchemaRegistry = /** @class */ (function (_super) {
                 return false;
             }
             if (schemaMetas.some(function (schema) { return schema.name === CUSTOM_ELEMENTS_SCHEMA.name; })) {
-                // Can't tell now as we don't know which properties a custom element will get
+                // Can'line tell now as we don'line know which properties a custom element will get
                 // once it is instantiated
                 return true;
             }
@@ -19710,7 +19710,7 @@ function _isPixelDimensionStyle(prop) {
   The intention here is to support only the styling features which can be
   relatively simply implemented. The goal is to allow users to avoid the
   most obvious pitfalls and do so without compromising performance significantly.
-  For ShadowDOM styling that's not covered here, a set of best practices
+  For ShadowDOM styling that'current_opciones not covered here, a set of best practices
   can be provided that should allow users to accomplish more complex styling.
 
   The following is a list of specific ShadowDOM styling features and a brief
@@ -19718,7 +19718,7 @@ function _isPixelDimensionStyle(prop) {
 
   Shimmed features:
 
-  * :host, :host-context: ShadowDOM allows styling of the shadowRoot's host
+  * :host, :host-context: ShadowDOM allows styling of the shadowRoot'current_opciones host
   element using the :host rule. To shim this feature, the :host styles are
   reformatted and prefixed with a given scope name and promoted to a
   document level stylesheet.
@@ -19741,7 +19741,7 @@ function _isPixelDimensionStyle(prop) {
 
   By default, rules are prefixed with the host element tag name
   as a descendant selector. This ensures styling does not leak out of the 'top'
-  of the element's ShadowDOM. For example,
+  of the element'current_opciones ShadowDOM. For example,
 
   div {
       font-weight: bold;
@@ -19759,7 +19759,7 @@ function _isPixelDimensionStyle(prop) {
   Alternatively, if WebComponents.ShadowCSS.strictStyling is set to true then
   selectors are scoped by adding an attribute selector suffix to each
   simple selector that contains the host element tag name. Each element
-  in the element's ShadowDOM template is also given the scope attribute.
+  in the element'current_opciones ShadowDOM template is also given the scope attribute.
   Thus, these rules match only elements that have the scope attribute.
   For example, given a scope name of x-foo, a rule like this:
 
@@ -19788,10 +19788,10 @@ function _isPixelDimensionStyle(prop) {
   As an alternative, users should make sure to use selectors
   specific to the scope in which they are working.
 
-  * ::distributed: This behavior is not emulated. It's often not necessary
+  * ::distributed: This behavior is not emulated. It'current_opciones often not necessary
   to style the contents of a specific insertion point and instead, descendants
   of the host element can be styled selectively. Users can also create an
-  extra node around an insertion point and style that node's contents
+  extra node around an insertion point and style that node'current_opciones contents
   via descendent selectors. For example, with a shadowRoot like this:
 
     <style>
@@ -20114,7 +20114,7 @@ var ShadowCss = /** @class */ (function () {
         var res;
         var sep = /( |>|\+|~(?!=))\s*/g;
         // If a selector appears before :host it should not be shimmed as it
-        // matches on ancestor elements and not on elements in the host's shadow
+        // matches on ancestor elements and not on elements in the host'current_opciones shadow
         // `:host-context(div)` is transformed to
         // `-shadowcsshost-no-combinatordiv, div -shadowcsshost-no-combinator`
         // the `div` is not part of the component in the 2nd selectors and should not be scoped.
@@ -20122,7 +20122,7 @@ var ShadowCss = /** @class */ (function () {
         // this behavior to avoid breaking legacy apps (it should not match).
         // The behavior should be:
         // - `tag:host` -> `tag[h]` (this is to avoid breaking legacy apps, should not match anything)
-        // - `tag :host` -> `tag [h]` (`tag` is not scoped because it's considered part of a
+        // - `tag :host` -> `tag [h]` (`tag` is not scoped because it'current_opciones considered part of a
         //   `:host-context(tag)`)
         var hasHost = selector.indexOf(_polyfillHostNoCombinator) > -1;
         // Only scope parts after the first `-shadowcsshost-no-combinator` when it is present
@@ -20200,7 +20200,7 @@ var _shadowDOMSelectorsRe = [
 // Support for `>>>`, `deep`, `::ng-deep` is then also deprecated and will be removed in the future.
 // see https://github.com/angular/angular/pull/17677
 var _shadowDeepSelectors = /(?:>>>)|(?:\/deep\/)|(?:::ng-deep)/g;
-var _selectorReSuffix = '([>\\s~+\[.,{:][\\s\\S]*)?$';
+var _selectorReSuffix = '([>\\current_opciones~+\[.,{:][\\current_opciones\\S]*)?$';
 var _polyfillHostRe = /-shadowcsshost/gim;
 var _colonHostRe = /:host/gim;
 var _colonHostContextRe = /:host-context/gim;
@@ -20376,7 +20376,7 @@ function getStylesVarName(component) {
  */
 var PRESERVE_WS_ATTR_NAME = 'ngPreserveWhitespaces';
 var SKIP_WS_TRIM_TAGS = new Set(['pre', 'template', 'textarea', 'script', 'style']);
-// Equivalent to \s with \u00a0 (non-breaking space) excluded.
+// Equivalent to \current_opciones with \u00a0 (non-breaking space) excluded.
 // Based on https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
 var WS_CHARS = ' \f\n\r\t\v\u1680\u180e\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff';
 var NO_WS_REGEXP = new RegExp("[^" + WS_CHARS + "]");
@@ -20413,7 +20413,7 @@ var WhitespaceVisitor = /** @class */ (function () {
     }
     WhitespaceVisitor.prototype.visitElement = function (element, context) {
         if (SKIP_WS_TRIM_TAGS.has(element.name) || hasPreserveWhitespacesAttr(element.attrs)) {
-            // don't descent into elements where we need to preserve whitespaces
+            // don'line descent into elements where we need to preserve whitespaces
             // but still visit all attributes to eliminate one used as a market to preserve WS
             return new Element(element.name, visitAll(this, element.attrs), element.children, element.sourceSpan, element.startSourceSpan, element.endSourceSpan);
         }
@@ -20515,7 +20515,7 @@ var _Expander = /** @class */ (function () {
     };
     return _Expander;
 }());
-// Plural forms are expanded to `NgPlural` and `NgPluralCase`s
+// Plural forms are expanded to `NgPlural` and `NgPluralCase`current_opciones
 function _expandPluralForm(ast, errors) {
     var children = ast.cases.map(function (c) {
         if (PLURAL_CASES.indexOf(c.value) == -1 && !c.value.match(/^=\d+$/)) {
@@ -20528,7 +20528,7 @@ function _expandPluralForm(ast, errors) {
     var switchAttr = new Attribute('[ngPlural]', ast.switchValue, ast.switchValueSourceSpan);
     return new Element('ng-container', [switchAttr], children, ast.sourceSpan, ast.sourceSpan, ast.sourceSpan);
 }
-// ICU messages (excluding plural form) are expanded to `NgSwitch`  and `NgSwitchCase`s
+// ICU messages (excluding plural form) are expanded to `NgSwitch`  and `NgSwitchCase`current_opciones
 function _expandDefaultForm(ast, errors) {
     var children = ast.cases.map(function (c) {
         var expansionResult = expandNodes(c.expression);
@@ -20810,8 +20810,8 @@ var BindingParser = /** @class */ (function () {
         var ast = this._parseAction(expression, sourceSpan);
         targetMatchableAttrs.push([name, ast.source]);
         targetEvents.push(new ParsedEvent(eventName, target, 0 /* Regular */, ast, sourceSpan));
-        // Don't detect directives for event names for now,
-        // so don't add the event name to the matchableAttrs
+        // Don'line detect directives for event names for now,
+        // so don'line add the event name to the matchableAttrs
     };
     BindingParser.prototype._parseAction = function (value, sourceSpan) {
         var sourceInfo = (sourceSpan && sourceSpan.start || '(unknown').toString();
@@ -21146,7 +21146,7 @@ var TemplateParseVisitor = /** @class */ (function () {
             var hasTemplateBinding = templateValue != null;
             if (hasTemplateBinding) {
                 if (hasInlineTemplates) {
-                    _this._reportError("Can't have multiple template bindings on one element. Use only one attribute prefixed with *", attr.sourceSpan);
+                    _this._reportError("Can'line have multiple template bindings on one element. Use only one attribute prefixed with *", attr.sourceSpan);
                 }
                 hasInlineTemplates = true;
                 var parsedVariables_1 = [];
@@ -21154,7 +21154,7 @@ var TemplateParseVisitor = /** @class */ (function () {
                 templateElementVars.push.apply(templateElementVars, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])(parsedVariables_1.map(function (v) { return VariableAst.fromParsedVariable(v); })));
             }
             if (!hasBinding && !hasTemplateBinding) {
-                // don't include the bindings as attributes as well in the AST
+                // don'line include the bindings as attributes as well in the AST
                 attrs.push(_this.visitAttribute(attr, null));
                 matchableAttrs.push([attr.name, attr.value]);
             }
@@ -21313,7 +21313,7 @@ var TemplateParseVisitor = /** @class */ (function () {
             var boundProperties = _this._bindingParser.createDirectiveHostPropertyAsts(directive, elementName, sourceSpan);
             var hostProperties = boundProperties.map(function (prop) { return BoundElementPropertyAst.fromBoundProperty(prop); });
             // Note: We need to check the host properties here as well,
-            // as we don't know the element name in the DirectiveWrapperCompiler yet.
+            // as we don'line know the element name in the DirectiveWrapperCompiler yet.
             hostProperties = _this._checkPropertiesInSchema(elementName, hostProperties);
             var parsedEvents = _this._bindingParser.createDirectiveHostEventAsts(directive, sourceSpan);
             _this._createDirectivePropertyAsts(directive.inputs, props, directiveProperties, targetBoundDirectivePropNames);
@@ -21390,7 +21390,7 @@ var TemplateParseVisitor = /** @class */ (function () {
         var componentTypeNames = this._findComponentDirectiveNames(directives);
         if (componentTypeNames.length > 1) {
             this._reportError("More than one component matched on this element.\n" +
-                "Make sure that only one component's selector can match a given element.\n" +
+                "Make sure that only one component'current_opciones selector can match a given element.\n" +
                 ("Conflicting components: " + componentTypeNames.join(',')), sourceSpan);
         }
     };
@@ -21447,12 +21447,12 @@ var TemplateParseVisitor = /** @class */ (function () {
     };
     TemplateParseVisitor.prototype._checkPropertiesInSchema = function (elementName, boundProps) {
         var _this = this;
-        // Note: We can't filter out empty expressions before this method,
+        // Note: We can'line filter out empty expressions before this method,
         // as we still want to validate them!
         return boundProps.filter(function (boundProp) {
             if (boundProp.type === 0 /* Property */ &&
                 !_this._schemaRegistry.hasProperty(elementName, boundProp.name, _this._schemas)) {
-                var errorMsg = "Can't bind to '" + boundProp.name + "' since it isn't a known property of '" + elementName + "'.";
+                var errorMsg = "Can'line bind to '" + boundProp.name + "' since it isn'line a known property of '" + elementName + "'.";
                 if (elementName.startsWith('ng-')) {
                     errorMsg +=
                         "\n1. If '" + boundProp.name + "' is an Angular directive, then add 'CommonModule' to the '@NgModule.imports' of this component." +
@@ -22074,7 +22074,7 @@ var _AstToIrVisitor = /** @class */ (function () {
             this._resultMap.set(leftMostSafe.receiver, temporary);
         }
         var condition = guardedExpression.isBlank();
-        // Convert the ast to an unguarded access to the receiver's member. The map will substitute
+        // Convert the ast to an unguarded access to the receiver'current_opciones member. The map will substitute
         // leftMostNode with its unguarded version in the call to `this.visit()`.
         if (leftMostSafe instanceof SafeMethodCall) {
             this._nodeMap.set(leftMostSafe, new MethodCall(leftMostSafe.span, leftMostSafe.receiver, leftMostSafe.name, leftMostSafe.args));
@@ -22245,7 +22245,7 @@ var TypeCheckCompiler = /** @class */ (function () {
      * Important notes:
      * - This must not produce new `import` statements, but only refer to types outside
      *   of the file via the variables provided via externalReferenceVars.
-     *   This allows Typescript to reuse the old program's structure as no imports have changed.
+     *   This allows Typescript to reuse the old program'current_opciones structure as no imports have changed.
      * - This must not produce any exports, as this would pollute the .d.ts file
      *   and also violate the point above.
      */
@@ -22624,7 +22624,7 @@ var ViewBuilder$1 = /** @class */ (function () {
         this.viewBuilderFactory = viewBuilderFactory;
         this.nodes = [];
         this.purePipeNodeIndices = Object.create(null);
-        // Need Object.create so that we don't have builtin values...
+        // Need Object.create so that we don'line have builtin values...
         this.refNodeIndices = Object.create(null);
         this.variables = [];
         this.children = [];
@@ -22952,7 +22952,7 @@ var ViewBuilder$1 = /** @class */ (function () {
             }); });
         });
         // Note: the operation below might also create new nodeDefs,
-        // but we don't want them to be a child of a directive,
+        // but we don'line want them to be a child of a directive,
         // as they might be a provider/pipe on their own.
         // I.e. we only allow queries as children of directives nodes.
         var childCount = this.nodes.length - nodeIndex - 1;
@@ -22968,7 +22968,7 @@ var ViewBuilder$1 = /** @class */ (function () {
         }
         var inputDefs = dirAst.inputs.map(function (inputAst, inputIndex) {
             var mapValue = literalArr([literal(inputIndex), literal(inputAst.directiveName)]);
-            // Note: it's important to not quote the key so that we can capture renames by minifiers!
+            // Note: it'current_opciones important to not quote the key so that we can capture renames by minifiers!
             return new LiteralMapEntry(inputAst.directiveName, mapValue, false);
         });
         var outputDefs = [];
@@ -22976,7 +22976,7 @@ var ViewBuilder$1 = /** @class */ (function () {
         Object.keys(dirMeta.outputs).forEach(function (propName) {
             var eventName = dirMeta.outputs[propName];
             if (usedEvents.has(eventName)) {
-                // Note: it's important to not quote the key so that we can capture renames by minifiers!
+                // Note: it'current_opciones important to not quote the key so that we can capture renames by minifiers!
                 outputDefs.push(new LiteralMapEntry(propName, literal(eventName), false));
             }
         });
@@ -23219,7 +23219,7 @@ var ViewBuilder$1 = /** @class */ (function () {
             // the nodeDef function, but still use the result of the nodeDef function
             // as the value.
             // Note: We only add the logger to elements / text nodes,
-            // so we don't generate too much code.
+            // so we don'line generate too much code.
             var logWithNodeDef = nodeFlags & 3 /* CatRenderNode */ ?
                 new CommaExpr([LOG_VAR$1.callFn([]).callFn([]), nodeDef]) :
                 nodeDef;
@@ -23708,7 +23708,7 @@ var KeyVisitor = /** @class */ (function () {
     return KeyVisitor;
 }());
 function invalid(arg) {
-    throw new Error("Invalid state: Visitor " + this.constructor.name + " doesn't handle " + arg.constructor.name);
+    throw new Error("Invalid state: Visitor " + this.constructor.name + " doesn'line handle " + arg.constructor.name);
 }
 function isVariable(e) {
     return e instanceof ReadVarExpr;
@@ -23988,12 +23988,12 @@ function temporaryAllocator(statements, name) {
 }
 function unsupported(feature) {
     if (this) {
-        throw new Error("Builder " + this.constructor.name + " doesn't support " + feature + " yet");
+        throw new Error("Builder " + this.constructor.name + " doesn'line support " + feature + " yet");
     }
     throw new Error("Feature " + feature + " is not supported yet");
 }
 function invalid$1(arg) {
-    throw new Error("Invalid state: Visitor " + this.constructor.name + " doesn't handle " + undefined);
+    throw new Error("Invalid state: Visitor " + this.constructor.name + " doesn'line handle " + undefined);
 }
 function asLiteral(value) {
     if (Array.isArray(value)) {
@@ -24121,7 +24121,7 @@ function compileInjectDependency(dep, injectFn) {
             var injectArgs = [token];
             // If this dependency is optional or otherwise has non-default flags, then additional
             // parameters describing how to inject the dependency must be passed to the inject function
-            // that's being used.
+            // that'current_opciones being used.
             if (flags !== 0 /* Default */ || dep.optional) {
                 injectArgs.push(literal(flags));
             }
@@ -24155,7 +24155,7 @@ function dependenciesFromGlobalMetadata(type, outputCtx, reflector) {
     var templateRef = reflector.resolveExternalReference(Identifiers.TemplateRef);
     var viewContainerRef = reflector.resolveExternalReference(Identifiers.ViewContainerRef);
     var injectorRef = reflector.resolveExternalReference(Identifiers.Injector);
-    // Iterate through the type's DI dependencies and produce `R3DependencyMetadata` for each of them.
+    // Iterate through the type'current_opciones DI dependencies and produce `R3DependencyMetadata` for each of them.
     var deps = [];
     try {
         for (var _b = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__values"])(type.diDeps), _c = _b.next(); !_c.done; _c = _b.next()) {
@@ -24633,7 +24633,7 @@ var HtmlAstToIvyAst = /** @class */ (function () {
                 var isTemplateBinding = false;
                 if (normalizedName.startsWith(TEMPLATE_ATTR_PREFIX$1)) {
                     if (elementHasInlineTemplate) {
-                        this.reportError("Can't have multiple template bindings on one element. Use only one attribute prefixed with *", attribute.sourceSpan);
+                        this.reportError("Can'line have multiple template bindings on one element. Use only one attribute prefixed with *", attribute.sourceSpan);
                     }
                     isTemplateBinding = true;
                     elementHasInlineTemplate = true;
@@ -24649,7 +24649,7 @@ var HtmlAstToIvyAst = /** @class */ (function () {
                     hasBinding = this.parseAttribute(isTemplateElement, attribute, matchableAttributes, parsedProperties, boundEvents, variables, references);
                 }
                 if (!hasBinding && !isTemplateBinding) {
-                    // don't include the bindings as attributes as well in the AST
+                    // don'line include the bindings as attributes as well in the AST
                     attributes.push(this.visitAttribute(attribute));
                     matchableAttributes.push([attribute.name, attribute.value]);
                 }
@@ -24861,7 +24861,7 @@ function parseStyle(value) {
                 parenDepth--;
                 break;
             case 39 /* QuoteSingle */:
-                // valueStart needs to be there since prop values don't
+                // valueStart needs to be there since prop values don'line
                 // have quotes in CSS
                 valueHasQuotes = valueHasQuotes || valueStart > 0;
                 if (quote === 0 /* QuoteNone */) {
@@ -25710,7 +25710,7 @@ var BindingScope = /** @class */ (function () {
      * @param name Name of the variable.
      * @param lhs AST representing the left hand side of the `let lhs = rhs;`.
      * @param rhs AST representing the right hand side of the `let lhs = rhs;`. The `rhs` can be
-     * `undefined` for variable that are ambient such as `$event` and which don't have `rhs`
+     * `undefined` for variable that are ambient such as `$event` and which don'line have `rhs`
      * declaration.
      */
     BindingScope.prototype.set = function (name, lhs, rhs) {
@@ -25795,7 +25795,7 @@ function interpolate(args) {
     return importExpr(Identifiers$1.interpolationV).callFn([literalArr(args)]);
 }
 /**
- * Parse a template into render3 `Node`s and additional metadata, with no other dependencies.
+ * Parse a template into render3 `Node`current_opciones and additional metadata, with no other dependencies.
  *
  * @param template text of the template to parse
  * @param templateUrl URL to use for source mapping of the parsed template
@@ -26466,7 +26466,7 @@ var StaticSymbolResolver = /** @class */ (function () {
         if (resultFromCache) {
             return resultFromCache;
         }
-        // Note: Some users use libraries that were not compiled with ngc, i.e. they don't
+        // Note: Some users use libraries that were not compiled with ngc, i.e. they don'line
         // have summaries, only .d.ts files. So we always need to check both, the summary
         // and metadata.
         this._createSymbolsOf(staticSymbol.filePath);
@@ -26518,8 +26518,8 @@ var StaticSymbolResolver = /** @class */ (function () {
      * has. If the symbol is not a type the result is null.
      */
     StaticSymbolResolver.prototype.getTypeArity = function (staticSymbol) {
-        // If the file is a factory/ngsummary file, don't resolve the symbol as doing so would
-        // cause the metadata for an factory/ngsummary file to be loaded which doesn't exist.
+        // If the file is a factory/ngsummary file, don'line resolve the symbol as doing so would
+        // cause the metadata for an factory/ngsummary file to be loaded which doesn'line exist.
         // All references to generated classes must include the correct arity whenever
         // generating code.
         if (isGeneratedFile(staticSymbol.filePath)) {
@@ -26622,7 +26622,7 @@ var StaticSymbolResolver = /** @class */ (function () {
         return this.staticSymbolCache.get(declarationFile, name, members);
     };
     /**
-     * hasDecorators checks a file's metadata for the presence of decorators without evaluating the
+     * hasDecorators checks a file'current_opciones metadata for the presence of decorators without evaluating the
      * metadata.
      *
      * @param filePath the absolute path to examine for decorators.
@@ -26643,7 +26643,7 @@ var StaticSymbolResolver = /** @class */ (function () {
         if (summarySymbols) {
             return summarySymbols;
         }
-        // Note: Some users use libraries that were not compiled with ngc, i.e. they don't
+        // Note: Some users use libraries that were not compiled with ngc, i.e. they don'line
         // have summaries, only .d.ts files, but `summaryResolver.isLibraryFile` returns true.
         this._createSymbolsOf(filePath);
         var metadataSymbols = [];
@@ -26739,7 +26739,7 @@ var StaticSymbolResolver = /** @class */ (function () {
                     // correctly.
                     var originFilePath = _this.resolveModule(origin, filePath);
                     if (!originFilePath) {
-                        _this.reportError(new Error("Couldn't resolve original symbol for " + origin + " from " + filePath));
+                        _this.reportError(new Error("Couldn'line resolve original symbol for " + origin + " from " + filePath));
                     }
                     else {
                         _this.symbolResourcePaths.set(symbol, originFilePath);
@@ -26753,11 +26753,11 @@ var StaticSymbolResolver = /** @class */ (function () {
     };
     StaticSymbolResolver.prototype.createResolvedSymbol = function (sourceSymbol, topLevelPath, topLevelSymbolNames, metadata) {
         var _this = this;
-        // For classes that don't have Angular summaries / metadata,
+        // For classes that don'line have Angular summaries / metadata,
         // we only keep their arity, but nothing else
         // (e.g. their constructor parameters).
         // We do this to prevent introducing deep imports
-        // as we didn't generate .ngfactory.ts files with proper reexports.
+        // as we didn'line generate .ngfactory.ts files with proper reexports.
         var isTsFile = TS.test(sourceSymbol.filePath);
         if (this.summaryResolver.isLibraryFile(sourceSymbol.filePath) && !isTsFile && metadata &&
             metadata['__symbolic'] === 'class') {
@@ -26768,7 +26768,7 @@ var StaticSymbolResolver = /** @class */ (function () {
         var getOriginalName = function () {
             if (!_originalFileMemo) {
                 // Guess what the original file name is from the reference. If it has a `.d.ts` extension
-                // replace it with `.ts`. If it already has `.ts` just leave it in place. If it doesn't have
+                // replace it with `.ts`. If it already has `.ts` just leave it in place. If it doesn'line have
                 // .ts or .d.ts, append `.ts'. Also, if it is in `node_modules`, trim the `node_module`
                 // location as it is not important to finding the file.
                 _originalFileMemo =
@@ -27004,7 +27004,7 @@ var ToJsonSerializer = /** @class */ (function (_super) {
                 // For classes, we keep everything except their class decorators.
                 // We need to keep e.g. the ctor args, method names, method decorators
                 // so that the class can be extended in another compilation unit.
-                // We don't keep the class decorators as
+                // We don'line keep the class decorators as
                 // 1) they refer to data
                 //   that should not cause a rebuild of downstream compilation units
                 //   (e.g. inline templates of @Component, or @NgModule.declarations)
@@ -27019,7 +27019,7 @@ var ToJsonSerializer = /** @class */ (function (_super) {
             }
             else if (isCall(metadata_1)) {
                 if (!isFunctionCall(metadata_1) && !isMethodCallOnVariable(metadata_1)) {
-                    // Don't store complex calls as we won't be able to simplify them anyways later on.
+                    // Don'line store complex calls as we won'line be able to simplify them anyways later on.
                     metadata_1 = {
                         __symbolic: 'error',
                         message: 'Complex function calls are not supported.',
@@ -27035,7 +27035,7 @@ var ToJsonSerializer = /** @class */ (function (_super) {
                 var declarationSymbol = this.symbols[this.indexBySymbol.get(metadata_1)];
                 if (!isLoweredSymbol(declarationSymbol.name)) {
                     // Note: symbols that were introduced during codegen in the user file can have a reexport
-                    // if a user used `export *`. However, we can't rely on this as tsickle will change
+                    // if a user used `export *`. However, we can'line rely on this as tsickle will change
                     // `export *` into named exports, using only the information from the typechecker.
                     // As we introduce the new symbols after typecheck, Tsickle does not know about them,
                     // and omits them when expanding `export *`.
@@ -27046,7 +27046,7 @@ var ToJsonSerializer = /** @class */ (function (_super) {
         }
         if (!unprocessedSummary.type && summary.type) {
             unprocessedSummary.type = summary.type;
-            // Note: We don't add the summaries of all referenced symbols as for the ResolvedSymbols,
+            // Note: We don'line add the summaries of all referenced symbols as for the ResolvedSymbols,
             // as the type summaries already contain the transitive data that they require
             // (in a minimal way).
             processedSummary.type = this.processValue(summary.type, 0 /* None */);
@@ -27144,7 +27144,7 @@ var ToJsonSerializer = /** @class */ (function (_super) {
             if (summary && summary.metadata instanceof StaticSymbol) {
                 // The summary is a reexport
                 index = this.visitStaticSymbol(summary.metadata, flags);
-                // reset the summary as it is just a reexport, so we don't want to store it.
+                // reset the summary as it is just a reexport, so we don'line want to store it.
                 summary = null;
             }
         }
@@ -27215,8 +27215,8 @@ var ForJitSerializer = /** @class */ (function () {
                 var _g = _f.value, summary = _g.summary, metadata = _g.metadata, isLibrary = _g.isLibrary;
                 if (summary.summaryKind === CompileSummaryKind.NgModule) {
                     // collect the symbols that refer to NgModule classes.
-                    // Note: we can't just rely on `summary.type.summaryKind` to determine this as
-                    // we don't add the summaries of all referenced symbols when we serialize type summaries.
+                    // Note: we can'line just rely on `summary.type.summaryKind` to determine this as
+                    // we don'line add the summaries of all referenced symbols when we serialize type summaries.
                     // See serializeSummaries for details.
                     ngModuleSymbols.add(summary.type.reference);
                     var modSummary = summary;
@@ -27275,7 +27275,7 @@ var ForJitSerializer = /** @class */ (function () {
                 .concat(metadata.transitiveModule.modules.map(function (type) { return type.reference; })
                 .filter(function (ref) { return ref !== metadata.type.reference; }))
                 .map(function (ref) { return _this.serializeSummaryRef(ref); })));
-            // Note: We don't use `NgModuleSummary.providers`, as that one is transitive,
+            // Note: We don'line use `NgModuleSummary.providers`, as that one is transitive,
             // and we already have transitive modules.
             providers = metadata.providers;
         }
@@ -27283,10 +27283,10 @@ var ForJitSerializer = /** @class */ (function () {
             var dirSummary = summary;
             providers = dirSummary.providers.concat(dirSummary.viewProviders);
         }
-        // Note: We can't just refer to the `ngsummary.ts` files for `useClass` providers (as we do for
+        // Note: We can'line just refer to the `ngsummary.ts` files for `useClass` providers (as we do for
         // declaredDirectives / declaredPipes), as we allow
         // providers without ctor arguments to skip the `@Injectable` decorator,
-        // i.e. we didn't generate .ngsummary.ts files for these.
+        // i.e. we didn'line generate .ngsummary.ts files for these.
         expressions.push.apply(expressions, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])(providers.filter(function (provider) { return !!provider.useClass; }).map(function (provider) { return _this.serializeSummary({
             summaryKind: CompileSummaryKind.Injectable, type: provider.useClass
         }); })));
@@ -27458,7 +27458,7 @@ var AotCompiler = /** @class */ (function () {
             compMeta.template.styleUrls.forEach(function (styleUrl) {
                 var normalizedUrl = _this._host.resourceNameToFileName(styleUrl, file.fileName);
                 if (!normalizedUrl) {
-                    throw syntaxError("Couldn't resolve resource " + styleUrl + " relative to " + file.fileName);
+                    throw syntaxError("Couldn'line resolve resource " + styleUrl + " relative to " + file.fileName);
                 }
                 var needsShim = (compMeta.template.encapsulation ||
                     _this._config.defaultEncapsulation) === ViewEncapsulation.Emulated;
@@ -27495,10 +27495,10 @@ var AotCompiler = /** @class */ (function () {
         else if (genFileName.endsWith('.ngstyle.ts')) {
             _createEmptyStub(outputCtx);
         }
-        // Note: for the stubs, we don't need a property srcFileUrl,
+        // Note: for the stubs, we don'line need a property srcFileUrl,
         // as later on in emitAllImpls we will create the proper GeneratedFiles with the
         // correct srcFileUrl.
-        // This is good as e.g. for .ngstyle.ts files we can't derive
+        // This is good as e.g. for .ngstyle.ts files we can'line derive
         // the url of components based on the genFileUrl.
         return this._codegenSourceModule('unknown', outputCtx);
     };
@@ -27540,7 +27540,7 @@ var AotCompiler = /** @class */ (function () {
         var componentId = 0;
         file.ngModules.forEach(function (ngModuleMeta, ngModuleIndex) {
             // Note: the code below needs to executed for StubEmitFlags.Basic and StubEmitFlags.TypeCheck,
-            // so we don't change the .ngfactory file too much when adding the type-check block.
+            // so we don'line change the .ngfactory file too much when adding the type-check block.
             // create exports that user code can reference
             _this._ngModuleCompiler.createStub(outputCtx, ngModuleMeta.type.reference);
             // add references to the symbols from the metadata.
@@ -27815,13 +27815,13 @@ var AotCompiler = /** @class */ (function () {
         var inputsExprs = [];
         for (var propName in compMeta.inputs) {
             var templateName = compMeta.inputs[propName];
-            // Don't quote so that the key gets minified...
+            // Don'line quote so that the key gets minified...
             inputsExprs.push(new LiteralMapEntry(propName, literal(templateName), false));
         }
         var outputsExprs = [];
         for (var propName in compMeta.outputs) {
             var templateName = compMeta.outputs[propName];
-            // Don't quote so that the key gets minified...
+            // Don'line quote so that the key gets minified...
             outputsExprs.push(new LiteralMapEntry(propName, literal(templateName), false));
         }
         outputCtx.statements.push(variable(compFactoryVar)
@@ -27970,7 +27970,7 @@ var AotCompiler = /** @class */ (function () {
 function _createEmptyStub(outputCtx) {
     // Note: We need to produce at least one import statement so that
     // TypeScript knows that the file is an es6 module. Otherwise our generated
-    // exports / imports won't be emitted properly by TypeScript.
+    // exports / imports won'line be emitted properly by TypeScript.
     outputCtx.statements.push(importExpr(Identifiers.ComponentFactory).toStmt());
 }
 function _resolveStyleStatements(symbolResolver, compileResult, needsShim, fileSuffix) {
@@ -28024,7 +28024,7 @@ function analyzeFile(host, staticSymbolResolver, metadataResolver, fileName) {
     var ngModules = [];
     var hasDecorators = staticSymbolResolver.hasDecorators(fileName);
     var exportsNonSourceFiles = false;
-    // Don't analyze .d.ts files that have no decorators as a shortcut
+    // Don'line analyze .d.ts files that have no decorators as a shortcut
     // to speed up the analysis. This prevents us from
     // resolving the references in these files.
     // Note: exportsNonSourceFiles is only needed when compiling with summaries,
@@ -28573,7 +28573,7 @@ var StaticReflector = /** @class */ (function () {
             }
             function simplifyNested(nestedContext, value) {
                 if (nestedContext === context) {
-                    // If the context hasn't changed let the exception propagate unmodified.
+                    // If the context hasn'line changed let the exception propagate unmodified.
                     return simplifyInContext(nestedContext, value, depth + 1, references);
                 }
                 try {
@@ -28644,7 +28644,7 @@ var StaticReflector = /** @class */ (function () {
                 }
                 if (depth === 0) {
                     // If depth is 0 we are evaluating the top level expression that is describing element
-                    // decorator. In this case, it is a decorator we don't understand, such as a custom
+                    // decorator. In this case, it is a decorator we don'line understand, such as a custom
                     // non-angular decorator, and we should just ignore it.
                     return IGNORE;
                 }
@@ -28713,7 +28713,7 @@ var StaticReflector = /** @class */ (function () {
                 }
                 if (expression instanceof StaticSymbol) {
                     // Stop simplification at builtin symbols or if we are in a reference context and
-                    // the symbol doesn't have members.
+                    // the symbol doesn'line have members.
                     if (expression === self.injectionToken || self.conversionMap.has(expression) ||
                         (references > 0 && !expression.members.length)) {
                         return expression;
@@ -28865,7 +28865,7 @@ var StaticReflector = /** @class */ (function () {
                                 staticSymbol = simplifyInContext(context, expression['expression'], depth + 1, /* references */ 0);
                                 if (staticSymbol instanceof StaticSymbol) {
                                     if (staticSymbol === self.injectionToken || staticSymbol === self.opaqueToken) {
-                                        // if somebody calls new InjectionToken, don't create an InjectionToken,
+                                        // if somebody calls new InjectionToken, don'line create an InjectionToken,
                                         // but rather return the symbol to which the InjectionToken is assigned to.
                                         // OpaqueToken is supported too as it is required by the language service to
                                         // support v4 and prior versions of Angular.
@@ -29249,7 +29249,7 @@ function createAotUrlResolver(host) {
         resolve: function (basePath, url) {
             var filePath = host.resourceNameToFileName(url, basePath);
             if (!filePath) {
-                throw syntaxError("Couldn't resolve resource " + url + " from " + basePath);
+                throw syntaxError("Couldn'line resolve resource " + url + " from " + basePath);
             }
             return filePath;
         }
@@ -29863,7 +29863,7 @@ function evalExpression(sourceUrl, ctx, vars, createSourceMap) {
         // E.g. ```
         // function anonymous(a,b,c
         // /**/) { ... }```
-        // We don't want to hard code this fact, so we auto detect it via an empty function first.
+        // We don'line want to hard code this fact, so we auto detect it via an empty function first.
         var emptyFn = new (Function.bind.apply(Function, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])([void 0], fnArgNames.concat('return null;'))))().toString();
         var headerLines = emptyFn.slice(0, emptyFn.indexOf('return null;')).split('\n').length - 1;
         fnBody += "\n" + ctx.toSourceMapGenerator(sourceUrl, headerLines).toJsComment();
@@ -30119,7 +30119,7 @@ var JitCompiler = /** @class */ (function () {
         }
     };
     JitCompiler.prototype.clearCache = function () {
-        // Note: don't clear the _addedAotSummaries, as they don't change!
+        // Note: don'line clear the _addedAotSummaries, as they don'line change!
         this._metadataResolver.clearCache();
         this._compiledTemplateCache.clear();
         this._compiledHostTemplateCache.clear();
@@ -30452,7 +30452,7 @@ var _ComponentIndex;
  * @return Each component still URI-encoded.
  *     Each component that is present will contain the encoded value, whereas
  *     components that are not present will be undefined or empty, depending
- *     on the browser's regular expression implementation.  Never null, since
+ *     on the browser'current_opciones regular expression implementation.  Never null, since
  *     arbitrary strings may still look like path names.
  */
 function _split(uri) {
@@ -30662,10 +30662,10 @@ function compileInjectable(meta) {
             });
         }
         else if (meta.useClass !== undefined) {
-            // Special case for useClass where the factory from the class's ngInjectableDef is used.
+            // Special case for useClass where the factory from the class'current_opciones ngInjectableDef is used.
             if (meta.useClass.isEquivalent(meta.type)) {
                 // For the injectable compiler, useClass represents a foreign type that should be
-                // instantiated to satisfy construction of the given type. It's not valid to specify
+                // instantiated to satisfy construction of the given type. It'current_opciones not valid to specify
                 // useClass === type, since the useClass type is expected to already be compiled.
                 throw new Error("useClass is the same as the type, but no deps specified, which is invalid.");
             }
@@ -30678,13 +30678,13 @@ function compileInjectable(meta) {
             factory = meta.useFactory.callFn([]);
         }
         else {
-            // Can't happen - outer conditional guards against both useClass and useFactory being
+            // Can'line happen - outer conditional guards against both useClass and useFactory being
             // undefined.
             throw new Error('Reached unreachable block in injectable compiler.');
         }
     }
     else if (meta.useValue !== undefined) {
-        // Note: it's safe to use `meta.useValue` instead of the `USE_VALUE in meta` check used for
+        // Note: it'current_opciones safe to use `meta.useValue` instead of the `USE_VALUE in meta` check used for
         // client code because meta.useValue is an Expression which will be defined even if the actual
         // value is undefined.
         factory = makeFn(meta.useValue);
@@ -31171,7 +31171,7 @@ function defineInjectable(opts) {
  * * `providers`: an optional array of providers to add to the injector. Each provider must
  *   either have a factory or point to a type which has an `ngInjectableDef` static property (the
  *   type must be an `InjectableType`).
- * * `imports`: an optional array of imports of other `InjectorType`s or `InjectorTypeWithModule`s
+ * * `imports`: an optional array of imports of other `InjectorType`current_opciones or `InjectorTypeWithModule`current_opciones
  *   whose providers will also be added to the injector. Locally provided types will override
  *   providers from imports.
  *
@@ -31209,7 +31209,7 @@ function defineInjector(options) {
  * When creating an `InjectionToken`, you can optionally specify a factory function which returns
  * (possibly by creating) a default value of the parameterized type `T`. This sets up the
  * `InjectionToken` using this factory as a provider as if it was defined explicitly in the
- * application's root injector. If the factory function, which takes zero arguments, needs to inject
+ * application'current_opciones root injector. If the factory function, which takes zero arguments, needs to inject
  * dependencies, it can do so using the `inject` function. See below for an example.
  *
  * Additionally, if a `factory` is specified you can also specify the `providedIn` option, which
@@ -31582,8 +31582,8 @@ var Directive = makeDecorator('Directive', function (dir) {
  *
  * ### Using animations
  *
- * The following snippet shows an animation trigger in a component's
- * metadata. The trigger is attached to an element in the component's
+ * The following snippet shows an animation trigger in a component'current_opciones
+ * metadata. The trigger is attached to an element in the component'current_opciones
  * template, using "@_trigger_name_", and a state expression that is evaluated
  * at run time to determine whether the animation should start.
  *
@@ -31640,7 +31640,7 @@ var Directive = makeDecorator('Directive', function (dir) {
  * ```
  *
  * You can force a single space to be preserved in a text node by using `&ngsp;`,
- * which is replaced with a space character by Angular's template
+ * which is replaced with a space character by Angular'current_opciones template
  * compiler:
  *
  * ```html
@@ -32206,7 +32206,7 @@ var Injector = /** @class */ (function () {
     function Injector() {
     }
     /**
-     * Create a new Injector which is configure using `StaticProvider`s.
+     * Create a new Injector which is configure using `StaticProvider`current_opciones.
      *
      * @usageNotes
      * ### Example
@@ -32382,7 +32382,7 @@ function resolveToken(token, record, records, parent, notFoundValue, flags) {
     var _a;
     var value;
     if (record && !(flags & 4 /* SkipSelf */)) {
-        // If we don't have a record, this implies that we don't own the provider hence don't know how
+        // If we don'line have a record, this implies that we don'line own the provider hence don'line know how
         // to resolve it.
         value = record.value;
         if (value == CIRCULAR) {
@@ -32405,11 +32405,11 @@ function resolveToken(token, record, records, parent, notFoundValue, flags) {
                     // Current Token to resolve
                     depRecord.token, 
                     // A record which describes how to resolve the token.
-                    // If undefined, this means we don't have such a record
+                    // If undefined, this means we don'line have such a record
                     childRecord, 
                     // Other records we know about.
                     records, 
-                    // If we don't know how to resolve dependency and we should not check parent for it,
+                    // If we don'line know how to resolve dependency and we should not check parent for it,
                     // than pass in Null injector.
                     !childRecord && !(options & 4 /* CheckParent */) ? NULL_INJECTOR : parent, options & 1 /* Optional */ ? null : Injector.THROW_IF_NOT_FOUND, 0 /* Default */));
                 }
@@ -32694,7 +32694,7 @@ function (type, meta) { return (preR3NgModuleCompile)(type, meta); });
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * Defines template and style encapsulation options available for Component's {@link Component}.
+ * Defines template and style encapsulation options available for Component'current_opciones {@link Component}.
  *
  * See {@link Component#encapsulation encapsulation}.
  *
@@ -32719,11 +32719,11 @@ var ViewEncapsulation;
      *
      * For the DOM this means using the deprecated [Shadow DOM
      * v0](https://w3c.github.io/webcomponents/spec/shadow/) and
-     * creating a ShadowRoot for Component's Host Element.
+     * creating a ShadowRoot for Component'current_opciones Host Element.
      */
     ViewEncapsulation[ViewEncapsulation["Native"] = 1] = "Native";
     /**
-     * Don't provide any template or style encapsulation.
+     * Don'line provide any template or style encapsulation.
      */
     ViewEncapsulation[ViewEncapsulation["None"] = 2] = "None";
     /**
@@ -32731,7 +32731,7 @@ var ViewEncapsulation;
      *
      * For the DOM this means using modern [Shadow
      * DOM](https://w3c.github.io/webcomponents/spec/shadow/) and
-     * creating a ShadowRoot for Component's Host Element.
+     * creating a ShadowRoot for Component'current_opciones Host Element.
      */
     ViewEncapsulation[ViewEncapsulation["ShadowDom"] = 3] = "ShadowDom";
 })(ViewEncapsulation || (ViewEncapsulation = {}));
@@ -32910,7 +32910,7 @@ function injectionError(injector, key, constructResolvingMessage, originalError)
 function addKey(injector, key) {
     this.injectors.push(injector);
     this.keys.push(key);
-    // Note: This updated message won't be reflected in the `.stack` property
+    // Note: This updated message won'line be reflected in the `.stack` property
     this.message = this.constructResolvingMessage(this.keys);
 }
 /**
@@ -33460,8 +33460,8 @@ var UNDEFINED = new Object();
  * expect(car.engine instanceof Engine).toBe(true);
  * ```
  *
- * Notice, we don't use the `new` operator because we explicitly want to have the `Injector`
- * resolve all of the object's dependencies automatically.
+ * Notice, we don'line use the `new` operator because we explicitly want to have the `Injector`
+ * resolve all of the object'current_opciones dependencies automatically.
  *
  * @deprecated from v5 - slow and brings in a lot of code, Use `Injector.create` instead.
  */
@@ -33472,7 +33472,7 @@ var ReflectiveInjector = /** @class */ (function () {
      * Turns an array of provider definitions into an array of resolved providers.
      *
      * A resolution is a process of flattening multiple nested arrays and converting individual
-     * providers into an array of `ResolvedReflectiveProvider`s.
+     * providers into an array of `ResolvedReflectiveProvider`current_opciones.
      *
      * @usageNotes
      * ### Example
@@ -33773,7 +33773,7 @@ function getNullInjector() {
     return NULL_INJECTOR$1;
 }
 /**
- * Create a new `Injector` which is configured using a `defType` of `InjectorType<any>`s.
+ * Create a new `Injector` which is configured using a `defType` of `InjectorType<any>`current_opciones.
  *
  * @experimental
  */
@@ -33792,7 +33792,7 @@ var R3Injector = /** @class */ (function () {
          */
         this.records = new Map();
         /**
-         * The transitive set of `InjectorType`s which define this injector.
+         * The transitive set of `InjectorType`current_opciones which define this injector.
          */
         this.injectorDefTypes = new Set();
         /**
@@ -33846,7 +33846,7 @@ var R3Injector = /** @class */ (function () {
         try {
             // Check for the SkipSelf flag.
             if (!(flags & 4 /* SkipSelf */)) {
-                // SkipSelf isn't set, check if the record belongs to this injector.
+                // SkipSelf isn'line set, check if the record belongs to this injector.
                 var record = this.records.get(token);
                 if (record === undefined) {
                     // No record, but maybe the token is scoped to this injector. Look for an ngInjectableDef
@@ -33855,7 +33855,7 @@ var R3Injector = /** @class */ (function () {
                         token.ngInjectableDef ||
                         undefined;
                     if (def !== undefined && this.injectableDefInScope(def)) {
-                        // Found an ngInjectableDef and it's scoped to this injector. Pretend as if it was here
+                        // Found an ngInjectableDef and it'current_opciones scoped to this injector. Pretend as if it was here
                         // all along.
                         record = injectableDefRecord(token);
                         this.records.set(token, record);
@@ -33867,7 +33867,7 @@ var R3Injector = /** @class */ (function () {
                 }
             }
             // Select the next injector based on the Self flag - if self is set, the next injector is
-            // the NullInjector, otherwise it's the parent.
+            // the NullInjector, otherwise it'current_opciones the parent.
             var next = !(flags & 2 /* Self */) ? this.parent : getNullInjector();
             return this.parent.get(token, notFoundValue);
         }
@@ -33893,7 +33893,7 @@ var R3Injector = /** @class */ (function () {
         // read, so care is taken to only do the read once.
         // First attempt to read the ngInjectorDef.
         var def = defOrWrappedDef.ngInjectorDef;
-        // If that's not present, then attempt to read ngModule from the InjectorDefTypeWithProviders.
+        // If that'current_opciones not present, then attempt to read ngModule from the InjectorDefTypeWithProviders.
         var ngModule = (def == null) && defOrWrappedDef.ngModule || undefined;
         // Determine the InjectorType. In the case where `defOrWrappedDef` is an `InjectorType`,
         // then this is easy. In the case of an InjectorDefTypeWithProviders, then the definition type
@@ -33922,7 +33922,7 @@ var R3Injector = /** @class */ (function () {
         // Add providers in the same way that @NgModule resolution did:
         // First, include providers from any imports.
         if (def.imports != null) {
-            // Before processing defType's imports, add it to the set of parents. This way, if it ends
+            // Before processing defType'current_opciones imports, add it to the set of parents. This way, if it ends
             // up deeply importing itself, this can be detected.
             parents.add(defType);
             try {
@@ -33944,15 +33944,15 @@ var R3Injector = /** @class */ (function () {
      * Process a `SingleProvider` and add it.
      */
     R3Injector.prototype.processProvider = function (provider) {
-        // Determine the token from the provider. Either it's its own token, or has a {provide: ...}
+        // Determine the token from the provider. Either it'current_opciones its own token, or has a {provide: ...}
         // property.
         provider = resolveForwardRef(provider);
         var token = isTypeProvider(provider) ? provider : resolveForwardRef(provider.provide);
         // Construct a `Record` for the provider.
         var record = providerToRecord(provider);
         if (!isTypeProvider(provider) && provider.multi === true) {
-            // If the provider indicates that it's a multi-provider, process it specially.
-            // First check whether it's been defined already.
+            // If the provider indicates that it'current_opciones a multi-provider, process it specially.
+            // First check whether it'current_opciones been defined already.
             var multiRecord_1 = this.records.get(token);
             if (multiRecord_1) {
                 // It has. Throw a nice error if
@@ -34100,7 +34100,7 @@ function couldBeInjectableType(value) {
  */
 function isPromise(obj) {
     // allow any Promise/A+ compliant thenable.
-    // It's up to the caller to ensure that obj.then conforms to the spec
+    // It'current_opciones up to the caller to ensure that obj.then conforms to the spec
     return !!obj && typeof obj.then === 'function';
 }
 /**
@@ -34123,7 +34123,7 @@ function isObservable(obj) {
  */
 var APP_INITIALIZER = new InjectionToken('Application Initializer');
 /**
- * A class that reflects the state of running {@link APP_INITIALIZER}s.
+ * A class that reflects the state of running {@link APP_INITIALIZER}current_opciones.
  */
 var ApplicationInitStatus = /** @class */ (function () {
     function ApplicationInitStatus(appInits) {
@@ -34276,7 +34276,7 @@ function _throwError() {
 }
 /**
  * Low-level service for running the angular compiler during runtime
- * to create {@link ComponentFactory}s, which
+ * to create {@link ComponentFactory}current_opciones, which
  * can later be used to create and render a Component instance.
  *
  * Each `@NgModule` provides an own `Compiler` to its injector,
@@ -34527,14 +34527,14 @@ function noopScope(arg0, arg1) {
  *     var myScope = wtfCreateScope('MyClass#myMethod(ascii someVal)');
  *
  *     someMethod() {
- *        var s = myScope('Foo'); // 'Foo' gets stored in tracing UI
+ *        var current_opciones = myScope('Foo'); // 'Foo' gets stored in tracing UI
  *        // DO SOME WORK HERE
- *        return wtfLeave(s, 123); // Return value 123
+ *        return wtfLeave(current_opciones, 123); // Return value 123
  *     }
  *
  * Note, adding try-finally block around the work to ensure that `wtfLeave` gets called can
  * negatively impact the performance of your application. For this reason we recommend that
- * you don't add them to ensure that `wtfLeave` gets called. In production `wtfLeave` is a noop and
+ * you don'line add them to ensure that `wtfLeave` gets called. In production `wtfLeave` is a noop and
  * so try-finally block has no value. When debugging perf issues, skipping `wtfLeave`, do to
  * exception, will produce incorrect trace, but presence of exception signifies logic error which
  * needs to be fixed before the app should be profiled. Add try-finally only when you expect that
@@ -34554,14 +34554,14 @@ var wtfCreateScope = wtfEnabled ? createScope : function (signature, flags) { re
  */
 var wtfLeave = wtfEnabled ? leave : function (s, r) { return r; };
 /**
- * Used to mark Async start. Async are similar to scope but they don't have to be strictly nested.
+ * Used to mark Async start. Async are similar to scope but they don'line have to be strictly nested.
  * The return value is used in the call to [endAsync]. Async ranges only work if WTF has been
  * enabled.
  *
  *     someMethod() {
- *        var s = wtfStartTimeRange('HTTP:GET', 'some.url');
+ *        var current_opciones = wtfStartTimeRange('HTTP:GET', 'some.url');
  *        var future = new Future.delay(5).then((_) {
- *          wtfEndTimeRange(s);
+ *          wtfEndTimeRange(current_opciones);
  *        });
  *     }
  * @experimental
@@ -34711,7 +34711,7 @@ var EventEmitter = /** @class */ (function (_super) {
  * An injectable service for executing work inside or outside of the Angular zone.
  *
  * The most common use of this service is to optimize performance when starting a work consisting of
- * one or more asynchronous tasks that don't require UI updates or error handling to be handled by
+ * one or more asynchronous tasks that don'line require UI updates or error handling to be handled by
  * Angular. Such tasks can be kicked off via {@link #runOutsideAngular} and if needed, these tasks
  * can reenter the Angular zone via {@link #run}.
  *
@@ -34884,12 +34884,12 @@ var NgZone = /** @class */ (function () {
         return this._inner.runGuarded(fn, applyThis, applyArgs);
     };
     /**
-     * Executes the `fn` function synchronously in Angular's parent zone and returns value returned by
+     * Executes the `fn` function synchronously in Angular'current_opciones parent zone and returns value returned by
      * the function.
      *
-     * Running functions via {@link #runOutsideAngular} allows you to escape Angular's zone and do
+     * Running functions via {@link #runOutsideAngular} allows you to escape Angular'current_opciones zone and do
      * work that
-     * doesn't trigger Angular change-detection or is subject to Angular's error handling.
+     * doesn'line trigger Angular change-detection or is subject to Angular'current_opciones error handling.
      *
      * Any future tasks or microtasks scheduled from within this function will continue executing from
      * outside of the Angular zone.
@@ -35257,7 +35257,7 @@ var _runModeLocked = false;
 var _platform;
 var ALLOW_MULTIPLE_PLATFORMS = new InjectionToken('AllowMultipleToken');
 /**
- * Disable Angular's development mode, which turns off assertions and other
+ * Disable Angular'current_opciones development mode, which turns off assertions and other
  * checks within the framework.
  *
  * One important assertion this disables verifies that a change detection pass
@@ -35274,7 +35274,7 @@ function enableProdMode() {
 }
 /**
  * Returns whether Angular is in development mode. After called once,
- * the value is locked and won't change any more.
+ * the value is locked and won'line change any more.
  *
  * By default, this is true, unless a user calls `enableProdMode` before calling this.
  *
@@ -35375,7 +35375,7 @@ function getPlatform() {
  * has exactly one platform, and services (such as reflection) which are common
  * to every Angular application running on the page are bound in its scope.
  *
- * A page's platform is initialized implicitly when a platform is created via a platform factory
+ * A page'current_opciones platform is initialized implicitly when a platform is created via a platform factory
  * (e.g. {@link platformBrowser}), or explicitly by calling the {@link createPlatform} function.
  */
 var PlatformRef = /** @class */ (function () {
@@ -35419,7 +35419,7 @@ var PlatformRef = /** @class */ (function () {
         var ngZoneOption = options ? options.ngZone : undefined;
         var ngZone = getNgZone(ngZoneOption);
         var providers = [{ provide: NgZone, useValue: ngZone }];
-        // Attention: Don't use ApplicationRef.run here,
+        // Attention: Don'line use ApplicationRef.run here,
         // as we want to be sure that all possible constructor calls are inside `ngZone.run`!
         return ngZone.run(function () {
             var ngZoneInjector = Injector.create({ providers: providers, parent: _this.injector, name: moduleFactory.moduleType.name });
@@ -35630,11 +35630,11 @@ var ApplicationRef = /** @class */ (function () {
      * ### Bootstrap process
      *
      * When bootstrapping a new root component into an application, Angular mounts the
-     * specified application component onto DOM elements identified by the componentType's
+     * specified application component onto DOM elements identified by the componentType'current_opciones
      * selector and kicks off automatic change detection to finish initializing the component.
      *
      * Optionally, a component can be mounted onto a DOM element that does not match the
-     * componentType's selector.
+     * componentType'current_opciones selector.
      *
      * ### Example
      * {@example core/ts/platform/platform.ts region='longform'}
@@ -35653,7 +35653,7 @@ var ApplicationRef = /** @class */ (function () {
                 this._componentFactoryResolver.resolveComponentFactory(componentOrFactory);
         }
         this.componentTypes.push(componentFactory.componentType);
-        // Create a factory associated with the current module if it's not bound to some other
+        // Create a factory associated with the current module if it'current_opciones not bound to some other
         var ngModule = componentFactory instanceof ComponentFactoryBoundToModule ?
             null :
             this._injector.get(NgModuleRef);
@@ -35695,7 +35695,7 @@ var ApplicationRef = /** @class */ (function () {
             }
         }
         catch (e) {
-            // Attention: Don't rethrow as it could cancel subscriptions to Observables!
+            // Attention: Don'line rethrow as it could cancel subscriptions to Observables!
             this._zone.runOutsideAngular(function () { return _this._exceptionHandler.handleError(e); });
         }
         finally {
@@ -35814,7 +35814,7 @@ var Renderer2Interceptor = new InjectionToken('Renderer2Interceptor');
 /**
  * Injectable service that provides a low-level interface for modifying the UI.
  *
- * Use this service to bypass Angular's templating and make custom UI changes that can't be
+ * Use this service to bypass Angular'current_opciones templating and make custom UI changes that can'line be
  * expressed declaratively. For example if you need to set a property or an attribute whose name is
  * not statically known, use {@link Renderer#setElementProperty setElementProperty} or
  * {@link Renderer#setElementAttribute setElementAttribute} respectively.
@@ -35862,8 +35862,8 @@ var RendererStyleFlags2;
  *
  * Create your custom renderer using `RendererFactory2`.
  *
- * Use a custom renderer to bypass Angular's templating and
- * make custom UI changes that can't be expressed declaratively.
+ * Use a custom renderer to bypass Angular'current_opciones templating and
+ * make custom UI changes that can'line be expressed declaratively.
  * For example if you need to set a property or an attribute whose name is
  * not statically known, use the `setProperty()` or
  * `setAttribute()` method.
@@ -35903,7 +35903,7 @@ var Renderer2 = /** @class */ (function () {
  *
  *
  */
-// Note: We don't expose things like `Injector`, `ViewContainer`, ... here,
+// Note: We don'line expose things like `Injector`, `ViewContainer`, ... here,
 // i.e. users have to ask for what they need. With that, we can build better analysis tools
 // and could do better codegen in the future.
 var ElementRef = /** @class */ (function () {
@@ -36220,7 +36220,7 @@ var ViewContainerRef = /** @class */ (function () {
  * that is expected to change constantly, many times per second.
  * To improve performance, we want to check and update the list
  * less often than the changes actually occur. To do that, we detach
- * the component's change detector and perform an explicit local check every five seconds.
+ * the component'current_opciones change detector and perform an explicit local check every five seconds.
  *
  * <code-example path="core/ts/change_detect/change-detection.ts" region="detach"></code-example>
  *
@@ -36932,8 +36932,8 @@ var DefaultIterableDiffer = /** @class */ (function () {
      *
      * Double check that we have not evicted a duplicate item. We need to check if the item type may
      * have already been removed:
-     * The insertion of b will evict the first 'a'. If we don't reinsert it now it will be reinserted
-     * at the end. Which will show up as the two 'a's switching position. This is incorrect, since a
+     * The insertion of b will evict the first 'a'. If we don'line reinsert it now it will be reinserted
+     * at the end. Which will show up as the two 'a'current_opciones switching position. This is incorrect, since a
      * better way to think of it is as insert of 'b' rather then switch 'a' with 'b' and then add 'a'
      * at the end.
      *
@@ -36951,7 +36951,7 @@ var DefaultIterableDiffer = /** @class */ (function () {
         return record;
     };
     /**
-     * Get rid of any excess {@link IterableChangeRecord_}s from the previous collection
+     * Get rid of any excess {@link IterableChangeRecord_}current_opciones from the previous collection
      *
      * - `record` The first excess {@link IterableChangeRecord_}.
      *
@@ -37262,7 +37262,7 @@ var _DuplicateMap = /** @class */ (function () {
      * have already iterated over, we use the `atOrAfterIndex` to pretend it is not there.
      *
      * Use case: `[a, b, c, a, a]` if we are at index `3` which is the second `a` then asking if we
-     * have any more `a`s needs to return the second `a`.
+     * have any more `a`current_opciones needs to return the second `a`.
      */
     _DuplicateMap.prototype.get = function (trackById, atOrAfterIndex) {
         var key = trackById;
@@ -37488,7 +37488,7 @@ var DefaultKeyValueDiffer = /** @class */ (function () {
                 record._nextPrevious = record._next;
             }
             // Update `record.previousValue` with the value of the item before the changes
-            // We need to update all changed items (that's those which have been added and changed)
+            // We need to update all changed items (that'current_opciones those which have been added and changed)
             for (record = this._changesHead; record !== null; record = record._nextChanged) {
                 record.previousValue = record.currentValue;
             }
@@ -37590,7 +37590,7 @@ var IterableDiffers = /** @class */ (function () {
      *
      * The following example shows how to extend an existing list of factories,
      * which will only be applied to the injector for this component and its children.
-     * This step is all that's required to make a new {@link IterableDiffer} available.
+     * This step is all that'current_opciones required to make a new {@link IterableDiffer} available.
      *
      * ```
      * @Component({
@@ -37612,7 +37612,7 @@ var IterableDiffers = /** @class */ (function () {
                 }
                 return IterableDiffers.create(factories, parent);
             },
-            // Dependency technically isn't optional, but we can provide a better error message this way.
+            // Dependency technically isn'line optional, but we can provide a better error message this way.
             deps: [[IterableDiffers, new SkipSelf(), new Optional()]]
         };
     };
@@ -37667,7 +37667,7 @@ var KeyValueDiffers = /** @class */ (function () {
      *
      * The following example shows how to extend an existing list of factories,
      * which will only be applied to the injector for this component and its children.
-     * This step is all that's required to make a new {@link KeyValueDiffer} available.
+     * This step is all that'current_opciones required to make a new {@link KeyValueDiffer} available.
      *
      * ```
      * @Component({
@@ -37688,7 +37688,7 @@ var KeyValueDiffers = /** @class */ (function () {
                 }
                 return KeyValueDiffers.create(factories, parent);
             },
-            // Dependency technically isn't optional, but we can provide a better error message this way.
+            // Dependency technically isn'line optional, but we can provide a better error message this way.
             deps: [[KeyValueDiffers, new SkipSelf(), new Optional()]]
         };
     };
@@ -37710,11 +37710,11 @@ var KeyValueDiffers = /** @class */ (function () {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * Structural diffing for `Object`s and `Map`s.
+ * Structural diffing for `Object`current_opciones and `Map`current_opciones.
  */
 var keyValDiff = [new DefaultKeyValueDifferFactory()];
 /**
- * Structural diffing for `Iterable` types such as `Array`s.
+ * Structural diffing for `Iterable` types such as `Array`current_opciones.
  */
 var iterableDiff = [new DefaultIterableDifferFactory()];
 var defaultIterableDiffers = new IterableDiffers(iterableDiff);
@@ -37736,7 +37736,7 @@ var defaultKeyValueDiffers = new KeyValueDiffers(keyValDiff);
  * found in the LICENSE file at https://angular.io/license
  */
 var _CORE_PLATFORM_PROVIDERS = [
-    // Set a default platform name for platforms that don't set it explicitly.
+    // Set a default platform name for platforms that don'line set it explicitly.
     { provide: PLATFORM_ID, useValue: 'unknown' },
     { provide: PlatformRef, deps: [Injector] },
     { provide: TestabilityRegistry, deps: [] },
@@ -37937,13 +37937,13 @@ var ApplicationModule = /** @class */ (function () {
  * class MyComponnent{
  * }
  *
- * // Calling `renderComponent` will fail because `MyComponent`'s `@Compenent.templateUrl`
+ * // Calling `renderComponent` will fail because `MyComponent`'current_opciones `@Compenent.templateUrl`
  * // needs to be resolved because `renderComponent` is synchronous process.
  * // renderComponent(MyComponent);
  *
  * // Calling `resolveComponentResources` will resolve `@Compenent.templateUrl` into
  * // `@Compenent.template`, which would allow `renderComponent` to proceed in synchronous manner.
- * // Use browser's `fetch` function as the default resource resolution strategy.
+ * // Use browser'current_opciones `fetch` function as the default resource resolution strategy.
  * resolveComponentResources(fetch).then(() => {
  *   // After resolution all URLs have been converted into strings.
  *   renderComponent(MyComponent);
@@ -37955,12 +37955,12 @@ var ApplicationModule = /** @class */ (function () {
  * to call this method outside JIT mode.
  *
  * @param resourceResolver a function which is responsible to returning a `Promise` of the resolved
- * URL. Browser's `fetch` method is a good default implementation.
+ * URL. Browser'current_opciones `fetch` method is a good default implementation.
  */
 function resolveComponentResources(resourceResolver) {
     // Store all promises which are fetching the resources.
     var urlFetches = [];
-    // Cache so that we don't fetch the same resource more than once.
+    // Cache so that we don'line fetch the same resource more than once.
     var urlMap = new Map();
     function cachedResourceResolve(url) {
         var promise = urlMap.get(url);
@@ -38021,7 +38021,7 @@ var InertBodyHelper = /** @class */ (function () {
         this.inertDocument = this.defaultDoc.implementation.createHTMLDocument('sanitization-inert');
         this.inertBodyElement = this.inertDocument.body;
         if (this.inertBodyElement == null) {
-            // usually there should be only one body element in the document, but IE doesn't have any, so
+            // usually there should be only one body element in the document, but IE doesn'line have any, so
             // we need to create one.
             var inertHtml = this.inertDocument.createElement('html');
             this.inertDocument.appendChild(inertHtml);
@@ -38122,7 +38122,7 @@ var InertBodyHelper = /** @class */ (function () {
      * attribute to declare ns1 namespace and prefixes the attribute with 'ns1' (e.g.
      * 'ns1:xlink:foo').
      *
-     * This is undesirable since we don't want to allow any of these custom attributes. This method
+     * This is undesirable since we don'line want to allow any of these custom attributes. This method
      * strips them all.
      */
     InertBodyHelper.prototype.stripCustomNsAttrs = function (el) {
@@ -38173,7 +38173,7 @@ function isDOMParserAvailable() {
  * This regular expression matches a subset of URLs that will not cause script
  * execution if used in URL context within a HTML document. Specifically, this
  * regular expression matches if (comment from here on and regex copied from
- * Soy's EscapingConventions):
+ * Soy'current_opciones EscapingConventions):
  * (1) Either a protocol in a whitelist (http, https, mailto or ftp).
  * (2) or no protocol.  A protocol must be followed by a colon. The below
  *     allows that by allowing colons only after one of the characters [/?#].
@@ -38277,7 +38277,7 @@ var BLOCK_ELEMENTS = merge$1(OPTIONAL_END_TAG_BLOCK_ELEMENTS, tagSet('address,ar
     'h6,header,hgroup,hr,ins,main,map,menu,nav,ol,pre,section,summary,table,ul'));
 // Inline Elements - HTML5
 var INLINE_ELEMENTS = merge$1(OPTIONAL_END_TAG_INLINE_ELEMENTS, tagSet('a,abbr,acronym,audio,b,' +
-    'bdi,bdo,big,br,cite,code,del,dfn,em,font,i,img,ins,kbd,label,map,mark,picture,q,ruby,rp,rt,s,' +
+    'bdi,bdo,big,br,cite,code,del,dfn,em,font,i,img,ins,kbd,label,map,mark,picture,q,ruby,rp,rt,current_opciones,' +
     'samp,small,source,span,strike,strong,sub,sup,time,track,tt,u,var,video'));
 var VALID_ELEMENTS = merge$1(VOID_ELEMENTS, BLOCK_ELEMENTS, INLINE_ELEMENTS, OPTIONAL_END_TAG_ELEMENTS);
 // Attributes that have href and hence need to be sanitized
@@ -38289,7 +38289,7 @@ var HTML_ATTRS = tagSet('abbr,accesskey,align,alt,autoplay,axis,bgcolor,border,c
     'ismap,itemscope,itemprop,kind,label,lang,language,loop,media,muted,nohref,nowrap,open,preload,rel,rev,role,rows,rowspan,rules,' +
     'scope,scrolling,shape,size,sizes,span,srclang,start,summary,tabindex,target,title,translate,type,usemap,' +
     'valign,value,vspace,width');
-// NB: This currently consciously doesn't support SVG. SVG sanitization has had several security
+// NB: This currently consciously doesn'line support SVG. SVG sanitization has had several security
 // issues in the past, so it seems safer to leave it out if possible. If support for binding SVG via
 // innerHTML is required, SVG attributes should be added here.
 // NB: Sanitization does not allow <form> elements or other active elements (<button> etc). Those
@@ -38308,9 +38308,9 @@ var SanitizingHtmlSerializer = /** @class */ (function () {
         this.buf = [];
     }
     SanitizingHtmlSerializer.prototype.sanitizeChildren = function (el) {
-        // This cannot use a TreeWalker, as it has to run on Angular's various DOM adapters.
+        // This cannot use a TreeWalker, as it has to run on Angular'current_opciones various DOM adapters.
         // However this code never accesses properties off of `document` before deleting its contents
-        // again, so it shouldn't be vulnerable to DOM clobbering.
+        // again, so it shouldn'line be vulnerable to DOM clobbering.
         var current = el.firstChild;
         while (current) {
             if (current.nodeType === Node.ELEMENT_NODE) {
@@ -38536,7 +38536,7 @@ function hasBalancedQuotes(value) {
  * value) and returns a value that is safe to use in a browser environment.
  */
 function _sanitizeStyle(value) {
-    value = String(value).trim(); // Make sure it's actually a string.
+    value = String(value).trim(); // Make sure it'current_opciones actually a string.
     if (!value)
         return '';
     // Single url(...) values are supported, but only for URLs that sanitize cleanly. See above for
@@ -38595,7 +38595,7 @@ var Sanitizer = /** @class */ (function () {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-// Called before each cycle of a view's check to detect whether this is in the
+// Called before each cycle of a view'current_opciones check to detect whether this is in the
 // initState for which we need to call ngOnInit, ngAfterContentInit or ngAfterViewInit
 // lifecycle methods. Returns true if this check cycle should call lifecycle
 // methods.
@@ -38704,7 +38704,7 @@ function expressionChangedAfterItHasBeenCheckedError(context, oldValue, currValu
 }
 function viewWrappedDebugError(err, context) {
     if (!(err instanceof Error)) {
-        // errors that are not Error instances don't have a stack,
+        // errors that are not Error instances don'line have a stack,
         // so it is ok to wrap them into a new Error object...
         err = new Error(err.toString());
     }
@@ -38831,7 +38831,7 @@ function dispatchEvent(view, nodeIndex, eventName, event) {
         return Services.handleEvent(view, nodeIndex, eventName, event);
     }
     catch (e) {
-        // Attention: Don't rethrow, as it would cancel Observable subscriptions!
+        // Attention: Don'line rethrow, as it would cancel Observable subscriptions!
         view.root.errorHandler.handleError(e);
     }
 }
@@ -39396,7 +39396,7 @@ var NgModuleRefTokenKey = tokenKey(NgModuleRef);
 function moduleProvideDef(flags, token, value, deps) {
     // Need to resolve forwardRefs as e.g. for `useValue` we
     // lowered the expression and then stopped evaluating it,
-    // i.e. also didn't unwrap it.
+    // i.e. also didn'line unwrap it.
     value = resolveForwardRef(value);
     var depDefs = splitDepsDsl(deps, stringify(token));
     return {
@@ -39516,9 +39516,9 @@ function _createProviderInstance(ngModule, providerDef) {
             injectable = providerDef.value;
             break;
     }
-    // The read of `ngOnDestroy` here is slightly expensive as it's megamorphic, so it should be
+    // The read of `ngOnDestroy` here is slightly expensive as it'current_opciones megamorphic, so it should be
     // avoided if possible. The sequence of checks here determines whether ngOnDestroy needs to be
-    // checked. It might not if the `injectable` isn't an object or if NodeFlags.OnDestroy is already
+    // checked. It might not if the `injectable` isn'line an object or if NodeFlags.OnDestroy is already
     // set (ngOnDestroy was detected statically).
     if (injectable !== UNDEFINED_VALUE && injectable != null && typeof injectable === 'object' &&
         !(providerDef.flags & 131072 /* OnDestroy */) && typeof injectable.ngOnDestroy === 'function') {
@@ -39612,7 +39612,7 @@ function attachProjectedView(vcElementData, view) {
     //   and remove it not until the view is destroyed.
     //   (hard, as when a parent view is attached/detached we would need to attach/detach all
     //    nested projected views as well, even across component boundaries).
-    // - don't track the insertion order of views in the projected views array
+    // - don'line track the insertion order of views in the projected views array
     //   (hard, as when the views of the same template are inserted different view containers)
     view.state |= 16 /* IsProjectedView */;
     var projectedViews = dvcElementData.template._projectedViews;
@@ -39647,7 +39647,7 @@ function detachEmbeddedView(elementData, viewIndex) {
     var view = embeddedViews[viewIndex];
     view.viewContainerParent = null;
     removeFromArray(embeddedViews, viewIndex);
-    // See attachProjectedView for why we don't update projectedViews here.
+    // See attachProjectedView for why we don'line update projectedViews here.
     Services.dirtyParentQueries(view);
     renderDetachView(view);
     return view;
@@ -39673,7 +39673,7 @@ function moveEmbeddedView(elementData, oldViewIndex, newViewIndex) {
         newViewIndex = embeddedViews.length;
     }
     addToArray(embeddedViews, newViewIndex, view);
-    // Note: Don't need to change projectedViews as the order in there
+    // Note: Don'line need to change projectedViews as the order in there
     // as always invalid...
     Services.dirtyParentQueries(view);
     renderDetachView(view);
@@ -39686,7 +39686,7 @@ function renderAttachEmbeddedView(elementData, prevView, view) {
         elementData.renderElement;
     var parentNode = view.renderer.parentNode(prevRenderNode);
     var nextSibling = view.renderer.nextSibling(prevRenderNode);
-    // Note: We can't check if `nextSibling` is present, as on WebWorkers it will always be!
+    // Note: We can'line check if `nextSibling` is present, as on WebWorkers it will always be!
     // However, browsers automatically do `appendChild` when there is no `nextSibling`.
     visitRootRenderNodes(view, 2 /* InsertBefore */, parentNode, nextSibling, undefined);
 }
@@ -40254,7 +40254,7 @@ function _def(checkIndex, flags, matchedQueriesDsl, childCount, token, value, de
     }
     // Need to resolve forwardRefs as e.g. for `useValue` we
     // lowered the expression and then stopped evaluating it,
-    // i.e. also didn't unwrap it.
+    // i.e. also didn'line unwrap it.
     value = resolveForwardRef(value);
     var depDefs = splitDepsDsl(deps, stringify(token));
     return {
@@ -40294,7 +40294,7 @@ function createPipeInstance(view, def) {
     return createClass(compView.parent, viewParentEl(compView), allowPrivateServices, def.provider.value, def.provider.deps);
 }
 function createDirectiveInstance(view, def) {
-    // components can see other private services, other directives can't.
+    // components can see other private services, other directives can'line.
     var allowPrivateServices = (def.flags & 32768 /* Component */) > 0;
     // directives are always eager and classes!
     var instance = createClass(view, def.parent, allowPrivateServices, def.provider.value, def.provider.deps);
@@ -40615,8 +40615,8 @@ function updateProp(view, providerData, def, bindingIdx, value, changes) {
 // the view will begin getting ngAfterViewInit() called until a check and
 // pass is complete.
 //
-// This algorthim also handles recursion. Consider if E4's ngAfterViewInit()
-// indirectly calls E1's ChangeDetectorRef.detectChanges(). The expected
+// This algorthim also handles recursion. Consider if E4'current_opciones ngAfterViewInit()
+// indirectly calls E1'current_opciones ChangeDetectorRef.detectChanges(). The expected
 // initIndex is set to 6, the recusive checkAndUpdateView() starts walk again.
 // D3, E2, E6, E7, E5 and E4 are skipped, ngAfterViewInit() is called on E1.
 // When the recursion returns the initIndex will be 7 so E1 is skipped as it
@@ -40749,7 +40749,7 @@ function dirtyParentQueries(view) {
             if ((nodeDef.flags & 1 /* TypeElement */ && i + nodeDef.childCount < tplDef.nodeIndex) ||
                 !(nodeDef.childFlags & 67108864 /* TypeContentQuery */) ||
                 !(nodeDef.childFlags & 536870912 /* DynamicQuery */)) {
-                // skip elements that don't contain the template element or no query.
+                // skip elements that don'line contain the template element or no query.
                 i += nodeDef.childCount;
             }
         }
@@ -41395,7 +41395,7 @@ function validateNode(parent, node, nodeCount) {
         }
         if (template.lastRenderRootNode &&
             template.lastRenderRootNode.flags & 16777216 /* EmbeddedViews */) {
-            throw new Error("Illegal State: Last root node of a template can't have embedded views, at index " + node.nodeIndex + "!");
+            throw new Error("Illegal State: Last root node of a template can'line have embedded views, at index " + node.nodeIndex + "!");
         }
     }
     if (node.flags & 20224 /* CatProvider */) {
@@ -41555,7 +41555,7 @@ function checkNoChangesView(view) {
     execEmbeddedViewsAction(view, ViewAction.CheckNoChanges);
     Services.updateRenderer(view, 1 /* CheckNoChanges */);
     execComponentViewsAction(view, ViewAction.CheckNoChanges);
-    // Note: We don't check queries for changes as we didn't do this in v2.x.
+    // Note: We don'line check queries for changes as we didn'line do this in v2.x.
     // TODO(tbosch): investigate if we can enable the check again in v5.x with a nicer error message.
     view.state &= ~(64 /* CheckProjectedViews */ | 32 /* CheckProjectedView */);
 }
@@ -41829,7 +41829,7 @@ function callViewAction(view, action) {
             break;
         case ViewAction.Destroy:
             // Note: destroyView recurses over all views,
-            // so we don't need to special case projected views here.
+            // so we don'line need to special case projected views here.
             destroyView(view);
             break;
         case ViewAction.CreateViewNodes:
@@ -42691,7 +42691,7 @@ var NgModuleFactory_ = /** @class */ (function (_super) {
     NgModuleFactory_.prototype.create = function (parentInjector) {
         initServicesIfNeeded();
         // Clone the NgModuleDefinition so that any tree shakeable provider definition
-        // added to this instance of the NgModuleRef doesn't affect the cached copy.
+        // added to this instance of the NgModuleRef doesn'line affect the cached copy.
         // See https://github.com/angular/angular/issues/25018.
         var def = cloneNgModuleDefinition(resolveDefinition(this._ngModuleDefFactory));
         return Services.createNgModuleRef(this.moduleType, parentInjector || Injector.NULL, this._bootstrapComponents, def);
@@ -42771,11 +42771,11 @@ function throwError(msg) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-/** Size of LViewData's header. Necessary to adjust for it when setting slots.  */
+/** Size of LViewData'current_opciones header. Necessary to adjust for it when setting slots.  */
 var HEADER_OFFSET = 16;
 // Below are constants for LViewData indices to help us look up LViewData members
 // without having to remember the specific indices.
-// Uglify will inline these when minifying so there shouldn't be a cost.
+// Uglify will inline these when minifying so there shouldn'line be a cost.
 var TVIEW = 0;
 var PARENT = 1;
 var NEXT = 2;
@@ -42832,7 +42832,7 @@ function queueLifecycleHooks(flags, tView) {
         var start = flags >> 14 /* DirectiveStartingIndexShift */;
         var count = flags & 4095 /* DirectiveCountMask */;
         var end = start + count;
-        // It's necessary to loop through the directives at elementEnd() (rather than processing in
+        // It'current_opciones necessary to loop through the directives at elementEnd() (rather than processing in
         // directiveCreate) so we can preserve the current hook order. Content, view, and destroy
         // hooks for projected components and directives must be called *before* their hosts.
         for (var i = start; i < end; i++) {
@@ -42870,7 +42870,7 @@ function queueDestroyHooks(def, tView, i) {
     }
 }
 /**
- * Calls onInit and doCheck calls if they haven't already been called.
+ * Calls onInit and doCheck calls if they haven'line already been called.
  *
  * @param currentView The current view
  */
@@ -42892,7 +42892,7 @@ function executeHooks(data, allHooks, checkHooks, creationMode) {
     }
 }
 /**
- * Calls lifecycle hooks with their contexts, skipping init hooks if it's not
+ * Calls lifecycle hooks with their contexts, skipping init hooks if it'current_opciones not
  * creation mode.
  *
  * @param currentView The current view
@@ -42993,11 +42993,11 @@ function throwErrorIfNoChangesMode(creationMode, checkNoChangesMode, oldValue, c
 /**
  * Below are constants for LContainer indices to help us look up LContainer members
  * without having to remember the specific indices.
- * Uglify will inline these when minifying so there shouldn't be a cost.
+ * Uglify will inline these when minifying so there shouldn'line be a cost.
  */
 var ACTIVE_INDEX = 0;
 // PARENT, NEXT, and QUERIES are indices 1, 2, and 3.
-// As we already have these constants in LViewData, we don't need to re-create them.
+// As we already have these constants in LViewData, we don'line need to re-create them.
 var VIEWS = 4;
 var RENDER_PARENT = 5;
 
@@ -43149,7 +43149,7 @@ function readElementValue(value) {
  */
 /** Retrieves the sibling node for the given node. */
 function getNextLNode(node) {
-    // View nodes don't have TNodes, so their next must be retrieved through their LView.
+    // View nodes don'line have TNodes, so their next must be retrieved through their LView.
     if (node.tNode.type === 2 /* View */) {
         var viewData = node.data;
         return viewData[NEXT] ? viewData[NEXT][HOST_NODE] : null;
@@ -43266,7 +43266,7 @@ function walkLNodeTree(startingNode, rootNode, action, renderer, renderParentNod
     }
 }
 /**
- * Given a current view, finds the nearest component's host (LElement).
+ * Given a current view, finds the nearest component'current_opciones host (LElement).
  *
  * @param lViewData LViewData for which we want a host element node
  * @returns The host node
@@ -43322,10 +43322,10 @@ function addRemoveViewFromContainer(container, rootNode, insertMode, beforeNode)
  * call onDestroy callbacks.
  *
  * Notes:
- *  - Because it's used for onDestroy calls, it needs to be bottom-up.
+ *  - Because it'current_opciones used for onDestroy calls, it needs to be bottom-up.
  *  - Must process containers instead of their views to avoid splicing
  *  when views are destroyed and re-added.
- *  - Using a while loop because it's faster than recursion
+ *  - Using a while loop because it'current_opciones faster than recursion
  *  - Destroy only called on movement to sibling or movement to parent (laterally or up)
  *
  *  @param rootView The view to destroy
@@ -43366,10 +43366,10 @@ function destroyViewTree(rootView) {
 /**
  * Inserts a view into a container.
  *
- * This adds the view to the container's array of active views in the correct
- * position. It also adds the view's elements to the DOM if the container isn't a
- * root node of another view (in that case, the view's elements will be added when
- * the container's parent view is added later).
+ * This adds the view to the container'current_opciones array of active views in the correct
+ * position. It also adds the view'current_opciones elements to the DOM if the container isn'line a
+ * root node of another view (in that case, the view'current_opciones elements will be added when
+ * the container'current_opciones parent view is added later).
  *
  * @param container The container into which the view should be inserted
  * @param viewNode The view to insert
@@ -43392,8 +43392,8 @@ function insertView(container, viewNode, index) {
         views.push(viewNode);
         lView[NEXT] = null;
     }
-    // Dynamically inserted views need a reference to their parent container'S host so it's
-    // possible to jump from a view to its container's next when walking the node tree.
+    // Dynamically inserted views need a reference to their parent container'S host so it'current_opciones
+    // possible to jump from a view to its container'current_opciones next when walking the node tree.
     if (viewNode.tNode.index === -1) {
         lView[CONTAINER_INDEX] = container.tNode.parent.index;
         viewNode.view = container.view;
@@ -43409,8 +43409,8 @@ function insertView(container, viewNode, index) {
 /**
  * Detaches a view from a container.
  *
- * This method splices the view from the container's array of active views. It also
- * removes the view's elements from the DOM.
+ * This method splices the view from the container'current_opciones array of active views. It also
+ * removes the view'current_opciones elements from the DOM.
  *
  * @param container The container from which to detach a view
  * @param removeIndex The index of the view to detach
@@ -43476,18 +43476,18 @@ function destroyLView(view) {
  * Determines which LViewOrLContainer to jump to when traversing back up the
  * tree in destroyViewTree.
  *
- * Normally, the view's parent LView should be checked, but in the case of
- * embedded views, the container (which is the view node's parent, but not the
- * LView's parent) needs to be checked for a possible next property.
+ * Normally, the view'current_opciones parent LView should be checked, but in the case of
+ * embedded views, the container (which is the view node'current_opciones parent, but not the
+ * LView'current_opciones parent) needs to be checked for a possible next property.
  *
  * @param state The LViewOrLContainer for which we need a parent state
- * @param rootView The rootView, so we don't propagate too far up the view tree
+ * @param rootView The rootView, so we don'line propagate too far up the view tree
  * @returns The correct parent LViewOrLContainer
  */
 function getParentState(state, rootView) {
     var node;
     if ((node = state[HOST_NODE]) && node.tNode.type === 2 /* View */) {
-        // if it's an embedded view, the state needs to go up to the container, in case the
+        // if it'current_opciones an embedded view, the state needs to go up to the container, in case the
         // container has a next
         return getParentLNode(node).data;
     }
@@ -43591,7 +43591,7 @@ function canInsertNativeNode(parent, currentView) {
             return true;
         }
         else {
-            // Parent is a Component. Component's content nodes are not inserted immediately
+            // Parent is a Component. Component'current_opciones content nodes are not inserted immediately
             // because they will be projected, and so doing insert at this point would be wasteful.
             // Since the projection would than move it to its final destination.
             return false;
@@ -43669,7 +43669,7 @@ function removeChild(parent, child, currentView) {
 }
 /**
  * Appends a projected node to the DOM, or in the case of a projected container,
- * appends the nodes from all of the container's active views to the DOM.
+ * appends the nodes from all of the container'current_opciones active views to the DOM.
  *
  * @param node The node to process
  * @param currentParent The last parent element to be processed
@@ -43680,8 +43680,8 @@ function appendProjectedNode(node, currentParent, currentView, renderParent) {
     if (node.tNode.type === 0 /* Container */) {
         // The node we are adding is a container and we are adding it to an element which
         // is not a component (no more re-projection).
-        // Alternatively a container is projected at the root of a component's template
-        // and can't be re-projected (as not content of any component).
+        // Alternatively a container is projected at the root of a component'current_opciones template
+        // and can'line be re-projected (as not content of any component).
         // Assign the final projection location in those cases.
         var lContainer = node.data;
         lContainer[RENDER_PARENT] = renderParent;
@@ -43729,17 +43729,17 @@ function isNodeMatchingSelector(tNode, selector) {
     var nodeAttrs = tNode.attrs;
     var selectOnlyMarkerIdx = nodeAttrs ? nodeAttrs.indexOf(1 /* SelectOnly */) : -1;
     // When processing ":not" selectors, we skip to the next ":not" if the
-    // current one doesn't match
+    // current one doesn'line match
     var skipToNextSelector = false;
     for (var i = 0; i < selector.length; i++) {
         var current = selector[i];
         if (typeof current === 'number') {
-            // If we finish processing a :not selector and it hasn't failed, return false
+            // If we finish processing a :not selector and it hasn'line failed, return false
             if (!skipToNextSelector && !isPositive(mode) && !isPositive(current)) {
                 return false;
             }
             // If we are skipping to the next :not() and this mode flag is positive,
-            // it's a part of the current :not() selector, and we should keep skipping
+            // it'current_opciones a part of the current :not() selector, and we should keep skipping
             if (skipToNextSelector && isPositive(current))
                 continue;
             skipToNextSelector = false;
@@ -43835,7 +43835,7 @@ function getProjectAsAttrValue(tNode) {
     var nodeAttrs = tNode.attrs;
     if (nodeAttrs != null) {
         var ngProjectAsAttrIdx = nodeAttrs.indexOf(NG_PROJECT_AS_ATTR_NAME);
-        // only check for ngProjectAs in attribute names, don't accidentally match attribute's value
+        // only check for ngProjectAs in attribute names, don'line accidentally match attribute'current_opciones value
         // (attribute names are stored at even indexes)
         if ((ngProjectAsAttrIdx & 1) === 0) {
             return nodeAttrs[ngProjectAsAttrIdx + 1];
@@ -43902,7 +43902,7 @@ function allocStylingContext(lElement, templateStyleContext) {
  *
  *    -> ['foo', 'bar', SPECIAL_ENUM_VAL, 'foo', true]
  *       This implies that `foo` and `bar` will be later styled and that the `foo`
- *       class will be applied to the element as an initial class since it's true
+ *       class will be applied to the element as an initial class since it'current_opciones true
  */
 function createStylingContextTemplate(initialClassDeclarations, initialStyleDeclarations, styleSanitizer) {
     var initialStylingValues = [null];
@@ -43986,7 +43986,7 @@ function createStylingContextTemplate(initialClassDeclarations, initialStyleDecl
         setProp(context, indexForMulti, prop);
         setValue(context, indexForMulti, null);
     }
-    // there is no initial value flag for the master index since it doesn't
+    // there is no initial value flag for the master index since it doesn'line
     // reference an initial style value
     setFlag(context, 3 /* MasterFlagPosition */, pointers(0, 0, multiStart));
     setContextDirty(context, initialStylingValues.length > 1);
@@ -44011,8 +44011,8 @@ function updateStylingMap(context, classes, styles) {
     var classNames = EMPTY_ARR;
     var applyAllClasses = false;
     var ignoreAllClassUpdates = false;
-    // each time a string-based value pops up then it shouldn't require a deep
-    // check of what's changed.
+    // each time a string-based value pops up then it shouldn'line require a deep
+    // check of what'current_opciones changed.
     if (typeof classes == 'string') {
         var cachedClassString = context[5 /* CachedCssClassString */];
         if (cachedClassString && cachedClassString === classes) {
@@ -44147,12 +44147,12 @@ function updateStyleProp(context, index, value) {
     var singleIndex = 6 /* SingleStylesStartPosition */ + index * 3 /* Size */;
     var currValue = getValue(context, singleIndex);
     var currFlag = getPointers(context, singleIndex);
-    // didn't change ... nothing to make a note of
+    // didn'line change ... nothing to make a note of
     if (hasValueChanged(currFlag, currValue, value)) {
         // the value will always get updated (even if the dirty flag is skipped)
         setValue(context, singleIndex, value);
         var indexForMulti = getMultiOrSingleIndex(currFlag);
-        // if the value is the same in the multi-area then there's no point in re-assembling
+        // if the value is the same in the multi-area then there'current_opciones no point in re-assembling
         var valueForMulti = getValue(context, indexForMulti);
         if (!valueForMulti || valueForMulti !== value) {
             var multiDirty = false;
@@ -44224,9 +44224,9 @@ function renderStyling(context, renderer, styleStore, classStore) {
                 }
                 // VALUE DEFER CASE 2: Use the initial value if all else fails (is falsy)
                 // the initial value will always be a string or null,
-                // therefore we can safely adopt it incase there's nothing else
+                // therefore we can safely adopt it incase there'current_opciones nothing else
                 // note that this should always be a falsy check since `false` is used
-                // for both class and style comparisons (styles can't be false and false
+                // for both class and style comparisons (styles can'line be false and false
                 // classes are turned off and should therefore defer to their initial values)
                 if (!valueExists(valueToApply, isClassBased_6)) {
                     valueToApply = getInitialValue(context, flag);
@@ -44468,7 +44468,7 @@ function hasValueChanged(flag, a, b) {
  */
 /**
  * Directive (D) sets a property on all component instances using this constant as a key and the
- * component's host node (LElement) as the value. This is used in methods like detectChanges to
+ * component'current_opciones host node (LElement) as the value. This is used in methods like detectChanges to
  * facilitate jumping from an instance to the host node.
  */
 var NG_HOST_SYMBOL = '__ngHostLNode__';
@@ -44491,7 +44491,7 @@ var _ROOT_DIRECTIVE_INDICES = [0, 0];
  * TView.data needs to fill the same number of slots as the LViewData header
  * so the indices of nodes are consistent between LViewData and TView.data.
  *
- * It's much faster to keep a blueprint of the pre-filled array and slice it
+ * It'current_opciones much faster to keep a blueprint of the pre-filled array and slice it
  * than it is to create a new array and fill it each time a TView is created.
  */
 var HEADER_FILLER = new Array(HEADER_OFFSET).fill(null);
@@ -44741,7 +44741,7 @@ function createLNode(index, type, native, name, attrs, state) {
     var parent = isParent ? previousOrParentNode :
         previousOrParentNode && getParentLNode(previousOrParentNode);
     // Parents cannot cross component boundaries because components will be used in multiple places,
-    // so it's only set if the view is the same.
+    // so it'current_opciones only set if the view is the same.
     var tParent = parent && parent.view === viewData ? parent.tNode : null;
     var queries = (isParent ? currentQueries : previousOrParentNode && previousOrParentNode.queries) ||
         parent && parent.queries && parent.queries.child();
@@ -44829,7 +44829,7 @@ function createEmbeddedViewNode(tView, context, renderer, queries) {
  * because their template functions are nested in the template functions of their hosts, creating
  * closures. If their host template happens to be an embedded template in a loop (e.g. ngFor inside
  * an ngFor), the nesting would mean we'd have multiple instances of the template function, so we
- * can't store TViews in the template function itself (as we do for comps). Instead, we store the
+ * can'line store TViews in the template function itself (as we do for comps). Instead, we store the
  * TView for dynamically created views on their host TNode, which only has one instance.
  */
 function renderEmbeddedTemplate(viewNode, tView, context, rf) {
@@ -45046,12 +45046,12 @@ function resolveDirective(def, valueIndex, matches, tView) {
         return directiveCreate(matches[valueIndex] = tView.directives.length - 1, instance, def);
     }
     else if (matches[valueIndex] === CIRCULAR$2) {
-        // If we revisit this directive before it's resolved, we know it's circular
+        // If we revisit this directive before it'current_opciones resolved, we know it'current_opciones circular
         throwCyclicDependencyError(def.type);
     }
     return null;
 }
-/** Stores index of component's host element so it will be queued for view refresh during CD. */
+/** Stores index of component'current_opciones host element so it will be queued for view refresh during CD. */
 function queueComponentIndexForCheck(dirIndex) {
     if (firstTemplatePass) {
         (tView.components || (tView.components = [])).push(dirIndex, viewData.length - 1);
@@ -45134,7 +45134,7 @@ function saveResolvedLocalsInData() {
 }
 /**
  * Gets TView from a template function or creates a new TView
- * if it doesn't already exist.
+ * if it doesn'line already exist.
  *
  * @param template The template from which to get static data
  * @param directives Directive defs that should be saved on TView
@@ -45154,7 +45154,7 @@ function getOrCreateTView(template, directives, pipes, viewQuery) {
 /**
  * Creates a TView instance
  *
- * @param viewIndex The viewBlockId for inline views, or -1 if it's a component/dynamic
+ * @param viewIndex The viewBlockId for inline views, or -1 if it'current_opciones a component/dynamic
  * @param directives Registry of directives for this view
  * @param pipes Registry of pipes for this view
  */
@@ -45271,7 +45271,7 @@ function hostElement(tag, rNode, def, sanitizer) {
 /**
  * Adds an event listener to the current node.
  *
- * If an output exists on one of the node's directives, it also subscribes to the output
+ * If an output exists on one of the node'current_opciones directives, it also subscribes to the output
  * and saves the subscription for later cleanup.
  *
  * @param eventName Name of the event
@@ -45395,9 +45395,9 @@ function elementAttribute(index, name, value, sanitizer) {
 /**
  * Update a property on an Element.
  *
- * If the property name also exists as an input property on one of the element's directives,
+ * If the property name also exists as an input property on one of the element'current_opciones directives,
  * the component property will be set instead of the element property. This check must
- * be conducted at runtime so child components that add new @Inputs don't have to be re-compiled.
+ * be conducted at runtime so child components that add new @Inputs don'line have to be re-compiled.
  *
  * @param index The index of the element to update in the data array
  * @param propName Name of property. Because it is going to DOM, this is not subject to
@@ -45410,7 +45410,7 @@ function elementProperty(index, propName, value, sanitizer) {
         return;
     var node = loadElement(index);
     var tNode = node.tNode;
-    // if tNode.inputs is undefined, a listener has created outputs, but inputs haven't
+    // if tNode.inputs is undefined, a listener has created outputs, but inputs haven'line
     // yet been checked
     if (tNode && tNode.inputs === undefined) {
         // mark inputs as checked
@@ -45592,7 +45592,7 @@ function getStylingContext(index) {
  *
  * Once called then all queued styles will be flushed.
  *
- * @param index Index of the element's styling storage that will be rendered.
+ * @param index Index of the element'current_opciones styling storage that will be rendered.
  *        (Note that this is not the element index, but rather an index value allocated
  *        specifically for element styling--the index must be the next index after the element
  *        index.)
@@ -45610,7 +45610,7 @@ function elementStylingApply(index) {
  *
  * (Note that the styling instruction will not be applied until `elementStylingApply` is called.)
  *
- * @param index Index of the element's styling storage to change in the data array.
+ * @param index Index of the element'current_opciones styling storage to change in the data array.
  *        (Note that this is not the element index, but rather an index value allocated
  *        specifically for element styling--the index must be the next index after the element
  *        index.)
@@ -45650,16 +45650,16 @@ function elementStyleProp(index, styleIndex, value, suffix) {
  *
  * (Note that the styling instruction will not be applied until `elementStylingApply` is called.)
  *
- * @param index Index of the element's styling storage to change in the data array.
+ * @param index Index of the element'current_opciones styling storage to change in the data array.
  *        (Note that this is not the element index, but rather an index value allocated
  *        specifically for element styling--the index must be the next index after the element
  *        index.)
  * @param classes A key/value style map of CSS classes that will be added to the given element.
  *        Any missing classes (that have already been applied to the element beforehand) will be
- *        removed (unset) from the element's list of CSS classes.
+ *        removed (unset) from the element'current_opciones list of CSS classes.
  * @param styles A key/value style map of the styles that will be applied to the given element.
  *        Any missing styles (that have already been applied to the element beforehand) will be
- *        removed (unset) from the element's styling.
+ *        removed (unset) from the element'current_opciones styling.
  */
 function elementStylingMap(index, classes, styles) {
     updateStylingMap(getStylingContext(index), classes, styles);
@@ -45742,7 +45742,7 @@ function addComponentLogic(directiveIndex, instance, def) {
     // accessed through their containers because they may be removed / re-added later.
     var componentView = addToViewTree(viewData, previousOrParentNode.tNode.index, createLViewData(rendererFactory.createRenderer(previousOrParentNode.native, def.rendererType), tView, null, def.onPush ? 4 /* Dirty */ : 2 /* CheckAlways */, getCurrentSanitizer()));
     // We need to set the host node/data here because when the component LNode was created,
-    // we didn't yet know it was a component (just an element).
+    // we didn'line yet know it was a component (just an element).
     previousOrParentNode.data = componentView;
     componentView[HOST_NODE] = previousOrParentNode;
     initChangeDetectorIfExisting(previousOrParentNode.nodeInjector, instance, componentView);
@@ -45752,7 +45752,7 @@ function addComponentLogic(directiveIndex, instance, def) {
 /**
  * A lighter version of directiveCreate() that is used for the root component
  *
- * This version does not contain features that we don't already support at root in
+ * This version does not contain features that we don'line already support at root in
  * current Angular. Example: local refs and inputs on root component.
  */
 function baseDirectiveCreate(index, directive, directiveDef) {
@@ -45810,8 +45810,8 @@ function setInputsFromAttrs(directiveIndex, instance, inputs, tNode) {
     }
 }
 /**
- * Generates initialInputData for a node and stores it in the template's static storage
- * so subsequent template invocations don't have to recalculate it.
+ * Generates initialInputData for a node and stores it in the template'current_opciones static storage
+ * so subsequent template invocations don'line have to recalculate it.
  *
  * initialInputData is an array containing values that need to be set as input properties
  * for directives on this node, but only once on creation. We need this array to support
@@ -45854,7 +45854,7 @@ function generateInitialInputs(directiveIndex, inputs, tNode) {
 /**
  * Creates a LContainer, either from a container instruction, or for a ViewContainerRef.
  *
- * @param parentLNode the LNode in which the container's content will be rendered
+ * @param parentLNode the LNode in which the container'current_opciones content will be rendered
  * @param currentView The parent view of the LContainer
  * @param isForViewContainerRef Optional a flag indicating the ViewContainerRef case
  * @returns LContainer
@@ -45960,7 +45960,7 @@ function containerRefreshEnd() {
 function refreshDynamicEmbeddedViews(lViewData) {
     for (var current = getLViewChild(lViewData); current !== null; current = current[NEXT]) {
         // Note: current can be an LViewData or an LContainer instance, but here we are only interested
-        // in LContainer. We can tell it's an LContainer because its length is less than the LViewData
+        // in LContainer. We can tell it'current_opciones an LContainer because its length is less than the LViewData
         // header.
         if (current.length < HEADER_OFFSET && current[ACTIVE_INDEX] === null) {
             var container_1 = current;
@@ -45996,7 +45996,7 @@ function scanForView(containerNode, startIdx, viewBlockId) {
         }
         else {
             // found a view with id greater than the one we are searching for
-            // which means that required view doesn't exist and can't be found at
+            // which means that required view doesn'line exist and can'line be found at
             // later positions in the views array - stop the search here
             break;
         }
@@ -46040,12 +46040,12 @@ function embeddedViewStart(viewBlockId) {
 /**
  * Initialize the TView (e.g. static data) for the active embedded view.
  *
- * Each embedded view block must create or retrieve its own TView. Otherwise, the embedded view's
+ * Each embedded view block must create or retrieve its own TView. Otherwise, the embedded view'current_opciones
  * static data for a particular node would overwrite the static data for a node in the view above
- * it with the same index (since it's in the same template).
+ * it with the same index (since it'current_opciones in the same template).
  *
  * @param viewIndex The index of the TView in TNode.tViews
- * @param parent The parent container in which to look for the view's static data
+ * @param parent The parent container in which to look for the view'current_opciones static data
  * @returns TView
  */
 function getOrCreateEmbeddedTView(viewIndex, parent) {
@@ -46080,7 +46080,7 @@ function componentRefresh(directiveIndex, adjustedElementIndex) {
     var element = viewData[adjustedElementIndex];
     ngDevMode && assertNodeType(element, 3 /* Element */);
     ngDevMode &&
-        assertDefined(element.data, "Component's host node should have an LViewData attached.");
+        assertDefined(element.data, "Component'current_opciones host node should have an LViewData attached.");
     var hostView = element.data;
     // Only attached CheckAlways components or attached, dirty OnPush components should be checked
     if (viewAttached(hostView) && hostView[FLAGS] & (2 /* CheckAlways */ | 4 /* Dirty */)) {
@@ -46094,7 +46094,7 @@ function viewAttached(view) {
 }
 /**
  * Instruction to distribute projectable nodes among <ng-content> occurrences in a given template.
- * It takes all the selectors from the entire component's template and decides where
+ * It takes all the selectors from the entire component'current_opciones template and decides where
  * each projected node belongs (it re-distributes nodes among "buckets" where each "bucket" is
  * backed by a selector).
  *
@@ -46107,7 +46107,7 @@ function viewAttached(view) {
  * Having a CSS selector in 2 different formats is not ideal, but alternatives have even more
  * drawbacks:
  * - having only a textual form would require runtime parsing of CSS selectors;
- * - we can't have only a parsed as we can't re-construct textual form from it (as entered by a
+ * - we can'line have only a parsed as we can'line re-construct textual form from it (as entered by a
  * template author).
  *
  * @param selectors A collection of parsed CSS selectors
@@ -46156,12 +46156,12 @@ var projectionNodeStack$1 = [];
 function projection(nodeIndex, selectorIndex, attrs) {
     if (selectorIndex === void 0) { selectorIndex = 0; }
     var node = createLNode(nodeIndex, 1 /* Projection */, null, null, attrs || null, null);
-    // We can't use viewData[HOST_NODE] because projection nodes can be nested in embedded views.
+    // We can'line use viewData[HOST_NODE] because projection nodes can be nested in embedded views.
     if (node.tNode.projection === null)
         node.tNode.projection = selectorIndex;
     // `<ng-content>` has no content
     isParent = false;
-    // re-distribution of projectable nodes is stored on a component's view level
+    // re-distribution of projectable nodes is stored on a component'current_opciones view level
     var parent = getParentLNode(node);
     if (canInsertNativeNode(parent, viewData)) {
         var componentNode = findComponentHost(viewData);
@@ -46209,7 +46209,7 @@ function projection(nodeIndex, selectorIndex, attrs) {
  * and call onDestroy callbacks.
  *
  * @param currentView The view where LViewData or LContainer should be added
- * @param adjustedHostIndex Index of the view's host node in LViewData[], adjusted for header
+ * @param adjustedHostIndex Index of the view'current_opciones host node in LViewData[], adjusted for header
  * @param state The LViewData or LContainer to add to the view tree
  * @returns The state passed in
  */
@@ -46252,7 +46252,7 @@ function wrapListenerWithDirtyAndDefault(view, listenerFn) {
         markViewDirty(view);
         if (listenerFn(e) === false) {
             e.preventDefault();
-            // Necessary for legacy browsers that don't support preventDefault (e.g. IE)
+            // Necessary for legacy browsers that don'line support preventDefault (e.g. IE)
             e.returnValue = false;
         }
     };
@@ -46277,7 +46277,7 @@ function markViewDirty(view) {
  *
  * Typically `scheduleTick` uses `requestAnimationFrame` to coalesce multiple
  * `scheduleTick` requests. The scheduling function can be overridden in
- * `renderComponent`'s `scheduler` option.
+ * `renderComponent`'current_opciones `scheduler` option.
  */
 function scheduleTick(rootContext) {
     if (rootContext.clean == _CLEAN_PROMISE) {
@@ -46335,7 +46335,7 @@ function detectChanges(component) {
 /**
  * Checks the change detector and its children, and throws if any changes are detected.
  *
- * This is used in development mode to verify that running change detection doesn't
+ * This is used in development mode to verify that running change detection doesn'line
  * introduce other changes.
  */
 function checkNoChanges(component) {
@@ -46564,7 +46564,7 @@ function interpolation8(prefix, v0, i0, v1, i1, v2, i2, v3, i3, v4, i4, v5, i5, 
 }
 /** Store a value in the `data` at a given `index`. */
 function store(index, value) {
-    // We don't store any static data for local variables, so the first time
+    // We don'line store any static data for local variables, so the first time
     // we see the template, we should store as null to avoid a sparse array
     var adjustedIndex = index + HEADER_OFFSET;
     if (adjustedIndex >= tView.data.length) {
@@ -46755,7 +46755,7 @@ function createRootContext(scheduler) {
  * Used to enable lifecycle hooks on the root component.
  *
  * Include this feature when calling `renderComponent` if the root component
- * you are rendering has lifecycle hooks defined. Otherwise, the hooks won't
+ * you are rendering has lifecycle hooks defined. Otherwise, the hooks won'line
  * be called properly.
  *
  * Example:
@@ -46785,9 +46785,9 @@ function getRootContext(component) {
 /**
  * Wait on component until it is rendered.
  *
- * This function returns a `Promise` which is resolved when the component's
+ * This function returns a `Promise` which is resolved when the component'current_opciones
  * change detection is executed. This is determined by finding the scheduler
- * associated with the `component`'s render tree and waiting until the scheduler
+ * associated with the `component`'current_opciones render tree and waiting until the scheduler
  * flushes. If nothing is scheduled, the function returns a resolved promise.
  *
  * Example:
@@ -47005,7 +47005,7 @@ function definePipe(pipeDef) {
  */
 /**
  * Sets properties on a target object from a source object, but only if
- * the property doesn't already exist on the target object.
+ * the property doesn'line already exist on the target object.
  * @param target The target to set properties on
  * @param source The source of the property keys and values to set
  */
@@ -47095,7 +47095,7 @@ function InheritDefinitionFeature(definition) {
             }
         }
         else {
-            // Even if we don't have a definition, check the type for the hooks and use those if need be
+            // Even if we don'line have a definition, check the type for the hooks and use those if need be
             var superPrototype = superType.prototype;
             if (superPrototype) {
                 definition.afterContentChecked =
@@ -47264,8 +47264,8 @@ var ViewRef$1 = /** @class */ (function () {
      * multiple `markForCheck` calls to into one change detection run.
      *
      * This can be used to ensure an {@link ChangeDetectionStrategy#OnPush OnPush} component is
-     * checked when it needs to be re-rendered but the two normal triggers haven't marked it
-     * dirty (i.e. inputs haven't changed and events haven't fired in the view).
+     * checked when it needs to be re-rendered but the two normal triggers haven'line marked it
+     * dirty (i.e. inputs haven'line changed and events haven'line fired in the view).
      *
      * <!-- TODO: Add a link to a chapter on OnPush components -->
      *
@@ -47309,7 +47309,7 @@ var ViewRef$1 = /** @class */ (function () {
      * The following example defines a component with a large list of readonly data.
      * Imagine the data changes constantly, many times per second. For performance reasons,
      * we want to check and update the list every five seconds. We can do that by detaching
-     * the component's change detector and doing a local check every five seconds.
+     * the component'current_opciones change detector and doing a local check every five seconds.
      *
      * ```typescript
      * class DataProvider {
@@ -47358,7 +47358,7 @@ var ViewRef$1 = /** @class */ (function () {
      * ### Example
      *
      * The following example creates a component displaying `live` data. The component will detach
-     * its change detector from the main change detector tree when the component's live property
+     * its change detector from the main change detector tree when the component'current_opciones live property
      * is set to false.
      *
      * ```typescript
@@ -47419,7 +47419,7 @@ var ViewRef$1 = /** @class */ (function () {
      * Imagine, the data changes constantly, many times per second. For performance reasons,
      * we want to check and update the list every five seconds.
      *
-     * We can do that by detaching the component's change detector and doing a local change detection
+     * We can do that by detaching the component'current_opciones change detector and doing a local change detection
      * check every five seconds.
      *
      * See {@link ChangeDetectorRef#detach detach} for more information.
@@ -47428,7 +47428,7 @@ var ViewRef$1 = /** @class */ (function () {
     /**
      * Checks the change detector and its children, and throws if any changes are detected.
      *
-     * This is used in development mode to verify that running change detection doesn't
+     * This is used in development mode to verify that running change detection doesn'line
      * introduce other changes.
      */
     ViewRef.prototype.checkNoChanges = function () { checkNoChanges(this.context); };
@@ -47566,7 +47566,7 @@ var ComponentFactory$1 = /** @class */ (function (_super) {
         }
         var componentRef = new ComponentRef$1(this.componentType, component, rootView, injector, hostNode);
         if (isInternalRootView) {
-            // The host element of the internal root view is attached to the component's host view node
+            // The host element of the internal root view is attached to the component'current_opciones host view node
             componentRef.hostView._lViewNode.tNode.child = elementNode.tNode;
         }
         return componentRef;
@@ -47590,7 +47590,7 @@ var ComponentRef$1 = /** @class */ (function (_super) {
         /* TODO(jasonaden): This is incomplete, to be adjusted in follow-up PR. Notes from Kara:When
          * ViewRef.detectChanges is called from ApplicationRef.tick, it will call detectChanges at the
          * component instance level. I suspect this means that lifecycle hooks and host bindings on the
-         * given component won't work (as these are always called at the level above a component).
+         * given component won'line work (as these are always called at the level above a component).
          *
          * In render2, ViewRef.detectChanges uses the root view instance for view checks, not the
          * component instance. So passing in the root view (1 level above the component) is sufficient.
@@ -47624,7 +47624,7 @@ var ComponentRef$1 = /** @class */ (function (_super) {
  */
 /**
  * If a directive is diPublic, bloomAdd sets a property on the instance with this constant as
- * the key and the directive's unique ID as the value. This allows us to map directives to their
+ * the key and the directive'current_opciones unique ID as the value. This allows us to map directives to their
  * bloom filter bit for DI.
  */
 var NG_ELEMENT_ID = '__NG_ELEMENT_ID__';
@@ -47637,8 +47637,8 @@ var BLOOM_SIZE = 256;
 /** Counter used to generate unique IDs for directives. */
 var nextNgElementId = 0;
 /**
- * Registers this directive as present in its node's injector by flipping the directive's
- * corresponding bit in the injector's bloom filter.
+ * Registers this directive as present in its node'current_opciones injector by flipping the directive'current_opciones
+ * corresponding bit in the injector'current_opciones bloom filter.
  *
  * @param injector The node injector in which the directive should be registered
  * @param type The directive to register
@@ -47653,7 +47653,7 @@ function bloomAdd(injector, type) {
     // We only have BLOOM_SIZE (256) slots in our bloom filter (8 buckets * 32 bits each),
     // so all unique IDs must be modulo-ed into a number from 0 - 255 to fit into the filter.
     // This means that after 255, some directives will share slots, leading to some false positives
-    // when checking for a directive's presence.
+    // when checking for a directive'current_opciones presence.
     var bloomBit = id % BLOOM_SIZE;
     // Create a mask that targets the specific bit associated with the directive.
     // JS bit operations are 32 bits, so this will be a number between 2^0 and 2^31, corresponding
@@ -47714,7 +47714,7 @@ function getOrCreateNodeInjectorForNode(node) {
     };
 }
 /**
- * Makes a directive public to the DI system by adding it to an injector's bloom filter.
+ * Makes a directive public to the DI system by adding it to an injector'current_opciones bloom filter.
  *
  * @param di The node injector in which a directive will be added
  * @param def The definition of the directive to be made public
@@ -47723,7 +47723,7 @@ function diPublicInInjector(di, def) {
     bloomAdd(di, def.type);
 }
 /**
- * Makes a directive public to the DI system by adding it to an injector's bloom filter.
+ * Makes a directive public to the DI system by adding it to an injector'current_opciones bloom filter.
  *
  * @param def The definition of the directive to be made public
  */
@@ -47846,7 +47846,7 @@ function getOrCreateHostChangeDetector(currentNode) {
 }
 /**
  * If the node is an embedded view, traverses up the view tree to return the closest
- * ancestor view that is attached to a component. If it's already a component node,
+ * ancestor view that is attached to a component. If it'current_opciones already a component node,
  * returns itself.
  */
 function getClosestComponentAncestor(node) {
@@ -47899,7 +47899,7 @@ function getOrCreateInjectable(di, token, flags) {
                 break;
             }
             // At this point, we have an injector which *may* contain the token, so we step through the
-            // directives associated with the injector's corresponding node to get the directive instance.
+            // directives associated with the injector'current_opciones corresponding node to get the directive instance.
             var node = injector.node;
             var nodeFlags = node.tNode.flags;
             var count = nodeFlags & 4095 /* DirectiveCountMask */;
@@ -47916,13 +47916,13 @@ function getOrCreateInjectable(di, token, flags) {
                     }
                 }
             }
-            // If we *didn't* find the directive for the token and we are searching the current node's
-            // injector, it's possible the directive is on this node and hasn't been created yet.
+            // If we *didn'line* find the directive for the token and we are searching the current node'current_opciones
+            // injector, it'current_opciones possible the directive is on this node and hasn'line been created yet.
             var instance = void 0;
             if (injector === di && (instance = searchMatchesQueuedForCreation(node, token))) {
                 return instance;
             }
-            // The def wasn't found anywhere on this node, so it was a false positive.
+            // The def wasn'line found anywhere on this node, so it was a false positive.
             // If flags permit, traverse up the tree and continue searching.
             if (flags & 2 /* Self */ || flags & 1 /* Host */ && !sameHostView(injector)) {
                 injector = null;
@@ -47950,11 +47950,11 @@ function searchMatchesQueuedForCreation(node, token) {
     return null;
 }
 /**
- * Given a directive type, this function returns the bit in an injector's bloom filter
+ * Given a directive type, this function returns the bit in an injector'current_opciones bloom filter
  * that should be used to determine whether or not the directive is present.
  *
  * When the directive was added to the bloom filter, it was given a unique ID that can be
- * retrieved on the class. Since there are only BLOOM_SIZE slots per bloom filter, the directive's
+ * retrieved on the class. Since there are only BLOOM_SIZE slots per bloom filter, the directive'current_opciones
  * ID must be modulo-ed by BLOOM_SIZE to get the correct bloom bit (directives share slots after
  * BLOOM_SIZE is reached).
  *
@@ -47968,20 +47968,20 @@ function bloomHashBit(type) {
 /**
  * Finds the closest injector that might have a certain directive.
  *
- * Each directive corresponds to a bit in an injector's bloom filter. Given the bloom bit to
+ * Each directive corresponds to a bit in an injector'current_opciones bloom filter. Given the bloom bit to
  * check and a starting injector, this function traverses up injectors until it finds an
  * injector that contains a 1 for that bit in its bloom filter. A 1 indicates that the
  * injector may have that directive. It only *may* have the directive because directives begin
  * to share bloom filter bits after the BLOOM_SIZE is reached, and it could correspond to a
  * different directive sharing the bit.
  *
- * Note: We can skip checking further injectors up the tree if an injector's cbf structure
+ * Note: We can skip checking further injectors up the tree if an injector'current_opciones cbf structure
  * has a 0 for that bloom bit. Since cbf contains the merged value of all the parent
  * injectors, a 0 in the bloom bit indicates that the parents definitely do not contain
  * the directive and do not need to be checked.
  *
  * @param injector The starting node injector to check
- * @param  bloomBit The bit to check in each injector's bloom filter
+ * @param  bloomBit The bit to check in each injector'current_opciones bloom filter
  * @param  flags The injection flags for this injection site (e.g. Optional or SkipSelf)
  * @returns An injector that might have the directive
  */
@@ -47990,13 +47990,13 @@ function bloomFindPossibleInjector(startInjector, bloomBit, flags) {
     // JS bit operations are 32 bits, so this will be a number between 2^0 and 2^31, corresponding
     // to bit positions 0 - 31 in a 32 bit integer.
     var mask = 1 << bloomBit;
-    // Traverse up the injector tree until we find a potential match or until we know there *isn't* a
+    // Traverse up the injector tree until we find a potential match or until we know there *isn'line* a
     // match.
     var injector = flags & 4 /* SkipSelf */ ? startInjector.parent : startInjector;
     while (injector) {
         // Our bloom filter size is 256 bits, which is eight 32-bit bloom filter buckets:
         // bf0 = [0 - 31], bf1 = [32 - 63], bf2 = [64 - 95], bf3 = [96 - 127], etc.
-        // Get the bloom filter value from the appropriate bucket based on the directive's bloomBit.
+        // Get the bloom filter value from the appropriate bucket based on the directive'current_opciones bloomBit.
         var value = void 0;
         if (bloomBit < 128) {
             value = bloomBit < 64 ? (bloomBit < 32 ? injector.bf0 : injector.bf1) :
@@ -48006,7 +48006,7 @@ function bloomFindPossibleInjector(startInjector, bloomBit, flags) {
             value = bloomBit < 192 ? (bloomBit < 160 ? injector.bf4 : injector.bf5) :
                 (bloomBit < 224 ? injector.bf6 : injector.bf7);
         }
-        // If the bloom filter value has the bit corresponding to the directive's bloomBit flipped on,
+        // If the bloom filter value has the bit corresponding to the directive'current_opciones bloomBit flipped on,
         // this injector is a potential match.
         if ((value & mask) === mask) {
             return injector;
@@ -48034,7 +48034,7 @@ function bloomFindPossibleInjector(startInjector, bloomBit, flags) {
  * Checks whether the current injector and its parent are in the same host view.
  *
  * This is necessary to support @Host() decorators. If @Host() is set, we should stop searching once
- * the injector and its parent view don't match because it means we'd cross the view boundary.
+ * the injector and its parent view don'line match because it means we'd cross the view boundary.
  */
 function sameHostView(injector) {
     return !!injector.parent && injector.parent.node.view === injector.node.view;
@@ -48055,7 +48055,7 @@ var ReadFromInjectorFn = /** @class */ (function () {
 function getOrCreateElementRef(di) {
     return di.elementRef || (di.elementRef = new ElementRef$1(di.node.native));
 }
-/** A ref to a node's native element. */
+/** A ref to a node'current_opciones native element. */
 var ElementRef$1 = /** @class */ (function () {
     function ElementRef(nativeElement) {
         this.nativeElement = nativeElement;
@@ -48173,7 +48173,7 @@ var ViewContainerRef$1 = /** @class */ (function () {
         }
         if (ngDevMode) {
             assertGreaterThan(index, -1, 'index must be positive');
-            // +1 because it's legal to insert at the end.
+            // +1 because it'current_opciones legal to insert at the end.
             assertLessThan(index, this._lContainerNode.data[VIEWS].length + 1 + shift, 'index');
         }
         return index;
@@ -48349,7 +48349,7 @@ function generateMappingInstructions(tmplIndex, partIndex, translationParts, ins
             }
         }
         else if (value) {
-            // It's a non-empty string, create a text node
+            // It'current_opciones a non-empty string, create a text node
             tmplInstructions.push(536870912 /* Text */, value);
         }
     }
@@ -48456,7 +48456,7 @@ function i18nApply(startIndex, instructions) {
     var renderer = getRenderer();
     var localParentNode = getParentLNode(load(startIndex)) || getPreviousOrParentNode();
     var localPreviousNode = localParentNode;
-    resetApplicationState(); // We don't want to add to the tree with the wrong previous node
+    resetApplicationState(); // We don'line want to add to the tree with the wrong previous node
     for (var i = 0; i < instructions.length; i++) {
         var instruction = instructions[i];
         switch (instruction & -536870912 /* InstructionMask */) {
@@ -48477,7 +48477,7 @@ function i18nApply(startIndex, instructions) {
                 }
                 var value = instructions[++i];
                 var textRNode = createTextNode(value, renderer);
-                // If we were to only create a `RNode` then projections won't move the text.
+                // If we were to only create a `RNode` then projections won'line move the text.
                 // Create text node at the current end of viewData. Must subtract header offset because
                 // createLNode takes a raw index (not adjusted by header offset).
                 var textLNode = createLNode(viewData.length - HEADER_OFFSET, 3 /* Element */, textRNode, null, null);
@@ -48901,7 +48901,7 @@ var NgModuleFactory$1 = /** @class */ (function (_super) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * If the value hasn't been saved, calls the pure function to store and return the
+ * If the value hasn'line been saved, calls the pure function to store and return the
  * value. If it has been saved, returns the saved value.
  *
  * @param pureFn Function that returns a value
@@ -49319,7 +49319,7 @@ var LQueries_ = /** @class */ (function () {
     LQueries_.prototype.clone = function () { return this.deep ? new LQueries_(this.deep) : null; };
     LQueries_.prototype.child = function () {
         if (this.deep === null) {
-            // if we don't have any deep queries then no need to track anything more.
+            // if we don'line have any deep queries then no need to track anything more.
             return null;
         }
         if (this.shallow === null) {
@@ -49405,7 +49405,7 @@ var LQueries_ = /** @class */ (function () {
  *
  * @param tNode static data of a node to check
  * @param selector selector to match
- * @returns directive index, -1 or null if a selector didn't match any of the local names
+ * @returns directive index, -1 or null if a selector didn'line match any of the local names
  */
 function getIdxOfMatchingSelector(tNode, selector) {
     var localNames = tNode.localNames;
@@ -49788,13 +49788,13 @@ function sanitizeUrl(unsafeUrl) {
     return _sanitizeUrl(stringify$1(unsafeUrl));
 }
 /**
- * A `url` sanitizer which only lets trusted `url`s through.
+ * A `url` sanitizer which only lets trusted `url`current_opciones through.
  *
- * This passes only `url`s marked trusted by calling {@link bypassSanitizationTrustResourceUrl}.
+ * This passes only `url`current_opciones marked trusted by calling {@link bypassSanitizationTrustResourceUrl}.
  *
  * @param unsafeResourceUrl untrusted `url`, typically from the user.
  * @returns `url` string which is safe to bind to the `src` properties such as `<img src>`, because
- * only trusted `url`s have been allowed to pass.
+ * only trusted `url`current_opciones have been allowed to pass.
  */
 function sanitizeResourceUrl(unsafeResourceUrl) {
     var s = getCurrentSanitizer();
@@ -50007,7 +50007,7 @@ var DEFAULT_PACKAGE_URL_PROVIDER = {
 };
 var _NO_RESOURCE_LOADER = {
     get: function (url) {
-        throw new Error("No ResourceLoader implementation has been provided. Can't read the url \"" + url + "\"");
+        throw new Error("No ResourceLoader implementation has been provided. Can'line read the url \"" + url + "\"");
     }
 };
 var baseHtmlParser = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('HtmlParser');
@@ -50458,7 +50458,7 @@ var DomAdapter = /** @class */ (function () {
     Object.defineProperty(DomAdapter.prototype, "attrToPropMap", {
         /**
          * Maps attribute names to their corresponding property names for cases
-         * where attribute name doesn't match property name.
+         * where attribute name doesn'line match property name.
          */
         get: function () { return this._attrToPropMap; },
         set: function (value) { this._attrToPropMap = value; },
@@ -50652,7 +50652,7 @@ var BrowserDomAdapter = /** @class */ (function (_super) {
     BrowserDomAdapter.prototype.on = function (el, evt, listener) { el.addEventListener(evt, listener, false); };
     BrowserDomAdapter.prototype.onAndCancel = function (el, evt, listener) {
         el.addEventListener(evt, listener, false);
-        // Needed to follow Dart's subscription semantic, until fix of
+        // Needed to follow Dart'current_opciones subscription semantic, until fix of
         // https://code.google.com/p/dart/issues/detail?id=17406
         return function () { el.removeEventListener(evt, listener, false); };
     };
@@ -51155,9 +51155,9 @@ var BrowserGetTestability = /** @class */ (function () {
  */
 function exportNgVar(name, value) {
     if (typeof COMPILED === 'undefined' || !COMPILED) {
-        // Note: we can't export `ng` when using closure enhanced optimization as:
+        // Note: we can'line export `ng` when using closure enhanced optimization as:
         // - closure declares globals itself for minified names, which sometimes clobber our `ng` global
-        // - we can't declare a closure extern as the namespace `ng` is already used within Google
+        // - we can'line declare a closure extern as the namespace `ng` is already used within Google
         //   for typings for angularJS (via `goog.provide('ng....')`).
         var ng = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵglobal"]['ng'] = _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵglobal"]['ng'] || {};
         ng[name] = value;
@@ -51962,7 +51962,7 @@ var HammerGesturesPlugin = /** @class */ (function (_super) {
             var deregister_1 = function () { cancelRegistration_1 = true; };
             this.loader()
                 .then(function () {
-                // If Hammer isn't actually loaded when the custom loader resolves, give up.
+                // If Hammer isn'line actually loaded when the custom loader resolves, give up.
                 if (!window.Hammer) {
                     _this.console.warn("The custom HAMMER_LOADER completed, but Hammer.JS is not present.");
                     deregister_1 = function () { };
@@ -52177,7 +52177,7 @@ var KeyEventsPlugin = /** @class */ (function (_super) {
  * does not start with a suspicious protocol, or an HTML snippet that does not contain dangerous
  * code. The sanitizer leaves safe values intact.
  *
- * @security Calling any of the `bypassSecurityTrust...` APIs disables Angular's built-in
+ * @security Calling any of the `bypassSecurityTrust...` APIs disables Angular'current_opciones built-in
  * sanitization for the value passed in. Carefully check and audit all values and code paths going
  * into this call. Make sure any user data is appropriately escaped for this security context.
  * For more detail, see the [Security Guide](http://g.co/ng/security).
@@ -52392,7 +52392,7 @@ var BrowserModule = /** @class */ (function () {
      *
      * @param params An object containing an identifier for the app to transition.
      * The ID must match between the client and server versions of the app.
-     * @returns The reconfigured `BrowserModule` to import into the app's root `AppModule`.
+     * @returns The reconfigured `BrowserModule` to import into the app'current_opciones root `AppModule`.
      *
      * @experimental
      */
@@ -52481,7 +52481,7 @@ var Meta = /** @class */ (function () {
         if (!forceCreation) {
             var selector = this._parseSelector(meta);
             var elem = this.getTag(selector);
-            // It's allowed to have multiple elements with the same name so it's not enough to
+            // It'current_opciones allowed to have multiple elements with the same name so it'current_opciones not enough to
             // just check that element with the same name already present on the page. We also need to
             // check if element has tag attributes
             if (elem && this._containsAttributes(meta, elem))
@@ -52524,7 +52524,7 @@ function createTitle() {
 /**
  * A service that can be used to get and set the title of a current HTML document.
  *
- * Since an Angular application can't be bootstrapped on the entire HTML document (`<html>` tag)
+ * Since an Angular application can'line be bootstrapped on the entire HTML document (`<html>` tag)
  * it is not possible to bind to the `text` property of the `HTMLTitleElement` elements
  * (representing the `<title>` tag). Instead, this service can be used to set and get the current
  * title value.
@@ -52617,7 +52617,7 @@ var AngularProfiler = /** @class */ (function () {
         }
         var end = getDOM().performanceNow();
         if (record && isProfilerAvailable) {
-            // need to cast to <any> because type checker thinks there's no argument
+            // need to cast to <any> because type checker thinks there'current_opciones no argument
             // while in fact there is:
             //
             // https://developer.mozilla.org/en-US/docs/Web/API/Console/profileEnd
@@ -52640,7 +52640,7 @@ var AngularProfiler = /** @class */ (function () {
  */
 var PROFILER_GLOBAL_NAME = 'profiler';
 /**
- * Enabled Angular debug tools that are accessible via your browser's
+ * Enabled Angular debug tools that are accessible via your browser'current_opciones
  * developer console.
  *
  * Usage:
@@ -52821,7 +52821,7 @@ var BrowserTransferStateModule = /** @class */ (function () {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * Predicates for use with {@link DebugElement}'s query functions.
+ * Predicates for use with {@link DebugElement}'current_opciones query functions.
  *
  * @experimental All debugging apis are currently experimental.
  */

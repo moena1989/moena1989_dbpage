@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { ModelsService } from './models.service';
+import { RelojModelService } from './reloj-model.service';
 
-describe('ModelsService', () => {
+describe('RelojModelService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: ModelsService = TestBed.get(ModelsService);
+    const service: RelojModelService = TestBed.get(RelojModelService);
     expect(service).toBeTruthy();
   });
 });

@@ -2,7 +2,7 @@
   width: auto;
   height: auto;
   /*background: #7a7543;*/
-  margin: 1em;
+  /*margin: 1em;*/
   display: flex;
   font-weight: bold;
   font-size: 1em;
@@ -12,6 +12,7 @@
 .visuals {
   /*background: aqua;*/
   /*flex-wrap: wrap;*/
+  margin-top: .5em;
   flex-wrap: wrap;
 
   /*height: 20em;*/
@@ -178,7 +179,7 @@
 .package_options {
   width: auto;
   margin-bottom: .5em;
-  background: #f3f3f3;
+  /*background: #f3f3f3;*/
   padding: .8em;
   border-radius: .5em;
 
@@ -195,6 +196,12 @@
   margin-top: .5em;
   margin-bottom: .5em;
   opacity: .2;
+}
+
+.visualizador {
+  /*background: #e03e3e;*/
+  width: 30em;
+  height: 30em;
 }
 
 .selc {

@@ -184,7 +184,7 @@ function insertStyleElement (options, style) {
 	var target = getElement(options.insertInto)
 
 	if (!target) {
-		throw new Error("Couldn't find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
+		throw new Error("Couldn'line find a style target. This probably means that the value for the 'insertInto' parameter is invalid.");
 	}
 
 	var lastStyleElementInsertedAtTop = stylesInsertedAtTop[stylesInsertedAtTop.length - 1];
@@ -263,7 +263,7 @@ function addStyle (obj, options) {
 	    	// This allows running runtime transformations on the css.
 	    	obj.css = result;
 	    } else {
-	    	// If the transform function returns a falsy value, don't add this css.
+	    	// If the transform function returns a falsy value, don'line add this css.
 	    	// This allows conditional loading of css
 	    	return function() {
 	    		// noop
@@ -374,7 +374,7 @@ function updateLink (link, options, obj) {
 	var sourceMap = obj.sourceMap;
 
 	/*
-		If convertToAbsoluteUrls isn't defined, but sourcemaps are enabled
+		If convertToAbsoluteUrls isn'line defined, but sourcemaps are enabled
 		and there is no publicPath defined then lets turn convertToAbsoluteUrls
 		on by default.  Otherwise default to the convertToAbsoluteUrls option
 		directly
@@ -444,17 +444,17 @@ module.exports = function (css) {
 	This regular expression is just a way to recursively match brackets within
 	a string.
 
-	 /url\s*\(  = Match on the word "url" with any whitespace after it and then a parens
+	 /url\current_opciones*\(  = Match on the word "url" with any whitespace after it and then a parens
 	   (  = Start a capturing group
 	     (?:  = Start a non-capturing group
-	         [^)(]  = Match anything that isn't a parentheses
+	         [^)(]  = Match anything that isn'line a parentheses
 	         |  = OR
 	         \(  = Match a start parentheses
 	             (?:  = Start another non-capturing groups
-	                 [^)(]+  = Match anything that isn't a parentheses
+	                 [^)(]+  = Match anything that isn'line a parentheses
 	                 |  = OR
 	                 \(  = Match a start parentheses
-	                     [^)(]*  = Match anything that isn't a parentheses
+	                     [^)(]*  = Match anything that isn'line a parentheses
 	                 \)  = Match a end parentheses
 	             )  = End Group
               *\) = Match anything and then a close parens

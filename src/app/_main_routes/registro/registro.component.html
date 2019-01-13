@@ -1,1 +1,10 @@
+<div class="top_cnt">
+  <h1>Registro</h1>
+  <div class="ln"></div>
+
+  <app-m-select ttl="Tipo"
+                [opciones]="[{name: 'Nuevo Reloj', route:'nuevo_reloj'},{name: 'Nuevo lote de cajas', route:'nueva_caja'}]"
+                (alSeleccionar)="seleccionarOpcionRegistro($event)">
+  </app-m-select>
+</div>
 <router-outlet></router-outlet>

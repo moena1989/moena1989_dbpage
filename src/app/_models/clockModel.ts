@@ -18,6 +18,32 @@ export class Caracteristica {
   }
 }
 
+export class MetadataAttr {
+  last_date: string;
+  lote: number;
+  ultimo_lote_key: string;
+}
+
+export class CajaModel {
+
+}
+
+export class LoteCajaModel {
+  tipo: string;
+  material: string;
+  lote: number;
+  fecha_registro: string;
+  total_cajas: number;
+  diametro: number;
+  forma: string;
+}
+
+// la idea con este objeto, es que a medida que se deciden agregar nuevos datos a la base de datos, tan solo sea agregar uno de estos
+export class CaracterisicaModel {
+  name: string;
+  data: string;
+}
+
 export class Base {
   private id_base: string;
   private id_seleccion: string;
@@ -37,7 +63,6 @@ export class Metadata {
   serial_def: string;
   serial_raw: string;
   img_url: string;
-
 
   constructor(fecha: string,
               serial_def: string,

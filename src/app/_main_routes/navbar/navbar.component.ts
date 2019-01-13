@@ -13,7 +13,7 @@ import {CurrentStorageService} from '../../_services/current-storage.service';
 })
 export class NavbarComponent implements OnInit {
   @ViewChild('modal') modal: NgxSmartModalComponent;
-  private err_msg: string;
+  err_msg: string;
 
   constructor(public db: DbService, public router: Router, private tool: ToolsService, private currentStorage: CurrentStorageService) {
   }
@@ -22,8 +22,8 @@ export class NavbarComponent implements OnInit {
   }
 
   cerrarCuenta() {
-    this.db.logout();
-    this.router.navigate(['/login']);
+    this.db.logOut();
+    this.router.navigate(['/logIn']);
   }
 
   buscarBySerial(serial: any) {

@@ -15,11 +15,12 @@
 <!--END MODAL-->
 
 <div class="package_options " *ngIf="!registrable && !registrado">
+
   <h1>INFORMACIÓN DE LOTE</h1>
   <p>Selecciona la cantidad de items que se registrarán para el nuevo lote</p>
   <div class="options opt_in">
-    <app-m-select ttl="Mano" [sValues]="this.est.manos"></app-m-select>
-    <app-m-select ttl="Lote #" [sValues]="[{name: (info_lotes.num_nuevo_lote) }]"></app-m-select>
+    <app-m-select ttl="Mano" [opciones]="this.est.manos"></app-m-select>
+    <app-m-select ttl="Lote #" [opciones]="[{name: (info_lotes.num_nuevo_lote) }]"></app-m-select>
     <div class="selc">
       <p class="sl-ttl">Cantidad</p>
       <div class="custom-select">
@@ -30,39 +31,42 @@
   <div class="bt-n-ref" (click)="IniciarNuevoLote(ss.value)">Iniciar nuevo lote</div>
 </div>
 
-
 <div class="package_options" *ngIf="registrable && !registrado">
-  <div class="ttl_card">
-    <div class="titulin">NUEVO REGISTRO</div>
-  </div>
+  <h1>Nuevo Reloj</h1>
 
   <div class="visuals">
-    <app-visualizer ttl="Frontal" (alSeleccionar)="onFileChanged($event,'frontal')"></app-visualizer>
+    <div class="visualizador">
+      <app-visualizer ttl="Frontal" (alSeleccionar)="onFileChanged($event,'frontal')"></app-visualizer>
+    </div>
 
     <div class="all_opts">
       <h4 class="ttt">Meta</h4>
       <div class="_ln"></div>
 
       <div class="options">
-
-        <app-m-select ttl="Mano" [sValues]="this.est.manos"></app-m-select>
-        <app-m-select ttl="No. Lote" [sValues]="[{name: info_lotes.current.lote_num}]"></app-m-select>
+        <app-m-select ttl="Mano" [opciones]="this.est.manos"></app-m-select>
+        <app-m-select ttl="No. Lote" [opciones]="[{name: info_lotes.current.lote_num}]"></app-m-select>
         <app-m-select ttl="ítem"
-                      [sValues]="[{name: info_lotes.current.item_actual+'/'+info_lotes.current.cantidad_por_lote }]"></app-m-select>
+                      [opciones]="[{name: info_lotes.current.item_actual+'/'+info_lotes.current.cantidad_por_lote }]"></app-m-select>
       </div>
       <h4 class="ttt">Base</h4>
       <div class="_ln"></div>
+
       <div class="options">
-        <app-m-select ttl="Modelo" [sValues]="est.modelos" (obSelected)="selectModel($event)"></app-m-select>
-        <app-m-select ttl="Colección" [sValues]="colecciones_del_modelo_selected"
-                      (obSelected)="seleccionarColeccion($event)"></app-m-select>
+        <app-m-select ttl="Modelo" [opciones]="est.modelos" (alSeleccionar)="selectModel($event)"></app-m-select>
+        <app-m-select ttl="Colección" [opciones]="colecciones_del_modelo_selected"
+                      (alSeleccionar)="seleccionarColeccion($event)"></app-m-select>
       </div>
+
       <h4 class="ttt">Caracteristicas de Personalización</h4>
+
       <div class="_ln"></div>
+
       <div class="options">
-        <app-m-select *ngFor="let opc of opciones_por_ver" ttl="{{opc.nombre}}" [sValues]="opc.ops"
-                      (obSelected)="selectCaracteristica($event,opc.id)"></app-m-select>
+        <app-m-select *ngFor="let opc of opciones_por_ver" ttl="{{opc.nombre}}" [opciones]="opc.ops"
+                      (alSeleccionar)="selectCaracteristica($event,opc.id)"></app-m-select>
       </div>
+
     </div>
   </div>
   <div class="bt-n-ref" (click)="modal.open()">Crear nuevo registro</div>

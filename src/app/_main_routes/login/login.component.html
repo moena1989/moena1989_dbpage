@@ -1,11 +1,10 @@
 <div class="main_login">
   <div class="card_login">
     <img class="logo" src="assets/common/logo_b.svg" alt="Moena 1989">
-    <!--<div class="txt-log">Ingreso de Usuarios</div>-->
     <form class="ins">
       <form class="l">
-        <input type="email" #mail placeholder="Usuario" value="andres.gc@moena1989.com" name="email" autocomplete="on">
-        <input type="password" #pass placeholder="Contraseña" value="123456789" name="pass" autocomplete="on">
+        <input type="email" #mail placeholder="Usuario" name="email" autocomplete="on">
+        <input type="password" #pass placeholder="Contraseña" name="pass" autocomplete="on">
       </form>
       <button class="btn-work" (click)="ingresar(mail.value,pass.value)">Ingresar</button>
     </form>

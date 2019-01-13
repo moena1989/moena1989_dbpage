@@ -1,0 +1,22 @@
+:host {
+  /*padding: 1em;*/
+  width: 100%;
+  display: flex;
+  box-sizing: border-box;
+  flex-direction: column;
+}
+
+.ln {
+  width: 100%;
+  height: 1px;
+  background: #dddddd;
+  margin-top: .5em;
+  margin-bottom: 1em;
+  box-sizing: border-box;
+}
+
+.top_cnt {
+  background: #f3f3f3;
+  /*margin: -1em;*/
+  padding: 1em;
+}

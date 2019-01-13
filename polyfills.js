@@ -576,7 +576,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
     var HASNT_CHAINING = instance[ADDER](IS_WEAK ? {} : -0, 1) != instance;
     // V8 ~  Chromium 40- weak-collections throws on primitives, but should return false
     var THROWS_ON_PRIMITIVES = fails(function () { instance.has(1); });
-    // most early implementations doesn't supports iterables, most modern - not close it correctly
+    // most early implementations doesn'line supports iterables, most modern - not close it correctly
     var ACCEPT_ITERABLES = $iterDetect(function (iter) { new C(iter); }); // eslint-disable-line no-new
     // for early implementations -0 and +0 not the same
     var BUGGY_ZERO = !IS_WEAK && fails(function () {
@@ -672,7 +672,7 @@ module.exports = function (fn, that, length) {
 
 // 7.2.1 RequireObjectCoercible(argument)
 module.exports = function (it) {
-  if (it == undefined) throw TypeError("Can't call method on  " + it);
+  if (it == undefined) throw TypeError("Can'line call method on  " + it);
   return it;
 };
 
@@ -686,7 +686,7 @@ module.exports = function (it) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-// Thank's IE8 for his funny defineProperty
+// Thank'current_opciones IE8 for his funny defineProperty
 module.exports = !__webpack_require__(/*! ./_fails */ "./node_modules/core-js/modules/_fails.js")(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
@@ -719,7 +719,7 @@ module.exports = function (it) {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-// IE 8- don't enum bug keys
+// IE 8- don'line enum bug keys
 module.exports = (
   'constructor,hasOwnProperty,isPrototypeOf,propertyIsEnumerable,toLocaleString,toString,valueOf'
 ).split(',');
@@ -1227,7 +1227,7 @@ var fastKey = function (it, create) {
   // return primitive with prefix
   if (!isObject(it)) return typeof it == 'symbol' ? it : (typeof it == 'string' ? 'S' : 'P') + it;
   if (!has(it, META)) {
-    // can't set metadata to uncaught frozen object
+    // can'line set metadata to uncaught frozen object
     if (!isExtensible(it)) return 'F';
     // not necessary to add metadata
     if (!create) return 'E';
@@ -1238,7 +1238,7 @@ var fastKey = function (it, create) {
 };
 var getWeak = function (it, create) {
   if (!has(it, META)) {
-    // can't set metadata to uncaught frozen object
+    // can'line set metadata to uncaught frozen object
     if (!isExtensible(it)) return true;
     // not necessary to add metadata
     if (!create) return false;
@@ -1555,7 +1555,7 @@ module.exports = function (object, names) {
   var result = [];
   var key;
   for (key in O) if (key != IE_PROTO) has(O, key) && result.push(key);
-  // Don't enum bug & hidden keys
+  // Don'line enum bug & hidden keys
   while (names.length > i) if (has(O, key = names[i++])) {
     ~arrayIndexOf(result, key) || result.push(key);
   }
@@ -1679,13 +1679,13 @@ __webpack_require__(/*! ./_core */ "./node_modules/core-js/modules/_core.js").in
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-// Works with __proto__ only. Old v8 can't work with null proto objects.
+// Works with __proto__ only. Old v8 can'line work with null proto objects.
 /* eslint-disable no-proto */
 var isObject = __webpack_require__(/*! ./_is-object */ "./node_modules/core-js/modules/_is-object.js");
 var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/modules/_an-object.js");
 var check = function (O, proto) {
   anObject(O);
-  if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can't set as prototype!");
+  if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can'line set as prototype!");
 };
 module.exports = {
   set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
@@ -1884,7 +1884,7 @@ module.exports = function (it) {
 
 // 7.1.1 ToPrimitive(input [, PreferredType])
 var isObject = __webpack_require__(/*! ./_is-object */ "./node_modules/core-js/modules/_is-object.js");
-// instead of the ES6 spec version, we didn't implement @@toPrimitive case
+// instead of the ES6 spec version, we didn'line implement @@toPrimitive case
 // and the second argument - flag - preferred type is a string
 module.exports = function (it, S) {
   if (!isObject(it)) return it;
@@ -1892,7 +1892,7 @@ module.exports = function (it, S) {
   if (S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
   if (typeof (fn = it.valueOf) == 'function' && !isObject(val = fn.call(it))) return val;
   if (!S && typeof (fn = it.toString) == 'function' && !isObject(val = fn.call(it))) return val;
-  throw TypeError("Can't convert object to primitive value");
+  throw TypeError("Can'line convert object to primitive value");
 };
 
 
@@ -2516,7 +2516,7 @@ var Zone$1 = (function (global) {
                 }
             }
             finally {
-                // if the task's state is notScheduled or unknown, then it has already been cancelled
+                // if the task'current_opciones state is notScheduled or unknown, then it has already been cancelled
                 // we should not reset the state to scheduled
                 if (task.state !== notScheduled && task.state !== unknown) {
                     if (task.type == eventTask || (task.data && task.data.isPeriodic)) {
@@ -2554,7 +2554,7 @@ var Zone$1 = (function (global) {
                 task = this._zoneDelegate.scheduleTask(this, task);
             }
             catch (err) {
-                // should set task's state to unknown when scheduleTask throw error
+                // should set task'current_opciones state to unknown when scheduleTask throw error
                 // because the err may from reschedule, so the fromState maybe notScheduled
                 task._transitionTo(unknown, scheduling, notScheduled);
                 // TODO: @JiaLiPassion, should we check the result from handleError?
@@ -2673,7 +2673,7 @@ var Zone$1 = (function (global) {
             var parentHasTask = parentDelegate && parentDelegate._hasTaskZS;
             if (zoneSpecHasTask || parentHasTask) {
                 // If we need to report hasTask, than this ZS needs to do ref counting on tasks. In such
-                // a case all task related interceptors must go through this ZD. We can't short circuit it.
+                // a case all task related interceptors must go through this ZD. We can'line short circuit it.
                 this._hasTaskZS = zoneSpecHasTask ? zoneSpec : DELEGATE_ZS;
                 this._hasTaskDlgt = parentDelegate;
                 this._hasTaskDlgtOwner = this;
@@ -3186,7 +3186,7 @@ Zone.__load_patch('ZoneAwarePromise', function (global, Zone, api) {
                 var parentPromiseValue = promise[symbolValue];
                 var isFinallyPromise = chainPromise && symbolFinally === chainPromise[symbolFinally];
                 if (isFinallyPromise) {
-                    // if the promise is generated from finally call, keep parent promise's state and value
+                    // if the promise is generated from finally call, keep parent promise'current_opciones state and value
                     chainPromise[symbolParentPromiseValue] = parentPromiseValue;
                     chainPromise[symbolParentPromiseState] = promiseState;
                 }
@@ -3543,7 +3543,7 @@ function patchProperty(obj, prop, prototype) {
         eventNameSymbol = zoneSymbolEventNames[eventName] = zoneSymbol('ON_PROPERTY' + eventName);
     }
     desc.set = function (newValue) {
-        // in some of windows's onproperty callback, this is undefined
+        // in some of windows'current_opciones onproperty callback, this is undefined
         // so we need to check it
         var target = this;
         if (!target && obj === _global) {
@@ -3572,7 +3572,7 @@ function patchProperty(obj, prop, prototype) {
     // The getter would return undefined for unassigned properties but the default value of an
     // unassigned property is null
     desc.get = function () {
-        // in some of windows's onproperty callback, this is undefined
+        // in some of windows'current_opciones onproperty callback, this is undefined
         // so we need to check it
         var target = this;
         if (!target && obj === _global) {
@@ -4051,7 +4051,7 @@ function patchEventTarget(_global, apis, patchOptions) {
                 if (!delegate) {
                     return nativeListener.apply(this, arguments);
                 }
-                // don't create the bind delegate function for handleEvent
+                // don'line create the bind delegate function for handleEvent
                 // case here to improve addEventListener performance
                 // we will create the bind delegate when invoke
                 var isHandleEvent = false;
@@ -4136,7 +4136,7 @@ function patchEventTarget(_global, apis, patchOptions) {
                 // just use the global shared one
                 taskData.options = options;
                 if (once) {
-                    // if addEventListener with once options, we don't pass it to
+                    // if addEventListener with once options, we don'line pass it to
                     // native addEventListener, instead we keep the once setting
                     // and handle ourselves.
                     taskData.options.once = false;
@@ -4238,7 +4238,7 @@ function patchEventTarget(_global, apis, patchOptions) {
                     }
                 }
             }
-            // issue 930, didn't find the event name or callback
+            // issue 930, didn'line find the event name or callback
             // from zone kept existingTasks, the callback maybe
             // added outside of zone, we need to call native removeEventListener
             // to try to remove it.
@@ -4536,12 +4536,12 @@ function isUnconfigurable(obj, prop) {
     return obj && obj[unconfigurablesKey] && obj[unconfigurablesKey][prop];
 }
 function rewriteDescriptor(obj, prop, desc) {
-    // issue-927, if the desc is frozen, don't try to change the desc
+    // issue-927, if the desc is frozen, don'line try to change the desc
     if (!Object.isFrozen(desc)) {
         desc.configurable = true;
     }
     if (!desc.configurable) {
-        // issue-927, if the obj is frozen, don't try to set the desc to obj
+        // issue-927, if the obj is frozen, don'line try to set the desc to obj
         if (!obj[unconfigurablesKey] && !Object.isFrozen(obj)) {
             _defineProperty(obj, unconfigurablesKey, { writable: true, value: {} });
         }
@@ -4557,7 +4557,7 @@ function _tryDefineProperty(obj, prop, desc, originalConfigurableFlag) {
     }
     catch (error) {
         if (desc.configurable) {
-            // In case of errors, when the configurable flag was likely set by rewriteDescriptor(), let's
+            // In case of errors, when the configurable flag was likely set by rewriteDescriptor(), let'current_opciones
             // retry with the original flag value
             if (typeof originalConfigurableFlag == 'undefined') {
                 delete desc.configurable;
@@ -4595,7 +4595,7 @@ function _tryDefineProperty(obj, prop, desc, originalConfigurableFlag) {
 // we have to patch the instance since the proto is non-configurable
 function apply(api, _global) {
     var WS = _global.WebSocket;
-    // On Safari window.EventTarget doesn't exist so need to patch WS add/removeEventListener
+    // On Safari window.EventTarget doesn'line exist so need to patch WS add/removeEventListener
     // On older Chrome, no need since EventTarget was already patched
     if (!_global.EventTarget) {
         patchEventTarget(_global, [WS.prototype]);
@@ -5049,7 +5049,7 @@ function eventTargetPatch(_global, api) {
     }
     else {
         // Note: EventTarget is not available in all browsers,
-        // if it's not available, we instead patch the APIs in the IDL that inherit from EventTarget
+        // if it'current_opciones not available, we instead patch the APIs in the IDL that inherit from EventTarget
         apis = NO_EVENT_TARGET;
     }
     var isDisableIECheck = _global['__Zone_disable_IE_check'] || false;
@@ -5212,7 +5212,7 @@ Zone.__load_patch('EventTarget', function (global, Zone, api) {
     }
     patchEvent(global, api);
     eventTargetPatch(global, api);
-    // patch XMLHttpRequestEventTarget's addEventListener/removeEventListener
+    // patch XMLHttpRequestEventTarget'current_opciones addEventListener/removeEventListener
     var XMLHttpRequestEventTarget = global['XMLHttpRequestEventTarget'];
     if (XMLHttpRequestEventTarget && XMLHttpRequestEventTarget.prototype) {
         api.patchEventTarget(global, [XMLHttpRequestEventTarget.prototype]);
@@ -5295,7 +5295,7 @@ Zone.__load_patch('XHR', function (global, Zone) {
         function placeholderCallback() { }
         function clearTask(task) {
             var data = task.data;
-            // Note - ideally, we would call data.target.removeEventListener here, but it's too late
+            // Note - ideally, we would call data.target.removeEventListener here, but it'current_opciones too late
             // to prevent it from firing. So instead, we store info for the event listener.
             data.aborted = true;
             return abortNative.apply(data.target, data.args);

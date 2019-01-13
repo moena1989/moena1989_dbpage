@@ -3,13 +3,14 @@ import {Injectable} from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class ModelsService {
+export class RelojModelService {
   /*
    CLASE ENCARGGADA DE CONTENER LA ESTRUCTURA DE LOS DATOS NECESARIOS PARA LA DB.
    */
   constructor() {
   }
 
+  // estructuras_________
   modelos: any[] = [
     {
       salt: 'G', id: 0, name: 'Origen',
@@ -226,13 +227,14 @@ export class ModelsService {
     {salt: 'T', id: 4, name: 'Telas'},
     {salt: 'V', id: 5, name: 'Vintage'},
     {salt: 'E', id: 6, name: 'Ed. Especial'}];
+  // fin de las estructuras_________
+
   ///////////////////////////////////////////
   manos: any[] = [{name: 'FCM', salt: 'FCM'}];
-  lotes: any[] = [{name: '1', salt: '1'}];
+
   opciones: any[] = [
     {
-      id: 0, nombre: 'Material principal', ops: [
-        {salt: 'GD', id: 0, name: 'Granadillo'},
+      id: 0, nombre: 'Material principal', ops: [   {salt: 'GD', id: 0, name: 'Granadillo'},
         {salt: 'NR', id: 1, name: 'Nazareno'},
         {salt: 'PM', id: 2, name: 'Palo de Mora'},
         {salt: 'PS', id: 3, name: 'Palo de Sangre'},
@@ -249,14 +251,12 @@ export class ModelsService {
         {salt: 'PN', id: 14, name: 'Pino'},
         {salt: 'AC', id: 15, name: 'Abarco'},
         {salt: 'AR', id: 16, name: 'algarrobo'},
-        {salt: 'CM', id: 17, name: 'Cumaru'}
-      ]
+        {salt: 'CM', id: 17, name: 'Cumaru'}]
     },
     {
       id: 1, nombre: 'Material orgánico', ops: [
-        {salt: 'MD', id: 0, name: 'Madera'},
-        {salt: 'TG', id: 1, name: 'Tagua'},
-        {salt: 'MA', id: 2, name: 'Mármol'},
+
+          {salt: 'MA', id: 2, name: 'Mármol'},
       ]
     }, {
       id: 2, nombre: 'Material metálico', ops: [

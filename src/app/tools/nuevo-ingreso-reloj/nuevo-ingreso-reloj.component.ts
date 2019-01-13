@@ -2,7 +2,7 @@ import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/co
 import {HasherService} from '../../_services/hasher.service';
 import {DbService} from '../../_services/db.service';
 import {formatDate} from '@angular/common';
-import {ModelsService} from '../../_services/models.service';
+import {RelojModelService} from '../../_services/reloj-model.service';
 import {Subscription} from 'rxjs';
 import {Router} from '@angular/router';
 import {MSelectComponent} from '../m-select/m-select.component';
@@ -21,7 +21,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
 
   serial_raw: string;
   serial_hash: string;
-  est: ModelsService;
+  est: RelojModelService;
   colecciones: any;
   colecciones_del_modelo_selected: any[];
   private _colecc_del_modelo_selected: any[];
@@ -49,7 +49,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
   bodyText: string;
   validando = false;
 
-  constructor(private estructura: ModelsService, private hasher: HasherService,
+  constructor(private estructura: RelojModelService, private hasher: HasherService,
               public db: DbService, private _router: Router, private tools: ToolsService) {
     this.est = estructura;
   }
@@ -65,7 +65,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
 
   buscarCurrentLote() {
     console.log('iniciando busqueda de registro');
-    this._current_reg = this.db.info_current_lote().subscribe(_info_lotes => {
+    this._current_reg = this.db.get_info_current_lote().subscribe(_info_lotes => {
       console.log('Buscando datos lote...');
       this.info_lotes = _info_lotes;
       console.log(this.info_lotes);
@@ -133,7 +133,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
           const c: any[] = oo.ids;
 
           // contiene las opciones qie deben ser visibles [1,2,3]...
-          const oopps: any[] = oo.id_opc;
+          const opciones_visibles: any[] = oo.id_opc;
 
           _opc.ops = _opc.ops.filter(valu => {
             return valu.id === c.find(val => valu.id === val);
@@ -194,7 +194,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
       fecha_ultimo_reg: Date.now(),
       item_actual: this.info_lotes.current.item_actual
     };
-    this.db.actualizarCurrentLote(currentLote);
+    this.db.updateCurrentLote(currentLote);
     console.log('aquí empieza a subir');
 
     this.db.pushReloj(this.ob_final, this.img_clock_front, (url) => {
@@ -255,7 +255,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
       item_actual: 0
     };
 
-    this.db.actualizarCurrentLote(currentLote);
+    this.db.updateCurrentLote(currentLote);
     this.db.updateLotesRegistrados(this.info_lotes.num_nuevo_lote);
     this.db.updateLoteN(this.info_lotes.num_nuevo_lote);
   }
