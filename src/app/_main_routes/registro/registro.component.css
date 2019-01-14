@@ -18,5 +18,27 @@
 .top_cnt {
   background: #f3f3f3;
   /*margin: -1em;*/
-  padding: 1em;
+  padding: 1em 1em 0em 1em;
+}
+
+.tab_bar {
+  width: 100%;
+  overflow-x: auto;
+  display: flex;
+  border-bottom: 1px solid #3a3a3a;
+  /*background: #dddddd;*/
+}
+
+.opt {
+  padding: .5em 1em .5em 1em;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.opt:hover {
+}
+
+.active {
+  color: white;
+  background: #3a3a3a;
 }

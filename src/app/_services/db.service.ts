@@ -36,10 +36,20 @@ export class DbService {
   push_nuevo_lote_de_material_y_diametro(com: any) {
     // Registro a los lotes generales
     const k = this.db.list('/data/full_regs/lots/').push(com).key;
+    const meta = new MetadataAttr();
+
+    meta.last_date = Date();
+    meta.lote = com.lote;
+    meta.ultimo_lote_key = k;
+
+    this.set_informacion(com.material, com.diametro, meta);
+    this.db.list('/data/full_regs/lots/').push(com);
+    return k;
   }
 
   push_nueva_caja(nueva_caja: any) {
     // Se guarda registro general
+    console.log(nueva_caja);
     this.db.object('data/full_regs/cases/').set(nueva_caja);
     // guardo registro ordenado
     this.db.list('data/cases/' + nueva_caja.material + '/' + nueva_caja.diametro + '/availables/').push(nueva_caja);
@@ -60,7 +70,7 @@ export class DbService {
   }
 
   set_informacion(material: string, diameter: number, loteData: MetadataAttr) {
-    return this.db.object('data/cases/' + material + '/' + diameter + '/metadata').set(loteData);
+    this.db.object('data/cases/' + material + '/' + diameter + '/metadata').set(loteData);
   }
 
   buscarDatosUsuarios(uid: string, ff: () => void) {

@@ -19,13 +19,11 @@ export class RelojModelService {
           id_coleccion: 0,
           opciones: [
             {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
-            {id_opc: 1, ids: [0]},
             {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 3, ids: [-1, 2]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [1]},
-            {id_opc: 8, ids: [0, 1, 2, 8, 17]}
           ]
         },
         {
@@ -234,7 +232,7 @@ export class RelojModelService {
 
   opciones: any[] = [
     {
-      id: 0, nombre: 'Material principal', ops: [   {salt: 'GD', id: 0, name: 'Granadillo'},
+      id: 0, nombre: 'Material principal', ops: [{salt: 'GD', id: 0, name: 'Granadillo'},
         {salt: 'NR', id: 1, name: 'Nazareno'},
         {salt: 'PM', id: 2, name: 'Palo de Mora'},
         {salt: 'PS', id: 3, name: 'Palo de Sangre'},
@@ -256,7 +254,7 @@ export class RelojModelService {
     {
       id: 1, nombre: 'Material orgánico', ops: [
 
-          {salt: 'MA', id: 2, name: 'Mármol'},
+        {salt: 'MA', id: 2, name: 'Mármol'},
       ]
     }, {
       id: 2, nombre: 'Material metálico', ops: [

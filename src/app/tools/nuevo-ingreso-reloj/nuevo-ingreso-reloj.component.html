@@ -40,14 +40,14 @@
     </div>
 
     <div class="all_opts">
-      <h4 class="ttt">Meta</h4>
+      <h4 class="ttt">Datos de Registro</h4>
       <div class="_ln"></div>
 
       <div class="options">
         <app-m-select ttl="Mano" [opciones]="this.est.manos"></app-m-select>
-        <app-m-select ttl="No. Lote" [opciones]="[{name: info_lotes.current.lote_num}]"></app-m-select>
-        <app-m-select ttl="ítem"
-                      [opciones]="[{name: info_lotes.current.item_actual+'/'+info_lotes.current.cantidad_por_lote }]"></app-m-select>
+        <!--<app-m-select ttl="No. Lote" [opciones]="[{name: info_lotes.current.lote_num}]"></app-m-select>-->
+        <!--<app-m-select ttl="ítem"-->
+        <!--[opciones]="[{name: info_lotes.current.item_actual+'/'+info_lotes.current.cantidad_por_lote }]"></app-m-select>-->
       </div>
       <h4 class="ttt">Base</h4>
       <div class="_ln"></div>
@@ -57,6 +57,17 @@
         <app-m-select ttl="Colección" [opciones]="colecciones_del_modelo_selected"
                       (alSeleccionar)="seleccionarColeccion($event)"></app-m-select>
       </div>
+      <h4 class="ttt">Base</h4>
+      <div class="_ln"></div>
+
+      <div class="options">
+        <app-m-select ttl="Tipo" [opciones]="est.modelos"></app-m-select>
+        <app-m-select ttl="Material" [opciones]="est.modelos"></app-m-select>
+        <app-m-select ttl="Diámetro" [opciones]="est.modelos"></app-m-select>
+        <app-m-select ttl="Lote" [opciones]="est.modelos"></app-m-select>
+        <app-m-select ttl="No. Caja" [opciones]="est.modelos"></app-m-select>
+      </div>
+
 
       <h4 class="ttt">Caracteristicas de Personalización</h4>
 

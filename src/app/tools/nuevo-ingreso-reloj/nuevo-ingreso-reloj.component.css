@@ -198,6 +198,10 @@
   opacity: .2;
 }
 
+.ttt {
+  margin-left: .5em;
+}
+
 .visualizador {
   /*background: #e03e3e;*/
   width: 30em;
