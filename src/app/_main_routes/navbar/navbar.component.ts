@@ -26,30 +26,6 @@ export class NavbarComponent implements OnInit {
     this.router.navigate(['/logIn']);
   }
 
-  buscarBySerial(serial: any) {
-    console.log(serial);
-    if (serial !== '') {
-      this.db.buscarReloj(serial, (result: any) => {
-        // aún no sé si es mejor enviar los datos desde aquí o desde la func buscarReloj
-        if (result) {
-          console.log('Producto encontrado');
-          console.log(result);
-          this.currentStorage.relojDisponible = result;
-          serial = '';
-          this.router.navigate(['/busqueda']);
-          this.modal.close();
-        } else {
-          // no existe serial
-          console.log('ese serial no existe');
-          this.err_msg = ' No se encontró producto con ese serial';
-        }
-      });
-    } else {
-      console.log('no se escribió ningun serial');
-      this.err_msg = ' No se ha encontrado el producto';
-    }
-  }
-
   // abriModal() {
   //   this.modal.open();
   //   this.err_msg = '';

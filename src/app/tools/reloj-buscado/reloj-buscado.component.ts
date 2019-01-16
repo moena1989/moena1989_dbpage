@@ -7,13 +7,24 @@ import {ClockModel} from '../../_models/clockModel';
   styleUrls: ['./reloj-buscado.component.css']
 })
 export class RelojBuscadoComponent implements OnInit {
-  @Input() dataReloj: ClockModel;
+  titles: string[] = [];
+  reloj: any = {};
+  url = '';
+
+  // @Input() dataReloj ;
+  @Input() set dataReloj(reloj: any) {
+    console.log('i');
+    console.log(reloj['metadata']);
+    this.titles = Object.keys(reloj['features']);
+    this.reloj = reloj;
+  }
 
   constructor() {
+
   }
 
   ngOnInit() {
-    console.log('Se inicio el reloj buscado');
-    console.log(this.dataReloj);
+    // console.log('Se inicio el reloj buscado');
+    // console.log(this.dataReloj);
   }
 }

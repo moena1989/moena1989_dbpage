@@ -179,19 +179,19 @@ export class NuevoIngresoRelojComponent implements OnInit {
   seleccionarLote(lote_selected: any) {
     this.current_reloj.lote = +lote_selected.name;
     this.current_opciones.cajas = lote_selected.items;
-    console.log(this.current_opciones.cajas);
+    // console.log(this.current_opciones.cajas);
   }
 
   finalizarNuevoRegistro() {
     const serial = this.hasher.encriptarSerial('aquí irán un serial chingón', 20, 10);
-    console.log(Object.keys(this.current_reloj));
+    // console.log(Object.keys(this.current_reloj));
     const reloj_final = {
       metadata: {
         date: Date.now(),
         serial: serial,
         salts: this.salts.modelo + '/' + this.salts.coleccion
       },
-      data: this.current_reloj
+      features: this.current_reloj
     };
     this.validando = true;
 // primero, subo la imagen...
@@ -214,7 +214,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
   }
 
   IniciarNuevoLote(cantidad_por_lote) {
-    console.log(cantidad_por_lote);
+    // console.log(cantidad_por_lote);
     // Se crea la estructura del nuevo lote a llenar
     const currentLote = {
       lote_num: this.info_lotes.num_nuevo_lote,
@@ -235,22 +235,10 @@ export class NuevoIngresoRelojComponent implements OnInit {
 
   onFileChanged(evnt: File, typeImage: string) {
     // aquí se escoge
-
     switch (typeImage) {
       case 'frontal':
         this.watch_img = evnt;
-        console.log('frontal');
         break;
-
-      // case 'lateral_der':
-      //   console.log('der');
-      //   this.img_clock_der = evnt;
-      //
-      //   break;
-      // case 'lateral_izq':
-      //   console.log('izq');
-      //   this.img_clock_izq = evnt;
-      //   break;
     }
   }
 

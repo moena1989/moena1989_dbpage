@@ -1,4 +1,11 @@
-<div class="buscador_cnt"></div>
+<div class="buscador_cnt">
+  <h1>Buscar por serial:</h1>
+  <div class="nv">
+    <input type="text" value="" #serial placeholder="Escribe el serial" class="in_buscar" value="{{serial_bs }}">
+    <div class="bt_buscar" (click)="buscarBySerial(serial.value)">Buscar</div>
+  </div>
+  <div class="err">{{err_msg}}</div>
+</div>
 
-<app-reloj-buscado [dataReloj]="currentStorage.relojDisponible"></app-reloj-buscado>
-<div class="bt_cerrar" routerLink="/" (click)="cerrar()">Cerrar busqueda</div>
+<app-reloj-buscado *ngIf="mostrar_busqueda" [dataReloj]="reloj_encontrado"></app-reloj-buscado>
+<div class="bt_cerrar" (click)="cerrar()" *ngIf="mostrar_busqueda">Cerrar busqueda</div>

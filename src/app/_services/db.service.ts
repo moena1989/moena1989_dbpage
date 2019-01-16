@@ -76,15 +76,16 @@ export class DbService {
     });
   }
 
-  buscarReloj(serial: string, callback: (result: any) => any) {
-    this.db.object('relojes/seriales/' + serial).valueChanges().subscribe(value => {
-      console.log('SI EXISTE SERIAL');
+  buscarReloj(serial: string) {
+    const serial_splitted = serial.split('-');
+    const b = serial_splitted[0].split('');
 
-      this.db.object('relojes/data/' + value).valueChanges().subscribe(datosReloj => {
-        // significa que el serial si existe en la base, ahora se busca la info de ese puntualmente
-        callback(datosReloj);
-      });
-    });
+    let base_s = '';
+
+    b.forEach(value1 => base_s += value1 + '/');
+    const last_route = 'data/watches/' + base_s + serial_splitted[1];
+    // console.log(last_route);
+    return this.db.object(last_route).valueChanges();
   }
 
   logIn(email: string, pass: string, result: (ho: any) => any) {
@@ -189,11 +190,10 @@ export class DbService {
 
   push_reloj(reloj: any) {
     // busco la caja seleccionada y la elimino de las disponibles
-    this.delete_caja_disponible(reloj.data.material, reloj.data.diametro, reloj.data.lote, reloj.data.caja);
+    this.delete_caja_disponible(reloj.features.material, reloj.features.diametro, reloj.features.lote, reloj.features.caja);
     // pusheo reloj
     const key = this.db.object('data/watches/' + reloj.metadata.salts + '/' + reloj.metadata.serial).set(reloj);
     reloj.metadata.key = key;
-    this.db.object('full_regs/watches/' + key).set(reloj);
   }
 
   push_image(img: File, name: any, route: any, alFinalizar: (url: string) => void) {
