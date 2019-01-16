@@ -19,13 +19,13 @@
   background: #f3f3f3;
   /*margin: -1em;*/
   padding: 1em 1em 0em 1em;
+  border-bottom: 1px solid #3a3a3a;
 }
 
 .tab_bar {
   width: 100%;
   overflow-x: auto;
   display: flex;
-  border-bottom: 1px solid #3a3a3a;
   /*background: #dddddd;*/
 }
 
@@ -33,12 +33,16 @@
   padding: .5em 1em .5em 1em;
   font-weight: bold;
   cursor: pointer;
+  opacity: .7;
 }
 
 .opt:hover {
+  opacity: .9;
+
 }
 
 .active {
+  opacity: 1;
   color: white;
   background: #3a3a3a;
 }

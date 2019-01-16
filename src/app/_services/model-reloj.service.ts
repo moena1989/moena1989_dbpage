@@ -3,7 +3,7 @@ import {Injectable} from '@angular/core';
 @Injectable({
   providedIn: 'root'
 })
-export class RelojModelService {
+export class ModelRelojService {
   /*
    CLASE ENCARGGADA DE CONTENER LA ESTRUCTURA DE LOS DATOS NECESARIOS PARA LA DB.
    */
@@ -18,7 +18,7 @@ export class RelojModelService {
         {
           id_coleccion: 0,
           opciones: [
-            {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
+            // {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
             {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 3, ids: [-1, 2]},
             {id_opc: 5, ids: [0, 1, 2]},
@@ -29,9 +29,8 @@ export class RelojModelService {
         {
           id_coleccion: 1,
           opciones: [
-            {id_opc: 0, ids: [0, 5, 6, 14]},
+            // {id_opc: 0, ids: [0, 5, 6, 14]},
             {id_opc: 1, ids: [0]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -41,9 +40,8 @@ export class RelojModelService {
         {
           id_coleccion: 2,
           opciones: [
-            {id_opc: 0, ids: [0, 3, 5, 6, 8, 10]},
+            // {id_opc: 0, ids: [0, 3, 5, 6, 8, 10]},
             {id_opc: 1, ids: [0]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -52,31 +50,29 @@ export class RelojModelService {
         {
           id_coleccion: 3,
           opciones: [
-            {id_opc: 0, ids: [0, 5, 6, 7, 8, 9, 14]},
+            // {id_opc: 0, ids: [0, 5, 6, 7, 8, 9, 14]},
             {id_opc: 1, ids: [0]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
             {id_opc: 8, ids: [1, 4, 5, 6, 7, 9]}]
-        }, {
+        },
+        {
           id_coleccion: 4,
           opciones: [
-            {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
+            // {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
             {id_opc: 1, ids: [0]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [2]},
             {id_opc: 8, ids: [0, 1, 3]}
           ]
-        }
-        , {
+        },
+        {
           id_coleccion: 5,
           opciones: [
-            {id_opc: 0, ids: [0, 5, 6, 8, 9, 10, 14]},
+            // {id_opc: 0, ids: [0, 5, 6, 8, 9, 10, 14]},
             {id_opc: 1, ids: [0]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [1]},
@@ -91,9 +87,8 @@ export class RelojModelService {
         {
           id_coleccion: 0,
           opciones: [
-            {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
+            // {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
             {id_opc: 1, ids: [0]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 2, ids: [0, 1, 5, 4]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
@@ -110,9 +105,8 @@ export class RelojModelService {
         {
           id_coleccion: 0,
           opciones: [
-            {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 15, 16, 17]},
+            // {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 15, 16, 17]},
             {id_opc: 1, ids: [0]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
@@ -128,9 +122,8 @@ export class RelojModelService {
         {
           id_coleccion: 0,
           opciones: [
-            {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
+            // {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
             {id_opc: 1, ids: [0]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 3, ids: [-1, 2]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
@@ -141,9 +134,8 @@ export class RelojModelService {
         {
           id_coleccion: 1,
           opciones: [
-            {id_opc: 0, ids: [0, 5, 6, 14]},
+            // {id_opc: 0, ids: [0, 5, 6, 14]},
             {id_opc: 1, ids: [0]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
@@ -154,9 +146,8 @@ export class RelojModelService {
         {
           id_coleccion: 2,
           opciones: [
-            {id_opc: 0, ids: [0, 3, 5, 6, 8, 10]},
+            // {id_opc: 0, ids: [0, 3, 5, 6, 8, 10]},
             {id_opc: 1, ids: [0]}, {id_opc: 2, ids: [6]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -165,9 +156,8 @@ export class RelojModelService {
         {
           id_coleccion: 3,
           opciones: [
-            {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
+            // {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
             {id_opc: 1, ids: [0]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
@@ -176,9 +166,8 @@ export class RelojModelService {
         }, {
           id_coleccion: 4,
           opciones: [
-            {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
+            // {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
             {id_opc: 1, ids: [0]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
@@ -189,9 +178,8 @@ export class RelojModelService {
         , {
           id_coleccion: 5,
           opciones: [
-            {id_opc: 0, ids: [0, 5, 6, 8, 9, 10, 14]},
+            // {id_opc: 0, ids: [0, 5, 6, 8, 9, 10, 14]},
             {id_opc: 1, ids: [0]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
             {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [0, 1]},
@@ -204,9 +192,8 @@ export class RelojModelService {
       colecciones: [{
         id_coleccion: 0,
         opciones: [
-          {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
+          // {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
           {id_opc: 1, ids: [0]},
-          {id_opc: 9, ids: [0, 1, 2, 3, 4]},
           {id_opc: 2, ids: [0, 1, 4, 5]},
           {id_opc: 3, ids: [-1, 2]},
           {id_opc: 5, ids: [0, 1, 2]},
@@ -232,28 +219,7 @@ export class RelojModelService {
 
   opciones: any[] = [
     {
-      id: 0, nombre: 'Material principal', ops: [{salt: 'GD', id: 0, name: 'Granadillo'},
-        {salt: 'NR', id: 1, name: 'Nazareno'},
-        {salt: 'PM', id: 2, name: 'Palo de Mora'},
-        {salt: 'PS', id: 3, name: 'Palo de Sangre'},
-        {salt: 'NG', id: 4, name: 'Nogal'},
-        {salt: 'CD', id: 5, name: 'Cedro'},
-        {salt: 'AP', id: 6, name: 'Achapo'},
-        {salt: 'EB', id: 7, name: 'Ébano'},
-        {salt: 'FM', id: 8, name: 'Flor Morado'},
-        {salt: 'TK', id: 9, name: 'Teca'},
-        {salt: 'CM', id: 10, name: 'Canelo Moena'},
-        {salt: 'ZP', id: 11, name: 'Zapan'},
-        {salt: 'AM', id: 12, name: 'Amargo'},
-        {salt: 'CM', id: 13, name: 'Comino Crespo'},
-        {salt: 'PN', id: 14, name: 'Pino'},
-        {salt: 'AC', id: 15, name: 'Abarco'},
-        {salt: 'AR', id: 16, name: 'algarrobo'},
-        {salt: 'CM', id: 17, name: 'Cumaru'}]
-    },
-    {
       id: 1, nombre: 'Material orgánico', ops: [
-
         {salt: 'MA', id: 2, name: 'Mármol'},
       ]
     }, {
@@ -317,14 +283,6 @@ export class RelojModelService {
         {salt: 'VT', id: 17, name: 'Verde militar'}
 
       ]
-    }, {
-      id: 9, nombre: 'Diámetro', ops: [
-        {salt: '36', id: 0, name: '36'},
-        {salt: '38', id: 1, name: '38'},
-        {salt: '40', id: 2, name: '40'},
-        {salt: '42', id: 3, name: '42'},
-        {salt: '43', id: 4, name: '43'}
-      ]
-    },
+    }
   ];
 }

@@ -50,8 +50,8 @@ export class NavbarComponent implements OnInit {
     }
   }
 
-  abriModal() {
-    this.modal.open();
-    this.err_msg = '';
-  }
+  // abriModal() {
+  //   this.modal.open();
+  //   this.err_msg = '';
+  // }
 }

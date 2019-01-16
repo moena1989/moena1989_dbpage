@@ -66,19 +66,13 @@
   /*align-items: center;*/
   justify-self: center;
   display: flex;
-  width: 15em;
+  width: 10em;
   padding: .5em;
+  margin-right: 1em;
   /*justify-self: center;*/
   cursor: pointer;
 }
 
-.bts {
-  margin: .5em;
-  /*font-weight: bold;*/
-  cursor: pointer;
-  color: white;
-  opacity: .2;
-}
 
 .l_pack {
   display: flex;
@@ -94,7 +88,14 @@
 }
 
 .bts:hover {
-  opacity: .9;
+  /*opacity: ;*/
+}
+
+.bts {
+  margin: .5em;
+  /*font-weight: bold;*/
+  cursor: pointer;
+  color: rgba(255, 255, 255, 0.71);
 }
 
 .bt_cerrar {

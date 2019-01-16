@@ -1,28 +1,27 @@
-<ngx-smart-modal #modal identifier="buscador">
-<h1>Buscar por serial:</h1>
-<div class="nv">
-<input type="text" value="" #serial placeholder="Escribe el serial" class="in_buscar">
-<div class="bt_buscar" (click)="buscarBySerial(serial.value)">Buscar</div>
-<div class="err">{{err_msg}}</div>
-</div>
-</ngx-smart-modal>
+<!--<ngx-smart-modal #modal identifier="buscador">-->
+<!--<h1>Buscar por serial:</h1>-->
+<!--<div class="nv">-->
+<!--<input type="text" value="" #serial placeholder="Escribe el serial" class="in_buscar">-->
+<!--<div class="bt_buscar" (click)="buscarBySerial(serial.value)">Buscar</div>-->
+<!--<div class="err">{{err_msg}}</div>-->
+<!--</div>-->
+<!--</ngx-smart-modal>-->
 
 <img class="logo" routerLink="/" src="assets/common/logo_w.svg" alt="Moena 1989">
 <div class="nav_options">
-<div class="l_pack">
-<div (click)="abriModal()" class="bts" [routerLinkActive]="'acti'">BUSQUEDA</div>
-<div routerLink="/registro/" class="bts" [routerLinkActive]="'acti'">REGISTRO</div>
-<div routerLink="/registro/" class="bts" [routerLinkActive]="'acti'">VENTAS</div>
-</div>
+  <div class="l_pack">
+    <div routerLink="/registro/" [routerLinkActive]="'acti'" class="bts">Registro</div>
+    <div routerLink="/busqueda/" class="bts" [routerLinkActive]="'acti'">Búsqueda</div>
+    <!--<div routerLink="/registro/" class="bts" [routerLinkActive]="'acti'">VENTAS</div>-->
+  </div>
 
-<div class="r_pack">
-<div class="info_user_log">
-<div class="current_user">{{this.db.userLogueado.name}} {{this.db.userLogueado.last_name}}</div>
-<div class="current_cargo">{{this.db.userLogueado.cargo}}</div>
-</div>
-<div class="bt_cerrar" (click)="cerrarCuenta()">Cerrar sesión</div>
-</div>
+  <div class="r_pack">
+    <div class="info_user_log">
+      <div class="current_user">{{this.db.userLogueado.name}} {{this.db.userLogueado.last_name}}</div>
+      <div class="current_cargo">{{this.db.userLogueado.cargo}}</div>
+    </div>
+    <div class="bt_cerrar" (click)="cerrarCuenta()">Cerrar sesión</div>
+  </div>
 </div>
 <div class="navbar-expand-lg navbar-light bg-light">
-<div>Holi</div>
 </div>

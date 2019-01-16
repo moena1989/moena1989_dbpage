@@ -18,10 +18,11 @@ export class BusquedaComponent implements OnInit {
   TODO buscar una manera más opptima sin tener que guardarlo y traerlo de db.
    */
   constructor(public db: DbService, private tool: ToolsService, public currentStorage: CurrentStorageService, private router: Router) {
-    console.log(this.currentStorage.relojDisponible);
-    if (this.currentStorage.relojDisponible === undefined) {
-      this.router.navigate(['/']);
-    }
+    // console.log(this.currentStorage.relojDisponible);
+    // if (this.currentStorage.relojDisponible === undefined) {
+    //   this.router.navigate(['/']);
+    // }
+    //
   }
 
   ngOnInit() {

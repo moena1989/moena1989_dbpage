@@ -47,13 +47,6 @@ export class DbService {
     return k;
   }
 
-  push_nueva_caja(nueva_caja: any) {
-    // Se guarda registro general
-    console.log(nueva_caja);
-    this.db.object('data/full_regs/cases/').set(nueva_caja);
-    // guardo registro ordenado
-    this.db.list('data/cases/' + nueva_caja.material + '/' + nueva_caja.diametro + '/availables/').push(nueva_caja);
-  }
 
   // ________________________BUSQUEDAS
   buscar_cajas_disponibles(material: any, diametro: any, lote: number) {
@@ -169,12 +162,43 @@ export class DbService {
       });
   }
 
-  pushReloj(reloj: ClockModel, img_clock: File, alFinalizar: (url: string) => void): void {
-    const key = this.db.list('relojes/data').push(reloj).key;
-    this.db.object('relojes/seriales/' + reloj.metadata.serial_def).set(key);
+  delete_caja_disponible(material: any, diametro: any, lote: any, num: any) {
+    console.log('data/cases/' + material + '/' + diametro + '/availables');
+    const su = this.db.list('data/cases/' + material + '/' + diametro + '/availables').valueChanges().subscribe(cases => {
+      console.log('trayendo caja especifica');
+      const main_caja = cases.find(value => value['id_caja'] === num);
+      this.db.object('data/cases/' + material + '/' + diametro + '/availables/' + main_caja['available_key']).remove();
+      su.unsubscribe();
+    });
+  }
 
+  push_nueva_caja(nueva_caja: any) {
+    // Se guarda registro general
+    console.log(nueva_caja);
+    const full_key = this.db.list('data/full_regs/cases/').push(nueva_caja).key;
+    nueva_caja.id_key = full_key;
+    this.db.object('data/full_regs/cases/' + full_key).set(nueva_caja);
+    // guardo registro ordenado
+    const available_key = this.db.list('data/cases/' + nueva_caja.material + '/' + nueva_caja.diametro + '/availables/')
+      .push(nueva_caja).key;
+    nueva_caja.available_key = available_key;
+    this.db.object('data/cases/' + nueva_caja.material + '/' + nueva_caja.diametro + '/availables/' + available_key).set(nueva_caja);
+
+
+  }
+
+  push_reloj(reloj: any) {
+    // busco la caja seleccionada y la elimino de las disponibles
+    this.delete_caja_disponible(reloj.data.material, reloj.data.diametro, reloj.data.lote, reloj.data.caja);
+    // pusheo reloj
+    const key = this.db.object('data/watches/' + reloj.metadata.salts + '/' + reloj.metadata.serial).set(reloj);
+    reloj.metadata.key = key;
+    this.db.object('full_regs/watches/' + key).set(reloj);
+  }
+
+  push_image(img: File, name: any, route: any, alFinalizar: (url: string) => void) {
     const storageRef = firebase.storage().ref();
-    const uploadTask = storageRef.child('clocks_imgs/' + key).put(img_clock);
+    const uploadTask = storageRef.child(route + '/' + name + '.jpg').put(img);
     console.log('se inicia subida');
     uploadTask.on(firebase.storage.TaskEvent.STATE_CHANGED,
       (snapshot) => {
@@ -183,13 +207,15 @@ export class DbService {
         console.log(error);
       },
       () => {
-        firebase.storage().ref('clocks_imgs/' + key).getDownloadURL().then(url => {
-          console.log('la url es:' + url);
-          this.db.object('relojes/data/' + key + '/metadata/img_url').set(url);
-          // agrego la url al objeto de acá. la img, es lo único que funciona de forma distinta.
+        firebase.storage().ref(route + '/' + name + '.jpg').getDownloadURL().then(url => {
+          console.log('la url es ');
           alFinalizar(url);
         });
       }
     );
+  }
+
+  buscar_relojes_disponibles(material: string, diametro: string) {
+    return this.db.list('data/cases/' + material + '/' + diametro + '/availables').valueChanges();
   }
 }
