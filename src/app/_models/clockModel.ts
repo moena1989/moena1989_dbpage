@@ -30,12 +30,13 @@ export class CajaModel {
 
 export class LoteCajaModel {
   tipo: string;
-  material: string;
   lote: number;
   fecha_registro: string;
   total_cajas: number;
   diametro: number;
-  forma: string;
+  modelo: string;
+  materiales: any = [];
+  diametro_interno: number;
 }
 
 // la idea con este objeto, es que a medida que se deciden agregar nuevos datos a la base de datos, tan solo sea agregar uno de estos

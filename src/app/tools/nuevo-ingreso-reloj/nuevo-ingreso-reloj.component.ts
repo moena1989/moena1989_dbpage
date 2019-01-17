@@ -3,11 +3,9 @@ import {HasherService} from '../../_services/hasher.service';
 import {DbService} from '../../_services/db.service';
 import {ModelRelojService} from '../../_services/model-reloj.service';
 import {Subscription} from 'rxjs';
-import {Router} from '@angular/router';
 import {MSelectComponent} from '../m-select/m-select.component';
 import {ToolsService} from '../../_services/tools.service';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
-import {ClockModel} from '../../_models/clockModel';
 import {ModelCajasService} from '../../model-cajas.service';
 
 class Rmodel {
@@ -15,7 +13,7 @@ class Rmodel {
   lote: number;
   caja: number;
   tipo: string;
-  material: string;
+  materiales: any[];
   coleccion: string;
   modelo: string;
 }
@@ -61,6 +59,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
 
   seleccionarModelo(item_modelo_seleccionado: any) {
     // TODO buscar la manera de eliminar el [0] al final de la linea
+
     const est_modelo_selected = this.estructura.modelos.filter(value => value.id === item_modelo_seleccionado.id)[0];
     this._colecc_del_modelo_selected = est_modelo_selected.colecciones;
     const todas_colecciones = this.estructura.colecciones;
@@ -72,9 +71,14 @@ export class NuevoIngresoRelojComponent implements OnInit {
       });
       return oo != null;
     });
+
     this.opciones_por_ver = [];
     this.current_reloj.modelo = item_modelo_seleccionado.name;
     this.salts.modelo = item_modelo_seleccionado.salt;
+
+    this.current_opciones.opciones_materiales_del_modelo = this.cajaEst.traerMateriales(item_modelo_seleccionado);
+    this.current_opciones.materiales = [this.current_opciones.opciones_materiales_del_modelo.length];
+    this.current_reloj.modelo = item_modelo_seleccionado.name;
 
   }
 
@@ -161,7 +165,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
     // this.nuevo_lote.total_cajas = itemSeleccionado;
   }
 
-  seleccionarTipo(tipo_selected: any) {
+  seleccionarTipo_(tipo_selected: any) {
     console.log('se seleccionna un tipo de material');
     // this.nuevo_lote.tipo = itemSeleccionado.name;
     console.log(tipo_selected.items);
@@ -169,11 +173,9 @@ export class NuevoIngresoRelojComponent implements OnInit {
     this.current_reloj.tipo = tipo_selected.name;
   }
 
-  seleccionarMaterial(material_selected: any) {
-    // this.current_reloj = itemSeleccionado.name;
-    this.current_opciones.diametro = this.cajaEst.diametros;
-    this.current_reloj.material = material_selected.name;
-
+  seleccionarTipo(tipo_selected: any, i: any) {
+    // this.current_reloj.materiales[i] = {Tipo: tipo_selected.name};
+    this.current_opciones.materiales[i] = tipo_selected.items;
   }
 
   seleccionarLote(lote_selected: any) {
@@ -272,5 +274,8 @@ export class NuevoIngresoRelojComponent implements OnInit {
   seleccionarCaja(caja_selected: any) {
     this.ver_opciones_reloj = true;
     this.current_reloj.caja = caja_selected.name;
+  }
+
+  seleccinarMaterial($event: any, i: number) {
   }
 }

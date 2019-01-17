@@ -9,7 +9,12 @@
 
   <div class="rjb-datos">
     <div class="_ln"></div>
-    <div *ngFor="let t of titles"><strong>{{t}}: </strong>{{reloj['features'][t]}}</div>
-    <div class="_ln"></div>
+    <div>Serial: <strong>
+      <div>Serial: <strong>{{reloj.metadata.serial}}</strong></div>
+    </strong>< /div>
+      <div *ngFor="let t of titles"><strong>{{t}}: </strong>{{reloj['features'][t]}}</div>
+      <div class="_ln"></div>
+
+
+    </div>
   </div>
-</div>

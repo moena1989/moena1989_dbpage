@@ -18,30 +18,23 @@ export class ModelRelojService {
         {
           id_coleccion: 0,
           opciones: [
-            // {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
-            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
-            {id_opc: 3, ids: [-1, 2]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [1]},
+            {id_opc: 9, ids: [0, 1, 2, 3, 4]},
           ]
         },
         {
           id_coleccion: 1,
           opciones: [
-            // {id_opc: 0, ids: [0, 5, 6, 14]},
-            {id_opc: 1, ids: [0]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
-            {id_opc: 8, ids: [12]}
-          ]
+            {id_opc: 8, ids: [12]}]
         },
         {
           id_coleccion: 2,
           opciones: [
-            // {id_opc: 0, ids: [0, 3, 5, 6, 8, 10]},
-            {id_opc: 1, ids: [0]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -50,8 +43,6 @@ export class ModelRelojService {
         {
           id_coleccion: 3,
           opciones: [
-            // {id_opc: 0, ids: [0, 5, 6, 7, 8, 9, 14]},
-            {id_opc: 1, ids: [0]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -60,8 +51,6 @@ export class ModelRelojService {
         {
           id_coleccion: 4,
           opciones: [
-            // {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
-            {id_opc: 1, ids: [0]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [2]},
@@ -72,7 +61,6 @@ export class ModelRelojService {
           id_coleccion: 5,
           opciones: [
             // {id_opc: 0, ids: [0, 5, 6, 8, 9, 10, 14]},
-            {id_opc: 1, ids: [0]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [1]},
@@ -88,8 +76,6 @@ export class ModelRelojService {
           id_coleccion: 0,
           opciones: [
             // {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
-            {id_opc: 1, ids: [0]},
-            {id_opc: 2, ids: [0, 1, 5, 4]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [0, 1]},
@@ -106,8 +92,6 @@ export class ModelRelojService {
           id_coleccion: 0,
           opciones: [
             // {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 15, 16, 17]},
-            {id_opc: 1, ids: [0]},
-            {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [1]},
@@ -122,9 +106,6 @@ export class ModelRelojService {
         {
           id_coleccion: 0,
           opciones: [
-            // {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
-            {id_opc: 1, ids: [0]},
-            {id_opc: 3, ids: [-1, 2]},
             {id_opc: 5, ids: [0, 1, 2]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [1]},
@@ -134,9 +115,6 @@ export class ModelRelojService {
         {
           id_coleccion: 1,
           opciones: [
-            // {id_opc: 0, ids: [0, 5, 6, 14]},
-            {id_opc: 1, ids: [0]},
-            {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -146,8 +124,6 @@ export class ModelRelojService {
         {
           id_coleccion: 2,
           opciones: [
-            // {id_opc: 0, ids: [0, 3, 5, 6, 8, 10]},
-            {id_opc: 1, ids: [0]}, {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -156,9 +132,6 @@ export class ModelRelojService {
         {
           id_coleccion: 3,
           opciones: [
-            // {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
-            {id_opc: 1, ids: [0]},
-            {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [1]},
@@ -166,9 +139,6 @@ export class ModelRelojService {
         }, {
           id_coleccion: 4,
           opciones: [
-            // {id_opc: 0, ids: [0, 5, 6, 7, 8, 9]},
-            {id_opc: 1, ids: [0]},
-            {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [1]},
             {id_opc: 7, ids: [2]},
@@ -178,9 +148,6 @@ export class ModelRelojService {
         , {
           id_coleccion: 5,
           opciones: [
-            // {id_opc: 0, ids: [0, 5, 6, 8, 9, 10, 14]},
-            {id_opc: 1, ids: [0]},
-            {id_opc: 2, ids: [6]},
             {id_opc: 5, ids: [0]},
             {id_opc: 6, ids: [0, 1]},
             {id_opc: 7, ids: [1]},
@@ -192,10 +159,6 @@ export class ModelRelojService {
       colecciones: [{
         id_coleccion: 0,
         opciones: [
-          // {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
-          {id_opc: 1, ids: [0]},
-          {id_opc: 2, ids: [0, 1, 4, 5]},
-          {id_opc: 3, ids: [-1, 2]},
           {id_opc: 5, ids: [0, 1, 2]},
           {id_opc: 6, ids: [0, 1]},
           {id_opc: 7, ids: [0, 1]},
@@ -217,72 +180,43 @@ export class ModelRelojService {
   ///////////////////////////////////////////
   manos: any[] = [{name: 'FCM', salt: 'FCM'}];
 
-  opciones: any[] = [
-    {
-      id: 1, nombre: 'Material orgánico', ops: [
-        {salt: 'MA', id: 2, name: 'Mármol'},
-      ]
-    }, {
-      id: 2, nombre: 'Material metálico', ops: [
-        {salt: 'AC', id: 0, name: 'Acero'},
-        {salt: 'AL', id: 1, name: 'Aluminio'},
-        {salt: 'CR', id: 2, name: 'Cromo'},
-        {salt: 'NQ', id: 3, name: 'Níquel'},
-        {salt: 'TT', id: 4, name: 'Titanio'},
-        {salt: 'PL', id: 5, name: 'Platino'},
-        {salt: 'AL', id: 6, name: 'Alpaca'}
-      ]
-    }, {
-      id: 3, nombre: 'Material precioso', ops: [
-        {salt: 'NG', id: -1, name: 'Ninguno'},
-        {salt: 'OR', id: 0, name: 'Oro'},
-        {salt: 'PL', id: 1, name: 'Plata'},
-        {salt: 'EM', id: 2, name: 'Esmeraldas'}
-      ]
-    }, {
-      id: 4, nombre: 'Material plástico', ops: [
-        {salt: 'RS', id: 0, name: 'Resina '},
-        {salt: 'CB', id: 1, name: 'Carbono'},
-        {salt: 'FV', id: 2, name: 'Fibra de vidrio'}
-      ]
-    }, {
-      id: 5, nombre: 'Tipo de maquinaria', ops: [
-        {salt: 'MY', id: 0, name: 'Miyota'},
-        {salt: 'SG', id: 1, name: 'Seagull'},
-        {salt: 'ET', id: 2, name: 'ETA'}]
-    }, {
-      id: 6, nombre: 'Color maquinaria', ops: [
-        {salt: 'OR', id: 0, name: 'Oro'},
-        {salt: 'PT', id: 1, name: 'Plata'}
-      ]
-    }, {
-      id: 7, nombre: 'Material pulso', ops: [
-        {salt: 'AI', id: 0, name: 'Acero inoxidable'},
-        {salt: 'CR', id: 1, name: 'Cuero'},
-        {salt: 'TL', id: 2, name: 'Tela'}
-      ]
-    }, {
-      id: 8, nombre: 'Color pulso', ops: [
-        {salt: 'NG', id: 0, name: 'Negro'},
-        {salt: 'AZ', id: 1, name: 'Azul'},
-        {salt: 'GS', id: 2, name: 'Gris'},
-        {salt: 'BL', id: 3, name: 'Blanco'},
-        {salt: 'AM', id: 4, name: 'Amarillo'},
-        {salt: 'RJ', id: 5, name: 'Rojo'},
-        {salt: 'VD', id: 6, name: 'Verde'},
-        {salt: 'NJ', id: 7, name: 'Naranja'},
-        {salt: 'CF', id: 8, name: 'Cafe'},
-        {salt: 'VT', id: 9, name: 'Violeta'},
-        {salt: 'OR', id: 10, name: 'Oro'},
-        {salt: 'PL', id: 11, name: 'Plata'},
-        {salt: 'MC', id: 12, name: 'Multicolor'},
-        {salt: 'SL', id: 13, name: 'Salomo'},
-        {salt: 'VM', id: 14, name: 'Verde menta'},
-        {salt: 'RS', id: 15, name: 'Rosadoo'},
-        {salt: 'BG', id: 16, name: 'Beige'},
-        {salt: 'VT', id: 17, name: 'Verde militar'}
-
-      ]
-    }
+  opciones: any[] = [{
+    id: 5, nombre: 'Tipo de maquinaria', ops: [
+      {salt: 'MY', id: 0, name: 'Miyota'},
+      {salt: 'SG', id: 1, name: 'Seagull'},
+      {salt: 'ET', id: 2, name: 'ETA'}]
+  }, {
+    id: 6, nombre: 'Color maquinaria', ops: [
+      {salt: 'OR', id: 0, name: 'Oro'},
+      {salt: 'PT', id: 1, name: 'Plata'}
+    ]
+  }, {
+    id: 7, nombre: 'Material pulso', ops: [
+      {salt: 'AI', id: 0, name: 'Acero inoxidable'},
+      {salt: 'CR', id: 1, name: 'Cuero'},
+      {salt: 'TL', id: 2, name: 'Tela'}
+    ]
+  }, {
+    id: 8, nombre: 'Color pulso', ops: [
+      {salt: 'NG', id: 0, name: 'Negro'},
+      {salt: 'AZ', id: 1, name: 'Azul'},
+      {salt: 'GS', id: 2, name: 'Gris'},
+      {salt: 'BL', id: 3, name: 'Blanco'},
+      {salt: 'AM', id: 4, name: 'Amarillo'},
+      {salt: 'RJ', id: 5, name: 'Rojo'},
+      {salt: 'VD', id: 6, name: 'Verde'},
+      {salt: 'NJ', id: 7, name: 'Naranja'},
+      {salt: 'CF', id: 8, name: 'Cafe'},
+      {salt: 'VT', id: 9, name: 'Violeta'},
+      {salt: 'OR', id: 10, name: 'Oro'},
+      {salt: 'PL', id: 11, name: 'Plata'},
+      {salt: 'MC', id: 12, name: 'Multicolor'},
+      {salt: 'SL', id: 13, name: 'Salomo'},
+      {salt: 'VM', id: 14, name: 'Verde menta'},
+      {salt: 'RS', id: 15, name: 'Rosadoo'},
+      {salt: 'BG', id: 16, name: 'Beige'},
+      {salt: 'VT', id: 17, name: 'Verde militar'}
+    ]
+  }
   ];
 }

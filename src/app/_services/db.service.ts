@@ -5,7 +5,7 @@ import {Router} from '@angular/router';
 import {Observable} from 'rxjs';
 import {AngularFireStorage} from '@angular/fire/storage';
 import * as firebase from 'firebase';
-import {ClockModel, LoteCajaModel, MetadataAttr} from '../_models/clockModel';
+import {MetadataAttr} from '../_models/clockModel';
 
 
 @Injectable({
@@ -42,7 +42,7 @@ export class DbService {
     meta.lote = com.lote;
     meta.ultimo_lote_key = k;
 
-    this.set_informacion(com.material, com.diametro, meta);
+    this.set_informacion(com.material, com.diametro, com.diametro_interno, meta);
     this.db.list('/data/full_regs/lots/').push(com);
     return k;
   }
@@ -58,12 +58,13 @@ export class DbService {
     });
   }
 
-  buscar_info_lote(material: string, diameter: number) {
-    return this.db.object('data/cases/' + material + '/' + diameter + '/metadata').valueChanges();
+  buscar_info_lote(modelo: string, diameter: number, diameter_interno: number) {
+    return this.db.object('data/cases/' + modelo + '/' + diameter + '/' + diameter_interno + '/metadata').valueChanges();
   }
 
-  set_informacion(material: string, diameter: number, loteData: MetadataAttr) {
-    this.db.object('data/cases/' + material + '/' + diameter + '/metadata').set(loteData);
+  set_informacion(modelo: string, diameter: number, diametro_interno: number, loteData: MetadataAttr) {
+    console.log('data/cases/' + modelo + '/' + diameter + '/' + diametro_interno + '/metadata');
+    this.db.object('data/cases/' + modelo + '/' + diameter + '/' + diametro_interno + '/metadata').set(loteData);
   }
 
   buscarDatosUsuarios(uid: string, ff: () => void) {
@@ -180,10 +181,10 @@ export class DbService {
     nueva_caja.id_key = full_key;
     this.db.object('data/full_regs/cases/' + full_key).set(nueva_caja);
     // guardo registro ordenado
-    const available_key = this.db.list('data/cases/' + nueva_caja.material + '/' + nueva_caja.diametro + '/availables/')
+    const available_key = this.db.list('data/cases/' + nueva_caja.modelo + '/' + nueva_caja.diametro + '/availables/')
       .push(nueva_caja).key;
     nueva_caja.available_key = available_key;
-    this.db.object('data/cases/' + nueva_caja.material + '/' + nueva_caja.diametro + '/availables/' + available_key).set(nueva_caja);
+    this.db.object('data/cases/' + nueva_caja.modelo + '/' + nueva_caja.diametro + '/availables/' + available_key).set(nueva_caja);
 
 
   }
