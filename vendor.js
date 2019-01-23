@@ -456,7 +456,7 @@ var HashLocationStrategy = /** @class */ (function (_super) {
     HashLocationStrategy.prototype.back = function () { this._platformLocation.back(); };
     HashLocationStrategy = Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(APP_BASE_HREF)),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["opt_txtional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(APP_BASE_HREF)),
         Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__metadata"])("design:paramtypes", [PlatformLocation, String])
     ], HashLocationStrategy);
     return HashLocationStrategy;
@@ -537,7 +537,7 @@ var PathLocationStrategy = /** @class */ (function (_super) {
     PathLocationStrategy.prototype.back = function () { this._platformLocation.back(); };
     PathLocationStrategy = Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
-        Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(APP_BASE_HREF)),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["opt_txtional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(APP_BASE_HREF)),
         Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__metadata"])("design:paramtypes", [PlatformLocation, String])
     ], PathLocationStrategy);
     return PathLocationStrategy;
@@ -2389,7 +2389,7 @@ var NgLocaleLocalization = /** @class */ (function (_super) {
     NgLocaleLocalization = Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__decorate"])([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Injectable"])(),
         Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(_angular_core__WEBPACK_IMPORTED_MODULE_0__["LOCALE_ID"])),
-        Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Optional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(DEPRECATED_PLURAL_FN)),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["opt_txtional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Inject"])(DEPRECATED_PLURAL_FN)),
         Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__metadata"])("design:paramtypes", [String, Object])
     ], NgLocaleLocalization);
     return NgLocaleLocalization;
@@ -30922,7 +30922,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "ReflectiveKey", function() { return ReflectiveKey; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "InjectionToken", function() { return InjectionToken; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Inject", function() { return Inject; });
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Optional", function() { return Optional; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "opt_txtional", function() { return Optional; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Self", function() { return Self; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SkipSelf", function() { return SkipSelf; });
 /* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "Host", function() { return Host; });
@@ -50079,8 +50079,8 @@ var COMPILER_PROVIDERS = [
         },
         deps: [
             baseHtmlParser,
-            [new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"](), new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["TRANSLATIONS"])],
-            [new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"](), new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["TRANSLATIONS_FORMAT"])],
+            [new _angular_core__WEBPACK_IMPORTED_MODULE_1__["opt_txtional"](), new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["TRANSLATIONS"])],
+            [new _angular_core__WEBPACK_IMPORTED_MODULE_1__["opt_txtional"](), new _angular_core__WEBPACK_IMPORTED_MODULE_1__["Inject"](_angular_core__WEBPACK_IMPORTED_MODULE_1__["TRANSLATIONS_FORMAT"])],
             [_angular_compiler__WEBPACK_IMPORTED_MODULE_0__["CompilerConfig"]],
             [_angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵConsole"]],
         ]
@@ -50100,9 +50100,9 @@ var COMPILER_PROVIDERS = [
             _angular_compiler__WEBPACK_IMPORTED_MODULE_0__["SummaryResolver"],
             _angular_compiler__WEBPACK_IMPORTED_MODULE_0__["ElementSchemaRegistry"],
             _angular_compiler__WEBPACK_IMPORTED_MODULE_0__["DirectiveNormalizer"], _angular_core__WEBPACK_IMPORTED_MODULE_1__["ɵConsole"],
-            [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"], _angular_compiler__WEBPACK_IMPORTED_MODULE_0__["StaticSymbolCache"]],
+            [_angular_core__WEBPACK_IMPORTED_MODULE_1__["opt_txtional"], _angular_compiler__WEBPACK_IMPORTED_MODULE_0__["StaticSymbolCache"]],
             _angular_compiler__WEBPACK_IMPORTED_MODULE_0__["CompileReflector"],
-            [_angular_core__WEBPACK_IMPORTED_MODULE_1__["Optional"], ERROR_COLLECTOR_TOKEN]] },
+            [_angular_core__WEBPACK_IMPORTED_MODULE_1__["opt_txtional"], ERROR_COLLECTOR_TOKEN]] },
     DEFAULT_PACKAGE_URL_PROVIDER,
     { provide: _angular_compiler__WEBPACK_IMPORTED_MODULE_0__["StyleCompiler"], deps: [_angular_compiler__WEBPACK_IMPORTED_MODULE_0__["UrlResolver"]] },
     { provide: _angular_compiler__WEBPACK_IMPORTED_MODULE_0__["ViewCompiler"], deps: [_angular_compiler__WEBPACK_IMPORTED_MODULE_0__["CompileReflector"]] },
@@ -51201,7 +51201,7 @@ var ELEMENT_PROBE_PROVIDERS = [
         provide: _angular_core__WEBPACK_IMPORTED_MODULE_2__["APP_INITIALIZER"],
         useFactory: _createNgProbe,
         deps: [
-            [_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgProbeToken"], new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"]()],
+            [_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgProbeToken"], new _angular_core__WEBPACK_IMPORTED_MODULE_2__["opt_txtional"]()],
         ],
         multi: true,
     },
@@ -51815,7 +51815,7 @@ var DomEventsPlugin = /** @class */ (function (_super) {
     DomEventsPlugin = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
         Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(DOCUMENT$1)),
-        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(_angular_core__WEBPACK_IMPORTED_MODULE_2__["PLATFORM_ID"])),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["opt_txtional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(2, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(_angular_core__WEBPACK_IMPORTED_MODULE_2__["PLATFORM_ID"])),
         Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [Object, _angular_core__WEBPACK_IMPORTED_MODULE_2__["NgZone"], Object])
     ], DomEventsPlugin);
     return DomEventsPlugin;
@@ -52005,7 +52005,7 @@ var HammerGesturesPlugin = /** @class */ (function (_super) {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Injectable"])(),
         Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(DOCUMENT$1)),
         Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(1, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(HAMMER_GESTURE_CONFIG)),
-        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(HAMMER_LOADER)),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["opt_txtional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(3, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(HAMMER_LOADER)),
         Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [Object, HammerGestureConfig, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵConsole"], Object])
     ], HammerGesturesPlugin);
     return HammerGesturesPlugin;
@@ -52355,7 +52355,7 @@ var BROWSER_MODULE_PROVIDERS = [
         provide: EVENT_MANAGER_PLUGINS,
         useClass: HammerGesturesPlugin,
         multi: true,
-        deps: [DOCUMENT$1, HAMMER_GESTURE_CONFIG, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵConsole"], [new _angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"](), HAMMER_LOADER]]
+        deps: [DOCUMENT$1, HAMMER_GESTURE_CONFIG, _angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵConsole"], [new _angular_core__WEBPACK_IMPORTED_MODULE_2__["opt_txtional"](), HAMMER_LOADER]]
     },
     { provide: HAMMER_GESTURE_CONFIG, useClass: HammerGestureConfig, deps: [] },
     {
@@ -52409,7 +52409,7 @@ var BrowserModule = /** @class */ (function () {
     var BrowserModule_1;
     BrowserModule = BrowserModule_1 = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgModule"])({ providers: BROWSER_MODULE_PROVIDERS, exports: [_angular_common__WEBPACK_IMPORTED_MODULE_1__["CommonModule"], _angular_core__WEBPACK_IMPORTED_MODULE_2__["ApplicationModule"]] }),
-        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Optional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["SkipSelf"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(BrowserModule_1)),
+        Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["opt_txtional"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["SkipSelf"])()), Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__param"])(0, Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["Inject"])(BrowserModule_1)),
         Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__metadata"])("design:paramtypes", [Object])
     ], BrowserModule);
     return BrowserModule;

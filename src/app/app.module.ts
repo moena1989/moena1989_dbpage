@@ -6,7 +6,7 @@ import {RouterModule, Routes} from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
-import {FormsModule, ReactiveFormsModule} from '@angular/forms';
+import {FormsModule} from '@angular/forms';
 import {MainComponent} from './main/main.component';
 import {WorkerRegComponent} from './_main_routes/worker-reg/worker-reg.component';
 import {SnackbarComponent} from './tools/snackbar/snackbar.component';
@@ -28,6 +28,11 @@ import {NuevaCajaComponent} from './nueva-caja/nueva-caja.component';
 import {InputComponent} from './input/input.component';
 import {FormButtonComponent} from './form-button/form-button.component';
 import {ModelCajasService} from './model-cajas.service';
+import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
+import {library} from '@fortawesome/fontawesome-svg-core';
+import {fas, faSearch, faUser} from '@fortawesome/free-solid-svg-icons';
+import {far, faRegistered} from '@fortawesome/free-regular-svg-icons';
+
 
 // ng build --prod --base-href https://moena1989.github.io/moena_reg_page/
 // npx ngh --dir=dist/moena1989
@@ -71,9 +76,7 @@ const config = {
   messagingSenderId: '574556298528'
 };
 
-// var
-// current_opciones_caja_modelo
-// current_opciones_caja_modelo
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -93,11 +96,19 @@ const config = {
     AngularFireModule.initializeApp(config),
     AngularFireDatabaseModule,
     AngularFireAuthModule, AngularFireStorageModule,
-    BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, ReactiveFormsModule
+    BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
   ],
   providers: [NgxSmartModalService, CurrentStorageService, ModelCajasService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
-
+  constructor() {
+    // esta linea importa TODOS LOS ICONOS!!
+    // TODO simplificaar y utilizar iconos base
+    library.add(fas, far);
+    // library.add(far, faUserCircle);
+    // library.add(far, faRegistered);
+    // library.add(fas, faSearch);
+// Add an icon to the library for convenient access in other components
+  }
 }

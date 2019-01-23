@@ -1,27 +1,82 @@
-<!--<ngx-smart-modal #modal identifier="buscador">-->
-<!--<h1>Buscar por serial:</h1>-->
-<!--<div class="nv">-->
-<!--<input type="text" value="" #serial placeholder="Escribe el serial" class="in_buscar">-->
-<!--<div class="bt_buscar" (click)="buscarBySerial(serial.value)">Buscar</div>-->
-<!--<div class="err">{{err_msg}}</div>-->
+<!--<div class="nav_main_bar">-->
+<!--&lt;!&ndash;TODO realizar una animacion cooqueta con este menu&ndash;&gt;-->
+<!--<div class="menu" (click)="menu_state=!menu_state">-->
+<!--<img src="assets/common/logo_b.svg" alt="Menú" class="menu-img">-->
 <!--</div>-->
-<!--</ngx-smart-modal>-->
+<!--<div class="mn">-->
+<!--<img class="main_name" src="assets/common/logo_b.svg"/>-->
+<!--</div>-->
+<!--</div>-->
 
-<img class="logo" routerLink="/" src="assets/common/logo_w.svg" alt="Moena 1989">
-<div class="nav_options">
-  <div class="l_pack">
-    <div routerLink="/registro/" [routerLinkActive]="'acti'" class="bts">Registro</div>
-    <div routerLink="/busqueda/" class="bts" [routerLinkActive]="'acti'">Búsqueda</div>
-    <!--<div routerLink="/registro/" class="bts" [routerLinkActive]="'acti'">VENTAS</div>-->
+<div [ngClass]="menu_state ? 'sidebar-opened' : 'sidebar-closed'">
+  <div class="mn">
+    <img class="main_name" src="assets/common/logo_b.svg"/>
   </div>
 
-  <div class="r_pack">
-    <div class="info_user_log">
-      <div class="current_user">{{this.db.userLogueado.name}} {{this.db.userLogueado.last_name}}</div>
-      <div class="current_cargo">{{this.db.userLogueado.cargo}}</div>
+  <div class="ssss">
+    <fa-icon class="ico" [icon]="['far','user-circle']" size="3x"></fa-icon>
+    <div class="user_data_nv">
     </div>
-    <div class="bt_cerrar" (click)="cerrarCuenta()">Cerrar sesión</div>
+
+    <div class="nombre">{{db.userLogueado.name}} {{db.userLogueado.last_name}}</div>
+    <div class="cargo">{{db.userLogueado.cargo}}</div>
+  </div>
+
+  <div class="options_mn">
+    <div>
+      <div class="item" routerLink="/">
+        <fa-icon class="ico_op" [icon]="['fas','home']" size="2x" fixedWidth="{{true}}"></fa-icon>
+        <div class="opt_txt">Inicio</div>
+      </div>
+    </div>
+
+    <div class="item" (click)="regs=!regs">
+      <fa-icon class="ico_op" [icon]="['fas','circle-notch']" size="2x" fixedWidth="{{true}}"></fa-icon>
+      <div class="opt_txt">Registros</div>
+      <fa-icon class="ico_op" [icon]="['fas','angle-down']" transform="rotate-{{regs? '180': '0'}}" size="2x"
+               fixedWidth="{{true}}"></fa-icon>
+
+    </div>
+    <div *ngIf="regs">
+      <div class="item sub" routerLink="/registro/nueva_caja" [routerLinkActive]="'acti'">
+        <fa-icon class="ico_op" [icon]="['fas','circle-notch']" size="2x" fixedWidth="{{true}}"></fa-icon>
+        <div class="opt_txt">Nueva Caja</div>
+      </div>
+
+      <div class="item sub" routerLink="/registro/nuevo_reloj" [routerLinkActive]="'acti'">
+        <fa-icon class="ico_op" [icon]="['far','clock']" size="2x" fixedWidth="{{true}}"></fa-icon>
+        <div class="opt_txt">Nueva Reloj</div>
+      </div>
+
+    </div>
+
+
+    <div>
+      <div class="item" (click)="busq=!busq" routerLink="/busqueda/" [routerLinkActive]="'acti'">
+        <fa-icon class="ico_op" [icon]="['fas','search']" size="2x" fixedWidth="{{true}}"></fa-icon>
+        <div class="opt_txt">Busquedas</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="item" (click)="busq=!busq">
+        <fa-icon class="ico_op" [icon]="['fas','file-invoice-dollar']" size="2x" fixedWidth="{{true}}"></fa-icon>
+        <div class="opt_txt">Ventas</div>
+      </div>
+    </div>
+
+    <div>
+      <div class="item" (click)="busq=!busq">
+        <fa-icon class="ico_op" [icon]="['fas','database']" size="2x" fixedWidth="{{true}}"></fa-icon>
+        <div class="opt_txt">Inventario</div>
+      </div>
+    </div>
+    <div>
+      <div class="item" (click)="cerrarCuenta()">
+        <fa-icon class="ico_op" [icon]="['fas','sign-out-alt']" size="2x" fixedWidth="{{true}}"></fa-icon>
+        <div class="opt_txt">Salir</div>
+      </div>
+    </div>
   </div>
 </div>
-<div class="navbar-expand-lg navbar-light bg-light">
-</div>
+

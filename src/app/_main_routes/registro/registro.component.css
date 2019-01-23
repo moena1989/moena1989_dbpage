@@ -30,14 +30,14 @@
   /*background: #dddddd;*/
 }
 
-.opt {
+.opt_txt {
   padding: .5em 1em .5em 1em;
   font-weight: bold;
   cursor: pointer;
   opacity: .7;
 }
 
-.opt:hover {
+.opt_txt:hover {
   opacity: .9;
 
 }
