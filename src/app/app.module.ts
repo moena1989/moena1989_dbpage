@@ -72,8 +72,8 @@ const config = {
 };
 
 // var
-// current_opciones
-// current_opciones
+// current_opciones_caja_modelo
+// current_opciones_caja_modelo
 @NgModule({
   declarations: [
     AppComponent,

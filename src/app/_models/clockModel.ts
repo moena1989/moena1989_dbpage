@@ -20,7 +20,7 @@ export class Caracteristica {
 
 export class MetadataAttr {
   last_date: string;
-  lote: number;
+  num_lote: number;
   ultimo_lote_key: string;
 }
 

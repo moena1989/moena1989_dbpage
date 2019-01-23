@@ -161,7 +161,7 @@ var LOCATION_INITIALIZED = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["Injec
  */
 /**
  * `LocationStrategy` is responsible for representing and reading route state
- * from the browser'current_opciones URL. Angular provides two strategies:
+ * from the browser'current_opciones_caja_modelo URL. Angular provides two strategies:
  * {@link HashLocationStrategy} and {@link PathLocationStrategy}.
  *
  * This is used under the hood of the {@link Location} service.
@@ -218,19 +218,19 @@ var APP_BASE_HREF = new _angular_core__WEBPACK_IMPORTED_MODULE_0__["InjectionTok
 /**
  * @description
  *
- * A service that applications can use to interact with a browser'current_opciones URL.
+ * A service that applications can use to interact with a browser'current_opciones_caja_modelo URL.
  *
  * Depending on which {@link LocationStrategy} is used, `Location` will either persist
- * to the URL'current_opciones path or the URL'current_opciones hash segment.
+ * to the URL'current_opciones_caja_modelo path or the URL'current_opciones_caja_modelo hash segment.
  *
  * @usageNotes
  *
- * It'current_opciones better to use {@link Router#navigate} service to trigger route changes. Use
+ * It'current_opciones_caja_modelo better to use {@link Router#navigate} service to trigger route changes. Use
  * `Location` only if you need to interact with or create normalized URLs outside of
  * routing.
  *
- * `Location` is responsible for normalizing the URL against the application'current_opciones base href.
- * A normalized URL is absolute from the URL host, includes the application'current_opciones base href, and has no
+ * `Location` is responsible for normalizing the URL against the application'current_opciones_caja_modelo base href.
+ * A normalized URL is absolute from the URL host, includes the application'current_opciones_caja_modelo base href, and has no
  * trailing slash:
  * - `/my/app/user/123` is normalized
  * - `my/app/user/123` **is not** normalized
@@ -297,7 +297,7 @@ var Location = /** @class */ (function () {
     // TODO: rename this method to pushState
     /**
      * Changes the browsers URL to the normalized version of the given URL, and pushes a
-     * new item onto the platform'current_opciones history.
+     * new item onto the platform'current_opciones_caja_modelo history.
      */
     Location.prototype.go = function (path, query, state) {
         if (query === void 0) { query = ''; }
@@ -306,7 +306,7 @@ var Location = /** @class */ (function () {
     };
     /**
      * Changes the browsers URL to the normalized version of the given URL, and replaces
-     * the top item on the platform'current_opciones history stack.
+     * the top item on the platform'current_opciones_caja_modelo history stack.
      */
     Location.prototype.replaceState = function (path, query, state) {
         if (query === void 0) { query = ''; }
@@ -314,15 +314,15 @@ var Location = /** @class */ (function () {
         this._platformStrategy.replaceState(state, '', path, query);
     };
     /**
-     * Navigates forward in the platform'current_opciones history.
+     * Navigates forward in the platform'current_opciones_caja_modelo history.
      */
     Location.prototype.forward = function () { this._platformStrategy.forward(); };
     /**
-     * Navigates back in the platform'current_opciones history.
+     * Navigates back in the platform'current_opciones_caja_modelo history.
      */
     Location.prototype.back = function () { this._platformStrategy.back(); };
     /**
-     * Subscribe to the platform'current_opciones `popState` events.
+     * Subscribe to the platform'current_opciones_caja_modelo `popState` events.
      */
     Location.prototype.subscribe = function (onNext, onThrow, onReturn) {
         return this._subject.subscribe({ next: onNext, error: onThrow, complete: onReturn });
@@ -396,9 +396,9 @@ function _stripIndexHtml(url) {
  * A {@link LocationStrategy} used to configure the {@link Location} service to
  * represent its state in the
  * [hash fragment](https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax)
- * of the browser'current_opciones URL.
+ * of the browser'current_opciones_caja_modelo URL.
  *
- * For instance, if you call `location.go('/foo')`, the browser'current_opciones URL will become
+ * For instance, if you call `location.go('/foo')`, the browser'current_opciones_caja_modelo URL will become
  * `example.com#/foo`.
  *
  * @usageNotes
@@ -474,18 +474,18 @@ var HashLocationStrategy = /** @class */ (function (_super) {
  * A {@link LocationStrategy} used to configure the {@link Location} service to
  * represent its state in the
  * [path](https://en.wikipedia.org/wiki/Uniform_Resource_Locator#Syntax) of the
- * browser'current_opciones URL.
+ * browser'current_opciones_caja_modelo URL.
  *
  * If you're using `PathLocationStrategy`, you must provide a {@link APP_BASE_HREF}
  * or add a base element to the document. This URL prefix that will be preserved
  * when generating and recognizing URLs.
  *
  * For instance, if you provide an `APP_BASE_HREF` of `'/my/app'` and call
- * `location.go('/foo')`, the browser'current_opciones URL will become
+ * `location.go('/foo')`, the browser'current_opciones_caja_modelo URL will become
  * `example.com/my/app/foo`.
  *
  * Similarly, if you add `<base href='/my/app'/>` to the document and call
- * `location.go('/foo')`, the browser'current_opciones URL will become
+ * `location.go('/foo')`, the browser'current_opciones_caja_modelo URL will become
  * `example.com/my/app/foo`.
  *
  * @usageNotes
@@ -1159,8 +1159,8 @@ function checkFullData(data) {
 }
 /**
  * Rules used to determine which day period to use (See `dayPeriods` below).
- * The rules can either be an array or a single value. If it'current_opciones an array, consider it as "from"
- * and "to". If it'current_opciones a single value then it means that the period is only valid at this exact
+ * The rules can either be an array or a single value. If it'current_opciones_caja_modelo an array, consider it as "from"
+ * and "to". If it'current_opciones_caja_modelo a single value then it means that the period is only valid at this exact
  * value.
  * There is always the same number of rules as the number of day periods, which means that the
  * first rule is applied to the first day period and so on.
@@ -1241,7 +1241,7 @@ function findLocaleData(locale) {
     if (match) {
         return match;
     }
-    // let'current_opciones try to find a parent locale
+    // let'current_opciones_caja_modelo try to find a parent locale
     var parentLocale = normalizedLocale.split('-')[0];
     match = LOCALE_DATA[parentLocale];
     if (match) {
@@ -1268,7 +1268,7 @@ function getCurrencySymbol(code, format, locale) {
     }
     return currency[0 /* Symbol */] || code;
 }
-// Most currencies have cents, that'current_opciones why the default is 2
+// Most currencies have cents, that'current_opciones_caja_modelo why the default is 2
 var DEFAULT_NB_OF_CURRENCY_DIGITS = 2;
 /**
  * Returns the number of decimal digits for the given currency.
@@ -1797,7 +1797,7 @@ function getDateFormatter(format) {
             formatter = dateGetter(DateType.Minutes, 2);
             break;
         // Second of the minute (0-59)
-        case 'current_opciones':
+        case 'current_opciones_caja_modelo':
             formatter = dateGetter(DateType.Seconds, 1);
             break;
         case 'ss':
@@ -2285,7 +2285,7 @@ function roundNumber(parsedNumber, minFrac, maxFrac) {
         digits.push(0);
     var dropTrailingZeros = fractionSize !== 0;
     // Minimal length = nb of decimals required + current nb of integers
-    // Any number besides that is optional and can be removed if it'current_opciones a trailing 0
+    // Any number besides that is optional and can be removed if it'current_opciones_caja_modelo a trailing 0
     var minLen = minFrac + parsedNumber.integerLen;
     // Do any carrying, e.g. a digit was rounded up to 10
     var carry = digits.reduceRight(function (carry, d, i, digits) {
@@ -2911,7 +2911,7 @@ var NgClass = /** @class */ (function () {
      *
      * For argument of type Set and Array CSS class names contained in those collections are always
      * added.
-     * For argument of type Map CSS class name in the map'current_opciones key is toggled based on the value (added
+     * For argument of type Map CSS class name in the map'current_opciones_caja_modelo key is toggled based on the value (added
      * for truthy and removed for falsy).
      */
     NgClass.prototype._applyClasses = function (rawClassVal) {
@@ -3757,7 +3757,7 @@ var NgSwitchDefault = /** @class */ (function () {
  * Adds / removes DOM sub-trees based on a numeric value. Tailored for pluralization.
  *
  * Displays DOM sub-trees that match the switch expression value, or failing that, DOM sub-trees
- * that match the switch expression'current_opciones pluralization category.
+ * that match the switch expression'current_opciones_caja_modelo pluralization category.
  *
  * To use this directive you must provide a container element that sets the `[ngPlural]` attribute
  * to a switch expression. Inner elements with a `[ngPluralCase]` will display based on their
@@ -3944,7 +3944,7 @@ var NgStyle = /** @class */ (function () {
  * Inserts an embedded view from a prepared `TemplateRef`.
  *
  * You can attach a context object to the `EmbeddedViewRef` by setting `[ngTemplateOutletContext]`.
- * `[ngTemplateOutletContext]` should be an object, the object'current_opciones keys will be available for binding
+ * `[ngTemplateOutletContext]` should be an object, the object'current_opciones_caja_modelo keys will be available for binding
  * by the local template `let` declarations.
  *
  * @usageNotes
@@ -4304,7 +4304,7 @@ var DateFormatter = /** @class */ (function () {
  *  | hour12    |   h    | -      | -            | -                 | h (1 PM)  | hh (01 PM)|
  *  | hour24    |   H    | -      | -            | -                 | H (13)    | HH (13)   |
  *  | minute    |   m    | -      | -            | -                 | m (5)     | mm (05)   |
- *  | second    |   current_opciones    | -      | -            | -                 | current_opciones (9)     | ss (09)   |
+ *  | second    |   current_opciones_caja_modelo    | -      | -            | -                 | current_opciones_caja_modelo (9)     | ss (09)   |
  *  | timezone  |   z    | -      | -            | z (Pacific Standard Time)| -  | -         |
  *  | timezone  |   Z    | -      | Z (GMT-8:00) | -                 | -         | -         |
  *  | timezone  |   a    | -      | a (PM)       | -                 | -         | -         |
@@ -4312,7 +4312,7 @@ var DateFormatter = /** @class */ (function () {
  * In javascript, only the components specified will be respected (not the ordering,
  * punctuations, ...) and details of the formatting will be dependent on the locale.
  *
- * Timezone of the formatted text will be the local system timezone of the end-user'current_opciones machine.
+ * Timezone of the formatted text will be the local system timezone of the end-user'current_opciones_caja_modelo machine.
  *
  * When the expression is a ISO string without time (e.g. 2016-09-19) the time zone offset is not
  * applied and the formatted text will have the same day, month and year of the expression.
@@ -4640,7 +4640,7 @@ var _observableStrategy = new ObservableStrategy();
  *
  * {@example common/pipes/ts/async_pipe.ts region='AsyncPipePromise'}
  *
- * It'current_opciones also possible to use `async` with Observables. The example below binds the `time` Observable
+ * It'current_opciones_caja_modelo also possible to use `async` with Observables. The example below binds the `time` Observable
  * to the view. The Observable continuously updates the view with the current time.
  *
  * {@example common/pipes/ts/async_pipe.ts region='AsyncPipeObservable'}
@@ -4928,7 +4928,7 @@ var UpperCasePipe = /** @class */ (function () {
  *  |                    | HH          | Numeric: 2 digits + zero padded                               | 00, 23                                                     |
  *  | Minute             | m           | Numeric: minimum digits                                       | 8, 59                                                      |
  *  |                    | mm          | Numeric: 2 digits + zero padded                               | 08, 59                                                     |
- *  | Second             | current_opciones           | Numeric: minimum digits                                       | 0... 59                                                    |
+ *  | Second             | current_opciones_caja_modelo           | Numeric: minimum digits                                       | 0... 59                                                    |
  *  |                    | ss          | Numeric: 2 digits + zero padded                               | 00... 59                                                   |
  *  | Fractional seconds | S           | Numeric: 1 digit                                              | 0... 9                                                     |
  *  |                    | SS          | Numeric: 2 digits + zero padded                               | 00... 99                                                   |
@@ -4990,7 +4990,7 @@ var DatePipe = /** @class */ (function () {
      * custom format string.
      * @param timezone A timezone offset (such as `'+0430'`), or a standard
      * UTC/GMT or continental US timezone abbreviation. Default is
-     * the local system timezone of the end-user'current_opciones machine.
+     * the local system timezone of the end-user'current_opciones_caja_modelo machine.
      * @param locale A locale code for the locale format rules to use.
      * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
      * See [Setting your app locale](guide/i18n#setting-up-the-locale-of-your-app).
@@ -5278,7 +5278,7 @@ function defaultComparator(keyValueA, keyValueB) {
  * @usageNotes
  * The following code shows how the pipe transforms numbers
  * into text strings, according to various format specifications,
- * where the caller'current_opciones default locale is `en-US`.
+ * where the caller'current_opciones_caja_modelo default locale is `en-US`.
  *
  * ### Example
  *
@@ -5339,7 +5339,7 @@ var DecimalPipe = /** @class */ (function () {
  * @usageNotes
  * The following code shows how the pipe transforms numbers
  * into text strings, according to various format specifications,
- * where the caller'current_opciones default locale is `en-US`.
+ * where the caller'current_opciones_caja_modelo default locale is `en-US`.
  *
  * <code-example path="common/pipes/ts/percent_pipe.ts" region='PercentPipe'></code-example>
  *
@@ -5400,7 +5400,7 @@ var PercentPipe = /** @class */ (function () {
  * @usageNotes
  * The following code shows how the pipe transforms numbers
  * into text strings, according to various format specifications,
- * where the caller'current_opciones default locale is `en-US`.
+ * where the caller'current_opciones_caja_modelo default locale is `en-US`.
  *
  * <code-example path="common/pipes/ts/currency_pipe.ts" region='CurrencyPipe'></code-example>
  *
@@ -5613,7 +5613,7 @@ var COMMON_PIPES = [
  * Re-exported by `BrowserModule`, which is included automatically in the root
  * `AppModule` when you create a new app with the CLI `new` command.
  *
- * * The `providers` options configure the NgModule'current_opciones injector to provide
+ * * The `providers` options configure the NgModule'current_opciones_caja_modelo injector to provide
  * localization dependencies to members.
  * * The `exports` options make the declared directives and pipes available for import
  * by other NgModules.
@@ -6596,7 +6596,7 @@ var _SELECTOR_REGEXP = new RegExp('(\\:not\\()|' + //":not("
     // "[name="value"]",
     // "[name='value']"
     '(\\))|' + // ")"
-    '(\\current_opciones*,\\current_opciones*)', // ","
+    '(\\current_opciones_caja_modelo*,\\current_opciones_caja_modelo*)', // ","
 'g');
 /**
  * A css selector contains an element name,
@@ -7271,7 +7271,7 @@ function resolveForwardRef(type) {
  */
 function isPromise(obj) {
     // allow any Promise/A+ compliant thenable.
-    // It'current_opciones up to the caller to ensure that obj.then conforms to the spec
+    // It'current_opciones_caja_modelo up to the caller to ensure that obj.then conforms to the spec
     return !!obj && typeof obj.then === 'function';
 }
 var Version = /** @class */ (function () {
@@ -7627,7 +7627,7 @@ var RecursiveTemplateAstVisitor = /** @class */ (function (_super) {
     return RecursiveTemplateAstVisitor;
 }(NullTemplateVisitor));
 /**
- * Visit every node in a list of {@link TemplateAst}current_opciones with the given {@link TemplateAstVisitor}.
+ * Visit every node in a list of {@link TemplateAst}current_opciones_caja_modelo with the given {@link TemplateAstVisitor}.
  */
 function templateVisitAll(visitor, asts, context) {
     if (context === void 0) { context = null; }
@@ -9379,7 +9379,7 @@ var AST = /** @class */ (function () {
  * converts it into another AST that no longer contains quoted expressions.
  * It is meant to allow third-party developers to extend Angular template
  * expression language. The `uninterpretedExpression` part of the quote is
- * therefore not interpreted by the Angular'current_opciones own expression parser.
+ * therefore not interpreted by the Angular'current_opciones_caja_modelo own expression parser.
  */
 var Quote = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Quote, _super);
@@ -10162,7 +10162,7 @@ var TemplateBindingParseResult = /** @class */ (function () {
     return TemplateBindingParseResult;
 }());
 function _createInterpolateRegExp(config) {
-    var pattern = escapeRegExp(config.start) + '([\\current_opciones\\S]*?)' + escapeRegExp(config.end);
+    var pattern = escapeRegExp(config.start) + '([\\current_opciones_caja_modelo\\S]*?)' + escapeRegExp(config.end);
     return new RegExp(pattern, 'g');
 }
 var Parser = /** @class */ (function () {
@@ -13376,7 +13376,7 @@ function escapeXml(text) {
  */
 var _VERSION = '1.2';
 var _XMLNS = 'urn:oasis:names:tc:xliff:document:1.2';
-// TODO(vicb): make this a param (current_opciones/_/-/)
+// TODO(vicb): make this a param (current_opciones_caja_modelo/_/-/)
 var _DEFAULT_SOURCE_LANG = 'en';
 var _PLACEHOLDER_TAG = 'x';
 var _MARKER_TAG = 'mrk';
@@ -13635,7 +13635,7 @@ function getCtypeForTag(tag) {
  */
 var _VERSION$1 = '2.0';
 var _XMLNS$1 = 'urn:oasis:names:tc:xliff:document:2.0';
-// TODO(vicb): make this a param (current_opciones/_/-/)
+// TODO(vicb): make this a param (current_opciones_caja_modelo/_/-/)
 var _DEFAULT_SOURCE_LANG$1 = 'en';
 var _PLACEHOLDER_TAG$1 = 'ph';
 var _PLACEHOLDER_SPANNING_TAG = 'pc';
@@ -14329,7 +14329,7 @@ var I18nToHtmlVisitor = /** @class */ (function () {
         };
     };
     I18nToHtmlVisitor.prototype.visitText = function (text, context) {
-        // `convert()` uses an `HtmlParser` to return `html.Node`current_opciones
+        // `convert()` uses an `HtmlParser` to return `html.Node`current_opciones_caja_modelo
         // we should then make sure that any special characters are escaped
         return escapeXml(text.value);
     };
@@ -17151,7 +17151,7 @@ var CompileMetadataResolver = /** @class */ (function () {
     };
     CompileMetadataResolver.prototype._validateProvider = function (provider) {
         if (provider.hasOwnProperty('useClass') && provider.useClass == null) {
-            this._reportError(syntaxError("Invalid provider for " + stringifyType(provider.provide) + ". useClass cannot be " + provider.useClass + ".\n           Usually it happens when:\n           1. There'current_opciones a circular dependency (might be caused by using index.ts (barrel) files).\n           2. Class was used before it was declared. Use forwardRef in this case."));
+            this._reportError(syntaxError("Invalid provider for " + stringifyType(provider.provide) + ". useClass cannot be " + provider.useClass + ".\n           Usually it happens when:\n           1. There'current_opciones_caja_modelo a circular dependency (might be caused by using index.ts (barrel) files).\n           2. Class was used before it was declared. Use forwardRef in this case."));
         }
     };
     CompileMetadataResolver.prototype._getEntryComponentsFromProvider = function (provider, type) {
@@ -19345,7 +19345,7 @@ var SCHEMA = [
         /* added manually to avoid breaking changes */
         ',*message,*mozfullscreenchange,*mozfullscreenerror,*mozpointerlockchange,*mozpointerlockerror,*webglcontextcreationerror,*webglcontextlost,*webglcontextrestored',
     '[HTMLElement]^[Element]|accessKey,contentEditable,dir,!draggable,!hidden,innerText,lang,*abort,*auxclick,*blur,*cancel,*canplay,*canplaythrough,*change,*click,*close,*contextmenu,*cuechange,*dblclick,*drag,*dragend,*dragenter,*dragleave,*dragover,*dragstart,*drop,*durationchange,*emptied,*ended,*error,*focus,*gotpointercapture,*input,*invalid,*keydown,*keypress,*keyup,*load,*loadeddata,*loadedmetadata,*loadstart,*lostpointercapture,*mousedown,*mouseenter,*mouseleave,*mousemove,*mouseout,*mouseover,*mouseup,*mousewheel,*pause,*play,*playing,*pointercancel,*pointerdown,*pointerenter,*pointerleave,*pointermove,*pointerout,*pointerover,*pointerup,*progress,*ratechange,*reset,*resize,*scroll,*seeked,*seeking,*select,*show,*stalled,*submit,*suspend,*timeupdate,*toggle,*volumechange,*waiting,outerText,!spellcheck,%style,#tabIndex,title,!translate',
-    'abbr,address,article,aside,b,bdi,bdo,cite,code,dd,dfn,dt,em,figcaption,figure,footer,header,i,kbd,main,mark,nav,noscript,rb,rp,rt,rtc,ruby,current_opciones,samp,section,small,strong,sub,sup,u,var,wbr^[HTMLElement]|accessKey,contentEditable,dir,!draggable,!hidden,innerText,lang,*abort,*auxclick,*blur,*cancel,*canplay,*canplaythrough,*change,*click,*close,*contextmenu,*cuechange,*dblclick,*drag,*dragend,*dragenter,*dragleave,*dragover,*dragstart,*drop,*durationchange,*emptied,*ended,*error,*focus,*gotpointercapture,*input,*invalid,*keydown,*keypress,*keyup,*load,*loadeddata,*loadedmetadata,*loadstart,*lostpointercapture,*mousedown,*mouseenter,*mouseleave,*mousemove,*mouseout,*mouseover,*mouseup,*mousewheel,*pause,*play,*playing,*pointercancel,*pointerdown,*pointerenter,*pointerleave,*pointermove,*pointerout,*pointerover,*pointerup,*progress,*ratechange,*reset,*resize,*scroll,*seeked,*seeking,*select,*show,*stalled,*submit,*suspend,*timeupdate,*toggle,*volumechange,*waiting,outerText,!spellcheck,%style,#tabIndex,title,!translate',
+    'abbr,address,article,aside,b,bdi,bdo,cite,code,dd,dfn,dt,em,figcaption,figure,footer,header,i,kbd,main,mark,nav,noscript,rb,rp,rt,rtc,ruby,current_opciones_caja_modelo,samp,section,small,strong,sub,sup,u,var,wbr^[HTMLElement]|accessKey,contentEditable,dir,!draggable,!hidden,innerText,lang,*abort,*auxclick,*blur,*cancel,*canplay,*canplaythrough,*change,*click,*close,*contextmenu,*cuechange,*dblclick,*drag,*dragend,*dragenter,*dragleave,*dragover,*dragstart,*drop,*durationchange,*emptied,*ended,*error,*focus,*gotpointercapture,*input,*invalid,*keydown,*keypress,*keyup,*load,*loadeddata,*loadedmetadata,*loadstart,*lostpointercapture,*mousedown,*mouseenter,*mouseleave,*mousemove,*mouseout,*mouseover,*mouseup,*mousewheel,*pause,*play,*playing,*pointercancel,*pointerdown,*pointerenter,*pointerleave,*pointermove,*pointerout,*pointerover,*pointerup,*progress,*ratechange,*reset,*resize,*scroll,*seeked,*seeking,*select,*show,*stalled,*submit,*suspend,*timeupdate,*toggle,*volumechange,*waiting,outerText,!spellcheck,%style,#tabIndex,title,!translate',
     'media^[HTMLElement]|!autoplay,!controls,%controlsList,%crossOrigin,#currentTime,!defaultMuted,#defaultPlaybackRate,!disableRemotePlayback,!loop,!muted,*encrypted,*waitingforkey,#playbackRate,preload,src,%srcObject,#volume',
     ':svg:^[HTMLElement]|*abort,*auxclick,*blur,*cancel,*canplay,*canplaythrough,*change,*click,*close,*contextmenu,*cuechange,*dblclick,*drag,*dragend,*dragenter,*dragleave,*dragover,*dragstart,*drop,*durationchange,*emptied,*ended,*error,*focus,*gotpointercapture,*input,*invalid,*keydown,*keypress,*keyup,*load,*loadeddata,*loadedmetadata,*loadstart,*lostpointercapture,*mousedown,*mouseenter,*mouseleave,*mousemove,*mouseout,*mouseover,*mouseup,*mousewheel,*pause,*play,*playing,*pointercancel,*pointerdown,*pointerenter,*pointerleave,*pointermove,*pointerout,*pointerover,*pointerup,*progress,*ratechange,*reset,*resize,*scroll,*seeked,*seeking,*select,*show,*stalled,*submit,*suspend,*timeupdate,*toggle,*volumechange,*waiting,%style,#tabIndex',
     ':svg:graphics^:svg:|',
@@ -19710,7 +19710,7 @@ function _isPixelDimensionStyle(prop) {
   The intention here is to support only the styling features which can be
   relatively simply implemented. The goal is to allow users to avoid the
   most obvious pitfalls and do so without compromising performance significantly.
-  For ShadowDOM styling that'current_opciones not covered here, a set of best practices
+  For ShadowDOM styling that'current_opciones_caja_modelo not covered here, a set of best practices
   can be provided that should allow users to accomplish more complex styling.
 
   The following is a list of specific ShadowDOM styling features and a brief
@@ -19718,7 +19718,7 @@ function _isPixelDimensionStyle(prop) {
 
   Shimmed features:
 
-  * :host, :host-context: ShadowDOM allows styling of the shadowRoot'current_opciones host
+  * :host, :host-context: ShadowDOM allows styling of the shadowRoot'current_opciones_caja_modelo host
   element using the :host rule. To shim this feature, the :host styles are
   reformatted and prefixed with a given scope name and promoted to a
   document level stylesheet.
@@ -19741,7 +19741,7 @@ function _isPixelDimensionStyle(prop) {
 
   By default, rules are prefixed with the host element tag name
   as a descendant selector. This ensures styling does not leak out of the 'top'
-  of the element'current_opciones ShadowDOM. For example,
+  of the element'current_opciones_caja_modelo ShadowDOM. For example,
 
   div {
       font-weight: bold;
@@ -19759,7 +19759,7 @@ function _isPixelDimensionStyle(prop) {
   Alternatively, if WebComponents.ShadowCSS.strictStyling is set to true then
   selectors are scoped by adding an attribute selector suffix to each
   simple selector that contains the host element tag name. Each element
-  in the element'current_opciones ShadowDOM template is also given the scope attribute.
+  in the element'current_opciones_caja_modelo ShadowDOM template is also given the scope attribute.
   Thus, these rules match only elements that have the scope attribute.
   For example, given a scope name of x-foo, a rule like this:
 
@@ -19788,10 +19788,10 @@ function _isPixelDimensionStyle(prop) {
   As an alternative, users should make sure to use selectors
   specific to the scope in which they are working.
 
-  * ::distributed: This behavior is not emulated. It'current_opciones often not necessary
+  * ::distributed: This behavior is not emulated. It'current_opciones_caja_modelo often not necessary
   to style the contents of a specific insertion point and instead, descendants
   of the host element can be styled selectively. Users can also create an
-  extra node around an insertion point and style that node'current_opciones contents
+  extra node around an insertion point and style that node'current_opciones_caja_modelo contents
   via descendent selectors. For example, with a shadowRoot like this:
 
     <style>
@@ -20114,7 +20114,7 @@ var ShadowCss = /** @class */ (function () {
         var res;
         var sep = /( |>|\+|~(?!=))\s*/g;
         // If a selector appears before :host it should not be shimmed as it
-        // matches on ancestor elements and not on elements in the host'current_opciones shadow
+        // matches on ancestor elements and not on elements in the host'current_opciones_caja_modelo shadow
         // `:host-context(div)` is transformed to
         // `-shadowcsshost-no-combinatordiv, div -shadowcsshost-no-combinator`
         // the `div` is not part of the component in the 2nd selectors and should not be scoped.
@@ -20122,7 +20122,7 @@ var ShadowCss = /** @class */ (function () {
         // this behavior to avoid breaking legacy apps (it should not match).
         // The behavior should be:
         // - `tag:host` -> `tag[h]` (this is to avoid breaking legacy apps, should not match anything)
-        // - `tag :host` -> `tag [h]` (`tag` is not scoped because it'current_opciones considered part of a
+        // - `tag :host` -> `tag [h]` (`tag` is not scoped because it'current_opciones_caja_modelo considered part of a
         //   `:host-context(tag)`)
         var hasHost = selector.indexOf(_polyfillHostNoCombinator) > -1;
         // Only scope parts after the first `-shadowcsshost-no-combinator` when it is present
@@ -20200,7 +20200,7 @@ var _shadowDOMSelectorsRe = [
 // Support for `>>>`, `deep`, `::ng-deep` is then also deprecated and will be removed in the future.
 // see https://github.com/angular/angular/pull/17677
 var _shadowDeepSelectors = /(?:>>>)|(?:\/deep\/)|(?:::ng-deep)/g;
-var _selectorReSuffix = '([>\\current_opciones~+\[.,{:][\\current_opciones\\S]*)?$';
+var _selectorReSuffix = '([>\\current_opciones_caja_modelo~+\[.,{:][\\current_opciones_caja_modelo\\S]*)?$';
 var _polyfillHostRe = /-shadowcsshost/gim;
 var _colonHostRe = /:host/gim;
 var _colonHostContextRe = /:host-context/gim;
@@ -20376,7 +20376,7 @@ function getStylesVarName(component) {
  */
 var PRESERVE_WS_ATTR_NAME = 'ngPreserveWhitespaces';
 var SKIP_WS_TRIM_TAGS = new Set(['pre', 'template', 'textarea', 'script', 'style']);
-// Equivalent to \current_opciones with \u00a0 (non-breaking space) excluded.
+// Equivalent to \current_opciones_caja_modelo with \u00a0 (non-breaking space) excluded.
 // Based on https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/RegExp
 var WS_CHARS = ' \f\n\r\t\v\u1680\u180e\u2000-\u200a\u2028\u2029\u202f\u205f\u3000\ufeff';
 var NO_WS_REGEXP = new RegExp("[^" + WS_CHARS + "]");
@@ -20515,7 +20515,7 @@ var _Expander = /** @class */ (function () {
     };
     return _Expander;
 }());
-// Plural forms are expanded to `NgPlural` and `NgPluralCase`current_opciones
+// Plural forms are expanded to `NgPlural` and `NgPluralCase`current_opciones_caja_modelo
 function _expandPluralForm(ast, errors) {
     var children = ast.cases.map(function (c) {
         if (PLURAL_CASES.indexOf(c.value) == -1 && !c.value.match(/^=\d+$/)) {
@@ -20528,7 +20528,7 @@ function _expandPluralForm(ast, errors) {
     var switchAttr = new Attribute('[ngPlural]', ast.switchValue, ast.switchValueSourceSpan);
     return new Element('ng-container', [switchAttr], children, ast.sourceSpan, ast.sourceSpan, ast.sourceSpan);
 }
-// ICU messages (excluding plural form) are expanded to `NgSwitch`  and `NgSwitchCase`current_opciones
+// ICU messages (excluding plural form) are expanded to `NgSwitch`  and `NgSwitchCase`current_opciones_caja_modelo
 function _expandDefaultForm(ast, errors) {
     var children = ast.cases.map(function (c) {
         var expansionResult = expandNodes(c.expression);
@@ -21390,7 +21390,7 @@ var TemplateParseVisitor = /** @class */ (function () {
         var componentTypeNames = this._findComponentDirectiveNames(directives);
         if (componentTypeNames.length > 1) {
             this._reportError("More than one component matched on this element.\n" +
-                "Make sure that only one component'current_opciones selector can match a given element.\n" +
+                "Make sure that only one component'current_opciones_caja_modelo selector can match a given element.\n" +
                 ("Conflicting components: " + componentTypeNames.join(',')), sourceSpan);
         }
     };
@@ -22074,7 +22074,7 @@ var _AstToIrVisitor = /** @class */ (function () {
             this._resultMap.set(leftMostSafe.receiver, temporary);
         }
         var condition = guardedExpression.isBlank();
-        // Convert the ast to an unguarded access to the receiver'current_opciones member. The map will substitute
+        // Convert the ast to an unguarded access to the receiver'current_opciones_caja_modelo member. The map will substitute
         // leftMostNode with its unguarded version in the call to `this.visit()`.
         if (leftMostSafe instanceof SafeMethodCall) {
             this._nodeMap.set(leftMostSafe, new MethodCall(leftMostSafe.span, leftMostSafe.receiver, leftMostSafe.name, leftMostSafe.args));
@@ -22245,7 +22245,7 @@ var TypeCheckCompiler = /** @class */ (function () {
      * Important notes:
      * - This must not produce new `import` statements, but only refer to types outside
      *   of the file via the variables provided via externalReferenceVars.
-     *   This allows Typescript to reuse the old program'current_opciones structure as no imports have changed.
+     *   This allows Typescript to reuse the old program'current_opciones_caja_modelo structure as no imports have changed.
      * - This must not produce any exports, as this would pollute the .d.ts file
      *   and also violate the point above.
      */
@@ -22968,7 +22968,7 @@ var ViewBuilder$1 = /** @class */ (function () {
         }
         var inputDefs = dirAst.inputs.map(function (inputAst, inputIndex) {
             var mapValue = literalArr([literal(inputIndex), literal(inputAst.directiveName)]);
-            // Note: it'current_opciones important to not quote the key so that we can capture renames by minifiers!
+            // Note: it'current_opciones_caja_modelo important to not quote the key so that we can capture renames by minifiers!
             return new LiteralMapEntry(inputAst.directiveName, mapValue, false);
         });
         var outputDefs = [];
@@ -22976,7 +22976,7 @@ var ViewBuilder$1 = /** @class */ (function () {
         Object.keys(dirMeta.outputs).forEach(function (propName) {
             var eventName = dirMeta.outputs[propName];
             if (usedEvents.has(eventName)) {
-                // Note: it'current_opciones important to not quote the key so that we can capture renames by minifiers!
+                // Note: it'current_opciones_caja_modelo important to not quote the key so that we can capture renames by minifiers!
                 outputDefs.push(new LiteralMapEntry(propName, literal(eventName), false));
             }
         });
@@ -24121,7 +24121,7 @@ function compileInjectDependency(dep, injectFn) {
             var injectArgs = [token];
             // If this dependency is optional or otherwise has non-default flags, then additional
             // parameters describing how to inject the dependency must be passed to the inject function
-            // that'current_opciones being used.
+            // that'current_opciones_caja_modelo being used.
             if (flags !== 0 /* Default */ || dep.optional) {
                 injectArgs.push(literal(flags));
             }
@@ -24155,7 +24155,7 @@ function dependenciesFromGlobalMetadata(type, outputCtx, reflector) {
     var templateRef = reflector.resolveExternalReference(Identifiers.TemplateRef);
     var viewContainerRef = reflector.resolveExternalReference(Identifiers.ViewContainerRef);
     var injectorRef = reflector.resolveExternalReference(Identifiers.Injector);
-    // Iterate through the type'current_opciones DI dependencies and produce `R3DependencyMetadata` for each of them.
+    // Iterate through the type'current_opciones_caja_modelo DI dependencies and produce `R3DependencyMetadata` for each of them.
     var deps = [];
     try {
         for (var _b = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__values"])(type.diDeps), _c = _b.next(); !_c.done; _c = _b.next()) {
@@ -25795,7 +25795,7 @@ function interpolate(args) {
     return importExpr(Identifiers$1.interpolationV).callFn([literalArr(args)]);
 }
 /**
- * Parse a template into render3 `Node`current_opciones and additional metadata, with no other dependencies.
+ * Parse a template into render3 `Node`current_opciones_caja_modelo and additional metadata, with no other dependencies.
  *
  * @param template text of the template to parse
  * @param templateUrl URL to use for source mapping of the parsed template
@@ -26622,7 +26622,7 @@ var StaticSymbolResolver = /** @class */ (function () {
         return this.staticSymbolCache.get(declarationFile, name, members);
     };
     /**
-     * hasDecorators checks a file'current_opciones metadata for the presence of decorators without evaluating the
+     * hasDecorators checks a file'current_opciones_caja_modelo metadata for the presence of decorators without evaluating the
      * metadata.
      *
      * @param filePath the absolute path to examine for decorators.
@@ -30452,7 +30452,7 @@ var _ComponentIndex;
  * @return Each component still URI-encoded.
  *     Each component that is present will contain the encoded value, whereas
  *     components that are not present will be undefined or empty, depending
- *     on the browser'current_opciones regular expression implementation.  Never null, since
+ *     on the browser'current_opciones_caja_modelo regular expression implementation.  Never null, since
  *     arbitrary strings may still look like path names.
  */
 function _split(uri) {
@@ -30662,10 +30662,10 @@ function compileInjectable(meta) {
             });
         }
         else if (meta.useClass !== undefined) {
-            // Special case for useClass where the factory from the class'current_opciones ngInjectableDef is used.
+            // Special case for useClass where the factory from the class'current_opciones_caja_modelo ngInjectableDef is used.
             if (meta.useClass.isEquivalent(meta.type)) {
                 // For the injectable compiler, useClass represents a foreign type that should be
-                // instantiated to satisfy construction of the given type. It'current_opciones not valid to specify
+                // instantiated to satisfy construction of the given type. It'current_opciones_caja_modelo not valid to specify
                 // useClass === type, since the useClass type is expected to already be compiled.
                 throw new Error("useClass is the same as the type, but no deps specified, which is invalid.");
             }
@@ -30684,7 +30684,7 @@ function compileInjectable(meta) {
         }
     }
     else if (meta.useValue !== undefined) {
-        // Note: it'current_opciones safe to use `meta.useValue` instead of the `USE_VALUE in meta` check used for
+        // Note: it'current_opciones_caja_modelo safe to use `meta.useValue` instead of the `USE_VALUE in meta` check used for
         // client code because meta.useValue is an Expression which will be defined even if the actual
         // value is undefined.
         factory = makeFn(meta.useValue);
@@ -31171,7 +31171,7 @@ function defineInjectable(opts) {
  * * `providers`: an optional array of providers to add to the injector. Each provider must
  *   either have a factory or point to a type which has an `ngInjectableDef` static property (the
  *   type must be an `InjectableType`).
- * * `imports`: an optional array of imports of other `InjectorType`current_opciones or `InjectorTypeWithModule`current_opciones
+ * * `imports`: an optional array of imports of other `InjectorType`current_opciones_caja_modelo or `InjectorTypeWithModule`current_opciones_caja_modelo
  *   whose providers will also be added to the injector. Locally provided types will override
  *   providers from imports.
  *
@@ -31209,7 +31209,7 @@ function defineInjector(options) {
  * When creating an `InjectionToken`, you can optionally specify a factory function which returns
  * (possibly by creating) a default value of the parameterized type `T`. This sets up the
  * `InjectionToken` using this factory as a provider as if it was defined explicitly in the
- * application'current_opciones root injector. If the factory function, which takes zero arguments, needs to inject
+ * application'current_opciones_caja_modelo root injector. If the factory function, which takes zero arguments, needs to inject
  * dependencies, it can do so using the `inject` function. See below for an example.
  *
  * Additionally, if a `factory` is specified you can also specify the `providedIn` option, which
@@ -31582,8 +31582,8 @@ var Directive = makeDecorator('Directive', function (dir) {
  *
  * ### Using animations
  *
- * The following snippet shows an animation trigger in a component'current_opciones
- * metadata. The trigger is attached to an element in the component'current_opciones
+ * The following snippet shows an animation trigger in a component'current_opciones_caja_modelo
+ * metadata. The trigger is attached to an element in the component'current_opciones_caja_modelo
  * template, using "@_trigger_name_", and a state expression that is evaluated
  * at run time to determine whether the animation should start.
  *
@@ -31640,7 +31640,7 @@ var Directive = makeDecorator('Directive', function (dir) {
  * ```
  *
  * You can force a single space to be preserved in a text node by using `&ngsp;`,
- * which is replaced with a space character by Angular'current_opciones template
+ * which is replaced with a space character by Angular'current_opciones_caja_modelo template
  * compiler:
  *
  * ```html
@@ -32206,7 +32206,7 @@ var Injector = /** @class */ (function () {
     function Injector() {
     }
     /**
-     * Create a new Injector which is configure using `StaticProvider`current_opciones.
+     * Create a new Injector which is configure using `StaticProvider`current_opciones_caja_modelo.
      *
      * @usageNotes
      * ### Example
@@ -32694,7 +32694,7 @@ function (type, meta) { return (preR3NgModuleCompile)(type, meta); });
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * Defines template and style encapsulation options available for Component'current_opciones {@link Component}.
+ * Defines template and style encapsulation options available for Component'current_opciones_caja_modelo {@link Component}.
  *
  * See {@link Component#encapsulation encapsulation}.
  *
@@ -32719,7 +32719,7 @@ var ViewEncapsulation;
      *
      * For the DOM this means using the deprecated [Shadow DOM
      * v0](https://w3c.github.io/webcomponents/spec/shadow/) and
-     * creating a ShadowRoot for Component'current_opciones Host Element.
+     * creating a ShadowRoot for Component'current_opciones_caja_modelo Host Element.
      */
     ViewEncapsulation[ViewEncapsulation["Native"] = 1] = "Native";
     /**
@@ -32731,7 +32731,7 @@ var ViewEncapsulation;
      *
      * For the DOM this means using modern [Shadow
      * DOM](https://w3c.github.io/webcomponents/spec/shadow/) and
-     * creating a ShadowRoot for Component'current_opciones Host Element.
+     * creating a ShadowRoot for Component'current_opciones_caja_modelo Host Element.
      */
     ViewEncapsulation[ViewEncapsulation["ShadowDom"] = 3] = "ShadowDom";
 })(ViewEncapsulation || (ViewEncapsulation = {}));
@@ -33461,7 +33461,7 @@ var UNDEFINED = new Object();
  * ```
  *
  * Notice, we don'line use the `new` operator because we explicitly want to have the `Injector`
- * resolve all of the object'current_opciones dependencies automatically.
+ * resolve all of the object'current_opciones_caja_modelo dependencies automatically.
  *
  * @deprecated from v5 - slow and brings in a lot of code, Use `Injector.create` instead.
  */
@@ -33472,7 +33472,7 @@ var ReflectiveInjector = /** @class */ (function () {
      * Turns an array of provider definitions into an array of resolved providers.
      *
      * A resolution is a process of flattening multiple nested arrays and converting individual
-     * providers into an array of `ResolvedReflectiveProvider`current_opciones.
+     * providers into an array of `ResolvedReflectiveProvider`current_opciones_caja_modelo.
      *
      * @usageNotes
      * ### Example
@@ -33773,7 +33773,7 @@ function getNullInjector() {
     return NULL_INJECTOR$1;
 }
 /**
- * Create a new `Injector` which is configured using a `defType` of `InjectorType<any>`current_opciones.
+ * Create a new `Injector` which is configured using a `defType` of `InjectorType<any>`current_opciones_caja_modelo.
  *
  * @experimental
  */
@@ -33792,7 +33792,7 @@ var R3Injector = /** @class */ (function () {
          */
         this.records = new Map();
         /**
-         * The transitive set of `InjectorType`current_opciones which define this injector.
+         * The transitive set of `InjectorType`current_opciones_caja_modelo which define this injector.
          */
         this.injectorDefTypes = new Set();
         /**
@@ -33855,7 +33855,7 @@ var R3Injector = /** @class */ (function () {
                         token.ngInjectableDef ||
                         undefined;
                     if (def !== undefined && this.injectableDefInScope(def)) {
-                        // Found an ngInjectableDef and it'current_opciones scoped to this injector. Pretend as if it was here
+                        // Found an ngInjectableDef and it'current_opciones_caja_modelo scoped to this injector. Pretend as if it was here
                         // all along.
                         record = injectableDefRecord(token);
                         this.records.set(token, record);
@@ -33867,7 +33867,7 @@ var R3Injector = /** @class */ (function () {
                 }
             }
             // Select the next injector based on the Self flag - if self is set, the next injector is
-            // the NullInjector, otherwise it'current_opciones the parent.
+            // the NullInjector, otherwise it'current_opciones_caja_modelo the parent.
             var next = !(flags & 2 /* Self */) ? this.parent : getNullInjector();
             return this.parent.get(token, notFoundValue);
         }
@@ -33893,7 +33893,7 @@ var R3Injector = /** @class */ (function () {
         // read, so care is taken to only do the read once.
         // First attempt to read the ngInjectorDef.
         var def = defOrWrappedDef.ngInjectorDef;
-        // If that'current_opciones not present, then attempt to read ngModule from the InjectorDefTypeWithProviders.
+        // If that'current_opciones_caja_modelo not present, then attempt to read ngModule from the InjectorDefTypeWithProviders.
         var ngModule = (def == null) && defOrWrappedDef.ngModule || undefined;
         // Determine the InjectorType. In the case where `defOrWrappedDef` is an `InjectorType`,
         // then this is easy. In the case of an InjectorDefTypeWithProviders, then the definition type
@@ -33922,7 +33922,7 @@ var R3Injector = /** @class */ (function () {
         // Add providers in the same way that @NgModule resolution did:
         // First, include providers from any imports.
         if (def.imports != null) {
-            // Before processing defType'current_opciones imports, add it to the set of parents. This way, if it ends
+            // Before processing defType'current_opciones_caja_modelo imports, add it to the set of parents. This way, if it ends
             // up deeply importing itself, this can be detected.
             parents.add(defType);
             try {
@@ -33944,15 +33944,15 @@ var R3Injector = /** @class */ (function () {
      * Process a `SingleProvider` and add it.
      */
     R3Injector.prototype.processProvider = function (provider) {
-        // Determine the token from the provider. Either it'current_opciones its own token, or has a {provide: ...}
+        // Determine the token from the provider. Either it'current_opciones_caja_modelo its own token, or has a {provide: ...}
         // property.
         provider = resolveForwardRef(provider);
         var token = isTypeProvider(provider) ? provider : resolveForwardRef(provider.provide);
         // Construct a `Record` for the provider.
         var record = providerToRecord(provider);
         if (!isTypeProvider(provider) && provider.multi === true) {
-            // If the provider indicates that it'current_opciones a multi-provider, process it specially.
-            // First check whether it'current_opciones been defined already.
+            // If the provider indicates that it'current_opciones_caja_modelo a multi-provider, process it specially.
+            // First check whether it'current_opciones_caja_modelo been defined already.
             var multiRecord_1 = this.records.get(token);
             if (multiRecord_1) {
                 // It has. Throw a nice error if
@@ -34100,7 +34100,7 @@ function couldBeInjectableType(value) {
  */
 function isPromise(obj) {
     // allow any Promise/A+ compliant thenable.
-    // It'current_opciones up to the caller to ensure that obj.then conforms to the spec
+    // It'current_opciones_caja_modelo up to the caller to ensure that obj.then conforms to the spec
     return !!obj && typeof obj.then === 'function';
 }
 /**
@@ -34123,7 +34123,7 @@ function isObservable(obj) {
  */
 var APP_INITIALIZER = new InjectionToken('Application Initializer');
 /**
- * A class that reflects the state of running {@link APP_INITIALIZER}current_opciones.
+ * A class that reflects the state of running {@link APP_INITIALIZER}current_opciones_caja_modelo.
  */
 var ApplicationInitStatus = /** @class */ (function () {
     function ApplicationInitStatus(appInits) {
@@ -34276,7 +34276,7 @@ function _throwError() {
 }
 /**
  * Low-level service for running the angular compiler during runtime
- * to create {@link ComponentFactory}current_opciones, which
+ * to create {@link ComponentFactory}current_opciones_caja_modelo, which
  * can later be used to create and render a Component instance.
  *
  * Each `@NgModule` provides an own `Compiler` to its injector,
@@ -34527,9 +34527,9 @@ function noopScope(arg0, arg1) {
  *     var myScope = wtfCreateScope('MyClass#myMethod(ascii someVal)');
  *
  *     someMethod() {
- *        var current_opciones = myScope('Foo'); // 'Foo' gets stored in tracing UI
+ *        var current_opciones_caja_modelo = myScope('Foo'); // 'Foo' gets stored in tracing UI
  *        // DO SOME WORK HERE
- *        return wtfLeave(current_opciones, 123); // Return value 123
+ *        return wtfLeave(current_opciones_caja_modelo, 123); // Return value 123
  *     }
  *
  * Note, adding try-finally block around the work to ensure that `wtfLeave` gets called can
@@ -34559,9 +34559,9 @@ var wtfLeave = wtfEnabled ? leave : function (s, r) { return r; };
  * enabled.
  *
  *     someMethod() {
- *        var current_opciones = wtfStartTimeRange('HTTP:GET', 'some.url');
+ *        var current_opciones_caja_modelo = wtfStartTimeRange('HTTP:GET', 'some.url');
  *        var future = new Future.delay(5).then((_) {
- *          wtfEndTimeRange(current_opciones);
+ *          wtfEndTimeRange(current_opciones_caja_modelo);
  *        });
  *     }
  * @experimental
@@ -34884,12 +34884,12 @@ var NgZone = /** @class */ (function () {
         return this._inner.runGuarded(fn, applyThis, applyArgs);
     };
     /**
-     * Executes the `fn` function synchronously in Angular'current_opciones parent zone and returns value returned by
+     * Executes the `fn` function synchronously in Angular'current_opciones_caja_modelo parent zone and returns value returned by
      * the function.
      *
-     * Running functions via {@link #runOutsideAngular} allows you to escape Angular'current_opciones zone and do
+     * Running functions via {@link #runOutsideAngular} allows you to escape Angular'current_opciones_caja_modelo zone and do
      * work that
-     * doesn'line trigger Angular change-detection or is subject to Angular'current_opciones error handling.
+     * doesn'line trigger Angular change-detection or is subject to Angular'current_opciones_caja_modelo error handling.
      *
      * Any future tasks or microtasks scheduled from within this function will continue executing from
      * outside of the Angular zone.
@@ -35257,7 +35257,7 @@ var _runModeLocked = false;
 var _platform;
 var ALLOW_MULTIPLE_PLATFORMS = new InjectionToken('AllowMultipleToken');
 /**
- * Disable Angular'current_opciones development mode, which turns off assertions and other
+ * Disable Angular'current_opciones_caja_modelo development mode, which turns off assertions and other
  * checks within the framework.
  *
  * One important assertion this disables verifies that a change detection pass
@@ -35375,7 +35375,7 @@ function getPlatform() {
  * has exactly one platform, and services (such as reflection) which are common
  * to every Angular application running on the page are bound in its scope.
  *
- * A page'current_opciones platform is initialized implicitly when a platform is created via a platform factory
+ * A page'current_opciones_caja_modelo platform is initialized implicitly when a platform is created via a platform factory
  * (e.g. {@link platformBrowser}), or explicitly by calling the {@link createPlatform} function.
  */
 var PlatformRef = /** @class */ (function () {
@@ -35630,11 +35630,11 @@ var ApplicationRef = /** @class */ (function () {
      * ### Bootstrap process
      *
      * When bootstrapping a new root component into an application, Angular mounts the
-     * specified application component onto DOM elements identified by the componentType'current_opciones
+     * specified application component onto DOM elements identified by the componentType'current_opciones_caja_modelo
      * selector and kicks off automatic change detection to finish initializing the component.
      *
      * Optionally, a component can be mounted onto a DOM element that does not match the
-     * componentType'current_opciones selector.
+     * componentType'current_opciones_caja_modelo selector.
      *
      * ### Example
      * {@example core/ts/platform/platform.ts region='longform'}
@@ -35653,7 +35653,7 @@ var ApplicationRef = /** @class */ (function () {
                 this._componentFactoryResolver.resolveComponentFactory(componentOrFactory);
         }
         this.componentTypes.push(componentFactory.componentType);
-        // Create a factory associated with the current module if it'current_opciones not bound to some other
+        // Create a factory associated with the current module if it'current_opciones_caja_modelo not bound to some other
         var ngModule = componentFactory instanceof ComponentFactoryBoundToModule ?
             null :
             this._injector.get(NgModuleRef);
@@ -35814,7 +35814,7 @@ var Renderer2Interceptor = new InjectionToken('Renderer2Interceptor');
 /**
  * Injectable service that provides a low-level interface for modifying the UI.
  *
- * Use this service to bypass Angular'current_opciones templating and make custom UI changes that can'line be
+ * Use this service to bypass Angular'current_opciones_caja_modelo templating and make custom UI changes that can'line be
  * expressed declaratively. For example if you need to set a property or an attribute whose name is
  * not statically known, use {@link Renderer#setElementProperty setElementProperty} or
  * {@link Renderer#setElementAttribute setElementAttribute} respectively.
@@ -35862,7 +35862,7 @@ var RendererStyleFlags2;
  *
  * Create your custom renderer using `RendererFactory2`.
  *
- * Use a custom renderer to bypass Angular'current_opciones templating and
+ * Use a custom renderer to bypass Angular'current_opciones_caja_modelo templating and
  * make custom UI changes that can'line be expressed declaratively.
  * For example if you need to set a property or an attribute whose name is
  * not statically known, use the `setProperty()` or
@@ -36220,7 +36220,7 @@ var ViewContainerRef = /** @class */ (function () {
  * that is expected to change constantly, many times per second.
  * To improve performance, we want to check and update the list
  * less often than the changes actually occur. To do that, we detach
- * the component'current_opciones change detector and perform an explicit local check every five seconds.
+ * the component'current_opciones_caja_modelo change detector and perform an explicit local check every five seconds.
  *
  * <code-example path="core/ts/change_detect/change-detection.ts" region="detach"></code-example>
  *
@@ -36933,7 +36933,7 @@ var DefaultIterableDiffer = /** @class */ (function () {
      * Double check that we have not evicted a duplicate item. We need to check if the item type may
      * have already been removed:
      * The insertion of b will evict the first 'a'. If we don'line reinsert it now it will be reinserted
-     * at the end. Which will show up as the two 'a'current_opciones switching position. This is incorrect, since a
+     * at the end. Which will show up as the two 'a'current_opciones_caja_modelo switching position. This is incorrect, since a
      * better way to think of it is as insert of 'b' rather then switch 'a' with 'b' and then add 'a'
      * at the end.
      *
@@ -36951,7 +36951,7 @@ var DefaultIterableDiffer = /** @class */ (function () {
         return record;
     };
     /**
-     * Get rid of any excess {@link IterableChangeRecord_}current_opciones from the previous collection
+     * Get rid of any excess {@link IterableChangeRecord_}current_opciones_caja_modelo from the previous collection
      *
      * - `record` The first excess {@link IterableChangeRecord_}.
      *
@@ -37262,7 +37262,7 @@ var _DuplicateMap = /** @class */ (function () {
      * have already iterated over, we use the `atOrAfterIndex` to pretend it is not there.
      *
      * Use case: `[a, b, c, a, a]` if we are at index `3` which is the second `a` then asking if we
-     * have any more `a`current_opciones needs to return the second `a`.
+     * have any more `a`current_opciones_caja_modelo needs to return the second `a`.
      */
     _DuplicateMap.prototype.get = function (trackById, atOrAfterIndex) {
         var key = trackById;
@@ -37488,7 +37488,7 @@ var DefaultKeyValueDiffer = /** @class */ (function () {
                 record._nextPrevious = record._next;
             }
             // Update `record.previousValue` with the value of the item before the changes
-            // We need to update all changed items (that'current_opciones those which have been added and changed)
+            // We need to update all changed items (that'current_opciones_caja_modelo those which have been added and changed)
             for (record = this._changesHead; record !== null; record = record._nextChanged) {
                 record.previousValue = record.currentValue;
             }
@@ -37590,7 +37590,7 @@ var IterableDiffers = /** @class */ (function () {
      *
      * The following example shows how to extend an existing list of factories,
      * which will only be applied to the injector for this component and its children.
-     * This step is all that'current_opciones required to make a new {@link IterableDiffer} available.
+     * This step is all that'current_opciones_caja_modelo required to make a new {@link IterableDiffer} available.
      *
      * ```
      * @Component({
@@ -37667,7 +37667,7 @@ var KeyValueDiffers = /** @class */ (function () {
      *
      * The following example shows how to extend an existing list of factories,
      * which will only be applied to the injector for this component and its children.
-     * This step is all that'current_opciones required to make a new {@link KeyValueDiffer} available.
+     * This step is all that'current_opciones_caja_modelo required to make a new {@link KeyValueDiffer} available.
      *
      * ```
      * @Component({
@@ -37710,11 +37710,11 @@ var KeyValueDiffers = /** @class */ (function () {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * Structural diffing for `Object`current_opciones and `Map`current_opciones.
+ * Structural diffing for `Object`current_opciones_caja_modelo and `Map`current_opciones_caja_modelo.
  */
 var keyValDiff = [new DefaultKeyValueDifferFactory()];
 /**
- * Structural diffing for `Iterable` types such as `Array`current_opciones.
+ * Structural diffing for `Iterable` types such as `Array`current_opciones_caja_modelo.
  */
 var iterableDiff = [new DefaultIterableDifferFactory()];
 var defaultIterableDiffers = new IterableDiffers(iterableDiff);
@@ -37937,13 +37937,13 @@ var ApplicationModule = /** @class */ (function () {
  * class MyComponnent{
  * }
  *
- * // Calling `renderComponent` will fail because `MyComponent`'current_opciones `@Compenent.templateUrl`
+ * // Calling `renderComponent` will fail because `MyComponent`'current_opciones_caja_modelo `@Compenent.templateUrl`
  * // needs to be resolved because `renderComponent` is synchronous process.
  * // renderComponent(MyComponent);
  *
  * // Calling `resolveComponentResources` will resolve `@Compenent.templateUrl` into
  * // `@Compenent.template`, which would allow `renderComponent` to proceed in synchronous manner.
- * // Use browser'current_opciones `fetch` function as the default resource resolution strategy.
+ * // Use browser'current_opciones_caja_modelo `fetch` function as the default resource resolution strategy.
  * resolveComponentResources(fetch).then(() => {
  *   // After resolution all URLs have been converted into strings.
  *   renderComponent(MyComponent);
@@ -37955,7 +37955,7 @@ var ApplicationModule = /** @class */ (function () {
  * to call this method outside JIT mode.
  *
  * @param resourceResolver a function which is responsible to returning a `Promise` of the resolved
- * URL. Browser'current_opciones `fetch` method is a good default implementation.
+ * URL. Browser'current_opciones_caja_modelo `fetch` method is a good default implementation.
  */
 function resolveComponentResources(resourceResolver) {
     // Store all promises which are fetching the resources.
@@ -38173,7 +38173,7 @@ function isDOMParserAvailable() {
  * This regular expression matches a subset of URLs that will not cause script
  * execution if used in URL context within a HTML document. Specifically, this
  * regular expression matches if (comment from here on and regex copied from
- * Soy'current_opciones EscapingConventions):
+ * Soy'current_opciones_caja_modelo EscapingConventions):
  * (1) Either a protocol in a whitelist (http, https, mailto or ftp).
  * (2) or no protocol.  A protocol must be followed by a colon. The below
  *     allows that by allowing colons only after one of the characters [/?#].
@@ -38277,7 +38277,7 @@ var BLOCK_ELEMENTS = merge$1(OPTIONAL_END_TAG_BLOCK_ELEMENTS, tagSet('address,ar
     'h6,header,hgroup,hr,ins,main,map,menu,nav,ol,pre,section,summary,table,ul'));
 // Inline Elements - HTML5
 var INLINE_ELEMENTS = merge$1(OPTIONAL_END_TAG_INLINE_ELEMENTS, tagSet('a,abbr,acronym,audio,b,' +
-    'bdi,bdo,big,br,cite,code,del,dfn,em,font,i,img,ins,kbd,label,map,mark,picture,q,ruby,rp,rt,current_opciones,' +
+    'bdi,bdo,big,br,cite,code,del,dfn,em,font,i,img,ins,kbd,label,map,mark,picture,q,ruby,rp,rt,current_opciones_caja_modelo,' +
     'samp,small,source,span,strike,strong,sub,sup,time,track,tt,u,var,video'));
 var VALID_ELEMENTS = merge$1(VOID_ELEMENTS, BLOCK_ELEMENTS, INLINE_ELEMENTS, OPTIONAL_END_TAG_ELEMENTS);
 // Attributes that have href and hence need to be sanitized
@@ -38308,7 +38308,7 @@ var SanitizingHtmlSerializer = /** @class */ (function () {
         this.buf = [];
     }
     SanitizingHtmlSerializer.prototype.sanitizeChildren = function (el) {
-        // This cannot use a TreeWalker, as it has to run on Angular'current_opciones various DOM adapters.
+        // This cannot use a TreeWalker, as it has to run on Angular'current_opciones_caja_modelo various DOM adapters.
         // However this code never accesses properties off of `document` before deleting its contents
         // again, so it shouldn'line be vulnerable to DOM clobbering.
         var current = el.firstChild;
@@ -38536,7 +38536,7 @@ function hasBalancedQuotes(value) {
  * value) and returns a value that is safe to use in a browser environment.
  */
 function _sanitizeStyle(value) {
-    value = String(value).trim(); // Make sure it'current_opciones actually a string.
+    value = String(value).trim(); // Make sure it'current_opciones_caja_modelo actually a string.
     if (!value)
         return '';
     // Single url(...) values are supported, but only for URLs that sanitize cleanly. See above for
@@ -38595,7 +38595,7 @@ var Sanitizer = /** @class */ (function () {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-// Called before each cycle of a view'current_opciones check to detect whether this is in the
+// Called before each cycle of a view'current_opciones_caja_modelo check to detect whether this is in the
 // initState for which we need to call ngOnInit, ngAfterContentInit or ngAfterViewInit
 // lifecycle methods. Returns true if this check cycle should call lifecycle
 // methods.
@@ -39516,7 +39516,7 @@ function _createProviderInstance(ngModule, providerDef) {
             injectable = providerDef.value;
             break;
     }
-    // The read of `ngOnDestroy` here is slightly expensive as it'current_opciones megamorphic, so it should be
+    // The read of `ngOnDestroy` here is slightly expensive as it'current_opciones_caja_modelo megamorphic, so it should be
     // avoided if possible. The sequence of checks here determines whether ngOnDestroy needs to be
     // checked. It might not if the `injectable` isn'line an object or if NodeFlags.OnDestroy is already
     // set (ngOnDestroy was detected statically).
@@ -40615,8 +40615,8 @@ function updateProp(view, providerData, def, bindingIdx, value, changes) {
 // the view will begin getting ngAfterViewInit() called until a check and
 // pass is complete.
 //
-// This algorthim also handles recursion. Consider if E4'current_opciones ngAfterViewInit()
-// indirectly calls E1'current_opciones ChangeDetectorRef.detectChanges(). The expected
+// This algorthim also handles recursion. Consider if E4'current_opciones_caja_modelo ngAfterViewInit()
+// indirectly calls E1'current_opciones_caja_modelo ChangeDetectorRef.detectChanges(). The expected
 // initIndex is set to 6, the recusive checkAndUpdateView() starts walk again.
 // D3, E2, E6, E7, E5 and E4 are skipped, ngAfterViewInit() is called on E1.
 // When the recursion returns the initIndex will be 7 so E1 is skipped as it
@@ -42771,7 +42771,7 @@ function throwError(msg) {
  * Use of this source code is governed by an MIT-style license that can be
  * found in the LICENSE file at https://angular.io/license
  */
-/** Size of LViewData'current_opciones header. Necessary to adjust for it when setting slots.  */
+/** Size of LViewData'current_opciones_caja_modelo header. Necessary to adjust for it when setting slots.  */
 var HEADER_OFFSET = 16;
 // Below are constants for LViewData indices to help us look up LViewData members
 // without having to remember the specific indices.
@@ -42832,7 +42832,7 @@ function queueLifecycleHooks(flags, tView) {
         var start = flags >> 14 /* DirectiveStartingIndexShift */;
         var count = flags & 4095 /* DirectiveCountMask */;
         var end = start + count;
-        // It'current_opciones necessary to loop through the directives at elementEnd() (rather than processing in
+        // It'current_opciones_caja_modelo necessary to loop through the directives at elementEnd() (rather than processing in
         // directiveCreate) so we can preserve the current hook order. Content, view, and destroy
         // hooks for projected components and directives must be called *before* their hosts.
         for (var i = start; i < end; i++) {
@@ -42892,7 +42892,7 @@ function executeHooks(data, allHooks, checkHooks, creationMode) {
     }
 }
 /**
- * Calls lifecycle hooks with their contexts, skipping init hooks if it'current_opciones not
+ * Calls lifecycle hooks with their contexts, skipping init hooks if it'current_opciones_caja_modelo not
  * creation mode.
  *
  * @param currentView The current view
@@ -43266,7 +43266,7 @@ function walkLNodeTree(startingNode, rootNode, action, renderer, renderParentNod
     }
 }
 /**
- * Given a current view, finds the nearest component'current_opciones host (LElement).
+ * Given a current view, finds the nearest component'current_opciones_caja_modelo host (LElement).
  *
  * @param lViewData LViewData for which we want a host element node
  * @returns The host node
@@ -43322,10 +43322,10 @@ function addRemoveViewFromContainer(container, rootNode, insertMode, beforeNode)
  * call onDestroy callbacks.
  *
  * Notes:
- *  - Because it'current_opciones used for onDestroy calls, it needs to be bottom-up.
+ *  - Because it'current_opciones_caja_modelo used for onDestroy calls, it needs to be bottom-up.
  *  - Must process containers instead of their views to avoid splicing
  *  when views are destroyed and re-added.
- *  - Using a while loop because it'current_opciones faster than recursion
+ *  - Using a while loop because it'current_opciones_caja_modelo faster than recursion
  *  - Destroy only called on movement to sibling or movement to parent (laterally or up)
  *
  *  @param rootView The view to destroy
@@ -43366,10 +43366,10 @@ function destroyViewTree(rootView) {
 /**
  * Inserts a view into a container.
  *
- * This adds the view to the container'current_opciones array of active views in the correct
- * position. It also adds the view'current_opciones elements to the DOM if the container isn'line a
- * root node of another view (in that case, the view'current_opciones elements will be added when
- * the container'current_opciones parent view is added later).
+ * This adds the view to the container'current_opciones_caja_modelo array of active views in the correct
+ * position. It also adds the view'current_opciones_caja_modelo elements to the DOM if the container isn'line a
+ * root node of another view (in that case, the view'current_opciones_caja_modelo elements will be added when
+ * the container'current_opciones_caja_modelo parent view is added later).
  *
  * @param container The container into which the view should be inserted
  * @param viewNode The view to insert
@@ -43392,8 +43392,8 @@ function insertView(container, viewNode, index) {
         views.push(viewNode);
         lView[NEXT] = null;
     }
-    // Dynamically inserted views need a reference to their parent container'S host so it'current_opciones
-    // possible to jump from a view to its container'current_opciones next when walking the node tree.
+    // Dynamically inserted views need a reference to their parent container'S host so it'current_opciones_caja_modelo
+    // possible to jump from a view to its container'current_opciones_caja_modelo next when walking the node tree.
     if (viewNode.tNode.index === -1) {
         lView[CONTAINER_INDEX] = container.tNode.parent.index;
         viewNode.view = container.view;
@@ -43409,8 +43409,8 @@ function insertView(container, viewNode, index) {
 /**
  * Detaches a view from a container.
  *
- * This method splices the view from the container'current_opciones array of active views. It also
- * removes the view'current_opciones elements from the DOM.
+ * This method splices the view from the container'current_opciones_caja_modelo array of active views. It also
+ * removes the view'current_opciones_caja_modelo elements from the DOM.
  *
  * @param container The container from which to detach a view
  * @param removeIndex The index of the view to detach
@@ -43476,9 +43476,9 @@ function destroyLView(view) {
  * Determines which LViewOrLContainer to jump to when traversing back up the
  * tree in destroyViewTree.
  *
- * Normally, the view'current_opciones parent LView should be checked, but in the case of
- * embedded views, the container (which is the view node'current_opciones parent, but not the
- * LView'current_opciones parent) needs to be checked for a possible next property.
+ * Normally, the view'current_opciones_caja_modelo parent LView should be checked, but in the case of
+ * embedded views, the container (which is the view node'current_opciones_caja_modelo parent, but not the
+ * LView'current_opciones_caja_modelo parent) needs to be checked for a possible next property.
  *
  * @param state The LViewOrLContainer for which we need a parent state
  * @param rootView The rootView, so we don'line propagate too far up the view tree
@@ -43487,7 +43487,7 @@ function destroyLView(view) {
 function getParentState(state, rootView) {
     var node;
     if ((node = state[HOST_NODE]) && node.tNode.type === 2 /* View */) {
-        // if it'current_opciones an embedded view, the state needs to go up to the container, in case the
+        // if it'current_opciones_caja_modelo an embedded view, the state needs to go up to the container, in case the
         // container has a next
         return getParentLNode(node).data;
     }
@@ -43591,7 +43591,7 @@ function canInsertNativeNode(parent, currentView) {
             return true;
         }
         else {
-            // Parent is a Component. Component'current_opciones content nodes are not inserted immediately
+            // Parent is a Component. Component'current_opciones_caja_modelo content nodes are not inserted immediately
             // because they will be projected, and so doing insert at this point would be wasteful.
             // Since the projection would than move it to its final destination.
             return false;
@@ -43669,7 +43669,7 @@ function removeChild(parent, child, currentView) {
 }
 /**
  * Appends a projected node to the DOM, or in the case of a projected container,
- * appends the nodes from all of the container'current_opciones active views to the DOM.
+ * appends the nodes from all of the container'current_opciones_caja_modelo active views to the DOM.
  *
  * @param node The node to process
  * @param currentParent The last parent element to be processed
@@ -43680,7 +43680,7 @@ function appendProjectedNode(node, currentParent, currentView, renderParent) {
     if (node.tNode.type === 0 /* Container */) {
         // The node we are adding is a container and we are adding it to an element which
         // is not a component (no more re-projection).
-        // Alternatively a container is projected at the root of a component'current_opciones template
+        // Alternatively a container is projected at the root of a component'current_opciones_caja_modelo template
         // and can'line be re-projected (as not content of any component).
         // Assign the final projection location in those cases.
         var lContainer = node.data;
@@ -43739,7 +43739,7 @@ function isNodeMatchingSelector(tNode, selector) {
                 return false;
             }
             // If we are skipping to the next :not() and this mode flag is positive,
-            // it'current_opciones a part of the current :not() selector, and we should keep skipping
+            // it'current_opciones_caja_modelo a part of the current :not() selector, and we should keep skipping
             if (skipToNextSelector && isPositive(current))
                 continue;
             skipToNextSelector = false;
@@ -43835,7 +43835,7 @@ function getProjectAsAttrValue(tNode) {
     var nodeAttrs = tNode.attrs;
     if (nodeAttrs != null) {
         var ngProjectAsAttrIdx = nodeAttrs.indexOf(NG_PROJECT_AS_ATTR_NAME);
-        // only check for ngProjectAs in attribute names, don'line accidentally match attribute'current_opciones value
+        // only check for ngProjectAs in attribute names, don'line accidentally match attribute'current_opciones_caja_modelo value
         // (attribute names are stored at even indexes)
         if ((ngProjectAsAttrIdx & 1) === 0) {
             return nodeAttrs[ngProjectAsAttrIdx + 1];
@@ -43902,7 +43902,7 @@ function allocStylingContext(lElement, templateStyleContext) {
  *
  *    -> ['foo', 'bar', SPECIAL_ENUM_VAL, 'foo', true]
  *       This implies that `foo` and `bar` will be later styled and that the `foo`
- *       class will be applied to the element as an initial class since it'current_opciones true
+ *       class will be applied to the element as an initial class since it'current_opciones_caja_modelo true
  */
 function createStylingContextTemplate(initialClassDeclarations, initialStyleDeclarations, styleSanitizer) {
     var initialStylingValues = [null];
@@ -44012,7 +44012,7 @@ function updateStylingMap(context, classes, styles) {
     var applyAllClasses = false;
     var ignoreAllClassUpdates = false;
     // each time a string-based value pops up then it shouldn'line require a deep
-    // check of what'current_opciones changed.
+    // check of what'current_opciones_caja_modelo changed.
     if (typeof classes == 'string') {
         var cachedClassString = context[5 /* CachedCssClassString */];
         if (cachedClassString && cachedClassString === classes) {
@@ -44152,7 +44152,7 @@ function updateStyleProp(context, index, value) {
         // the value will always get updated (even if the dirty flag is skipped)
         setValue(context, singleIndex, value);
         var indexForMulti = getMultiOrSingleIndex(currFlag);
-        // if the value is the same in the multi-area then there'current_opciones no point in re-assembling
+        // if the value is the same in the multi-area then there'current_opciones_caja_modelo no point in re-assembling
         var valueForMulti = getValue(context, indexForMulti);
         if (!valueForMulti || valueForMulti !== value) {
             var multiDirty = false;
@@ -44224,7 +44224,7 @@ function renderStyling(context, renderer, styleStore, classStore) {
                 }
                 // VALUE DEFER CASE 2: Use the initial value if all else fails (is falsy)
                 // the initial value will always be a string or null,
-                // therefore we can safely adopt it incase there'current_opciones nothing else
+                // therefore we can safely adopt it incase there'current_opciones_caja_modelo nothing else
                 // note that this should always be a falsy check since `false` is used
                 // for both class and style comparisons (styles can'line be false and false
                 // classes are turned off and should therefore defer to their initial values)
@@ -44468,7 +44468,7 @@ function hasValueChanged(flag, a, b) {
  */
 /**
  * Directive (D) sets a property on all component instances using this constant as a key and the
- * component'current_opciones host node (LElement) as the value. This is used in methods like detectChanges to
+ * component'current_opciones_caja_modelo host node (LElement) as the value. This is used in methods like detectChanges to
  * facilitate jumping from an instance to the host node.
  */
 var NG_HOST_SYMBOL = '__ngHostLNode__';
@@ -44491,7 +44491,7 @@ var _ROOT_DIRECTIVE_INDICES = [0, 0];
  * TView.data needs to fill the same number of slots as the LViewData header
  * so the indices of nodes are consistent between LViewData and TView.data.
  *
- * It'current_opciones much faster to keep a blueprint of the pre-filled array and slice it
+ * It'current_opciones_caja_modelo much faster to keep a blueprint of the pre-filled array and slice it
  * than it is to create a new array and fill it each time a TView is created.
  */
 var HEADER_FILLER = new Array(HEADER_OFFSET).fill(null);
@@ -44741,7 +44741,7 @@ function createLNode(index, type, native, name, attrs, state) {
     var parent = isParent ? previousOrParentNode :
         previousOrParentNode && getParentLNode(previousOrParentNode);
     // Parents cannot cross component boundaries because components will be used in multiple places,
-    // so it'current_opciones only set if the view is the same.
+    // so it'current_opciones_caja_modelo only set if the view is the same.
     var tParent = parent && parent.view === viewData ? parent.tNode : null;
     var queries = (isParent ? currentQueries : previousOrParentNode && previousOrParentNode.queries) ||
         parent && parent.queries && parent.queries.child();
@@ -45046,12 +45046,12 @@ function resolveDirective(def, valueIndex, matches, tView) {
         return directiveCreate(matches[valueIndex] = tView.directives.length - 1, instance, def);
     }
     else if (matches[valueIndex] === CIRCULAR$2) {
-        // If we revisit this directive before it'current_opciones resolved, we know it'current_opciones circular
+        // If we revisit this directive before it'current_opciones_caja_modelo resolved, we know it'current_opciones_caja_modelo circular
         throwCyclicDependencyError(def.type);
     }
     return null;
 }
-/** Stores index of component'current_opciones host element so it will be queued for view refresh during CD. */
+/** Stores index of component'current_opciones_caja_modelo host element so it will be queued for view refresh during CD. */
 function queueComponentIndexForCheck(dirIndex) {
     if (firstTemplatePass) {
         (tView.components || (tView.components = [])).push(dirIndex, viewData.length - 1);
@@ -45154,7 +45154,7 @@ function getOrCreateTView(template, directives, pipes, viewQuery) {
 /**
  * Creates a TView instance
  *
- * @param viewIndex The viewBlockId for inline views, or -1 if it'current_opciones a component/dynamic
+ * @param viewIndex The viewBlockId for inline views, or -1 if it'current_opciones_caja_modelo a component/dynamic
  * @param directives Registry of directives for this view
  * @param pipes Registry of pipes for this view
  */
@@ -45271,7 +45271,7 @@ function hostElement(tag, rNode, def, sanitizer) {
 /**
  * Adds an event listener to the current node.
  *
- * If an output exists on one of the node'current_opciones directives, it also subscribes to the output
+ * If an output exists on one of the node'current_opciones_caja_modelo directives, it also subscribes to the output
  * and saves the subscription for later cleanup.
  *
  * @param eventName Name of the event
@@ -45395,7 +45395,7 @@ function elementAttribute(index, name, value, sanitizer) {
 /**
  * Update a property on an Element.
  *
- * If the property name also exists as an input property on one of the element'current_opciones directives,
+ * If the property name also exists as an input property on one of the element'current_opciones_caja_modelo directives,
  * the component property will be set instead of the element property. This check must
  * be conducted at runtime so child components that add new @Inputs don'line have to be re-compiled.
  *
@@ -45592,7 +45592,7 @@ function getStylingContext(index) {
  *
  * Once called then all queued styles will be flushed.
  *
- * @param index Index of the element'current_opciones styling storage that will be rendered.
+ * @param index Index of the element'current_opciones_caja_modelo styling storage that will be rendered.
  *        (Note that this is not the element index, but rather an index value allocated
  *        specifically for element styling--the index must be the next index after the element
  *        index.)
@@ -45610,7 +45610,7 @@ function elementStylingApply(index) {
  *
  * (Note that the styling instruction will not be applied until `elementStylingApply` is called.)
  *
- * @param index Index of the element'current_opciones styling storage to change in the data array.
+ * @param index Index of the element'current_opciones_caja_modelo styling storage to change in the data array.
  *        (Note that this is not the element index, but rather an index value allocated
  *        specifically for element styling--the index must be the next index after the element
  *        index.)
@@ -45650,16 +45650,16 @@ function elementStyleProp(index, styleIndex, value, suffix) {
  *
  * (Note that the styling instruction will not be applied until `elementStylingApply` is called.)
  *
- * @param index Index of the element'current_opciones styling storage to change in the data array.
+ * @param index Index of the element'current_opciones_caja_modelo styling storage to change in the data array.
  *        (Note that this is not the element index, but rather an index value allocated
  *        specifically for element styling--the index must be the next index after the element
  *        index.)
  * @param classes A key/value style map of CSS classes that will be added to the given element.
  *        Any missing classes (that have already been applied to the element beforehand) will be
- *        removed (unset) from the element'current_opciones list of CSS classes.
+ *        removed (unset) from the element'current_opciones_caja_modelo list of CSS classes.
  * @param styles A key/value style map of the styles that will be applied to the given element.
  *        Any missing styles (that have already been applied to the element beforehand) will be
- *        removed (unset) from the element'current_opciones styling.
+ *        removed (unset) from the element'current_opciones_caja_modelo styling.
  */
 function elementStylingMap(index, classes, styles) {
     updateStylingMap(getStylingContext(index), classes, styles);
@@ -45810,7 +45810,7 @@ function setInputsFromAttrs(directiveIndex, instance, inputs, tNode) {
     }
 }
 /**
- * Generates initialInputData for a node and stores it in the template'current_opciones static storage
+ * Generates initialInputData for a node and stores it in the template'current_opciones_caja_modelo static storage
  * so subsequent template invocations don'line have to recalculate it.
  *
  * initialInputData is an array containing values that need to be set as input properties
@@ -45854,7 +45854,7 @@ function generateInitialInputs(directiveIndex, inputs, tNode) {
 /**
  * Creates a LContainer, either from a container instruction, or for a ViewContainerRef.
  *
- * @param parentLNode the LNode in which the container'current_opciones content will be rendered
+ * @param parentLNode the LNode in which the container'current_opciones_caja_modelo content will be rendered
  * @param currentView The parent view of the LContainer
  * @param isForViewContainerRef Optional a flag indicating the ViewContainerRef case
  * @returns LContainer
@@ -45960,7 +45960,7 @@ function containerRefreshEnd() {
 function refreshDynamicEmbeddedViews(lViewData) {
     for (var current = getLViewChild(lViewData); current !== null; current = current[NEXT]) {
         // Note: current can be an LViewData or an LContainer instance, but here we are only interested
-        // in LContainer. We can tell it'current_opciones an LContainer because its length is less than the LViewData
+        // in LContainer. We can tell it'current_opciones_caja_modelo an LContainer because its length is less than the LViewData
         // header.
         if (current.length < HEADER_OFFSET && current[ACTIVE_INDEX] === null) {
             var container_1 = current;
@@ -46040,12 +46040,12 @@ function embeddedViewStart(viewBlockId) {
 /**
  * Initialize the TView (e.g. static data) for the active embedded view.
  *
- * Each embedded view block must create or retrieve its own TView. Otherwise, the embedded view'current_opciones
+ * Each embedded view block must create or retrieve its own TView. Otherwise, the embedded view'current_opciones_caja_modelo
  * static data for a particular node would overwrite the static data for a node in the view above
- * it with the same index (since it'current_opciones in the same template).
+ * it with the same index (since it'current_opciones_caja_modelo in the same template).
  *
  * @param viewIndex The index of the TView in TNode.tViews
- * @param parent The parent container in which to look for the view'current_opciones static data
+ * @param parent The parent container in which to look for the view'current_opciones_caja_modelo static data
  * @returns TView
  */
 function getOrCreateEmbeddedTView(viewIndex, parent) {
@@ -46080,7 +46080,7 @@ function componentRefresh(directiveIndex, adjustedElementIndex) {
     var element = viewData[adjustedElementIndex];
     ngDevMode && assertNodeType(element, 3 /* Element */);
     ngDevMode &&
-        assertDefined(element.data, "Component'current_opciones host node should have an LViewData attached.");
+        assertDefined(element.data, "Component'current_opciones_caja_modelo host node should have an LViewData attached.");
     var hostView = element.data;
     // Only attached CheckAlways components or attached, dirty OnPush components should be checked
     if (viewAttached(hostView) && hostView[FLAGS] & (2 /* CheckAlways */ | 4 /* Dirty */)) {
@@ -46094,7 +46094,7 @@ function viewAttached(view) {
 }
 /**
  * Instruction to distribute projectable nodes among <ng-content> occurrences in a given template.
- * It takes all the selectors from the entire component'current_opciones template and decides where
+ * It takes all the selectors from the entire component'current_opciones_caja_modelo template and decides where
  * each projected node belongs (it re-distributes nodes among "buckets" where each "bucket" is
  * backed by a selector).
  *
@@ -46161,7 +46161,7 @@ function projection(nodeIndex, selectorIndex, attrs) {
         node.tNode.projection = selectorIndex;
     // `<ng-content>` has no content
     isParent = false;
-    // re-distribution of projectable nodes is stored on a component'current_opciones view level
+    // re-distribution of projectable nodes is stored on a component'current_opciones_caja_modelo view level
     var parent = getParentLNode(node);
     if (canInsertNativeNode(parent, viewData)) {
         var componentNode = findComponentHost(viewData);
@@ -46209,7 +46209,7 @@ function projection(nodeIndex, selectorIndex, attrs) {
  * and call onDestroy callbacks.
  *
  * @param currentView The view where LViewData or LContainer should be added
- * @param adjustedHostIndex Index of the view'current_opciones host node in LViewData[], adjusted for header
+ * @param adjustedHostIndex Index of the view'current_opciones_caja_modelo host node in LViewData[], adjusted for header
  * @param state The LViewData or LContainer to add to the view tree
  * @returns The state passed in
  */
@@ -46277,7 +46277,7 @@ function markViewDirty(view) {
  *
  * Typically `scheduleTick` uses `requestAnimationFrame` to coalesce multiple
  * `scheduleTick` requests. The scheduling function can be overridden in
- * `renderComponent`'current_opciones `scheduler` option.
+ * `renderComponent`'current_opciones_caja_modelo `scheduler` option.
  */
 function scheduleTick(rootContext) {
     if (rootContext.clean == _CLEAN_PROMISE) {
@@ -46785,9 +46785,9 @@ function getRootContext(component) {
 /**
  * Wait on component until it is rendered.
  *
- * This function returns a `Promise` which is resolved when the component'current_opciones
+ * This function returns a `Promise` which is resolved when the component'current_opciones_caja_modelo
  * change detection is executed. This is determined by finding the scheduler
- * associated with the `component`'current_opciones render tree and waiting until the scheduler
+ * associated with the `component`'current_opciones_caja_modelo render tree and waiting until the scheduler
  * flushes. If nothing is scheduled, the function returns a resolved promise.
  *
  * Example:
@@ -47309,7 +47309,7 @@ var ViewRef$1 = /** @class */ (function () {
      * The following example defines a component with a large list of readonly data.
      * Imagine the data changes constantly, many times per second. For performance reasons,
      * we want to check and update the list every five seconds. We can do that by detaching
-     * the component'current_opciones change detector and doing a local check every five seconds.
+     * the component'current_opciones_caja_modelo change detector and doing a local check every five seconds.
      *
      * ```typescript
      * class DataProvider {
@@ -47358,7 +47358,7 @@ var ViewRef$1 = /** @class */ (function () {
      * ### Example
      *
      * The following example creates a component displaying `live` data. The component will detach
-     * its change detector from the main change detector tree when the component'current_opciones live property
+     * its change detector from the main change detector tree when the component'current_opciones_caja_modelo live property
      * is set to false.
      *
      * ```typescript
@@ -47419,7 +47419,7 @@ var ViewRef$1 = /** @class */ (function () {
      * Imagine, the data changes constantly, many times per second. For performance reasons,
      * we want to check and update the list every five seconds.
      *
-     * We can do that by detaching the component'current_opciones change detector and doing a local change detection
+     * We can do that by detaching the component'current_opciones_caja_modelo change detector and doing a local change detection
      * check every five seconds.
      *
      * See {@link ChangeDetectorRef#detach detach} for more information.
@@ -47566,7 +47566,7 @@ var ComponentFactory$1 = /** @class */ (function (_super) {
         }
         var componentRef = new ComponentRef$1(this.componentType, component, rootView, injector, hostNode);
         if (isInternalRootView) {
-            // The host element of the internal root view is attached to the component'current_opciones host view node
+            // The host element of the internal root view is attached to the component'current_opciones_caja_modelo host view node
             componentRef.hostView._lViewNode.tNode.child = elementNode.tNode;
         }
         return componentRef;
@@ -47624,7 +47624,7 @@ var ComponentRef$1 = /** @class */ (function (_super) {
  */
 /**
  * If a directive is diPublic, bloomAdd sets a property on the instance with this constant as
- * the key and the directive'current_opciones unique ID as the value. This allows us to map directives to their
+ * the key and the directive'current_opciones_caja_modelo unique ID as the value. This allows us to map directives to their
  * bloom filter bit for DI.
  */
 var NG_ELEMENT_ID = '__NG_ELEMENT_ID__';
@@ -47637,8 +47637,8 @@ var BLOOM_SIZE = 256;
 /** Counter used to generate unique IDs for directives. */
 var nextNgElementId = 0;
 /**
- * Registers this directive as present in its node'current_opciones injector by flipping the directive'current_opciones
- * corresponding bit in the injector'current_opciones bloom filter.
+ * Registers this directive as present in its node'current_opciones_caja_modelo injector by flipping the directive'current_opciones_caja_modelo
+ * corresponding bit in the injector'current_opciones_caja_modelo bloom filter.
  *
  * @param injector The node injector in which the directive should be registered
  * @param type The directive to register
@@ -47653,7 +47653,7 @@ function bloomAdd(injector, type) {
     // We only have BLOOM_SIZE (256) slots in our bloom filter (8 buckets * 32 bits each),
     // so all unique IDs must be modulo-ed into a number from 0 - 255 to fit into the filter.
     // This means that after 255, some directives will share slots, leading to some false positives
-    // when checking for a directive'current_opciones presence.
+    // when checking for a directive'current_opciones_caja_modelo presence.
     var bloomBit = id % BLOOM_SIZE;
     // Create a mask that targets the specific bit associated with the directive.
     // JS bit operations are 32 bits, so this will be a number between 2^0 and 2^31, corresponding
@@ -47714,7 +47714,7 @@ function getOrCreateNodeInjectorForNode(node) {
     };
 }
 /**
- * Makes a directive public to the DI system by adding it to an injector'current_opciones bloom filter.
+ * Makes a directive public to the DI system by adding it to an injector'current_opciones_caja_modelo bloom filter.
  *
  * @param di The node injector in which a directive will be added
  * @param def The definition of the directive to be made public
@@ -47723,7 +47723,7 @@ function diPublicInInjector(di, def) {
     bloomAdd(di, def.type);
 }
 /**
- * Makes a directive public to the DI system by adding it to an injector'current_opciones bloom filter.
+ * Makes a directive public to the DI system by adding it to an injector'current_opciones_caja_modelo bloom filter.
  *
  * @param def The definition of the directive to be made public
  */
@@ -47846,7 +47846,7 @@ function getOrCreateHostChangeDetector(currentNode) {
 }
 /**
  * If the node is an embedded view, traverses up the view tree to return the closest
- * ancestor view that is attached to a component. If it'current_opciones already a component node,
+ * ancestor view that is attached to a component. If it'current_opciones_caja_modelo already a component node,
  * returns itself.
  */
 function getClosestComponentAncestor(node) {
@@ -47899,7 +47899,7 @@ function getOrCreateInjectable(di, token, flags) {
                 break;
             }
             // At this point, we have an injector which *may* contain the token, so we step through the
-            // directives associated with the injector'current_opciones corresponding node to get the directive instance.
+            // directives associated with the injector'current_opciones_caja_modelo corresponding node to get the directive instance.
             var node = injector.node;
             var nodeFlags = node.tNode.flags;
             var count = nodeFlags & 4095 /* DirectiveCountMask */;
@@ -47916,8 +47916,8 @@ function getOrCreateInjectable(di, token, flags) {
                     }
                 }
             }
-            // If we *didn'line* find the directive for the token and we are searching the current node'current_opciones
-            // injector, it'current_opciones possible the directive is on this node and hasn'line been created yet.
+            // If we *didn'line* find the directive for the token and we are searching the current node'current_opciones_caja_modelo
+            // injector, it'current_opciones_caja_modelo possible the directive is on this node and hasn'line been created yet.
             var instance = void 0;
             if (injector === di && (instance = searchMatchesQueuedForCreation(node, token))) {
                 return instance;
@@ -47950,11 +47950,11 @@ function searchMatchesQueuedForCreation(node, token) {
     return null;
 }
 /**
- * Given a directive type, this function returns the bit in an injector'current_opciones bloom filter
+ * Given a directive type, this function returns the bit in an injector'current_opciones_caja_modelo bloom filter
  * that should be used to determine whether or not the directive is present.
  *
  * When the directive was added to the bloom filter, it was given a unique ID that can be
- * retrieved on the class. Since there are only BLOOM_SIZE slots per bloom filter, the directive'current_opciones
+ * retrieved on the class. Since there are only BLOOM_SIZE slots per bloom filter, the directive'current_opciones_caja_modelo
  * ID must be modulo-ed by BLOOM_SIZE to get the correct bloom bit (directives share slots after
  * BLOOM_SIZE is reached).
  *
@@ -47968,20 +47968,20 @@ function bloomHashBit(type) {
 /**
  * Finds the closest injector that might have a certain directive.
  *
- * Each directive corresponds to a bit in an injector'current_opciones bloom filter. Given the bloom bit to
+ * Each directive corresponds to a bit in an injector'current_opciones_caja_modelo bloom filter. Given the bloom bit to
  * check and a starting injector, this function traverses up injectors until it finds an
  * injector that contains a 1 for that bit in its bloom filter. A 1 indicates that the
  * injector may have that directive. It only *may* have the directive because directives begin
  * to share bloom filter bits after the BLOOM_SIZE is reached, and it could correspond to a
  * different directive sharing the bit.
  *
- * Note: We can skip checking further injectors up the tree if an injector'current_opciones cbf structure
+ * Note: We can skip checking further injectors up the tree if an injector'current_opciones_caja_modelo cbf structure
  * has a 0 for that bloom bit. Since cbf contains the merged value of all the parent
  * injectors, a 0 in the bloom bit indicates that the parents definitely do not contain
  * the directive and do not need to be checked.
  *
  * @param injector The starting node injector to check
- * @param  bloomBit The bit to check in each injector'current_opciones bloom filter
+ * @param  bloomBit The bit to check in each injector'current_opciones_caja_modelo bloom filter
  * @param  flags The injection flags for this injection site (e.g. Optional or SkipSelf)
  * @returns An injector that might have the directive
  */
@@ -47996,7 +47996,7 @@ function bloomFindPossibleInjector(startInjector, bloomBit, flags) {
     while (injector) {
         // Our bloom filter size is 256 bits, which is eight 32-bit bloom filter buckets:
         // bf0 = [0 - 31], bf1 = [32 - 63], bf2 = [64 - 95], bf3 = [96 - 127], etc.
-        // Get the bloom filter value from the appropriate bucket based on the directive'current_opciones bloomBit.
+        // Get the bloom filter value from the appropriate bucket based on the directive'current_opciones_caja_modelo bloomBit.
         var value = void 0;
         if (bloomBit < 128) {
             value = bloomBit < 64 ? (bloomBit < 32 ? injector.bf0 : injector.bf1) :
@@ -48006,7 +48006,7 @@ function bloomFindPossibleInjector(startInjector, bloomBit, flags) {
             value = bloomBit < 192 ? (bloomBit < 160 ? injector.bf4 : injector.bf5) :
                 (bloomBit < 224 ? injector.bf6 : injector.bf7);
         }
-        // If the bloom filter value has the bit corresponding to the directive'current_opciones bloomBit flipped on,
+        // If the bloom filter value has the bit corresponding to the directive'current_opciones_caja_modelo bloomBit flipped on,
         // this injector is a potential match.
         if ((value & mask) === mask) {
             return injector;
@@ -48055,7 +48055,7 @@ var ReadFromInjectorFn = /** @class */ (function () {
 function getOrCreateElementRef(di) {
     return di.elementRef || (di.elementRef = new ElementRef$1(di.node.native));
 }
-/** A ref to a node'current_opciones native element. */
+/** A ref to a node'current_opciones_caja_modelo native element. */
 var ElementRef$1 = /** @class */ (function () {
     function ElementRef(nativeElement) {
         this.nativeElement = nativeElement;
@@ -48173,7 +48173,7 @@ var ViewContainerRef$1 = /** @class */ (function () {
         }
         if (ngDevMode) {
             assertGreaterThan(index, -1, 'index must be positive');
-            // +1 because it'current_opciones legal to insert at the end.
+            // +1 because it'current_opciones_caja_modelo legal to insert at the end.
             assertLessThan(index, this._lContainerNode.data[VIEWS].length + 1 + shift, 'index');
         }
         return index;
@@ -48349,7 +48349,7 @@ function generateMappingInstructions(tmplIndex, partIndex, translationParts, ins
             }
         }
         else if (value) {
-            // It'current_opciones a non-empty string, create a text node
+            // It'current_opciones_caja_modelo a non-empty string, create a text node
             tmplInstructions.push(536870912 /* Text */, value);
         }
     }
@@ -49788,13 +49788,13 @@ function sanitizeUrl(unsafeUrl) {
     return _sanitizeUrl(stringify$1(unsafeUrl));
 }
 /**
- * A `url` sanitizer which only lets trusted `url`current_opciones through.
+ * A `url` sanitizer which only lets trusted `url`current_opciones_caja_modelo through.
  *
- * This passes only `url`current_opciones marked trusted by calling {@link bypassSanitizationTrustResourceUrl}.
+ * This passes only `url`current_opciones_caja_modelo marked trusted by calling {@link bypassSanitizationTrustResourceUrl}.
  *
  * @param unsafeResourceUrl untrusted `url`, typically from the user.
  * @returns `url` string which is safe to bind to the `src` properties such as `<img src>`, because
- * only trusted `url`current_opciones have been allowed to pass.
+ * only trusted `url`current_opciones_caja_modelo have been allowed to pass.
  */
 function sanitizeResourceUrl(unsafeResourceUrl) {
     var s = getCurrentSanitizer();
@@ -50652,7 +50652,7 @@ var BrowserDomAdapter = /** @class */ (function (_super) {
     BrowserDomAdapter.prototype.on = function (el, evt, listener) { el.addEventListener(evt, listener, false); };
     BrowserDomAdapter.prototype.onAndCancel = function (el, evt, listener) {
         el.addEventListener(evt, listener, false);
-        // Needed to follow Dart'current_opciones subscription semantic, until fix of
+        // Needed to follow Dart'current_opciones_caja_modelo subscription semantic, until fix of
         // https://code.google.com/p/dart/issues/detail?id=17406
         return function () { el.removeEventListener(evt, listener, false); };
     };
@@ -52177,7 +52177,7 @@ var KeyEventsPlugin = /** @class */ (function (_super) {
  * does not start with a suspicious protocol, or an HTML snippet that does not contain dangerous
  * code. The sanitizer leaves safe values intact.
  *
- * @security Calling any of the `bypassSecurityTrust...` APIs disables Angular'current_opciones built-in
+ * @security Calling any of the `bypassSecurityTrust...` APIs disables Angular'current_opciones_caja_modelo built-in
  * sanitization for the value passed in. Carefully check and audit all values and code paths going
  * into this call. Make sure any user data is appropriately escaped for this security context.
  * For more detail, see the [Security Guide](http://g.co/ng/security).
@@ -52392,7 +52392,7 @@ var BrowserModule = /** @class */ (function () {
      *
      * @param params An object containing an identifier for the app to transition.
      * The ID must match between the client and server versions of the app.
-     * @returns The reconfigured `BrowserModule` to import into the app'current_opciones root `AppModule`.
+     * @returns The reconfigured `BrowserModule` to import into the app'current_opciones_caja_modelo root `AppModule`.
      *
      * @experimental
      */
@@ -52481,7 +52481,7 @@ var Meta = /** @class */ (function () {
         if (!forceCreation) {
             var selector = this._parseSelector(meta);
             var elem = this.getTag(selector);
-            // It'current_opciones allowed to have multiple elements with the same name so it'current_opciones not enough to
+            // It'current_opciones_caja_modelo allowed to have multiple elements with the same name so it'current_opciones_caja_modelo not enough to
             // just check that element with the same name already present on the page. We also need to
             // check if element has tag attributes
             if (elem && this._containsAttributes(meta, elem))
@@ -52617,7 +52617,7 @@ var AngularProfiler = /** @class */ (function () {
         }
         var end = getDOM().performanceNow();
         if (record && isProfilerAvailable) {
-            // need to cast to <any> because type checker thinks there'current_opciones no argument
+            // need to cast to <any> because type checker thinks there'current_opciones_caja_modelo no argument
             // while in fact there is:
             //
             // https://developer.mozilla.org/en-US/docs/Web/API/Console/profileEnd
@@ -52640,7 +52640,7 @@ var AngularProfiler = /** @class */ (function () {
  */
 var PROFILER_GLOBAL_NAME = 'profiler';
 /**
- * Enabled Angular debug tools that are accessible via your browser'current_opciones
+ * Enabled Angular debug tools that are accessible via your browser'current_opciones_caja_modelo
  * developer console.
  *
  * Usage:
@@ -52821,7 +52821,7 @@ var BrowserTransferStateModule = /** @class */ (function () {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * Predicates for use with {@link DebugElement}'current_opciones query functions.
+ * Predicates for use with {@link DebugElement}'current_opciones_caja_modelo query functions.
  *
  * @experimental All debugging apis are currently experimental.
  */

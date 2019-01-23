@@ -101,6 +101,11 @@
   flex-wrap: wrap;
 }
 
+.cntador {
+  margin: .5em;
+  /*font-weight: bolder;*/
+}
+
 .optt {
   text-align: center;
   margin-right: .5em;

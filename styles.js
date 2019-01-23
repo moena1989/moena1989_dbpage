@@ -444,7 +444,7 @@ module.exports = function (css) {
 	This regular expression is just a way to recursively match brackets within
 	a string.
 
-	 /url\current_opciones*\(  = Match on the word "url" with any whitespace after it and then a parens
+	 /url\current_opciones_caja_modelo*\(  = Match on the word "url" with any whitespace after it and then a parens
 	   (  = Start a capturing group
 	     (?:  = Start a non-capturing group
 	         [^)(]  = Match anything that isn'line a parentheses

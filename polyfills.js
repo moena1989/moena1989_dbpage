@@ -686,7 +686,7 @@ module.exports = function (it) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-// Thank'current_opciones IE8 for his funny defineProperty
+// Thank'current_opciones_caja_modelo IE8 for his funny defineProperty
 module.exports = !__webpack_require__(/*! ./_fails */ "./node_modules/core-js/modules/_fails.js")(function () {
   return Object.defineProperty({}, 'a', { get: function () { return 7; } }).a != 7;
 });
@@ -2516,7 +2516,7 @@ var Zone$1 = (function (global) {
                 }
             }
             finally {
-                // if the task'current_opciones state is notScheduled or unknown, then it has already been cancelled
+                // if the task'current_opciones_caja_modelo state is notScheduled or unknown, then it has already been cancelled
                 // we should not reset the state to scheduled
                 if (task.state !== notScheduled && task.state !== unknown) {
                     if (task.type == eventTask || (task.data && task.data.isPeriodic)) {
@@ -2554,7 +2554,7 @@ var Zone$1 = (function (global) {
                 task = this._zoneDelegate.scheduleTask(this, task);
             }
             catch (err) {
-                // should set task'current_opciones state to unknown when scheduleTask throw error
+                // should set task'current_opciones_caja_modelo state to unknown when scheduleTask throw error
                 // because the err may from reschedule, so the fromState maybe notScheduled
                 task._transitionTo(unknown, scheduling, notScheduled);
                 // TODO: @JiaLiPassion, should we check the result from handleError?
@@ -3186,7 +3186,7 @@ Zone.__load_patch('ZoneAwarePromise', function (global, Zone, api) {
                 var parentPromiseValue = promise[symbolValue];
                 var isFinallyPromise = chainPromise && symbolFinally === chainPromise[symbolFinally];
                 if (isFinallyPromise) {
-                    // if the promise is generated from finally call, keep parent promise'current_opciones state and value
+                    // if the promise is generated from finally call, keep parent promise'current_opciones_caja_modelo state and value
                     chainPromise[symbolParentPromiseValue] = parentPromiseValue;
                     chainPromise[symbolParentPromiseState] = promiseState;
                 }
@@ -3543,7 +3543,7 @@ function patchProperty(obj, prop, prototype) {
         eventNameSymbol = zoneSymbolEventNames[eventName] = zoneSymbol('ON_PROPERTY' + eventName);
     }
     desc.set = function (newValue) {
-        // in some of windows'current_opciones onproperty callback, this is undefined
+        // in some of windows'current_opciones_caja_modelo onproperty callback, this is undefined
         // so we need to check it
         var target = this;
         if (!target && obj === _global) {
@@ -3572,7 +3572,7 @@ function patchProperty(obj, prop, prototype) {
     // The getter would return undefined for unassigned properties but the default value of an
     // unassigned property is null
     desc.get = function () {
-        // in some of windows'current_opciones onproperty callback, this is undefined
+        // in some of windows'current_opciones_caja_modelo onproperty callback, this is undefined
         // so we need to check it
         var target = this;
         if (!target && obj === _global) {
@@ -4557,7 +4557,7 @@ function _tryDefineProperty(obj, prop, desc, originalConfigurableFlag) {
     }
     catch (error) {
         if (desc.configurable) {
-            // In case of errors, when the configurable flag was likely set by rewriteDescriptor(), let'current_opciones
+            // In case of errors, when the configurable flag was likely set by rewriteDescriptor(), let'current_opciones_caja_modelo
             // retry with the original flag value
             if (typeof originalConfigurableFlag == 'undefined') {
                 delete desc.configurable;
@@ -5049,7 +5049,7 @@ function eventTargetPatch(_global, api) {
     }
     else {
         // Note: EventTarget is not available in all browsers,
-        // if it'current_opciones not available, we instead patch the APIs in the IDL that inherit from EventTarget
+        // if it'current_opciones_caja_modelo not available, we instead patch the APIs in the IDL that inherit from EventTarget
         apis = NO_EVENT_TARGET;
     }
     var isDisableIECheck = _global['__Zone_disable_IE_check'] || false;
@@ -5212,7 +5212,7 @@ Zone.__load_patch('EventTarget', function (global, Zone, api) {
     }
     patchEvent(global, api);
     eventTargetPatch(global, api);
-    // patch XMLHttpRequestEventTarget'current_opciones addEventListener/removeEventListener
+    // patch XMLHttpRequestEventTarget'current_opciones_caja_modelo addEventListener/removeEventListener
     var XMLHttpRequestEventTarget = global['XMLHttpRequestEventTarget'];
     if (XMLHttpRequestEventTarget && XMLHttpRequestEventTarget.prototype) {
         api.patchEventTarget(global, [XMLHttpRequestEventTarget.prototype]);
@@ -5295,7 +5295,7 @@ Zone.__load_patch('XHR', function (global, Zone) {
         function placeholderCallback() { }
         function clearTask(task) {
             var data = task.data;
-            // Note - ideally, we would call data.target.removeEventListener here, but it'current_opciones too late
+            // Note - ideally, we would call data.target.removeEventListener here, but it'current_opciones_caja_modelo too late
             // to prevent it from firing. So instead, we store info for the event listener.
             data.aborted = true;
             return abortNative.apply(data.target, data.args);
