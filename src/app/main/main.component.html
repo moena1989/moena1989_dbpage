@@ -1,5 +1,6 @@
-<app-navbar></app-navbar>
+<app-sidebar></app-sidebar>
 <app-top-bar></app-top-bar>
-<div class="main_cnt">
+
+<div class="main_cnt" [ngClass]="!tools.is_menu_opened ? 'is-opened' : 'is-closed'">
   <router-outlet></router-outlet>
 </div>

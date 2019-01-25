@@ -9,7 +9,7 @@ import {DbService} from '../_services/db.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  constructor(public db: DbService) {
+  constructor(public db: DbService, public tools: ToolsService) {
   }
 
   ngOnInit(): void {

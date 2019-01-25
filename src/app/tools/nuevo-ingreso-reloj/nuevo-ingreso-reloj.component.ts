@@ -5,6 +5,7 @@ import {ModelRelojService} from '../../_services/model-reloj.service';
 import {MSelectComponent} from '../m-select/m-select.component';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
 import {Caja_m, ModelCajasService} from '../../model-cajas.service';
+import {ToolsService} from '../../_services/tools.service';
 
 class Rmodel {
   diametro_externo: string;
@@ -51,10 +52,13 @@ export class NuevoIngresoRelojComponent implements OnInit {
     public estructura: ModelRelojService,
     public hasher: HasherService,
     public cajaEst: ModelCajasService,
-    public db: DbService) {
+    public db: DbService,
+    public tools: ToolsService
+  ) {
   }
 
   ngOnInit() {
+    this.tools.top_tittle = 'Nuevo Reloj';
   }
 
   seleccionarColeccion(coleccion_selected: any) {

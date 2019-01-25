@@ -1,6 +1,6 @@
 <!--<div class="nav_main_bar">-->
 <!--&lt;!&ndash;TODO realizar una animacion cooqueta con este menu&ndash;&gt;-->
-<!--<div class="menu" (click)="menu_state=!menu_state">-->
+<!--<div class="menu" (click)="is_menu_opened=!is_menu_opened">-->
 <!--<img src="assets/common/logo_b.svg" alt="Menú" class="menu-img">-->
 <!--</div>-->
 <!--<div class="mn">-->
@@ -8,7 +8,7 @@
 <!--</div>-->
 <!--</div>-->
 
-<div [ngClass]="menu_state ? 'sidebar-opened' : 'sidebar-closed'">
+<div class="main_menu" [ngClass]="!tools.is_menu_opened ? 'sidebar-opened' : 'sidebar-closed'">
   <div class="mn">
     <img class="svg_logo" src="assets/common/logo_w.svg"/>
 
@@ -75,7 +75,6 @@
       <div class="opt_txt">Salir</div>
     </div>
   </div>
-
 
   <div class="ssss">
     <div class="user_nv">

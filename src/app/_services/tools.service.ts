@@ -8,8 +8,10 @@ import {Ng2ImgMaxService} from 'ng2-img-max';
 })
 export class ToolsService implements CanActivate {
   public snack: SnackbarComponent;
-  private maxSizePx = 2500;
-  private maxSizeMb = 0.7;
+  private MAX_SIZE_IN_PX = 2500;
+  private MAX_SIZE_IN_MB = 0.7;
+  public top_tittle = 'holi';
+  public is_menu_opened = true;
 
   constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService) {
 
@@ -34,11 +36,11 @@ export class ToolsService implements CanActivate {
     // this.imagePath = file;
     // this.message = 'Escalando...';
 
-    this.ng2ImgMax.resizeImage(file, 10000, this.maxSizePx).subscribe(
+    this.ng2ImgMax.resizeImage(file, 10000, this.MAX_SIZE_IN_PX).subscribe(
       result => {
         console.log('probando resize');
         // this.message = 'Comprimiendo...';
-        this.ng2ImgMax.compressImage(result, this.maxSizeMb).subscribe(
+        this.ng2ImgMax.compressImage(result, this.MAX_SIZE_IN_MB).subscribe(
           _result => {
             console.log('probando compress');
             al_finalizar(_result);

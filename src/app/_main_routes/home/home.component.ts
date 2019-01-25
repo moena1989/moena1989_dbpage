@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, OnInit} from '@angular/core';
+import {ToolsService} from '../../_services/tools.service';
 
 @Component({
   selector: 'app-home',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-
-  constructor() { }
+  constructor(public tools: ToolsService) {
+  }
 
   ngOnInit() {
+    this.tools.top_tittle = 'Inicio';
   }
 
 }

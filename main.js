@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<p>Testing primera pagina</p>-->\n\n<app-navbar></app-navbar>\n<app-nuevo-ingreso-reloj></app-nuevo-ingreso-reloj>\n"
+module.exports = "<!--<p>Testing primera pagina</p>-->\n\n<app-sidebar></app-sidebar>\n<app-nuevo-ingreso-reloj></app-nuevo-ingreso-reloj>\n"
 
 /***/ }),
 
@@ -95,7 +95,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
 /* harmony import */ var _nuevo_ingreso_reloj_nuevo_ingreso_reloj_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nuevo-ingreso-reloj/nuevo-ingreso-reloj.component */ "./src/app/nuevo-ingreso-reloj/nuevo-ingreso-reloj.component.ts");
-/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./navbar/navbar.component */ "./src/app/navbar/navbar.component.ts");
+/* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sidebar/sidebar.component */ "./src/app/sidebar/sidebar.component.ts");
 /* harmony import */ var _utils_selecter_selecter_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/selecter/selecter.component */ "./src/app/utils/selecter/selecter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -117,7 +117,7 @@ var AppModule = /** @class */ (function () {
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
                 _nuevo_ingreso_reloj_nuevo_ingreso_reloj_component__WEBPACK_IMPORTED_MODULE_3__["NuevoIngresoRelojComponent"],
-                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_4__["NavbarComponent"],
+                _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_4__["SidebarComponent"],
                 _utils_selecter_selecter_component__WEBPACK_IMPORTED_MODULE_5__["SelecterComponent"]
             ],
             imports: [
@@ -136,7 +136,7 @@ var AppModule = /** @class */ (function () {
 
 /***/ "./src/app/navbar/navbar.component.css":
 /*!*********************************************!*\
-  !*** ./src/app/navbar/navbar.component.css ***!
+  !*** ./src/app/sidebar/sidebar.component.css ***!
   \*********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -147,7 +147,7 @@ module.exports = ":host {\r\n  width: 100%;\r\n  height: 100%;\r\n  background-c
 
 /***/ "./src/app/navbar/navbar.component.html":
 /*!**********************************************!*\
-  !*** ./src/app/navbar/navbar.component.html ***!
+  !*** ./src/app/sidebar/sidebar.component.html ***!
   \**********************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -158,14 +158,14 @@ module.exports = "<img class=\"logo\" src=\"assets/common/logo_b.svg\" alt=\"Moe
 
 /***/ "./src/app/navbar/navbar.component.ts":
 /*!********************************************!*\
-  !*** ./src/app/navbar/navbar.component.ts ***!
+  !*** ./src/app/sidebar/sidebar.component.ts ***!
   \********************************************/
-/*! exports provided: NavbarComponent */
+/*! exports provided: SidebarComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NavbarComponent", function() { return NavbarComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "SidebarComponent", function() { return NavbarComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -184,9 +184,9 @@ var NavbarComponent = /** @class */ (function () {
     };
     NavbarComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-navbar',
-            template: __webpack_require__(/*! ./navbar.component.html */ "./src/app/navbar/navbar.component.html"),
-            styles: [__webpack_require__(/*! ./navbar.component.css */ "./src/app/navbar/navbar.component.css")]
+            selector: 'app-sidebar',
+            template: __webpack_require__(/*! ./sidebar.component.html */ "./src/app/sidebar/sidebar.component.html"),
+            styles: [__webpack_require__(/*! ./sidebar.component.css */ "./src/app/sidebar/sidebar.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], NavbarComponent);

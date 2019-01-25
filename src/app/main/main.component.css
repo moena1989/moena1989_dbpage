@@ -7,10 +7,18 @@
 
 @media (min-width: 40em) {
   .main_cnt {
-    margin-left: 15em;
     width: auto;
     height: calc(100% - 3.5em);
     overflow: auto;
+  }
+
+  .is-opened {
+    margin-left: var(--open-side-bar-width);
+  }
+
+
+  .is-closed {
+    margin-left: 0;
   }
 
   .aslvn {
@@ -22,29 +30,11 @@
     align-items: center;
   }
 
-  .miga_bar {
-    width: auto;
-    height: 3.5em;
-    border-bottom: 1px solid rgba(70, 12, 183, 0.1);
-    box-sizing: border-box;
-    padding: 1em;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    /*color: white;*/
-    /*background: black;*/
-  }
 
   .ico_op {
     margin-right: 1em;
     margin-left: .5em;
     cursor: pointer;
-  }
-
-  .miga_ttl {
-    font-weight: 500;
-    font-size: 1.2em;
-    /*opacity: ;*/
   }
 
 

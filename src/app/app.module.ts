@@ -19,7 +19,7 @@ import {NgxSmartModalModule, NgxSmartModalService} from 'ngx-smart-modal';
 import {CurrentStorageService} from './_services/current-storage.service';
 import {LoginComponent} from './_main_routes/login/login.component';
 import {HomeComponent} from './_main_routes/home/home.component';
-import {NavbarComponent} from './_main_routes/navbar/navbar.component';
+import {SidebarComponent} from './_main_routes/sidebar/sidebar.component';
 import {RegistroComponent} from './_main_routes/registro/registro.component';
 import {BusquedaComponent} from './_main_routes/busqueda/busqueda.component';
 import {Ng2ImgMaxModule} from 'ng2-img-max';
@@ -84,7 +84,7 @@ const config = {
   declarations: [
     AppComponent,
     NuevoIngresoRelojComponent,
-    NavbarComponent,
+    SidebarComponent,
     BusquedaComponent,
     LoginComponent,
     MainComponent,

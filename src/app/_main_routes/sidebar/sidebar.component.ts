@@ -8,18 +8,17 @@ import {CurrentStorageService} from '../../_services/current-storage.service';
 import {faCoffee} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
-  selector: 'app-navbar',
-  templateUrl: './navbar.component.html',
-  styleUrls: ['./navbar.component.css']
+  selector: 'app-sidebar',
+  templateUrl: './sidebar.component.html',
+  styleUrls: ['./sidebar.component.css']
 })
-export class NavbarComponent implements OnInit {
+export class SidebarComponent implements OnInit {
   @ViewChild('modal') modal: NgxSmartModalComponent;
   err_msg: string;
-  menu_state = true;
-  faCoffee = faCoffee;
+  is_menu_opened = true;
   regs = false;
 
-  constructor(public db: DbService, public router: Router, private tool: ToolsService, private currentStorage: CurrentStorageService) {
+  constructor(public db: DbService, public router: Router, private tools: ToolsService, private currentStorage: CurrentStorageService) {
   }
 
   ngOnInit() {
@@ -38,9 +37,9 @@ export class NavbarComponent implements OnInit {
 
   comprobarMenu() {  // el menú siempre estará abierto en modo escritorio
     if (window.innerWidth > 640) {
-      this.menu_state = true;
+      this.is_menu_opened = true;
     } else {
-      this.menu_state = false;
+      this.is_menu_opened = false;
     }
   }
 
