@@ -14,7 +14,7 @@ export class RelojBuscadoComponent implements OnInit {
   // @Input() dataReloj ;
   @Input() set dataReloj(reloj: any) {
     console.log('i');
-    console.log(reloj['metadata']);
+    console.log(reloj);
     this.titles = Object.keys(reloj['features']);
     this.reloj = reloj;
   }

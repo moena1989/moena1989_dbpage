@@ -22,7 +22,7 @@ export class LoginComponent implements OnInit {
       } else {
         // el ingreso fue exitoso :D
         this.tool.snack.show('Bienvenido de nuevo ' + this.db.userLogueado.name);
-        this.tool.router.navigate(['/registro/reloj']);
+        this.tool.router.navigate(['/']);
         console.log('testing keep log');
         console.log(result);
         localStorage.setItem('ob_login', result);

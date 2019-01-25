@@ -1,16 +1,28 @@
 <!--MODAL!-->
-<ngx-smart-modal #modal identifier="popup">
+<ngx-smart-modal #modal identifier="popup_nuevo_reloj">
   <ng-container *ngIf="!validando">
     <h1>Confirmación</h1>
     <p>¿Seguro que deseas continuar y registrar el producto?</p>
 
     <div class="bt_opts">
-      <div class="b bt" (click)="finalizarNuevoRegistro()">Si</div>
+      <div class="b bt" (click)="subir_nuevo_registro()">Si</div>
       <div class="c bt" (click)="modal.close()">Cancelar</div>
     </div>
+
   </ng-container>
 
-  <div class="p_espera" *ngIf="validando">Espera un momento...</div>
+
+  <div class="p_espera" *ngIf="validando && !subida_completa">
+    <fa-icon class="load" [icon]="['fas','spinner']" [spin]="true"></fa-icon>
+    Espera un momento...
+  </div>
+
+  <div class="pack" *ngIf="subida_completa">
+    <h1>Reloj Registrado</h1>
+    <app-reloj-buscado [dataReloj]="reloj_final"></app-reloj-buscado>
+    <div class="bt-n-ref" (click)="iniciarNuevoRegistro()">Iniciar Nuevo registro</div>
+  </div>
+
 </ngx-smart-modal>
 <!--END MODAL-->
 
@@ -19,12 +31,11 @@
     <div class="visualizador">
       <app-visualizer ttl="Frontal" (alSeleccionar)="onFileChanged($event,'frontal')"></app-visualizer>
     </div>
-
     <div class="all_opts">
       <h4 class="ttt">Caracteristicas Base</h4>
       <div class="_ln"></div>
 
-      <div class="opt_txtions">
+      <div class="options">
         <app-m-select [disable]="false" ttl="Modelo" [opciones]="cajaEst.MODELOS"
                       (alSeleccionar)="seleccionarModelo($event)">
         </app-m-select>
@@ -35,8 +46,7 @@
 
       <h4 class="ttt" *ngIf="current_opciones.opciones_caja">Caracteristicas Caja</h4>
       <div class="_ln"></div>
-
-      <div class="opt_txtions" *ngIf="current_opciones.opciones_caja">
+      <div class="options" *ngIf="current_opciones.opciones_caja">
         <app-m-select
           *ngIf="current_opciones.opciones_caja.diametro_externo"
           ttl="Diámetro Externo"
@@ -64,7 +74,7 @@
       <h4 class="ttt" *ngIf="cajasDisponibles">Cajas Disponibles</h4>
       <div class="_ln"></div>
 
-      <div class="opt_txtions" *ngIf="ver_opciones_caja">
+      <div class="options" *ngIf="ver_opciones_caja">
         <app-m-select ttl="Lote" [opciones]="current_opciones.lotes"
                       (alSeleccionar)="seleccionarLote($event)"></app-m-select>
 
@@ -75,7 +85,7 @@
       <h4 class="ttt" *ngIf="current_opciones.opciones_caja">Caracteristicas Reloj</h4>
       <div class="_ln" *ngIf="current_opciones.opciones_caja"></div>
 
-      <div class="opt_txtions">
+      <div class="options">
         <app-m-select ttl="Color Maquinaria" *ngIf="current_opciones.opciones_reloj"
                       [opciones]="this.current_opciones.opciones_reloj.COLOR_MAQUINARIA"
                       (alSeleccionar)="seleccionarColorMaquinaria($event)"></app-m-select>
@@ -96,8 +106,4 @@
 </div>
 
 <!--TARJETA QUE VISUALIZA EL NUEVO REGISTRO-->
-<div class="pack" *ngIf="registrado">
-  <h1>Reloj Registrado</h1>
-  <app-reloj-buscado [dataReloj]="relojReg"></app-reloj-buscado>
-  <div class="bt-n-ref" (click)="iniciarNuevoRegistro()">Iniciar Nuevo registro</div>
-</div>
+

@@ -32,7 +32,10 @@ import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {fas, faSearch, faUser} from '@fortawesome/free-solid-svg-icons';
 import {far, faRegistered} from '@fortawesome/free-regular-svg-icons';
-
+import {VerLoteComponent} from './ver-lote/ver-lote.component';
+import {TittlebarComponent} from './tittlebar/tittlebar.component';
+import { TopBarComponent } from './top-bar/top-bar.component';
+// import { WindowRef } from './WindowRef';
 
 // ng build --prod --base-href https://moena1989.github.io/moena_reg_page/
 // npx ngh --dir=dist/moena1989
@@ -89,7 +92,8 @@ const config = {
     SnackbarComponent,
     RegistroComponent,
     RelojBuscadoComponent,
-    MSelectComponent, VisualizerComponent, HomeComponent, RegistroPageComponent, NuevaCajaComponent, InputComponent, FormButtonComponent
+    MSelectComponent, VisualizerComponent, HomeComponent, RegistroPageComponent,
+    NuevaCajaComponent, InputComponent, FormButtonComponent, VerLoteComponent, TittlebarComponent, TopBarComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, {enableTracing: false}),

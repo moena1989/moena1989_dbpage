@@ -12,10 +12,10 @@ import {CurrentStorageService} from '../../_services/current-storage.service';
   styleUrls: ['./busqueda.component.css']
 })
 export class BusquedaComponent implements OnInit {
-  private err_msg = '';
+  err_msg = '';
   reloj_encontrado: any = {};
   mostrar_busqueda = false;
-  serial_bs = 'GX-ZQ9U4';
+  serial_bs = 'GH-ZQ9U4';
 
   /*
   En teoría, siempre se llegará a esta página cuando ya se halla encontrado un reloj, y deba proyectarse, el objeto buscado está en db

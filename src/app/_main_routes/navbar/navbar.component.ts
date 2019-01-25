@@ -17,6 +17,7 @@ export class NavbarComponent implements OnInit {
   err_msg: string;
   menu_state = true;
   faCoffee = faCoffee;
+  regs = false;
 
   constructor(public db: DbService, public router: Router, private tool: ToolsService, private currentStorage: CurrentStorageService) {
   }

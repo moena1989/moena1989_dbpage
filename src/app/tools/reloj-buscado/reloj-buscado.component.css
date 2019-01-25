@@ -1,7 +1,7 @@
 :host {
   width: auto;
   margin: .5em;
-  background: #f3f3f3;
+  /*background: #f3f3f3;*/
   display: flex;
   border-radius: .2em;
   padding: 1em;
@@ -35,6 +35,10 @@
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
+}
+
+.ss {
+  font-weight: lighter;
 }
 
 .rjb-datos {

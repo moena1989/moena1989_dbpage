@@ -1,20 +1,16 @@
-<!--<div class="main_card">-->
-<div class="rjb-ttl">
-</div>
+<div class="rjb-ttl"></div>
 <div class="_ln"></div>
 <div class="rjb-cnt">
+
   <div class="bjos">
-    <img class="img-rj-buscado" src="{{reloj['metadata'].image_url}}" alt="Moena 1989">
+    <img class="img-rj-buscado" src="{{reloj['metadata'].image_url}}" alt="Moena 1989"/>
   </div>
 
   <div class="rjb-datos">
     <div class="_ln"></div>
-    <div>Serial: <strong>
-      <div>Serial: <strong>{{reloj.metadata.serial}}</strong></div>
-    </strong>< /div>
-      <div *ngFor="let t of titles"><strong>{{t}}: </strong>{{reloj['features'][t]}}</div>
-      <div class="_ln"></div>
-
-
-    </div>
+    <div class="ss">Serial: <strong>{{reloj.metadata.serial}}</strong></div>
+    <div class="ss" *ngFor="let t of titles"><strong>{{t}}: </strong>{{reloj['features'][t]}}</div>
+    <div class="_ln"></div>
+    <!--<div class="ss" *ngFor="let r of reloj.features.materiales"><strong>Material: </strong>{{r}}</div>-->
   </div>
+</div>

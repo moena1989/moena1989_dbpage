@@ -68,8 +68,8 @@ export class DbService {
     let base_s = '';
 
     b.forEach(value1 => base_s += value1 + '/');
-    const last_route = 'data/watches/' + base_s + serial_splitted[1];
-    // console.log(last_route);
+    const last_route = 'data/relojes/' + base_s + serial_splitted[1];
+    console.log(last_route);
     return this.db.object(last_route).valueChanges();
   }
 
@@ -140,7 +140,7 @@ export class DbService {
   push_nueva_caja(nueva_caja: any) {
     nueva_caja.my_key = this.db.list('data/cases/' + nueva_caja.modelo + '/cajas').push(nueva_caja).key;
     this.update_caja(nueva_caja);
-    return nueva_caja;
+    return nueva_caja.my_key;
   }
 
   update_caja(nueva_caja: any) {
@@ -189,14 +189,19 @@ export class DbService {
     meta.ultimo_lote_key = key;
     this.set_informacion(current_lote.modelo, meta);
 
-// this.update_lote()
+// this.set_lote()
     current_lote.my_key = key;
-    this.update_lote(current_lote);
+    this.set_lote(current_lote);
     return key;
   }
 
 
-  update_lote(current_lote: any) {
+  set_lote(current_lote: any) {
     this.db.object('/data/lotes/' + current_lote.my_key).update(current_lote);
+  }
+
+
+  get_lote(key_lote: string) {
+    this.db.object('/data/lotes/' + key_lote).valueChanges();
   }
 }

@@ -1,3 +1,10 @@
+
+:host {
+  width: 100%;
+  background: #2C2F3E;
+  display: flex;
+}
+
 .acti {
   background: #0c0019;
   color: antiquewhite;
@@ -7,11 +14,6 @@
   font-weight: bold;
 }
 
-:host {
-  width: 100%;
-  /*background: aquamarine;*/
-  display: flex;
-}
 
 .nav_main_bar {
   /*align-items: center;*/
@@ -52,13 +54,14 @@
 
 .sidebar-opened {
   /*position: absolute;*/
-  width: 80%;
+  width: 100%;
   /*height: calc(100% - 4em);*/
   display: flex;
   flex-direction: column;
   position: fixed;
   overflow: hidden;
   border-right: 1px solid rgba(70, 12, 183, 0.1);
+
 }
 
 /*select {*/
@@ -75,23 +78,24 @@
 
 @media (min-width: 40em) {
   .sidebar-opened {
-    width: 20em;
+    width: 15em;
     /*background-color: rgba(0, 0, 0, 0.01);*/
     flex-direction: column;
-    height: calc(100%);
+    height: calc(100% - 32px);
     /*padding-top: 4em;*/
     position: fixed;
     z-index: 200;
     overflow-y: hidden;
-    /*background-color: #2C2E3E;*/
+    background-color: #2C2E3E;
+    -webkit-box-shadow: 0px 0px 17px -5px rgba(0, 0, 0, 0.75);
+    -moz-box-shadow: 0px 0px 17px -5px rgba(0, 0, 0, 0.75);
+    box-shadow: 0px 0px 17px -5px rgba(0, 0, 0, 0.75);
 
-    /*-webkit-box-shadow: 0px 0px 20px -1px rgba(0, 0, 0, 0.1);*/
-    /*-moz-box-shadow: 0px 0px 20px -1px rgba(0, 0, 0, 0.1);*/
-    /*box-shadow: 0px 0px 20px -1px rgba(0, 0, 0, 0.1);*/
   }
 
-  .main_name {
-    height: 2.7em;
+  .svg_logo {
+    height: 2em;
+    /*background: white;*/
   }
 
   .nav_main_bar {
@@ -101,18 +105,33 @@
 
   .ico_op {
     /*width: 1.5em;*/
-    margin: .8em 1.5em .8em 1.5em; /*background: #e03e3e;*/
-    font-size: .6em;
+    margin: .8em 1em .8em 1.5em; /*background: #e03e3e;*/
+    font-size: 1.2em;
 
+    /*background: -webkit-linear-gradient(to right, #E100FF, #7F00FF);  !* Chrome 10-25, Safari 5.1-6 *!*/
+    /*background: linear-gradient(to right, #E100FF, #7F00FF); !* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ *!*/
+    /*-webkit-background-clip: text;*/
+    /*-webkit-text-fill-color: transparent;*/
+
+    color: #e93c30;
+  }
+
+  .obb {
+    margin: .8em 1.5em .8em 1.5em; /*background: #e03e3e;*/
+    font-size: .5em;
+    color: white;
   }
 
   .nombre {
-    font-weight: bold;
+    font-weight: 600;
     font-size: 1em;
+    color: rgba(255, 255, 255, 0.8);
   }
 
   .cargo {
     font-size: .9em;
+    color: rgba(255, 255, 255, 0.5);
+    font-weight: 400;
   }
 
   .ico {
@@ -125,14 +144,28 @@
     color: #3a3a3a;
   }
 
+  .user_nv {
+    /*margin-left: .5em;*/
+  }
+
+  .user_data_nv {
+    margin: .5em;
+    font-size: 2.5em;
+  }
+
   .ssss {
     align-items: center;
-    justify-content: center;
+    /*justify-content: center;*/
     display: flex;
-    flex-direction: column;
-    margin: 1.5em;
-    padding-bottom: 1em;
-    border-bottom: 1px solid #dddddd;
+    /*flex-direction: column;*/
+    /*margin: 1.5em;*/
+    padding: 1em;
+    position: absolute;
+    bottom: 0;
+    color: white;
+    /*background: white;*/
+    width: 100%;
+    box-sizing: border-box;
   }
 
   .options_mn {
@@ -142,12 +175,13 @@
   }
 
   .item {
-    height: 3.5em;
+    height: 3em;
     display: flex;
     padding-left: .5em;
     align-items: center;
     cursor: pointer;
     color: #cccccc;
+    font-size: .85em;
   }
 
   .suub {
@@ -169,7 +203,13 @@
   }
 
   .sub {
-    padding-left: 1.5em;
+    padding-left: 1.8em;
+    font-weight: 700;
+    font-size: .8em;
+    color: white;
+    opacity: .5;
+    margin-bottom: .5em;
+    margin-top: .5em;
   }
 
   .menu {
@@ -177,7 +217,7 @@
   }
 
   .mn {
-    height: 4em;
+    height: 10em;
     border-bottom: 1px solid rgba(70, 12, 183, 0.1);
     align-items: center;
     justify-content: center;

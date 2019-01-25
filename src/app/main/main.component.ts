@@ -1,6 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SnackbarComponent} from '../tools/snackbar/snackbar.component';
 import {ToolsService} from '../_services/tools.service';
+import {DbService} from '../_services/db.service';
 
 @Component({
   selector: 'app-main',
@@ -8,7 +9,7 @@ import {ToolsService} from '../_services/tools.service';
   styleUrls: ['./main.component.css']
 })
 export class MainComponent implements OnInit {
-  constructor() {
+  constructor(public db: DbService) {
   }
 
   ngOnInit(): void {

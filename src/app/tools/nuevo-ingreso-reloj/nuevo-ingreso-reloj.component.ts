@@ -32,7 +32,6 @@ export class NuevoIngresoRelojComponent implements OnInit {
   @ViewChild('modal') modal: NgxSmartModalComponent;
   obj: any = [];
   registrado = false;
-  relojReg: {} = {};
   watch_img: File;
   validando = false;
   ver_opciones_caja = false;
@@ -41,15 +40,17 @@ export class NuevoIngresoRelojComponent implements OnInit {
 //////////////////////////////////////////////////////////////////
   current_reloj: Rmodel = new Rmodel();
   ver_opciones_reloj = false;
-  private cajas_disponibles: any[];
-  private cajasFiltradas: any[] = undefined;
-  private modelo_seleccionado: any;
+  cajas_disponibles: any[];
+  cajasFiltradas: any[] = undefined;
+  modelo_seleccionado: any;
   cajasDisponibles = false;
+  subida_completa = false;
+  reloj_final: any = {};
 
   constructor(
-    private estructura: ModelRelojService,
-    private hasher: HasherService,
-    private cajaEst: ModelCajasService,
+    public estructura: ModelRelojService,
+    public hasher: HasherService,
+    public cajaEst: ModelCajasService,
     public db: DbService) {
   }
 
@@ -61,6 +62,8 @@ export class NuevoIngresoRelojComponent implements OnInit {
     this.current_reloj.coleccion = coleccion_selected.name;
     this.current_opciones.opciones_reloj = coleccion_selected.opciones_reloj;
     console.log(coleccion_selected.opciones_reloj);
+    this.salts.coleccion = coleccion_selected.salt;
+    console.log(this.salts);
     this.current_reloj.materiales = new Array(this.current_opciones.opciones_caja.materiales.length);
   }
 
@@ -70,10 +73,10 @@ export class NuevoIngresoRelojComponent implements OnInit {
     // console.log(this.current_opciones_caja_modelo.cajas);
   }
 
-  finalizarNuevoRegistro() {
+  subir_nuevo_registro() {
     const serial = this.hasher.encriptarSerial('aquí irán un serial chingón', 20, 10);
     // console.log(Object.keys(this.current_reloj));
-    const reloj_final = {
+    this.reloj_final = {
       metadata: {
         date: Date.now(),
         serial: serial,
@@ -84,11 +87,12 @@ export class NuevoIngresoRelojComponent implements OnInit {
     this.validando = true;
 // primero, subo la imagen...
     this.db.push_image(this.watch_img, 'front', 'watches/' + serial, url => {
-      reloj_final.metadata['image_url'] = url;
-      this.db.push_reloj(reloj_final);
-      this.validando = false;
+      this.reloj_final.metadata['image_url'] = url;
+      this.db.push_reloj(this.reloj_final);
+      // this.validando = false;
       // cambiar estado de la caja ya utilizada :D
-      this.modal.close();
+      this.subida_completa = true;
+      // this.modal.close();
     });
   }
 
@@ -126,6 +130,7 @@ export class NuevoIngresoRelojComponent implements OnInit {
     this.current_opciones.colecciones = _modelo.items;
     this.current_opciones.opciones_caja = _modelo.opciones_caja;
     this.current_reloj.modelo = _modelo.name;
+    this.salts.modelo = _modelo.salt;
     this.buscarCajasDisponibles();
   }
 
