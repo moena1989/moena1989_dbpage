@@ -3,6 +3,8 @@
   width: 100%;
   background: #2C2F3E;
   display: flex;
+  z-index: 1000;
+
 }
 
 .acti {

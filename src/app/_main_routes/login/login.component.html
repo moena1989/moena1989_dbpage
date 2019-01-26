@@ -1,9 +1,8 @@
-<div class="main_login">
+<div class="main_login" [ngClass]="tool.show_windows_tittle_bar ?'ttl_active' : 'ttl_unable'">
   <!--<div class="bg_img"></div>-->
   <div class="_overlay"></div>
   <div class="card_login">
     <img class="logo" src="assets/common/logo_w.svg" alt="Moena 1989">
-
     <div class="las">
       <div class="asdv">
         <i class="fal fa-user casd"></i>
@@ -16,6 +15,4 @@
       <div class="btn-work" (click)="ingresar(email.value,pass.value)">Ingresar</div>
     </div>
   </div>
-
-
 </div>

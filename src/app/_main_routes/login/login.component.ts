@@ -16,6 +16,7 @@ export class LoginComponent implements OnInit {
   }
 
   ingresar(user: string, pass: string) {
+    console.log(user);
     this.db.logIn(user, pass, result => {
       if (result === null) {
         this.tool.snack.show('Datos incorrectas :/ o usuario inexistente');
