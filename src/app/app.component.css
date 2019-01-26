@@ -5,10 +5,16 @@
   height: 100%;
 }
 
+.vis {
+  height: calc(100% - 32px);
+}
+
+.no-vis {
+  height: calc(100%);
+}
+
 .view {
   width: 100%;
-  /*height: calc(100% - 32px);*/
-  height: calc(100%);
   /*display: flex;*/
   /*overflow: auto;*/
   /*background: #e93c30;*/

@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
    * Esta clase se encarga de iniciar toods los sevicios apenas alguien entre a la pag.
    * Contiene el snakBar
    */
-  constructor(private tools: ToolsService) {
+  constructor(public tools: ToolsService) {
 
   }
 

@@ -2,18 +2,18 @@
   height: auto;
   margin: 0;
   width: 100%;
-
 }
 
 @media (min-width: 40em) {
   .main_cnt {
     width: auto;
-    height: calc(100% - 3.5em);
+    background: var(--body-background);
+    height: calc(100% - var(--topbar-height));
     overflow: auto;
   }
 
   .is-opened {
-    margin-left: var(--open-side-bar-width);
+    margin-left: var(--sidebar-width);
   }
 
 

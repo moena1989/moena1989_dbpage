@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {SnackbarComponent} from '../tools/snackbar/snackbar.component';
 import {CanActivate, Router} from '@angular/router';
 import {Ng2ImgMaxService} from 'ng2-img-max';
+import {DbService} from './db.service';
 
 @Injectable({
   providedIn: 'root'
@@ -11,9 +12,10 @@ export class ToolsService implements CanActivate {
   private MAX_SIZE_IN_PX = 2500;
   private MAX_SIZE_IN_MB = 0.7;
   public top_tittle = 'holi';
-  public is_menu_opened = true;
+  public show_menu = true;
+  public show_windows_tittle_bar = false;
 
-  constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService) {
+  constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService, private db: DbService) {
 
   }
 
@@ -54,5 +56,10 @@ export class ToolsService implements CanActivate {
         console.log('😢 Oh no! error al comprimir', error);
       }
     );
+  }
+
+  cerrarSesion() {
+    this.db.logOut();
+    this.router.navigate(['/logIn']);
   }
 }

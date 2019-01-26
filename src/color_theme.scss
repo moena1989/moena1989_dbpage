@@ -1,4 +1,23 @@
 
 :root {
-  --open-side-bar-width: 14em;
+  //SIZES
+  --sidebar-width: 16em;
+  --topbar-height: 5em;
+  --body-background: #F4F3F9;
+  --background-sidebar: #242939;
+  --background-topbar: none;
+  --text-main-color: white;
+  --icon-color-hover: #e93c30;
+  --icon-color-selected: #e93c30;
+  --windows-border-color: #2C2E3E;
+
+}
+
+
+::selection {
+  background: var(--background-sidebar); /* WebKit/Blink Browsers */
+}
+
+::-moz-selection {
+  background: #ffb7b7; /* Gecko Browsers */
 }

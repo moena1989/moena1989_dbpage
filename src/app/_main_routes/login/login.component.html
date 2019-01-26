@@ -1,12 +1,21 @@
 <div class="main_login">
+  <!--<div class="bg_img"></div>-->
+  <div class="_overlay"></div>
   <div class="card_login">
-    <img class="logo" src="assets/common/logo_b.svg" alt="Moena 1989">
-    <form class="ins">
-      <form class="l">
-        <input type="email" #mail placeholder="Usuario" name="email" autocomplete="on">
-        <input type="password" #pass placeholder="Contraseña" name="pass" autocomplete="on">
-      </form>
-      <button class="btn-work" (click)="ingresar(mail.value,pass.value)">Ingresar</button>
-    </form>
+    <img class="logo" src="assets/common/logo_w.svg" alt="Moena 1989">
+
+    <div class="las">
+      <div class="asdv">
+        <i class="fal fa-user casd"></i>
+        <input type="email" #email placeholder="Usuario" name="email">
+      </div>
+      <div class="asdv">
+        <i class="fal fa-unlock casd"></i>
+        <input type="password" #pass placeholder="Contraseña" name="pass">
+      </div>
+      <div class="btn-work" (click)="ingresar(email.value,pass.value)">Ingresar</div>
+    </div>
   </div>
+
+
 </div>

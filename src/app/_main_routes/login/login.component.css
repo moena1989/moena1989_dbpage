@@ -1,7 +1,34 @@
 .main_login {
   position: absolute;
   width: 100%;
-  height: 70%;
+  height: 100%;
+}
+
+.bg_img {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: var(--background-sidebar);
+  background-size: cover;
+}
+
+._overlay {
+  height: 100vh;
+  width: 100vw;
+  position: fixed;
+  overflow: auto;
+  top: 0px;
+  left: 0px;
+
+  /* will be "on top", if browser supports it */
+  background-image: linear-gradient(var(--background-sidebar), #242935);
+  /* these will reset other properties, like background-position, but it does know what you mean */
+  background: red;
+
+  background: linear-gradient(var(--background-sidebar), #242935);
+
+  /*background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
+  opacity: 1;
 }
 
 .logo {
@@ -28,19 +55,34 @@
   text-align: center;
 }
 
-.l {
-  background-color: #f7f7f7;
+.sdn {
+  background: #cccccc;
+  justify-content: right;
+  text-align: left;
+  margin: 0;
+}
+
+.las {
+  width: 20em;
+  border-radius: .2em;
+  background-color: rgba(31, 31, 31, 0.4);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 input {
-  text-align: center;
   border-radius: .2em;
-  border: none;
   height: 3rem;
-  padding-left: .5rem;
-  font-size: 1em;
-  width: 80%;
+  border: none;
+  /*font-size: 1em;*/
+  padding-left: 1.5em;
+  width: 100%;
   background-color: rgba(255, 255, 255, 0);
+  margin: 0;
+  color: white;
+  box-sizing: border-box;
   /*background-color: #f7f7f7;*/
 }
 
@@ -55,6 +97,7 @@ input {
 .btn-work:hover {
   cursor: pointer;
   opacity: .8;
+  color: yellow;
 }
 
 .btn-work:active {
@@ -74,16 +117,30 @@ input {
   /*background-color: #DB3650;*/
 }
 
+.asdv {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: center;
+}
+
+.casd {
+  margin-left: 1.5em;
+  color: white;
+  /*margin-right: 1em;*/
+}
+
 .btn-work {
+  width: 100%;
   margin-top: .5em;
-  height: 2.2em;
+  height: 2.5em;
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: .1em;
-  color: white;
-  font-size: 1.2em;
-  background-color: #3a3a3a;
+  color: rgba(255, 255, 255, 0.61);
+  font-size: 1em;
+  background-color: #1d1d1d;
   /*border: 2px solid coral;*/
 }
 
@@ -98,7 +155,7 @@ input {
   }
 
   .logo {
-    width: 35em;
+    width: 25em;
     margin: 5em;
   }
 }

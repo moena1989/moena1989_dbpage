@@ -5,7 +5,6 @@ import {NgxSmartModalComponent} from 'ngx-smart-modal';
 import {DbService} from '../../_services/db.service';
 import {ToolsService} from '../../_services/tools.service';
 import {CurrentStorageService} from '../../_services/current-storage.service';
-import {faCoffee} from '@fortawesome/free-solid-svg-icons';
 
 @Component({
   selector: 'app-sidebar',
@@ -18,16 +17,11 @@ export class SidebarComponent implements OnInit {
   is_menu_opened = true;
   regs = false;
 
-  constructor(public db: DbService, public router: Router, private tools: ToolsService, private currentStorage: CurrentStorageService) {
+  constructor(public db: DbService, public router: Router, public tools: ToolsService, private currentStorage: CurrentStorageService) {
   }
 
   ngOnInit() {
     this.comprobarMenu();
-  }
-
-  cerrarCuenta() {
-    this.db.logOut();
-    this.router.navigate(['/logIn']);
   }
 
   @HostListener('window:resize', ['$event'])

@@ -12,7 +12,6 @@ export class AuthGuardService implements CanActivate {
 
   canActivate(
     next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-
     // TODO revisar bien como funciona el auth del log, para evitar recargar la pagina todo el tiempo
     const osb = localStorage.getItem('ob_login');
     if (osb != null) {

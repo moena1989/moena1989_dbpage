@@ -1,7 +1,7 @@
 import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
-import {NuevoIngresoRelojComponent} from './tools/nuevo-ingreso-reloj/nuevo-ingreso-reloj.component';
+import {NuevoRelojComponent} from './tools/nuevo-reloj/nuevo-reloj.component';
 import {RouterModule, Routes} from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -34,7 +34,7 @@ import {fas, faSearch, faUser} from '@fortawesome/free-solid-svg-icons';
 import {far, faRegistered} from '@fortawesome/free-regular-svg-icons';
 import {VerLoteComponent} from './ver-lote/ver-lote.component';
 import {TittlebarComponent} from './tittlebar/tittlebar.component';
-import { TopBarComponent } from './top-bar/top-bar.component';
+import {TopBarComponent} from './top-bar/top-bar.component';
 // import { WindowRef } from './WindowRef';
 
 // ng build --prod --base-href https://moena1989.github.io/moena_reg_page/
@@ -50,7 +50,7 @@ const appRoutes: Routes = [
       {
         path: 'registro', component: RegistroComponent, children:
           [
-            {path: 'nuevo_reloj', component: NuevoIngresoRelojComponent},
+            {path: 'nuevo_reloj', component: NuevoRelojComponent},
             {path: 'nueva_caja', component: NuevaCajaComponent}
           ]
       },
@@ -83,7 +83,7 @@ const config = {
 @NgModule({
   declarations: [
     AppComponent,
-    NuevoIngresoRelojComponent,
+    NuevoRelojComponent,
     SidebarComponent,
     BusquedaComponent,
     LoginComponent,

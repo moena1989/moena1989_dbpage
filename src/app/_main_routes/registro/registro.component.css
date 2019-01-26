@@ -32,7 +32,7 @@
 
 .opt_txt {
   padding: .5em 1em .5em 1em;
-  font-weight: bold;
+  font-weight: 400;
   font-size: .5em;
   cursor: pointer;
   opacity: .7;

@@ -1,0 +1,302 @@
+:host {
+  margin: 1em;
+  border: 1px solid #e8e8e8;
+  border-radius: .3em;
+  background: white;
+  /*/ / padding: 1 em;*/
+
+}
+
+.top_card {
+  padding: 1em;
+  box-sizing: border-box;
+  width: 100%;
+  height: 4.5em;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  /*/ / background: #2C2E3E;*/
+  display: flex;
+  align-items: center;
+}
+
+.visuals {
+  /*background: aqua;*/
+  /*flex-wrap: wrap;*/
+  /*margin-top: .5em;*/
+  flex-wrap: wrap;
+  /*height: 20em;*/
+  width: auto;
+  display: flex;
+  /*align-items: center;*/
+  /*justify-content: center;*/
+  /*margin-bottom: .5em;*/
+  background: none;
+}
+
+.c {
+  background: #e03e3e;
+}
+
+.b {
+  background: rgba(58, 58, 58, 0.91);
+}
+
+.bt {
+  /*margin: .5em;*/
+  /*border: 1px solid black;*/
+  border-radius: .2em;
+  padding: .5em;
+  display: flex;
+  width: auto;
+  /*height: 5em;*/
+  cursor: pointer;
+  text-align: center;
+  color: #f7f7f7;
+  font-weight: bold;
+  margin: .2em;
+
+}
+
+
+.bt:hover {
+  background: #3a3a3a;
+  color: #f7f7f7;
+}
+
+.bt_opts {
+  margin-top: .5em;
+  display: flex;
+}
+
+@media (min-width: 45em) {
+  .visuals {
+    flex-wrap: nowrap;
+    /*background: #e03e3e;*/
+  }
+}
+
+
+.all_opts {
+  /*flex-grow: 2;*/
+  padding: .5em;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  /*background: #e03e3e;*/
+}
+
+.text {
+  font-weight: lighter;
+}
+
+.selector {
+  display: flex;
+  width: 4em;
+  height: 4em;
+  margin-left: 1em;
+  border-radius: .2em;
+  background: #f7f7f7;
+}
+
+.select {
+  margin-left: .5em;
+  padding: 2em;
+}
+
+.options {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.cntador {
+  margin: .5em;
+  /*font-weight: bolder;*/
+}
+
+.optt {
+  text-align: center;
+  margin-right: .5em;
+
+}
+
+.options_lot {
+  background: #3a3a3a;
+  display: flex;
+  border-radius: .2em;
+  color: #e4e4e4;
+  padding: .5em;
+}
+
+.subt {
+  margin: 0;
+  padding: 0;
+}
+
+.bt-n-ref {
+  /*margin: .5em;*/
+  background: rgba(58, 58, 58, 0.91);
+  /*border: 1px solid black;*/
+  border-radius: .2em;
+  padding: .5em;
+  display: flex;
+  width: auto;
+  /*height: 5em;*/
+  cursor: pointer;
+  text-align: center;
+  color: #f7f7f7;
+  font-weight: bold;
+}
+
+.opt_in {
+  /*background: #e93c30;*/
+}
+
+.ttl_card {
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  align-items: center;
+  /*background: #e03e3e;*/
+  padding-bottom: .5em;
+  margin-bottom: .5em;
+  border-bottom: 1px solid #3a3a3a;
+  font-weight: 800;
+}
+
+.bt-n-ref:hover {
+  background: #3a3a3a;
+  color: #f7f7f7;
+}
+
+.sbt {
+  font-weight: 500;
+}
+
+.pack {
+  /*margin: 1em;*/
+}
+
+.msg {
+  font-weight: lighter;
+}
+
+.bb {
+  display: flex;
+  position: absolute;
+  bottom: 0;
+  flex-direction: column;
+  margin-bottom: .5em;
+}
+
+.package_options {
+  width: auto;
+  /*background: #e93c30;*/
+  margin-top: .5em;
+}
+
+.titulin {
+  font-weight: 800;
+}
+
+._ln {
+  width: 100%;
+  height: 1px;
+  background-color: #3a3a3a;
+  margin-top: .5em;
+  margin-bottom: .5em;
+  opacity: .2;
+}
+
+.ttt {
+  margin-left: .5em;
+}
+
+.visualizador {
+  /*background: #e03e3e;*/
+  width: 35em;
+  height: 35em;
+  padding: 1em;
+}
+
+.selc {
+  height: 4em;
+  /*background: aquamarine;*/
+  /*margin: 1em;*/
+  padding: 0;
+  margin: .5em;
+}
+
+.sl-ttl {
+  size: .1em;
+  font-weight: bold;
+  /*font-size: 1.2em;*/
+  margin-bottom: .5em;
+}
+
+.selt {
+  size: .8em;
+  font-weight: lighter;
+}
+
+.ss {
+  -webkit-appearance: none;
+  padding: .5em;
+  font-family: 'K2D', sans-serif;
+  border: 1px solid #e4e4e4;
+  background: #f7f7f7;
+  width: 10em;
+  border-radius: .2em;
+
+}
+
+modal {
+  /* modals are hidden by default */
+  display: none;
+}
+
+modal .modal {
+  /* modal container fixed across whole screen */
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* z-index must be higher than .modal-background */
+
+  z-index: 1000;
+  /* enables scrolling for tall modals */
+
+  overflow: auto;
+}
+
+modal .modal .modal-body {
+  padding: 20px;
+  background: #fff;
+  /* margin exposes part of the modal background */
+
+  margin: 40px;
+}
+
+modal .modal-background {
+  /* modal background fixed across whole screen */
+
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  /* semi-transparent black  */
+
+  background-color: #000;
+  opacity: 0.75;
+  /* z-index must be below .modal and above everything else  */
+
+  z-index: 900;
+}
+
+body.modal-open {
+  /* body overflow is hidden to hide main scrollbar when modal window is open */
+
+  overflow: hidden;
+}

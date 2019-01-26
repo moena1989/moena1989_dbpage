@@ -41,7 +41,7 @@ module.exports = ""
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<!--<p>Testing primera pagina</p>-->\n\n<app-sidebar></app-sidebar>\n<app-nuevo-ingreso-reloj></app-nuevo-ingreso-reloj>\n"
+module.exports = "<!--<p>Testing primera pagina</p>-->\n\n<app-sidebar></app-sidebar>\n<app-nuevo-reloj></app-nuevo-reloj>\n"
 
 /***/ }),
 
@@ -94,7 +94,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_platform_browser__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/platform-browser */ "./node_modules/@angular/platform-browser/fesm5/platform-browser.js");
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _app_component__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app.component */ "./src/app/app.component.ts");
-/* harmony import */ var _nuevo_ingreso_reloj_nuevo_ingreso_reloj_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nuevo-ingreso-reloj/nuevo-ingreso-reloj.component */ "./src/app/nuevo-ingreso-reloj/nuevo-ingreso-reloj.component.ts");
+/* harmony import */ var _nuevo_ingreso_reloj_nuevo_ingreso_reloj_component__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./nuevo-reloj/nuevo-reloj.component */ "./src/app/nuevo-reloj/nuevo-reloj.component.ts");
 /* harmony import */ var _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./sidebar/sidebar.component */ "./src/app/sidebar/sidebar.component.ts");
 /* harmony import */ var _utils_selecter_selecter_component__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./utils/selecter/selecter.component */ "./src/app/utils/selecter/selecter.component.ts");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
@@ -116,7 +116,7 @@ var AppModule = /** @class */ (function () {
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_1__["NgModule"])({
             declarations: [
                 _app_component__WEBPACK_IMPORTED_MODULE_2__["AppComponent"],
-                _nuevo_ingreso_reloj_nuevo_ingreso_reloj_component__WEBPACK_IMPORTED_MODULE_3__["NuevoIngresoRelojComponent"],
+                _nuevo_ingreso_reloj_nuevo_ingreso_reloj_component__WEBPACK_IMPORTED_MODULE_3__["NuevoRelojComponent"],
                 _navbar_navbar_component__WEBPACK_IMPORTED_MODULE_4__["SidebarComponent"],
                 _utils_selecter_selecter_component__WEBPACK_IMPORTED_MODULE_5__["SelecterComponent"]
             ],
@@ -199,7 +199,7 @@ var NavbarComponent = /** @class */ (function () {
 
 /***/ "./src/app/nuevo-ingreso-reloj/nuevo-ingreso-reloj.component.css":
 /*!***********************************************************************!*\
-  !*** ./src/app/nuevo-ingreso-reloj/nuevo-ingreso-reloj.component.css ***!
+  !*** ./src/app/nuevo-reloj/nuevo-reloj.component.css ***!
   \***********************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -210,7 +210,7 @@ module.exports = ":host {\r\n  width: auto;\r\n  height: auto;\r\n  /*background
 
 /***/ "./src/app/nuevo-ingreso-reloj/nuevo-ingreso-reloj.component.html":
 /*!************************************************************************!*\
-  !*** ./src/app/nuevo-ingreso-reloj/nuevo-ingreso-reloj.component.html ***!
+  !*** ./src/app/nuevo-reloj/nuevo-reloj.component.html ***!
   \************************************************************************/
 /*! no static exports found */
 /***/ (function(module, exports) {
@@ -221,14 +221,14 @@ module.exports = "<h1>REGISTRO DE NUEVOS RELOJES</h1>\n\n\n\n<div class=\"opt_tx
 
 /***/ "./src/app/nuevo-ingreso-reloj/nuevo-ingreso-reloj.component.ts":
 /*!**********************************************************************!*\
-  !*** ./src/app/nuevo-ingreso-reloj/nuevo-ingreso-reloj.component.ts ***!
+  !*** ./src/app/nuevo-reloj/nuevo-reloj.component.ts ***!
   \**********************************************************************/
-/*! exports provided: NuevoIngresoRelojComponent */
+/*! exports provided: NuevoRelojComponent */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NuevoIngresoRelojComponent", function() { return NuevoIngresoRelojComponent; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "NuevoRelojComponent", function() { return NuevoIngresoRelojComponent; });
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 var __decorate = (undefined && undefined.__decorate) || function (decorators, target, key, desc) {
     var c = arguments.length, r = c < 3 ? target : desc === null ? desc = Object.getOwnPropertyDescriptor(target, key) : desc, d;
@@ -247,9 +247,9 @@ var NuevoIngresoRelojComponent = /** @class */ (function () {
     };
     NuevoIngresoRelojComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
-            selector: 'app-nuevo-ingreso-reloj',
-            template: __webpack_require__(/*! ./nuevo-ingreso-reloj.component.html */ "./src/app/nuevo-ingreso-reloj/nuevo-ingreso-reloj.component.html"),
-            styles: [__webpack_require__(/*! ./nuevo-ingreso-reloj.component.css */ "./src/app/nuevo-ingreso-reloj/nuevo-ingreso-reloj.component.css")]
+            selector: 'app-nuevo-reloj',
+            template: __webpack_require__(/*! ./nuevo-reloj.component.html */ "./src/app/nuevo-reloj/nuevo-reloj.component.html"),
+            styles: [__webpack_require__(/*! ./nuevo-reloj.component.css */ "./src/app/nuevo-reloj/nuevo-reloj.component.css")]
         }),
         __metadata("design:paramtypes", [])
     ], NuevoIngresoRelojComponent);
