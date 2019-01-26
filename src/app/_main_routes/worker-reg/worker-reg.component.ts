@@ -18,7 +18,7 @@ export class WorkerRegComponent implements OnInit {
   registrarUser(mail: string, pass: string, name: string, last_name: string, cargo: string) {
     const usr = {name: name, email: mail, last_name: last_name, cargo: cargo};
     this.db.pushNuevoUsuario(usr, pass);
-    this.tools.snack.show('Registro exitoso! ;)');
+    // this.tools.snack.show('Registro exitoso! ;)');
   }
 }
 

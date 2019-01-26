@@ -12,6 +12,11 @@
   height: calc(100%);
 }
 
+.err {
+  color: #e93c30;
+  margin: .5em;
+}
+
 .bg_img {
   position: absolute;
   width: 100%;

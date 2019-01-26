@@ -11,7 +11,7 @@ export class ToolsService implements CanActivate {
   public snack: SnackbarComponent;
   private MAX_SIZE_IN_PX = 2500;
   private MAX_SIZE_IN_MB = 0.7;
-    public top_tittle = 'holi';
+  public top_tittle = 'holi';
   public show_menu = true;
   public show_windows_tittle_bar = false;
 
