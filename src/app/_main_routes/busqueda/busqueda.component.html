@@ -1,11 +1,21 @@
-<div class="buscador_cnt">
-  <h1>Buscar por serial:</h1>
-  <div class="nv">
-    <input type="text" value="" #serial placeholder="Escribe el serial" class="in_buscar" value="{{serial_bs }}">
-    <div class="bt_buscar" (click)="buscarBySerial(serial.value)">Buscar</div>
+<div class="card">
+  <div class="top_card">
+    <div class="top_ttl">Busqueda</div>
   </div>
-  <div class="err">{{err_msg}}</div>
+  <div class="card_cnt">
+    <div class="nv">
+      <input type="text" value="" #serial placeholder="Escribe el serial" class="in_buscar" value="{{serial_bs }}">
+      <div class="bt_buscar" (click)="buscarBySerial(serial.value)">Buscar</div>
+    </div>
+    <div class="err">{{err_msg}}</div>
+  </div>
 </div>
+<div class="card" *ngIf="mostrar_busqueda">
 
-<app-reloj-buscado *ngIf="mostrar_busqueda" [dataReloj]="reloj_encontrado"></app-reloj-buscado>
-<div class="bt_cerrar" (click)="cerrar()" *ngIf="mostrar_busqueda">Cerrar busqueda</div>
+  <div class="top_card">
+    <div class="top_ttl">GH-{{reloj_encontrado.metadata.serial}}</div>
+  </div>
+  <app-reloj-buscado class=" card_cnt"
+                     [dataReloj]="reloj_encontrado"></app-reloj-buscado>
+</div>
+<!--<div class="bt_cerrar" (click)="cerrar()" *ngIf="mostrar_busqueda">Cerrar busqueda</div>-->

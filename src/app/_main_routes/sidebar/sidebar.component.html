@@ -16,17 +16,17 @@
     Dashboard
   </div>
   <div class="options_mn">
-    <div class="item" routerLink="/" [routerLinkActive]="'acti'">
+    <div class="item" routerLink="/home" [routerLinkActive]="'acti'">
       <i class="fal fa-home fa-fw ico_op "></i>
       <!--<fa-icon class="fa-fw ico_op " [icon]="['fal','home']" size="2x" fixedWidth="{{true}}"></fa-icon>-->
       <div class="opt_txt">Inicio</div>
     </div>
 
-    <div class="item" routerLink="/" [routerLinkActive]="'acti'">
-      <i class="fal fa-home fa-fw ico_op "></i>
-      <!--<fa-icon class="fa-fw ico_op " [icon]="['fal','home']" size="2x" fixedWidth="{{true}}"></fa-icon>-->
-      <div class="opt_txt">Correo electrónico</div>
-    </div>
+    <!--<div class="item" routerLink="/" [routerLinkActive]="'acti'">-->
+    <!--<i class="fal fa-check fa-fw ico_op "></i>-->
+    <!--&lt;!&ndash;<fa-icon class="fa-fw ico_op " [icon]="['fal','home']" size="2x" fixedWidth="{{true}}"></fa-icon>&ndash;&gt;-->
+    <!--<div class="opt_txt">Correo electrónico</div>-->
+    <!--</div>-->
 
     <div class="item" routerLink="/busqueda/" [routerLinkActive]="'acti'">
       <i class="fal fa-search fa-fw ico_op "></i>
@@ -35,7 +35,8 @@
     <div class="sub">
       Producción
     </div>
-    <div class="item" (click)="regs=!regs" [ngClass]="regs ? 'o' : 'c'">
+    <div class="item"
+         (click)="regs=!regs" [ngClass]="regs ? 'o' : 'c'">
       <i class="fal fa-barcode-scan fa-fw ico_op "></i>
       <div class="opt_txt">Registro</div>
 
@@ -53,43 +54,47 @@
         <div class="opt_txt">Nueva Reloj</div>
       </div>
     </div>
+
     <div class="sub">
       Contabilidad
     </div>
 
-
-    <div class="item">
+    <div class="item" routerLink="/ventas" [routerLinkActive]="'acti'">
       <i class="fal fa-file-invoice-dollar fa-fw ico_op "></i>
       <div class="opt_txt ">Ventas</div>
     </div>
 
-    <div class="item">
+    <div class="item" routerLink="/inventario" [routerLinkActive]="'acti'">
       <i class="fal fa-cube fa-fw ico_op "></i>
       <div class="opt_txt">Inventario</div>
     </div>
 
-    <div class="item">
-      <i class="fal fa-dollar-sign fa-fw ico_op "></i>
-      <div class="opt_txt">Precios</div>
-    </div>
+    <!--<div class="item">-->
+    <!--<i class="fal fa-dollar-sign fa-fw ico_op "></i>-->
+    <!--<div class="opt_txt">Precios</div>-->
+    <!--</div>-->
 
 
     <div class="sub">
       Mercadeo
     </div>
 
-    <div class="item">
+    <div class="item" routerLink="/publicaciones" [routerLinkActive]="'acti'">
       <i class="fal fa-newspaper fa-fw ico_op "></i>
       <div class="opt_txt">Publicaciones</div>
     </div>
 
     <div class="sub">Dev Tools</div>
 
-    <div class="item">
+    <div class="item" routerLink="/experimentos" [routerLinkActive]="'acti'">
       <i class="fal fa-vial fa-fw ico_op "></i>
       <div class="opt_txt">Experimentos</div>
     </div>
 
+    <!--<div class="item">-->
+    <!--<i class="fal fa-exclamation fa-fw ico_op "></i>-->
+    <!--<div class="opt_txt">Changelog</div>-->
+    <!--</div>-->
 
     <!--ESTE GROUP ES TEMPORAL!, SE DEBE SOLUCIONAR DE UNA MANERA MUCHO MAS ORGANICA Y ESCALABLE-->
 
@@ -114,6 +119,6 @@
         <div class="cargo">v 1.2</div>
       </div>
     </div>
-
   </div>
+</div>
 

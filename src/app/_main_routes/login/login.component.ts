@@ -24,7 +24,7 @@ export class LoginComponent implements OnInit {
       } else {
         // el ingreso fue exitoso :D
         this.tool.snack.show('Bienvenido,' + this.db.userLogueado.name, 'Que gusto tenerte por aquí', 'ok');
-        this.tool.router.navigate(['/']);
+        this.tool.router.navigate(['/home']);
         console.log('testing keep log');
         console.log(result);
         localStorage.setItem('ob_login', result);

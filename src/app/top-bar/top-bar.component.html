@@ -1,0 +1,19 @@
+<div class="miga_bar" [ngClass]="tools.show_menu ? 'is-opened' : 'is-closed'">
+
+  <div class="menu_ic">
+    <i [ngClass]="tools.show_menu ? 'fa-times' : 'fa-bars'" class="fal ico_op" (click)="alPresionarMenu()"></i>
+    <!--<div class="miga_ttl">{{tools.top_tittle}}</div>-->
+    <div class="miga_ttl">Panel de control</div>
+  </div>
+
+  <div class="r_side">
+    <div class="sssc">
+      <div class="nombre">{{db.userLogueado.name}} {{db.userLogueado.last_name}}</div>
+      <div class="cargo">{{db.userLogueado.cargo}}</div>
+    </div>
+    <i class="fal fa-user-astronaut usr"></i>
+    <i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>
+  </div>
+</div>
+
+<div class="aovsn"></div>

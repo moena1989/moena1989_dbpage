@@ -32,16 +32,16 @@ export class SnackbarComponent implements OnInit {
 
   show(tittle: string, msg: string, type: string) {
     this.msg = msg;
-    this.snacktive = true;
     this.tittle = tittle;
     this.tipo = type;
+    this.snacktive = true;
 
-    //TODO OBLIGAR QUE EL TIPO SEA UNO DE LOS DISPONIBLES
+    // TODO OBLIGAR QUE EL TIPO SEA UNO DE LOS DISPONIBLES
     setTimeout(() => {
-      this.snacktive = !this.snacktive;
       this.tipo = '';
       this.tittle = '';
       this.msg = '';
+      this.snacktive = !this.snacktive;
     }, 2000);
   }
 }

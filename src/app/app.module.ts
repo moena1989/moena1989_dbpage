@@ -45,7 +45,7 @@ const appRoutes: Routes = [
   {path: 'sign_up', component: WorkerRegComponent},
   {
     path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
-      {path: '', component: HomeComponent},
+      {path: 'home', component: HomeComponent},
       {path: 'busqueda', component: BusquedaComponent},
       {
         path: 'registro', component: RegistroComponent, children:
