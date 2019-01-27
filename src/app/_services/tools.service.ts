@@ -14,7 +14,7 @@ export class ToolsService implements CanActivate {
   private MAX_SIZE_IN_MB = 0.7;
   public top_tittle = 'holi';
   public show_menu = true;
-  public show_windows_tittle_bar = false;
+  public show_windows_tittle_bar = true;
   public gUser: SocialUser = new SocialUser();
 
   constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService, private db: DbService, private authService: AuthService) {

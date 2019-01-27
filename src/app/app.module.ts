@@ -59,6 +59,7 @@ export function provideConfig() {
 }
 
 const appRoutes: Routes = [
+  {path: '', redirectTo: 'logIn', pathMatch: 'full'},
   {path: 'logIn', component: LoginComponent},
   {path: 'sign_up', component: WorkerRegComponent},
   {
@@ -72,6 +73,10 @@ const appRoutes: Routes = [
             {path: 'nueva_caja', component: NuevaCajaComponent}
           ]
       },
+      {path: 'inventario', component: InventarioPageComponent},
+      {path: 'experimentos', component: ExperimentosPageComponent},
+      {path: 'ventas', component: VentasPageComponent},
+      {path: 'publicaciones', component: PublicacionesPageComponent},
     ]
   }];
 // REAL DATABASE

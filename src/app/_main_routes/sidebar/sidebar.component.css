@@ -9,6 +9,8 @@
 
 .acti {
   background: rgba(0, 0, 0, 0.1);
+  transition: all .5s ease-in-out;
+
 }
 
 .opt_txt {
@@ -177,20 +179,24 @@
   }
 
   .item {
-    height: 3em;
+    height: 3.3em;
     display: flex;
     padding-left: .5em;
     align-items: center;
     cursor: pointer;
     color: #cccccc;
     font-size: .85em;
+    transition: all .2s ease-in-out;
   }
 
   .o {
+    /*transition: all .2s ease-in-out;*/
+
     background: rgba(0, 0, 0, 0.1);
   }
 
   .c {
+    /*transition: all .2s ease-in-out;*/
 
   }
 
@@ -211,16 +217,12 @@
     /*font-weight: 600;*/
   }
 
-  .item:hover .ico_op {
-    color: var(--icon-color-hover);
-  }
-
   .item:hover .opt_txt {
     opacity: 1;
   }
 
   .item:focus {
-    outline:none;
+    outline: none;
   }
 
   .sub {

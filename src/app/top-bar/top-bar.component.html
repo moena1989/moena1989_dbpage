@@ -11,7 +11,8 @@
       <div class="nombre">{{tools.gUser.name}} {{tools.gUser.lastName}}</div>
       <div class="cargo">{{tools.gUser.email}}</div>
     </div>
-    <i class="fal fa-user-astronaut usr"></i>
+    <img [src]="tools.gUser.photoUrl" class="usr" alt="">
+    <!--<i class="fal fa-user-astronaut usr"></i>-->
     <i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>
   </div>
 </div>
