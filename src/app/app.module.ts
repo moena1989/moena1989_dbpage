@@ -18,10 +18,10 @@ import {VisualizerComponent} from './tools/visualizer/visualizer.component';
 import {NgxSmartModalModule, NgxSmartModalService} from 'ngx-smart-modal';
 import {CurrentStorageService} from './_services/current-storage.service';
 import {LoginComponent} from './_main_routes/login/login.component';
-import {HomeComponent} from './_main_routes/home/home.component';
+import {HomeComponent} from './_main_routes/secures/home/home.component';
 import {SidebarComponent} from './_main_routes/sidebar/sidebar.component';
 import {RegistroComponent} from './_main_routes/registro/registro.component';
-import {BusquedaComponent} from './_main_routes/busqueda/busqueda.component';
+import {BusquedaComponent} from './_main_routes/secures/busqueda/busqueda.component';
 import {Ng2ImgMaxModule} from 'ng2-img-max';
 import {RegistroPageComponent} from './registro-page/registro-page.component';
 import {NuevaCajaComponent} from './nueva-caja/nueva-caja.component';
@@ -35,10 +35,28 @@ import {far, faRegistered} from '@fortawesome/free-regular-svg-icons';
 import {VerLoteComponent} from './ver-lote/ver-lote.component';
 import {TittlebarComponent} from './tittlebar/tittlebar.component';
 import {TopBarComponent} from './top-bar/top-bar.component';
-// import { WindowRef } from './WindowRef';
+import {
+  AuthServiceConfig,
+  GoogleLoginProvider,
+  SocialLoginModule
+} from 'angularx-social-login';
+import {ExperimentosPageComponent} from './experimentos-page/experimentos-page.component';
+import {InventarioPageComponent} from './inventario-page/inventario-page.component';
+import {PublicacionesPageComponent} from './publicaciones-page/publicaciones-page.component';
+import {VentasPageComponent} from './ventas-page/ventas-page.component';
+import {HttpClientModule} from '@angular/common/http';
+
+const config = new AuthServiceConfig([{
+  id: GoogleLoginProvider.PROVIDER_ID,
+  provider: new GoogleLoginProvider('641564036734-qt06vniodrplc4qa8p7l6ddtsnsl33qb.apps.googleusercontent.com')
+}]);
 
 // ng build --prod --base-href https://moena1989.github.io/moena_reg_page/
 // npx ngh --dir=dist/moena1989
+
+export function provideConfig() {
+  return config;
+}
 
 const appRoutes: Routes = [
   {path: 'logIn', component: LoginComponent},
@@ -55,9 +73,7 @@ const appRoutes: Routes = [
           ]
       },
     ]
-  }
-];
-
+  }];
 // REAL DATABASE
 // const config = {
 //   apiKey: 'AIzaSyAh48TUW_EdI6fI6om3EMRCdlCC4U3n9U8',
@@ -70,7 +86,7 @@ const appRoutes: Routes = [
 
 // TEST DATABASE
 
-const config = {
+const firebaseConfig = {
   apiKey: 'AIzaSyD3mN3H_wzfhYtDsyzb0N4ToVI22Wdu4ME',
   authDomain: 'moenadbtst.firebaseapp.com',
   databaseURL: 'https://moenadbtst.firebaseio.com',
@@ -92,17 +108,25 @@ const config = {
     SnackbarComponent,
     RegistroComponent,
     RelojBuscadoComponent,
-    MSelectComponent, VisualizerComponent, HomeComponent, RegistroPageComponent,
-    NuevaCajaComponent, InputComponent, FormButtonComponent, VerLoteComponent, TittlebarComponent, TopBarComponent
+    MSelectComponent, VisualizerComponent,
+    HomeComponent, RegistroPageComponent,
+    ExperimentosPageComponent, InventarioPageComponent,
+    PublicacionesPageComponent, VentasPageComponent,
+    NuevaCajaComponent, InputComponent, FormButtonComponent,
+    VerLoteComponent, TittlebarComponent, TopBarComponent
   ],
   imports: [
+    SocialLoginModule,
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
-    AngularFireModule.initializeApp(config),
-    AngularFireDatabaseModule,
-    AngularFireAuthModule, AngularFireStorageModule,
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule, SocialLoginModule,
+    AngularFireAuthModule, AngularFireStorageModule, HttpClientModule,
     BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
   ],
-  providers: [NgxSmartModalService, CurrentStorageService, ModelCajasService],
+  providers: [NgxSmartModalService, CurrentStorageService, ModelCajasService, {
+    provide: AuthServiceConfig,
+    useFactory: provideConfig
+  }],
   bootstrap: [AppComponent]
 })
 export class AppModule {

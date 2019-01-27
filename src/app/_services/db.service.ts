@@ -52,13 +52,13 @@ export class DbService {
   }
 
   buscarDatosUsuarios(uid: string, ff: () => void) {
-    console.log(uid);
-    this.db.object('workers/' + uid).valueChanges().subscribe(value => {
-      this.userLogueado = value;
-      console.log('se trae la info del usuario');
-      console.log(this.userLogueado);
-      ff();
-    });
+    // console.log(uid);
+    // this.db.object('workers/' + uid).valueChanges().subscribe(value => {
+    //   this.userLogueado = value;
+    //   console.log('se trae la info del usuario');
+    //   console.log(this.userLogueado);
+    //   ff();
+    // });
   }
 
   buscarReloj(serial: string) {
@@ -90,9 +90,7 @@ export class DbService {
   }
 
   logOut() {
-    this.firebaseAuth
-      .auth
-      .signOut();
+    this.firebaseAuth.auth.signOut();
     this.authState = null;
   }
 

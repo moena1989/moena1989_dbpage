@@ -3,6 +3,7 @@ import {SnackbarComponent} from '../tools/snackbar/snackbar.component';
 import {CanActivate, Router} from '@angular/router';
 import {Ng2ImgMaxService} from 'ng2-img-max';
 import {DbService} from './db.service';
+import {AuthService, SocialUser} from 'angularx-social-login';
 
 @Injectable({
   providedIn: 'root'
@@ -14,8 +15,9 @@ export class ToolsService implements CanActivate {
   public top_tittle = 'holi';
   public show_menu = true;
   public show_windows_tittle_bar = false;
+  public gUser: SocialUser = new SocialUser();
 
-  constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService, private db: DbService) {
+  constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService, private db: DbService, private authService: AuthService) {
 
   }
 
@@ -59,7 +61,9 @@ export class ToolsService implements CanActivate {
   }
 
   cerrarSesion() {
-    this.db.logOut();
-    this.router.navigate(['/logIn']);
+    console.log('redireccionando a login...');
+    this.authService.signOut().then(value => {
+      this.router.navigate(['/logIn']);
+    });
   }
 }

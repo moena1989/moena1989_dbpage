@@ -12,8 +12,9 @@
         <i class="fal fa-unlock casd"></i>
         <input type="password" #pass placeholder="Contraseña" name="pass">
       </div>
-      <div class="btn-work" (click)="ingresar(email.value,pass.value)">Ingresar</div>
+      <div class="btn-work" (click)="ingresar(email.value,pass.value)">signIn</div>
+      <div class="btn-work" (click)="salir(email.value,pass.value)">signOut</div>
     </div>
-      <div class="err">{{err_msg}}</div>
+    <div class="err">{{err_msg}}</div>
   </div>
 </div>
