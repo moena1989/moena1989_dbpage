@@ -35,29 +35,18 @@ import {far, faRegistered} from '@fortawesome/free-regular-svg-icons';
 import {VerLoteComponent} from './ver-lote/ver-lote.component';
 import {TittlebarComponent} from './tittlebar/tittlebar.component';
 import {TopBarComponent} from './top-bar/top-bar.component';
-import {
-  AuthServiceConfig,
-  GoogleLoginProvider,
-  SocialLoginModule
-} from 'angularx-social-login';
 import {ExperimentosPageComponent} from './experimentos-page/experimentos-page.component';
 import {InventarioPageComponent} from './inventario-page/inventario-page.component';
 import {PublicacionesPageComponent} from './publicaciones-page/publicaciones-page.component';
 import {VentasPageComponent} from './ventas-page/ventas-page.component';
 import {HttpClientModule} from '@angular/common/http';
-import { LoadbarComponent } from './loadbar/loadbar.component';
+import {LoadbarComponent} from './loadbar/loadbar.component';
 
-const config = new AuthServiceConfig([{
-  id: GoogleLoginProvider.PROVIDER_ID,
-  provider: new GoogleLoginProvider('641564036734-qt06vniodrplc4qa8p7l6ddtsnsl33qb.apps.googleusercontent.com')
-}]);
-
+// provider: new GoogleLoginProvider('641564036734-qt06vniodrplc4qa8p7l6ddtsnsl33qb.apps.googleusercontent.com')
+//
 // ng build --prod --base-href https://moena1989.github.io/moena_reg_page/
 // npx ngh --dir=dist/moena1989
 
-export function provideConfig() {
-  return config;
-}
 
 const appRoutes: Routes = [
   {path: '', redirectTo: 'logIn', pathMatch: 'full'},
@@ -122,27 +111,18 @@ const firebaseConfig = {
     VerLoteComponent, TittlebarComponent, TopBarComponent, LoadbarComponent
   ],
   imports: [
-    SocialLoginModule,
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule, SocialLoginModule,
+    AngularFireDatabaseModule,
     AngularFireAuthModule, AngularFireStorageModule, HttpClientModule,
     BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
   ],
-  providers: [NgxSmartModalService, CurrentStorageService, ModelCajasService, {
-    provide: AuthServiceConfig,
-    useFactory: provideConfig
-  }],
+  providers: [NgxSmartModalService, CurrentStorageService, ModelCajasService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
   constructor() {
-    // esta linea importa TODOS LOS ICONOS!!
     // TODO simplificaar y utilizar iconos base
     library.add(fas, far);
-    // library.add(far, faUserCircle);
-    // library.add(far, faRegistered);
-    // library.add(fas, faSearch);
-// Add an icon to the library for convenient access in other components
   }
 }

@@ -6,6 +6,7 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import * as firebase from 'firebase';
 import {MetadataAttr} from '../_models/clockModel';
 import {ModelCajasService} from '../model-cajas.service';
+import {auth} from 'firebase';
 
 
 @Injectable({
@@ -24,14 +25,25 @@ export class DbService {
 
   constructor(public db: AngularFireDatabase, private afStorage: AngularFireStorage,
               private firebaseAuth: AngularFireAuth, private router: Router, private estructura: ModelCajasService) {
-
     this.firebaseAuth.authState.subscribe(value => {
-      console.log('Comprobando auth fiirebase...');
+      console.log('Comprobando Ingreso...');
 
       this.authState = value;
     });
   }
 
+  get currentUser(): any {
+    return this.authenticated ? this.authState.auth : null;
+  }
+
+// Returns current user UID
+  get currentUserId(): string {
+    return this.authenticated ? this.authState.uid : '';
+  }
+
+  login() {
+    this.firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+  }
 
   // ________________________BUSQUEDAS
   buscar_cajas_disponibles(material: any, diametro: any, lote: number) {
@@ -73,21 +85,21 @@ export class DbService {
     return this.db.object(last_route).valueChanges();
   }
 
-  logIn(email: string, pass: string, result: (ho: any) => any) {
-// TODO no REGRESAR any, buscar el objeto puntual
-    this.firebaseAuth.auth.signInWithEmailAndPassword(email, pass)
-      .then(auth => {
-          console.log(auth.user.uid);
-          this.buscarDatosUsuarios(auth.user.uid, () => {
-            result(auth.user.uid);
-          });
-        }
-      )
-      .catch(err => {
-        console.log(err);
-        result(null);
-      });
-  }
+//   logIn(email: string, pass: string, result: (ho: any) => any) {
+// // TODO no REGRESAR any, buscar el objeto puntual
+//     this.firebaseAuth.auth.signInWithEmailAndPassword(email, pass)
+//       .then(auth => {
+//           console.log(auth.user.uid);
+//           this.buscarDatosUsuarios(auth.user.uid, () => {
+//             result(auth.user.uid);
+//           });
+//         }
+//       )
+//       .catch(err => {
+//         console.log(err);
+//         result(null);
+//       });
+//   }
 
   logOut() {
     this.firebaseAuth.auth.signOut();
