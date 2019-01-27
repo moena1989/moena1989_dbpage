@@ -42,7 +42,10 @@ export class DbService {
   }
 
   login() {
-    this.firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
+    this.firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(reason => {
+      console.error('asdvsadv');
+      console.error(reason);
+    });
   }
 
   // ________________________BUSQUEDAS

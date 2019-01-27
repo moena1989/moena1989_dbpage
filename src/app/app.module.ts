@@ -41,6 +41,7 @@ import {PublicacionesPageComponent} from './publicaciones-page/publicaciones-pag
 import {VentasPageComponent} from './ventas-page/ventas-page.component';
 import {HttpClientModule} from '@angular/common/http';
 import {LoadbarComponent} from './loadbar/loadbar.component';
+import {GooglePlus} from '@ionic-native/google-plus';
 
 // provider: new GoogleLoginProvider('641564036734-qt06vniodrplc4qa8p7l6ddtsnsl33qb.apps.googleusercontent.com')
 //
@@ -82,12 +83,12 @@ const appRoutes: Routes = [
 // TEST DATABASE
 
 const firebaseConfig = {
-  apiKey: 'AIzaSyD3mN3H_wzfhYtDsyzb0N4ToVI22Wdu4ME',
-  authDomain: 'moenadbtst.firebaseapp.com',
-  databaseURL: 'https://moenadbtst.firebaseio.com',
-  projectId: 'moenadbtst',
-  storageBucket: 'moenadbtst.appspot.com',
-  messagingSenderId: '574556298528'
+  apiKey: 'AIzaSyC2yKQPYRZeTnF1rqFNtWkAC8JVBAXEMTI',
+  authDomain: 'moena-1989.firebaseapp.com',
+  databaseURL: 'https://moena-1989.firebaseio.com',
+  projectId: 'moena-1989',
+  storageBucket: '',
+  messagingSenderId: '641564036734'
 };
 
 
