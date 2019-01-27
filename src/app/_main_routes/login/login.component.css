@@ -73,13 +73,22 @@
 }
 
 .las {
-  width: 20em;
-  border-radius: .2em;
-  /*background-color: rgba(31, 31, 31, 0.4);*/
-  /*border: 1px solid rgba(255, 255, 255, 0.06);*/
+  padding: .5em 1em .5em 1em;
+  margin-top: 8em;
+  height: 2.5em;
   display: flex;
-  flex-direction: column;
   align-items: center;
+  border-radius: .3em;
+  color: rgba(255, 255, 255, 0.2);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  /*background-color: #1d1d1d;*/
+  cursor: pointer;
+}
+
+
+.las:hover {
+  color: white;
+  background: var(--icon-color-selected);
 }
 
 input {
@@ -104,15 +113,9 @@ input {
   box-sizing: border-box;
 }
 
-.btn-work:hover {
-  cursor: pointer;
-  opacity: .8;
-  color: yellow;
-}
-
-.btn-work:active {
-  cursor: pointer;
-  opacity: 1;
+.btn-work {
+  margin-left: 1em;
+  font-weight: 400;
 }
 
 .card_login {
@@ -140,19 +143,6 @@ input {
   /*margin-right: 1em;*/
 }
 
-.btn-work {
-  width: 100%;
-  margin-top: .5em;
-  height: 2.5em;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: .1em;
-  color: rgba(255, 255, 255, 0.61);
-  font-size: 1em;
-  background-color: #1d1d1d;
-  /*border: 2px solid coral;*/
-}
 
 @media (min-width: 40em) {
   .card_login {

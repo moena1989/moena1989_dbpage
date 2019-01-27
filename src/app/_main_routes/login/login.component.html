@@ -3,17 +3,9 @@
   <div class="_overlay"></div>
   <div class="card_login">
     <img class="logo" src="assets/common/logo_w.svg" alt="Moena 1989">
-    <div class="las">
-      <!--<div class="asdv">-->
-      <!--<i class="fal fa-user casd"></i>-->
-      <!--<input type="email" #email placeholder="Usuario" name="email">-->
-      <!--</div>-->
-      <!--<div class="asdv">-->
-      <!--<i class="fal fa-unlock casd"></i>-->
-      <!--<input type="password" #pass placeholder="Contraseña" name="pass">-->
-      <!--</div>-->
-      <div class="btn-work" (click)="ingresar()">Ingresar</div>
-      <!--<div class="btn-work" (click)="salir(email.value,pass.value)">signOut</div>-->
+    <div class="las" (click)="ingresar()">
+      <i class="fal fa-lock"></i>
+      <div class="btn-work">Ingresar</div>
     </div>
     <div class="err">{{err_msg}}</div>
   </div>
