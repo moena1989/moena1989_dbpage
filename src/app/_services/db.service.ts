@@ -7,6 +7,7 @@ import * as firebase from 'firebase';
 import {MetadataAttr} from '../_models/clockModel';
 import {ModelCajasService} from '../model-cajas.service';
 import {auth} from 'firebase';
+import {ToolsService} from './tools.service';
 
 
 @Injectable({
@@ -24,14 +25,11 @@ export class DbService {
   userLogueado: any = {};
 
   constructor(public db: AngularFireDatabase, private afStorage: AngularFireStorage,
-              private firebaseAuth: AngularFireAuth, private router: Router, private estructura: ModelCajasService) {
-    this.firebaseAuth.authState.subscribe(value => {
-      this.authState = value;
+              private firebaseAuth: AngularFireAuth, private router: Router,
+              private estructura: ModelCajasService) {
+    this.firebaseAuth.user.subscribe(value => {
+      // console.log(value);
     });
-  }
-
-  get currentUser(): any {
-    return this.authenticated ? this.authState.auth : null;
   }
 
 // Returns current user UID

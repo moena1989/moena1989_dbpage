@@ -42,6 +42,7 @@ import {VentasPageComponent} from './ventas-page/ventas-page.component';
 import {HttpClientModule} from '@angular/common/http';
 import {LoadbarComponent} from './loadbar/loadbar.component';
 import {AuthService} from './auth.service';
+import {ToolsService} from './_services/tools.service';
 
 // provider: new GoogleLoginProvider('641564036734-qt06vniodrplc4qa8p7l6ddtsnsl33qb.apps.googleusercontent.com')
 //
@@ -54,7 +55,7 @@ const appRoutes: Routes = [
   {path: 'logIn', component: LoginComponent},
   {path: 'sign_up', component: WorkerRegComponent},
   {
-    path: '', component: MainComponent, children: [
+    path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
       {path: 'home', component: HomeComponent},
       {path: 'busqueda', component: BusquedaComponent},
       {
@@ -118,7 +119,7 @@ const firebaseConfig = {
     AngularFireAuthModule, AngularFireStorageModule, HttpClientModule,
     BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
   ],
-  providers: [NgxSmartModalService, CurrentStorageService, ModelCajasService, AuthService],
+  providers: [NgxSmartModalService, CurrentStorageService, ToolsService, ModelCajasService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

@@ -16,7 +16,7 @@ export class ToolsService implements CanActivate {
   public show_windows_tittle_bar = false;
   public gUser: any = {};
 
-  constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService, private db: DbService) {
+  constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService) {
 
   }
 

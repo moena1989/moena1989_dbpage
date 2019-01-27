@@ -25,7 +25,7 @@ export class LoginComponent implements OnInit {
   ingresar() {
     this.auth.signInWithGoogle().then(value => {
       console.log('Maldita sea');
-      console.log(value);
+      // console.log(value.currentUser);
       this.ngZone.run(args => {
         this.router.navigateByUrl('/home');
       });

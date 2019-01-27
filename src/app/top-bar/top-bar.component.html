@@ -7,14 +7,11 @@
 
   <div class="r_side">
     <div class="sssc">
-      <!--<div class="nombre">{{tools.gUser.name}} {{tools.gUser.lastName}}</div>-->
-      <!--<div class="cargo">{{tools.gUser.email}}</div>-->
-      <!--</div>-->
-      <!--<img [src]="tools.gUser.photoUrl" class="usr" alt="">-->
-      <!--<i class="fal fa-user-astronaut usr"></i>-->
-      <i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>
+      <div class="nombre">{{tools.gUser.displayName}}</div>
+      <div class="cargo">{{tools.gUser.email}}</div>
     </div>
+    <img [src]="tools.gUser.photoURL" class="usr" alt="">
+    <i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>
   </div>
 </div>
-
 <div class="aovsn"></div>
