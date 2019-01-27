@@ -26,8 +26,6 @@ export class DbService {
   constructor(public db: AngularFireDatabase, private afStorage: AngularFireStorage,
               private firebaseAuth: AngularFireAuth, private router: Router, private estructura: ModelCajasService) {
     this.firebaseAuth.authState.subscribe(value => {
-      console.log('Comprobando Ingreso...');
-
       this.authState = value;
     });
   }
@@ -42,10 +40,7 @@ export class DbService {
   }
 
   login() {
-    this.firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider()).catch(reason => {
-      console.error('asdvsadv');
-      console.error(reason);
-    });
+    return this.firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
   }
 
   // ________________________BUSQUEDAS

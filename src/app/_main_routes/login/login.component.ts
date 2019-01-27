@@ -1,6 +1,8 @@
-import {Component, OnInit} from '@angular/core';
+import {Component, NgZone, OnInit} from '@angular/core';
 import {DbService} from '../../_services/db.service';
 import {ToolsService} from '../../_services/tools.service';
+import {Router, RouterModule} from '@angular/router';
+import {AuthService} from '../../auth.service';
 
 @Component({
   selector: 'app-login',
@@ -10,7 +12,7 @@ import {ToolsService} from '../../_services/tools.service';
 export class LoginComponent implements OnInit {
   err_msg = '';
 
-  constructor(private db: DbService, public tool: ToolsService) {
+  constructor(private db: DbService, public tool: ToolsService, private router: Router, private auth: AuthService, private ngZone: NgZone) {
   }
 
   ngOnInit() {
@@ -21,28 +23,13 @@ export class LoginComponent implements OnInit {
   }
 
   ingresar() {
-    // this.authService.signIn(GoogleLoginProvider.PROVIDER_ID).catch(reason => {
-    this.db.login();
-    // this.tool.router.navigate(['/home']);
-
-    //   this.db.logIn(user, pass, result => {
-    //     if (result === null) {
-    //       this.tool.snack.show('Ups', 'Datos incorrectos o usuario inexistente', 'error');
-    //       this.err_msg = 'Datos incorrectos o usuario inexistente';
-    //     } else {
-    //       // el ingreso fue exitoso :D
-    //       this.tool.snack.show('Bienvenido,' + this.db.userLogueado.name, 'Que gusto tenerte por aquí', 'ok');
-    //       this.tool.router.navigate(['/home']);
-    //       console.log('testing keep log');
-    //       console.log(result);
-    //       localStorage.setItem('ob_login', result);
-    //     }
-    //   });
-    // }
-    // "angularx-social-login": "1.1.9",
-    // console.log('trying');
-
-    // });
+    this.auth.signInWithGoogle().then(value => {
+      console.log('Maldita sea');
+      console.log(value);
+      this.ngZone.run(args => {
+        this.router.navigateByUrl('/home');
+      });
+    });
   }
 
   salir(value: string, value2: string) {

@@ -41,20 +41,20 @@ import {PublicacionesPageComponent} from './publicaciones-page/publicaciones-pag
 import {VentasPageComponent} from './ventas-page/ventas-page.component';
 import {HttpClientModule} from '@angular/common/http';
 import {LoadbarComponent} from './loadbar/loadbar.component';
-import {GooglePlus} from '@ionic-native/google-plus';
+import {AuthService} from './auth.service';
 
 // provider: new GoogleLoginProvider('641564036734-qt06vniodrplc4qa8p7l6ddtsnsl33qb.apps.googleusercontent.com')
 //
 // ng build --prod --base-href https://moena1989.github.io/moena_reg_page/
 // npx ngh --dir=dist/moena1989
 
-
+// canActivate: [AuthGuardService],
 const appRoutes: Routes = [
   {path: '', redirectTo: 'logIn', pathMatch: 'full'},
   {path: 'logIn', component: LoginComponent},
   {path: 'sign_up', component: WorkerRegComponent},
   {
-    path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
+    path: '', component: MainComponent, children: [
       {path: 'home', component: HomeComponent},
       {path: 'busqueda', component: BusquedaComponent},
       {
@@ -118,7 +118,7 @@ const firebaseConfig = {
     AngularFireAuthModule, AngularFireStorageModule, HttpClientModule,
     BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
   ],
-  providers: [NgxSmartModalService, CurrentStorageService, ModelCajasService],
+  providers: [NgxSmartModalService, CurrentStorageService, ModelCajasService, AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {
