@@ -45,6 +45,7 @@ import {InventarioPageComponent} from './inventario-page/inventario-page.compone
 import {PublicacionesPageComponent} from './publicaciones-page/publicaciones-page.component';
 import {VentasPageComponent} from './ventas-page/ventas-page.component';
 import {HttpClientModule} from '@angular/common/http';
+import { LoadbarComponent } from './loadbar/loadbar.component';
 
 const config = new AuthServiceConfig([{
   id: GoogleLoginProvider.PROVIDER_ID,
@@ -118,7 +119,7 @@ const firebaseConfig = {
     ExperimentosPageComponent, InventarioPageComponent,
     PublicacionesPageComponent, VentasPageComponent,
     NuevaCajaComponent, InputComponent, FormButtonComponent,
-    VerLoteComponent, TittlebarComponent, TopBarComponent
+    VerLoteComponent, TittlebarComponent, TopBarComponent, LoadbarComponent
   ],
   imports: [
     SocialLoginModule,
