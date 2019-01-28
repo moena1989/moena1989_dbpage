@@ -45,10 +45,8 @@ import {AuthService} from './auth.service';
 import {ToolsService} from './_services/tools.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
-// provider: new GoogleLoginProvider('641564036734-qt06vniodrplc4qa8p7l6ddtsnsl33qb.apps.googleusercontent.com')
-//
-// ng build --prod --base-href https://moena1989.github.io/moena_reg_page/
-// npx ngh --dir=dist/moena1989
+// ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
+// npx ngh --dir=dist/moenaDbApp
 
 // canActivate: [AuthGuardService],
 const appRoutes: Routes = [
@@ -72,6 +70,8 @@ const appRoutes: Routes = [
       {path: 'publicaciones', component: PublicacionesPageComponent},
     ]
   }];
+
+
 // REAL DATABASE
 // const config = {
 //   apiKey: 'AIzaSyAh48TUW_EdI6fI6om3EMRCdlCC4U3n9U8',

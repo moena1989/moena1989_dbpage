@@ -198,7 +198,7 @@
 .ttt {
   font-weight: bold;
   margin-bottom: .5em;
-  margin-top: 1em;
+  mrgin-top: 1em;
 }
 
 .visualizador {
@@ -212,7 +212,12 @@
   /*min-height: 10em;*/
   padding: 1em;
   margin-right: 1.5em;
+  /*background: #e03e3e;*/
   /*flex-basis: 1;*/
+}
+
+.sssss {
+  width: auto;
 }
 
 .visualizador_caja {
@@ -221,6 +226,8 @@
   border-radius: .4em;
   padding: .5em;
   border: 1px solid rgba(221, 221, 221, 0.3);
+  margin-right: 1em;
+
 }
 
 .img_caja {

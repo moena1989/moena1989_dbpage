@@ -87,12 +87,13 @@ export class NuevoRelojComponent implements OnInit {
   subir_nuevo_registro() {
     this.modalAlert.close();
     this.modalSubiendo.open();
-    const serial = this.hasher.encriptarSerial('aquí irán un serial chingón', 20, 10);
+    const serial = this.hasher.encriptarSerial('aquí irán un serial chingón',
+      Math.round(Math.random() * 500), Math.round(Math.random() * 500));
     // console.log(Object.keys(this.current_reloj));
     this.reloj_final = {
       metadata: {
         date: Date.now(),
-        serial: serial,
+        serial: this.salts.modelo + this.salts.coleccion + '-' + serial,
         salts: this.salts.modelo + '/' + this.salts.coleccion
       },
       features: this.current_reloj

@@ -57,7 +57,7 @@
         <app-visualizer ttl="Frontal" (alSeleccionar)="onFileChanged($event,'frontal')"></app-visualizer>
       </div>
 
-      <div>
+      <div class="sssss">
         <div class="ttt">1. Modelo y caracteristicas de la caja</div>
 
         <div class="cnt_opts">
@@ -86,16 +86,14 @@
         <div class="ln" *ngIf="ver_opciones_caja"></div>
         <div class="ttt" *ngIf="ver_opciones_caja">2. Registro de Base</div>
         <div class="cnt_opts" *ngIf="ver_opciones_caja">
-          <div>
-
-            <app-m-select ttl="Lote" [opciones]="current_opciones.lotes"
-                          (alSeleccionar)="seleccionarLote($event)"></app-m-select>
-
-            <app-m-select ttl="No. Caja" [opciones]="current_opciones.cajas"
-                          (alSeleccionar)="seleccionarCaja($event)"></app-m-select>
-          </div>
           <div class="visualizador_caja">
             <img alt="preview caja seleccionada" [src]="photoUrl" *ngIf="photoUrl!==''" class="img_caja"/>
+          </div>
+          <div>
+            <app-m-select ttl="Lote" [opciones]="current_opciones.lotes"
+                          (alSeleccionar)="seleccionarLote($event)"></app-m-select>
+            <app-m-select ttl="No. Caja" [opciones]="current_opciones.cajas"
+                          (alSeleccionar)="seleccionarCaja($event)"></app-m-select>
           </div>
         </div>
 
