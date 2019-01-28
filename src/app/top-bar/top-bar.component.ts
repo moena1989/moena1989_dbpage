@@ -18,7 +18,7 @@ export class TopBarComponent implements OnInit {
   }
 
   cerrarSesion() {
-    this.tools.cerrarSesion();
+    this.auth.logout();
   }
 
   alPresionarMenu() {

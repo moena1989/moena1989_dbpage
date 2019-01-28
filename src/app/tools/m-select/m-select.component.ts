@@ -21,7 +21,7 @@ export class MSelectComponent implements OnInit {
 
     // console.log('cambian los valores');
     // console.log(opciones.length);
-    if (opciones  ) { // existe data
+    if (opciones !== undefined) { // existe data
       this.current_opciones = opciones;
       // si solamente tiene una selección entonces que sea la predeterminada
       if (opciones.length === 1) {
@@ -35,7 +35,9 @@ export class MSelectComponent implements OnInit {
   @Output() alSeleccionar: EventEmitter<any> = new EventEmitter();
 
   @Input() set _datoSeleccionado(value: any) {
-    if (value) {
+    if (value !== undefined) {
+      console.error('sdkasdv000');
+      console.log(value);
       this.seleccionado = true;
       // console.log('se selecciona una opción');
       this.alSeleccionar.emit(value);

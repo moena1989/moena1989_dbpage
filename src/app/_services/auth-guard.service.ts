@@ -15,6 +15,7 @@ export class AuthGuardService implements CanActivate {
   canActivate(
     next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     console.log(this.auth.isLoggedIn());
+    return true;
     if (this.auth.isLoggedIn()) {
       console.log('el guardia te habilitó ');
       // this.tools.gUser = this.db.currentUser();

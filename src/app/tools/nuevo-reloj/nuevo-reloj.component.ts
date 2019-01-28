@@ -47,6 +47,7 @@ export class NuevoRelojComponent implements OnInit {
   cajasDisponibles = false;
   subida_completa = false;
   reloj_final: any = {};
+  photoUrl = '';
 
   constructor(
     public estructura: ModelRelojService,
@@ -60,6 +61,7 @@ export class NuevoRelojComponent implements OnInit {
   ngOnInit() {
     this.tools.top_tittle = 'Nuevo Reloj';
   }
+
 
   seleccionarColeccion(coleccion_selected: any) {
     this.opciones_por_ver = [];
@@ -124,9 +126,15 @@ export class NuevoRelojComponent implements OnInit {
   }
 
   seleccionarCaja(caja_selected: any) {
-    this.ver_opciones_reloj = true;
-    this.current_reloj.caja = caja_selected.name;
-    this.current_reloj.key_caja = caja_selected.obj.my_key;
+    console.error('se selecciona la caja!');
+    console.log(caja_selected);
+
+    if (caja_selected.obj !== undefined) {
+      this.ver_opciones_reloj = true;
+      this.current_reloj.caja = caja_selected.name;
+      this.current_reloj.key_caja = caja_selected.obj.my_key;
+      this.photoUrl = caja_selected.obj.img_url;
+    }
   }
 
   seleccionarModelo(_modelo: any) {
@@ -140,8 +148,7 @@ export class NuevoRelojComponent implements OnInit {
 
   seleccionarDiametroInterno(_diametro_interno: any) {
     this.current_reloj.diametro_interno = _diametro_interno.name;
-    // this.filtrar();
-
+    this.filtrarCajas();
   }
 
   seleccionarMaterial(material: any, i: number) {
@@ -186,8 +193,12 @@ export class NuevoRelojComponent implements OnInit {
             return cj.diametro_externo === this.current_reloj.diametro_externo && cj.diametro_interno === this.current_reloj.diametro_interno;
           });
         }
+
         if (this.cajasFiltradas.length > 0) {
           this.ver_opciones_caja = true;
+        } else {
+          console.error('parece que no hay mas cajas gg');
+          // this.msg_errorCajas:
         }
         console.log(this.cajasFiltradas);
         // TODO BUSCAR LOTES Y CAJAS DE CADA UNO

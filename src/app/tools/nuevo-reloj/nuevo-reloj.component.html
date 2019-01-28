@@ -1,115 +1,197 @@
 <!--MODAL!-->
-<ngx-smart-modal #modal identifier="popup_nuevo_reloj">
-  <ng-container *ngIf="!validando">
-    <h1>Confirmación</h1>
-    <p>¿Seguro que deseas continuar y registrar el producto?</p>
+<!--<ngx-smart-modal #modal identifier="popup_nuevo_reloj">-->
+<!--<ng-container *ngIf="!validando">-->
+<!--<h1>Confirmación</h1>-->
+<!--<p>¿Seguro que deseas continuar y registrar el producto?</p>-->
+<!--<div class="bt_opts">-->
+<!--<div class="b bt" (click)="subir_nuevo_registro()">Si</div>-->
+<!--<div class="c bt" (click)="modal.close()">Cancelar</div>-->
+<!--</div>-->
+<!--</ng-container>-->
+<!--<div class="p_espera" *ngIf="validando && !subida_completa">-->
+<!--<fa-icon class="load" [icon]="['fas','spinner']" [spin]="true"></fa-icon>-->
+<!--Espera un momento...-->
+<!--</div>-->
 
-    <div class="bt_opts">
-      <div class="b bt" (click)="subir_nuevo_registro()">Si</div>
-      <div class="c bt" (click)="modal.close()">Cancelar</div>
-    </div>
+<!--<div class="pack" *ngIf="subida_completa">-->
+<!--<h1>Reloj Registrado</h1>-->
+<!--<app-reloj-buscado [dataReloj]="reloj_final"></app-reloj-buscado>-->
+<!--<div class="bt-n-ref" (click)="iniciarNuevoRegistro()">Iniciar Nuevo registro</div>-->
+<!--</div>-->
+<!--</ngx-smart-modal>-->
 
-  </ng-container>
-
-
-  <div class="p_espera" *ngIf="validando && !subida_completa">
-    <fa-icon class="load" [icon]="['fas','spinner']" [spin]="true"></fa-icon>
-    Espera un momento...
-  </div>
-
-  <div class="pack" *ngIf="subida_completa">
-    <h1>Reloj Registrado</h1>
-    <app-reloj-buscado [dataReloj]="reloj_final"></app-reloj-buscado>
-    <div class="bt-n-ref" (click)="iniciarNuevoRegistro()">Iniciar Nuevo registro</div>
-  </div>
-
-</ngx-smart-modal>
 <!--END MODAL-->
 
 <div class="top_card">
   <div class="top_ttl">Nuevo Reloj</div>
 </div>
-<div class="card_cnt">
+<div class="card_cnt tts">
 
-  <div class="package_options">
-    <div class="visuals">
-      <div class="visualizador">
-        <app-visualizer ttl="Frontal" (alSeleccionar)="onFileChanged($event,'frontal')"></app-visualizer>
+  <div class="visualizador">
+    <app-visualizer ttl="Frontal" (alSeleccionar)="onFileChanged($event,'frontal')"></app-visualizer>
+  </div>
+
+  <div>
+    <div class="ttt">1. Modelo y caracteristicas de la caja</div>
+
+    <div class="cnt_opts">
+      <app-m-select [disable]="false" ttl="Modelo" [opciones]="cajaEst.MODELOS"
+                    (alSeleccionar)="seleccionarModelo($event)">
+      </app-m-select>
+      <div class="ln_v"></div>
+
+      <ng-container *ngIf="current_opciones.opciones_caja">
+        <!--<div class="options" *ngIf="current_opciones.opciones_caja">-->
+        <app-m-select
+          *ngIf="current_opciones.opciones_caja.diametro_externo"
+          ttl="Diámetro Externo"
+          [opciones]="current_opciones.opciones_caja.diametro_externo"
+          (alSeleccionar)="seleccionarDiametroExterno($event)">
+        </app-m-select>
+
+        <app-m-select
+          *ngIf="current_opciones.opciones_caja.diametro_interno"
+          ttl="Diámetro Interno"
+          [opciones]="current_opciones.opciones_caja.diametro_interno"
+          (alSeleccionar)="seleccionarDiametroInterno($event)">
+        </app-m-select>
+      </ng-container>
+    </div>
+    <div class="ln" *ngIf="ver_opciones_caja"></div>
+    <div class="ttt" *ngIf="ver_opciones_caja">2. Registro de Base</div>
+    <div class="cnt_opts" *ngIf="ver_opciones_caja">
+      <div>
+
+        <app-m-select ttl="Lote" [opciones]="current_opciones.lotes"
+                      (alSeleccionar)="seleccionarLote($event)"></app-m-select>
+
+        <app-m-select ttl="No. Caja" [opciones]="current_opciones.cajas"
+                      (alSeleccionar)="seleccionarCaja($event)"></app-m-select>
       </div>
-      <div class="all_opts">
-        <h4 class="ttt">Caracteristicas Base</h4>
-        <div class="_ln"></div>
-
-        <div class="options">
-          <app-m-select [disable]="false" ttl="Modelo" [opciones]="cajaEst.MODELOS"
-                        (alSeleccionar)="seleccionarModelo($event)">
-          </app-m-select>
-
-          <app-m-select ttl="Colección" [opciones]="current_opciones.colecciones"
-                        (alSeleccionar)="seleccionarColeccion($event)"></app-m-select>
-        </div>
-
-        <h4 class="ttt" *ngIf="current_opciones.opciones_caja">Caracteristicas Caja</h4>
-        <div class="_ln"></div>
-        <div class="options" *ngIf="current_opciones.opciones_caja">
-          <app-m-select
-            *ngIf="current_opciones.opciones_caja.diametro_externo"
-            ttl="Diámetro Externo"
-            [opciones]="current_opciones.opciones_caja.diametro_externo"
-            (alSeleccionar)="seleccionarDiametroExterno($event)">
-          </app-m-select>
-
-          <app-m-select
-            *ngIf="current_opciones.opciones_caja.diametro_interno"
-            ttl="Diámetro Interno"
-            [opciones]="current_opciones.opciones_caja.diametro_interno"
-            (alSeleccionar)="seleccionarDiametroInterno($event)">
-          </app-m-select>
-
-          <ng-container *ngFor="let n of current_opciones.opciones_caja.materiales; let i = index">
-            <app-m-select
-              ttl="Material {{i+1}}"
-              [opciones]="n"
-              (alSeleccionar)="seleccionarMaterial($event,i)">
-            </app-m-select>
-          </ng-container>
-          <app-form-button text="Buscar Caja" (click)="filtrarCajas()"></app-form-button>
-        </div>
-
-        <h4 class="ttt" *ngIf="cajasDisponibles">Cajas Disponibles</h4>
-        <div class="_ln"></div>
-
-        <div class="options" *ngIf="ver_opciones_caja">
-          <app-m-select ttl="Lote" [opciones]="current_opciones.lotes"
-                        (alSeleccionar)="seleccionarLote($event)"></app-m-select>
-
-          <app-m-select ttl="No. Caja" [opciones]="current_opciones.cajas"
-                        (alSeleccionar)="seleccionarCaja($event)"></app-m-select>
-        </div>
-
-        <h4 class="ttt" *ngIf="current_opciones.opciones_caja">Caracteristicas Reloj</h4>
-        <div class="_ln" *ngIf="current_opciones.opciones_caja"></div>
-
-        <div class="options">
-          <app-m-select ttl="Color Maquinaria" *ngIf="current_opciones.opciones_reloj"
-                        [opciones]="this.current_opciones.opciones_reloj.COLOR_MAQUINARIA"
-                        (alSeleccionar)="seleccionarColorMaquinaria($event)"></app-m-select>
-
-          <app-m-select ttl="Pulso tipo:" *ngIf="current_opciones.opciones_reloj"
-                        [opciones]="this.current_opciones.opciones_reloj.TIPO_PULSO"
-                        (alSeleccionar)="seleccionarTipoPulso($event)"></app-m-select>
-
-          <app-m-select ttl="Color Pulso"
-                        *ngIf="current_opciones.opciones_reloj && current_opciones.opciones_reloj.pulsos"
-                        [opciones]="this.current_opciones.opciones_reloj.pulsos"
-                        (alSeleccionar)="seleccionarColorPulso($event)"></app-m-select>
-        </div>
+      <div class="visualizador_caja">
+        <img [src]="photoUrl" *ngIf="photoUrl!==''" class="img_caja"/>
 
       </div>
     </div>
-    <div class="bt-n-ref" (click)="modal.open()">Iniciar nuevo registro</div>
-  </div>
-</div>
 
+    <div class="ln" *ngIf="current_reloj.modelo"></div>
+    <div class="ttt" *ngIf="current_reloj.modelo">2. Colección y caracteristicas de personalización</div>
+    <div class="cnt_opts" *ngIf="current_reloj.modelo">
+      <app-m-select ttl="Colección" [opciones]="current_opciones.colecciones"
+                    (alSeleccionar)="seleccionarColeccion($event)"></app-m-select>
+      <div class="ln_v"></div>
+
+      <ng-container *ngIf="current_opciones.opciones_reloj">
+
+        <app-m-select ttl="Color Maquinaria" *ngIf="current_opciones.opciones_reloj"
+                      [opciones]="this.current_opciones.opciones_reloj.COLOR_MAQUINARIA"
+                      (alSeleccionar)="seleccionarColorMaquinaria($event)"></app-m-select>
+        <app-m-select ttl="Pulso tipo:" *ngIf="current_opciones.opciones_reloj"
+                      [opciones]="this.current_opciones.opciones_reloj.TIPO_PULSO"
+                      (alSeleccionar)="seleccionarTipoPulso($event)"></app-m-select>
+
+        <app-m-select ttl="Color Pulso"
+                      *ngIf="current_opciones.opciones_reloj && current_opciones.opciones_reloj.pulsos"
+                      [opciones]="this.current_opciones.opciones_reloj.pulsos"
+                      (alSeleccionar)="seleccionarColorPulso($event)"></app-m-select>
+      </ng-container>
+    </div>
+
+  </div>
+
+
+  <!--<app-m-select ttl="Color Maquinaria" *ngIf="current_opciones.opciones_reloj"-->
+  <!--[opciones]="this.current_opciones.opciones_reloj.COLOR_MAQUINARIA"-->
+  <!--(alSeleccionar)="seleccionarColorMaquinaria($event)"></app-m-select>-->
+
+  <!--<app-m-select ttl="Pulso tipo:" *ngIf="current_opciones.opciones_reloj"-->
+  <!--[opciones]="this.current_opciones.opciones_reloj.TIPO_PULSO"-->
+  <!--(alSeleccionar)="seleccionarTipoPulso($event)"></app-m-select>-->
+
+  <!--<app-m-select ttl="Color Pulso"-->
+  <!--*ngIf="current_opciones.opciones_reloj && current_opciones.opciones_reloj.pulsos"-->
+  <!--[opciones]="this.current_opciones.opciones_reloj.pulsos"-->
+  <!--(alSeleccionar)="seleccionarColorPulso($event)"></app-m-select>-->
+  <!--</div>-->
+
+</div>
+<!--<div class="package_options">-->
+<!--<div class="visuals">-->
+<!--<div class="visualizador">-->
+<!--<app-visualizer ttl="Frontal" (alSeleccionar)="onFileChanged($event,'frontal')"></app-visualizer>-->
+<!--</div>-->
+<!--<div class="all_opts">-->
+<!--<h4 class="ttt">Caracteristicas Base</h4>-->
+<!--<div class="_ln"></div>-->
+
+<!--<div class="options">-->
+<!--<app-m-select [disable]="false" ttl="Modelo" [opciones]="cajaEst.MODELOS"-->
+<!--(alSeleccionar)="seleccionarModelo($event)">-->
+<!--</app-m-select>-->
+
+<!--<app-m-select ttl="Colección" [opciones]="current_opciones.colecciones"-->
+<!--(alSeleccionar)="seleccionarColeccion($event)"></app-m-select>-->
+<!--</div>-->
+
+<!--<h4 class="ttt" *ngIf="current_opciones.opciones_caja">Caracteristicas Caja</h4>-->
+<!--<div class="_ln"></div>-->
+<!--<div class="options" *ngIf="current_opciones.opciones_caja">-->
+<!--<app-m-select-->
+<!--*ngIf="current_opciones.opciones_caja.diametro_externo"-->
+<!--ttl="Diámetro Externo"-->
+<!--[opciones]="current_opciones.opciones_caja.diametro_externo"-->
+<!--(alSeleccionar)="seleccionarDiametroExterno($event)">-->
+<!--</app-m-select>-->
+
+<!--<app-m-select-->
+<!--*ngIf="current_opciones.opciones_caja.diametro_interno"-->
+<!--ttl="Diámetro Interno"-->
+<!--[opciones]="current_opciones.opciones_caja.diametro_interno"-->
+<!--(alSeleccionar)="seleccionarDiametroInterno($event)">-->
+<!--</app-m-select>-->
+
+<!--<ng-container *ngFor="let n of current_opciones.opciones_caja.materiales; let i = index">-->
+<!--<app-m-select-->
+<!--ttl="Material {{i+1}}"-->
+<!--[opciones]="n"-->
+<!--(alSeleccionar)="seleccionarMaterial($event,i)">-->
+<!--</app-m-select>-->
+<!--</ng-container>-->
+<!--<app-form-button text="Buscar Caja" (click)="filtrarCajas()"></app-form-button>-->
+<!--</div>-->
+
+<!--<h4 class="ttt" *ngIf="cajasDisponibles">Cajas Disponibles</h4>-->
+<!--<div class="_ln"></div>-->
+
+<!--<div class="options" *ngIf="ver_opciones_caja">-->
+<!--<app-m-select ttl="Lote" [opciones]="current_opciones.lotes"-->
+<!--(alSeleccionar)="seleccionarLote($event)"></app-m-select>-->
+
+<!--<app-m-select ttl="No. Caja" [opciones]="current_opciones.cajas"-->
+<!--(alSeleccionar)="seleccionarCaja($event)"></app-m-select>-->
+<!--</div>-->
+
+<!--<h4 class="ttt" *ngIf="current_opciones.opciones_caja">Caracteristicas Reloj</h4>-->
+<!--<div class="_ln" *ngIf="current_opciones.opciones_caja"></div>-->
+
+<!--<div class="options">-->
+<!--<app-m-select ttl="Color Maquinaria" *ngIf="current_opciones.opciones_reloj"-->
+<!--[opciones]="this.current_opciones.opciones_reloj.COLOR_MAQUINARIA"-->
+<!--(alSeleccionar)="seleccionarColorMaquinaria($event)"></app-m-select>-->
+
+<!--<app-m-select ttl="Pulso tipo:" *ngIf="current_opciones.opciones_reloj"-->
+<!--[opciones]="this.current_opciones.opciones_reloj.TIPO_PULSO"-->
+<!--(alSeleccionar)="seleccionarTipoPulso($event)"></app-m-select>-->
+
+<!--<app-m-select ttl="Color Pulso"-->
+<!--*ngIf="current_opciones.opciones_reloj && current_opciones.opciones_reloj.pulsos"-->
+<!--[opciones]="this.current_opciones.opciones_reloj.pulsos"-->
+<!--(alSeleccionar)="seleccionarColorPulso($event)"></app-m-select>-->
+<!--</div>-->
+
+<!--</div>-->
+<!--</div>-->
+<!--<div class="bt-n-ref" (click)="modal.open()">Iniciar nuevo registro</div>-->
+<!--</div>-->
 <!--TARJETA QUE VISUALIZA EL NUEVO REGISTRO-->
 

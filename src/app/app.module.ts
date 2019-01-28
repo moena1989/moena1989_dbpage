@@ -43,6 +43,7 @@ import {HttpClientModule} from '@angular/common/http';
 import {LoadbarComponent} from './loadbar/loadbar.component';
 import {AuthService} from './auth.service';
 import {ToolsService} from './_services/tools.service';
+import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 
 // provider: new GoogleLoginProvider('641564036734-qt06vniodrplc4qa8p7l6ddtsnsl33qb.apps.googleusercontent.com')
 //
@@ -88,7 +89,7 @@ const firebaseConfig = {
   authDomain: 'moena-1989.firebaseapp.com',
   databaseURL: 'https://moena-1989.firebaseio.com',
   projectId: 'moena-1989',
-  storageBucket: '',
+  storageBucket: 'moena-1989.appspot.com',
   messagingSenderId: '641564036734'
 };
 
@@ -115,7 +116,7 @@ const firebaseConfig = {
   imports: [
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
     AngularFireModule.initializeApp(firebaseConfig),
-    AngularFireDatabaseModule,
+    AngularFireDatabaseModule, BrowserAnimationsModule,
     AngularFireAuthModule, AngularFireStorageModule, HttpClientModule,
     BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
   ],

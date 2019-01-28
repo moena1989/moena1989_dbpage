@@ -10,7 +10,7 @@
       <div class="nombre">{{tools.gUser.displayName}}</div>
       <div class="cargo">{{tools.gUser.email}}</div>
     </div>
-    <img [src]="tools.gUser.photoURL" class="usr" alt="">
+    <img [src]="tools?.gUser.photoURL" class="usr" alt="">
     <i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>
   </div>
 </div>

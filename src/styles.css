@@ -26,12 +26,3 @@
   margin-right: .5em;
 }
 
-.ln_v {
-  height: auto;
-  display: flex;
-  background: #3a3a3a;
-  opacity: .2;
-  width: 1px;
-  box-sizing: border-box;
-  margin: 1em;
-}
