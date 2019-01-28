@@ -12,6 +12,13 @@
   height: calc(100%);
 }
 
+.lg-sub {
+  /*font-family: 'Homemade Apple', cursive;*/
+  /*font-size: 2em;*/
+  font-weight: 700;
+  color: #dddddd;
+}
+
 .err {
   color: #e93c30;
   margin: .5em;
@@ -21,8 +28,9 @@
   position: absolute;
   width: 100%;
   height: calc(100%);
-  background: var(--background-sidebar);
+  background-image: url("/assets/log_in/background_log_in.jpg");
   background-size: cover;
+  filter: blur(.2em);
 }
 
 ._overlay {
@@ -156,7 +164,7 @@ input {
 
   .logo {
     width: 25em;
-    margin: 5em;
+    margin: 1em;
   }
 }
 

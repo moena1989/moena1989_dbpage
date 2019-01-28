@@ -49,6 +49,11 @@ export class NuevoRelojComponent implements OnInit {
   reloj_final: any = {};
   photoUrl = '';
 
+  @ViewChild('modalAlert') modalAlert: NgxSmartModalComponent;
+  @ViewChild('modalSubiendo') modalSubiendo: NgxSmartModalComponent;
+  @ViewChild('modalResult') modalResult: NgxSmartModalComponent;
+  porcentaje_registro = 0;
+
   constructor(
     public estructura: ModelRelojService,
     public hasher: HasherService,
@@ -80,6 +85,8 @@ export class NuevoRelojComponent implements OnInit {
   }
 
   subir_nuevo_registro() {
+    this.modalAlert.close();
+    this.modalSubiendo.open();
     const serial = this.hasher.encriptarSerial('aquí irán un serial chingón', 20, 10);
     // console.log(Object.keys(this.current_reloj));
     this.reloj_final = {
@@ -92,13 +99,17 @@ export class NuevoRelojComponent implements OnInit {
     };
     this.validando = true;
 // primero, subo la imagen...
+    this.porcentaje_registro = 50;
     this.db.push_image(this.watch_img, 'front', 'watches/' + serial, url => {
+
       this.reloj_final.metadata['image_url'] = url;
       this.db.push_reloj(this.reloj_final);
-      // this.validando = false;
-      // cambiar estado de la caja ya utilizada :D
       this.subida_completa = true;
-      // this.modal.close();
+      this.porcentaje_registro = 100;
+      setTimeout(() => {
+        this.modalSubiendo.close();
+        this.modalResult.open();
+      }, 1000);
     });
   }
 

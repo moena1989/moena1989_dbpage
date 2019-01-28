@@ -1,5 +1,51 @@
-<!--END MODAL-->
+<ngx-smart-modal #modalResult identifier="modal-result-reloj">
+  <ng-container *ngIf="subida_completa">
+    <div class="modal-tittle-bar">
+      <i class="far fa-ballot-check modal-tittle-ico"></i>
+      Registro exitoso
+    </div>
+    <div class="modal-cnt">
+      <app-reloj-buscado [dataReloj]="reloj_final"></app-reloj-buscado>
+    </div>
 
+    <div class="modal-bottom-cnt">
+      <div class="modal-bottom-button bt-ok" (click)="iniciarNuevoRegistro()">Iniciar nuevo registro</div>
+    </div>
+  </ng-container>
+</ngx-smart-modal>
+
+
+<ngx-smart-modal #modalAlert identifier="modal-alert-reloj">
+  <div class="modal-tittle-bar">
+    <i class="far fa-engine-warning modal-tittle-ico"></i>
+    ¡Alto ahí!
+  </div>
+
+  <div class="modal-cnt">
+    ¿Deseas continuar y terminar el registro?
+  </div>
+
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="subir_nuevo_registro()">Continuar</div>
+    <div class="modal-bottom-button bt-alrt" (click)="modalAlert.close()">Cancelar</div>
+  </div>
+
+</ngx-smart-modal>
+<!--/////////////////////////////////////////////////////////////////////////////////-->
+<ngx-smart-modal #modalSubiendo identifier="modal-subiendo-reloj">
+  <div class="modal-tittle-bar">
+    <i class="far fa-circle-notch modal-tittle-ico  fa-spin"></i>
+    Subiendo
+  </div>
+  <div class="modal-cnt">
+    <app-loadbar [fill]="porcentaje_registro"></app-loadbar>
+  </div>
+
+  <!--<div class="modal-bottom-cnt">-->
+  <!--<div class="modal-bottom-button bt-disable" (click)="modalAlert.close()">Cancelar</div>-->
+  <!--</div>-->
+
+</ngx-smart-modal>
 <div class="carta">
   <div class="top_card">
     <div class="top_ttl">Nuevo Reloj</div>
@@ -78,8 +124,10 @@
       </div>
     </div>
     <div class="ln"></div>
-    <div class="final_btn" *ngIf="true" (click)="modal.open()">
+
+    <div class="final_btn" *ngIf="current_reloj.color_pulso" (click)="modalAlert.open()">
       Ingresar Nuevo Reloj
     </div>
+
   </div>
 </div>
