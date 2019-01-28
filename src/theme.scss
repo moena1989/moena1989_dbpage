@@ -1,7 +1,7 @@
 :root {
   --sidebar-width: 16em;
   --topbar-height: 5em;
-  --body-background: #F7F7F7;
+  --body-background: #ffffff;
   --background-sidebar: #292929;
   //--background-sidebar: url('http://api.thumbr.it/whitenoise-361x370.png?background=242939ff&noise=626262&density=14&opacity=16');
   --background-topbar: none;
@@ -74,7 +74,7 @@ selection {
 }
 
 .card_cnt {
-  padding: 1em;
+  padding: 2em;
   width: 100%;
   box-sizing: border-box;
 }

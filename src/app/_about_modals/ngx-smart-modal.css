@@ -36,9 +36,9 @@ body.dialog-open {
 }
 
 .nsm-dialog {
-  min-height: 10em;
-  width: 100%;
-  max-width: 30em;
+  min-height: 15em;
+  min-width: 20em;
+  max-width: 50em;
   box-sizing: border-box;
 }
 
@@ -137,7 +137,6 @@ body.dialog-open {
   margin-right: 16px;
   font-size: 1.4em;
 }
-
 
 
 /* *************************
