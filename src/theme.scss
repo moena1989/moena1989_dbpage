@@ -16,17 +16,26 @@ selection {
   background: var(--background-sidebar); /* WebKit/Blink Browsers */
 }
 
+.sdvd {
+  box-sizing: border-box;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 ::-moz-selection {
   background: #ffb7b7;
 }
 
-.card {
-  margin: 1em;
+.carta {
   border-radius: .3em;
-  background: white;
-  -webkit-box-shadow: 0px 0px 45px -2px rgba(0, 0, 0, 0.02);
-  -moz-box-shadow: 0 0 45px -2px rgba(0, 0, 0, 0.02);
-  box-shadow: 0 0 45px -2px rgba(0, 0, 0, 0.02);
+  //background: white;
+  -webkit-box-shadow: 0px 0px 45px -2px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0 0 45px -2px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 0 45px -2px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e2e2e2;
+  margin: 2em;
+  box-sizing: border-box;
 }
 
 .top_ttl {
@@ -35,6 +44,23 @@ selection {
   opacity: .9;
 }
 
+.final_btn {
+  border-radius: .3em;
+  padding: 1em;
+  margin-top: 1em;
+  color: #ffffff;
+  align-items: center;
+  cursor: pointer;
+  font-weight: 400;
+  text-align: center;
+  background: var(--icon-color-selected);
+  border: 1px solid #ffffff;
+  opacity: .8;
+}
+
+.final_btn:hover {
+  opacity: 1;
+}
 
 .top_card {
   padding: 2em;

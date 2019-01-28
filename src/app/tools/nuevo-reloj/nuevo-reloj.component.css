@@ -1,7 +1,4 @@
 :host {
-  margin: 1em;
-  border-radius: .3em;
-  background: white;
 }
 
 .visuals {
@@ -223,13 +220,17 @@
   height: 10em;
   border-radius: .4em;
   padding: .5em;
-  border: 1px solid rgba(221, 221, 221, 0.2);
+  border: 1px solid rgba(221, 221, 221, 0.3);
 }
 
 .img_caja {
   width: 100%;
   height: 100%;
   box-sizing: border-box;
+}
+
+.fx {
+  margin: 1em;
 }
 
 .cnt_opts {

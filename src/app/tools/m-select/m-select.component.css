@@ -22,7 +22,7 @@
   -webkit-appearance: none;
   padding: .5em;
   font-family: 'K2D', sans-serif;
-  border: 1px solid #e4e4e4;
+  border: 1px solid rgba(221, 221, 221, 0.5);
   width: 12em;
   border-radius: .3em;
   background: rgba(247, 247, 247, 0);
@@ -38,5 +38,5 @@ input:placeholder-shown {
 .ss:disabled {
   padding: .5em;
   background: rgba(247, 247, 247, 0.4);
-  border: 1px solid #dddddd;
+  border: 1px solid rgba(221, 221, 221, 0.5);
 }
