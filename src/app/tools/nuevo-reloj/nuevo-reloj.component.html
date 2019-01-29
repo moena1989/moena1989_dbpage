@@ -3,9 +3,9 @@
     <i class="far fa-ballot-check modal-tittle-ico"></i>
     Registro exitoso
   </div>
-  <div class="modal-cnt">
-    <app-reloj-buscado [dataReloj]="reloj_final"></app-reloj-buscado>
-  </div>
+  <!--<div class="modal-cnt">-->
+    <!--<app-reloj-buscado [dataReloj]="currentReloj"></app-reloj-buscado>-->
+  <!--</div>-->
 
   <div class="modal-bottom-cnt">
     <div class="modal-bottom-button bt-ok" (click)="iniciarNuevoRegistro()">Iniciar nuevo registro</div>
@@ -24,7 +24,7 @@
   </div>
 
   <div class="modal-bottom-cnt">
-    <div class="modal-bottom-button bt-ok" (click)="subir_nuevo_registro()">Continuar</div>
+    <div class="modal-bottom-button bt-ok" (click)="iniciarRegistro()">Continuar</div>
     <div class="modal-bottom-button bt-alrt" (click)="modalAlert.close()">Cancelar</div>
   </div>
 
@@ -121,7 +121,7 @@
     </div>
     <div class="ln"></div>
 
-    <div class="final_btn" *ngIf="current_reloj.color_pulso" (click)="modalAlert.open()">
+    <div class="final_btn" *ngIf="current_reloj.colorPulso" (click)="modalAlert.open()">
       Ingresar Nuevo Reloj
     </div>
 

@@ -97,7 +97,7 @@ export class DbManagerService {
 
   push_reloj(reloj: any) {
     // busco la caja seleccionada y la elimino de las disponibles
-    this.cambiar_estado_caja(reloj.features.modelo, reloj.features.key_caja, this.estructura.ESTADOS_CAJA.ARMADO);
+    this.cambiar_estado_caja(reloj.features.modelo, reloj.features.idCaja, this.estructura.ESTADOS_CAJA.ARMADO);
     // pusheo reloj
     const key = this.db.object('data/relojes/' + reloj.metadata.salts + '/' + reloj.metadata.serial).set(reloj);
     reloj.metadata.key = key;
@@ -130,11 +130,11 @@ export class DbManagerService {
 
   push_nuevo_lote(current_lote: any) {
     const key = this.db.list('/data/lotes').push(current_lote).key;
-    // actualizar numero del num_lote
+    // actualizar numero del numeroDeLote
     // TODO veeeeeeeerrr como resolver esta metadata de una forma un poco mas coqueta.
     const meta = new MetadataAttr();
     meta.last_date = Date();
-    meta.num_lote = current_lote.num_lote;
+    meta.numeroDeLote = current_lote.numeroDeLote;
     meta.ultimo_lote_key = key;
     this.set_informacion(current_lote.modelo, meta);
 

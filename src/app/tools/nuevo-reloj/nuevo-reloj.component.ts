@@ -6,19 +6,21 @@ import {MSelectComponent} from '../m-select/m-select.component';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
 import {Caja_m, ModelCajasService} from '../../model-cajas.service';
 import {ToolsService} from '../../_services/tools.service';
+import {DbManagerFirestoreService, MCaja, MFiltro, MReloj} from '../../db-manager-firestore.service';
 
 class Rmodel {
-  diametro_externo: string;
-  diametro_interno: string;
-  num_lote: number;
+  diametroExterno: string;
+  diametroInterno: string;
+  numeroDeLote: number;
   caja: number;
   materiales: any[];
   coleccion: string;
   modelo: string;
-  color_maquinaria: any;
-  tipo_pulso: any;
-  color_pulso: any;
-  key_caja: string;
+  colorMaquinaria: any;
+  tipoPulso: any;
+  colorPulso: any;
+  idCaja: string;
+  numeroDeCaja: number;
 }
 
 @Component({
@@ -44,11 +46,10 @@ export class NuevoRelojComponent implements OnInit {
   cajas_disponibles: any[];
   cajasFiltradas: any[] = undefined;
   modelo_seleccionado: any;
-  cajasDisponibles = false;
   subida_completa = false;
-  reloj_final: any = {};
+  currentReloj: any = {};
   photoUrl = '';
-
+  filtrosCaja: MFiltro = {diametroExterno: '', diametroInterno: '', modelo: ''};
   @ViewChild('modalAlert') modalAlert: NgxSmartModalComponent;
   @ViewChild('modalSubiendo') modalSubiendo: NgxSmartModalComponent;
   @ViewChild('modalResult') modalResult: NgxSmartModalComponent;
@@ -59,7 +60,8 @@ export class NuevoRelojComponent implements OnInit {
     public hasher: HasherService,
     public cajaEst: ModelCajasService,
     public db: DbManagerService,
-    public tools: ToolsService
+    public tools: ToolsService,
+    public fs: DbManagerFirestoreService
   ) {
   }
 
@@ -79,38 +81,44 @@ export class NuevoRelojComponent implements OnInit {
   }
 
   seleccionarLote(lote_selected: any) {
-    this.current_reloj.num_lote = +lote_selected.name;
+    this.current_reloj.numeroDeLote = +lote_selected.name;
     this.current_opciones.cajas = lote_selected.items;
     // console.log(this.current_opciones_caja_modelo.cajas);
   }
 
-  subir_nuevo_registro() {
+  iniciarRegistro() {
     this.modalAlert.close();
     this.modalSubiendo.open();
-    const serial = this.hasher.encriptarSerial('aquí irán un serial chingón',
-      Math.round(Math.random() * 500), Math.round(Math.random() * 500));
-    // console.log(Object.keys(this.current_reloj));
-    this.reloj_final = {
-      metadata: {
-        date: Date.now(),
-        serial: this.salts.modelo + this.salts.coleccion + '-' + serial,
-        salts: this.salts.modelo + '/' + this.salts.coleccion
-      },
-      features: this.current_reloj
-    };
     this.validando = true;
 // primero, subo la imagen...
     this.porcentaje_registro = 50;
-    this.db.push_image(this.watch_img, 'front', 'watches/' + serial, url => {
 
-      this.reloj_final.metadata['image_url'] = url;
-      this.db.push_reloj(this.reloj_final);
-      this.subida_completa = true;
-      this.porcentaje_registro = 100;
-      setTimeout(() => {
-        this.modalSubiendo.close();
-        this.modalResult.open();
-      }, 1000);
+    this.fs.pushImage(this.watch_img, 'front', 'watches/' + 'asdasd', url => {
+      const serial = this.hasher.encriptarSerial('aquí irán un serial chingón',
+        Math.round(Math.random() * 500), Math.round(Math.random() * 500));
+      const relojFinal: MReloj = {
+        coleccion: this.current_reloj.coleccion,
+        modelo: this.current_reloj.modelo,
+        colorMaquinaria: this.current_reloj.colorMaquinaria,
+        colorPulso: this.current_reloj.colorPulso,
+        idCaja: this.current_reloj.idCaja,
+        diamtroExterno: this.current_reloj.diametroExterno,
+        diametroInterno: this.current_reloj.diametroInterno,
+        serial: serial,
+        fechaCreacion: new Date(),
+        fechaUltimaModificacion: new Date(),
+        urlImagen: url,
+        id: this.fs.getUniqId()
+      };
+
+      this.fs.pushReloj(relojFinal.id, relojFinal).then(value => {
+        this.subida_completa = true;
+        this.porcentaje_registro = 100;
+        setTimeout(() => {
+          this.modalSubiendo.close();
+          this.modalResult.open();
+        }, 1000);
+      });
     });
   }
 
@@ -128,7 +136,9 @@ export class NuevoRelojComponent implements OnInit {
   }
 
   seleccionarDiametroExterno(diametro_selected: any) {
-    this.current_reloj.diametro_externo = diametro_selected.name;
+    this.current_reloj.diametroExterno = diametro_selected.name;
+    // const filtro.diametroExterno = diametro_selected.name;
+    this.filtrosCaja.diametroExterno = diametro_selected.name;
   }
 
   private buscarCajasDisponibles() {
@@ -144,7 +154,7 @@ export class NuevoRelojComponent implements OnInit {
     if (caja_selected.obj !== undefined) {
       this.ver_opciones_reloj = true;
       this.current_reloj.caja = caja_selected.name;
-      this.current_reloj.key_caja = caja_selected.obj.my_key;
+      this.current_reloj.idCaja = caja_selected.obj.my_key;
       this.photoUrl = caja_selected.obj.img_url;
     }
   }
@@ -154,15 +164,15 @@ export class NuevoRelojComponent implements OnInit {
     this.current_opciones.colecciones = _modelo.items;
     this.current_opciones.opciones_caja = _modelo.opciones_caja;
     this.current_reloj.modelo = _modelo.name;
+    this.filtrosCaja.modelo = _modelo.name;
+
     this.salts.modelo = _modelo.salt;
     this.buscarCajasDisponibles();
   }
 
-  sd() {
-  }
-
   seleccionarDiametroInterno(_diametro_interno: any) {
-    this.current_reloj.diametro_interno = _diametro_interno.name;
+    this.current_reloj.diametroInterno = _diametro_interno.name;
+    this.filtrosCaja.diametroInterno = _diametro_interno.name;
     this.filtrarCajas();
   }
 
@@ -172,68 +182,98 @@ export class NuevoRelojComponent implements OnInit {
   }
 
   seleccionarColorMaquinaria(maq: any) {
-    this.current_reloj.color_maquinaria = maq.name;
+    this.current_reloj.colorMaquinaria = maq.name;
   }
 
   seleccionarTipoPulso(tipo_pulso: any) {
     this.current_opciones.opciones_reloj.pulsos = tipo_pulso.items;
-    this.current_reloj.tipo_pulso = tipo_pulso.name;
+    this.current_reloj.tipoPulso = tipo_pulso.name;
 
   }
 
   seleccionarColorPulso(color_p: any) {
-    this.current_reloj.color_pulso = color_p.name;
+    this.current_reloj.colorPulso = color_p.name;
   }
 
   private filtrarCajas() {
-    this.db.buscar_cajas_por_registrar(this.current_reloj.modelo)
-      .subscribe(cajas => {
-        this.cajas_disponibles = cajas;
-        console.log(cajas);
+    console.log('probando filtros Firestore');
+    this.fs.getCajasDisponibles(this.filtrosCaja).subscribe(cajas => {
 
-        // FILTRO DISEÑADO ESPECIFICAMENTE PARA LAS CARACTERISTICAS DE LA CAJA, NO USAR EN OTRO LUGAR
-        this.cajasFiltradas = this.cajas_disponibles;
-        if (this.current_reloj.materiales && this.current_reloj.diametro_interno && this.current_reloj.diametro_externo) {
-          console.log('intentando filtrar ');
-          this.cajasFiltradas = this.cajasFiltradas.filter(cj => {
-            if (cj.materiales.length === this.current_reloj.materiales.length) {
-              for (let i = 0; i < cj.materiales.length; i++) {
-                if (cj.materiales[i] !== this.current_reloj.materiales[i]) {
-                  return false;
-                }
-              }
-            } else {
-              return false;
-            }
-            return cj.diametro_externo === this.current_reloj.diametro_externo && cj.diametro_interno ===
-              this.current_reloj.diametro_interno;
-          });
-        }
-
-        if (this.cajasFiltradas.length > 0) {
-          this.ver_opciones_caja = true;
-        } else {
-          console.error('parece que no hay mas cajas gg');
-          // this.msg_errorCajas:
-        }
-        console.log(this.cajasFiltradas);
-        // TODO BUSCAR LOTES Y CAJAS DE CADA UNO
-        const opcs_lote = [];
-        this.cajasFiltradas.forEach(cj => {
-          let exist = false;
-          for (let i = 0; i < opcs_lote.length; i++) {
-            if (opcs_lote[i].name === cj.num_lote) {
-              opcs_lote[i].items.push({name: cj.num_caja, obj: cj});
-              exist = true;
-              break;
-            }
-          }
-          if (!exist) {
-            opcs_lote.push({name: cj.num_lote, items: [{name: cj.num_caja, obj: cj}]});
-          }
-        });
-        this.current_opciones.lotes = opcs_lote;
-        console.log(opcs_lote);
+      if (cajas.empty) {
+        console.log('no se encontraron cajas con la configuración actual');
+        return;
+      }
+      this.cajasFiltradas = [];
+      cajas.docs.forEach(caja => {
+        this.cajasFiltradas.push(caja.data());
       });
+      console.log(this.cajasFiltradas);
+      // const opcs_lote = [];
+      // this.cajasFiltradas = cajas;
+      // this.cajasFiltradas.forEach(cj => {
+      //   let exist = false;
+      //   for (let i = 0; i < opcs_lote.length; i++) {
+      //     if (opcs_lote[i].name === cj.numeroDeLote) {
+      //       opcs_lote[i].items.push({name: cj.num_caja, obj: cj});
+      //       exist = true;
+      //       break;
+      //     }
+      //   }
+      //   if (!exist) {
+      //     opcs_lote.push({name: cj.numeroDeLote, items: [{name: cj.num_caja, obj: cj}]});
+      //   }
+      // });
+      // this.current_opciones.lotes = opcs_lote;
+      // console.log(opcs_lote);
+    });
+    // this.db.buscar_cajas_por_registrar(this.current_reloj.modelo)
+    //   .subscribe(cajas => {
+    //     this.cajas_disponibles = cajas;
+    //     console.log(cajas);
+    //
+    //     // FILTRO DISEÑADO ESPECIFICAMENTE PARA LAS CARACTERISTICAS DE LA CAJA, NO USAR EN OTRO LUGAR
+    //     this.cajasFiltradas = this.cajas_disponibles;
+    //     if (this.current_reloj.materiales && this.current_reloj.diametroInterno && this.current_reloj.diametroExterno) {
+    //       console.log('intentando filtrar ');
+    //       this.cajasFiltradas = this.cajasFiltradas.filter(cj => {
+    //         if (cj.materiales.length === this.current_reloj.materiales.length) {
+    //           for (let i = 0; i < cj.materiales.length; i++) {
+    //             if (cj.materiales[i] !== this.current_reloj.materiales[i]) {
+    //               return false;
+    //             }
+    //           }
+    //         } else {
+    //           return false;
+    //         }
+    //         return cj.diametroExterno === this.current_reloj.diametroExterno && cj.diametroInterno ===
+    //           this.current_reloj.diametroInterno;
+    //       });
+    //     }
+    //
+    //     if (this.cajasFiltradas.length > 0) {
+    //       this.ver_opciones_caja = true;
+    //     } else {
+    //       console.error('parece que no hay mas cajas gg');
+    //       // this.msg_errorCajas:
+    //     }
+    //     console.log(this.cajasFiltradas);
+    //     // TODO BUSCAR LOTES Y CAJAS DE CADA UNO
+    //     const opcs_lote = [];
+    //     this.cajasFiltradas.forEach(cj => {
+    //       let exist = false;
+    //       for (let i = 0; i < opcs_lote.length; i++) {
+    //         if (opcs_lote[i].name === cj.numeroDeLote) {
+    //           opcs_lote[i].items.push({name: cj.num_caja, obj: cj});
+    //           exist = true;
+    //           break;
+    //         }
+    //       }
+    //       if (!exist) {
+    //         opcs_lote.push({name: cj.numeroDeLote, items: [{name: cj.num_caja, obj: cj}]});
+    //       }
+    //     });
+    //     this.current_opciones.lotes = opcs_lote;
+    //     console.log(opcs_lote);
+    //   });
   }
 }
