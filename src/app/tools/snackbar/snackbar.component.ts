@@ -7,7 +7,6 @@ import {Component, OnInit} from '@angular/core';
 })
 export class SnackbarComponent implements OnInit {
   msg = 'Bienvenido Andrés ;)';
-  minimal_time = 3000;
   snacktive = false;
   color = {};
   tipo = 'adv';

@@ -1,6 +1,6 @@
 import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {HasherService} from '../../_services/hasher.service';
-import {DbService} from '../../_services/db.service';
+import {DbManagerService} from '../../_services/db-manager.service';
 import {ModelRelojService} from '../../_services/model-reloj.service';
 import {MSelectComponent} from '../m-select/m-select.component';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
@@ -58,7 +58,7 @@ export class NuevoRelojComponent implements OnInit {
     public estructura: ModelRelojService,
     public hasher: HasherService,
     public cajaEst: ModelCajasService,
-    public db: DbService,
+    public db: DbManagerService,
     public tools: ToolsService
   ) {
   }
@@ -158,6 +158,9 @@ export class NuevoRelojComponent implements OnInit {
     this.buscarCajasDisponibles();
   }
 
+  sd() {
+  }
+
   seleccionarDiametroInterno(_diametro_interno: any) {
     this.current_reloj.diametro_interno = _diametro_interno.name;
     this.filtrarCajas();
@@ -202,7 +205,8 @@ export class NuevoRelojComponent implements OnInit {
             } else {
               return false;
             }
-            return cj.diametro_externo === this.current_reloj.diametro_externo && cj.diametro_interno === this.current_reloj.diametro_interno;
+            return cj.diametro_externo === this.current_reloj.diametro_externo && cj.diametro_interno ===
+              this.current_reloj.diametro_interno;
           });
         }
 

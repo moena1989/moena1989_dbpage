@@ -16,13 +16,9 @@ export class AppComponent implements OnInit {
    * Contiene el snakBar
    */
   constructor(public tools: ToolsService) {
-
   }
 
   ngOnInit() {
-    console.log('se carga el snack');
     this.tools.snack = this.snack;
   }
-
-
 }

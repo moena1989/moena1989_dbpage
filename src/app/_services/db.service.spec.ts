@@ -1,12 +1,12 @@
 import { TestBed } from '@angular/core/testing';
 
-import { DbService } from './db.service';
+import { DbManagerService } from './db-manager.service';
 
-describe('DbService', () => {
+describe('DbManagerService', () => {
   beforeEach(() => TestBed.configureTestingModule({}));
 
   it('should be created', () => {
-    const service: DbService = TestBed.get(DbService);
+    const service: DbManagerService = TestBed.get(DbManagerService);
     expect(service).toBeTruthy();
   });
 });

@@ -13,7 +13,7 @@ import {SnackbarComponent} from './tools/snackbar/snackbar.component';
 import {AuthGuardService} from './_services/auth-guard.service';
 import {RelojBuscadoComponent} from './tools/reloj-buscado/reloj-buscado.component';
 import {MSelectComponent} from './tools/m-select/m-select.component';
-import {AngularFireStorageModule} from '@angular/fire/storage';
+import {AngularFireStorageModule, StorageBucket} from '@angular/fire/storage';
 import {VisualizerComponent} from './tools/visualizer/visualizer.component';
 import {NgxSmartModalModule, NgxSmartModalService} from 'ngx-smart-modal';
 import {CurrentStorageService} from './_services/current-storage.service';
@@ -44,6 +44,8 @@ import {LoadbarComponent} from './loadbar/loadbar.component';
 import {AuthService} from './auth.service';
 import {ToolsService} from './_services/tools.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
+import {DbManagerFirestoreService} from './db-manager-firestore.service';
+import {AngularFirestore} from '@angular/fire/firestore';
 
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
@@ -117,10 +119,11 @@ const firebaseConfig = {
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
     AngularFireModule.initializeApp(firebaseConfig),
     AngularFireDatabaseModule, BrowserAnimationsModule,
-    AngularFireAuthModule, AngularFireStorageModule, HttpClientModule,
+    AngularFireAuthModule, AngularFireStorageModule, HttpClientModule, AngularFireModule,
     BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
   ],
-  providers: [NgxSmartModalService, CurrentStorageService, ToolsService, ModelCajasService, AuthService],
+  providers: [NgxSmartModalService, CurrentStorageService, {provide: StorageBucket, useValue: 'testing-this-shit'},
+    ToolsService, ModelCajasService, AuthService, DbManagerFirestoreService, AngularFirestore],
   bootstrap: [AppComponent]
 })
 export class AppModule {

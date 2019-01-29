@@ -1,17 +1,15 @@
 <ngx-smart-modal #modalResult identifier="modal-result-reloj">
-  <ng-container *ngIf="subida_completa">
-    <div class="modal-tittle-bar">
-      <i class="far fa-ballot-check modal-tittle-ico"></i>
-      Registro exitoso
-    </div>
-    <div class="modal-cnt">
-      <app-reloj-buscado [dataReloj]="reloj_final"></app-reloj-buscado>
-    </div>
+  <div class="modal-tittle-bar">
+    <i class="far fa-ballot-check modal-tittle-ico"></i>
+    Registro exitoso
+  </div>
+  <div class="modal-cnt">
+    <app-reloj-buscado [dataReloj]="reloj_final"></app-reloj-buscado>
+  </div>
 
-    <div class="modal-bottom-cnt">
-      <div class="modal-bottom-button bt-ok" (click)="iniciarNuevoRegistro()">Iniciar nuevo registro</div>
-    </div>
-  </ng-container>
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="iniciarNuevoRegistro()">Iniciar nuevo registro</div>
+  </div>
 </ngx-smart-modal>
 
 
@@ -32,7 +30,7 @@
 
 </ngx-smart-modal>
 <!--/////////////////////////////////////////////////////////////////////////////////-->
-<ngx-smart-modal #modalSubiendo identifier="modal-subiendo-reloj">
+<ngx-smart-modal [dismissable]="false" [escapable]="false" #modalSubiendo identifier="modal-subiendo-reloj">
   <div class="modal-tittle-bar">
     <i class="far fa-circle-notch modal-tittle-ico  fa-spin"></i>
     Subiendo

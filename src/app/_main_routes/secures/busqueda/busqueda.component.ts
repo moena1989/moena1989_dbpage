@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {Router} from '@angular/router';
-import {DbService} from '../../../_services/db.service';
+import {DbManagerService} from '../../../_services/db-manager.service';
 import {ToolsService} from '../../../_services/tools.service';
 import {CurrentStorageService} from '../../../_services/current-storage.service';
 
@@ -20,7 +20,7 @@ export class BusquedaComponent implements OnInit {
   En teoría, siempre se llegará a esta página cuando ya se halla encontrado un reloj, y deba proyectarse, el objeto buscado está en db
   TODO buscar una manera más opptima sin tener que guardarlo y traerlo de db.
    */
-  constructor(public db: DbService, private tools: ToolsService, public currentStorage: CurrentStorageService, private router: Router) {
+  constructor(public db: DbManagerService, private tools: ToolsService, public currentStorage: CurrentStorageService, private router: Router) {
   }
 
   buscarBySerial(serial_ingresado: any) {

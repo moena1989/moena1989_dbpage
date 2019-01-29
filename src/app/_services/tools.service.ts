@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {SnackbarComponent} from '../tools/snackbar/snackbar.component';
 import {CanActivate, Router} from '@angular/router';
 import {Ng2ImgMaxService} from 'ng2-img-max';
-import {DbService} from './db.service';
+import {DbManagerService} from './db-manager.service';
 
 @Injectable({
   providedIn: 'root'

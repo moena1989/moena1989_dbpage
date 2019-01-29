@@ -1,5 +1,5 @@
 import {Component, OnInit} from '@angular/core';
-import {DbService} from '../_services/db.service';
+import {DbManagerService} from '../_services/db-manager.service';
 import {ToolsService} from '../_services/tools.service';
 import {AuthService} from '../auth.service';
 
@@ -11,7 +11,7 @@ import {AuthService} from '../auth.service';
 export class TopBarComponent implements OnInit {
   titulo_actual;
 
-  constructor(public db: DbService, public tools: ToolsService, private auth: AuthService) {
+  constructor(public db: DbManagerService, public tools: ToolsService, private auth: AuthService) {
   }
 
   ngOnInit() {

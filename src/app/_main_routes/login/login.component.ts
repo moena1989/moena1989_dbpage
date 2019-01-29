@@ -1,5 +1,5 @@
 import {Component, NgZone, OnInit} from '@angular/core';
-import {DbService} from '../../_services/db.service';
+import {DbManagerService} from '../../_services/db-manager.service';
 import {ToolsService} from '../../_services/tools.service';
 import {Router, RouterModule} from '@angular/router';
 import {AuthService} from '../../auth.service';
@@ -12,7 +12,7 @@ import {AuthService} from '../../auth.service';
 export class LoginComponent implements OnInit {
   err_msg = '';
 
-  constructor(private db: DbService, public tool: ToolsService, private router: Router, private auth: AuthService, private ngZone: NgZone) {
+  constructor(private db: DbManagerService, public tool: ToolsService, private router: Router, private auth: AuthService, private ngZone: NgZone) {
   }
 
   ngOnInit() {

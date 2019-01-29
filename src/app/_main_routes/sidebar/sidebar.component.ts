@@ -2,7 +2,7 @@ import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
 
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
-import {DbService} from '../../_services/db.service';
+import {DbManagerService} from '../../_services/db-manager.service';
 import {ToolsService} from '../../_services/tools.service';
 import {CurrentStorageService} from '../../_services/current-storage.service';
 
@@ -17,7 +17,7 @@ export class SidebarComponent implements OnInit {
   is_menu_opened = true;
   regs = false;
 
-  constructor(public db: DbService, public router: Router, public tools: ToolsService, private currentStorage: CurrentStorageService) {
+  constructor(public db: DbManagerService, public router: Router, public tools: ToolsService, private currentStorage: CurrentStorageService) {
   }
 
   ngOnInit() {

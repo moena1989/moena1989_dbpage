@@ -6,49 +6,21 @@ import {AngularFireStorage} from '@angular/fire/storage';
 import * as firebase from 'firebase';
 import {MetadataAttr} from '../_models/clockModel';
 import {ModelCajasService} from '../model-cajas.service';
-import {auth} from 'firebase';
-import {ToolsService} from './tools.service';
 
 
 @Injectable({
   providedIn: 'root'
 })
-export class DbService {
-
+export class DbManagerService {
   /*
   Servicio encargado de traer, y organizar los datos para la creación de cada reloj, contiene la estructura de cada uno de los registros.
    */
   /// TODO buscar una manera mas organizada de manejar, los objetos de las páginas routiadas.
-  relojBuscado: any;
-
   authState = null;
-  userLogueado: any = {};
 
   constructor(public db: AngularFireDatabase, private afStorage: AngularFireStorage,
               private firebaseAuth: AngularFireAuth, private router: Router,
               private estructura: ModelCajasService) {
-    this.firebaseAuth.user.subscribe(value => {
-      // console.log(value);
-    });
-  }
-
-// Returns current user UID
-  get currentUserId(): string {
-    return this.authenticated ? this.authState.uid : '';
-  }
-
-  login() {
-    return this.firebaseAuth.auth.signInWithPopup(new firebase.auth.GoogleAuthProvider());
-  }
-
-  // ________________________BUSQUEDAS
-  buscar_cajas_disponibles(material: any, diametro: any, lote: number) {
-    this.db.list('data/cases/' + material + '/' + diametro + '/availables',
-      ref => ref.orderByChild('num_lote').equalTo(lote)).valueChanges().subscribe(value => {
-      console.log('probando seriales');
-      console.log(value);
-      return value;
-    });
   }
 
   buscar_info_lote(modelo: string) {
@@ -59,15 +31,6 @@ export class DbService {
     this.db.object('data/cases/' + modelo + '/metadata').set(loteData);
   }
 
-  buscarDatosUsuarios(uid: string, ff: () => void) {
-    // console.log(uid);
-    // this.db.object('workers/' + uid).valueChanges().subscribe(value => {
-    //   this.userLogueado = value;
-    //   console.log('se trae la info del usuario');
-    //   console.log(this.userLogueado);
-    //   ff();
-    // });
-  }
 
   buscarReloj(serial: string) {
     const serial_splitted = serial.split('-');
@@ -79,27 +42,6 @@ export class DbService {
     const last_route = 'data/relojes/' + base_s + serial_splitted[1];
     console.log(last_route);
     return this.db.object(last_route).valueChanges();
-  }
-
-//   logIn(email: string, pass: string, result: (ho: any) => any) {
-// // TODO no REGRESAR any, buscar el objeto puntual
-//     this.firebaseAuth.auth.signInWithEmailAndPassword(email, pass)
-//       .then(auth => {
-//           console.log(auth.user.uid);
-//           this.buscarDatosUsuarios(auth.user.uid, () => {
-//             result(auth.user.uid);
-//           });
-//         }
-//       )
-//       .catch(err => {
-//         console.log(err);
-//         result(null);
-//       });
-//   }
-
-  logOut() {
-    this.firebaseAuth.auth.signOut();
-    this.authState = null;
   }
 
   private pushAllNewUserInfo(user: any, uid: string) {
@@ -175,6 +117,7 @@ export class DbService {
         firebase.storage().ref(route + '/' + name + '.jpg').getDownloadURL().then(url => {
           console.log('la url es ' + url);
           alFinalizar(url);
+
         });
       }
     );
@@ -203,7 +146,7 @@ export class DbService {
 
 
   set_lote(current_lote: any) {
-    this.db.object('/data/lotes/' + current_lote.my_key).update(current_lote);
+    return this.db.object('/data/lotes/' + current_lote.my_key).update(current_lote);
   }
 
 

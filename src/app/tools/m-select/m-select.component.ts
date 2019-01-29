@@ -14,13 +14,10 @@ export class MSelectComponent implements OnInit {
   private _original_ops: any[];
 
   @Input() set opciones(opciones: any[]) {
-// mostrar solo si existe
     this.current_opciones.length = 0;
     this._datoSeleccionado = undefined;
     this._original_ops = opciones;
-
-    // console.log('cambian los valores');
-    // console.log(opciones.length);
+// mostrar solo si existe
     if (opciones !== undefined) { // existe data
       this.current_opciones = opciones;
       // si solamente tiene una selección entonces que sea la predeterminada
@@ -36,8 +33,6 @@ export class MSelectComponent implements OnInit {
 
   @Input() set _datoSeleccionado(value: any) {
     if (value !== undefined) {
-      console.error('sdkasdv000');
-      console.log(value);
       this.seleccionado = true;
       // console.log('se selecciona una opción');
       this.alSeleccionar.emit(value);
