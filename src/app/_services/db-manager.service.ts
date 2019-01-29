@@ -133,9 +133,9 @@ export class DbManagerService {
     // actualizar numero del numeroDeLote
     // TODO veeeeeeeerrr como resolver esta metadata de una forma un poco mas coqueta.
     const meta = new MetadataAttr();
-    meta.last_date = Date();
+    meta.fechaRegistro = Date();
     meta.numeroDeLote = current_lote.numeroDeLote;
-    meta.ultimo_lote_key = key;
+    meta.idUltimoLote = key;
     this.set_informacion(current_lote.modelo, meta);
 
 // this.set_lote()
@@ -143,7 +143,6 @@ export class DbManagerService {
     this.set_lote(current_lote);
     return key;
   }
-
 
   set_lote(current_lote: any) {
     return this.db.object('/data/lotes/' + current_lote.my_key).update(current_lote);

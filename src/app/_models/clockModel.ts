@@ -19,9 +19,9 @@ export class Caracteristica {
 }
 
 export class MetadataAttr {
-  last_date: string;
-  num_lote: number;
-  ultimo_lote_key: string;
+  fechaRegistro: string;
+  numeroDeLote: number;
+  idUltimoLote: string;
 }
 
 export class CajaModel {

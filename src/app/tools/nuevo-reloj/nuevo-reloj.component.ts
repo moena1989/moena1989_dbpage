@@ -155,7 +155,7 @@ export class NuevoRelojComponent implements OnInit {
       this.ver_opciones_reloj = true;
       this.current_reloj.caja = caja_selected.name;
       this.current_reloj.idCaja = caja_selected.obj.my_key;
-      this.photoUrl = caja_selected.obj.img_url;
+      this.photoUrl = caja_selected.obj.urlImagen;
     }
   }
 
@@ -208,72 +208,23 @@ export class NuevoRelojComponent implements OnInit {
         this.cajasFiltradas.push(caja.data());
       });
       console.log(this.cajasFiltradas);
-      // const opcs_lote = [];
-      // this.cajasFiltradas = cajas;
-      // this.cajasFiltradas.forEach(cj => {
-      //   let exist = false;
-      //   for (let i = 0; i < opcs_lote.length; i++) {
-      //     if (opcs_lote[i].name === cj.numeroDeLote) {
-      //       opcs_lote[i].items.push({name: cj.num_caja, obj: cj});
-      //       exist = true;
-      //       break;
-      //     }
-      //   }
-      //   if (!exist) {
-      //     opcs_lote.push({name: cj.numeroDeLote, items: [{name: cj.num_caja, obj: cj}]});
-      //   }
-      // });
-      // this.current_opciones.lotes = opcs_lote;
-      // console.log(opcs_lote);
+      const opcs_lote = [];
+      this.cajasFiltradas.forEach(cj => {
+        let exist = false;
+        for (let i = 0; i < opcs_lote.length; i++) {
+          if (opcs_lote[i].name === cj.numeroDeLote) {
+            opcs_lote[i].items.push({name: cj.numeroDeCaja, obj: cj});
+            exist = true;
+            break;
+          }
+        }
+        if (!exist) {
+          opcs_lote.push({name: cj.numeroDeLote, items: [{name: cj.numeroDeCaja, obj: cj}]});
+        }
+      });
+      this.ver_opciones_caja = true;
+      this.current_opciones.lotes = opcs_lote;
+      console.log(opcs_lote);
     });
-    // this.db.buscar_cajas_por_registrar(this.current_reloj.modelo)
-    //   .subscribe(cajas => {
-    //     this.cajas_disponibles = cajas;
-    //     console.log(cajas);
-    //
-    //     // FILTRO DISEÑADO ESPECIFICAMENTE PARA LAS CARACTERISTICAS DE LA CAJA, NO USAR EN OTRO LUGAR
-    //     this.cajasFiltradas = this.cajas_disponibles;
-    //     if (this.current_reloj.materiales && this.current_reloj.diametroInterno && this.current_reloj.diametroExterno) {
-    //       console.log('intentando filtrar ');
-    //       this.cajasFiltradas = this.cajasFiltradas.filter(cj => {
-    //         if (cj.materiales.length === this.current_reloj.materiales.length) {
-    //           for (let i = 0; i < cj.materiales.length; i++) {
-    //             if (cj.materiales[i] !== this.current_reloj.materiales[i]) {
-    //               return false;
-    //             }
-    //           }
-    //         } else {
-    //           return false;
-    //         }
-    //         return cj.diametroExterno === this.current_reloj.diametroExterno && cj.diametroInterno ===
-    //           this.current_reloj.diametroInterno;
-    //       });
-    //     }
-    //
-    //     if (this.cajasFiltradas.length > 0) {
-    //       this.ver_opciones_caja = true;
-    //     } else {
-    //       console.error('parece que no hay mas cajas gg');
-    //       // this.msg_errorCajas:
-    //     }
-    //     console.log(this.cajasFiltradas);
-    //     // TODO BUSCAR LOTES Y CAJAS DE CADA UNO
-    //     const opcs_lote = [];
-    //     this.cajasFiltradas.forEach(cj => {
-    //       let exist = false;
-    //       for (let i = 0; i < opcs_lote.length; i++) {
-    //         if (opcs_lote[i].name === cj.numeroDeLote) {
-    //           opcs_lote[i].items.push({name: cj.num_caja, obj: cj});
-    //           exist = true;
-    //           break;
-    //         }
-    //       }
-    //       if (!exist) {
-    //         opcs_lote.push({name: cj.numeroDeLote, items: [{name: cj.num_caja, obj: cj}]});
-    //       }
-    //     });
-    //     this.current_opciones.lotes = opcs_lote;
-    //     console.log(opcs_lote);
-    //   });
   }
 }
