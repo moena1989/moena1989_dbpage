@@ -326,7 +326,7 @@ module.exports = {
         that._f = that._l = undefined;
         that[SIZE] = 0;
       },
-      // 23.1.3.3 Map.prototype.delete(key)
+      // 23.1.3.3 Map.prototype.delete(salt)
       // 23.2.3.4 Set.prototype.delete(value)
       'delete': function (key) {
         var that = validate(this, NAME);
@@ -355,7 +355,7 @@ module.exports = {
           while (entry && entry.r) entry = entry.p;
         }
       },
-      // 23.1.3.7 Map.prototype.has(key)
+      // 23.1.3.7 Map.prototype.has(salt)
       // 23.2.3.7 Set.prototype.has(value)
       has: function has(key) {
         return !!getEntry(validate(this, NAME), key);
@@ -378,7 +378,7 @@ module.exports = {
     } else {
       that._l = entry = {
         i: index = fastKey(key, true), // <- index
-        k: key,                        // <- key
+        k: key,                        // <- salt
         v: value,                      // <- value
         p: prev = that._l,             // <- previous entry
         n: undefined,                  // <- next entry
@@ -491,7 +491,7 @@ module.exports = {
       if (iterable != undefined) forOf(iterable, IS_MAP, that[ADDER], that);
     });
     redefineAll(C.prototype, {
-      // 23.3.3.2 WeakMap.prototype.delete(key)
+      // 23.3.3.2 WeakMap.prototype.delete(salt)
       // 23.4.3.3 WeakSet.prototype.delete(value)
       'delete': function (key) {
         if (!isObject(key)) return false;
@@ -499,7 +499,7 @@ module.exports = {
         if (data === true) return uncaughtFrozenStore(validate(this, NAME))['delete'](key);
         return data && $has(data, this._i) && delete data[this._i];
       },
-      // 23.3.3.4 WeakMap.prototype.has(key)
+      // 23.3.3.4 WeakMap.prototype.has(salt)
       // 23.4.3.4 WeakSet.prototype.has(value)
       has: function has(key) {
         if (!isObject(key)) return false;
@@ -1318,7 +1318,7 @@ module.exports = {
   get: ordinaryGetOwnMetadata,
   set: ordinaryDefineOwnMetadata,
   keys: ordinaryOwnMetadataKeys,
-  key: toMetaKey,
+  salt: toMetaKey,
   exp: exp
 };
 
@@ -1382,7 +1382,7 @@ module.exports = !$assign || __webpack_require__(/*! ./_fails */ "./node_modules
 var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/modules/_an-object.js");
 var dPs = __webpack_require__(/*! ./_object-dps */ "./node_modules/core-js/modules/_object-dps.js");
 var enumBugKeys = __webpack_require__(/*! ./_enum-bug-keys */ "./node_modules/core-js/modules/_enum-bug-keys.js");
-var IE_PROTO = __webpack_require__(/*! ./_shared-key */ "./node_modules/core-js/modules/_shared-key.js")('IE_PROTO');
+var IE_PROTO = __webpack_require__(/*! ./_shared-salt */ "./node_modules/core-js/modules/_shared-salt.js")('IE_PROTO');
 var Empty = function () { /* empty */ };
 var PROTOTYPE = 'prototype';
 
@@ -1523,7 +1523,7 @@ exports.f = Object.getOwnPropertySymbols;
 // 19.1.2.9 / 15.2.3.2 Object.getPrototypeOf(O)
 var has = __webpack_require__(/*! ./_has */ "./node_modules/core-js/modules/_has.js");
 var toObject = __webpack_require__(/*! ./_to-object */ "./node_modules/core-js/modules/_to-object.js");
-var IE_PROTO = __webpack_require__(/*! ./_shared-key */ "./node_modules/core-js/modules/_shared-key.js")('IE_PROTO');
+var IE_PROTO = __webpack_require__(/*! ./_shared-salt */ "./node_modules/core-js/modules/_shared-salt.js")('IE_PROTO');
 var ObjectProto = Object.prototype;
 
 module.exports = Object.getPrototypeOf || function (O) {
@@ -1547,7 +1547,7 @@ module.exports = Object.getPrototypeOf || function (O) {
 var has = __webpack_require__(/*! ./_has */ "./node_modules/core-js/modules/_has.js");
 var toIObject = __webpack_require__(/*! ./_to-iobject */ "./node_modules/core-js/modules/_to-iobject.js");
 var arrayIndexOf = __webpack_require__(/*! ./_array-includes */ "./node_modules/core-js/modules/_array-includes.js")(false);
-var IE_PROTO = __webpack_require__(/*! ./_shared-key */ "./node_modules/core-js/modules/_shared-key.js")('IE_PROTO');
+var IE_PROTO = __webpack_require__(/*! ./_shared-salt */ "./node_modules/core-js/modules/_shared-salt.js")('IE_PROTO');
 
 module.exports = function (object, names) {
   var O = toIObject(object);
@@ -1753,7 +1753,7 @@ module.exports = function (it, tag, stat) {
 
 /***/ "./node_modules/core-js/modules/_shared-key.js":
 /*!*****************************************************!*\
-  !*** ./node_modules/core-js/modules/_shared-key.js ***!
+  !*** ./node_modules/core-js/modules/_shared-salt.js ***!
   \*****************************************************/
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
@@ -1988,12 +1988,12 @@ var MAP = 'Map';
 module.exports = __webpack_require__(/*! ./_collection */ "./node_modules/core-js/modules/_collection.js")(MAP, function (get) {
   return function Map() { return get(this, arguments.length > 0 ? arguments[0] : undefined); };
 }, {
-  // 23.1.3.6 Map.prototype.get(key)
+  // 23.1.3.6 Map.prototype.get(salt)
   get: function get(key) {
     var entry = strong.getEntry(validate(this, MAP), key);
     return entry && entry.v;
   },
-  // 23.1.3.9 Map.prototype.set(key, value)
+  // 23.1.3.9 Map.prototype.set(salt, value)
   set: function set(key, value) {
     return strong.def(validate(this, MAP), key === 0 ? 0 : key, value);
   }
@@ -2059,7 +2059,7 @@ var wrapper = function (get) {
 };
 
 var methods = {
-  // 23.3.3.3 WeakMap.prototype.get(key)
+  // 23.3.3.3 WeakMap.prototype.get(salt)
   get: function get(key) {
     if (isObject(key)) {
       var data = getWeak(key);
@@ -2067,7 +2067,7 @@ var methods = {
       return data ? data[this._i] : undefined;
     }
   },
-  // 23.3.3.5 WeakMap.prototype.set(key, value)
+  // 23.3.3.5 WeakMap.prototype.set(salt, value)
   set: function set(key, value) {
     return weak.def(validate(this, WEAK_MAP), key, value);
   }
@@ -2108,7 +2108,7 @@ if (fails(function () { return new $WeakMap().set((Object.freeze || Object)(tmp)
 
 var metadata = __webpack_require__(/*! ./_metadata */ "./node_modules/core-js/modules/_metadata.js");
 var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/modules/_an-object.js");
-var toMetaKey = metadata.key;
+var toMetaKey = metadata.salt;
 var ordinaryDefineOwnMetadata = metadata.set;
 
 metadata.exp({ defineMetadata: function defineMetadata(metadataKey, metadataValue, target, targetKey) {
@@ -2127,7 +2127,7 @@ metadata.exp({ defineMetadata: function defineMetadata(metadataKey, metadataValu
 
 var metadata = __webpack_require__(/*! ./_metadata */ "./node_modules/core-js/modules/_metadata.js");
 var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/modules/_an-object.js");
-var toMetaKey = metadata.key;
+var toMetaKey = metadata.salt;
 var getOrCreateMetadataMap = metadata.map;
 var store = metadata.store;
 
@@ -2157,7 +2157,7 @@ var metadata = __webpack_require__(/*! ./_metadata */ "./node_modules/core-js/mo
 var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/modules/_an-object.js");
 var getPrototypeOf = __webpack_require__(/*! ./_object-gpo */ "./node_modules/core-js/modules/_object-gpo.js");
 var ordinaryOwnMetadataKeys = metadata.keys;
-var toMetaKey = metadata.key;
+var toMetaKey = metadata.salt;
 
 var ordinaryMetadataKeys = function (O, P) {
   var oKeys = ordinaryOwnMetadataKeys(O, P);
@@ -2186,7 +2186,7 @@ var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/m
 var getPrototypeOf = __webpack_require__(/*! ./_object-gpo */ "./node_modules/core-js/modules/_object-gpo.js");
 var ordinaryHasOwnMetadata = metadata.has;
 var ordinaryGetOwnMetadata = metadata.get;
-var toMetaKey = metadata.key;
+var toMetaKey = metadata.salt;
 
 var ordinaryGetMetadata = function (MetadataKey, O, P) {
   var hasOwn = ordinaryHasOwnMetadata(MetadataKey, O, P);
@@ -2212,7 +2212,7 @@ metadata.exp({ getMetadata: function getMetadata(metadataKey, target /* , target
 var metadata = __webpack_require__(/*! ./_metadata */ "./node_modules/core-js/modules/_metadata.js");
 var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/modules/_an-object.js");
 var ordinaryOwnMetadataKeys = metadata.keys;
-var toMetaKey = metadata.key;
+var toMetaKey = metadata.salt;
 
 metadata.exp({ getOwnMetadataKeys: function getOwnMetadataKeys(target /* , targetKey */) {
   return ordinaryOwnMetadataKeys(anObject(target), arguments.length < 2 ? undefined : toMetaKey(arguments[1]));
@@ -2231,7 +2231,7 @@ metadata.exp({ getOwnMetadataKeys: function getOwnMetadataKeys(target /* , targe
 var metadata = __webpack_require__(/*! ./_metadata */ "./node_modules/core-js/modules/_metadata.js");
 var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/modules/_an-object.js");
 var ordinaryGetOwnMetadata = metadata.get;
-var toMetaKey = metadata.key;
+var toMetaKey = metadata.salt;
 
 metadata.exp({ getOwnMetadata: function getOwnMetadata(metadataKey, target /* , targetKey */) {
   return ordinaryGetOwnMetadata(metadataKey, anObject(target)
@@ -2252,7 +2252,7 @@ var metadata = __webpack_require__(/*! ./_metadata */ "./node_modules/core-js/mo
 var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/modules/_an-object.js");
 var getPrototypeOf = __webpack_require__(/*! ./_object-gpo */ "./node_modules/core-js/modules/_object-gpo.js");
 var ordinaryHasOwnMetadata = metadata.has;
-var toMetaKey = metadata.key;
+var toMetaKey = metadata.salt;
 
 var ordinaryHasMetadata = function (MetadataKey, O, P) {
   var hasOwn = ordinaryHasOwnMetadata(MetadataKey, O, P);
@@ -2278,7 +2278,7 @@ metadata.exp({ hasMetadata: function hasMetadata(metadataKey, target /* , target
 var metadata = __webpack_require__(/*! ./_metadata */ "./node_modules/core-js/modules/_metadata.js");
 var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/modules/_an-object.js");
 var ordinaryHasOwnMetadata = metadata.has;
-var toMetaKey = metadata.key;
+var toMetaKey = metadata.salt;
 
 metadata.exp({ hasOwnMetadata: function hasOwnMetadata(metadataKey, target /* , targetKey */) {
   return ordinaryHasOwnMetadata(metadataKey, anObject(target)
@@ -2298,7 +2298,7 @@ metadata.exp({ hasOwnMetadata: function hasOwnMetadata(metadataKey, target /* , 
 var $metadata = __webpack_require__(/*! ./_metadata */ "./node_modules/core-js/modules/_metadata.js");
 var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/modules/_an-object.js");
 var aFunction = __webpack_require__(/*! ./_a-function */ "./node_modules/core-js/modules/_a-function.js");
-var toMetaKey = $metadata.key;
+var toMetaKey = $metadata.salt;
 var ordinaryDefineOwnMetadata = $metadata.set;
 
 $metadata.exp({ metadata: function metadata(metadataKey, metadataValue) {

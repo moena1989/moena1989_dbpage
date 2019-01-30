@@ -31,7 +31,6 @@ export class DbManagerService {
     this.db.object('data/cases/' + modelo + '/metadata').set(loteData);
   }
 
-
   buscarReloj(serial: string) {
     const serial_splitted = serial.split('-');
     const b = serial_splitted[0].split('');
@@ -99,7 +98,7 @@ export class DbManagerService {
     // busco la caja seleccionada y la elimino de las disponibles
     this.cambiar_estado_caja(reloj.features.modelo, reloj.features.idCaja, this.estructura.ESTADOS_CAJA.ARMADO);
     // pusheo reloj
-    const key = this.db.object('data/relojes/' + reloj.metadata.salts + '/' + reloj.metadata.serial).set(reloj);
+    const key = this.db.object('data/relojes/' + reloj.metadata.salt + '/' + reloj.metadata.serial).set(reloj);
     reloj.metadata.key = key;
   }
 

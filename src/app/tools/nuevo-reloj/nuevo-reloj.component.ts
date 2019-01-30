@@ -4,7 +4,7 @@ import {DbManagerService} from '../../_services/db-manager.service';
 import {ModelRelojService} from '../../_services/model-reloj.service';
 import {MSelectComponent} from '../m-select/m-select.component';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
-import {Caja_m, ModelCajasService} from '../../model-cajas.service';
+import {CajaM, ModelCajasService} from '../../model-cajas.service';
 import {ToolsService} from '../../_services/tools.service';
 import {DbManagerFirestoreService, MCaja, MFiltro, MReloj} from '../../db-manager-firestore.service';
 
@@ -38,7 +38,7 @@ export class NuevoRelojComponent implements OnInit {
   watch_img: File;
   validando = false;
   ver_opciones_caja = false;
-  current_opciones: any = {colecciones: [], opciones_materiales_del_modelo: Caja_m};
+  current_opciones: any = {colecciones: [], opciones_materiales_del_modelo: CajaM};
   salts = {modelo: '', coleccion: ''};
 //////////////////////////////////////////////////////////////////
   current_reloj: Rmodel = new Rmodel();
@@ -76,7 +76,7 @@ export class NuevoRelojComponent implements OnInit {
     this.current_opciones.opciones_reloj = coleccion_selected.opciones_reloj;
     console.log(coleccion_selected.opciones_reloj);
     this.salts.coleccion = coleccion_selected.salt;
-    console.log(this.salts);
+    // console.log(this.salt);
     this.current_reloj.materiales = new Array(this.current_opciones.opciones_caja.materiales.length);
   }
 

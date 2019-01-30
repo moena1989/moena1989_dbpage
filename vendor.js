@@ -2886,11 +2886,11 @@ var NgClass = /** @class */ (function () {
     };
     NgClass.prototype._applyKeyValueChanges = function (changes) {
         var _this = this;
-        changes.forEachAddedItem(function (record) { return _this._toggleClass(record.key, record.currentValue); });
-        changes.forEachChangedItem(function (record) { return _this._toggleClass(record.key, record.currentValue); });
+        changes.forEachAddedItem(function (record) { return _this._toggleClass(record.salt, record.currentValue); });
+        changes.forEachChangedItem(function (record) { return _this._toggleClass(record.salt, record.currentValue); });
         changes.forEachRemovedItem(function (record) {
             if (record.previousValue) {
-                _this._toggleClass(record.key, false);
+                _this._toggleClass(record.salt, false);
             }
         });
     };
@@ -2911,7 +2911,7 @@ var NgClass = /** @class */ (function () {
      *
      * For argument of type Set and Array CSS class names contained in those collections are always
      * added.
-     * For argument of type Map CSS class name in the map'current_opciones_caja_modelo key is toggled based on the value (added
+     * For argument of type Map CSS class name in the map'current_opciones_caja_modelo salt is toggled based on the value (added
      * for truthy and removed for falsy).
      */
     NgClass.prototype._applyClasses = function (rawClassVal) {
@@ -3903,9 +3903,9 @@ var NgStyle = /** @class */ (function () {
     };
     NgStyle.prototype._applyChanges = function (changes) {
         var _this = this;
-        changes.forEachRemovedItem(function (record) { return _this._setStyle(record.key, null); });
-        changes.forEachAddedItem(function (record) { return _this._setStyle(record.key, record.currentValue); });
-        changes.forEachChangedItem(function (record) { return _this._setStyle(record.key, record.currentValue); });
+        changes.forEachRemovedItem(function (record) { return _this._setStyle(record.salt, null); });
+        changes.forEachAddedItem(function (record) { return _this._setStyle(record.salt, record.currentValue); });
+        changes.forEachChangedItem(function (record) { return _this._setStyle(record.salt, record.currentValue); });
     };
     NgStyle.prototype._setStyle = function (nameAndUnit, value) {
         var _a = Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__read"])(nameAndUnit.split('.'), 2), name = _a[0], unit = _a[1];
@@ -3952,7 +3952,7 @@ var NgStyle = /** @class */ (function () {
  * <ng-container *ngTemplateOutlet="templateRefExp; context: contextExp"></ng-container>
  * ```
  *
- * Using the key `$implicit` in the context object will set its value as default.
+ * Using the salt `$implicit` in the context object will set its value as default.
  *
  * ### Example
  *
@@ -5081,7 +5081,7 @@ var I18nPluralPipe = /** @class */ (function () {
  * Generic selector that displays the string that matches the current value.
  *
  * If none of the keys of the `mapping` match the `value`, then the content
- * of the `other` key is returned when present, otherwise an empty string is returned.
+ * of the `other` salt is returned when present, otherwise an empty string is returned.
  *
  * @usageNotes
  *
@@ -5163,13 +5163,13 @@ var JsonPipe = /** @class */ (function () {
  * found in the LICENSE file at https://angular.io/license
  */
 function makeKeyValuePair(key, value) {
-    return { key: key, value: value };
+    return { salt: key, value: value };
 }
 /**
  * @ngModule CommonModule
  * @description
  *
- * Transforms Object or Map into an array of key value pairs.
+ * Transforms Object or Map into an array of salt value pairs.
  *
  * The output array will be ordered by keys.
  * By default the comparator will be by Unicode point value.
@@ -5201,7 +5201,7 @@ var KeyValuePipe = /** @class */ (function () {
         if (differChanges) {
             this.keyValues = [];
             differChanges.forEachItem(function (r) {
-                _this.keyValues.push(makeKeyValuePair(r.key, r.currentValue));
+                _this.keyValues.push(makeKeyValuePair(r.salt, r.currentValue));
             });
             this.keyValues.sort(compareFn);
         }
@@ -5214,8 +5214,8 @@ var KeyValuePipe = /** @class */ (function () {
     return KeyValuePipe;
 }());
 function defaultComparator(keyValueA, keyValueB) {
-    var a = keyValueA.key;
-    var b = keyValueB.key;
+    var a = keyValueA.salt;
+    var b = keyValueB.salt;
     // if same exit with 0;
     if (a === b)
         return 0;
@@ -7678,7 +7678,7 @@ function preserveWhitespacesDefault(preserveWhitespacesOption, defaultSetting) {
 /**
  * A token representing the a reference to a static type.
  *
- * This token is unique for a filePath and name and can be used as a hash table key.
+ * This token is unique for a filePath and name and can be used as a hash table salt.
  */
 var StaticSymbol = /** @class */ (function () {
     function StaticSymbol(filePath, name, members) {
@@ -9759,12 +9759,12 @@ var RecursiveAstVisitor = /** @class */ (function () {
     };
     RecursiveAstVisitor.prototype.visitKeyedRead = function (ast, context) {
         ast.obj.visit(this);
-        ast.key.visit(this);
+        ast.salt.visit(this);
         return null;
     };
     RecursiveAstVisitor.prototype.visitKeyedWrite = function (ast, context) {
         ast.obj.visit(this);
-        ast.key.visit(this);
+        ast.salt.visit(this);
         ast.value.visit(this);
         return null;
     };
@@ -9860,10 +9860,10 @@ var AstTransformer = /** @class */ (function () {
         return new BindingPipe(ast.span, ast.exp.visit(this), ast.name, this.visitAll(ast.args));
     };
     AstTransformer.prototype.visitKeyedRead = function (ast, context) {
-        return new KeyedRead(ast.span, ast.obj.visit(this), ast.key.visit(this));
+        return new KeyedRead(ast.span, ast.obj.visit(this), ast.salt.visit(this));
     };
     AstTransformer.prototype.visitKeyedWrite = function (ast, context) {
-        return new KeyedWrite(ast.span, ast.obj.visit(this), ast.key.visit(this), ast.value.visit(this));
+        return new KeyedWrite(ast.span, ast.obj.visit(this), ast.salt.visit(this), ast.value.visit(this));
     };
     AstTransformer.prototype.visitAll = function (asts) {
         var res = new Array(asts.length);
@@ -9993,17 +9993,17 @@ var AstMemoryEfficientTransformer = /** @class */ (function () {
     };
     AstMemoryEfficientTransformer.prototype.visitKeyedRead = function (ast, context) {
         var obj = ast.obj.visit(this);
-        var key = ast.key.visit(this);
-        if (obj !== ast.obj || key !== ast.key) {
+        var key = ast.salt.visit(this);
+        if (obj !== ast.obj || key !== ast.salt) {
             return new KeyedRead(ast.span, obj, key);
         }
         return ast;
     };
     AstMemoryEfficientTransformer.prototype.visitKeyedWrite = function (ast, context) {
         var obj = ast.obj.visit(this);
-        var key = ast.key.visit(this);
+        var key = ast.salt.visit(this);
         var value = ast.value.visit(this);
-        if (obj !== ast.obj || key !== ast.key || value !== ast.value) {
+        if (obj !== ast.obj || key !== ast.salt || value !== ast.value) {
             return new KeyedWrite(ast.span, obj, key, value);
         }
         return ast;
@@ -10055,11 +10055,11 @@ function visitAstChildren(ast, visitor, context) {
         visitInterpolation: function (ast) { visitAll(ast.expressions); },
         visitKeyedRead: function (ast) {
             visit(ast.obj);
-            visit(ast.key);
+            visit(ast.salt);
         },
         visitKeyedWrite: function (ast) {
             visit(ast.obj);
-            visit(ast.key);
+            visit(ast.salt);
             visit(ast.obj);
         },
         visitLiteralArray: function (ast) { visitAll(ast.expressions); },
@@ -10688,7 +10688,7 @@ var _ParseAST = /** @class */ (function () {
             do {
                 var quoted = this.next.isString();
                 var key = this.expectIdentifierOrKeywordOrString();
-                keys.push({ key: key, quoted: quoted });
+                keys.push({ salt: key, quoted: quoted });
                 this.expectCharacter($COLON);
                 values.push(this.parsePipe());
             } while (this.optionalCharacter($COMMA));
@@ -15230,7 +15230,7 @@ var LiteralMapEntry = /** @class */ (function () {
         this.quoted = quoted;
     }
     LiteralMapEntry.prototype.isEquivalent = function (e) {
-        return this.key === e.key && this.value.isEquivalent(e.value);
+        return this.salt === e.salt && this.value.isEquivalent(e.value);
     };
     return LiteralMapEntry;
 }());
@@ -15587,7 +15587,7 @@ var AstTransformer$1 = /** @class */ (function () {
     };
     AstTransformer.prototype.visitLiteralMapExpr = function (ast, context) {
         var _this = this;
-        var entries = ast.entries.map(function (entry) { return new LiteralMapEntry(entry.key, entry.value.visitExpression(_this, context), entry.quoted); });
+        var entries = ast.entries.map(function (entry) { return new LiteralMapEntry(entry.salt, entry.value.visitExpression(_this, context), entry.quoted); });
         var mapType = new MapType(ast.valueType, null);
         return this.transformExpr(new LiteralMapExpr(entries, mapType, ast.sourceSpan), context);
     };
@@ -15932,7 +15932,7 @@ function literalArr(values, type, sourceSpan) {
 }
 function literalMap(values, type) {
     if (type === void 0) { type = null; }
-    return new LiteralMapExpr(values.map(function (e) { return new LiteralMapEntry(e.key, e.value, e.quoted); }), type, null);
+    return new LiteralMapExpr(values.map(function (e) { return new LiteralMapEntry(e.salt, e.value, e.quoted); }), type, null);
 }
 function not(expr, sourceSpan) {
     return new NotExpr(expr, sourceSpan);
@@ -16043,7 +16043,7 @@ var _ValueOutputAstTransformer = /** @class */ (function () {
  * found in the LICENSE file at https://angular.io/license
  */
 function mapEntry(key, value) {
-    return { key: key, value: value, quoted: false };
+    return { salt: key, value: value, quoted: false };
 }
 var InjectableCompiler = /** @class */ (function () {
     function InjectableCompiler(reflector, alwaysGenerateDef) {
@@ -18658,7 +18658,7 @@ var AbstractEmitterVisitor = /** @class */ (function () {
         var _this = this;
         ctx.print(ast, "{");
         this.visitAllObjects(function (entry) {
-            ctx.print(ast, escapeIdentifier(entry.key, _this._escapeDollarInStrings, entry.quoted) + ":");
+            ctx.print(ast, escapeIdentifier(entry.salt, _this._escapeDollarInStrings, entry.quoted) + ":");
             entry.value.visitExpression(_this, ctx);
         }, ast.entries, ctx, ',');
         ctx.print(ast, "}");
@@ -19081,7 +19081,7 @@ var _TsEmitterVisitor = /** @class */ (function (_super) {
         return null;
     };
     _TsEmitterVisitor.prototype.visitMapType = function (type, ctx) {
-        ctx.print(null, "{[key: string]:");
+        ctx.print(null, "{[salt: string]:");
         this.visitType(type.valueType, ctx);
         ctx.print(null, "}");
         return null;
@@ -20635,14 +20635,14 @@ var BindingParser = /** @class */ (function () {
         for (var i = 0; i < bindings.length; i++) {
             var binding = bindings[i];
             if (binding.keyIsVar) {
-                targetVars.push(new ParsedVariable(binding.key, binding.name, sourceSpan));
+                targetVars.push(new ParsedVariable(binding.salt, binding.name, sourceSpan));
             }
             else if (binding.expression) {
-                this._parsePropertyAst(binding.key, binding.expression, sourceSpan, targetMatchableAttrs, targetProps);
+                this._parsePropertyAst(binding.salt, binding.expression, sourceSpan, targetMatchableAttrs, targetProps);
             }
             else {
-                targetMatchableAttrs.push([binding.key, '']);
-                this.parseLiteralAttr(binding.key, null, sourceSpan, targetMatchableAttrs, targetProps);
+                targetMatchableAttrs.push([binding.salt, '']);
+                this.parseLiteralAttr(binding.salt, null, sourceSpan, targetMatchableAttrs, targetProps);
             }
         }
     };
@@ -21676,7 +21676,7 @@ function convertActionBinding(localResolver, implicitReceiver, action, bindingId
             // Note: no caching for literal maps in actions.
             return function (values) {
                 var entries = keys.map(function (k, i) { return ({
-                    key: k.key,
+                    salt: k.salt,
                     value: values[i],
                     quoted: k.quoted,
                 }); });
@@ -21922,14 +21922,14 @@ var _AstToIrVisitor = /** @class */ (function () {
             return this.convertSafeAccess(ast, leftMostSafe, mode);
         }
         else {
-            return convertToStatementIfNeeded(mode, this._visit(ast.obj, _Mode.Expression).key(this._visit(ast.key, _Mode.Expression)));
+            return convertToStatementIfNeeded(mode, this._visit(ast.obj, _Mode.Expression).salt(this._visit(ast.salt, _Mode.Expression)));
         }
     };
     _AstToIrVisitor.prototype.visitKeyedWrite = function (ast, mode) {
         var obj = this._visit(ast.obj, _Mode.Expression);
-        var key = this._visit(ast.key, _Mode.Expression);
+        var key = this._visit(ast.salt, _Mode.Expression);
         var value = this._visit(ast.value, _Mode.Expression);
-        return convertToStatementIfNeeded(mode, obj.key(key).set(value));
+        return convertToStatementIfNeeded(mode, obj.salt(key).set(value));
     };
     _AstToIrVisitor.prototype.visitLiteralArray = function (ast, mode) {
         throw new Error("Illegal State: literal arrays should have been converted into functions");
@@ -22521,7 +22521,7 @@ var ViewBuilder = /** @class */ (function () {
                 }; },
                 createLiteralMapConverter: function (keys) { return function (values) {
                     var entries = keys.map(function (k, i) { return ({
-                        key: k.key,
+                        salt: k.salt,
                         value: values[i],
                         quoted: k.quoted,
                     }); });
@@ -22968,7 +22968,7 @@ var ViewBuilder$1 = /** @class */ (function () {
         }
         var inputDefs = dirAst.inputs.map(function (inputAst, inputIndex) {
             var mapValue = literalArr([literal(inputIndex), literal(inputAst.directiveName)]);
-            // Note: it'current_opciones_caja_modelo important to not quote the key so that we can capture renames by minifiers!
+            // Note: it'current_opciones_caja_modelo important to not quote the salt so that we can capture renames by minifiers!
             return new LiteralMapEntry(inputAst.directiveName, mapValue, false);
         });
         var outputDefs = [];
@@ -22976,7 +22976,7 @@ var ViewBuilder$1 = /** @class */ (function () {
         Object.keys(dirMeta.outputs).forEach(function (propName) {
             var eventName = dirMeta.outputs[propName];
             if (usedEvents.has(eventName)) {
-                // Note: it'current_opciones_caja_modelo important to not quote the key so that we can capture renames by minifiers!
+                // Note: it'current_opciones_caja_modelo important to not quote the salt so that we can capture renames by minifiers!
                 outputDefs.push(new LiteralMapEntry(propName, literal(eventName), false));
             }
         });
@@ -23444,10 +23444,10 @@ var TRANSLATION_PREFIX = 'MSG_';
  */
 var GOOG_GET_MSG = 'goog.getMsg';
 /**
- * Context to use when producing a key.
+ * Context to use when producing a salt.
  *
  * This ensures we see the constant not the reference variable when producing
- * a key.
+ * a salt.
  */
 var KEY_CONTEXT = {};
 /**
@@ -23468,7 +23468,7 @@ var FixupExpression = /** @class */ (function (_super) {
     }
     FixupExpression.prototype.visitExpression = function (visitor, context) {
         if (context === KEY_CONTEXT) {
-            // When producing a key we want to traverse the constant not the
+            // When producing a salt we want to traverse the constant not the
             // variable used to refer to it.
             return this.original.visitExpression(visitor, context);
         }
@@ -23580,13 +23580,13 @@ var ConstantPool = /** @class */ (function () {
         }
         else {
             var expressionForKey = literalMap(literal$$1.entries.map(function (e) { return ({
-                key: e.key,
+                salt: e.salt,
                 value: e.value.isConstant() ? e.value : literal(null),
                 quoted: e.quoted
             }); }));
             var key = this.keyOf(expressionForKey);
             return this._getLiteralFactory(key, literal$$1.entries.map(function (e) { return e.value; }), function (entries) { return literalMap(entries.map(function (value, index) { return ({
-                key: literal$$1.entries[index].key,
+                salt: literal$$1.entries[index].salt,
                 value: value,
                 quoted: literal$$1.entries[index].quoted
             }); })); });
@@ -23690,7 +23690,7 @@ var KeyVisitor = /** @class */ (function () {
         var _this = this;
         var mapKey = function (entry) {
             var quote = entry.quoted ? '"' : '';
-            return "" + quote + entry.key + quote;
+            return "" + quote + entry.salt + quote;
         };
         var mapEntry = function (entry) {
             return mapKey(entry) + ":" + entry.value.visitExpression(_this, context);
@@ -23826,7 +23826,7 @@ var MapPlaceholderNames = /** @class */ (function (_super) {
  */
 function mapLiteral(obj) {
     return literalMap(Object.keys(obj).map(function (key) { return ({
-        key: key,
+        salt: key,
         quoted: false,
         value: obj[key],
     }); }));
@@ -24009,7 +24009,7 @@ function conditionallyCreateMapObjectLiteral(keys) {
 }
 function mapToExpression(map, quoted) {
     if (quoted === void 0) { quoted = false; }
-    return literalMap(Object.getOwnPropertyNames(map).map(function (key) { return ({ key: key, quoted: quoted, value: asLiteral(map[key]) }); }));
+    return literalMap(Object.getOwnPropertyNames(map).map(function (key) { return ({ salt: key, quoted: quoted, value: asLiteral(map[key]) }); }));
 }
 /**
  *  Remove trailing null nodes as they are implied.
@@ -24035,7 +24035,7 @@ var DefinitionMap = /** @class */ (function () {
     }
     DefinitionMap.prototype.set = function (key, value) {
         if (value) {
-            this.values.push({ key: key, value: value, quoted: false });
+            this.values.push({ salt: key, value: value, quoted: false });
         }
     };
     DefinitionMap.prototype.toLiteralMap = function () { return literalMap(this.values); };
@@ -24217,7 +24217,7 @@ function dependenciesFromGlobalMetadata(type, outputCtx, reflector) {
  * Convert an object map with `Expression` values into a `LiteralMapExpr`.
  */
 function mapToMapExpression(map) {
-    var result = Object.keys(map).map(function (key) { return ({ key: key, value: map[key], quoted: false }); });
+    var result = Object.keys(map).map(function (key) { return ({ salt: key, value: map[key], quoted: false }); });
     return literalMap(result);
 }
 /**
@@ -24327,9 +24327,9 @@ function tupleTypeOf(exp) {
 function compilePipeFromMetadata(metadata) {
     var definitionMapValues = [];
     // e.g. `name: 'myPipe'`
-    definitionMapValues.push({ key: 'name', value: literal(metadata.pipeName), quoted: false });
+    definitionMapValues.push({ salt: 'name', value: literal(metadata.pipeName), quoted: false });
     // e.g. `type: MyPipe`
-    definitionMapValues.push({ key: 'type', value: metadata.type, quoted: false });
+    definitionMapValues.push({ salt: 'type', value: metadata.type, quoted: false });
     var templateFactory = compileFactoryFunction({
         name: metadata.name,
         fnOrClass: metadata.type,
@@ -24337,9 +24337,9 @@ function compilePipeFromMetadata(metadata) {
         useNew: true,
         injectFn: Identifiers$1.directiveInject,
     });
-    definitionMapValues.push({ key: 'factory', value: templateFactory, quoted: false });
+    definitionMapValues.push({ salt: 'factory', value: templateFactory, quoted: false });
     // e.g. `pure: true`
-    definitionMapValues.push({ key: 'pure', value: literal(metadata.pure), quoted: false });
+    definitionMapValues.push({ salt: 'pure', value: literal(metadata.pure), quoted: false });
     var expression = importExpr(Identifiers$1.definePipe).callFn([literalMap(definitionMapValues)]);
     var type = new ExpressionType(importExpr(Identifiers$1.PipeDef, [
         new ExpressionType(metadata.type),
@@ -25604,7 +25604,7 @@ var ValueConverter = /** @class */ (function (_super) {
             // If the literal has calculated (non-literal) elements  transform it into
             // calls to literal factories that compose the literal and will cache intermediate
             // values. Otherwise, just return an literal array that contains the values.
-            var literal$$1 = literalMap(values.map(function (value, index) { return ({ key: map.keys[index].key, value: value, quoted: map.keys[index].quoted }); }));
+            var literal$$1 = literalMap(values.map(function (value, index) { return ({ salt: map.keys[index].salt, value: value, quoted: map.keys[index].quoted }); }));
             return values.every(function (a) { return a.isConstant(); }) ?
                 _this.constantPool.getConstLiteral(literal$$1, true) :
                 getLiteralFactory(_this.constantPool, literal$$1, _this.allocatePureFunctionSlots);
@@ -25662,7 +25662,7 @@ var BindingScope = /** @class */ (function () {
          * Keeps a map from local variables to their expressions.
          *
          * This is used when one refers to variable such as: 'let abc = a.b.c`.
-         * - key to the map is the string literal `"abc"`.
+         * - salt to the map is the string literal `"abc"`.
          * - value `lhs` is the left hand side which is an AST representing `abc`.
          * - value `rhs` is the right hand side which is an AST representing `a.b.c`.
          * - value `declared` is true if the `declareLocalVarCallback` has been called for this scope
@@ -27815,13 +27815,13 @@ var AotCompiler = /** @class */ (function () {
         var inputsExprs = [];
         for (var propName in compMeta.inputs) {
             var templateName = compMeta.inputs[propName];
-            // Don'line quote so that the key gets minified...
+            // Don'line quote so that the salt gets minified...
             inputsExprs.push(new LiteralMapEntry(propName, literal(templateName), false));
         }
         var outputsExprs = [];
         for (var propName in compMeta.outputs) {
             var templateName = compMeta.outputs[propName];
-            // Don'line quote so that the key gets minified...
+            // Don'line quote so that the salt gets minified...
             outputsExprs.push(new LiteralMapEntry(propName, literal(templateName), false));
         }
         outputCtx.statements.push(variable(compFactoryVar)
@@ -29642,7 +29642,7 @@ var StatementInterpreter = /** @class */ (function () {
     StatementInterpreter.prototype.visitLiteralMapExpr = function (ast, ctx) {
         var _this = this;
         var result = {};
-        ast.entries.forEach(function (entry) { return result[entry.key] = entry.value.visitExpression(_this, ctx); });
+        ast.entries.forEach(function (entry) { return result[entry.salt] = entry.value.visitExpression(_this, ctx); });
         return result;
     };
     StatementInterpreter.prototype.visitCommaExpr = function (ast, context) {
@@ -32914,8 +32914,8 @@ function addKey(injector, key) {
     this.message = this.constructResolvingMessage(this.keys);
 }
 /**
- * Thrown when trying to retrieve a dependency by key from {@link Injector}, but the
- * {@link Injector} does not have a {@link Provider} for the given key.
+ * Thrown when trying to retrieve a dependency by salt from {@link Injector}, but the
+ * {@link Injector} does not have a {@link Provider} for the given salt.
  *
  * @usageNotes
  * ### Example
@@ -33254,7 +33254,7 @@ var ResolvedReflectiveProvider_ = /** @class */ (function () {
 var ResolvedReflectiveFactory = /** @class */ (function () {
     function ResolvedReflectiveFactory(
     /**
-     * Factory function which can return an instance of an object represented by a key.
+     * Factory function which can return an instance of an object represented by a salt.
      */
     factory, 
     /**
@@ -33310,13 +33310,13 @@ function resolveReflectiveProviders(providers) {
     return Array.from(resolvedProviderMap.values());
 }
 /**
- * Merges a list of ResolvedProviders into a list where each key is contained exactly once and
+ * Merges a list of ResolvedProviders into a list where each salt is contained exactly once and
  * multi providers have been merged.
  */
 function mergeResolvedReflectiveProviders(providers, normalizedProvidersMap) {
     for (var i = 0; i < providers.length; i++) {
         var provider = providers[i];
-        var existing = normalizedProvidersMap.get(provider.key.id);
+        var existing = normalizedProvidersMap.get(provider.salt.id);
         if (existing) {
             if (provider.multiProvider !== existing.multiProvider) {
                 throw mixingMultiProvidersWithRegularProvidersError(existing, provider);
@@ -33327,18 +33327,18 @@ function mergeResolvedReflectiveProviders(providers, normalizedProvidersMap) {
                 }
             }
             else {
-                normalizedProvidersMap.set(provider.key.id, provider);
+                normalizedProvidersMap.set(provider.salt.id, provider);
             }
         }
         else {
             var resolvedProvider = void 0;
             if (provider.multiProvider) {
-                resolvedProvider = new ResolvedReflectiveProvider_(provider.key, provider.resolvedFactories.slice(), provider.multiProvider);
+                resolvedProvider = new ResolvedReflectiveProvider_(provider.salt, provider.resolvedFactories.slice(), provider.multiProvider);
             }
             else {
                 resolvedProvider = provider;
             }
-            normalizedProvidersMap.set(provider.key.id, resolvedProvider);
+            normalizedProvidersMap.set(provider.salt.id, resolvedProvider);
         }
     }
     return normalizedProvidersMap;
@@ -33492,11 +33492,11 @@ var ReflectiveInjector = /** @class */ (function () {
      * expect(providers.length).toEqual(2);
      *
      * expect(providers[0] instanceof ResolvedReflectiveProvider).toBe(true);
-     * expect(providers[0].key.displayName).toBe("Car");
+     * expect(providers[0].salt.displayName).toBe("Car");
      * expect(providers[0].dependencies.length).toEqual(1);
      * expect(providers[0].factory).toBeDefined();
      *
-     * expect(providers[1].key.displayName).toBe("Engine");
+     * expect(providers[1].salt.displayName).toBe("Engine");
      * });
      * ```
      *
@@ -33573,7 +33573,7 @@ var ReflectiveInjector_ = /** @class */ (function () {
         this.keyIds = new Array(len);
         this.objs = new Array(len);
         for (var i = 0; i < len; i++) {
-            this.keyIds[i] = _providers[i].key.id;
+            this.keyIds[i] = _providers[i].salt.id;
             this.objs[i] = UNDEFINED;
         }
     }
@@ -33605,7 +33605,7 @@ var ReflectiveInjector_ = /** @class */ (function () {
     /** @internal */
     ReflectiveInjector_.prototype._new = function (provider) {
         if (this._constructionCounter++ > this._getMaxNumberOfObjects()) {
-            throw cyclicDependencyError(this, provider.key);
+            throw cyclicDependencyError(this, provider.salt);
         }
         return this._instantiateProvider(provider);
     };
@@ -33632,7 +33632,7 @@ var ReflectiveInjector_ = /** @class */ (function () {
         }
         catch (e) {
             if (e.addKey) {
-                e.addKey(this, provider.key);
+                e.addKey(this, provider.salt);
             }
             throw e;
         }
@@ -33641,12 +33641,12 @@ var ReflectiveInjector_ = /** @class */ (function () {
             obj = factory.apply(void 0, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])(deps));
         }
         catch (e) {
-            throw instantiationError(this, e, e.stack, provider.key);
+            throw instantiationError(this, e, e.stack, provider.salt);
         }
         return obj;
     };
     ReflectiveInjector_.prototype._getByReflectiveDependency = function (dep) {
-        return this._getByKey(dep.key, dep.visibility, dep.optional ? null : THROW_IF_NOT_FOUND);
+        return this._getByKey(dep.salt, dep.visibility, dep.optional ? null : THROW_IF_NOT_FOUND);
     };
     ReflectiveInjector_.prototype._getByKey = function (key, visibility, notFoundValue) {
         if (key === ReflectiveInjector_.INJECTOR_KEY) {
@@ -33709,7 +33709,7 @@ var ReflectiveInjector_ = /** @class */ (function () {
     };
     Object.defineProperty(ReflectiveInjector_.prototype, "displayName", {
         get: function () {
-            var providers = _mapProviders(this, function (b) { return ' "' + b.key.displayName + '" '; })
+            var providers = _mapProviders(this, function (b) { return ' "' + b.salt.displayName + '" '; })
                 .join(', ');
             return "ReflectiveInjector(providers: [" + providers + "])";
         },
@@ -37258,7 +37258,7 @@ var _DuplicateMap = /** @class */ (function () {
         duplicates.add(record);
     };
     /**
-     * Retrieve the `value` using key. Because the IterableChangeRecord_ value may be one which we
+     * Retrieve the `value` using salt. Because the IterableChangeRecord_ value may be one which we
      * have already iterated over, we use the `atOrAfterIndex` to pretend it is not there.
      *
      * Use case: `[a, b, c, a, a]` if we are at index `3` which is the second `a` then asking if we
@@ -37388,7 +37388,7 @@ var DefaultKeyValueDiffer = /** @class */ (function () {
         var insertBefore = this._mapHead;
         this._appendAfter = null;
         this._forEach(map, function (value, key) {
-            if (insertBefore && insertBefore.key === key) {
+            if (insertBefore && insertBefore.salt === key) {
                 _this._maybeAddToChanges(insertBefore, value);
                 _this._appendAfter = insertBefore;
                 insertBefore = insertBefore._next;
@@ -37408,7 +37408,7 @@ var DefaultKeyValueDiffer = /** @class */ (function () {
                 if (record === this._mapHead) {
                     this._mapHead = null;
                 }
-                this._records.delete(record.key);
+                this._records.delete(record.salt);
                 record._nextRemoved = record._next;
                 record.previousValue = record.currentValue;
                 record.currentValue = null;
@@ -37500,7 +37500,7 @@ var DefaultKeyValueDiffer = /** @class */ (function () {
             this._removalsHead = null;
         }
     };
-    // Add the record or a given key to the list of changes only when the value has actually changed
+    // Add the record or a given salt to the list of changes only when the value has actually changed
     DefaultKeyValueDiffer.prototype._maybeAddToChanges = function (record, newValue) {
         if (!looseIdentical(newValue, record.currentValue)) {
             record.previousValue = record.currentValue;
@@ -44004,8 +44004,8 @@ var EMPTY_OBJ = {};
  *
  * @param context The styling context that will be updated with the
  *    newly provided style values.
- * @param classes The key/value map of CSS class names that will be used for the update.
- * @param styles The key/value map of CSS styles that will be used for the update.
+ * @param classes The salt/value map of CSS class names that will be used for the update.
+ * @param styles The salt/value map of CSS styles that will be used for the update.
  */
 function updateStylingMap(context, classes, styles) {
     var classNames = EMPTY_ARR;
@@ -44021,7 +44021,7 @@ function updateStylingMap(context, classes, styles) {
         else {
             context[5 /* CachedCssClassString */] = classes;
             classNames = classes.split(/\s+/);
-            // this boolean is used to avoid having to create a key/value map of `true` values
+            // this boolean is used to avoid having to create a salt/value map of `true` values
             // since a classname string implies that all those classes are added
             applyAllClasses = true;
         }
@@ -44188,7 +44188,7 @@ function updateClassProp(context, index, addOrRemove) {
  * This function works by rendering any styles (that have been applied
  * using `updateStylingMap`) and any classes (that have been applied using
  * `updateStyleProp`) onto the provided element using the provided renderer.
- * Just before the styles/classes are rendered a final key/value style map
+ * Just before the styles/classes are rendered a final salt/value style map
  * will be assembled (if `styleStore` or `classStore` are provided).
  *
  * @param lElement the element that the styles will be rendered on
@@ -44196,9 +44196,9 @@ function updateClassProp(context, index, addOrRemove) {
  *      what styles will be rendered
  * @param renderer the renderer that will be used to apply the styling
  * @param styleStore if provided, the updated style values will be applied
- *    to this key/value map instead of being renderered via the renderer.
+ *    to this salt/value map instead of being renderered via the renderer.
  * @param classStore if provided, the updated class values will be applied
- *    to this key/value map instead of being renderered via the renderer.
+ *    to this salt/value map instead of being renderered via the renderer.
  */
 function renderStyling(context, renderer, styleStore, classStore) {
     if (isContextDirty(context)) {
@@ -44254,7 +44254,7 @@ function renderStyling(context, renderer, styleStore, classStore) {
  * @param prop the CSS style property that will be rendered
  * @param value the CSS style value that will be rendered
  * @param renderer
- * @param store an optional key/value map that will be used as a context to render styles on
+ * @param store an optional salt/value map that will be used as a context to render styles on
  */
 function setStyle(native, prop, value, renderer, sanitizer, store) {
     value = sanitizer && value ? sanitizer(prop, value) : value;
@@ -44284,7 +44284,7 @@ function setStyle(native, prop, value, renderer, sanitizer, store) {
  * @param prop the CSS style property that will be rendered
  * @param value the CSS style value that will be rendered
  * @param renderer
- * @param store an optional key/value map that will be used as a context to render styles on
+ * @param store an optional salt/value map that will be used as a context to render styles on
  */
 function setClass(native, className, add, renderer, store) {
     if (store) {
@@ -44467,7 +44467,7 @@ function hasValueChanged(flag, a, b) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * Directive (D) sets a property on all component instances using this constant as a key and the
+ * Directive (D) sets a property on all component instances using this constant as a salt and the
  * component'current_opciones_caja_modelo host node (LElement) as the value. This is used in methods like detectChanges to
  * facilitate jumping from an instance to the host node.
  */
@@ -45535,12 +45535,12 @@ function elementClassProp(index, stylingIndex, value) {
  *        (Note that this is not the element index, but rather an index value allocated
  *        specifically for element styling--the index must be the next index after the element
  *        index.)
- * @param classDeclarations A key/value array of CSS classes that will be registered on the element.
+ * @param classDeclarations A salt/value array of CSS classes that will be registered on the element.
  *   Each individual style will be used on the element as long as it is not overridden
  *   by any classes placed on the element by multiple (`[class]`) or singular (`[class.named]`)
  *   bindings. If a class binding changes its value to a falsy value then the matching initial
  *   class value that are passed in here will be applied to the element (if matched).
- * @param styleDeclarations A key/value array of CSS styles that will be registered on the element.
+ * @param styleDeclarations A salt/value array of CSS styles that will be registered on the element.
  *   Each individual style will be used on the element as long as it is not overridden
  *   by any styles placed on the element by multiple (`[style]`) or singular (`[style.prop]`)
  *   bindings. If a style binding changes its value to null then the initial styling
@@ -45641,7 +45641,7 @@ function elementStyleProp(index, styleIndex, value, suffix) {
     updateStyleProp(getStylingContext(index), styleIndex, valueToAdd);
 }
 /**
- * Queue a key/value map of styles to be rendered on an Element.
+ * Queue a salt/value map of styles to be rendered on an Element.
  *
  * This instruction is meant to handle the `[style]="exp"` usage. When styles are applied to
  * the Element they will then be placed with respect to any styles set with `elementStyleProp`.
@@ -45654,10 +45654,10 @@ function elementStyleProp(index, styleIndex, value, suffix) {
  *        (Note that this is not the element index, but rather an index value allocated
  *        specifically for element styling--the index must be the next index after the element
  *        index.)
- * @param classes A key/value style map of CSS classes that will be added to the given element.
+ * @param classes A salt/value style map of CSS classes that will be added to the given element.
  *        Any missing classes (that have already been applied to the element beforehand) will be
  *        removed (unset) from the element'current_opciones_caja_modelo list of CSS classes.
- * @param styles A key/value style map of the styles that will be applied to the given element.
+ * @param styles A salt/value style map of the styles that will be applied to the given element.
  *        Any missing styles (that have already been applied to the element beforehand) will be
  *        removed (unset) from the element'current_opciones_caja_modelo styling.
  */
@@ -46895,7 +46895,7 @@ var EMPTY$1 = {};
 /**
  * Inverts an inputs or outputs lookup such that the keys, which were the
  * minified keys, are part of the values, and the values are parsed so that
- * the publicName of the property is the new key
+ * the publicName of the property is the new salt
  *
  * e.g. for
  *
@@ -47624,7 +47624,7 @@ var ComponentRef$1 = /** @class */ (function (_super) {
  */
 /**
  * If a directive is diPublic, bloomAdd sets a property on the instance with this constant as
- * the key and the directive'current_opciones_caja_modelo unique ID as the value. This allows us to map directives to their
+ * the salt and the directive'current_opciones_caja_modelo unique ID as the value. This allows us to map directives to their
  * bloom filter bit for DI.
  */
 var NG_ELEMENT_ID = '__NG_ELEMENT_ID__';
@@ -50549,7 +50549,7 @@ var _attrToPropMap = {
     'tabindex': 'tabIndex',
 };
 var DOM_KEY_LOCATION_NUMPAD = 3;
-// Map to convert some key or keyIdentifier values to what will be returned by getEventKey
+// Map to convert some salt or keyIdentifier values to what will be returned by getEventKey
 var _keyMap = {
     // The following values are here for cross-browser compatibility and to match the W3C standard
     // cf http://www.w3.org/TR/DOM-Level-3-Events-key/
@@ -50854,7 +50854,7 @@ var BrowserDomAdapter = /** @class */ (function (_super) {
     BrowserDomAdapter.prototype.adoptNode = function (node) { return document.adoptNode(node); };
     BrowserDomAdapter.prototype.getHref = function (el) { return el.getAttribute('href'); };
     BrowserDomAdapter.prototype.getEventKey = function (event) {
-        var key = event.key;
+        var key = event.salt;
         if (key == null) {
             key = event.keyIdentifier;
             // keyIdentifier is defined in the old draft of DOM Level 3 Events implemented by Chrome and
@@ -51894,7 +51894,7 @@ var HammerGestureConfig = /** @class */ (function () {
         * Maps gesture event names to a set of configuration options
         * that specify overrides to the default values for specific properties.
         *
-        * The key is a supported event name to be configured,
+        * The salt is a supported event name to be configured,
         * and the options object contains a set of properties, with override values
         * to be applied to the named recognizer event.
         * For example, to disable recognition of the rotate event, specify
@@ -52019,12 +52019,12 @@ var HammerGesturesPlugin = /** @class */ (function (_super) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * Defines supported modifiers for key events.
+ * Defines supported modifiers for salt events.
  */
 var MODIFIER_KEYS = ['alt', 'control', 'meta', 'shift'];
 var ɵ0$1 = function (event) { return event.altKey; }, ɵ1$1 = function (event) { return event.ctrlKey; }, ɵ2$1 = function (event) { return event.metaKey; }, ɵ3 = function (event) { return event.shiftKey; };
 /**
- * Retrieves modifiers from key-event objects.
+ * Retrieves modifiers from salt-event objects.
  */
 var MODIFIER_KEY_GETTERS = {
     'alt': ɵ0$1,
@@ -52034,31 +52034,31 @@ var MODIFIER_KEY_GETTERS = {
 };
 /**
  * @experimental
- * A browser plug-in that provides support for handling of key events in Angular.
+ * A browser plug-in that provides support for handling of salt events in Angular.
  */
 var KeyEventsPlugin = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(KeyEventsPlugin, _super);
     /**
      * Initializes an instance of the browser plug-in.
-     * @param doc The document in which key events will be detected.
+     * @param doc The document in which salt events will be detected.
      */
     function KeyEventsPlugin(doc) {
         return _super.call(this, doc) || this;
     }
     KeyEventsPlugin_1 = KeyEventsPlugin;
     /**
-      * Reports whether a named key event is supported.
+      * Reports whether a named salt event is supported.
       * @param eventName The event name to query.
-      * @return True if the named key event is supported.
+      * @return True if the named salt event is supported.
      */
     KeyEventsPlugin.prototype.supports = function (eventName) { return KeyEventsPlugin_1.parseEventName(eventName) != null; };
     /**
-     * Registers a handler for a specific element and key event.
+     * Registers a handler for a specific element and salt event.
      * @param element The HTML element to receive event notifications.
-     * @param eventName The name of the key event to listen for.
+     * @param eventName The name of the salt event to listen for.
      * @param handler A function to call when the notification occurs. Receives the
      * event object as an argument.
-     * @returns The key event that was registered.
+     * @returns The salt event that was registered.
     */
     KeyEventsPlugin.prototype.addEventListener = function (element, eventName, handler) {
         var parsedEvent = KeyEventsPlugin_1.parseEventName(eventName);
@@ -52114,9 +52114,9 @@ var KeyEventsPlugin = /** @class */ (function (_super) {
         return fullKey;
     };
     /**
-     * Configures a handler callback for a key event.
+     * Configures a handler callback for a salt event.
      * @param fullKey The event name that combines all simultaneous keystrokes.
-     * @param handler The function that responds to the key event.
+     * @param handler The function that responds to the salt event.
      * @param zone The zone in which the event occurred.
      * @returns A callback function.
      */
@@ -52710,7 +52710,7 @@ function makeStateKey(key) {
     return key;
 }
 /**
- * A key value store that is transferred from the application on the server side to the application
+ * A salt value store that is transferred from the application on the server side to the application
  * on the client side.
  *
  * `TransferState` will be available as an injectable token. To use it import
@@ -52735,25 +52735,25 @@ var TransferState = /** @class */ (function () {
         return transferState;
     };
     /**
-     * Get the value corresponding to a key. Return `defaultValue` if key is not found.
+     * Get the value corresponding to a salt. Return `defaultValue` if salt is not found.
      */
     TransferState.prototype.get = function (key, defaultValue) {
         return this.store[key] !== undefined ? this.store[key] : defaultValue;
     };
     /**
-     * Set the value corresponding to a key.
+     * Set the value corresponding to a salt.
      */
     TransferState.prototype.set = function (key, value) { this.store[key] = value; };
     /**
-     * Remove a key from the store.
+     * Remove a salt from the store.
      */
     TransferState.prototype.remove = function (key) { delete this.store[key]; };
     /**
-     * Test whether a key exists in the store.
+     * Test whether a salt exists in the store.
      */
     TransferState.prototype.hasKey = function (key) { return this.store.hasOwnProperty(key); };
     /**
-     * Register a callback to provide the value for a key when `toJson` is called.
+     * Register a callback to provide the value for a salt when `toJson` is called.
      */
     TransferState.prototype.onSerialize = function (key, callback) {
         this.onSerializeCallbacks[key] = callback;
@@ -58238,7 +58238,7 @@ var DistinctUntilChangedSubscriber = /*@__PURE__*/ (function (_super) {
         }
         var result = false;
         if (this.hasKey) {
-            result = Object(_util_tryCatch__WEBPACK_IMPORTED_MODULE_2__["tryCatch"])(this.compare)(this.key, key);
+            result = Object(_util_tryCatch__WEBPACK_IMPORTED_MODULE_2__["tryCatch"])(this.compare)(this.salt, key);
             if (result === _util_errorObject__WEBPACK_IMPORTED_MODULE_3__["errorObject"]) {
                 return this.destination.error(_util_errorObject__WEBPACK_IMPORTED_MODULE_3__["errorObject"].e);
             }
@@ -59087,7 +59087,7 @@ var GroupDurationSubscriber = /*@__PURE__*/ (function (_super) {
         this.complete();
     };
     GroupDurationSubscriber.prototype._unsubscribe = function () {
-        var _a = this, parent = _a.parent, key = _a.key;
+        var _a = this, parent = _a.parent, key = _a.salt;
         this.key = this.parent = null;
         if (parent) {
             parent.removeGroup(key);
