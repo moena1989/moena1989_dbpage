@@ -4,6 +4,7 @@ import {Router} from '@angular/router';
 import {DbManagerService} from '../../../_services/db-manager.service';
 import {ToolsService} from '../../../_services/tools.service';
 import {CurrentStorageService} from '../../../_services/current-storage.service';
+import {DbManagerFirestoreService} from '../../../db-manager-firestore.service';
 
 @Component({
   selector: 'app-busqueda',
@@ -20,18 +21,17 @@ export class BusquedaComponent implements OnInit {
   En teoría, siempre se llegará a esta página cuando ya se halla encontrado un reloj, y deba proyectarse, el objeto buscado está en db
   TODO buscar una manera más opptima sin tener que guardarlo y traerlo de db.
    */
-  constructor(public db: DbManagerService, private tools: ToolsService, public currentStorage: CurrentStorageService, private router: Router) {
+  constructor(public fs: DbManagerFirestoreService, private tools: ToolsService, public currentStorage: CurrentStorageService, private router: Router) {
   }
 
-  buscarBySerial(serial_ingresado: any) {
+  buscarBySerial(serialIngresado: any) {
     // console.log(serial_ingresado);
 
-    if (serial_ingresado !== '') {
-      this.db.buscarReloj(serial_ingresado).subscribe(result => {
-        if (!result) {
+    if (serialIngresado !== '') {
+      this.fs.getReloj(serialIngresado).subscribe(result => {
+        if (result.data()) {
           console.log('ese reloj no existe');
           this.err_msg = 'Ese tal reloj no existe';
-
         } else {
           console.log('reloj encontrado ;)');
           // console.log(result);

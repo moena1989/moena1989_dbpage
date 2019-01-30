@@ -112,19 +112,17 @@ export class NuevoRelojComponent implements OnInit {
         fechaUltimaModificacion: new Date(),
         urlImagen: url,
         salts: [this.salts.modelo, this.salts.coleccion],
-        id: this.fs.getUniqId(),
         numeroDeCaja: this.cajaSeleccionada.numeroDeCaja,
         numeroDeLote: this.cajaSeleccionada.numeroDeLote,
         estado: this.estructuras.ESTADOS_RELOJ.DISPONIBLE,
       };
 
       this.fs.getNuevoSerialReloj(relojFinal, serialModeloUnico => {
-        console.log('seeeeeee inntenta crear el serial ', serialModeloUnico);
+        console.log('seee inntenta crear el serial ', serialModeloUnico);
         relojFinal.serial = serialModeloUnico;
-
-        this.fs.pushReloj(relojFinal.id, relojFinal).then(value => {
+        this.fs.pushReloj(relojFinal.serial, relojFinal).then(value => {
           this.cajaSeleccionada.estado = this.estructuras.ESTADOS_CAJA.ARMADO;
-          this.fs.pushCaja(this.cajaSeleccionada.id, this.cajaSeleccionada).then(value1 => {
+          this.fs.pushCaja(this.cajaSeleccionada.serial, this.cajaSeleccionada).then(value1 => {
             console.log(value);
             this.subida_completa = true;
             this.porcentaje_registro = 100;
@@ -173,7 +171,7 @@ export class NuevoRelojComponent implements OnInit {
       this.current_reloj.caja = _cajaSeleccionada.name;
       this.current_reloj.idCaja = _cajaSeleccionada.obj.id;
       this.photoUrl = _cajaSeleccionada.obj.urlImagen;
-      this.current_reloj.serialCaja = _cajaSeleccionada.obj.serialCaja;
+      this.current_reloj.serialCaja = _cajaSeleccionada.obj.serial;
     }
   }
 

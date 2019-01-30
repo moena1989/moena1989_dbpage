@@ -103,7 +103,11 @@
         </div>
 
         <div class="ln" *ngIf="msjCajas!=='' || current_reloj.modelo"></div>
-        <div class="ttt" *ngIf="msjCajas!=='' || current_reloj.modelo">3. Colección y caracteristicas de personalización</div>
+        <div class="ttt" *ngIf="msjCajas!=='' || current_reloj.modelo">3. Colección y caracteristicas de
+          personalización
+        </div>
+        <div *ngIf="msjCajas!=='' || current_reloj.modelo">Estory contemplando la posiblidad de eliminar el campo de tipo de material y dejar un solo campo con todas
+          las configuracioness en estructura <strong>MATERIAL-COLOR</strong></div>
         <div class="cnt_opts" *ngIf="msjCajas!=='' || current_reloj.modelo">
           <app-m-select ttl="Colección" [opciones]="current_opciones.colecciones"
                         (alSeleccionar)="seleccionarColeccion($event)"></app-m-select>
