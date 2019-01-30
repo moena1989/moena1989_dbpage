@@ -7,12 +7,12 @@ import {DbManagerFirestoreService} from '../db-manager-firestore.service';
   providedIn: 'root'
 })
 export class HasherService {
-  constructor(afs: DbManagerFirestoreService) {
+  constructor() {
   }
 
-  encriptarSerial(serial: any, lote: number, num_lote: number): string {
+  encriptarSerial(modelo: string, uniqNum: number, numeroLote: number, numeroDeCaja: number): string {
     // console.log('se intenta encriptar');
-    const hashids = new Hash('M89-A7iFhVtuM0ejwHXIsSLj', 5, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789');
-    return hashids.encode(lote, num_lote);
+    const hashids = new Hash('M89-A7iFhVtuM0ejwHXIsSLj-' + modelo, 5, 'ABCDEFGHIJKLMNOPQRSTUVWXYZ123456789');
+    return hashids.encode(uniqNum, numeroLote, numeroDeCaja);
   }
 }

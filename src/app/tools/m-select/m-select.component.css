@@ -21,7 +21,6 @@
 .ss {
   -webkit-appearance: none;
   padding: .5em;
-  font-family: 'K2D', sans-serif;
   border: 1px solid rgba(221, 221, 221, 0.5);
   width: 12em;
   border-radius: .3em;
@@ -29,6 +28,9 @@
 
 }
 
+select#fixed {
+  -webkit-appearance: none;
+}
 input:placeholder-shown {
   -webkit-appearance: none;
   /*user-s;*/

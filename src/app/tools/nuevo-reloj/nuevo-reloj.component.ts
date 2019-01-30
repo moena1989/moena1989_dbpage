@@ -6,7 +6,7 @@ import {MSelectComponent} from '../m-select/m-select.component';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
 import {CajaM, ModelCajasService} from '../../model-cajas.service';
 import {ToolsService} from '../../_services/tools.service';
-import {DbManagerFirestoreService, MFiltro, MReloj} from '../../db-manager-firestore.service';
+import {DbManagerFirestoreService, MCaja, MFiltro, MReloj} from '../../db-manager-firestore.service';
 
 class Rmodel {
   diametroExterno: string;
@@ -55,11 +55,13 @@ export class NuevoRelojComponent implements OnInit {
   @ViewChild('modalSubiendo') modalSubiendo: NgxSmartModalComponent;
   @ViewChild('modalResult') modalResult: NgxSmartModalComponent;
   porcentaje_registro = 0;
+  private cajaSeleccionada: MCaja;
+  private msjCajas = '';
 
   constructor(
     public estructura: ModelRelojService,
     public hasher: HasherService,
-    public cajaEst: ModelCajasService,
+    public estructuras: ModelCajasService,
     public db: DbManagerService,
     public tools: ToolsService,
     public fs: DbManagerFirestoreService
@@ -110,17 +112,28 @@ export class NuevoRelojComponent implements OnInit {
         fechaUltimaModificacion: new Date(),
         urlImagen: url,
         salts: [this.salts.modelo, this.salts.coleccion],
-        id: this.fs.getUniqId()
+        id: this.fs.getUniqId(),
+        numeroDeCaja: this.cajaSeleccionada.numeroDeCaja,
+        numeroDeLote: this.cajaSeleccionada.numeroDeLote,
+        estado: this.estructuras.ESTADOS_RELOJ.DISPONIBLE,
       };
 
-      this.fs.pushReloj(relojFinal.id, relojFinal).then(value => {
-        console.log(value);
-        this.subida_completa = true;
-        this.porcentaje_registro = 100;
-        setTimeout(() => {
-          this.modalSubiendo.close();
-          this.modalResult.open();
-        }, 1000);
+      this.fs.getNuevoSerialReloj(relojFinal, serialModeloUnico => {
+        console.log('seeeeeee inntenta crear el serial ', serialModeloUnico);
+        relojFinal.serial = serialModeloUnico;
+
+        this.fs.pushReloj(relojFinal.id, relojFinal).then(value => {
+          this.cajaSeleccionada.estado = this.estructuras.ESTADOS_CAJA.ARMADO;
+          this.fs.pushCaja(this.cajaSeleccionada.id, this.cajaSeleccionada).then(value1 => {
+            console.log(value);
+            this.subida_completa = true;
+            this.porcentaje_registro = 100;
+            setTimeout(() => {
+              this.modalSubiendo.close();
+              this.modalResult.open();
+            }, 1000);
+          });
+        });
       });
     });
   }
@@ -150,16 +163,17 @@ export class NuevoRelojComponent implements OnInit {
 
   }
 
-  seleccionarCaja(caja_selected: any) {
+  seleccionarCaja(_cajaSeleccionada: any) {
     console.error('se selecciona la caja!');
-    console.log(caja_selected);
+    console.log(_cajaSeleccionada);
 
-    if (caja_selected.obj !== undefined) {
+    if (_cajaSeleccionada.obj !== undefined) {
       this.ver_opciones_reloj = true;
-      this.current_reloj.caja = caja_selected.name;
-      this.current_reloj.idCaja = caja_selected.obj.my_key;
-      this.photoUrl = caja_selected.obj.urlImagen;
-      this.current_reloj.serialCaja = caja_selected.obj.serialCaja;
+      this.cajaSeleccionada = _cajaSeleccionada.obj;
+      this.current_reloj.caja = _cajaSeleccionada.name;
+      this.current_reloj.idCaja = _cajaSeleccionada.obj.id;
+      this.photoUrl = _cajaSeleccionada.obj.urlImagen;
+      this.current_reloj.serialCaja = _cajaSeleccionada.obj.serialCaja;
     }
   }
 
@@ -180,11 +194,6 @@ export class NuevoRelojComponent implements OnInit {
     this.filtrarCajas();
   }
 
-  seleccionarMaterial(material: any, i: number) {
-    this.current_reloj.materiales[i] = material.name;
-    // this.filtrar();
-  }
-
   seleccionarColorMaquinaria(maq: any) {
     this.current_reloj.colorMaquinaria = maq.name;
   }
@@ -202,33 +211,36 @@ export class NuevoRelojComponent implements OnInit {
   private filtrarCajas() {
     console.log('probando filtros Firestore');
     this.fs.getCajasDisponibles(this.filtrosCaja).subscribe(cajas => {
-
-      if (cajas.empty) {
-        console.log('no se encontraron cajas con la configuración actual');
-        return;
+        this.msjCajas = '';
+        if (cajas.empty) {
+          console.log('no se encontraron cajas con la configuración actual');
+          this.msjCajas = 'No existen cajas registradas con esas caracteristicas';
+          return;
+        } else {
+          this.cajasFiltradas = [];
+          cajas.docs.forEach(caja => {
+            this.cajasFiltradas.push(caja.data());
+          });
+          console.log(this.cajasFiltradas);
+          const opcs_lote = [];
+          this.cajasFiltradas.forEach(cj => {
+            let exist = false;
+            for (let i = 0; i < opcs_lote.length; i++) {
+              if (opcs_lote[i].name === cj.numeroDeLote) {
+                opcs_lote[i].items.push({name: cj.numeroDeCaja, obj: cj});
+                exist = true;
+                break;
+              }
+            }
+            if (!exist) {
+              opcs_lote.push({name: cj.numeroDeLote, items: [{name: cj.numeroDeCaja, obj: cj}]});
+            }
+          });
+          this.ver_opciones_caja = true;
+          this.current_opciones.lotes = opcs_lote;
+          console.log(opcs_lote);
+        }
       }
-      this.cajasFiltradas = [];
-      cajas.docs.forEach(caja => {
-        this.cajasFiltradas.push(caja.data());
-      });
-      console.log(this.cajasFiltradas);
-      const opcs_lote = [];
-      this.cajasFiltradas.forEach(cj => {
-        let exist = false;
-        for (let i = 0; i < opcs_lote.length; i++) {
-          if (opcs_lote[i].name === cj.numeroDeLote) {
-            opcs_lote[i].items.push({name: cj.numeroDeCaja, obj: cj});
-            exist = true;
-            break;
-          }
-        }
-        if (!exist) {
-          opcs_lote.push({name: cj.numeroDeLote, items: [{name: cj.numeroDeCaja, obj: cj}]});
-        }
-      });
-      this.ver_opciones_caja = true;
-      this.current_opciones.lotes = opcs_lote;
-      console.log(opcs_lote);
-    });
+    );
   }
 }

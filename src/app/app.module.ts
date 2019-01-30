@@ -46,6 +46,7 @@ import {ToolsService} from './_services/tools.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DbManagerFirestoreService} from './db-manager-firestore.service';
 import {AngularFirestore} from '@angular/fire/firestore';
+import {HasherService} from './_services/hasher.service';
 
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
@@ -123,7 +124,7 @@ const firebaseConfig = {
     BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
   ],
   providers: [NgxSmartModalService, CurrentStorageService, {provide: StorageBucket, useValue: 'testing-this-shit'},
-    ToolsService, ModelCajasService, AuthService, DbManagerFirestoreService, AngularFirestore],
+    ToolsService, ModelCajasService, AuthService, DbManagerFirestoreService, AngularFirestore, HasherService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

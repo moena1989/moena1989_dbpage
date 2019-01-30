@@ -201,6 +201,22 @@
   mrgin-top: 1em;
 }
 
+.vasbft {
+  font-size: 1.1em;
+  margin-right: .5em;
+}
+
+.erorCajas {
+  font-size: .8em;
+  font-weight: 700;
+  color: #e03e3e;
+  background: rgba(224, 62, 62, 0.1);
+  padding: .5em;
+  border: .3em;
+  display: flex;
+  align-items: center;
+}
+
 .visualizador {
   /*background: #e03e3e;*/
   width: 30em;
