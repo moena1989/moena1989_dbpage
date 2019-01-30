@@ -4,7 +4,7 @@
     Registro exitoso
   </div>
   <!--<div class="modal-cnt">-->
-    <!--<app-reloj-buscado [dataReloj]="currentReloj"></app-reloj-buscado>-->
+  <!--<app-reloj-buscado [dataReloj]="currentReloj"></app-reloj-buscado>-->
   <!--</div>-->
 
   <div class="modal-bottom-cnt">
@@ -91,6 +91,8 @@
             <app-m-select ttl="Lote" [opciones]="current_opciones.lotes"
                           (alSeleccionar)="seleccionarLote($event)"></app-m-select>
             <app-m-select ttl="No. Caja" [opciones]="current_opciones.cajas"
+                          (alSeleccionar)="seleccionarCaja($event)"></app-m-select>
+            <app-m-select ttl="Serial Caja" [opciones]="[{name:current_reloj.serialCaja}]"
                           (alSeleccionar)="seleccionarCaja($event)"></app-m-select>
           </div>
         </div>

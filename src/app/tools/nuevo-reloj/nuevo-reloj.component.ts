@@ -6,7 +6,7 @@ import {MSelectComponent} from '../m-select/m-select.component';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
 import {CajaM, ModelCajasService} from '../../model-cajas.service';
 import {ToolsService} from '../../_services/tools.service';
-import {DbManagerFirestoreService, MCaja, MFiltro, MReloj} from '../../db-manager-firestore.service';
+import {DbManagerFirestoreService, MFiltro, MReloj} from '../../db-manager-firestore.service';
 
 class Rmodel {
   diametroExterno: string;
@@ -21,6 +21,7 @@ class Rmodel {
   colorPulso: any;
   idCaja: string;
   numeroDeCaja: number;
+  serialCaja: number;
 }
 
 @Component({
@@ -94,8 +95,8 @@ export class NuevoRelojComponent implements OnInit {
     this.porcentaje_registro = 50;
 
     this.fs.pushImage(this.watch_img, 'front', 'watches/' + 'asdasd', url => {
-      const serial = this.hasher.encriptarSerial('aquí irán un serial chingón',
-        Math.round(Math.random() * 500), Math.round(Math.random() * 500));
+      // const serial = this.hasher.encriptarSerial('aquí irán un serial chingón',
+      //    Math.round(Math.random() * 500), Math.round(Math.random() * 500));
       const relojFinal: MReloj = {
         coleccion: this.current_reloj.coleccion,
         modelo: this.current_reloj.modelo,
@@ -104,14 +105,16 @@ export class NuevoRelojComponent implements OnInit {
         idCaja: this.current_reloj.idCaja,
         diamtroExterno: this.current_reloj.diametroExterno,
         diametroInterno: this.current_reloj.diametroInterno,
-        serial: serial,
+        serial: '', // se hacae en la database.
         fechaCreacion: new Date(),
         fechaUltimaModificacion: new Date(),
         urlImagen: url,
+        salts: [this.salts.modelo, this.salts.coleccion],
         id: this.fs.getUniqId()
       };
 
       this.fs.pushReloj(relojFinal.id, relojFinal).then(value => {
+        console.log(value);
         this.subida_completa = true;
         this.porcentaje_registro = 100;
         setTimeout(() => {
@@ -156,6 +159,7 @@ export class NuevoRelojComponent implements OnInit {
       this.current_reloj.caja = caja_selected.name;
       this.current_reloj.idCaja = caja_selected.obj.my_key;
       this.photoUrl = caja_selected.obj.urlImagen;
+      this.current_reloj.serialCaja = caja_selected.obj.serialCaja;
     }
   }
 
