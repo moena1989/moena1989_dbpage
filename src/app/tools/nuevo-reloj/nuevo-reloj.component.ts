@@ -104,7 +104,6 @@ export class NuevoRelojComponent implements OnInit {
         modelo: this.current_reloj.modelo,
         colorMaquinaria: this.current_reloj.colorMaquinaria,
         colorPulso: this.current_reloj.colorPulso,
-        idCaja: this.current_reloj.idCaja,
         diamtroExterno: this.current_reloj.diametroExterno,
         diametroInterno: this.current_reloj.diametroInterno,
         serial: '', // se hacae en la database.

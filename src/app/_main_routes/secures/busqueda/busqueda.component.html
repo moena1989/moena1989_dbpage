@@ -10,12 +10,12 @@
     <div class="err">{{err_msg}}</div>
   </div>
 </div>
-<div class="carta" *ngIf="mostrar_busqueda">
+<div class="carta" *ngIf="mostrarBusqueda">
 
   <div class="top_card">
-    <div class="top_ttl">GH-{{reloj_encontrado.metadata.serial}}</div>
+    <div class="top_ttl">GH-{{reloj.serial}}</div>
   </div>
   <app-reloj-buscado class=" card_cnt"
-                     [dataReloj]="reloj_encontrado"></app-reloj-buscado>
+                     [dataReloj]="reloj"></app-reloj-buscado>
 </div>
-<!--<div class="bt_cerrar" (click)="cerrar()" *ngIf="mostrar_busqueda">Cerrar busqueda</div>-->
+<!--<div class="bt_cerrar" (click)="cerrar()" *ngIf="mostrarBusqueda">Cerrar busqueda</div>-->

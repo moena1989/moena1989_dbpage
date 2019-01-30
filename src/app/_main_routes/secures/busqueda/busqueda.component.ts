@@ -13,15 +13,17 @@ import {DbManagerFirestoreService} from '../../../db-manager-firestore.service';
 })
 export class BusquedaComponent implements OnInit {
   err_msg = '';
-  reloj_encontrado: any = {};
-  mostrar_busqueda = false;
+  reloj: any = {};
+  mostrarBusqueda = false;
   serial_bs = 'GH-ZQ9U4';
 
   /*
   En teoría, siempre se llegará a esta página cuando ya se halla encontrado un reloj, y deba proyectarse, el objeto buscado está en db
   TODO buscar una manera más opptima sin tener que guardarlo y traerlo de db.
    */
-  constructor(public fs: DbManagerFirestoreService, private tools: ToolsService, public currentStorage: CurrentStorageService, private router: Router) {
+  constructor(
+    public fs: DbManagerFirestoreService, private tools: ToolsService,
+    public currentStorage: CurrentStorageService, private router: Router) {
   }
 
   buscarBySerial(serialIngresado: any) {
@@ -29,14 +31,14 @@ export class BusquedaComponent implements OnInit {
 
     if (serialIngresado !== '') {
       this.fs.getReloj(serialIngresado).subscribe(result => {
-        if (result.data()) {
+        if (!result.data()) {
           console.log('ese reloj no existe');
           this.err_msg = 'Ese tal reloj no existe';
         } else {
           console.log('reloj encontrado ;)');
           // console.log(result);
-          this.reloj_encontrado = result;
-          this.mostrar_busqueda = true;
+          this.reloj = result.data();
+          this.mostrarBusqueda = true;
         }
       });
     } else {
@@ -51,7 +53,7 @@ export class BusquedaComponent implements OnInit {
 
   cerrar() {
     this.serial_bs = '';
-    this.mostrar_busqueda = false;
+    this.mostrarBusqueda = false;
     this.currentStorage.relojDisponible = null;
   }
 }
