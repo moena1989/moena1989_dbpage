@@ -748,6 +748,11 @@ OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
 
 
+@angular/fire/firestore
+MIT
+
+firebase/firestore
+
 @fortawesome/fontawesome-svg-core
 MIT
 Font Awesome Free License
