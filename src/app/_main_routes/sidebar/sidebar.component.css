@@ -116,8 +116,6 @@
     /*width: 1.5em;*/
     margin: .8em 1em .8em 1.5em; /*background: #e03e3e;*/
     font-size: 1.2em;
-
-    color: rgba(255, 255, 255, 0.2);
   }
 
   .obb {
@@ -184,7 +182,7 @@
     padding-left: .5em;
     align-items: center;
     cursor: pointer;
-    color: #cccccc;
+    color: rgba(255, 255, 255, 0.31);
     font-size: .8em;
     transition: all .2s ease-in-out;
   }
@@ -212,7 +210,7 @@
   }
 
   .item:hover {
-    color: #ffffff;
+    color: rgba(255, 255, 255, 0.5);
     background: rgba(0, 0, 0, 0.1);
     /*font-weight: 600;*/
   }

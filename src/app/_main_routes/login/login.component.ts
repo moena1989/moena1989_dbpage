@@ -13,7 +13,7 @@ export class LoginComponent implements OnInit {
   err_msg = '';
 
   constructor(private db: DbManagerService, public tool: ToolsService,
-                private router: Router, private auth: AuthService, private ngZone: NgZone) {
+              private router: Router, private auth: AuthService, private ngZone: NgZone) {
   }
 
   ngOnInit() {
@@ -35,6 +35,10 @@ export class LoginComponent implements OnInit {
 
   salir(value: string, value2: string) {
 
+  }
+
+  signInWithZoho() {
+    this.auth.signInWithZoho();
   }
 }
 

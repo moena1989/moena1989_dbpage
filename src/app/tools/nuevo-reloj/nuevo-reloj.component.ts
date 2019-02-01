@@ -35,7 +35,6 @@ export class NuevoRelojComponent implements OnInit {
   @ViewChildren(MSelectComponent) selects: QueryList<MSelectComponent>;
   @ViewChild('modal') modal: NgxSmartModalComponent;
   obj: any = [];
-  registrado = false;
   watch_img: File;
   validando = false;
   ver_opciones_caja = false;
@@ -44,19 +43,17 @@ export class NuevoRelojComponent implements OnInit {
 //////////////////////////////////////////////////////////////////
   current_reloj: Rmodel = new Rmodel();
   ver_opciones_reloj = false;
-  cajas_disponibles: any[];
   cajasFiltradas: any[] = undefined;
   modelo_seleccionado: any;
   subida_completa = false;
-  currentReloj: any = {};
   photoUrl = '';
   filtrosCaja: MFiltro = {diametroExterno: '', diametroInterno: '', modelo: ''};
   @ViewChild('modalAlert') modalAlert: NgxSmartModalComponent;
   @ViewChild('modalSubiendo') modalSubiendo: NgxSmartModalComponent;
   @ViewChild('modalResult') modalResult: NgxSmartModalComponent;
   porcentaje_registro = 0;
-  private cajaSeleccionada: MCaja;
-  private msjCajas = '';
+  cajaSeleccionada: MCaja;
+  msjCajas = '';
 
   constructor(
     public estructura: ModelRelojService,

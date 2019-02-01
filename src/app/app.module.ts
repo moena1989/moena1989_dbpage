@@ -74,7 +74,6 @@ const appRoutes: Routes = [
     ]
   }];
 
-
 // REAL DATABASE
 // const config = {
 //   apiKey: 'AIzaSyAh48TUW_EdI6fI6om3EMRCdlCC4U3n9U8',

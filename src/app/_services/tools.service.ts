@@ -15,6 +15,7 @@ export class ToolsService implements CanActivate {
   public show_menu = true;
   public show_windows_tittle_bar = false;
   public gUser: any = {};
+  public version = 'M89DB-1.1a';
 
   constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService) {
 
