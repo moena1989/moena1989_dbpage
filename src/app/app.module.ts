@@ -1,8 +1,8 @@
 import {BrowserModule} from '@angular/platform-browser';
-import {NgModule} from '@angular/core';
+import {InjectionToken, NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {NuevoRelojComponent} from './tools/nuevo-reloj/nuevo-reloj.component';
-import {RouterModule, Routes} from '@angular/router';
+import {ActivatedRouteSnapshot, RouterModule, Routes} from '@angular/router';
 import {AngularFireModule} from '@angular/fire';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {AngularFireDatabaseModule} from '@angular/fire/database';
@@ -30,8 +30,8 @@ import {FormButtonComponent} from './form-button/form-button.component';
 import {ModelCajasService} from './model-cajas.service';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {library} from '@fortawesome/fontawesome-svg-core';
-import {fas, faSearch, faUser} from '@fortawesome/free-solid-svg-icons';
-import {far, faRegistered} from '@fortawesome/free-regular-svg-icons';
+import {fas} from '@fortawesome/free-solid-svg-icons';
+import {far} from '@fortawesome/free-regular-svg-icons';
 import {VerLoteComponent} from './ver-lote/ver-lote.component';
 import {TittlebarComponent} from './tittlebar/tittlebar.component';
 import {TopBarComponent} from './top-bar/top-bar.component';
@@ -47,15 +47,19 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {DbManagerFirestoreService} from './db-manager-firestore.service';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {HasherService} from './_services/hasher.service';
+import {OAuthCallbackComponent} from './o-auth-callback/o-auth-callback.component';
 
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
+// ng build --prod --base-href https://moena-1989.firebaseapp.com/
 // npx ngh --dir=dist/moenaDbApp
 
 // canActivate: [AuthGuardService],
+const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 const appRoutes: Routes = [
   {path: '', redirectTo: 'logIn', pathMatch: 'full'},
   {path: 'logIn', component: LoginComponent},
   {path: 'sign_up', component: WorkerRegComponent},
+  {path: 'OAuthCallBack', component: OAuthCallbackComponent},
   {
     path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
       {path: 'home', component: HomeComponent},
@@ -72,6 +76,13 @@ const appRoutes: Routes = [
       {path: 'ventas', component: VentasPageComponent},
       {path: 'publicaciones', component: PublicacionesPageComponent},
     ]
+  }, {
+    path: 'externalRedirect',
+    resolve: {
+      url: externalUrlProvider,
+    },
+    // We need a component here because we cannot define the route otherwise
+    component: LoginComponent,
   }];
 
 // REAL DATABASE
@@ -113,7 +124,7 @@ const firebaseConfig = {
     ExperimentosPageComponent, InventarioPageComponent,
     PublicacionesPageComponent, VentasPageComponent,
     NuevaCajaComponent, InputComponent, FormButtonComponent,
-    VerLoteComponent, TittlebarComponent, TopBarComponent, LoadbarComponent
+    VerLoteComponent, TittlebarComponent, TopBarComponent, LoadbarComponent, OAuthCallbackComponent
   ],
   imports: [
     RouterModule.forRoot(appRoutes, {enableTracing: false}),
@@ -122,7 +133,13 @@ const firebaseConfig = {
     AngularFireAuthModule, AngularFireStorageModule, HttpClientModule, AngularFireModule,
     BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
   ],
-  providers: [NgxSmartModalService, CurrentStorageService, {provide: StorageBucket, useValue: 'testing-this-shit'},
+  providers: [{
+    provide: externalUrlProvider,
+    useValue: (route: ActivatedRouteSnapshot) => {
+      const externalUrl = route.paramMap.get('externalUrl');
+      window.open(externalUrl, '_self');
+    },
+  }, NgxSmartModalService, CurrentStorageService, {provide: StorageBucket, useValue: 'testing-this-shit'},
     ToolsService, ModelCajasService, AuthService, DbManagerFirestoreService, AngularFirestore, HasherService],
   bootstrap: [AppComponent]
 })

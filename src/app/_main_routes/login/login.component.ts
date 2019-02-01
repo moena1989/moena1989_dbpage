@@ -38,7 +38,10 @@ export class LoginComponent implements OnInit {
   }
 
   signInWithZoho() {
-    this.auth.signInWithZoho();
+    this.router.navigate(['/externalRedirect', {externalUrl: 'https://accounts.zoho.com/oauth/v2/auth?scope=ZohoCRM.users.ALL&client_id=1000.A67SKNS3UDRO530634DXY89X5CFYNO&response_type=code&access_type=online&redirect_uri=' + this.tool.urlDomain + '/OAuthCallBack'}], {
+      skipLocationChange: true,
+    });
+    // this.auth.signInWithZoho();
   }
 }
 

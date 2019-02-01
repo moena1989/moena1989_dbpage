@@ -13,9 +13,10 @@ export class ToolsService implements CanActivate {
   private MAX_SIZE_IN_MB = 0.7;
   public top_tittle = 'holi';
   public show_menu = true;
-  public show_windows_tittle_bar = false;
   public gUser: any = {};
   public version = 'M89DB-1.1a';
+  public urlDomain = 'http://localhost:4200';
+  public show_windows_tittle_bar = false;
 
   constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService) {
 

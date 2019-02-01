@@ -165,6 +165,8 @@ input {
   .logo {
     width: 25em;
     margin: 1em;
+    /*background:url('assets/common/logo_w.svg') no-repeat center center;*/
+
   }
 }
 
