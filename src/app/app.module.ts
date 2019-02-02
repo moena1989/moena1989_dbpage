@@ -50,7 +50,6 @@ import {HasherService} from './_services/hasher.service';
 import {OAuthCallbackComponent} from './o-auth-callback/o-auth-callback.component';
 
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
-// ng build --prod --base-href https://moena-1989.firebaseapp.com/
 // npx ngh --dir=dist/moenaDbApp
 
 // canActivate: [AuthGuardService],
@@ -59,7 +58,7 @@ const appRoutes: Routes = [
   {path: '', redirectTo: 'logIn', pathMatch: 'full'},
   {path: 'logIn', component: LoginComponent},
   {path: 'sign_up', component: WorkerRegComponent},
-  {path: 'OAuthCallBack', component: OAuthCallbackComponent},
+  {path: 'OAuthCallback', component: OAuthCallbackComponent},
   {
     path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
       {path: 'home', component: HomeComponent},

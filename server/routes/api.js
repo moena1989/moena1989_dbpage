@@ -4,9 +4,15 @@ const router = express.Router();
 const API = 'https://jsonplaceholder.typicode.com';
 /* GET api listing. */
 router.get('/', (req, res) => {
-  axios.get('https://accounts.zoho.com/oauth/v2/auth?scope=ZohoCRM.users.ALL&client_id=1000.RB2VFC7BUPTR4485035TCLCVU1FICJ&response_type=code&access_type=onlineid}}n&redirect_uri=https://www.google.com').then(posts => {
+  console.log('holi');
+  console.log(req.query.code);
+  // req.query.code;
+  axios.post('https://accounts.zoho.com/oauth/v2/token?code=' + req.query.code + '&redirect_uri=http://localhost:4200/OAuthCallback&client_id=1000.A67SKNS3UDRO530634DXY89X5CFYNO&client_secret=282e9f6a83ef14932f389f49ad40996e0651c6b5a8&grant_type=authorization_code').then(posts => {
+    console.log('result');
+    console.log(posts.data);
+    // console.log(JSON.parse(posts));
     res.status(200).json(posts.data);
-    // res.send('tesing works');
+    console.log('se logueo de manera correcta perro!');
   })
     .catch(error => {
       res.status(500).send(error)
