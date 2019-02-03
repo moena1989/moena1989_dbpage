@@ -12,17 +12,23 @@ export class AuthGuardService implements CanActivate {
   constructor(private router: Router, private db: DbManagerService, private tools: ToolsService, private auth: AuthService) {
   }
 
+  private isEmailValido(email: string) {
+    const user = email.split('@')[0];
+    const domain = email.split('@')[1];
+    return domain === 'gmail.com';
+  }
+
   canActivate(
     next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
     console.log(this.auth.isLoggedIn());
     return true;
-    if (this.auth.isLoggedIn()) {
-      console.log('el guardia te habilitó ');
-      // this.tools.gUser = this.db.currentUser();
-      return true;
-    } else {
+    if (!this.auth.isLoggedIn()) {
       this.router.navigate(['logIn']);
       return false;
+    } else {
+      console.log('el guardia te habilitó ');
+      // this.tools.gUser = this.db.currentUser();
+      return this.isEmailValido(this.tools.gUser.email);
     }
   }
 }

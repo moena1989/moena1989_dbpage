@@ -100,7 +100,7 @@ export class NuevoRelojComponent implements OnInit {
         coleccion: this.current_reloj.coleccion,
         modelo: this.current_reloj.modelo,
         colorMaquinaria: this.current_reloj.colorMaquinaria,
-        colorPulso: this.current_reloj.colorPulso,
+        pulso: this.current_reloj.tipoPulso,
         diamtroExterno: this.current_reloj.diametroExterno,
         diametroInterno: this.current_reloj.diametroInterno,
         serial: '', // se hacae en la database.
@@ -198,10 +198,6 @@ export class NuevoRelojComponent implements OnInit {
 
   }
 
-  seleccionarColorPulso(color_p: any) {
-    this.current_reloj.colorPulso = color_p.name;
-  }
-
   private filtrarCajas() {
     console.log('probando filtros Firestore');
     this.fs.getCajasDisponibles(this.filtrosCaja).subscribe(cajas => {
@@ -220,14 +216,14 @@ export class NuevoRelojComponent implements OnInit {
           this.cajasFiltradas.forEach(cj => {
             let exist = false;
             for (let i = 0; i < opcs_lote.length; i++) {
-              if (opcs_lote[i].name === cj.numeroDeLote) {
+              if (opcs_lote[i].name === cj.serialMaterial + '-' + cj.numeroDeLote) {
                 opcs_lote[i].items.push({name: cj.numeroDeCaja, obj: cj});
                 exist = true;
                 break;
               }
             }
             if (!exist) {
-              opcs_lote.push({name: cj.numeroDeLote, items: [{name: cj.numeroDeCaja, obj: cj}]});
+              opcs_lote.push({name: cj.serialMaterial + '-' + cj.numeroDeLote, items: [{name: cj.numeroDeCaja, obj: cj}]});
             }
           });
           this.ver_opciones_caja = true;

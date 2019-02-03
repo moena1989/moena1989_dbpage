@@ -1,0 +1,61 @@
+@import "app/_about_modals/ngx-smart-modal.css";
+@import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
+@import url('https://fonts.googleapis.com/css?family=Homemade+Apple');
+@import "app/fontawesome-pro-5.6.1-web/css/all.min.css";
+@import "./theme.scss";
+
+* {
+  font-family: 'Poppins', sans-serif;
+}
+
+html, body {
+  position: absolute; /* this is very important*/
+  bottom: 0;
+  top: 0;
+  right: 0;
+  left: 0;
+  margin: 0;
+  padding: 0;
+  font-family: 'Poppins', sans-serif;
+  /*background: #F2F3F8;*/
+  width: 100%;
+  height: 100%;
+
+}
+
+body {
+  border: 1px solid var(--windows-border-color);
+  box-sizing: border-box;
+  background: #F9FCFD;
+
+  -webkit-touch-callout: none; /* iOS Safari */
+  -webkit-user-select: none; /* Safari */
+  -moz-user-select: none; /* Firefox */
+  -ms-user-select: none; /* Internet Explorer/Edge */
+  user-select: none;
+}
+
+.ln {
+  width: 100%;
+  height: 1px;
+  background-color: #3a3a3a;
+  margin-top: 1em;
+  margin-bottom: 1em;
+  opacity: .2;
+}
+
+.noclick {
+  pointer-events: none;
+}
+
+.material_content {
+  display: flex;
+  /*width: 100%;*/
+  border-radius: .2em;
+  margin-bottom: 1em;
+  border: 1px solid #dddddd;
+  margin-right: .5em;
+
+
+}
+

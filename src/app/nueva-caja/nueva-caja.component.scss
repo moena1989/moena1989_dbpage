@@ -1,0 +1,158 @@
+:host {
+  border-radius: .3em;
+}
+
+.paragraph {
+  margin-bottom: .5em;
+}
+
+.sub_ttl {
+  font-weight: bold;
+}
+
+.ttl_card {
+  //padding-bottom: .5em;
+  border-bottom: 1px solid #dddddd;
+  //margin-bottom: .5em;
+}
+
+.input_file {
+  display: none;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+
+.ttl_paso {
+  margin: .5em;
+}
+
+.cnt_files {
+  margin-top: 1em;
+  background: white;
+  width: 100%;
+  height: 9em;
+  display: flex;
+  flex-direction: column;
+  border-radius: .3em;
+  border: 1px dashed rgba(68, 7, 98, 0.2);
+  cursor: pointer;
+  align-items: center;
+  justify-content: center;
+}
+
+.cnt_files:hover {
+  background: rgba(0, 0, 0, 0.01);
+
+}
+
+.ico_up {
+  font-size: 3em;
+  margin: .2em;
+  opacity: .8;
+  color: var(--background-sidebar);
+}
+
+.msg {
+  display: flex;
+  align-items: center;
+  margin: .5em;
+  //font-weight: bold;
+  //color: #440762;
+}
+
+.opciones_caja {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  margin-top: .5em;
+  //background: #2C2E3E;
+}
+
+.err_img_msg {
+  color: #e03e3e;
+}
+
+
+
+.load {
+  margin: .5em;
+}
+
+.bt_opts {
+  margin-top: .5em;
+  display: flex;
+}
+
+.c {
+  background: #e03e3e;
+}
+
+.b {
+  background: rgba(58, 58, 58, 0.91);
+}
+
+.bt {
+  /*margin: .5em;*/
+  /*border: 1px solid black;*/
+  border-radius: .2em;
+  padding: .5em;
+  display: flex;
+  width: auto;
+  /*height: 5em;*/
+  cursor: pointer;
+  text-align: center;
+  color: #f7f7f7;
+  font-weight: bold;
+  margin: .2em;
+
+}
+
+
+.bt:hover {
+  background: #3a3a3a;
+  color: #f7f7f7;
+}
+
+.p_espera {
+  align-items: center;
+  display: flex;
+}
+
+
+.btn {
+  border-radius: .2em;
+  padding: 1em;
+  display: flex;
+  width: auto;
+  /*height: 5em;*/
+  background: #3a3a3a;
+  cursor: pointer;
+  text-align: center;
+  color: #f7f7f7;
+  align-items: center;
+  opacity: .5;
+  justify-content: center;
+  font-weight: bold;
+  margin: .2em;
+}
+
+.btn:hover {
+  opacity: .8;
+}
+
+.imgs_cajas_cnt {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-evenly;
+
+}
+
+.s {
+  //flex-grow: 1;
+  display: flex;
+  height: 15em;
+  width: 15em;
+  //box-sizing: border-box;
+  border-radius: .4em;
+  margin: .5em;
+}

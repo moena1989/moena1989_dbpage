@@ -1,17 +1,25 @@
 <div class="miga_bar" [ngClass]="tools.show_menu ? 'is-opened' : 'is-closed'">
   <div class="menu_ic">
-    <i [ngClass]="tools.show_menu ? 'fa-times' : 'fa-bars'" class="fal ico_op" (click)="alPresionarMenu()"></i>
     <!--<div class="miga_ttl">{{tools.top_tittle}}</div>-->
-    <div class="miga_ttl">Panel de control</div>
+    <!--<i [ngClass]="tools.show_menu ? 'fa-times' : 'fa-bars'" class="fal ico_op"   (click)="alPresionarMenu()"></i>-->
+    <img class="svg_logo" src="assets/common/logo_w.svg"/>
+    <!--<div class="divider"></div>-->
   </div>
+  <div class="labarra">
+    <div class="miga">
 
-  <div class="r_side">
-    <div class="sssc">
-      <div class="nombre">{{tools.gUser.displayName}}</div>
-      <div class="cargo">{{tools.gUser.email}}</div>
+      <div class="miga_ttl">Dashboard</div>
+      <div>|</div>
+      <div>Búsqueda</div>
     </div>
-    <img [src]="tools?.gUser.photoURL" class="usr" alt="">
-    <i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>
+    <div class="r_side">
+      <div class="sssc">
+        <div class="nombre">{{tools.gUser.displayName}}</div>
+        <div class="cargo">{{tools.gUser.email}}</div>
+      </div>
+      <img [src]="tools?.gUser.photoURL" class="usr" alt="">
+      <i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>
+    </div>
   </div>
 </div>
 <div class="aovsn"></div>

@@ -3,7 +3,7 @@
   width: 100%;
   background: #2C2F3E;
   display: flex;
-  z-index: 1000;
+  /*z-index: 1000;*/
 
 }
 
@@ -14,7 +14,7 @@
 }
 
 .opt_txt {
-  opacity: .5;
+  /*opacity: .5;*/
 }
 
 .acti .opt_txt {
@@ -32,7 +32,7 @@
 
 .nav_main_bar {
   /*align-items: center;*/
-  z-index: 5;
+  /*z-index: 5;*/
   /*justify-content: left;*/
   display: flex;
   /*width: auto;*/
@@ -87,12 +87,12 @@
     flex-direction: column;
     height: calc(100vh);
     position: fixed;
-    z-index: 200;
+    /*z-index: 200;*/
     overflow-y: hidden;
     background: var(--background-sidebar);
-    -webkit-box-shadow: 0px 0px 17px -5px rgba(0, 0, 0, 0.75);
-    -moz-box-shadow: 0px 0px 17px -5px rgba(0, 0, 0, 0.75);
-    box-shadow: 0px 0px 17px -5px rgba(0, 0, 0, 0.75);
+    /*-webkit-box-shadow: 0px 0px 17px -5px rgba(0, 0, 0, 0.75);*/
+    /*-moz-box-shadow: 0px 0px 17px -5px rgba(0, 0, 0, 0.75);*/
+    /*box-shadow: 0px 0px 17px -5px rgba(0, 0, 0, 0.75);*/
   }
 
   .sidebar-opened {
@@ -113,9 +113,10 @@
   }
 
   .ico_op {
-    /*width: 1.5em;*/
+    width: 1.5em;
     margin: .8em 1em .8em 1.5em; /*background: #e03e3e;*/
     font-size: 1.2em;
+
   }
 
   .obb {
@@ -182,7 +183,7 @@
     padding-left: .5em;
     align-items: center;
     cursor: pointer;
-    color: rgba(255, 255, 255, 0.31);
+    color: rgba(247, 247, 247, 0.2);
     font-size: .8em;
     transition: all .2s ease-in-out;
   }
@@ -255,6 +256,13 @@
     width: var(--sidebar-width);
     height: var(--topbar-height);
     display: flex;
+  }
+
+  .pinche_line {
+    background: rgba(255, 255, 255, 0.1);
+    height: 1px;
+    margin-right: 1em;
+    margin-left:1em;
   }
 
   .sidebar-scrollable-area {

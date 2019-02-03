@@ -10,9 +10,7 @@
   --icon-color-selected: #FBB005;
   --windows-border-color: #2C2E3E;
   //colors buttonss
-
 }
-
 
 selection {
   background: var(--background-sidebar); /* WebKit/Blink Browsers */
@@ -36,7 +34,7 @@ selection {
   -moz-box-shadow: 0 0 45px -2px rgba(0, 0, 0, 0.05);
   box-shadow: 0 0 45px -2px rgba(0, 0, 0, 0.05);
   border: 1px solid #e2e2e2;
-  margin: 2em;
+  margin: 1.5em;
   box-sizing: border-box;
 }
 

@@ -106,7 +106,8 @@
         <div class="ttt" *ngIf="msjCajas!=='' || current_reloj.modelo">3. Colección y caracteristicas de
           personalización
         </div>
-        <div *ngIf="msjCajas!=='' || current_reloj.modelo">Estory contemplando la posiblidad de eliminar el campo de tipo de material y dejar un solo campo con todas
+        <div *ngIf="msjCajas!=='' || current_reloj.modelo">Estory contemplando la posiblidad de eliminar el campo de
+          tipo de material y dejar un solo campo con todas
           las configuracioness en estructura <strong>MATERIAL-COLOR</strong></div>
         <div class="cnt_opts" *ngIf="msjCajas!=='' || current_reloj.modelo">
           <app-m-select ttl="Colección" [opciones]="current_opciones.colecciones"
@@ -118,23 +119,22 @@
             <app-m-select ttl="Color Maquinaria" *ngIf="current_opciones.opciones_reloj"
                           [opciones]="this.current_opciones.opciones_reloj.COLOR_MAQUINARIA"
                           (alSeleccionar)="seleccionarColorMaquinaria($event)"></app-m-select>
-            <app-m-select ttl="Pulso tipo:" *ngIf="current_opciones.opciones_reloj"
+
+            <app-m-select ttl="Pulso:" *ngIf="current_opciones.opciones_reloj"
                           [opciones]="this.current_opciones.opciones_reloj.TIPO_PULSO"
                           (alSeleccionar)="seleccionarTipoPulso($event)"></app-m-select>
 
-            <app-m-select ttl="Color Pulso"
-                          *ngIf="current_opciones.opciones_reloj && current_opciones.opciones_reloj.pulsos"
-                          [opciones]="this.current_opciones.opciones_reloj.pulsos"
-                          (alSeleccionar)="seleccionarColorPulso($event)"></app-m-select>
+            <!--<app-m-select ttl="Color Pulso"-->
+            <!--*ngIf="current_opciones.opciones_reloj && current_opciones.opciones_reloj.pulsos"-->
+            <!--[opciones]="this.current_opciones.opciones_reloj.pulsos"-->
+            <!--(alSeleccionar)="seleccionarColorPulso($event)"></app-m-select>-->
           </ng-container>
         </div>
       </div>
     </div>
     <div class="ln"></div>
-
-    <div class="final_btn" *ngIf="current_reloj.colorPulso" (click)="modalAlert.open()">
+    <div class="final_btn" *ngIf="current_reloj.tipoPulso" (click)="modalAlert.open()">
       Ingresar Nuevo Reloj
     </div>
-
   </div>
 </div>

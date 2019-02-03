@@ -238,8 +238,8 @@
 }
 
 .visualizador_caja {
-  width: 10em;
-  height: 10em;
+  width: 12em;
+  height: 12em;
   border-radius: .4em;
   padding: .5em;
   border: 1px solid rgba(221, 221, 221, 0.3);
