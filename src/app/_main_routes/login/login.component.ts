@@ -34,6 +34,7 @@ export class LoginComponent implements OnInit {
   }
 
   salir(value: string, value2: string) {
+    console.log('mierdad !!, parece que ya entendí como funciona la joda de github con VSCode');
 
   }
 
