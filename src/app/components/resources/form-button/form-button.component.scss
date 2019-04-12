@@ -1,0 +1,39 @@
+.selc {
+  height: 4em;
+  /*background: aquamarine;*/
+  /*margin: 1em;*/
+  padding: 0;
+  margin: .5em;
+}
+
+.custom-select {
+  //background: #dddddd;
+  padding-top: 1.5em;
+}
+
+.ss {
+  //margin-top: 2.3em;
+  font-weight: bold;
+  font-size: .8em;
+  -webkit-appearance: none;
+  padding: .5em 1em .5em 1em;
+  font-family: 'K2D', sans-serif;
+  border: 1px solid #3a3a3a;
+  color: #dddddd;
+  //width: 10em;
+  margin-left: .5em;
+  margin-right: .5em;
+  background: #3a3a3a;
+  border-radius: .2em;
+  cursor: pointer;
+  opacity: .8;
+}
+
+.ss:hover {
+  opacity: .9;
+}
+
+.ss:active {
+  opacity: 1;
+}
+

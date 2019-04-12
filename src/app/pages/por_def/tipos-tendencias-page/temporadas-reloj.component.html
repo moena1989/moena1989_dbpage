@@ -1,0 +1,258 @@
+<div class="doc">
+
+  <div class="doc-top">
+    <i class="fal fa-chart-network doc-top-ico"></i>
+    <div class="doc-top-ttl">Temporadas</div>
+  </div>
+  <app-tabs>
+    <div class="tab-opt"
+         *ngFor="let t of tendencias"
+         [class.tab-opt-act]="tendenciaSeleccionada?.metadata.key===t.metadata.key"
+         (click)="seleccionarTendencia(t)">
+      <i
+        [class.dot-active]="t.estado===relojData.opcsEstadosTendencias.publica.nombre"
+        class="fas fa-circle tab-ido"
+      ></i>
+      <div> {{t.nombre}}</div>
+    </div>
+    <div class="tab-opt-new" (click)="mdNuevaTendencia.open()">
+      <i class="fal fa-plus tab-io"></i>
+      <div>Nueva Temporada</div>
+    </div>
+  </app-tabs>
+
+  <ng-container *ngIf="tendenciaSeleccionada">
+
+    <!--<div class="doc-pg" *ngIf="tendenciaSeleccionada"><strong>{{tendenciaSeleccionada.nombre}}</strong></div>-->
+    <div class="doc-pg">Las temporadas serán privadas de forma obligatoria hasta que exista una configuración en alguna
+      colección.
+    </div>
+    <div class="tmp-opts-temp" *ngIf="_tendenciaSeleccionada">
+      <!--<div class="card_cnt asdwq">-->
+      <app-m-select ttl="Estado"
+                    (alSeleccionar)="_tendenciaSeleccionada.estado= $event.nombre"
+                    [itemSeleccionado]="{nombre: _tendenciaSeleccionada.estado}"
+                    [items]="[relojData.opcsEstadosTendencias.privada,relojData.opcsEstadosTendencias.publica]">
+      </app-m-select>
+
+      <app-form-button text="Guardar Cambios" (click)="actualizarTemporada(_tendenciaSeleccionada)"></app-form-button>
+    </div>
+
+    <div class="tr-ttl-side">Colecciones</div>
+    <div class="ln"></div>
+    <div class="ctasd">
+      <app-vertical-bar>
+
+        <!--routerLink="{{'../'+tipoItem+'/'+caja.nombre}}"-->
+        <div class="side-opt sssss" *ngFor="let c of colecciones" [class.side-act]="c===coleccionSeleccionada"
+             (click)="seleccionarColeccion(c)">
+          <div class="tr-td-cnt">
+            <!--<div class="">-->
+            <i [class.dot-active]="c.estado===relojData.opcsEstadosTendencias.publica.nombre"
+               class="fas fa-circle tab-ido"></i>
+            <div>
+              {{c.nombre}}
+            </div>
+          </div>
+          <div class="tr-status">{{c?.modelo}}</div>
+        </div>
+        <!--</div>-->
+        <!--<i class="fal fa-file-alt  icoss_op"></i>-->
+        <!--<div>{{caja.nombre}}</div>-->
+        <!--</div>-->
+        <div class="side-opt" *ngIf="tendenciaSeleccionada" (click)="mdNuevaColeccion.open()">
+          <i class="fal fa-plus icoss_op"></i>
+          <div>Nuevo Ítem</div>
+        </div>
+      </app-vertical-bar>
+      <!--<div class="tr-v-cnt">-->
+      <!--<div [class.item-activo]="t===coleccionSeleccionada" class="cnt-prd" *ngFor="let t of colecciones"-->
+      <!--(click)="seleccionarColeccion(t)">-->
+
+      <!--<div class="tr-cnt-tr">-->
+      <!--<div class="tr-td-cnt">-->
+      <!--<i [class.dot-active]="t.estado===relojData.opcsEstadosTendencias.publica.nombre"-->
+      <!--class="fas fa-circle tab-ido"></i>-->
+      <!--<div>-->
+      <!--{{t.nombre}}-->
+      <!--</div>-->
+      <!--</div>-->
+      <!--<div class="tr-status">{{t?.modelo}}</div>-->
+      <!--</div>-->
+
+      <!--<i class=" fal fa-arrow-right ico_op" *ngIf="coleccionSeleccionada===t"> </i>-->
+      <!--</div>-->
+      <!--<div class="tab-opt" *ngIf="tendenciaSeleccionada" (click)="mdNuevaColeccion.open()">-->
+      <!--<i class="fal fa-plus tab-io"></i>-->
+      <!--<div>Nueva Colección</div>-->
+      <!--</div>-->
+      <!--</div>-->
+
+      <div class="tr-cnt-config">
+        <div class="afas">{{_coleccionSeleccionada?.nombre}}</div>
+        <div class="config-tt">
+
+          <app-m-select ttl="Modelo de Reloj"
+                        [disable]="true"
+                        [itemSeleccionado]="{nombre: _coleccionSeleccionada.modelo}"
+                        [items]="relojData.modelos">
+          </app-m-select>
+
+          <app-m-select ttl="Estado"
+                        (alSeleccionar)="_coleccionSeleccionada.estado= $event.nombre"
+                        [itemSeleccionado]="{nombre: _coleccionSeleccionada.estado}"
+                        [items]="[relojData.opcsEstadosTendencias.publica,relojData.opcsEstadosTendencias.privada]">
+          </app-m-select>
+
+          <app-form-button text="Guardar Cambios" (click)="actualizarColeccion(_coleccionSeleccionada)">
+          </app-form-button>
+
+        </div>
+
+        <!--<div class="ln"></div>-->
+        <div class="afass">Configuraciones de Reloj</div>
+
+        <div class="tab-opt" *ngFor="let cr of configuraciones">
+          {{cr.nombre}}
+        </div>
+
+        <div class="tab-opt" (click)="mdNuevaConfiguracion.open()">
+          Nueva configuración
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<ngx-smart-modal #mdNuevaTendencia identifier="mdNuevaTendencia">
+
+  <div class="modal-tittle-bar">
+    <i class="far fa-ballot-check modal-tittle-ico"></i>
+    Nueva Temporada
+  </div>
+
+  <div class="md-cnt">Las tendencias serán privadas, hasta que exista por lo menos una colección con una configuración
+    de reloj
+  </div>
+
+  <div class="md-cnt">
+    <app-m-select ttl="Estado" (alSeleccionar)="nuevaTendencia.estado=$event.nombre" disable="{{true}}"
+                  [items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>
+
+    <app-input [disable]="!esEditable" [value]="nuevaTendencia.nombre" ttl="Nombre"
+               (alEscribir)="nuevaTendencia.nombre= $event"></app-input>
+
+  </div>
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="pushTemporada(nuevaTendencia)">Iniciar nuevo registro</div>
+  </div>
+</ngx-smart-modal>
+<ngx-smart-modal #mdNuevaColeccion identifier="modalNewTrends">
+  <div class="modal-tittle-bar">
+    <i class="far fa-ballot-check modal-tittle-ico"></i>
+    Nueva colección
+  </div>
+  <div class="md-cnt">
+    <app-input ttl="Nombre Colección"
+               [disable]="!esEditable"
+               [value]="nuevaColeccion.nombre"
+               (alEscribir)="nuevaColeccion.nombre= $event"></app-input>
+
+    <app-m-select ttl="Estado"
+                  (alSeleccionar)="nuevaColeccion.estado= $event.nombre"
+                  [items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>
+
+    <app-m-select ttl="Modelo de Reloj"
+                  [disable]="!esEditable"
+                  (alSeleccionar)="nuevaColeccion.modelo = $event.nombre"
+                  [items]="relojData.modelos">
+    </app-m-select>
+
+
+    <!--<app-m-select ttl="Hebilla"-->
+    <!--[disable]="!esEditable"-->
+    <!--(alSeleccionar)="nuevaColeccion.hebilla= $event"-->
+    <!--[items]="relojData.hebillas"></app-m-select>-->
+
+    <!--<app-m-select ttl="Caja"-->
+    <!--[disable]="!esEditable"-->
+    <!--(alSeleccionar)="nuevaColeccion.caja= $event"-->
+    <!--[items]="relojData.caja"></app-m-select>-->
+
+    <!--<app-m-select ttl="Maquinaria"-->
+    <!--[disable]="!esEditable"-->
+    <!--(alSeleccionar)="nuevaColeccion.maquinaria= $event"-->
+    <!--[items]="relojData.maquinarias"></app-m-select>-->
+
+
+    <!--<app-m-select ttl="Pulso"-->
+    <!--(alSeleccionar)="nuevaColeccion.estado= $event.pulso"-->
+    <!--[items]="relojData.pulsos"></app-m-select>-->
+
+    <!--<app-m-select ttl="Cristal"-->
+    <!--(alSeleccionar)="nuevaColeccion.cristal= $event"-->
+    <!--[items]="relojData.cristal"></app-m-select>-->
+
+    <!--<app-m-select ttl="Corona"-->
+    <!--(alSeleccionar)="nuevaColeccion.corona= $event"-->
+    <!--[items]="relojData.corona"></app-m-select>-->
+  </div>
+
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="pushNuevaColeccion()">Iniciar nuevo registro</div>
+  </div>
+
+</ngx-smart-modal>
+<ngx-smart-modal #mdNuevaConfiguracion identifier="mdNuevaConfiguracion">
+
+  <div class="modal-tittle-bar">
+    <i class="far fa-ballot-check modal-tittle-ico"></i>
+    Nueva configuración
+  </div>
+
+  <div class="md-cnt">
+    Representa la configuración especifica por la temporada-Tendencia a la que corresponde, se deben agregar tantas como
+    personalizaciones se quieran en la página.
+  </div>
+
+  <div class="md-cnt">
+    <app-input ttl="Nombre"
+               [value]="nuevaConfiguracion.nombre"
+               (alEscribir)="nuevaConfiguracion.nombre= $event"></app-input>
+    <app-m-select ttl="Modelo de Reloj"
+                  [disable]="!esEditable"
+                  (alSeleccionar)="nuevaColeccion.modelo = $event.nombre"
+                  [items]="relojData.modelos">
+    </app-m-select>
+
+    <app-m-select ttl="Hebilla"
+                  [disable]="!esEditable"
+                  (alSeleccionar)="nuevaColeccion.hebilla= $event"
+                  [items]="relojData.hebillas"></app-m-select>
+
+    <app-m-select ttl="Maquinaria"
+                  [disable]="!esEditable"
+                  (alSeleccionar)="nuevaColeccion.maquinaria= $event"
+                  [items]="relojData.maquinarias"></app-m-select>
+
+    <app-m-select ttl="Tapa"
+                  [disable]="!esEditable"
+                  (alSeleccionar)="nuevaColeccion.tapa= $event"
+                  [items]="relojData.tapas"></app-m-select>
+
+    <app-m-select ttl="Pulso"
+                  (alSeleccionar)="nuevaColeccion.estado= $event.pulso"
+                  [items]="relojData.pulsos">
+    </app-m-select>
+
+    <app-m-select ttl="Cristal"
+                  (alSeleccionar)="nuevaColeccion.cristal= $event"
+                  [items]="relojData.cristales"></app-m-select>
+  </div>
+
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="pushNuevaConfiguracion()">Iniciar nuevo registro</div>
+  </div>
+
+</ngx-smart-modal>

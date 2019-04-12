@@ -1,8 +1,6 @@
-<label class="ssas">
+<label class="ssas" *ngIf="!lock">
   <input class="input_file" #file type="file" accept='image/*' (change)="onChange(file.files)">
   {{message }}
 </label>
-<!--<img class="img" src="https://darobin.github.io/breakup/specs/html-images/images/face_small.png">-->
 <img class="img" [src]="imgURL" *ngIf="imgURL">
-<!--</div>-->
 

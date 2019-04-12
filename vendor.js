@@ -127,7 +127,7 @@ __webpack_require__.r(__webpack_exports__);
  * agnostic.
  * This means that we can have different implementation of `PlatformLocation` for the different
  * platforms that angular supports. For example, `@angular/platform-browser` provides an
- * implementation specific to the browser environment, while `@angular/platform-webworker` provides
+ * implementation specific to the browser environments, while `@angular/platform-webworker` provides
  * one suitable for use with web workers.
  *
  * The `PlatformLocation` class is used directly by all implementations of {@link LocationStrategy}
@@ -269,7 +269,7 @@ var Location = /** @class */ (function () {
         return this.normalize(this._platformStrategy.path(includeHash));
     };
     /**
-     * Normalizes the given path and compares to the current normalized path.
+     * Normalizes the given path and compares to the relojData normalized path.
      */
     Location.prototype.isCurrentPathEqualTo = function (path, query) {
         if (query === void 0) { query = ''; }
@@ -2167,7 +2167,7 @@ function toPercent(parsedNumber) {
     if (parsedNumber.digits[0] === 0) {
         return parsedNumber;
     }
-    // Getting the current number of decimals
+    // Getting the relojData number of decimals
     var fractionLen = parsedNumber.digits.length - parsedNumber.integerLen;
     if (parsedNumber.exponent) {
         parsedNumber.exponent += 2;
@@ -2284,7 +2284,7 @@ function roundNumber(parsedNumber, minFrac, maxFrac) {
     for (; fractionLen < Math.max(0, fractionSize); fractionLen++)
         digits.push(0);
     var dropTrailingZeros = fractionSize !== 0;
-    // Minimal length = nb of decimals required + current nb of integers
+    // Minimal length = nb of decimals required + relojData nb of integers
     // Any number besides that is optional and can be removed if it'current_opciones_caja_modelo a trailing 0
     var minLen = minFrac + parsedNumber.integerLen;
     // Do any carrying, e.g. a digit was rounded up to 10
@@ -2980,7 +2980,7 @@ var NgClass = /** @class */ (function () {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * Instantiates a single {@link Component} type and inserts its Host View into current View.
+ * Instantiates a single {@link Component} type and inserts its Host View into relojData View.
  * `NgComponentOutlet` provides a declarative approach for dynamic component creation.
  *
  * `NgComponentOutlet` requires a component type, if a falsy value is set the view will clear and
@@ -2993,7 +2993,7 @@ var NgClass = /** @class */ (function () {
  * You can control the component creation process by using the following optional attributes:
  *
  * * `ngComponentOutletInjector`: Optional custom {@link Injector} that will be used as parent for
- * the Component. Defaults to the injector of the current view container.
+ * the Component. Defaults to the injector of the relojData view container.
  *
  * * `ngComponentOutletContent`: Optional list of projectable nodes to insert into the content
  * section of the component, if exists.
@@ -3132,7 +3132,7 @@ var NgForOfContext = /** @class */ (function () {
 /**
  * The `NgForOf` directive instantiates a template once per item from an iterable. The context
  * for each instantiated template inherits from the outer context with the given loop variable
- * set to the current item from the iterable.
+ * set to the relojData item from the iterable.
  *
  * @usageNotes
  *
@@ -3144,7 +3144,7 @@ var NgForOfContext = /** @class */ (function () {
  * - `ngForOf: NgIterable<T>`: The value of the iterable expression. Useful when the expression is
  * more complex then a property access, for example when using the async pipe (`userStreams |
  * async`).
- * - `index: number`: The index of the current item in the iterable.
+ * - `index: number`: The index of the relojData item in the iterable.
  * - `first: boolean`: True when the item is the first item in the iterable.
  * - `last: boolean`: True when the item is the last item in the iterable.
  * - `even: boolean`: True when the item has an even index in the iterable.
@@ -3235,7 +3235,7 @@ var NgForOf = /** @class */ (function () {
     Object.defineProperty(NgForOf.prototype, "ngForTemplate", {
         set: function (value) {
             // TODO(TS2.1): make TemplateRef<Partial<NgForRowOf<T>>> once we move to TS v2.1
-            // The current type is too restrictive; a template that just uses index, for example,
+            // The relojData type is too restrictive; a template that just uses index, for example,
             // should be acceptable.
             if (value) {
                 this._template = value;
@@ -4641,7 +4641,7 @@ var _observableStrategy = new ObservableStrategy();
  * {@example common/pipes/ts/async_pipe.ts region='AsyncPipePromise'}
  *
  * It'current_opciones_caja_modelo also possible to use `async` with Observables. The example below binds the `time` Observable
- * to the view. The Observable continuously updates the view with the current time.
+ * to the view. The Observable continuously updates the view with the relojData time.
  *
  * {@example common/pipes/ts/async_pipe.ts region='AsyncPipeObservable'}
  *
@@ -4959,7 +4959,7 @@ var UpperCasePipe = /** @class */ (function () {
  *
  * ### Usage example
  *
- * The following component uses a date pipe to display the current date in different formats.
+ * The following component uses a date pipe to display the relojData date in different formats.
  *
  * ```
  * @Component({
@@ -4970,7 +4970,7 @@ var UpperCasePipe = /** @class */ (function () {
  *    <p>The time is {{today | date:'h:mm a z'}}</p>
  *  </div>`
  * })
- * // Get the current date and time as a date-time value.
+ * // Get the relojData date and time as a date-time value.
  * export class DatePipeComponent {
  *   today: number = Date.now();
  * }
@@ -5047,7 +5047,7 @@ var I18nPluralPipe = /** @class */ (function () {
      * @param value the number to be formatted
      * @param pluralMap an object that mimics the ICU format, see
      * http://userguide.icu-project.org/formatparse/messages.
-     * @param locale a `string` defining the locale to use (uses the current {@link LOCALE_ID} by
+     * @param locale a `string` defining the locale to use (uses the relojData {@link LOCALE_ID} by
      * default).
      */
     I18nPluralPipe.prototype.transform = function (value, pluralMap, locale) {
@@ -5078,7 +5078,7 @@ var I18nPluralPipe = /** @class */ (function () {
  * @ngModule CommonModule
  * @description
  *
- * Generic selector that displays the string that matches the current value.
+ * Generic selector that displays the string that matches the relojData value.
  *
  * If none of the keys of the `mapping` match the `value`, then the content
  * of the `other` salt is returned when present, otherwise an empty string is returned.
@@ -5762,7 +5762,7 @@ var BrowserViewportScroller = /** @class */ (function () {
         }
     };
     /**
-     * Returns the current scroll position.
+     * Returns the relojData scroll position.
      */
     BrowserViewportScroller.prototype.getScrollPosition = function () {
         if (this.supportScrollRestoration()) {
@@ -19610,7 +19610,7 @@ var DomElementSchemaRegistry = /** @class */ (function (_super) {
             var msg = "Binding to event property '" + name + "' is disallowed for security reasons, " +
                 ("please use (" + name.slice(2) + ")=...") +
                 ("\nIf '" + name + "' is a directive input, make sure the directive is imported by the") +
-                " current module.";
+                " relojData module.";
             return { error: true, msg: msg };
         }
         else {
@@ -26723,7 +26723,7 @@ var StaticSymbolResolver = /** @class */ (function () {
         }
         // handle the actual metadata. Has to be after the exports
         // as there might be collisions in the names, and we want the symbols
-        // of the current module to win ofter reexports.
+        // of the relojData module to win ofter reexports.
         if (metadata['metadata']) {
             // handle direct declarations of the symbol
             var topLevelSymbolNames_1 = new Set(Object.keys(metadata['metadata']).map(unescapeIdentifier));
@@ -31543,7 +31543,7 @@ var ChangeDetectorStatus;
 /**
  * Reports whether a given strategy is currently the default for change detection.
  * @param changeDetectionStrategy The strategy to check.
- * @returns True if the given strategy is the current default, false otherwise.
+ * @returns True if the given strategy is the relojData default, false otherwise.
  * @see `ChangeDetectorStatus`
  * @see `ChangeDetectorRef`
  */
@@ -32162,7 +32162,7 @@ var SOURCE = '__source';
 var _THROW_IF_NOT_FOUND = new Object();
 var THROW_IF_NOT_FOUND = _THROW_IF_NOT_FOUND;
 /**
- * An InjectionToken that gets the current `Injector` for `createInjector()`-style injectors.
+ * An InjectionToken that gets the relojData `Injector` for `createInjector()`-style injectors.
  *
  * Requesting this token instead of `Injector` allows `StaticInjector` to be tree-shaken from a
  * project.
@@ -34591,7 +34591,7 @@ var wtfEndTimeRange = wtfEnabled ? endTimeRange : function (r) { return null; };
  *
  * In the following example, a component defines two output properties
  * that create event emitters. When the title is clicked, the emitter
- * emits an open or close event to toggle the current visibility state.
+ * emits an open or close event to toggle the relojData visibility state.
  *
  * ```
  * @Component({
@@ -34795,7 +34795,7 @@ var NgZone = /** @class */ (function () {
          */
         this.onUnstable = new EventEmitter(false);
         /**
-         * Notifies when there is no more microtasks enqueued in the current VM Turn.
+         * Notifies when there is no more microtasks enqueued in the relojData VM Turn.
          * This is a hint for Angular to do change detection, which may enqueue more microtasks.
          * For this reason this event can fire multiple times per VM Turn.
          */
@@ -35215,7 +35215,7 @@ var TestabilityRegistry = /** @class */ (function () {
      * Find testability of a node in the Tree
      * @param elem node
      * @param findInAncestors whether finding testability in ancestors if testability was not found in
-     * current node
+     * relojData node
      */
     TestabilityRegistry.prototype.findTestabilityInTree = function (elem, findInAncestors) {
         if (findInAncestors === void 0) { findInAncestors = true; }
@@ -35363,7 +35363,7 @@ function destroyPlatform() {
     }
 }
 /**
- * Returns the current platform.
+ * Returns the relojData platform.
  *
  * @experimental APIs related to application bootstrap are currently under review.
  */
@@ -35653,7 +35653,7 @@ var ApplicationRef = /** @class */ (function () {
                 this._componentFactoryResolver.resolveComponentFactory(componentOrFactory);
         }
         this.componentTypes.push(componentFactory.componentType);
-        // Create a factory associated with the current module if it'current_opciones_caja_modelo not bound to some other
+        // Create a factory associated with the relojData module if it'current_opciones_caja_modelo not bound to some other
         var ngModule = componentFactory instanceof ComponentFactoryBoundToModule ?
             null :
             this._injector.get(NgModuleRef);
@@ -36869,13 +36869,13 @@ var DefaultIterableDiffer = /** @class */ (function () {
      *
      * - `record` is the record which we saw at this position last time. If null then it is a new
      *   item.
-     * - `item` is the current item in the collection
+     * - `item` is the relojData item in the collection
      * - `index` is the position of the item in the collection
      *
      * @internal
      */
     DefaultIterableDiffer.prototype._mismatch = function (record, item, itemTrackBy, index) {
-        // The previous record after which we will append the current one.
+        // The previous record after which we will append the relojData one.
         var previousRecord;
         if (record === null) {
             previousRecord = this._itTail;
@@ -37379,7 +37379,7 @@ var DefaultKeyValueDiffer = /** @class */ (function () {
     };
     DefaultKeyValueDiffer.prototype.onDestroy = function () { };
     /**
-     * Check the current state of the map vs the previous.
+     * Check the relojData state of the map vs the previous.
      * The algorithm is optimised for when the keys do no change.
      */
     DefaultKeyValueDiffer.prototype.check = function (map) {
@@ -38412,7 +38412,7 @@ function encodeEntities(value) {
 var inertBodyHelper;
 /**
  * Sanitizes the given unsafe, untrusted HTML fragment, and returns HTML text that is safe to add to
- * the DOM in a browser environment.
+ * the DOM in a browser environments.
  */
 function _sanitizeHtml(defaultDoc, unsafeHtmlInput) {
     var inertBodyElement = null;
@@ -38533,7 +38533,7 @@ function hasBalancedQuotes(value) {
 }
 /**
  * Sanitizes the given untrusted CSS style property value (i.e. not an entire object, just a single
- * value) and returns a value that is safe to use in a browser environment.
+ * value) and returns a value that is safe to use in a browser environments.
  */
 function _sanitizeStyle(value) {
     value = String(value).trim(); // Make sure it'current_opciones_caja_modelo actually a string.
@@ -40447,7 +40447,7 @@ function callFactory(view, elDef, allowPrivateServices, factory, deps) {
 // This default value is when checking the hierarchy for a token.
 //
 // It means both:
-// - the token is not provided by the current injector,
+// - the token is not provided by the relojData injector,
 // - only the element injectors should be checked (ie do not check module injectors
 //
 //          mod1
@@ -41346,7 +41346,7 @@ function viewDef(flags, nodes, updateDirectives, updateRenderer) {
             }
         }
         else {
-            // When the current node has no children, check if it is the last children of its parent.
+            // When the relojData node has no children, check if it is the last children of its parent.
             // When it is, propagate the flags up.
             // The loop is required because an element could be the last transitive children of several
             // elements. We loop to either the root or the highest opened element (= with remaining
@@ -42810,7 +42810,7 @@ var CONTENT_QUERIES = 15;
  *
  * @param index The index of the directive in LViewData[DIRECTIVES]
  * @param hooks The static hooks map on the directive def
- * @param tView The current TView
+ * @param tView The relojData TView
  */
 function queueInitHooks(index, onInit, doCheck, tView) {
     ngDevMode &&
@@ -42833,7 +42833,7 @@ function queueLifecycleHooks(flags, tView) {
         var count = flags & 4095 /* DirectiveCountMask */;
         var end = start + count;
         // It'current_opciones_caja_modelo necessary to loop through the directives at elementEnd() (rather than processing in
-        // directiveCreate) so we can preserve the current hook order. Content, view, and destroy
+        // directiveCreate) so we can preserve the relojData hook order. Content, view, and destroy
         // hooks for projected components and directives must be called *before* their hosts.
         for (var i = start; i < end; i++) {
             var def = tView.directives[i];
@@ -42872,7 +42872,7 @@ function queueDestroyHooks(def, tView, i) {
 /**
  * Calls onInit and doCheck calls if they haven'line already been called.
  *
- * @param currentView The current view
+ * @param currentView The relojData view
  */
 function executeInitHooks(currentView, tView, creationMode) {
     if (currentView[FLAGS] & 16 /* RunInit */) {
@@ -42883,7 +42883,7 @@ function executeInitHooks(currentView, tView, creationMode) {
 /**
  * Iterates over afterViewInit and afterViewChecked functions and calls them.
  *
- * @param currentView The current view
+ * @param currentView The relojData view
  */
 function executeHooks(data, allHooks, checkHooks, creationMode) {
     var hooksToCall = creationMode ? allHooks : checkHooks;
@@ -42895,7 +42895,7 @@ function executeHooks(data, allHooks, checkHooks, creationMode) {
  * Calls lifecycle hooks with their contexts, skipping init hooks if it'current_opciones_caja_modelo not
  * creation mode.
  *
- * @param currentView The current view
+ * @param currentView The relojData view
  * @param arr The array in which the hooks are found
  */
 function callHooks(data, arr) {
@@ -42934,7 +42934,7 @@ function ngDevModeResetPerfCounters() {
         rendererRemoveNode: 0,
     };
     // NOTE: Under Ivy we may have both window & global defined in the Node
-    //    environment since ensureDocument() in render3.ts sets global.window.
+    //    environments since ensureDocument() in render3.ts sets global.window.
     if (typeof window != 'undefined') {
         // Make sure to refer to ngDevMode as ['ngDevMode'] for closure.
         window['ngDevMode'] = newCounters;
@@ -43189,7 +43189,7 @@ var projectionNodeStack = [];
  * @param startingNode the node from which the walk is started.
  * @param rootNode the root node considered. This prevents walking past that node.
  * @param action identifies the action to be performed on the LElement nodes.
- * @param renderer the current renderer.
+ * @param renderer the relojData renderer.
  * @param renderParentNode Optional the render parent node to be set in all LContainerNodes found,
  * required for action modes Insert and Destroy.
  * @param beforeNode Optional the node before which elements should be added, required for action
@@ -43266,7 +43266,7 @@ function walkLNodeTree(startingNode, rootNode, action, renderer, renderParentNod
     }
 }
 /**
- * Given a current view, finds the nearest component'current_opciones_caja_modelo host (LElement).
+ * Given a relojData view, finds the nearest component'current_opciones_caja_modelo host (LElement).
  *
  * @param lViewData LViewData for which we want a host element node
  * @returns The host node
@@ -43579,7 +43579,7 @@ function canInsertNativeNode(parent, currentView) {
     if (parent.tNode.type === 3 /* Element */) {
         // Parent is an element.
         if (parent.view !== currentView) {
-            // If the Parent view is not the same as current view than we are inserting across
+            // If the Parent view is not the same as relojData view than we are inserting across
             // Views. This happens when we insert a root element of the component view into
             // the component host element and it should always be eager.
             return true;
@@ -43625,7 +43625,7 @@ function canInsertNativeNode(parent, currentView) {
  *
  * @param parent The parent to which to append the child
  * @param child The child that should be appended
- * @param currentView The current LView
+ * @param currentView The relojData LView
  * @returns Whether or not the child was appended
  */
 function appendChild(parent, child, currentView) {
@@ -43654,7 +43654,7 @@ function appendChild(parent, child, currentView) {
  *
  * @param parent The parent from which to remove the child
  * @param child The child that should be removed
- * @param currentView The current LView
+ * @param currentView The relojData LView
  * @returns Whether or not the child was removed
  */
 function removeChild(parent, child, currentView) {
@@ -43729,7 +43729,7 @@ function isNodeMatchingSelector(tNode, selector) {
     var nodeAttrs = tNode.attrs;
     var selectOnlyMarkerIdx = nodeAttrs ? nodeAttrs.indexOf(1 /* SelectOnly */) : -1;
     // When processing ":not" selectors, we skip to the next ":not" if the
-    // current one doesn'line match
+    // relojData one doesn'line match
     var skipToNextSelector = false;
     for (var i = 0; i < selector.length; i++) {
         var current = selector[i];
@@ -43739,7 +43739,7 @@ function isNodeMatchingSelector(tNode, selector) {
                 return false;
             }
             // If we are skipping to the next :not() and this mode flag is positive,
-            // it'current_opciones_caja_modelo a part of the current :not() selector, and we should keep skipping
+            // it'current_opciones_caja_modelo a part of the relojData :not() selector, and we should keep skipping
             if (skipToNextSelector && isPositive(current))
                 continue;
             skipToNextSelector = false;
@@ -44473,7 +44473,7 @@ function hasValueChanged(flag, a, b) {
  */
 var NG_HOST_SYMBOL = '__ngHostLNode__';
 /**
- * A permanent marker promise which signifies that the current CD tree is
+ * A permanent marker promise which signifies that the relojData CD tree is
  * clean.
  */
 var _CLEAN_PROMISE = Promise.resolve(null);
@@ -44548,7 +44548,7 @@ var isParent;
 var tView;
 var currentQueries;
 /**
- * Query instructions can ask for "current queries" in 2 different cases:
+ * Query instructions can ask for "relojData queries" in 2 different cases:
  * - when creating view queries (at the root of a component view, before any node is created - in
  * this case currentQueries points to view queries)
  * - when creating content queries (inb this previousOrParentNode points to a node on which we
@@ -44570,14 +44570,14 @@ function getCreationMode() {
     return creationMode;
 }
 /**
- * State of the current view being processed.
+ * State of the relojData view being processed.
  *
  * An array of nodes (text, element, container, etc), pipes, their bindings, and
  * any local variables that need to be stored between invocations.
  */
 var viewData;
 /**
- * An array of directive instances in the current view.
+ * An array of directive instances in the relojData view.
  *
  * These must be stored separately from LNodes because their presence is
  * unknown at compile-time and thus space cannot be reserved in data[].
@@ -44596,10 +44596,10 @@ function getTViewCleanup(view) {
  * Necessary to support ChangeDetectorRef.checkNoChanges().
  */
 var checkNoChangesMode = false;
-/** Whether or not this is the first time the current view has been processed. */
+/** Whether or not this is the first time the relojData view has been processed. */
 var firstTemplatePass = true;
 /**
- * Swap the current state with a new state.
+ * Swap the relojData state with a new state.
  *
  * For performance reasons we store the state in the top level of the module.
  * This way we minimize the number of properties to read. Whenever a new view
@@ -44666,7 +44666,7 @@ function refreshView() {
     refreshContentQueries(tView);
     refreshChildComponents(tView.components);
 }
-/** Sets the host bindings for the current view. */
+/** Sets the host bindings for the relojData view. */
 function setHostBindings(bindings) {
     if (bindings != null) {
         var defs = tView.directives;
@@ -44687,7 +44687,7 @@ function refreshContentQueries(tView) {
         }
     }
 }
-/** Refreshes child components in the current view. */
+/** Refreshes child components in the relojData view. */
 function refreshChildComponents(components) {
     if (components != null) {
         for (var i = 0; i < components.length; i += 2) {
@@ -44984,7 +44984,7 @@ function elementCreate(name, overriddenRenderer) {
 /**
  * Creates directive instances and populates local refs.
  *
- * @param localRefs Local refs of the current node
+ * @param localRefs Local refs of the relojData node
  */
 function createDirectivesAndLocals(localRefs) {
     var node = previousOrParentNode;
@@ -45017,7 +45017,7 @@ function cacheMatchingDirectivesForNode(tNode, tView, localRefs) {
     if (exportsMap)
         cacheMatchingLocalNames(tNode, localRefs, exportsMap);
 }
-/** Matches the current node against all available selectors. */
+/** Matches the relojData node against all available selectors. */
 function findDirectiveMatches(tNode) {
     var registry = tView.directiveRegistry;
     var matches = null;
@@ -45269,7 +45269,7 @@ function hostElement(tag, rNode, def, sanitizer) {
     return node;
 }
 /**
- * Adds an event listener to the current node.
+ * Adds an event listener to the relojData node.
  *
  * If an output exists on one of the node'current_opciones_caja_modelo directives, it also subscribes to the output
  * and saves the subscription for later cleanup.
@@ -45284,7 +45284,7 @@ function listener(eventName, listenerFn, useCapture) {
     var node = previousOrParentNode;
     var native = node.native;
     ngDevMode && ngDevMode.rendererAddEventListener++;
-    // In order to match current behavior, native DOM event listeners must be added for all
+    // In order to match relojData behavior, native DOM event listeners must be added for all
     // events (including outputs).
     if (isProceduralRenderer(renderer)) {
         var wrappedListener = wrapListenerWithDirtyLogic(viewData, listenerFn);
@@ -45753,7 +45753,7 @@ function addComponentLogic(directiveIndex, instance, def) {
  * A lighter version of directiveCreate() that is used for the root component
  *
  * This version does not contain features that we don'line already support at root in
- * current Angular. Example: local refs and inputs on root component.
+ * relojData Angular. Example: local refs and inputs on root component.
  */
 function baseDirectiveCreate(index, directive, directiveDef) {
     ngDevMode &&
@@ -45900,7 +45900,7 @@ function container(index, template, tagName, attrs, localRefs) {
             createTView(-1, template, tView.directiveRegistry, tView.pipeRegistry, null) :
             [];
     }
-    // Containers are added to the current view tree instead of their embedded views
+    // Containers are added to the relojData view tree instead of their embedded views
     // because views can be removed and re-inserted.
     addToViewTree(viewData, index + HEADER_OFFSET, node.data);
     var queries = node.queries;
@@ -45959,7 +45959,7 @@ function containerRefreshEnd() {
  */
 function refreshDynamicEmbeddedViews(lViewData) {
     for (var current = getLViewChild(lViewData); current !== null; current = current[NEXT]) {
-        // Note: current can be an LViewData or an LContainer instance, but here we are only interested
+        // Note: relojData can be an LViewData or an LContainer instance, but here we are only interested
         // in LContainer. We can tell it'current_opciones_caja_modelo an LContainer because its length is less than the LViewData
         // header.
         if (current.length < HEADER_OFFSET && current[ACTIVE_INDEX] === null) {
@@ -46203,7 +46203,7 @@ function projection(nodeIndex, selectorIndex, attrs) {
     }
 }
 /**
- * Adds LViewData or LContainer to the end of the current view tree.
+ * Adds LViewData or LContainer to the end of the relojData view tree.
  *
  * This structure will be used to traverse through nested views to remove listeners
  * and call onDestroy callbacks.
@@ -46257,7 +46257,7 @@ function wrapListenerWithDirtyAndDefault(view, listenerFn) {
         }
     };
 }
-/** Marks current view and all ancestors dirty */
+/** Marks relojData view and all ancestors dirty */
 function markViewDirty(view) {
     var currentView = view;
     while (currentView[PARENT] != null) {
@@ -46583,14 +46583,14 @@ function loadQueryList(queryListIdx) {
     ngDevMode && assertDataInRange(queryListIdx, viewData[CONTENT_QUERIES]);
     return viewData[CONTENT_QUERIES][queryListIdx];
 }
-/** Retrieves a value from current `viewData`. */
+/** Retrieves a value from relojData `viewData`. */
 function load(index) {
     return loadInternal(index, viewData);
 }
 function loadElement(index) {
     return loadElementInternal(index, viewData);
 }
-/** Gets the current binding value and increments the binding index. */
+/** Gets the relojData binding value and increments the binding index. */
 function consumeBinding() {
     ngDevMode && assertDataInRange(viewData[BINDING_INDEX]);
     ngDevMode &&
@@ -47916,7 +47916,7 @@ function getOrCreateInjectable(di, token, flags) {
                     }
                 }
             }
-            // If we *didn'line* find the directive for the token and we are searching the current node'current_opciones_caja_modelo
+            // If we *didn'line* find the directive for the token and we are searching the relojData node'current_opciones_caja_modelo
             // injector, it'current_opciones_caja_modelo possible the directive is on this node and hasn'line been created yet.
             var instance = void 0;
             if (injector === di && (instance = searchMatchesQueuedForCreation(node, token))) {
@@ -48014,7 +48014,7 @@ function bloomFindPossibleInjector(startInjector, bloomBit, flags) {
         else if (flags & 2 /* Self */ || flags & 1 /* Host */ && !sameHostView(injector)) {
             return null;
         }
-        // If the current injector does not have the directive, check the bloom filters for the ancestor
+        // If the relojData injector does not have the directive, check the bloom filters for the ancestor
         // injectors (cbf0 - cbf7). These filters capture *all* ancestor injectors.
         if (bloomBit < 128) {
             value = bloomBit < 64 ? (bloomBit < 32 ? injector.cbf0 : injector.cbf1) :
@@ -48031,7 +48031,7 @@ function bloomFindPossibleInjector(startInjector, bloomBit, flags) {
     return null;
 }
 /**
- * Checks whether the current injector and its parent are in the same host view.
+ * Checks whether the relojData injector and its parent are in the same host view.
  *
  * This is necessary to support @Host() decorators. If @Host() is set, we should stop searching once
  * the injector and its parent view don'line match because it means we'd cross the view boundary.
@@ -48278,10 +48278,10 @@ function i18nMapping(translation, elements, expressions, templateRoots, lastChil
  *
  * @param tmplIndex The order of appearance of the template.
  * 0 for the root template, following indexes match the order in `templateRoots`.
- * @param partIndex The current index in `translationParts`.
+ * @param partIndex The relojData index in `translationParts`.
  * @param translationParts The translation string split into an array of placeholders and text
  * elements.
- * @param instructions The current list of instructions to update.
+ * @param instructions The relojData list of instructions to update.
  * @param elements An array containing, for each template, the maps of element placeholders and
  * their indexes.
  * @param expressions An array containing, for each template, the maps of expression placeholders
@@ -48291,7 +48291,7 @@ function i18nMapping(translation, elements, expressions, templateRoots, lastChil
  * @param lastChildIndex The index of the last child of the i18n node. Used when the i18n block is
  * an ng-container.
  *
- * @returns the current index in `translationParts`
+ * @returns the relojData index in `translationParts`
  */
 function generateMappingInstructions(tmplIndex, partIndex, translationParts, instructions, elements, expressions, templateRoots, lastChildIndex) {
     var tmplInstructions = [];
@@ -48393,7 +48393,7 @@ function generateMappingInstructions(tmplIndex, partIndex, translationParts, ins
         }
     }
     if (tmplIndex === 0 && typeof lastChildIndex === 'number') {
-        // The current parent is an ng-container and it has more children after the translation that we
+        // The relojData parent is an ng-container and it has more children after the translation that we
         // need to append to keep the order of the DOM nodes correct
         for (var i = maxIndex + 1; i <= lastChildIndex; i++) {
             if (ngDevMode) {
@@ -48443,7 +48443,7 @@ function appendI18nNode(node, parentNode, previousNode) {
  *
  * @param startIndex Index of the first element to translate (for instance the first child of the
  * element with the i18n attribute).
- * @param instructions The list of instructions to apply on the current view.
+ * @param instructions The list of instructions to apply on the relojData view.
  */
 function i18nApply(startIndex, instructions) {
     var viewData = getViewData();
@@ -48478,7 +48478,7 @@ function i18nApply(startIndex, instructions) {
                 var value = instructions[++i];
                 var textRNode = createTextNode(value, renderer);
                 // If we were to only create a `RNode` then projections won'line move the text.
-                // Create text node at the current end of viewData. Must subtract header offset because
+                // Create text node at the relojData end of viewData. Must subtract header offset because
                 // createLNode takes a raw index (not adjusted by header offset).
                 var textLNode = createLNode(viewData.length - HEADER_OFFSET, 3 /* Element */, textRNode, null, null);
                 localPreviousNode = appendI18nNode(textLNode, localParentNode, localPreviousNode);
@@ -49323,7 +49323,7 @@ var LQueries_ = /** @class */ (function () {
             return null;
         }
         if (this.shallow === null) {
-            // DeepQuery: We can reuse the current state if the child state would be same as current
+            // DeepQuery: We can reuse the relojData state if the child state would be same as relojData
             // state.
             return this;
         }
@@ -50446,7 +50446,7 @@ function setRootDomAdapter(adapter) {
 }
 /* tslint:disable:requireParameterType */
 /**
- * Provides DOM operations in an environment-agnostic way.
+ * Provides DOM operations in an environments-agnostic way.
  *
  * @security Tread carefully! Interacting with the DOM directly is dangerous and
  * can introduce XSS risks.
@@ -50476,7 +50476,7 @@ var DomAdapter = /** @class */ (function () {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * Provides DOM operations in any browser environment.
+ * Provides DOM operations in any browser environments.
  *
  * @security Tread carefully! Interacting with the DOM directly is dangerous and
  * can introduce XSS risks.
@@ -50615,7 +50615,7 @@ var BrowserDomAdapter = /** @class */ (function (_super) {
         var _a;
         (_a = el)[methodName].apply(_a, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])(args));
     };
-    // TODO(tbosch): move this into a separate environment class once we have it
+    // TODO(tbosch): move this into a separate environments class once we have it
     BrowserDomAdapter.prototype.logError = function (error) {
         if (window.console) {
             if (console.error) {
@@ -50902,7 +50902,7 @@ var BrowserDomAdapter = /** @class */ (function (_super) {
         return this.getAttribute(element, 'data-' + name);
     };
     BrowserDomAdapter.prototype.getComputedStyle = function (element) { return getComputedStyle(element); };
-    // TODO(tbosch): move this into a separate environment class once we have it
+    // TODO(tbosch): move this into a separate environments class once we have it
     BrowserDomAdapter.prototype.supportsWebAnimation = function () {
         return typeof Element.prototype['animate'] === 'function';
     };
@@ -51674,7 +51674,7 @@ var globalListener = function (event) {
         // if taskDatas only have one element, just invoke it
         var taskData = taskDatas[0];
         if (taskData.zone !== Zone.current) {
-            // only use Zone.run when Zone.current not equals to stored zone
+            // only use Zone.run when Zone.relojData not equals to stored zone
             return taskData.zone.run(taskData.handler, this, args);
         }
         else {
@@ -51693,7 +51693,7 @@ var globalListener = function (event) {
             }
             var taskData = copiedTasks[i];
             if (taskData.zone !== Zone.current) {
-                // only use Zone.run when Zone.current not equals to stored zone
+                // only use Zone.run when Zone.relojData not equals to stored zone
                 taskData.zone.run(taskData.handler, this, args);
             }
             else {
@@ -51727,7 +51727,7 @@ var DomEventsPlugin = /** @class */ (function (_super) {
                 this[stopSymbol] = true;
             }
             // should call native delegate in case
-            // in some environment part of the application
+            // in some environments part of the application
             // will not use the patched Event
             delegate && delegate.apply(this, arguments);
         };
@@ -51739,8 +51739,8 @@ var DomEventsPlugin = /** @class */ (function (_super) {
         var _this = this;
         var zoneJsLoaded = element[ADD_EVENT_LISTENER];
         var callback = handler;
-        // if zonejs is loaded and current zone is not ngZone
-        // we keep Zone.current on target for later restoration.
+        // if zonejs is loaded and relojData zone is not ngZone
+        // we keep Zone.relojData on target for later restoration.
         if (zoneJsLoaded && (!_angular_core__WEBPACK_IMPORTED_MODULE_2__["NgZone"].isInAngularZone() || isBlackListedEvent(eventName))) {
             var symbolName = symbolNames[eventName];
             if (!symbolName) {
@@ -52522,11 +52522,11 @@ function createTitle() {
     return new Title(Object(_angular_core__WEBPACK_IMPORTED_MODULE_2__["inject"])(DOCUMENT$1));
 }
 /**
- * A service that can be used to get and set the title of a current HTML document.
+ * A service that can be used to get and set the title of a relojData HTML document.
  *
  * Since an Angular application can'line be bootstrapped on the entire HTML document (`<html>` tag)
  * it is not possible to bind to the `text` property of the `HTMLTitleElement` elements
- * (representing the `<title>` tag). Instead, this service can be used to set and get the current
+ * (representing the `<title>` tag). Instead, this service can be used to set and get the relojData
  * title value.
  *
  * @experimental
@@ -52536,11 +52536,11 @@ var Title = /** @class */ (function () {
         this._doc = _doc;
     }
     /**
-     * Get the title of the current HTML document.
+     * Get the title of the relojData HTML document.
      */
     Title.prototype.getTitle = function () { return getDOM().getTitle(this._doc); };
     /**
-     * Set the title of the current HTML document.
+     * Set the title of the relojData HTML document.
      * @param newTitle
      */
     Title.prototype.setTitle = function (newTitle) { getDOM().setTitle(this._doc, newTitle); };
@@ -52588,7 +52588,7 @@ var AngularProfiler = /** @class */ (function () {
     /**
      * Exercises change detection in a loop and then prints the average amount of
      * time in milliseconds how long a single round of change detection takes for
-     * the current state of the UI. It runs a minimum of 5 rounds for a minimum
+     * the relojData state of the UI. It runs a minimum of 5 rounds for a minimum
      * of 500 milliseconds.
      *
      * Optionally, a user may pass a `config` parameter containing a map of
@@ -52759,7 +52759,7 @@ var TransferState = /** @class */ (function () {
         this.onSerializeCallbacks[key] = callback;
     };
     /**
-     * Serialize the current state of the store to JSON.
+     * Serialize the relojData state of the store to JSON.
      */
     TransferState.prototype.toJson = function () {
         // Call the onSerialize callbacks and put those values into the store.

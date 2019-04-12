@@ -1,12 +1,10 @@
 import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
-import {HasherService} from '../../_services/hasher.service';
-import {DbManagerService} from '../../_services/db-manager.service';
-import {ModelRelojService} from '../../_services/model-reloj.service';
+import {DbManagerService} from '../../services/db-manager.service';
 import {MSelectComponent} from '../m-select/m-select.component';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
-import {CajaM, ModelCajasService} from '../../model-cajas.service';
-import {ToolsService} from '../../_services/tools.service';
-import {DbManagerFirestoreService, MCaja, MFiltro, MReloj} from '../../db-manager-firestore.service';
+import {CajaM, ModelsSevice} from '../../services/models/model-cajas.service';
+import {ToolsService} from '../../services/tools.service';
+import {DbMainService, MCaja, MFiltro, MReloj} from '../../services/routes/db-main.service';
 
 class Rmodel {
   diametroExterno: string;
@@ -56,17 +54,15 @@ export class NuevoRelojComponent implements OnInit {
   msjCajas = '';
 
   constructor(
-    public estructura: ModelRelojService,
-    public hasher: HasherService,
-    public estructuras: ModelCajasService,
+    public estructuras: ModelsSevice,
     public db: DbManagerService,
     public tools: ToolsService,
-    public fs: DbManagerFirestoreService
+    public fs: DbMainService
   ) {
   }
 
   ngOnInit() {
-    this.tools.top_tittle = 'Nuevo Reloj';
+    this.tools.tituloTopbar = 'Búsqueda';
   }
 
 

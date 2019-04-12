@@ -85,7 +85,7 @@ var	fixUrls = __webpack_require__(/*! ./urls */ "./node_modules/style-loader/lib
 
 module.exports = function(list, options) {
 	if (typeof DEBUG !== "undefined" && DEBUG) {
-		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environment");
+		if (typeof document !== "object") throw new Error("The style-loader cannot be used in a non-browser environments");
 	}
 
 	options = options || {};
@@ -413,18 +413,18 @@ function updateLink (link, options, obj) {
 /**
  * When source maps are enabled, `style-loader` uses a link element with a data-uri to
  * embed the css on the page. This breaks all relative urls because now they are relative to a
- * bundle instead of the current page.
+ * bundle instead of the relojData page.
  *
  * One solution is to only use full urls, but that may be impossible.
  *
- * Instead, this function "fixes" the relative urls to be absolute according to the current page location.
+ * Instead, this function "fixes" the relative urls to be absolute according to the relojData page location.
  *
  * A rudimentary test suite is located at `test/fixUrls.js` and can be run via the `npm test` command.
  *
  */
 
 module.exports = function (css) {
-  // get current location
+  // get relojData location
   var location = typeof window !== "undefined" && window.location;
 
   if (!location) {
@@ -487,7 +487,7 @@ module.exports = function (css) {
 			// path should be relative to the base url
 			newUrl = baseUrl + unquotedOrigUrl; // already starts with '/'
 		} else {
-			// path should be relative to current directory
+			// path should be relative to relojData directory
 			newUrl = currentDir + unquotedOrigUrl.replace(/^\.\//, ""); // Strip leading './'
 		}
 

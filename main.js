@@ -215,7 +215,7 @@ module.exports = ":host {\r\n  width: auto;\r\n  height: auto;\r\n  /*background
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>REGISTRO DE NUEVOS RELOJES</h1>\n\n\n\n<div class=\"opt_txt_txtions\">\n  <app-selecter [ttl]=\"'Mano'\" [opciones]=\"['FCM']\"></app-selecter>\n  <app-selecter [ttl]=\"'# Lote'\" [opciones]=\"['1']\"></app-selecter>\n  <app-selecter [ttl]=\"'No. piezas'\" [opciones]=\"['1-100']\"></app-selecter>\n</div>\n\n<div class=\"opt_txtions\">\n  <app-selecter [ttl]=\"'Modelo'\" [opciones]=\"['Origen',' Slim',' Vira',' Inti',' Aros',' One']\"></app-selecter>\n  <app-selecter [ttl]=\"'Colección'\"\n                [opciones]=\"['Luxury',' Hawaii',' Animal Print',' Frutas, Telas',' Vintage',' Edición Especial']\"></app-selecter>\n  <app-selecter [ttl]=\"'Material'\"\n                [opciones]=\"['Madera', 'Acero inoxidable',' Oro', 'Plata',' Esmeraldas',' Tagua']\"></app-selecter>\n  <app-selecter [ttl]=\"'Maquinaria'\" [opciones]=\"['Miy ota','Seagull','ETA']\"></app-selecter>\n  <app-selecter [ttl]=\"'Color Maq.'\" [opciones]=\"['Oro',' Plata']\"></app-selecter>\n  <app-selecter [ttl]=\"'material pulso'\" [opciones]=\"['Acero inoxidable',' Cuero']\"></app-selecter>\n\n  <app-selecter [ttl]=\"'Tipo de Madera'\"\n                [opciones]=\"['Granadillo',' Nazareno', 'Palo de Mora','Palo de Sangre','Nogal','Cedro','Achapo','Ébano','Flor Morado','Teka','Canelo Moena','Zapan','Amargo','Comino crespo','Pino', 'Abarco','algarrobo','Cumaru']\"></app-selecter>\n\n  <app-selecter [ttl]=\"'Color pulso'\"\n                [opciones]=\"['Negro','Azul','Gris', 'Blanco','Amarillo','Rojo','Verde','Naranja','Café','Violeta','Oro','Plata','Multicolor']\"></app-selecter>\n\n</div>\n\n\n<button class=\"bt-n-ref\">\n  Crear nuevo registro\n</button>\n\n\n"
+module.exports = "<h1>REGISTRO DE NUEVOS RELOJES</h1>\n\n\n\n<div class=\"opt_txt_txtions\">\n  <app-selecter [ttl]=\"'Mano'\" [items]=\"['FCM']\"></app-selecter>\n  <app-selecter [ttl]=\"'# Lote'\" [items]=\"['1']\"></app-selecter>\n  <app-selecter [ttl]=\"'No. piezas'\" [items]=\"['1-100']\"></app-selecter>\n</div>\n\n<div class=\"opt_txtions\">\n  <app-selecter [ttl]=\"'Modelo'\" [items]=\"['Origen',' Slim',' Vira',' Inti',' Aros',' One']\"></app-selecter>\n  <app-selecter [ttl]=\"'Colección'\"\n                [items]=\"['Luxury',' Hawaii',' Animal Print',' Frutas, Telas',' Vintage',' Edición Especial']\"></app-selecter>\n  <app-selecter [ttl]=\"'Material'\"\n                [items]=\"['Madera', 'Acero inoxidable',' Oro', 'Plata',' Esmeraldas',' Tagua']\"></app-selecter>\n  <app-selecter [ttl]=\"'Maquinaria'\" [items]=\"['Miy ota','Seagull','ETA']\"></app-selecter>\n  <app-selecter [ttl]=\"'Color Maq.'\" [items]=\"['Oro',' Plata']\"></app-selecter>\n  <app-selecter [ttl]=\"'material pulso'\" [items]=\"['Acero inoxidable',' Cuero']\"></app-selecter>\n\n  <app-selecter [ttl]=\"'Tipo de Madera'\"\n                [items]=\"['Granadillo',' Nazareno', 'Palo de Mora','Palo de Sangre','Nogal','Cedro','Achapo','Ébano','Flor Morado','Teka','Canelo Moena','Zapan','Amargo','Comino crespo','Pino', 'Abarco','algarrobo','Cumaru']\"></app-selecter>\n\n  <app-selecter [ttl]=\"'Color pulso'\"\n                [items]=\"['Negro','Azul','Gris', 'Blanco','Amarillo','Rojo','Verde','Naranja','Café','Violeta','Oro','Plata','Multicolor']\"></app-selecter>\n\n</div>\n\n\n<button class=\"bt-n-ref\">\n  Crear nuevo registro\n</button>\n\n\n"
 
 /***/ }),
 
@@ -278,7 +278,7 @@ module.exports = ":host {\r\n\r\n  height: 4em;\r\n  /*background: aquamarine;*/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p class=\"sl-ttl\">\n  {{ttl}}\n</p>\n\n<div class=\"custom-select\">\n\n\n  <select class=\"ss\">\n    <option *ngFor=\"let opc of opciones\">{{opc}}</option>\n  </select>\n\n</div>\n"
+module.exports = "<p class=\"sl-ttl\">\n  {{ttl}}\n</p>\n\n<div class=\"custom-select\">\n\n\n  <select class=\"ss\">\n    <option *ngFor=\"let opc of items\">{{opc}}</option>\n  </select>\n\n</div>\n"
 
 /***/ }),
 
@@ -317,7 +317,7 @@ var SelecterComponent = /** @class */ (function () {
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
-    ], SelecterComponent.prototype, "opciones", void 0);
+    ], SelecterComponent.prototype, "items", void 0);
     SelecterComponent = __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Component"])({
             selector: 'app-selecter',
@@ -335,16 +335,16 @@ var SelecterComponent = /** @class */ (function () {
 
 /***/ "./src/environments/environment.ts":
 /*!*****************************************!*\
-  !*** ./src/environments/environment.ts ***!
+  !*** ./src/environments/environments.ts ***!
   \*****************************************/
-/*! exports provided: environment */
+/*! exports provided: environments */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
 __webpack_require__.r(__webpack_exports__);
-/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "environment", function() { return environment; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "routes", function() { return environment; });
 // This file can be replaced during build by using the `fileReplacements` array.
-// `ng build --prod` replaces `environment.ts` with `environment.prod.ts`.
+// `ng build --prod` replaces `environments.ts` with `environments.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
 var environment = {
     production: false
@@ -373,12 +373,12 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _angular_core__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! @angular/core */ "./node_modules/@angular/core/fesm5/core.js");
 /* harmony import */ var _angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! @angular/platform-browser-dynamic */ "./node_modules/@angular/platform-browser-dynamic/fesm5/platform-browser-dynamic.js");
 /* harmony import */ var _app_app_module__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./app/app.module */ "./src/app/app.module.ts");
-/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environment */ "./src/environments/environment.ts");
+/* harmony import */ var _environments_environment__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./environments/environments */ "./src/environments/environments.ts");
 
 
 
 
-if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["environment"].production) {
+if (_environments_environment__WEBPACK_IMPORTED_MODULE_3__["routes"].production) {
     Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["enableProdMode"])();
 }
 Object(_angular_platform_browser_dynamic__WEBPACK_IMPORTED_MODULE_1__["platformBrowserDynamic"])().bootstrapModule(_app_app_module__WEBPACK_IMPORTED_MODULE_2__["AppModule"])

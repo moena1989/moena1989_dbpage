@@ -1,11 +1,12 @@
-@import "app/_about_modals/ngx-smart-modal.css";
+@import "app/components/modal/ngx-smart-modal.css";
 @import url('https://fonts.googleapis.com/css?family=Poppins:100,100i,200,200i,300,300i,400,400i,500,500i,600,600i,700,700i,800,800i,900,900i');
 @import url('https://fonts.googleapis.com/css?family=Homemade+Apple');
-@import "app/fontawesome-pro-5.6.1-web/css/all.min.css";
+@import "app/por_def/fontawesome-pro-5.6.1-web/css/all.min.css";
 @import "./theme.scss";
 
 * {
   font-family: 'Poppins', sans-serif;
+  line-height: 1.5em;
 }
 
 html, body {
@@ -24,7 +25,7 @@ html, body {
 }
 
 body {
-  border: 1px solid var(--windows-border-color);
+  //border: 1px solid var(--windows-border-color);
   box-sizing: border-box;
   background: #F9FCFD;
 
@@ -35,11 +36,16 @@ body {
   user-select: none;
 }
 
+.vcc-ttl {
+  font-size: 1.4em;
+  font-weight: 600;
+}
+
 .ln {
   width: 100%;
   height: 1px;
   background-color: #3a3a3a;
-  margin-top: 1em;
+  //margin-top: 1em;
   margin-bottom: 1em;
   opacity: .2;
 }

@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SnackbarComponent} from './tools/snackbar/snackbar.component';
-import {ToolsService} from './_services/tools.service';
+import {ToolsService} from './services/tools.service';
 
 @Component({
   selector: 'app-root',
@@ -19,6 +19,7 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
+
     this.tools.snack = this.snack;
   }
 }

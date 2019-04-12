@@ -8,13 +8,23 @@ import {DomSanitizer} from '@angular/platform-browser';
   styleUrls: ['./visualizer.component.css']
 })
 export class VisualizerComponent implements OnInit {
-
   public imagePath;
-  imgURL: any;
+  @Input() imgURL: any = '';
+  @Input() lock = false;
   public message = 'Seleccionar Imagen';
 
   @Output() alSeleccionar: EventEmitter<any> = new EventEmitter();
   @Input() ttl = 'titulin';
+
+  constructor(private ng2ImgMax: Ng2ImgMaxService, public sanitizer: DomSanitizer) {
+
+  }
+
+  @Input() customUrl(url: string) {
+    if (url !== undefined) {
+      this.imgURL = url;
+    }
+  }
 
   onChange(files) {
     if (files.length === 0) {
@@ -22,10 +32,6 @@ export class VisualizerComponent implements OnInit {
     }
     console.log(files[0]);
     this.comprimir(files[0]);
-  }
-
-  constructor(private ng2ImgMax: Ng2ImgMaxService, public sanitizer: DomSanitizer) {
-
   }
 
   comprimir(file) {
@@ -45,6 +51,7 @@ export class VisualizerComponent implements OnInit {
         this.ng2ImgMax.compressImage(result, 0.700).subscribe(
           _result => {
             console.log('probando compress');
+            // console.log(_result.name);
             this.getImagePreview(new File([_result], _result.name));
             this.alSeleccionar.emit(new File([_result], _result.name));
             this.message = 'Seleccionar otra imagen';
@@ -72,6 +79,5 @@ export class VisualizerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-
   }
 }
