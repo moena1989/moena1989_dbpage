@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ToolsService} from '../../../services/tools.service';
-import {DBPublic} from '../../../services/routes/d-b-public.service';
+import {DBPublicService} from '../../../services/routes/d-b-public.service';
 
 @Component({
   selector: 'app-home',
@@ -8,7 +8,7 @@ import {DBPublic} from '../../../services/routes/d-b-public.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(public tools: ToolsService, public pdb: DBPublic) {
+  constructor(public tools: ToolsService, public pdb: DBPublicService) {
   }
 
   ngOnInit() {

@@ -115,7 +115,7 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
         // INICIO SUBIENDO LA IMAGEN DE CADA CAJA...
         const serialCaja = (this.currentLote.serial + '-' + (i + 1));
         serialesCajas.push(serialCaja);
-        this.fs.pushImage(this.imagenesProcesadas[i], 'cajaHq', 'cajas/' + serialCaja, url => {
+        this.fs.pushImage(this.imagenesProcesadas[i], 'cajas/' + serialCaja, url => {
           // se crea modelo  de cada caja
           console.log('se completa subida de imagen');
           this.porcentaje_registro += 35 / this.currentLote.cajasTotales;

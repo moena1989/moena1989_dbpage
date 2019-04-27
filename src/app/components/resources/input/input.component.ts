@@ -10,16 +10,21 @@ export class InputComponent implements OnInit {
   @Input() placeholder: string;
   @Output() alEscribir = new EventEmitter();
   @Input() disable: boolean;
-  @Input() value = '';
+  val = '';
+  @Input() capitalizar = true;
 
   constructor() {
   }
 
+  @Input() set value(val: string) {
+    console.log('input ', val);
+    this.val = '';
+    if (val !== undefined) {
+      this.val = val;
+    }
+  }
+
   ngOnInit() {
-    // if (this.value === undefined) {
-    //   this.value = '';
-    //   this.alEscribir.emit(this.value);
-    // }
   }
 
   capitalize(s) {
@@ -30,8 +35,9 @@ export class InputComponent implements OnInit {
   }
 
   tecla(evt: any) {
-
-
-    this.alEscribir.emit(this.capitalize(this.value));
+    if (this.capitalizar) {
+      this.alEscribir.emit(this.capitalize(this.val));
+    } else {
+    }
   }
 }

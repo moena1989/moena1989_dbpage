@@ -53,7 +53,7 @@
 //                   component: TemporadasRelojComponent,
 //                 },
 //                 {
-//                   path: ':tipoProductoSeleccionado/:tendenciaSeleccionada',
+//                   path: ':tipoProductoSeleccionado/:temporadaSeleccionda',
 //                   component: VerTendenciasPageComponent,
 //                 }
 //               ]

@@ -89,7 +89,7 @@ export class NuevoRelojComponent implements OnInit {
 // primero, subo la imagen...
     this.porcentaje_registro = 50;
 
-    this.fs.pushImage(this.watch_img, 'front', 'watches/' + 'asdasd', url => {
+    this.fs.pushImage(this.watch_img, 'watches/' + 'asdasd', url => {
       // const serial = this.hasher.encriptarSerial('aquí irán un serial chingón',
       //    Math.round(Math.random() * 500), Math.round(Math.random() * 500));
       const relojFinal: MReloj = {

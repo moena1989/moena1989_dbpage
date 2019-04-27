@@ -28,7 +28,9 @@ body.dialog-open {
 }
 
 .overlay.nsm-overlay-open {
-  background-color: rgba(0, 0, 0, 0.8);
+  /*background-color: rgba(0, 0, 0, 0.8);*/
+  background: rgb(15, 11, 0);
+  background: linear-gradient(0deg, rgba(15, 11, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
 }
 
 .overlay.transparent {
@@ -37,8 +39,8 @@ body.dialog-open {
 
 .nsm-dialog {
   min-height: 15em;
-  min-width: 20em;
-  max-width: 80em;
+  min-width: 10em;
+  max-width: 70em;
   box-sizing: border-box;
 }
 
@@ -57,12 +59,12 @@ body.dialog-open {
   display: flex;
   text-align: center;
   box-sizing: border-box;
-  border-radius: .3em;
+  border-radius: .4em;
   align-items: center;
   justify-content: center;
   cursor: pointer;
   font-size: .8em;
-  font-weight: 600;
+  /*font-weight: 600;*/
   padding: .7em 1.2em .7em 1.2em;
   margin-left: 1em;
 }
@@ -117,7 +119,7 @@ body.dialog-open {
 .modal-tittle-bar {
   padding: 2em 2em 1em 2em;
   display: flex;
-  font-weight: 800;
+  /*font-weight: 800;*/
   align-items: center;
   font-size: 1.1em;
   color: var(--icon-color-selected);

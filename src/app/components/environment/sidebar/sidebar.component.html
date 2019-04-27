@@ -1,7 +1,7 @@
 <!--[ngClass]="tools.show_menu ? 'sidebar-opened' : 'sidebar-closed'"-->
 <div class="main_menu sidebar-opened">
   <div class="lg-cnt">
-    <img class="main_name" src="assets/common/logo_b.svg" alt="Moena 1989"/>
+    <img class="main_name" src="assets/common/logo_w.svg" alt="Moena 1989"/>
     <div>DASHBOARD</div>
   </div>
   <div class="sidebar-scrollable-area">
@@ -10,13 +10,25 @@
       <div class="opt_txt">Inicio</div>
     </div>
 
-    <!--<div class="sub">Producción</div>-->
-    <!--<div class="item"-->
-    <!--(click)="regs=!regs">-->
-    <!--<i class="fal fa-barcode-alt fa-fw ico_op"></i>-->
-    <!--<div class="opt_txt">Registro</div>-->
-    <!--</div>-->
+    <div class="sub">Producción</div>
+    <div class="item"
+         (click)="regs=!regs">
+      <i class="fal fa-barcode-alt fa-fw ico_op"></i>
+      <div class="opt_txt">Registro</div>
+    </div>
 
+
+    <div *ngIf="regs">
+      <div class="item suub" routerLink="/registro/nueva_caja" [routerLinkActive]="'acti'">
+        <i class="fal fa-plus fa-fw ico_op "></i>
+        <div class="opt_txt">Caja</div>
+      </div>
+
+      <div class="item suub" routerLink="/registro/nuevo_reloj" [routerLinkActive]="'acti'">
+        <i class="fal fa-plus fa-fw ico_op "></i>
+        <div class="opt_txt">Reloj</div>
+      </div>
+    </div>
     <div class="sub">Recursos humanos</div>
     <div class="item" routerLink="/equipo" [routerLinkActive]="'acti'">
       <i class="fal fa-users fa-fw ico_op"></i>
@@ -39,85 +51,10 @@
       <div class="opt_txt">Partes</div>
     </div>
 
-    <!--<fa-icon class="fa-fw obb " [icon]="['fas','angle-down']" transform="rotate-{{regs? '180': '0'}}" size="2x"-->
-    <!--fixedWidth="{{true}}"></fa-icon>-->
-    <!--</div>-->
+    <div class="item" routerLink="/idiomas" [routerLinkActive]="'acti'">
+      <i class="fal fa-language fa-fw ico_op"></i>
+      <div class="opt_txt">Idiomas</div>
+    </div>
 
-    <!--<div *ngIf="regs">-->
-    <!--<div class="item suub" routerLink="/registro/nueva_caja" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-plus fa-fw ico_op "></i>-->
-    <!--<div class="opt_txt">Caja</div>-->
-    <!--</div>-->
-
-    <!--<div class="item suub" routerLink="/registro/nuevo_reloj" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-plus fa-fw ico_op "></i>-->
-    <!--<div class="opt_txt">Reloj</div>-->
-    <!--</div>-->
-
-    <!--<div class="item suub" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-plus fa-fw ico_op "></i>-->
-    <!--<div class="opt_txt">Billetera</div>-->
-    <!--</div>-->
-
-    <!--<div class="item suub" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-plus fa-fw ico_op "></i>-->
-    <!--<div class="opt_txt">Maleta</div>-->
-    <!--</div>-->
-
-    <!--<div class="item suub" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-plus fa-fw ico_op "></i>-->
-    <!--<div class="opt_txt">Bolso</div>-->
-    <!--</div>-->
-
-    <!--<div class="item suub" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-plus fa-fw ico_op "></i>-->
-    <!--<div class="opt_txt">Nueva Reloj</div>-->
-    <!--</div>-->
-    <!--</div>-->
-
-
-    <!--<div class="sub">-->
-    <!--Web pública-->
-    <!--</div>-->
-
-    <!--<div class="item" routerLink="/web/inicio" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-newspaper fa-fw ico_op "></i>-->
-    <!--<div class="opt_txt">Inicio</div>-->
-    <!--</div>-->
-
-    <!--<div class="item" routerLink="/web/temporadas/relojes" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-chart-network fa-fw ico_op "></i>-->
-    <!--<div class="opt_txt">Temporadas</div>-->
-    <!--</div>-->
-
-    <!--<div class="sub">-->
-    <!--Contabilidad-->
-    <!--</div>-->
-
-
-    <!--<div class="item" routerLink="/caracteristicas/inventario" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-watch fa-fw ico_op"></i>-->
-    <!--<div class="opt_txt">Productos</div>-->
-    <!--</div>-->
-
-    <!--<div class="sub">-->
-    <!--Contabilidad-->
-    <!--</div>-->
-
-    <!--<div class="item" routerLink="/caracteristicas/maqs" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-sitemap fa-fw ico_op"></i>-->
-    <!--<div class="opt_txt">Materia prima</div>-->
-    <!--</div>-->
-
-    <!--<div class="item" routerLink="/caracteristicas/maqs" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-sitemap fa-fw ico_op"></i>-->
-    <!--<div class="opt_txt">Materia elaborada</div>-->
-    <!--</div>-->
-
-    <!--<div class="item" routerLink="/caracteristicas/maqs" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-sitemap fa-fw ico_op"></i>-->
-    <!--<div class="opt_txt">Productos finales</div>-->
-    <!--</div>-->
-    <!--</div>-->
   </div>
 </div>

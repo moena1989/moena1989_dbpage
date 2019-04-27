@@ -66,13 +66,24 @@
   cursor: pointer;
 }
 
+.col-vis {
+  width: 12em;
+  height: 12em;
+  border-radius: .2em;
+  margin-right: 2em;
+  border: 1px solid rgb(243, 243, 243);
+  padding: 1em;
+}
+
 .tr-status {
   font-size: .7em;
 }
+
 .icoss_op {
   font-size: 1.2em;
   margin-right: 1em;
 }
+
 .sssss {
   display: flex;
   align-items: flex-start;

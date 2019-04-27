@@ -70,11 +70,11 @@ import {HttpClientModule} from '@angular/common/http';
 import {environment} from './environment/dbs';
 import {AngularFireDatabaseModule} from '@angular/fire/database-deprecated';
 import {AngularFireDatabase} from '@angular/fire/database';
-import { UsuariosPageComponent } from './usuarios-page/usuarios-page.component';
-import { VerticalBarComponent } from './vertical-bar/vertical-bar.component';
-import { ConfigCajaComponent } from './config-caja/config-caja.component';
-import { ConfigCristalComponent } from './config-cristal/config-cristal.component';
-
+import {UsuariosPageComponent} from './usuarios-page/usuarios-page.component';
+import {VerticalBarComponent} from './vertical-bar/vertical-bar.component';
+import {ConfigCajaComponent} from './config-caja/config-caja.component';
+import {ConfigCristalComponent} from './config-cristal/config-cristal.component';
+import { IdiomasPageComponent } from './idiomas-page/idiomas-page.component';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -95,7 +95,8 @@ const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
     VisualizadorConfigPulsoComponent, VisualizadorConfigMaqComponent,
     ConfigMaderaComponent, VisualizadorConfigModeloCajaComponent,
     VisualizadorConfigTapaComponent, VisualizadorConfigHebillaComponent,
-    VisualizadorConfigCoronaComponent, AdderComponent, UsuariosPageComponent, VerticalBarComponent, ConfigCajaComponent, ConfigCristalComponent
+    VisualizadorConfigCoronaComponent, AdderComponent, UsuariosPageComponent, VerticalBarComponent,
+    ConfigCajaComponent, ConfigCristalComponent, IdiomasPageComponent
   ],
   imports: [
     RouterModule.forRoot(routes, {enableTracing: false}),
