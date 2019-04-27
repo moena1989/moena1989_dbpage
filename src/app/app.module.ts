@@ -31,7 +31,7 @@ import {ModelsSevice} from './services/models/model-cajas.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NuevaCajaComponent} from './components/nueva-caja/nueva-caja.component';
 import {MainComponent} from './components/main/main.component';
-import {ToolsService} from './services/tools.service';
+import {SettingsService} from './services/settings.service';
 import {RelojBuscadoComponent} from './tools/reloj-buscado/reloj-buscado.component';
 import {LoadbarComponent} from './components/resources/loadbar/loadbar.component';
 import {VisualizadorConfigTapaComponent} from './components/visualizador-config-tapa/visualizador-config-tapa.component';
@@ -113,7 +113,7 @@ const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
       window.open(externalUrl, '_self');
     },
   }, NgxSmartModalService, CurrentStorageService, {provide: StorageBucket, useValue: 'testing-this-shit'},
-    ToolsService, ModelsSevice, AuthService, AngularFireDatabase, DbMainService, AngularFirestore, HasherService],
+    SettingsService, ModelsSevice, AuthService, AngularFireDatabase, DbMainService, AngularFirestore, HasherService],
   bootstrap: [AppComponent]
 })
 export class AppModule {

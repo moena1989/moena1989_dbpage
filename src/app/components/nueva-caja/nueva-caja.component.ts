@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
 import {DbMainService, MCaja, MetaLote} from '../../services/routes/db-main.service';
 import {DbManagerService} from '../../services/db-manager.service';
-import {ToolsService} from '../../services/tools.service';
+import {SettingsService} from '../../services/settings.service';
 import {CajaM, ModelsSevice} from '../../services/models/model-cajas.service';
 import {MetadataAttr} from '../../models/clockModel';
 import {Subscription} from 'rxjs';
@@ -31,7 +31,7 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
   private _info_material: Subscription;
 
   constructor(public estructura: ModelsSevice, public db: DbManagerService,
-              private tools: ToolsService, public fs: DbMainService) {
+              private tools: SettingsService, public fs: DbMainService) {
     this.currentLote.numeroDeLote = 0;
     this.tools.top_tittle = 'Nueva caja';
   }

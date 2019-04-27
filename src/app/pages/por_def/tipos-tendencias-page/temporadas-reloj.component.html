@@ -13,7 +13,7 @@
         [class.dot-active]="t.estado===relojData.opcsEstadosTendencias.publica.nombre"
         class="fas fa-circle tab-ido"
       ></i>
-      <div> {{t.nombre}}</div>
+      <div> {{t.datosPorIdioma['es'].nombre}}</div>
     </div>
     <div class="tab-opt-new" (click)="mdNuevaTendencia.open()">
       <i class="fal fa-plus tab-io"></i>
@@ -135,15 +135,13 @@
         <div>{{t.nombre}}</div>
       </div>
     </app-tabs>
-
     <div class="i-v">
       <app-input ttl="Nombre"
                  [disable]="!esEditable"
-                 placeholder="Nombre+ {{idiomaSeleccionado.local}}"
+                 placeholder="Nombre ({{idiomaSeleccionado.local}})"
                  [value]="nuevaTemporada.datosPorIdioma[idiomaSeleccionado.local].nombre"
                  (alEscribir)="nuevaTemporada.datosPorIdioma[idiomaSeleccionado.local].nombre = $event"></app-input>
     </div>
-
     <!--<div class="i-v" *ngIf="idiomaSeleccionado.local==='de'">-->
     <!--<app-m-select ttl="Estado" (alSeleccionar)="nuevaTemporada.estado=$event.nombre" disable="{{true}}"-->
     <!--[items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>-->

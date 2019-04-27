@@ -1,6 +1,6 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SnackbarComponent} from './tools/snackbar/snackbar.component';
-import {ToolsService} from './services/tools.service';
+import {SettingsService} from './services/settings.service';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +15,7 @@ export class AppComponent implements OnInit {
    * Esta clase se encarga de iniciar toods los sevicios apenas alguien entre a la pag.
    * Contiene el snakBar
    */
-  constructor(public tools: ToolsService) {
+  constructor(public tools: SettingsService) {
   }
 
   ngOnInit() {

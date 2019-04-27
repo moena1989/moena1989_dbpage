@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
-import {ToolsService} from '../../../services/tools.service';
+import {SettingsService} from '../../../services/settings.service';
 import {DBPublicService} from '../../../services/routes/d-b-public.service';
 import {CurrentStorageService} from '../../../services/current-storage.service';
 
@@ -19,9 +19,8 @@ export class TemporadasRelojComponent implements OnInit {
   public esEditable = true;
   temporadaSeleccionda = undefined;
   nuevaColeccion: any = {};
-  langs = {datosPorIdioma: {es: {}, fr: {}, it: {}, de: {}, en: {}}};
-  nuevaTemporada: any = {...this.langs};
-  nuevaConfiguracion: any = {...this.langs};
+  nuevaTemporada: any = {};
+  nuevaConfiguracion: any = {};
   public tendencias: any[] = [];
   public idiomas: any[] = [
     {nombre: 'Español', local: 'es'},
@@ -33,6 +32,7 @@ export class TemporadasRelojComponent implements OnInit {
   public colecciones: any[] = [];
   public tipoProducto = 'relojes';
   public coleccionSeleccionada: any;
+  public localApp: string;
   currentFileColection: any;
   configuraciones: any[] = [];
   modelos: any[] = [];
@@ -41,17 +41,21 @@ export class TemporadasRelojComponent implements OnInit {
   _coleccionSeleccionada: any = {};
 
   constructor(private route: ActivatedRoute,
-              private db: DBPublicService, private tools: ToolsService, public currentStorageService: CurrentStorageService) {
+              private db: DBPublicService, private settings: SettingsService, public currentStorageService: CurrentStorageService) {
     route.params.subscribe(params => {
       this.tipoProducto = params.tipoProductoSeleccionado;
       this.relojData = currentStorageService;
       console.log(this.relojData.modelos);
+      this.nuevaTemporada = {...this.currentStorageService.estructuradorIdiomas};
+      this.nuevaConfiguracion = {...this.currentStorageService.estructuradorIdiomas};
     });
+
+    this.localApp = settings.localApp;
   }
 
 
   ngOnInit() {
-    this.tools.tituloTopbar = 'Temporadas';
+    this.settings.tituloTopbar = 'Temporadas';
     this.getTendencias();
   }
 

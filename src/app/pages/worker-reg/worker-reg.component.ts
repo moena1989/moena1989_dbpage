@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DbManagerService} from '../../services/db-manager.service';
-import {ToolsService} from '../../services/tools.service';
+import {SettingsService} from '../../services/settings.service';
 
 @Component({
   selector: 'app-worker-reg',
@@ -9,7 +9,7 @@ import {ToolsService} from '../../services/tools.service';
 })
 export class WorkerRegComponent implements OnInit {
 
-  constructor(private db: DbManagerService, private tools: ToolsService) {
+  constructor(private db: DbManagerService, private tools: SettingsService) {
   }
 
   ngOnInit() {

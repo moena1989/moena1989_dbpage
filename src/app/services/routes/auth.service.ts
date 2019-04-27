@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {ToolsService} from '../tools.service';
+import {SettingsService} from '../settings.service';
 import {HttpClient} from '@angular/common/http';
 import {dom} from '@fortawesome/fontawesome-svg-core';
 
@@ -13,7 +13,7 @@ export class AuthService {
   userDetails: firebase.User = null;
   uri = 'http://localhost:4000/auth';
 
-  constructor(private _firebaseAuth: AngularFireAuth, private router: Router, tools: ToolsService, private http: HttpClient) {
+  constructor(private _firebaseAuth: AngularFireAuth, private router: Router, tools: SettingsService, private http: HttpClient) {
     this.user = _firebaseAuth.authState;
     this.user.subscribe(
       (user) => {

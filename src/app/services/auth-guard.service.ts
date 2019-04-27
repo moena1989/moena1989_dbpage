@@ -2,14 +2,14 @@ import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
 import {DbManagerService} from './db-manager.service';
-import {ToolsService} from './tools.service';
+import {SettingsService} from './settings.service';
 import {AuthService} from './routes/auth.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuardService implements CanActivate {
-  constructor(private router: Router, private db: DbManagerService, private tools: ToolsService, private auth: AuthService) {
+  constructor(private router: Router, private db: DbManagerService, private tools: SettingsService, private auth: AuthService) {
   }
 
   private isEmailValido(email: string) {

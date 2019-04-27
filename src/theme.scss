@@ -34,11 +34,19 @@
 
 .item-opt-cnt {
   display: flex;
+  width: available;
+  height: available;
 }
 
 .item-ttl {
   font-size: 1.4em;
   font-weight: 600;
+}
+
+.ttlss {
+  color: #2C2E3E;
+  padding-top: 1em;
+  padding-bottom: 1em;
 }
 
 .item-top-ttl {
@@ -48,6 +56,10 @@
   height: 3em;
   align-items: center;
   margin-bottom: 1em;
+}
+
+.cnt-inputs {
+  display: flex;
 }
 
 .tab-dv {
@@ -60,6 +72,7 @@
   margin-bottom: .8em;
   box-sizing: border-box;
 }
+
 
 .tab-opt {
   margin-right: 1.5em;

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {fadeAnimation} from '../../animations/Animation';
-import {ToolsService} from '../../services/tools.service';
+import {SettingsService} from '../../services/settings.service';
 import {CurrentStorageService} from '../../services/current-storage.service';
 
 @Component({
@@ -10,7 +10,7 @@ import {CurrentStorageService} from '../../services/current-storage.service';
 })
 
 export class MainComponent implements OnInit {
-  constructor(private currentData: CurrentStorageService, public tools: ToolsService) {
+  constructor(private currentData: CurrentStorageService, public tools: SettingsService) {
     currentData.iniciar();
   }
 

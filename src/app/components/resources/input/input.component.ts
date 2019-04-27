@@ -17,7 +17,6 @@ export class InputComponent implements OnInit {
   }
 
   @Input() set value(val: string) {
-    console.log('input ', val);
     this.val = '';
     if (val !== undefined) {
       this.val = val;
