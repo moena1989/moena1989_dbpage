@@ -41,6 +41,7 @@
 .item-ttl {
   font-size: 1.4em;
   font-weight: 600;
+  display: flex;
 }
 
 .ttlss {
@@ -56,6 +57,41 @@
   height: 3em;
   align-items: center;
   margin-bottom: 1em;
+  //border: 1px solid rgba(44, 46, 62, 0.3);
+}
+.as {
+  margin: .5em;
+  cursor: pointer;
+
+}
+.maq-ttl {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin: .5em;
+}
+
+
+.visualizador {
+  width: 15em;
+  height: 30em;
+  border-radius: .2em;
+  margin-right: 2em;
+  border: 1px solid rgb(243, 243, 243);
+  position: relative;
+  //background: rgba(44, 46, 62, 0.07);
+}
+
+.opt-t {
+  display: flex;
+  font-size: .7em;
+  font-weight: normal;
+  align-items: center;
+  opacity: .5;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .8;
+  }
 }
 
 .cnt-inputs {

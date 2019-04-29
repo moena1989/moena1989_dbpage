@@ -243,12 +243,12 @@ export class DbMainService {
     return this.dbMain.collection('datosProductos/' + 'relojes/' + tipoItem).doc(keyItem).valueChanges();
   }
 
-  setItem(tipoProducto: string, item: any) {
+  setItem(tipoItem: string, item: any) {
     item = this.agregarMetadata(item);
-    return this.dbMain.collection('datosProductos/' + 'relojes/' + tipoProducto).doc(item.metadata.key).set(item);
+    return this.dbMain.collection('datosProductos/' + 'relojes/' + tipoItem).doc(item.metadata.key).set(item);
   }
 
-  updateItem(tipoProducto: string, tipoItem: string, item: any) {
+  updateItem(tipoItem: string, item: any) {
     return this.dbMain.collection('datosProductos/' + 'relojes/' + tipoItem).doc(item.metadata.key).set(item);
   }
 
@@ -260,7 +260,5 @@ export class DbMainService {
   deleteSpecificModel(tipoModel: string, nombreModel: string) {
     return this.dbMain.collection('relojes').doc('modelos').collection(tipoModel).doc(nombreModel).delete();
   }
-
-
 }
 

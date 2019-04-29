@@ -13,6 +13,7 @@ export class MSelectComponent implements OnInit {
   m = 'sd';
   seleccionado = false;
   @Output() alSeleccionar: EventEmitter<any> = new EventEmitter();
+  @Input() codigoLocal = undefined;
   private _original_ops: any[];
 
   constructor() {

@@ -14,7 +14,9 @@ export class SettingsService implements CanActivate {
   public version = 'M89DB-1.1a';
   public urlDomain = 'http://localhost:4200';
   public show_windows_tittle_bar = false;
+  //////
   public localApp = 'es';
+  public idiomaApp: any = {'codigo': 'es', 'nombre': 'Español', 'nombreNativo': 'Español'};
   //////
   public tituloTopbar = 'Testing';
   private MAX_SIZE_IN_PX = 2500;

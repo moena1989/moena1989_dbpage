@@ -22,6 +22,8 @@ export class CurrentStorageService {
   public cristales = [];
   public pulsos = [];
   public idiomas: any[];
+  public idiomaApp: any = {'codigo': 'es', 'nombre': 'Español', 'nombreNativo': 'Español'};
+
   public cajas: any[];
   public IDIOMAS = [
     // {'codigo': 'ab', 'nombre': 'Abkhaz', 'nombreNativo': 'аҧсуа'},
@@ -211,8 +213,7 @@ export class CurrentStorageService {
     // {'codigo': 'yo', 'nombre': 'Yoruba', 'nombreNativo': 'Yorùbá'},
     // {'codigo': 'za', 'nombre': 'Zhuang, Chuang', 'nombreNativo': 'Saɯ cueŋƅ, Saw cuengh'}
   ];
-
-  DIVISAS = [
+  public DIVISAS = [
     // {'cc': 'AED', 'simbolo': '\u062f.\u0625;', 'nombre': 'UAE dirham'},
     // {'cc': 'AFN', 'simbolo': 'Afs', 'nombre': 'Afghan afghani'},
     // {'cc': 'ALL', 'simbolo': 'L', 'nombre': 'Albanian lek'},
@@ -371,6 +372,7 @@ export class CurrentStorageService {
     // {'cc': 'ZWR', 'simbolo': 'Z$', 'nombre': 'Zimbabwean dollar'}
   ];
   public estructuradorIdiomas = {};
+  idiomaDefault: any;
 
   constructor(private dbMain: DbMainService, private dbPublic: DBPublicService) {
     // this.iniciar();
@@ -400,7 +402,8 @@ export class CurrentStorageService {
 
     this.dbPublic.getIdiomas().subscribe(value => {
       this.idiomas = value;
-      this.estructuradorIdiomas['general'] = {};
+      this.idiomaDefault = this.idiomas.filter(value1 => value1.codigo === 'es')[0]
+
       this.idiomas.forEach(value1 => {
         this.estructuradorIdiomas[value1.codigo] = {};
       });
