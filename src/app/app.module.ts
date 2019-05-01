@@ -14,7 +14,7 @@ import {SnackbarComponent} from './tools/snackbar/snackbar.component';
 import {PublicacionesPageComponent} from './pages/marketing/publicaciones-page/publicaciones-page.component';
 import {AngularFireStorageModule, StorageBucket} from '@angular/fire/storage';
 import {far} from '@fortawesome/free-regular-svg-icons';
-import {VisualizadorConfigModeloCajaComponent} from './components/visualizador-config-modelo-caja/visualizador-config-modelo-caja.component';
+import {ConfigModeloComponent} from './components/visualizador-config-modelo-caja/config-modelo.component';
 import {fas} from '@fortawesome/free-solid-svg-icons';
 import {VerTendenciaPageComponent} from './pages/por_def/ver-tendencia-page/ver-tendencia-page.component';
 import {NgxSmartModalModule, NgxSmartModalService} from 'ngx-smart-modal';
@@ -80,8 +80,31 @@ import {PedidosPageComponent} from './pedidos-page/pedidos-page.component';
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
-export function currentServiceFactory(provider: CurrentStorageService) {
-  return () => provider.iniciar();
+export function currentServiceFactory(provider: CurrentStorageService): () => Promise<any> {
+  // return () => provider.init();
+  return (): Promise<any> => provider.init();
+
+  // {
+  //   return new Promise((resolve, reject) => {
+  //     console.log(`.svdlknasvndasndv`);
+  //     setTimeout(() => {
+  //       console.log(`loool`);
+  //       resolve();
+  //     }, 3000);
+  //   });
+  // };
+}
+
+export function onAppInit1(): () => Promise<any> {
+  return (): Promise<any> => {
+    return new Promise((resolve) => {
+      console.log(`.svdlknasvndasndv`);
+      setTimeout(() => {
+        console.log(`lloooll`);
+        resolve();
+      }, 3000);
+    });
+  };
 }
 
 @NgModule({
@@ -98,7 +121,7 @@ export function currentServiceFactory(provider: CurrentStorageService) {
     VerTiposProductosComponent, OpCntComponent, CaracteristicasPageComponent, TabsComponent,
     VisualizadorConfigCajaComponent,
     VisualizadorConfigPulsoComponent, VisualizadorConfigMaqComponent,
-    ConfigMaderaComponent, VisualizadorConfigModeloCajaComponent,
+    ConfigMaderaComponent, ConfigModeloComponent,
     VisualizadorConfigTapaComponent, VisualizadorConfigHebillaComponent,
     VisualizadorConfigCoronaComponent, AdderComponent, UsuariosPageComponent, VerticalBarComponent,
     ConfigCajaComponent, ConfigCristalComponent, AjustesWebComponent, PedidosPageComponent

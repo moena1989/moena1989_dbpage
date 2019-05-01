@@ -22,7 +22,7 @@ export class CurrentStorageService {
   public cristales = [];
   public pulsos = [];
   public idiomas: any[] = [];
-  public idiomaApp: any = {'codigo': 'es', 'nombre': 'Español', 'nombreNativo': 'Español'};
+  public idiomaApp: any;
   public cajas: any[];
   public IDIOMAS = [
     // {'codigo': 'ab', 'nombre': 'Abkhaz', 'nombreNativo': 'аҧсуа'},
@@ -379,6 +379,7 @@ export class CurrentStorageService {
 
   iniciar() {
     console.log('SE TRAEN LOS DATOS INICIALES');
+    this.getIdiomas();
     this.getModelos();
     this.getCoronas();
     this.getCristales();
@@ -387,7 +388,29 @@ export class CurrentStorageService {
     this.getTapas();
     this.getCajas();
     this.getMaquinarias();
-    this.getIdiomas();
+  }
+
+  init() {
+    // todo esta zona es útil para iniciar todo lo que se requiera ANTES DE QUE LA APLICACIÓN INICIE
+    this.getModelos();
+    this.getCoronas();
+    this.getCristales();
+    this.getHebillas();
+    this.getPulsos();
+    this.getTapas();
+    this.getCajas();
+    this.getMaquinarias();
+    // todo de manera obligatoria necesito los idiomas, por eso es la que está resolviendo la promesa.
+    return new Promise((resolve) => {
+      this.dbPublic.getIdiomas().subscribe(value => {
+        this.idiomas = value;
+        this.idiomaDefault = this.idiomas.filter(value1 => value1.codigo === 'es')[0];
+        this.idiomas.forEach(value1 => {
+          this.estructuradorIdiomas[value1.codigo] = {};
+        });
+        resolve();
+      });
+    });
   }
 
   getModelos() {
@@ -398,8 +421,6 @@ export class CurrentStorageService {
   }
 
   getIdiomas() {
-
-
     this.dbPublic.getIdiomas().subscribe(value => {
       this.idiomas = value;
       this.idiomaDefault = this.idiomas.filter(value1 => value1.codigo === 'es')[0];

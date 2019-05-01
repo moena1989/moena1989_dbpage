@@ -13,7 +13,7 @@
         [class.dot-active]="t.estado===relojData.opcsEstadosTendencias.publica.nombre"
         class="fas fa-circle tab-ido"
       ></i>
-      <!--<div> {{t['es'].nombre}}</div>-->
+      <div> {{t['es'].nombre}}</div>
     </div>
     <div class="tab-opt-new" (click)="mdNuevaTendencia.open()">
       <i class="fal fa-plus tab-io"></i>
@@ -86,9 +86,9 @@
         <div class="tab-opt" *ngFor="let c of configuraciones">
           <div class="bqe">
             <div class="cf-min">
-              <img *ngIf="c.pulso" src="{{c?.pulso.imgUrl}}" alt="cajas" class="mk-im-m">
-              <img *ngIf="c.maquinaria" src="{{c.maquinaria.imgUrl}}" alt="cajas" class="mk-im-m ">
-              <img *ngIf="c.caja" src="{{c.caja.imgUrl}}" alt="cajas" class="mk-im-m">
+              <img *ngIf="c.pulso" [src]="c?.pulso.imgUrl" alt="cajas" class="mk-im-m">
+              <img *ngIf="c['maquinaria']" [src]="c?.maquinaria.imgUrl" alt="cajas" class="mk-im-m ">
+              <img *ngIf="c.caja" [src]="c?.caja.imgUrl" alt="cajas" class="mk-im-m">
             </div>
           </div>
           <div>

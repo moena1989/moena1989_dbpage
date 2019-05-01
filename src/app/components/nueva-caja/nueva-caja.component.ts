@@ -112,7 +112,7 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
       this.currentLote.serial += '-' + metadataLote.lotesTotales;
 
       for (let i = 0; i < this.currentLote.cajasTotales; i++) {
-        // INICIO SUBIENDO LA IMAGEN DE CADA CAJA...
+        // init SUBIENDO LA IMAGEN DE CADA CAJA...
         const serialCaja = (this.currentLote.serial + '-' + (i + 1));
         serialesCajas.push(serialCaja);
         this.fs.pushImage(this.imagenesProcesadas[i], 'cajas/' + serialCaja, url => {
@@ -174,6 +174,7 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
     const arr = [];
     const arrs = [];
     this.current_opciones_caja_modelo.materiales.forEach(value => {
+      console.log(value);
       arr.push('');
       arrs.push('');
     });

@@ -70,7 +70,7 @@ export class TemporadasRelojComponent implements OnInit {
         value.forEach(result => {
           this.tendencias.push(result);
         });
-        console.log('y pos aja', this.tendencias);
+        console.log('tendencias traidas', this.tendencias);
         if (this.tendencias.length !== 0) {
           this.idiomaSeleccionado = this.currentStorageService.idiomaDefault;
           this.seleccionarTendencia(this.tendencias[0]);
@@ -110,8 +110,7 @@ export class TemporadasRelojComponent implements OnInit {
     this.colecciones = [];
     this.db.getColecciones(this.tipoProducto, tendenciaSeleccionada).subscribe(value => {
       this.colecciones = [];
-      // console.log(this.temporadaSeleccionda);
-      if (value) {
+      if (value[0]) {
         this.colecciones = value;
         this.seleccionarColeccion(value[0]);
       }
