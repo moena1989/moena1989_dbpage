@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {isNumeric} from 'rxjs/internal-compatibility';
 
 @Component({
   selector: 'app-input',
@@ -9,9 +10,12 @@ export class InputComponent implements OnInit {
   @Input() ttl: string;
   @Input() placeholder: string;
   @Output() alEscribir = new EventEmitter();
+  // number, email, text, pass,
+  // @Input() type = 'number';
   @Input() disable: boolean;
-  val = '';
+  val: any = '';
   @Input() capitalizar = true;
+  private cc: any;
 
   constructor() {
   }
@@ -35,8 +39,23 @@ export class InputComponent implements OnInit {
 
   tecla(evt: any) {
     if (this.capitalizar) {
+      // this.va = cc;
       this.alEscribir.emit(this.capitalize(this.val));
-    } else {
+      // switch (this.type) {
+      //   case'text':
+      //     // this.alEscribir.emit(this.capitalize(this.val));
+      //     break;
+      //   case 'number':
+      //     if (isNumeric(evt)) {
+      //       console.log('y pues ajá');
+      //       this.cc = evt;
+      //     }
+      //     break;
+      //   case 'email':
+      //     // this.alEscribir.emit(this.capitalize(this.val));
+      //     break;
+      //
+      // }
     }
   }
 }
