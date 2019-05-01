@@ -48,9 +48,9 @@ export class TemporadasRelojComponent implements OnInit {
       this.tipoProducto = params.tipoProductoSeleccionado;
       this.relojData = currentStorageService;
       // console.log(this.relojData.modelos);
-      this.nuevaTemporada = {...this.currentStorageService.estructuradorIdiomas};
-      this.nuevaColeccion = {...this.currentStorageService.estructuradorIdiomas};
-      this.nuevaConfiguracion = {...this.currentStorageService.estructuradorIdiomas};
+      this.nuevaTemporada = {...this.currentStorageService.multiLangStructure};
+      this.nuevaColeccion = {...this.currentStorageService.multiLangStructure};
+      this.nuevaConfiguracion = {...this.currentStorageService.multiLangStructure};
     });
     this.localApp = settings.localApp;
   }
@@ -59,7 +59,7 @@ export class TemporadasRelojComponent implements OnInit {
   ngOnInit() {
     this.settings.tituloTopbar = 'Temporadas';
     this.idiomaSeleccionado = this.currentStorageService.idiomaDefault;
-    this.nuevaTemporada = {...this.currentStorageService.estructuradorIdiomas};
+    this.nuevaTemporada = {...this.currentStorageService.multiLangStructure};
     this.getTendencias();
     this.idiomaSeleccionado = this.currentStorageService.idiomaDefault;
   }

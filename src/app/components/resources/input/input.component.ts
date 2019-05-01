@@ -43,7 +43,7 @@ export class InputComponent implements OnInit {
       this.alEscribir.emit(this.capitalize(this.val));
       // switch (this.type) {
       //   case'text':
-      //     // this.alEscribir.emit(this.capitalize(this.val));
+      //     // this.writing.emit(this.capitalize(this.val));
       //     break;
       //   case 'number':
       //     if (isNumeric(evt)) {
@@ -52,7 +52,7 @@ export class InputComponent implements OnInit {
       //     }
       //     break;
       //   case 'email':
-      //     // this.alEscribir.emit(this.capitalize(this.val));
+      //     // this.writing.emit(this.capitalize(this.val));
       //     break;
       //
       // }

@@ -22,7 +22,7 @@ export class ConfigCajaComponent implements OnInit {
               private db: DbMainService, public current: CurrentStorageService, public tools: SettingsService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.idiomaSeleccionado = this.current.idiomaDefault;
-    this.currentItem = {...this.current.estructuradorIdiomas};
+    this.currentItem = {...this.current.multiLangStructure};
   }
 
   @Input('keyMaq')
@@ -80,7 +80,7 @@ export class ConfigCajaComponent implements OnInit {
       console.log('se va a registrar una nueva caja ;)');
       this.esNuevoItem = true;
       this.esEditable = true;
-      this.currentItem = {...this.current.estructuradorIdiomas};
+      this.currentItem = {...this.current.multiLangStructure};
     } else if (maqSelected !== '') {
       // buscar los datos de la maquinaria
       this.db.getItem('cajas', maqSelected).subscribe(value => {

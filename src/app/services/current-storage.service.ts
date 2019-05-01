@@ -370,8 +370,8 @@ export class CurrentStorageService {
     // {'cc': 'ZMK', 'simbolo': 'ZK', 'nombre': 'Zambian kwacha'},
     // {'cc': 'ZWR', 'simbolo': 'Z$', 'nombre': 'Zimbabwean dollar'}
   ];
-  public estructuradorIdiomas = {};
-  idiomaDefault: any = {codigo: 'es', nombre: 'Español', nombreNativo: 'Españo'};
+  public multiLangStructure = {};
+  idiomaDefault: any = {codigo: 'es', nombre: 'Español', nombreNativo: 'Español'};
   datosUsuario: any = {};
 
   constructor(private dbMain: DbMainService, private dbPublic: DBPublicService) {
@@ -406,7 +406,7 @@ export class CurrentStorageService {
         this.idiomas = value;
         this.idiomaDefault = this.idiomas.filter(value1 => value1.codigo === 'es')[0];
         this.idiomas.forEach(value1 => {
-          this.estructuradorIdiomas[value1.codigo] = {};
+          this.multiLangStructure[value1.codigo] = {};
         });
         resolve();
       });
@@ -426,7 +426,7 @@ export class CurrentStorageService {
       this.idiomaDefault = this.idiomas.filter(value1 => value1.codigo === 'es')[0];
 
       this.idiomas.forEach(value1 => {
-        this.estructuradorIdiomas[value1.codigo] = {};
+        this.multiLangStructure[value1.codigo] = {};
       });
     });
   }
