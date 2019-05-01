@@ -81,30 +81,7 @@ import {PedidosPageComponent} from './pedidos-page/pedidos-page.component';
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
 export function currentServiceFactory(provider: CurrentStorageService): () => Promise<any> {
-  // return () => provider.init();
   return (): Promise<any> => provider.init();
-
-  // {
-  //   return new Promise((resolve, reject) => {
-  //     console.log(`.svdlknasvndasndv`);
-  //     setTimeout(() => {
-  //       console.log(`loool`);
-  //       resolve();
-  //     }, 3000);
-  //   });
-  // };
-}
-
-export function onAppInit1(): () => Promise<any> {
-  return (): Promise<any> => {
-    return new Promise((resolve) => {
-      console.log(`.svdlknasvndasndv`);
-      setTimeout(() => {
-        console.log(`lloooll`);
-        resolve();
-      }, 3000);
-    });
-  };
 }
 
 @NgModule({
