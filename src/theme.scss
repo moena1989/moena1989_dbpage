@@ -234,14 +234,38 @@
   opacity: 1;
 }
 
+.cnttnt {
+  display: flex;
+  width: 100%;
+  height: 100%;
+  position: relative;
+  //background: #ff253a;
+}
+
+.c-v {
+  width: 100%;
+  padding-left: 2em;
+}
+
 .doc-top {
-  margin-top: .5em;
   display: flex;
   align-items: center;
   font-size: 1.8em;
-  //font-weight: 600;
+  height: 2em;
   margin-bottom: .5em;
+  justify-content: space-between;
+  //font-weight: 600;
   //background: #ff253a;
+}
+
+.d-l-s {
+  display: flex;
+  align-items: center;
+}
+
+.d-r-s {
+  align-items: center;
+  display: flex;
 }
 
 .doc-pg {
@@ -254,6 +278,16 @@
   margin-right: .5em;
   color: #f09819;
   //opacity: .6;
+}
+
+.clickss {
+  opacity: .2;
+  cursor: pointer;
+
+  &:hover {
+    opacity: .8;
+    color: var(--icon-color-hover);
+  }
 }
 
 .doc-top-ttl {
@@ -331,6 +365,8 @@
   }
 
 }
+
+
 
 
 //relacionado con las cartas

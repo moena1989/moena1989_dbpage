@@ -1,0 +1,72 @@
+<div class="item-top-ttl">
+  <div>
+    <div class="maq-ttl" *ngIf="esNuevoItem">Nueva Caja</div>
+    <div class="maq-ttl" *ngIf="!esNuevoItem">{{currentItem.nombre}}</div>
+  </div>
+
+  <div class="item-ttl" (click)="esEditable= !esEditable">
+    <div class="opt-t" *ngIf="!esNuevoItem && !esEditable">
+      <div class="fal fa-edit as"></div>
+      <div>Editar</div>
+    </div>
+
+    <div class="opt-t" (click)="finalizarRegistro()" *ngIf="esNuevoItem && esEditable">
+      <div class="fal fa-save as"></div>
+      <div>Finalizar Registro</div>
+    </div>
+
+    <div class="opt-t" *ngIf="!esNuevoItem && esEditable" (click)="actualizarRegistro()">
+      <div class="fal fa-save as"></div>
+      <div>Guardar cambios</div>
+    </div>
+
+    <div class="opt-t" *ngIf="!esNuevoItem && !esEditable">
+      <div class="fal fa-trash-alt as"></div>
+      <div>Eliminar registro</div>
+    </div>
+  </div>
+</div>
+<div class="ln"></div>
+
+<div class="item-opt-cnt">
+  <div class="visualizador">
+    <app-visualizer ttl="Frontal" [imgURL]="currentItem['imgUrl']" [lock]="!esEditable"
+                    (alSeleccionar)="onFileChanged($event)"></app-visualizer>
+  </div>
+  <div class="l-s">
+    <div class="ttl"><strong>Datos Multilenguaje</strong></div>
+
+    <app-tabs>
+      <div class="tab-opt"
+           *ngFor="let t of current?.idiomas"
+           [class.tab-opt-act]="idiomaSeleccionado==t" (click)="seleccionarIdioma(t)">
+        <div>{{t.nombre}}</div>
+      </div>
+    </app-tabs>
+
+    <div class="cnt-inputs">
+      <app-input [disable]="!esEditable" [value]="currentItem[idiomaSeleccionado.codigo].nombre" ttl="Nombre"
+                 (alEscribir)="escribirNombre($event)"
+                 placeholder="Nombre ({{idiomaSeleccionado?.codigo}})"></app-input>
+
+      <app-input [disable]="!esEditable" [value]="currentItem.uniq" ttl="Uniq"
+                 (alEscribir)="currentItem.uniq=$event" placeholder="MD-####"></app-input>
+    </div>
+
+
+    <div>_</div>
+    <div class="cnt-inputs">
+      <app-m-select [disable]="!esEditable" [itemSeleccionado]="currentItem.modelo" ttl="Modelo"
+                    (alSeleccionar)="currentItem.modelo=$event" [items]="current.modelos"></app-m-select>
+    </div>
+    <div class="ttlss"><strong>Datos Generales</strong></div>
+
+    <div class="cnt-inputs">
+      <app-input [disable]="!esEditable" [value]="currentItem.peso" ttl="Peso"
+                 (alEscribir)="currentItem.peso=  $event"></app-input>
+
+      <app-input [disable]="!esEditable" [value]="currentItem.materialPrincipal" ttl="Material principal"
+                 (alEscribir)="currentItem.materialPrincipal=$event"></app-input>
+    </div>
+  </div>
+</div>

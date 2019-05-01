@@ -12,7 +12,7 @@ import {AuthGuardService} from '../services/auth-guard.service';
 import {VerTendenciasPageComponent} from '../pages/por_def/ver-tendencias-page/ver-tendencias-page.component';
 import {BusquedaComponent} from '../pages/general/busqueda/busqueda.component';
 import {NuevaCajaComponent} from '../components/nueva-caja/nueva-caja.component';
-import {CaracteristicasPageComponent} from '../pages/caracteristicas-page/caracteristicas-page.component';
+import {PartesPageComponent} from '../pages/caracteristicas-page/partes-page.component';
 import {MainComponent} from '../components/main/main.component';
 import {PublicacionesPageComponent} from '../pages/marketing/publicaciones-page/publicaciones-page.component';
 import {PortadaPageComponent} from '../pages/general/portada-page/portada-page.component';
@@ -23,6 +23,14 @@ import {InventarioPageComponent} from '../pages/accounting/inventario-page/inven
 import {UsuariosPageComponent} from '../usuarios-page/usuarios-page.component';
 import {AjustesWebComponent} from '../idiomas-page/ajustes-web.component';
 import {PedidosPageComponent} from '../pedidos-page/pedidos-page.component';
+import {ConfigMaqComponent} from '../components/visualizador-config-maq/config-maq.component';
+import {ConfigCajaComponent} from '../components/visualizador-config-caja/config-caja.component';
+import {ConfigTapaComponent} from '../components/visualizador-config-tapa/config-tapa.component';
+import {ConfigModeloComponent} from '../components/visualizador-config-modelo-caja/config-modelo.component';
+import {ConfigCoronaComponent} from '../components/visualizador-config-corona/config-corona.component';
+import {ConfigHebillaComponent} from '../components/visualizador-config-hebilla/config-hebilla.component';
+import {ConfigPulsoComponent} from '../components/visualizador-config-pulso/config-pulso.component';
+import {ConfigCristalComponent} from '../config-cristal/config-cristal.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -40,26 +48,25 @@ export const routes: Routes = [
             {path: 'nueva_caja', component: NuevaCajaComponent}
           ]
       }, {
-        path: 'web', component: RegistroComponent, children:
-          [
-            {path: 'inicio', component: PortadaPageComponent},
-            {
-              path: 'temporadas', component: TendenciasPageComponent,
-              children: [
-                {path: '', component: VerTiposProductosComponent},
-                {
-                  path: ':tipoProductoSeleccionado',
-                  component: TemporadasRelojComponent,
-                },
-                {
-                  path: ':tipoProductoSeleccionado/:temporadaSeleccionda',
-                  component: VerTendenciasPageComponent,
-                }
-              ]
-            },
-            {path: 'noticias', component: NoticiasPageComponent},
-            {path: 'inventario', component: InventarioPageComponent},
-          ]
+        path: 'web', component: RegistroComponent, children: [
+          {path: 'inicio', component: PortadaPageComponent},
+          {
+            path: 'temporadas', component: TendenciasPageComponent,
+            children: [
+              {path: '', component: VerTiposProductosComponent},
+              {
+                path: ':tipoProductoSeleccionado',
+                component: TemporadasRelojComponent,
+              },
+              {
+                path: ':tipoProductoSeleccionado/:temporadaSeleccionda',
+                component: VerTendenciasPageComponent,
+              }
+            ]
+          },
+          {path: 'noticias', component: NoticiasPageComponent},
+          {path: 'inventario', component: InventarioPageComponent},
+        ]
       },
       {path: 'inventario', component: InventarioPageComponent},
       {path: 'ajustes-web', component: AjustesWebComponent},
@@ -68,8 +75,19 @@ export const routes: Routes = [
       {path: 'ventas', component: VentasPageComponent},
       {path: 'equipo', component: UsuariosPageComponent},
       {path: 'publicaciones', component: PublicacionesPageComponent},
-      {path: 'caracteristicas', component: CaracteristicasPageComponent, children: []}
-    ]
+      {
+        path: 'partes', component: PartesPageComponent,
+        children: [
+          {path: 'maquinarias', component: ConfigMaqComponent},
+          {path: 'cajas', component: ConfigCajaComponent},
+          {path: 'pulsos', component: ConfigPulsoComponent},
+          {path: 'modelos', component: ConfigModeloComponent},
+          {path: 'coronas', component: ConfigCoronaComponent},
+          {path: 'cristales', component: ConfigCristalComponent},
+          {path: 'hebillas', component: ConfigHebillaComponent},
+          {path: 'tapas', component: ConfigTapaComponent}
+        ]
+      }]
   }];
 // , {
 //   path: 'externalRedirect',

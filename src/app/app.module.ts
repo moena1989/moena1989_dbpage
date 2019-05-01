@@ -9,7 +9,7 @@ import {TittlebarComponent} from './components/windowsbar/tittlebar.component';
 import {VisualizerComponent} from './tools/visualizer/visualizer.component';
 import {FormsModule} from '@angular/forms';
 import {VerTendenciasPageComponent} from './pages/por_def/ver-tendencias-page/ver-tendencias-page.component';
-import {CaracteristicasPageComponent} from './pages/caracteristicas-page/caracteristicas-page.component';
+import {PartesPageComponent} from './pages/caracteristicas-page/partes-page.component';
 import {SnackbarComponent} from './tools/snackbar/snackbar.component';
 import {PublicacionesPageComponent} from './pages/marketing/publicaciones-page/publicaciones-page.component';
 import {AngularFireStorageModule, StorageBucket} from '@angular/fire/storage';
@@ -21,8 +21,8 @@ import {NgxSmartModalModule, NgxSmartModalService} from 'ngx-smart-modal';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
 import {InventarioPageComponent} from './pages/accounting/inventario-page/inventario-page.component';
 import {DbMainService} from './services/routes/db-main.service';
-import {VisualizadorConfigPulsoComponent} from './components/visualizador-config-pulso/visualizador-config-pulso.component';
-import {VisualizadorConfigHebillaComponent} from './components/visualizador-config-hebilla/visualizador-config-hebilla.component';
+import {ConfigPulsoComponent} from './components/visualizador-config-pulso/config-pulso.component';
+import {ConfigHebillaComponent} from './components/visualizador-config-hebilla/config-hebilla.component';
 import {VerTiposProductosComponent} from './components/ver-tipos-productos/ver-tipos-productos.component';
 import {TabsComponent} from './components/resources/tabs/tabs.component';
 import {HasherService} from './services/hasher.service';
@@ -34,14 +34,13 @@ import {MainComponent} from './components/main/main.component';
 import {SettingsService} from './services/settings.service';
 import {RelojBuscadoComponent} from './tools/reloj-buscado/reloj-buscado.component';
 import {LoadbarComponent} from './components/resources/loadbar/loadbar.component';
-import {VisualizadorConfigTapaComponent} from './components/visualizador-config-tapa/visualizador-config-tapa.component';
+import {ConfigTapaComponent} from './components/visualizador-config-tapa/config-tapa.component';
 import {VerLoteComponent} from './components/resources/ver-lote/ver-lote.component';
 import {CurrentStorageService} from './services/current-storage.service';
 import {Ng2ImgMaxModule} from 'ng2-img-max';
 import {VentasPageComponent} from './pages/por_def/ventas-page/ventas-page.component';
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {LoginComponent} from './pages/general/login/login.component';
-import {VisualizadorConfigCajaComponent} from './components/visualizador-config-caja/visualizador-config-caja.component';
 import {MSelectComponent} from './tools/m-select/m-select.component';
 import {library} from '@fortawesome/fontawesome-svg-core';
 import {AuthService} from './services/routes/auth.service';
@@ -50,7 +49,7 @@ import {TopBarComponent} from './components/environment/top-bar/top-bar.componen
 import {SidebarComponent} from './components/environment/sidebar/sidebar.component';
 import {InputComponent} from './components/resources/input/input.component';
 import {OAuthCallbackComponent} from './components/o-auth-callback/o-auth-callback.component';
-import {VisualizadorConfigMaqComponent} from './components/visualizador-config-maq/visualizador-config-maq.component';
+import {ConfigMaqComponent} from './components/visualizador-config-maq/config-maq.component';
 import {WorkerRegComponent} from './pages/worker-reg/worker-reg.component';
 import {TendenciasPageComponent} from './components/products/tendencias-page.component';
 import {BrowserModule} from '@angular/platform-browser';
@@ -64,7 +63,7 @@ import {FormButtonComponent} from './components/resources/form-button/form-butto
 import {NoticiasPageComponent} from './pages/noticias-page/noticias-page.component';
 import {OpCntComponent} from './components/op-cnt/op-cnt.component';
 import {TemporadasRelojComponent} from './pages/por_def/tipos-tendencias-page/temporadas-reloj.component';
-import {VisualizadorConfigCoronaComponent} from './components/visualizador-config-corona/visualizador-config-corona.component';
+import {ConfigCoronaComponent} from './components/visualizador-config-corona/config-corona.component';
 import {AdderComponent} from './components/resources/adder/adder.component';
 import {HttpClientModule} from '@angular/common/http';
 import {environment} from './environment/dbs';
@@ -72,10 +71,10 @@ import {AngularFireDatabaseModule} from '@angular/fire/database-deprecated';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {UsuariosPageComponent} from './usuarios-page/usuarios-page.component';
 import {VerticalBarComponent} from './vertical-bar/vertical-bar.component';
-import {ConfigCajaComponent} from './config-caja/config-caja.component';
 import {ConfigCristalComponent} from './config-cristal/config-cristal.component';
 import {AjustesWebComponent} from './idiomas-page/ajustes-web.component';
 import {PedidosPageComponent} from './pedidos-page/pedidos-page.component';
+import {ConfigCajaComponent} from './components/visualizador-config-caja/config-caja.component';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -95,12 +94,11 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     VerLoteComponent, TittlebarComponent, TopBarComponent, LoadbarComponent,
     OAuthCallbackComponent, TendenciasPageComponent, TrendCntComponent, NoticiasPageComponent,
     TemporadasRelojComponent, VerTendenciasPageComponent, VerTendenciaPageComponent,
-    VerTiposProductosComponent, OpCntComponent, CaracteristicasPageComponent, TabsComponent,
-    VisualizadorConfigCajaComponent,
-    VisualizadorConfigPulsoComponent, VisualizadorConfigMaqComponent,
+    VerTiposProductosComponent, OpCntComponent, PartesPageComponent, TabsComponent,
+    ConfigPulsoComponent, ConfigMaqComponent,
     ConfigMaderaComponent, ConfigModeloComponent,
-    VisualizadorConfigTapaComponent, VisualizadorConfigHebillaComponent,
-    VisualizadorConfigCoronaComponent, AdderComponent, UsuariosPageComponent, VerticalBarComponent,
+    ConfigTapaComponent, ConfigHebillaComponent,
+    ConfigCoronaComponent, AdderComponent, UsuariosPageComponent, VerticalBarComponent,
     ConfigCajaComponent, ConfigCristalComponent, AjustesWebComponent, PedidosPageComponent
   ],
   imports: [
