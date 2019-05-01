@@ -45,8 +45,7 @@
             <!--<div class="">-->
             <i [class.dot-active]="c.estado===relojData.opcsEstadosTendencias.publica.nombre"
                class="fas fa-circle tab-ido"></i>
-            <div>
-              {{c.nombre}}
+            <div>{{c.nombre}}
             </div>
           </div>
           <div class="tr-status">{{c?.modelo}}</div>
@@ -183,35 +182,47 @@
     <i class="far fa-ballot-check modal-tittle-ico"></i>
     Nueva colección
   </div>
-  <div class="md-cnt">
+  <div class="md-cnt safff">
     <div class="col-vis">
       <app-visualizer ttl="Frontal" [imgURL]="nuevaColeccion['imgUrl']" [lock]="false"
                       (alSeleccionar)="currentFileColection=$event"></app-visualizer>
     </div>
-    <app-input ttl="Nombre Colección"
-               [disable]="!esEditable"
-               [value]="nuevaColeccion.nombre"
-               (alEscribir)="nuevaColeccion.nombre= $event"></app-input>
+    <div class="t-r-side">
+      <app-tabs>
+        <div class="tab-opt"
+             *ngFor="let t of currentStorageService?.idiomas"
+             [class.tab-opt-act]="idiomaSeleccionado.codigo===t.codigo" (click)="seleccionarIdiomaTendencia(t)">
+          <div>{{t?.nombre}}</div>
+        </div>
+      </app-tabs>
+      <div class="i-v">
+        <app-input ttl="Nombre"
+                   [disable]="!esEditable"
+                   [value]="nuevaColeccion[idiomaSeleccionado.codigo].nombre"
+                   placeholder="Nombre ({{idiomaSeleccionado.codigo}})"
+                   (alEscribir)="nombreColeccion($event)"></app-input>
 
-    <app-m-select ttl="Estado"
-                  (alSeleccionar)="nuevaColeccion.estado= $event.nombre"
-                  [items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>
+        <app-m-select ttl="Estado"
+                      (alSeleccionar)="nuevaColeccion.estado= $event.nombre"
+                      [items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>
 
-    <app-m-select ttl="Modelo de Reloj"
-                  [disable]="!esEditable"
-                  (alSeleccionar)="nuevaColeccion.modelo = $event.nombre"
-                  [items]="relojData.modelos">
-    </app-m-select>
+        <app-m-select ttl="Modelo de Reloj"
+                      [disable]="!esEditable"
+                      (alSeleccionar)="nuevaColeccion.modelo = $event.nombre"
+                      [items]="relojData.modelos">
+        </app-m-select>
 
-    <app-input ttl="Precio"
-               [disable]="!esEditable"
-               [value]="nuevaColeccion.precio"
-               (alEscribir)="nuevaColeccion.precio= $event"></app-input>
+        <app-input ttl="Precio"
+                   [disable]="!esEditable"
+                   [value]="nuevaColeccion.precio"
+                   (alEscribir)="nuevaColeccion.precio= $event"></app-input>
 
-    <app-input ttl="Descripción"
-               [disable]="!esEditable"
-               [value]="nuevaColeccion.descripcion"
-               (alEscribir)="nuevaColeccion.descripcion= $event"></app-input>
+        <app-input ttl="Descripción"
+                   [disable]="!esEditable"
+                   [value]="nuevaColeccion.descripcion"
+                   (alEscribir)="nuevaColeccion.descripcion= $event"></app-input>
+      </div>
+    </div>
   </div>
 
   <div class="modal-bottom-cnt">

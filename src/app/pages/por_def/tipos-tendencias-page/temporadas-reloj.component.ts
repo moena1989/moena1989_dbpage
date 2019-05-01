@@ -47,8 +47,9 @@ export class TemporadasRelojComponent implements OnInit {
     route.params.subscribe(params => {
       this.tipoProducto = params.tipoProductoSeleccionado;
       this.relojData = currentStorageService;
-      console.log(this.relojData.modelos);
+      // console.log(this.relojData.modelos);
       this.nuevaTemporada = {...this.currentStorageService.estructuradorIdiomas};
+      this.nuevaColeccion = {...this.currentStorageService.estructuradorIdiomas};
       this.nuevaConfiguracion = {...this.currentStorageService.estructuradorIdiomas};
     });
     this.localApp = settings.localApp;
@@ -70,7 +71,7 @@ export class TemporadasRelojComponent implements OnInit {
         value.forEach(result => {
           this.tendencias.push(result);
         });
-        console.log('tendencias traidas', this.tendencias);
+        // console.log('tendencias traidas', this.tendencias);
         if (this.tendencias.length !== 0) {
           this.idiomaSeleccionado = this.currentStorageService.idiomaDefault;
           this.seleccionarTendencia(this.tendencias[0]);
@@ -85,7 +86,7 @@ export class TemporadasRelojComponent implements OnInit {
     this.db.getConfiguracionesReloj(tipoProducto, keyColeccion)
       .subscribe(value => {
         this.configuraciones = [];
-        console.log('las configuraciones de este', value);
+        // console.log('las configuraciones de este', value);
         if (value !== undefined) {
           value.forEach(result => {
               this.configuraciones.push(result);
@@ -97,9 +98,10 @@ export class TemporadasRelojComponent implements OnInit {
 
 
   seleccionarColeccion(coleccionSeleccionada) {
+    console.log(coleccionSeleccionada);
     this.coleccionSeleccionada = coleccionSeleccionada;
     this._coleccionSeleccionada = Object.assign({}, coleccionSeleccionada);
-    console.log('cooollections', coleccionSeleccionada);
+    // console.log('cooollections', coleccionSeleccionada);
     this.getConfiguraciones(this.tipoProducto, coleccionSeleccionada.metadata.key);
   }
 
@@ -121,11 +123,11 @@ export class TemporadasRelojComponent implements OnInit {
     this.nuevaConfiguracion['keyTemporada'] = this.temporadaSeleccionda.metadata.key;
     this.nuevaConfiguracion['keyColeccion'] = this.coleccionSeleccionada.metadata.key;
     this.nuevaConfiguracion.estado = 'Pública';
-    console.log('nuevo config', this.nuevaConfiguracion);
+    // console.log('nuevo config', this.nuevaConfiguracion);
 
     this.db.setConfiguracionReloj(this.tipoProducto, this.temporadaSeleccionda,
       this.coleccionSeleccionada, this.nuevaConfiguracion).then(value => {
-      console.log('se sube configuración de reloj ;)');
+      // console.log('se sube configuración de reloj ;)');
       this.modalConfiguraciones.close();
     });
   }
@@ -159,15 +161,15 @@ export class TemporadasRelojComponent implements OnInit {
 
   actualizarColeccion(coleccionSeleccionada: any) {
     this.db.updateColeccion(this.tipoProducto, this.temporadaSeleccionda, coleccionSeleccionada).then(value => {
-      console.log('colección actualizada');
+      // console.log('colección actualizada');
     });
   }
 
   eliminarConfig(selectedConfig: any) {
     this.db.eliminarItem('configuracionesReloj', selectedConfig).then(value => {
-      console.log(value);
+      // console.log(value);
     }).catch(reason => {
-      console.log(reason);
+      // console.log(reason);
     });
   }
 
@@ -182,7 +184,7 @@ export class TemporadasRelojComponent implements OnInit {
 
   seleccionarIdiomaTendencia(t: any) {
     this.idiomaSeleccionado = t;
-    console.log(t);
+    // console.log(t);
   }
 
   nombreTemporada($event: any) {
@@ -191,4 +193,12 @@ export class TemporadasRelojComponent implements OnInit {
       this.nuevaTemporada.nombre = $event;
     }
   }
+
+  nombreColeccion($event: any) {
+    this.nuevaColeccion[this.idiomaSeleccionado.codigo].nombre = $event;
+    if (this.idiomaSeleccionado.codigo === 'es') {
+      this.nuevaColeccion.nombre = $event;
+    }
+  }
+
 }

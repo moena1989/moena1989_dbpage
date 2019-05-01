@@ -66,6 +66,10 @@
   cursor: pointer;
 }
 
+.t-r-side {
+  width: auto;
+}
+
 .col-vis {
   width: 12em;
   height: 12em;
@@ -73,6 +77,12 @@
   margin-right: 2em;
   border: 1px solid rgb(243, 243, 243);
   padding: 1em;
+  //background: #2C2E3E;
+}
+
+.safff {
+  display: flex;
+  width: 100%;
 }
 
 .tr-status {

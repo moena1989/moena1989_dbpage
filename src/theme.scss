@@ -59,11 +59,13 @@
   margin-bottom: 1em;
   //border: 1px solid rgba(44, 46, 62, 0.3);
 }
+
 .as {
   margin: .5em;
   cursor: pointer;
 
 }
+
 .maq-ttl {
   font-size: 1.2em;
   font-weight: bold;
@@ -130,7 +132,7 @@
 
 .i-v {
   display: flex;
-  //flex-direction: column;
+  flex-wrap: wrap;
 }
 
 .mk-im-m {
