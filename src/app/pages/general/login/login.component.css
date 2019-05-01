@@ -3,6 +3,10 @@
   width: 100%;
 }
 
+.log_input {
+  background: white;
+  margin: 1em;
+}
 
 .ttl_active {
   height: calc(100% - 32px);

@@ -1,14 +1,15 @@
 <!--<div class="tb-ttl">{{tools.tituloTopbar}}</div>-->
 <div class="top-busqueda">
   <i class="far fa-search optsf" (click)="cerrarSesion()"></i>
-  <div>Buscar productos, cuentas, Inventarios, etc...</div>
+  <div>Buscar productos</div>
 </div>
 <div class="r_side">
   <div class="sssc">
-    <div class="nombre">{{tools.gUser.displayName}}</div>
-    <div class="cargo">Administrador supremo</div>
+    <div class="nombre">{{current.datosUsuario.nombre}} {{current.datosUsuario.apellidos}}</div>
+    <div class="cargo">{{current.datosUsuario.cargo}}</div>
   </div>
-  <img [src]="tools?.gUser.photoURL" class="usr" alt="">
+  <i class="fal fa-user-astronaut usr"></i>
+  <!--<img src="{{tools?.gUser.photoURL}}" class="usr" alt="">-->
   <i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>
 </div>
 <!--<div class="aovsn"></div>-->

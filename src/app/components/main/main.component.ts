@@ -1,7 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {fadeAnimation} from '../../animations/Animation';
 import {SettingsService} from '../../services/settings.service';
-import {CurrentStorageService} from '../../services/current-storage.service';
 
 @Component({
   selector: 'app-main',
@@ -10,8 +9,7 @@ import {CurrentStorageService} from '../../services/current-storage.service';
 })
 
 export class MainComponent implements OnInit {
-  constructor(private currentData: CurrentStorageService, public tools: SettingsService) {
-    currentData.iniciar();
+  constructor(public tools: SettingsService) {
   }
 
   ngOnInit(): void {

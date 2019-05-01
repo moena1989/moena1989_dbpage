@@ -21,7 +21,8 @@ import {NuevoRelojComponent} from '../tools/nuevo-reloj/nuevo-reloj.component';
 import {TemporadasRelojComponent} from '../pages/por_def/tipos-tendencias-page/temporadas-reloj.component';
 import {InventarioPageComponent} from '../pages/accounting/inventario-page/inventario-page.component';
 import {UsuariosPageComponent} from '../usuarios-page/usuarios-page.component';
-import {IdiomasPageComponent} from '../idiomas-page/idiomas-page.component';
+import {AjustesWebComponent} from '../idiomas-page/ajustes-web.component';
+import {PedidosPageComponent} from '../pedidos-page/pedidos-page.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -61,7 +62,8 @@ export const routes: Routes = [
           ]
       },
       {path: 'inventario', component: InventarioPageComponent},
-      {path: 'idiomas', component: IdiomasPageComponent},
+      {path: 'ajustes-web', component: AjustesWebComponent},
+      {path: 'pedidos', component: PedidosPageComponent},
       {path: 'experimentos', component: ExperimentosPageComponent},
       {path: 'ventas', component: VentasPageComponent},
       {path: 'equipo', component: UsuariosPageComponent},

@@ -21,9 +21,8 @@ export class CurrentStorageService {
   relojDisponible: ClockModel;
   public cristales = [];
   public pulsos = [];
-  public idiomas: any[];
+  public idiomas: any[] = [];
   public idiomaApp: any = {'codigo': 'es', 'nombre': 'Español', 'nombreNativo': 'Español'};
-
   public cajas: any[];
   public IDIOMAS = [
     // {'codigo': 'ab', 'nombre': 'Abkhaz', 'nombreNativo': 'аҧсуа'},
@@ -372,13 +371,14 @@ export class CurrentStorageService {
     // {'cc': 'ZWR', 'simbolo': 'Z$', 'nombre': 'Zimbabwean dollar'}
   ];
   public estructuradorIdiomas = {};
-  idiomaDefault: any;
+  idiomaDefault: any = {codigo: 'es', nombre: 'Español', nombreNativo: 'Españo'};
+  datosUsuario: any = {};
 
   constructor(private dbMain: DbMainService, private dbPublic: DBPublicService) {
-    // this.iniciar();
   }
 
   iniciar() {
+    console.log('SE TRAEN LOS DATOS INICIALES');
     this.getModelos();
     this.getCoronas();
     this.getCristales();
@@ -402,7 +402,7 @@ export class CurrentStorageService {
 
     this.dbPublic.getIdiomas().subscribe(value => {
       this.idiomas = value;
-      this.idiomaDefault = this.idiomas.filter(value1 => value1.codigo === 'es')[0]
+      this.idiomaDefault = this.idiomas.filter(value1 => value1.codigo === 'es')[0];
 
       this.idiomas.forEach(value1 => {
         this.estructuradorIdiomas[value1.codigo] = {};
@@ -451,5 +451,4 @@ export class CurrentStorageService {
       this.pulsos = value;
     });
   }
-
 }

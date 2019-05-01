@@ -4,27 +4,27 @@
     <img class="main_name" src="assets/common/logo_w.svg" alt="Moena 1989"/>
     <div>DASHBOARD</div>
   </div>
+
   <div class="sidebar-scrollable-area">
     <div class="item" routerLink="/home" [routerLinkActive]="'acti'">
       <i class="fal fa-home ico_op"></i>
       <div class="opt_txt">Inicio</div>
     </div>
 
-    <div class="sub">Producción</div>
-    <div class="item"
-         (click)="regs=!regs">
-      <i class="fal fa-barcode-alt fa-fw ico_op"></i>
-      <div class="opt_txt">Registro</div>
-    </div>
-
+    <!--<div class="sub">Producción</div>-->
+    <!--<div class="item"-->
+    <!--(click)="regs=!regs">-->
+    <!--<i class="fal fa-barcode-alt fa-fw ico_op"></i>-->
+    <!--<div class="opt_txt">Registro</div>-->
+    <!--</div>-->
 
     <div *ngIf="regs">
-      <div class="item suub" routerLink="/registro/nueva_caja" [routerLinkActive]="'acti'">
+      <div class="item" routerLink="/registro/nueva_caja" [routerLinkActive]="'acti'">
         <i class="fal fa-plus fa-fw ico_op "></i>
         <div class="opt_txt">Caja</div>
       </div>
 
-      <div class="item suub" routerLink="/registro/nuevo_reloj" [routerLinkActive]="'acti'">
+      <div class="item" routerLink="/registro/nuevo_reloj" [routerLinkActive]="'acti'">
         <i class="fal fa-plus fa-fw ico_op "></i>
         <div class="opt_txt">Reloj</div>
       </div>
@@ -36,10 +36,11 @@
     </div>
 
     <div class="sub">Mercadeo</div>
-    <div class="item" routerLink="/web/inicio" [routerLinkActive]="'acti'">
-      <i class="fal fa-newspaper fa-fw ico_op "></i>
-      <div class="opt_txt">Inicio</div>
-    </div>
+
+    <!--<div class="item" routerLink="/web/inicio" [routerLinkActive]="'acti'">-->
+    <!--<i class="fal fa-newspaper fa-fw ico_op "></i>-->
+    <!--<div class="opt_txt">Inicio</div>-->
+    <!--</div>-->
 
     <div class="item" routerLink="/web/temporadas/relojes" [routerLinkActive]="'acti'">
       <i class="fal fa-chart-network fa-fw ico_op "></i>
@@ -51,11 +52,15 @@
       <div class="opt_txt">Partes</div>
     </div>
 
-    <div class="item" routerLink="/idiomas" [routerLinkActive]="'acti'">
+    <div class="item" routerLink="/ajustes-web" [routerLinkActive]="'acti'">
       <i class="fal fa-sliders-v fa-fw ico_op"></i>
       <div class="opt_txt">Ajustes Web</div>
     </div>
 
+    <!--<div class="item" routerLink="/pedidos" [routerLinkActive]="'acti'">-->
+    <!--<i class="fal fa-boxes-alt fa-fw ico_op"></i>-->
+    <!--<div class="opt_txt">Pedidos</div>-->
+    <!--</div>-->
     <!--<div class="item" routerLink="/DIVISAS" [routerLinkActive]="'acti'">-->
     <!--<i class="fal fa-money-bill fa-fw ico_op"></i>-->
     <!--<div class="opt_txt">Divisas</div>-->

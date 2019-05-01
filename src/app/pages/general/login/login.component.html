@@ -4,14 +4,13 @@
   <div class="card_login">
     <img class="logo" src="assets/common/logo_w.svg" alt="Moena 1989">
     <div class="lg-sub">LOGIN</div>
-    <!--<div>-->
-    <!--Lorem ipsum dolor sit amet, consectetur adipisicing elit. Animi aut delectus deserunt eum exercitationem id ipsam-->
-    <!--labore laborum maiores, molestiae mollitia nemo odio officia perspiciatis qui quo sit, tempore unde!-->
-    <!--</div>-->
-    <!--<input type="email">-->
-    <!--<input type="password">-->
-    <!--<div class="ss" (click)="signInWithZoho()">Testing</div>-->
-    <div class="las" (click)="ingresar()">
+
+    <div>
+      <input #email placeholder="Email" class="log_input" type="email">
+      <input #pass placeholder="Pass" class="log_input" type="password">
+    </div>
+
+    <div class="las" (click)="ingresarConUsuario(email.value,pass.value)">
       <i class="fal fa-lock"></i>
       <div class="btn-work">Ingresar</div>
     </div>

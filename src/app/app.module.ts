@@ -1,5 +1,5 @@
 import {routes} from './environment/routing';
-import {InjectionToken, NgModule} from '@angular/core';
+import {APP_INITIALIZER, InjectionToken, NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
 import {NuevoRelojComponent} from './tools/nuevo-reloj/nuevo-reloj.component';
 import {ActivatedRouteSnapshot, RouterModule} from '@angular/router';
@@ -74,10 +74,15 @@ import {UsuariosPageComponent} from './usuarios-page/usuarios-page.component';
 import {VerticalBarComponent} from './vertical-bar/vertical-bar.component';
 import {ConfigCajaComponent} from './config-caja/config-caja.component';
 import {ConfigCristalComponent} from './config-cristal/config-cristal.component';
-import { IdiomasPageComponent } from './idiomas-page/idiomas-page.component';
+import {AjustesWebComponent} from './idiomas-page/ajustes-web.component';
+import {PedidosPageComponent} from './pedidos-page/pedidos-page.component';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
+
+export function currentServiceFactory(provider: CurrentStorageService) {
+  return () => provider.iniciar();
+}
 
 @NgModule({
   declarations: [
@@ -96,7 +101,7 @@ const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
     ConfigMaderaComponent, VisualizadorConfigModeloCajaComponent,
     VisualizadorConfigTapaComponent, VisualizadorConfigHebillaComponent,
     VisualizadorConfigCoronaComponent, AdderComponent, UsuariosPageComponent, VerticalBarComponent,
-    ConfigCajaComponent, ConfigCristalComponent, IdiomasPageComponent
+    ConfigCajaComponent, ConfigCristalComponent, AjustesWebComponent, PedidosPageComponent
   ],
   imports: [
     RouterModule.forRoot(routes, {enableTracing: false}),
@@ -112,10 +117,16 @@ const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
       const externalUrl = route.paramMap.get('externalUrl');
       window.open(externalUrl, '_self');
     },
-  }, NgxSmartModalService, CurrentStorageService, {provide: StorageBucket, useValue: 'testing-this-shit'},
+  }, {
+    provide: APP_INITIALIZER,
+    useFactory: currentServiceFactory,
+    deps: [CurrentStorageService],
+    multi: true
+  }, NgxSmartModalService, {provide: StorageBucket, useValue: 'testing-this-shit'},
     SettingsService, ModelsSevice, AuthService, AngularFireDatabase, DbMainService, AngularFirestore, HasherService],
   bootstrap: [AppComponent]
 })
+
 export class AppModule {
   constructor() {
     // TODO simplificaar y utilizar iconos base

@@ -28,7 +28,7 @@ export class TemporadasRelojComponent implements OnInit {
     {nombre: 'Inglés', local: 'en'},
     {nombre: 'Italiano', local: 'it'},
     {nombre: 'Francés', local: 'fr'}];
-  public idiomaSeleccionado = this.idiomas[0];
+  public idiomaSeleccionado: any = {};
   public colecciones: any[] = [];
   public tipoProducto = 'relojes';
   public coleccionSeleccionada: any;
@@ -42,6 +42,8 @@ export class TemporadasRelojComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private db: DBPublicService, private settings: SettingsService, public currentStorageService: CurrentStorageService) {
+    this.idiomaSeleccionado = this.currentStorageService.idiomaDefault;
+
     route.params.subscribe(params => {
       this.tipoProducto = params.tipoProductoSeleccionado;
       this.relojData = currentStorageService;
@@ -49,14 +51,16 @@ export class TemporadasRelojComponent implements OnInit {
       this.nuevaTemporada = {...this.currentStorageService.estructuradorIdiomas};
       this.nuevaConfiguracion = {...this.currentStorageService.estructuradorIdiomas};
     });
-
     this.localApp = settings.localApp;
   }
 
 
   ngOnInit() {
     this.settings.tituloTopbar = 'Temporadas';
+    this.idiomaSeleccionado = this.currentStorageService.idiomaDefault;
+    this.nuevaTemporada = {...this.currentStorageService.estructuradorIdiomas};
     this.getTendencias();
+    this.idiomaSeleccionado = this.currentStorageService.idiomaDefault;
   }
 
   getTendencias() {
@@ -66,10 +70,11 @@ export class TemporadasRelojComponent implements OnInit {
         value.forEach(result => {
           this.tendencias.push(result);
         });
-        console.log('y pos aja');
-        console.log(this.tendencias);
-        // selecciono la primera de forma predeterminada
-        this.seleccionarTendencia(this.tendencias[0]);
+        console.log('y pos aja', this.tendencias);
+        if (this.tendencias.length !== 0) {
+          this.idiomaSeleccionado = this.currentStorageService.idiomaDefault;
+          this.seleccionarTendencia(this.tendencias[0]);
+        }
       } else {
         console.log('no existen tendencias');
       }
@@ -174,5 +179,17 @@ export class TemporadasRelojComponent implements OnInit {
     }).catch(reason => {
       console.log(reason);
     });
+  }
+
+  seleccionarIdiomaTendencia(t: any) {
+    this.idiomaSeleccionado = t;
+    console.log(t);
+  }
+
+  nombreTemporada($event: any) {
+    this.nuevaTemporada[this.idiomaSeleccionado.codigo].nombre = $event;
+    if (this.idiomaSeleccionado.codigo === 'es') {
+      this.nuevaTemporada.nombre = $event;
+    }
   }
 }
