@@ -228,7 +228,7 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
 
     for (let i = 0; i < TOTAL_FILES; i++) {
       this.tools.comprimir(files[i], result => {
-        console.log('Finalizar img ' + result.name);
+        console.log('Finalizar currentImg ' + result.name);
         console.log(result);
         this.imagenesProcesadas[i] = result;
         finalizados.push(true);

@@ -154,13 +154,12 @@ export class DbMainService {
     return this.afs.collection<MReloj>('relojes').doc(serial).get();
   }
 
-  // TODO sé que este metodo se puede hacer muchisisisisimo mejor...   Done B)
   pushImage(img: File, route: any, alFinalizar: (url: string) => void) {
     const key = this.getNewKey();
     const array = img.name.split('.');
     const l = array.length;
-    const ext = array[l - 1];
-    const finalRoute = route + '/' + key + '.' + ext;
+    const extension = array[l - 1];
+    const finalRoute = route + '/' + key + '.' + extension;
     this.mainStorage.upload(finalRoute, img).then(a => {
       console.log('se subió');
       console.log(a);
@@ -169,6 +168,46 @@ export class DbMainService {
       });
     });
   }
+
+  setNewImage(img: File, route: any): Promise<any> {
+    return new Promise(resolve => {
+      const key = this.dbMain.createId();
+      const array = img.name.split('.');
+      const l = array.length;
+      const ext = array[l - 1];
+      const finalRoute = route + '/' + key + '.' + ext;
+      this.mainStorage.upload(finalRoute, img).then(a => {
+        this.mainStorage.ref(finalRoute).getDownloadURL().toPromise().then(value => {
+          resolve({
+            url: value,
+            extension: ext,
+            key: key
+          });
+        });
+      });
+    });
+  }
+
+  updateImage(img: File, route: any, key: string): Promise<any> {
+    return new Promise(resolve => {
+      const array = img.name.split('.');
+      const l = array.length;
+      const ext = array[l - 1];
+      const finalRoute = route + '/' + key + '.' + ext;
+      this.mainStorage.upload(finalRoute, img).then(a => {
+        console.log('se subió');
+        console.log(a);
+        this.mainStorage.ref(finalRoute).getDownloadURL().toPromise().then(value => {
+          resolve({
+            url: value,
+            extension: ext,
+            key: key
+          });
+        });
+      });
+    });
+  }
+
 
 // hay que buscar una manera mas optima de organizar los contadores,
 // no sé como pasar el subSubscripción, por ende, lo resolveré por callback
@@ -260,5 +299,10 @@ export class DbMainService {
   deleteSpecificModel(tipoModel: string, nombreModel: string) {
     return this.dbMain.collection('relojes').doc('modelos').collection(tipoModel).doc(nombreModel).delete();
   }
+
+  deleteItem(tipoItem: string, item: any) {
+    return this.dbMain.collection('datosProductos/' + 'relojes/' + tipoItem).doc(item.metadata.key).delete();
+  }
+
 }
 

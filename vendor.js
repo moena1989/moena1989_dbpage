@@ -19224,7 +19224,7 @@ function SECURITY_SCHEMA() {
         registerContext(SecurityContext.URL, [
             '*|formAction', 'area|href', 'area|ping', 'audio|src', 'a|href',
             'a|ping', 'blockquote|cite', 'body|background', 'del|cite', 'form|action',
-            'img|src', 'img|srcset', 'input|src', 'ins|cite', 'q|cite',
+            'currentImg|src', 'currentImg|srcset', 'input|src', 'ins|cite', 'q|cite',
             'source|src', 'source|srcset', 'track|src', 'video|poster', 'video|src',
         ]);
         registerContext(SecurityContext.RESOURCE_URL, [
@@ -19381,7 +19381,7 @@ var SCHEMA = [
     'h1,h2,h3,h4,h5,h6^[HTMLElement]|align',
     'html^[HTMLElement]|version',
     'iframe^[HTMLElement]|align,!allowFullscreen,frameBorder,height,longDesc,marginHeight,marginWidth,name,referrerPolicy,%sandbox,scrolling,src,srcdoc,width',
-    'img^[HTMLElement]|align,alt,border,%crossOrigin,#height,#hspace,!isMap,longDesc,lowsrc,name,referrerPolicy,sizes,src,srcset,useMap,#vspace,#width',
+    'currentImg^[HTMLElement]|align,alt,border,%crossOrigin,#height,#hspace,!isMap,longDesc,lowsrc,name,referrerPolicy,sizes,src,srcset,useMap,#vspace,#width',
     'input^[HTMLElement]|accept,align,alt,autocapitalize,autocomplete,!autofocus,!checked,!defaultChecked,defaultValue,dirName,!disabled,%files,formAction,formEnctype,formMethod,!formNoValidate,formTarget,#height,!incremental,!indeterminate,max,#maxLength,min,#minLength,!multiple,name,pattern,placeholder,!readOnly,!required,selectionDirection,#selectionEnd,#selectionStart,#size,src,step,type,useMap,value,%valueAsDate,#valueAsNumber,#width',
     'li^[HTMLElement]|type,#value',
     'label^[HTMLElement]|htmlFor',
@@ -38036,9 +38036,9 @@ var InertBodyHelper = /** @class */ (function () {
             return;
         }
         this.inertBodyElement.innerHTML =
-            '<svg><p><style><img src="</style><img src=x onerror=alert(1)//">';
-        if (this.inertBodyElement.querySelector && this.inertBodyElement.querySelector('svg img')) {
-            // We just hit the Firefox bug - which prevents the inner img JS from being sanitized
+            '<svg><p><style><currentImg src="</style><currentImg src=x onerror=alert(1)//">';
+        if (this.inertBodyElement.querySelector && this.inertBodyElement.querySelector('svg currentImg')) {
+            // We just hit the Firefox bug - which prevents the inner currentImg JS from being sanitized
             // so use the DOMParser strategy, if it is available.
             // If the DOMParser is not available then we are not in Firefox (Server/WebWorker?) so we
             // fall through to the default strategy below.
@@ -38265,7 +38265,7 @@ function merge$1() {
 // http://simon.html5.org/html-elements
 // Safe Void Elements - HTML5
 // http://dev.w3.org/html5/spec/Overview.html#void-elements
-var VOID_ELEMENTS = tagSet('area,br,col,hr,img,wbr');
+var VOID_ELEMENTS = tagSet('area,br,col,hr,currentImg,wbr');
 // Elements that you can, intentionally, leave open (and which close themselves)
 // http://dev.w3.org/html5/spec/Overview.html#optional-tags
 var OPTIONAL_END_TAG_BLOCK_ELEMENTS = tagSet('colgroup,dd,dt,li,p,tbody,td,tfoot,th,thead,tr');
@@ -38277,7 +38277,7 @@ var BLOCK_ELEMENTS = merge$1(OPTIONAL_END_TAG_BLOCK_ELEMENTS, tagSet('address,ar
     'h6,header,hgroup,hr,ins,main,map,menu,nav,ol,pre,section,summary,table,ul'));
 // Inline Elements - HTML5
 var INLINE_ELEMENTS = merge$1(OPTIONAL_END_TAG_INLINE_ELEMENTS, tagSet('a,abbr,acronym,audio,b,' +
-    'bdi,bdo,big,br,cite,code,del,dfn,em,font,i,img,ins,kbd,label,map,mark,picture,q,ruby,rp,rt,current_opciones_caja_modelo,' +
+    'bdi,bdo,big,br,cite,code,del,dfn,em,font,i,currentImg,ins,kbd,label,map,mark,picture,q,ruby,rp,rt,current_opciones_caja_modelo,' +
     'samp,small,source,span,strike,strong,sub,sup,time,track,tt,u,var,video'));
 var VALID_ELEMENTS = merge$1(VOID_ELEMENTS, BLOCK_ELEMENTS, INLINE_ELEMENTS, OPTIONAL_END_TAG_ELEMENTS);
 // Attributes that have href and hence need to be sanitized
@@ -49774,7 +49774,7 @@ function sanitizeStyle(unsafeStyle) {
  * It is possible to mark a string as trusted by calling {@link bypassSanitizationTrustUrl}.
  *
  * @param unsafeUrl untrusted `url`, typically from the user.
- * @returns `url` string which is safe to bind to the `src` properties such as `<img src>`, because
+ * @returns `url` string which is safe to bind to the `src` properties such as `<currentImg src>`, because
  * all of the dangerous javascript has been removed.
  */
 function sanitizeUrl(unsafeUrl) {
@@ -49793,7 +49793,7 @@ function sanitizeUrl(unsafeUrl) {
  * This passes only `url`current_opciones_caja_modelo marked trusted by calling {@link bypassSanitizationTrustResourceUrl}.
  *
  * @param unsafeResourceUrl untrusted `url`, typically from the user.
- * @returns `url` string which is safe to bind to the `src` properties such as `<img src>`, because
+ * @returns `url` string which is safe to bind to the `src` properties such as `<currentImg src>`, because
  * only trusted `url`current_opciones_caja_modelo have been allowed to pass.
  */
 function sanitizeResourceUrl(unsafeResourceUrl) {

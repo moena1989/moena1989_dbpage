@@ -1,17 +1,20 @@
 <div class="doc">
   <div class="doc-top">
-    <i class="fal fa-chart-network doc-top-ico"></i>
-    <div class="doc-top-ttl">Temporadas</div>
+    <div class="d-l-s">
+      <i class="fal fa-chart-network doc-top-ico"></i>
+      <div class="doc-top-ttl">Temporadas</div>
+    </div>
+    <div class="d-r-s">
+      <i class="fal fa-question-circle clickss"></i>
+    </div>
   </div>
   <app-tabs>
     <div class="tab-opt"
          *ngFor="let t of tendencias"
          [class.tab-opt-act]="temporadaSeleccionda?.metadata.key===t.metadata.key"
          (click)="seleccionarTendencia(t)">
-      <i
-        [class.dot-active]="t.estado===relojData.opcsEstadosTendencias.publica.nombre"
-        class="fas fa-circle tab-ido"
-      ></i>
+      <i [class.dot-active]="t.estado===relojData.opcsEstadosTendencias.publica.nombre"
+      class="fas fa-circle tab-ido" ></i>
       <div> {{t['es'].nombre}}</div>
     </div>
     <div class="tab-opt-new" (click)="mdNuevaTendencia.open()">

@@ -28,9 +28,8 @@ body.dialog-open {
 }
 
 .overlay.nsm-overlay-open {
-  /*background-color: rgba(0, 0, 0, 0.8);*/
   background: rgb(15, 11, 0);
-  background: linear-gradient(0deg, rgba(15, 11, 0, 0.5) 0%, rgba(0, 0, 0, 0.3) 100%);
+  background: linear-gradient(0deg, rgba(15, 11, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
 }
 
 .overlay.transparent {

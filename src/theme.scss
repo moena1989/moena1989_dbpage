@@ -72,10 +72,17 @@
   margin: .5em;
 }
 
+.part-msg-no-item {
+  //background: #ff253a;
+  align-items: center;
+  justify-content: center;
+  display: flex;
+  opacity: .5;
+}
 
 .visualizador {
-  width: 25em;
-  height: 40em;
+  width: 20em;
+  height: 35em;
   border-radius: .2em;
   margin-right: 2em;
   border: 1px solid rgb(243, 243, 243);
@@ -90,14 +97,17 @@
   align-items: center;
   opacity: .5;
   cursor: pointer;
+    margin-left: .5em;
 
   &:hover {
     opacity: .8;
+    color: var(--icon-color-hover);
   }
 }
 
 .cnt-inputs {
   display: flex;
+  margin-bottom: 1em;
 }
 
 .tab-dv {
@@ -277,7 +287,15 @@
 .doc-top-ico {
   margin-right: .5em;
   color: #f09819;
+  width: 1.2em;
+  display: flex;
+  align-items: center;
+  justify-content: center;
   //opacity: .6;
+}
+
+.part-txt {
+  font-size: .8em;
 }
 
 .clickss {
@@ -288,6 +306,41 @@
     opacity: .8;
     color: var(--icon-color-hover);
   }
+}
+
+.tt {
+  font-weight: bold;
+  margin-bottom: .5em;
+}
+
+.maq-ttl {
+  margin: .5em;
+}
+
+.part-ttl {
+  font-size: 1.2em;
+  font-weight: bold;
+}
+
+.part-sub-ttl {
+  display: flex;
+  align-items: center;
+  margin-left: 1em;
+}
+
+.part-sub-tttl {
+  display: flex;
+  align-items: center;
+  margin-bottom: .5em;
+}
+
+.lil-sub {
+  font-size: .7em;
+}
+
+.icoss_op {
+  font-size: 1.2em;
+  margin-right: 1em;
 }
 
 .doc-top-ttl {
@@ -365,8 +418,6 @@
   }
 
 }
-
-
 
 
 //relacionado con las cartas
