@@ -1,5 +1,4 @@
 import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
-import {isNumeric} from 'rxjs/internal-compatibility';
 
 @Component({
   selector: 'app-input',
@@ -15,6 +14,8 @@ export class InputComponent implements OnInit {
   @Input() disable: boolean;
   val: any = '';
   @Input() capitalizar = true;
+  @Input() multiLanguage: string = undefined;
+  @Input() staticPlaceHolder = undefined;
   private cc: any;
 
   constructor() {

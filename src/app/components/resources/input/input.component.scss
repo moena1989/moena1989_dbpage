@@ -27,6 +27,16 @@
   font-weight: lighter;
 }
 
+.custom-select {
+  display: flex;
+  align-items: center;
+}
+
+.sl-static-ph {
+  margin-right: .5em;
+  opacity: .5;
+}
+
 .ss {
   -webkit-appearance: none;
   padding: .5em;

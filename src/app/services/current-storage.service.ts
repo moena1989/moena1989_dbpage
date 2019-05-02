@@ -390,6 +390,23 @@ export class CurrentStorageService {
     this.getMaquinarias();
   }
 
+  arrayMove(arr, old_index, new_index) {
+    while (old_index < 0) {
+      old_index += arr.length;
+    }
+    while (new_index < 0) {
+      new_index += arr.length;
+    }
+    if (new_index >= arr.length) {
+      var k = new_index - arr.length + 1;
+      while (k--) {
+        arr.push(undefined);
+      }
+    }
+    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
+    return arr; // for testing purposes
+  }
+
   init() {
     // todo esta zona es útil para iniciar todo lo que se requiera ANTES DE QUE LA APLICACIÓN INICIE
     this.getModelos();
@@ -405,6 +422,15 @@ export class CurrentStorageService {
       this.dbPublic.getIdiomas().subscribe(value => {
         this.idiomas = value;
         this.idiomaDefault = this.idiomas.filter(value1 => value1.codigo === 'es')[0];
+        let esLang = {};
+        for (let i = 0; i < this.idiomas.length; i++) {
+          if (this.idiomas[i].codigo === 'es') {
+            esLang = this.idiomas[i];
+            this.idiomas.splice(i, 1);
+            break;
+          }
+        }
+        this.idiomas.unshift(esLang);
         this.idiomas.forEach(value1 => {
           this.multiLangStructure[value1.codigo] = {};
         });

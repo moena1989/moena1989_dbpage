@@ -1,6 +1,7 @@
 <div class="selc">
   <div class="sl-ttl">{{ttl}}</div>
   <div class="custom-select">
+    <div class="sl-static-ph" *ngIf="staticPlaceHolder">{{staticPlaceHolder + ' -'}}</div>
     <input [disabled]="disable" value="AIL FAIL FAIL F" (keyup)="tecla($event.value)" class="ss"
            placeholder="{{placeholder}}"
            [(ngModel)]="val"
