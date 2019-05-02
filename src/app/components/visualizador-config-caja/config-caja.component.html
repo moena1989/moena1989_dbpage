@@ -1,72 +1,158 @@
-<div class="item-top-ttl">
-  <div>
-    <div class="maq-ttl" *ngIf="esNuevoItem">Nueva Caja</div>
-    <div class="maq-ttl" *ngIf="!esNuevoItem">{{currentItem.nombre}}</div>
-  </div>
-
-  <div class="item-ttl" (click)="esEditable= !esEditable">
-    <div class="opt-t" *ngIf="!esNuevoItem && !esEditable">
-      <div class="fal fa-edit as"></div>
-      <div>Editar</div>
+<div class="cnttnt">
+  <app-vertical-bar *ngIf="!isEditable && !isNewItem">
+    <div class="tt">Items</div>
+    <div class="side-opt" *ngFor="let item of current.cases" [class.side-act]="item===currentItem"
+         (click)="selectItem(item)">
+      <i class="fal fa-file-alt  icoss_op"></i>
+      <div>{{item.nombre}}</div>
     </div>
-
-    <div class="opt-t" (click)="finalizarRegistro()" *ngIf="esNuevoItem && esEditable">
-      <div class="fal fa-save as"></div>
-      <div>Finalizar Registro</div>
+    <div class="side-opt" [class.side-act]="isNewItem" (click)="newItem()">
+      <i class="fal fa-plus icoss_op"></i>
+      <div>Nuevo Ítem</div>
     </div>
-
-    <div class="opt-t" *ngIf="!esNuevoItem && esEditable" (click)="actualizarRegistro()">
-      <div class="fal fa-save as"></div>
-      <div>Guardar cambios</div>
-    </div>
-
-    <div class="opt-t" *ngIf="!esNuevoItem && !esEditable">
-      <div class="fal fa-trash-alt as"></div>
-      <div>Eliminar registro</div>
-    </div>
-  </div>
-</div>
-<div class="ln"></div>
-
-<div class="item-opt-cnt">
-  <div class="visualizador">
-    <app-visualizer ttl="Frontal" [imgURL]="currentItem['imgUrl']" [lock]="!esEditable"
-                    (alSeleccionar)="onFileChanged($event)"></app-visualizer>
-  </div>
-  <div class="l-s">
-    <div class="ttl"><strong>Datos Multilenguaje</strong></div>
-
-    <app-tabs>
-      <div class="tab-opt"
-           *ngFor="let t of current?.idiomas"
-           [class.tab-opt-act]="idiomaSeleccionado==t" (click)="seleccionarIdioma(t)">
-        <div>{{t.nombre}}</div>
+  </app-vertical-bar>
+  <div class="c-v" *ngIf="currentItem">
+    <div class="item-top-ttl">
+      <div class="part-sub-ttl">
+        <i class="fal fa-file-alt  icoss_op"></i>
+        <div>
+          <div class="lil-sub">{{typeItem}}</div>
+          <div class="part-ttl" *ngIf="isNewItem">{{MSG_NEW_ITEM}}</div>
+          <div class="part-ttl" *ngIf="!isNewItem">{{currentItem.nombre}}</div>
+        </div>
       </div>
-    </app-tabs>
 
-    <div class="cnt-inputs">
-      <app-input [disable]="!esEditable" [value]="currentItem[idiomaSeleccionado.codigo].nombre" ttl="Nombre"
-                 (alEscribir)="escribirNombre($event)"
-                 placeholder="Nombre ({{idiomaSeleccionado?.codigo}})"></app-input>
+      <div class="item-ttl">
+        <div class="opt-t" *ngIf="!isNewItem && !isEditable" (click)="startEditing()">
+          <div class="fal fa-edit as"></div>
+          <div class="part-txt">Editar</div>
+        </div>
 
-      <app-input [disable]="!esEditable" [value]="currentItem.uniq" ttl="Uniq"
-                 (alEscribir)="currentItem.uniq=$event" placeholder="MD-####"></app-input>
+        <div class="opt-t" (click)="mdGuardarItem.open()" *ngIf="isNewItem && isEditable">
+          <div class="fal fa-save as"></div>
+          <div class="part-txt">Finalizar Registro</div>
+        </div>
+
+        <div class="opt-t" *ngIf="!isNewItem && isEditable" (click)="mdActualizarItem.open()">
+          <div class="fal fa-save as"></div>
+          <div class="part-txt">Guardar cambios</div>
+        </div>
+
+        <div class="opt-t" *ngIf="!isNewItem && !isEditable" (click)="mdEliminarItem.open()">
+          <div class="fal fa-trash-alt as"></div>
+          <div class="part-txt">Eliminar registro</div>
+        </div>
+
+        <div class="opt-t" *ngIf="!isNewItem && isEditable" (click)="cancelEditing()">
+          <div class="fal fa-times as"></div>
+          <div class="part-txt">Cancelar
+          </div>
+        </div>
+
+        <div class="opt-t" *ngIf="isNewItem && isEditable" (click)="cancelNewItem()">
+          <div class="fal fa-times as"></div>
+          <div class="part-txt">Cancelar
+          </div>
+        </div>
+      </div>
     </div>
+    <!--<div class="ln"></div>-->
+    <div class="item-opt-cnt">
+      <div class="visualizador">
+        <app-visualizer ttl="Frontal" scaleImg="2" [imgURL]="currentItem?.imgData.url" [lock]="!isEditable"
+                        (alSeleccionar)="onFileChanged($event)"></app-visualizer>
+      </div>
+      <div class="l-s">
 
+        <div class="part-sub-tttl">
+          <i class="fal fa-database doc-top-ico"></i>
+          <div class="ttl"><strong>Datos generales</strong></div>
+        </div>
+        <div class="cnt-inputs">
+          <app-input [disable]="!isEditable" [value]="currentItem.nombre" ttl="Nombre"
+                     placeholder="Nombre"
+                     (alEscribir)="writingName($event)"></app-input>
 
-    <div>_</div>
-    <div class="cnt-inputs">
-      <app-m-select [disable]="!esEditable" [itemSeleccionado]="currentItem.modelo" ttl="Modelo"
-                    (alSeleccionar)="currentItem.modelo=$event" [items]="current.modelos"></app-m-select>
-    </div>
-    <div class="ttlss"><strong>Datos Generales</strong></div>
+          <app-input [disable]="!isEditable" [value]="currentItem.id" ttl="Identificador"
+                     placeholder="###"
+                     (alEscribir)="currentItem.id= $event"></app-input>
+        </div>
 
-    <div class="cnt-inputs">
-      <app-input [disable]="!esEditable" [value]="currentItem.peso" ttl="Peso"
-                 (alEscribir)="currentItem.peso=  $event"></app-input>
+        <div class="part-sub-tttl">
+          <i class="fal fa-language doc-top-ico"></i>
+          <div class="ttl"><strong>Datos multi-idioma</strong></div>
+        </div>
 
-      <app-input [disable]="!esEditable" [value]="currentItem.materialPrincipal" ttl="Material principal"
-                 (alEscribir)="currentItem.materialPrincipal=$event"></app-input>
+        <app-tabs>
+          <div class="tab-opt"
+               *ngFor="let t of current.idiomas"
+               [class.tab-opt-act]="idiomaSeleccionado===t" (click)="selectLanguage(t)">
+            <div>{{t.nombre}}</div>
+          </div>
+        </app-tabs>
+
+        <div class="cnt-inputs">
+          <app-input [disable]="!isEditable" [value]="currentItem[idiomaSeleccionado.codigo]?.nombre" ttl="Nombre"
+                     (alEscribir)="writing($event)"
+                     placeholder="{{idiomaSeleccionado?.codigo}} Nombre">
+          </app-input>
+
+          <app-input [disable]="!isEditable" [value]="currentItem[idiomaSeleccionado.codigo]?.modelo" ttl="Modelo"
+                     (alEscribir)="currentItem[idiomaSeleccionado.codigo].modelo=$event"
+                     placeholder="{{idiomaSeleccionado?.codigo}} Modelo">
+          </app-input>
+        </div>
+      </div>
     </div>
   </div>
+  <div class="c-v part-msg-no-item" *ngIf="!currentItem">
+    <div>No se ha seleccionado ningún ítem.</div>
+  </div>
 </div>
+
+
+<ngx-smart-modal #mdEliminarItem identifier="mdEliminarItem">
+  <div class="modal-tittle-bar">
+    <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
+    Advertencia
+  </div>
+
+  <div class="md-cnt">¿Seguro que deseas eliminar este ítem?
+  </div>
+
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="mdEliminarItem.close()">NO</div>
+    <div class="modal-bottom-button bt-ok" (click)="deletItem()">ELIMINAR</div>
+  </div>
+</ngx-smart-modal>
+
+
+<ngx-smart-modal #mdGuardarItem identifier="mdGuardarItem">
+  <div class="modal-tittle-bar">
+    <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
+    Advertencia
+  </div>
+
+  <div class="md-cnt">¿Estás seguro que deseas finalizar y guardar?
+  </div>
+
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="mdEliminarItem.close()">Cancelar</div>
+    <div class="modal-bottom-button bt-ok" (click)="pushNewItem()">SI</div>
+  </div>
+</ngx-smart-modal>
+
+<ngx-smart-modal #mdActualizarItem identifier="mdGuardarItem">
+  <div class="modal-tittle-bar">
+    <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
+    Advertencia
+  </div>
+
+  <div class="md-cnt">¿Actualizár ítem?
+  </div>
+
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="mdEliminarItem.close()">Cancelar</div>
+    <div class="modal-bottom-button bt-ok" (click)="updateItem()">SI</div>
+  </div>
+</ngx-smart-modal>

@@ -87,8 +87,8 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
     this.currentLote.serialMaterial = this.currentLote.salesMateriales.join('');
     //
     this.currentLote.serialUltimoLote = this.currentLote.sales.join('') + '-' + this.currentLote.salesMateriales.join('');
-    // crea las cajas
-    console.log('inicia subida de cajas');
+    // crea las cases
+    console.log('inicia subida de cases');
     // primero actualizo la información del lote.
     // this.currentLote.serialesCajas = serialesCajas;
     this.porcentaje_registro = 10;
@@ -115,7 +115,7 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
         // init SUBIENDO LA IMAGEN DE CADA CAJA...
         const serialCaja = (this.currentLote.serial + '-' + (i + 1));
         serialesCajas.push(serialCaja);
-        this.fs.pushImage(this.imagenesProcesadas[i], 'cajas/' + serialCaja, url => {
+        this.fs.pushImage(this.imagenesProcesadas[i], 'cases/' + serialCaja, url => {
           // se crea modelo  de cada caja
           console.log('se completa subida de imagen');
           this.porcentaje_registro += 35 / this.currentLote.cajasTotales;
@@ -142,7 +142,7 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
             contadorFinalizados.push(true);
             if (contadorFinalizados.length === this.imagenesProcesadas.length) {
               this.porcentaje_registro += 35 / this.currentLote.cajasTotales;
-              // Ha finalizado todas las cajas :D
+              // Ha finalizado todas las cases :D
               // FINALMENTE SUBO EL REGISTRO DEL LOTE
               this.currentLote.serialesCaja = serialesCajas;
               this.fs.pushLote(this.currentLote.serial, this.currentLote).then(value1 => {
@@ -199,13 +199,13 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
 
     // se comprueba que el numero está escrito correctamente  y son las cantidades exactas requeridas
     if (TOTAL_FILES !== this.currentLote.cajasTotales) {
-      console.error('las imagenes no son igual a las cajas por registrar');
+      console.error('las imagenes no son igual a las cases por registrar');
       this.msg_img = 'Las imagenes no coinciden con la configuración establecida :/, presiona para intentarlo de nuevo';
       this.stat = 'error';
       return;
     }
 
-    /// TODO comprobar que sean la misma cantidad de archivos que la de número de cajas
+    /// TODO comprobar que sean la misma cantidad de archivos que la de número de cases
     for (let i = 0; i < TOTAL_FILES; i++) {
       const f: File = files[i];
       const n = Number(f.name.split('.')[0]);

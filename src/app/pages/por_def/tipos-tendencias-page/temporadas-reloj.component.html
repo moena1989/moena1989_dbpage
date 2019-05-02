@@ -143,7 +143,7 @@
                  (alEscribir)="nombreTemporada($event)"
       ></app-input>
     </div>
-    <!--<div class="i-v" *ngIf="idiomaSeleccionado.local==='de'">-->
+    <!--<div class="i-v" *ngIf="selectedLanguage.local==='de'">-->
     <!--<app-m-select ttl="Estado" (alSeleccionar)="nuevaTemporada.estado=$event.nombre" disable="{{true}}"-->
     <!--[items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>-->
 
@@ -151,7 +151,7 @@
     <!--(writing)="nuevaTemporada.nombre= $event"></app-input>-->
     <!--</div>-->
 
-    <!--<div class="i-v" *ngIf="idiomaSeleccionado.local==='es'">-->
+    <!--<div class="i-v" *ngIf="selectedLanguage.local==='es'">-->
     <!--<app-m-select ttl="Estado" (alSeleccionar)="nuevaTemporada.estado=$event.nombre" disable="{{true}}"-->
     <!--[items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>-->
 
@@ -159,7 +159,7 @@
     <!--(writing)="nuevaTemporada.nombre= $event"></app-input>-->
     <!--</div>-->
 
-    <!--<div class="i-v" *ngIf="idiomaSeleccionado.local==='fr'">-->
+    <!--<div class="i-v" *ngIf="selectedLanguage.local==='fr'">-->
     <!--<app-m-select ttl="Estado" (alSeleccionar)="nuevaTemporada.estado=$event.nombre" disable="{{true}}"-->
     <!--[items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>-->
 
@@ -167,7 +167,7 @@
     <!--(writing)="nuevaTemporada.nombre= $event"></app-input>-->
     <!--</div>-->
 
-    <!--<div class="i-v" *ngIf="idiomaSeleccionado.local==='it'">-->
+    <!--<div class="i-v" *ngIf="selectedLanguage.local==='it'">-->
     <!--<app-m-select ttl="Estado" (alSeleccionar)="nuevaTemporada.estado=$event.nombre" disable="{{true}}"-->
     <!--[items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>-->
 
@@ -211,7 +211,7 @@
         <app-m-select ttl="Modelo de Reloj"
                       [disable]="!esEditable"
                       (alSeleccionar)="nuevaColeccion.modelo = $event.nombre"
-                      [items]="relojData.modelos">
+                      [items]="relojData.models">
         </app-m-select>
 
         <app-input ttl="Precio"
@@ -271,37 +271,37 @@
     <app-m-select ttl="Modelo de Reloj"
                   [disable]="!esEditable"
                   (alSeleccionar)="nuevaConfiguracion.modelo = $event"
-                  [items]="relojData.modelos">
+                  [items]="relojData.models">
     </app-m-select>
 
     <app-m-select ttl="Hebilla"
                   [disable]="!esEditable"
                   (alSeleccionar)="nuevaConfiguracion.hebilla= $event"
-                  [items]="relojData.hebillas"></app-m-select>
+                  [items]="relojData.buckles"></app-m-select>
 
     <app-m-select ttl="Maquinaria"
                   [disable]="!esEditable"
                   (alSeleccionar)="nuevaConfiguracion.maquinaria= $event"
-                  [items]="relojData.maquinarias"></app-m-select>
-    <!--Todo Hay que filtrar las cajas de acuerdo al modelo seleccionado-->
+                  [items]="relojData.movements"></app-m-select>
+    <!--Todo Hay que filtrar las cases de acuerdo al modelo seleccionado-->
     <app-m-select ttl="Caja"
                   [disable]="!esEditable"
                   (alSeleccionar)="nuevaConfiguracion.caja= $event"
-                  [items]="relojData.cajas"></app-m-select>
+                  [items]="relojData.cases"></app-m-select>
 
     <app-m-select ttl="Tapa"
                   [disable]="!esEditable"
                   (alSeleccionar)="nuevaConfiguracion.tapa= $event"
-                  [items]="relojData.tapas"></app-m-select>
+                  [items]="relojData.caseBacks"></app-m-select>
 
     <app-m-select ttl="Pulso"
                   (alSeleccionar)="nuevaConfiguracion.pulso= $event"
-                  [items]="relojData.pulsos">
+                  [items]="relojData.straps">
     </app-m-select>
 
     <app-m-select ttl="Cristal"
                   (alSeleccionar)="nuevaConfiguracion.cristal= $event"
-                  [items]="relojData.cristales"></app-m-select>
+                  [items]="relojData.crystals"></app-m-select>
   </div>
 
   <div class="modal-bottom-cnt">

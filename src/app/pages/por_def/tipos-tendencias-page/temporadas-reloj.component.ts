@@ -47,7 +47,7 @@ export class TemporadasRelojComponent implements OnInit {
     route.params.subscribe(params => {
       this.tipoProducto = params.tipoProductoSeleccionado;
       this.relojData = currentStorageService;
-      // console.log(this.relojData.modelos);
+      // console.log(this.relojData.models);
       this.nuevaTemporada = {...this.currentStorageService.multiLangStructure};
       this.nuevaColeccion = {...this.currentStorageService.multiLangStructure};
       this.nuevaConfiguracion = {...this.currentStorageService.multiLangStructure};
@@ -166,7 +166,7 @@ export class TemporadasRelojComponent implements OnInit {
   }
 
   eliminarConfig(selectedConfig: any) {
-    this.db.eliminarItem('configuracionesReloj', selectedConfig).then(value => {
+    this.db.deleteItem('configuracionesReloj', selectedConfig).then(value => {
       // console.log(value);
     }).catch(reason => {
       // console.log(reason);
@@ -174,7 +174,7 @@ export class TemporadasRelojComponent implements OnInit {
   }
 
   eliminarTemporada(tempo: any) {
-    this.db.eliminarItem('temporadas', tempo).then(value => {
+    this.db.deleteItem('temporadas', tempo).then(value => {
       console.log(value);
       this.modalAdvTemporada.close();
     }).catch(reason => {

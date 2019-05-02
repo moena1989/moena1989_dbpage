@@ -78,8 +78,8 @@ export class NuevoRelojComponent implements OnInit {
 
   seleccionarLote(lote_selected: any) {
     this.current_reloj.numeroDeLote = +lote_selected.name;
-    this.current_opciones.cajas = lote_selected.items;
-    // console.log(this.current_opciones_caja_modelo.cajas);
+    this.current_opciones.cases = lote_selected.items;
+    // console.log(this.current_opciones_caja_modelo.cases);
   }
 
   iniciarRegistro() {
@@ -149,7 +149,7 @@ export class NuevoRelojComponent implements OnInit {
 
   private buscarCajasDisponibles() {
     this.current_opciones.lotes = [{name: 'Esperando...'}];
-    this.current_opciones.cajas = [{name: 'Esperando...'}];
+    this.current_opciones.cases = [{name: 'Esperando...'}];
 
   }
 
@@ -189,7 +189,7 @@ export class NuevoRelojComponent implements OnInit {
   }
 
   seleccionarTipoPulso(tipo_pulso: any) {
-    this.current_opciones.opciones_reloj.pulsos = tipo_pulso.items;
+    this.current_opciones.opciones_reloj.straps = tipo_pulso.items;
     this.current_reloj.tipoPulso = tipo_pulso.name;
 
   }
@@ -199,8 +199,8 @@ export class NuevoRelojComponent implements OnInit {
     this.fs.getCajasDisponibles(this.filtrosCaja).subscribe(cajas => {
         this.msjCajas = '';
         if (cajas.empty) {
-          console.log('no se encontraron cajas con la configuración actual');
-          this.msjCajas = 'No existen cajas registradas con esas caracteristicas';
+          console.log('no se encontraron cases con la configuración actual');
+          this.msjCajas = 'No existen cases registradas con esas caracteristicas';
           return;
         } else {
           this.cajasFiltradas = [];

@@ -9,21 +9,20 @@ import {DBPublicService} from './routes/d-b-public.service';
 export class CurrentStorageService {
   /*CLASE ENCARGADA DE TENER TODAS LAS VARIABLES IMPORTANTES SIEMPRE ACTUALIZADAS */
   // about Watches
-  partes: any = {};
-  public modelos = [];
-  public hebillas = [];
-  public coronas = [];
-  public caja = [];
-  public maquinarias = [];
-  public tapas = [];
+  public models = [];
+  public buckles = [];
+  public crowns = [];
+  public movements = [];
+  public caseBacks = [];
+  public cases: any[];
+  public crystals = [];
+  public straps = [];
   //
   public opcsEstadosTendencias = {publica: {nombre: 'Pública'}, privada: {nombre: 'Privada'}};
   relojDisponible: ClockModel;
-  public cristales = [];
-  public pulsos = [];
   public idiomas: any[] = [];
   public idiomaApp: any;
-  public cajas: any[];
+  public caja = [];
   public IDIOMAS = [
     // {'codigo': 'ab', 'nombre': 'Abkhaz', 'nombreNativo': 'аҧсуа'},
     // {'codigo': 'aa', 'nombre': 'Afar', 'nombreNativo': 'Afaraf'},
@@ -379,123 +378,105 @@ export class CurrentStorageService {
 
   iniciar() {
     console.log('SE TRAEN LOS DATOS INICIALES');
-    this.getIdiomas();
+    this.getLanguages();
     this.getModelos();
-    this.getCoronas();
-    this.getCristales();
-    this.getHebillas();
-    this.getPulsos();
-    this.getTapas();
-    this.getCajas();
-    this.getMaquinarias();
-  }
-
-  arrayMove(arr, old_index, new_index) {
-    while (old_index < 0) {
-      old_index += arr.length;
-    }
-    while (new_index < 0) {
-      new_index += arr.length;
-    }
-    if (new_index >= arr.length) {
-      var k = new_index - arr.length + 1;
-      while (k--) {
-        arr.push(undefined);
-      }
-    }
-    arr.splice(new_index, 0, arr.splice(old_index, 1)[0]);
-    return arr; // for testing purposes
+    this.getCrowns();
+    this.getCrystals();
+    this.getBuckles();
+    this.getStraps();
+    this.getCaseBacks();
+    this.getCases();
+    this.getMovements();
   }
 
   init() {
     // todo esta zona es útil para iniciar todo lo que se requiera ANTES DE QUE LA APLICACIÓN INICIE
-    this.getModelos();
-    this.getCoronas();
-    this.getCristales();
-    this.getHebillas();
-    this.getPulsos();
-    this.getTapas();
-    this.getCajas();
-    this.getMaquinarias();
+
+
     // todo de manera obligatoria necesito los idiomas, por eso es la que está resolviendo la promesa.
     return new Promise((resolve) => {
-      this.dbPublic.getIdiomas().subscribe(value => {
-        this.idiomas = value;
-        this.idiomaDefault = this.idiomas.filter(value1 => value1.codigo === 'es')[0];
-        let esLang = {};
-        for (let i = 0; i < this.idiomas.length; i++) {
-          if (this.idiomas[i].codigo === 'es') {
-            esLang = this.idiomas[i];
-            this.idiomas.splice(i, 1);
-            break;
-          }
-        }
-        this.idiomas.unshift(esLang);
-        this.idiomas.forEach(value1 => {
-          this.multiLangStructure[value1.codigo] = {};
-        });
+      Promise.all([
+        this.getModelos(),
+        this.getCrowns(),
+        this.getCrystals(),
+        this.getBuckles(),
+        this.getStraps(),
+        this.getCaseBacks(),
+        this.getCases(),
+        this.getMovements(),
+        this.getLanguages(),
+      ]).then(value => {
+        console.log('se traen metadatos iniciales.');
         resolve();
       });
     });
   }
 
   getModelos() {
-    this.dbMain.getItems('modelos').subscribe(value => {
-      this.modelos = value;
-      console.log('modelo', this.modelos);
+    this.dbMain.getItems('models').subscribe(value => {
+      this.models = value;
+      console.log('modelo', this.models);
     });
   }
 
-  getIdiomas() {
-    this.dbPublic.getIdiomas().subscribe(value => {
+  getLanguages() {
+    return this.dbPublic.getIdiomas().subscribe(value => {
       this.idiomas = value;
       this.idiomaDefault = this.idiomas.filter(value1 => value1.codigo === 'es')[0];
-
+      let esLang = {};
+      for (let i = 0; i < this.idiomas.length; i++) {
+        if (this.idiomas[i].codigo === 'es') {
+          esLang = this.idiomas[i];
+          this.idiomas.splice(i, 1);
+          break;
+        }
+      }
+      this.idiomas.unshift(esLang);
       this.idiomas.forEach(value1 => {
         this.multiLangStructure[value1.codigo] = {};
       });
     });
   }
 
-  getHebillas() {
-    this.dbMain.getItems('hebillas').subscribe(value => {
-      this.hebillas = value;
+  getBuckles() {
+    return this.dbMain.getItems('buckles').subscribe(value => {
+      this.buckles = value;
     });
   }
 
-  getCoronas() {
-    this.dbMain.getItems('coronas').subscribe(value => {
-      this.coronas = value;
+  getCrowns() {
+    return this.dbMain.getItems('crowns').subscribe(value => {
+      this.crowns = value;
     });
   }
 
-  getMaquinarias() {
-    this.dbMain.getItems('maquinarias').subscribe(value => {
-      this.maquinarias = value;
+  getMovements() {
+    return this.dbMain.getItems('movements').subscribe(value => {
+      this.movements = value;
     });
   }
 
-  getTapas() {
-    this.dbMain.getItems('tapas').subscribe(value => {
-      this.tapas = value;
+  getCaseBacks() {
+    return this.dbMain.getItems('caseBacks').subscribe(value => {
+      this.caseBacks = value;
     });
   }
 
-  getCajas() {
-    this.dbMain.getItems('cajas').subscribe(value => {
-      this.cajas = value;
+  getCases() {
+    return this.dbMain.getItems('cases').subscribe(value => {
+      this.cases = value;
     });
   }
 
-  getCristales() {
-    this.dbMain.getItems('cristales').subscribe(value => {
-      this.cristales = value;
+  getCrystals() {
+    return this.dbMain.getItems('crystals').subscribe(value => {
+      this.crystals = value;
     });
   }
 
-  getPulsos() {
-    this.dbMain.getItems('pulsos').subscribe(value => {
-      this.pulsos = value;
+  getStraps() {
+    return this.dbMain.getItems('straps').subscribe(value => {
+      this.straps = value;
     });
   }
 }

@@ -76,16 +76,16 @@ export const routes: Routes = [
       {path: 'equipo', component: UsuariosPageComponent},
       {path: 'publicaciones', component: PublicacionesPageComponent},
       {
-        path: 'partes', component: PartesPageComponent,
+        path: 'parts', component: PartesPageComponent,
         children: [
-          {path: 'maquinarias', component: ConfigMaqComponent},
-          {path: 'cajas', component: ConfigCajaComponent},
-          {path: 'pulsos', component: ConfigPulsoComponent},
-          {path: 'modelos', component: ConfigModeloComponent},
-          {path: 'coronas', component: ConfigCoronaComponent},
-          {path: 'cristales', component: ConfigCristalComponent},
-          {path: 'hebillas', component: ConfigHebillaComponent},
-          {path: 'tapas', component: ConfigTapaComponent}
+          {path: 'movements', component: ConfigMaqComponent},
+          {path: 'cases', component: ConfigCajaComponent},
+          {path: 'straps', component: ConfigPulsoComponent},
+          {path: 'models', component: ConfigModeloComponent},
+          {path: 'crowns', component: ConfigCoronaComponent},
+          {path: 'crystals', component: ConfigCristalComponent},
+          {path: 'buckles', component: ConfigHebillaComponent},
+          {path: 'caseBacks', component: ConfigTapaComponent}
         ]
       }]
   }];

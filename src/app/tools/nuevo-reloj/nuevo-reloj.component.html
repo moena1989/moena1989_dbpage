@@ -98,7 +98,7 @@
           <div>
             <app-m-select ttl="Lote" [items]="current_opciones.lotes"
                           (alSeleccionar)="seleccionarLote($event)"></app-m-select>
-            <app-m-select ttl="No. Caja" [items]="current_opciones.cajas"
+            <app-m-select ttl="No. Caja" [items]="current_opciones.cases"
                           (alSeleccionar)="seleccionarCaja($event)"></app-m-select>
             <app-m-select ttl="Serial Caja" [items]="[{name:current_reloj.serialCaja}]"></app-m-select>
           </div>
@@ -127,8 +127,8 @@
                           (alSeleccionar)="seleccionarTipoPulso($event)"></app-m-select>
 
             <!--<app-m-select ttl="Color Pulso"-->
-            <!--*ngIf="current_opciones.opciones_reloj && current_opciones.opciones_reloj.pulsos"-->
-            <!--[items]="this.current_opciones.opciones_reloj.pulsos"-->
+            <!--*ngIf="current_opciones.opciones_reloj && current_opciones.opciones_reloj.straps"-->
+            <!--[items]="this.current_opciones.opciones_reloj.straps"-->
             <!--(alSeleccionar)="seleccionarColorPulso($event)"></app-m-select>-->
 
 

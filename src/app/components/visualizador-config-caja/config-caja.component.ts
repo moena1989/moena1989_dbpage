@@ -1,8 +1,9 @@
-import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DbMainService} from '../../services/routes/db-main.service';
 import {CurrentStorageService} from '../../services/current-storage.service';
 import {SettingsService} from '../../services/settings.service';
+import {NgxSmartModalComponent} from 'ngx-smart-modal';
 
 @Component({
   selector: 'app-visualizador-config-caja',
@@ -10,82 +11,117 @@ import {SettingsService} from '../../services/settings.service';
   styleUrls: ['./config-caja.component.scss']
 })
 export class ConfigCajaComponent implements OnInit {
-  esEditable = false;
-  img: any;
-  @Output() alregistrar = new EventEmitter();
-  maqSelected: any;
-  esNuevoItem = false;
-  currentItem: any = {};
-  private idiomaSeleccionado: any;
+  public currentItem: any = undefined;
+  public currentImg: any;
+  public isEditable = false;
+  public isNewItem = false;
+  idiomaSeleccionado: any;
+  @ViewChild('mdGuardarItem') modalGuardar: NgxSmartModalComponent;
+  @ViewChild('mdEliminarItem') modalEliminar: NgxSmartModalComponent;
+  @ViewChild('mdActualizarItem') modalActualizar: NgxSmartModalComponent;
+  //
+  public MSG_NEW_ITEM: any = 'Nueva Caja';
+  typeItem = 'caja';
+  private ITEM_TYPE = 'cases';
+  private IMG_ROUTE = 'products/watches/parts/';
+  //
+  private esImagenActualizable = false;
+  private _currentItem: any = {};
 
-  constructor(private route: ActivatedRoute, private router: Router,
-              private db: DbMainService, public current: CurrentStorageService, public tools: SettingsService) {
+  constructor(private route: ActivatedRoute, private router: Router, private db: DbMainService,
+              public current: CurrentStorageService, public tools: SettingsService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.idiomaSeleccionado = this.current.idiomaDefault;
-    this.currentItem = {...this.current.multiLangStructure};
-  }
-
-  @Input('keyMaq')
-  set keyMaq(value: boolean) {
-    this.maqSelected = value;
-    this.comprobarVar(this.maqSelected);
-  }
-
-  seleccionarIdioma(t: any) {
-    this.idiomaSeleccionado = t;
   }
 
   ngOnInit() {
+    this.idiomaSeleccionado = this.current.idiomaDefault;
   }
 
-  finalizarRegistro() {
-    this.db.pushImage(this.img, 'modelos/reloj/cajas/', url => {
-      this.currentItem['imgUrl'] = url;
-      this.db.setItem('cajas', this.currentItem).then(value => {
-        // this.router.navigateByUrl('caracteristicas/maqs/' + this.currentItem.nombre);
-        this.alregistrar.emit(this.currentItem.nombre);
+  selectLanguage(t: any) {
+    this.idiomaSeleccionado = t;
+  }
+
+  pushNewItem() {
+    this.db.setNewImage(this.currentImg, this.IMG_ROUTE + this.ITEM_TYPE).then(imgData => {
+        this.currentItem['imgData'] = imgData;
+        this.db.setItem(this.ITEM_TYPE, this.currentItem).then(value => {
+          this.modalGuardar.close();
+          this.isEditable = false;
+          this.currentItem = undefined;
+          this.isNewItem = false;
+        });
+      }
+    );
+  }
+
+  onFileChanged(imagen: any) {
+    this.currentImg = imagen;
+    // console.log('la imagen cambió');
+    if (!this.isNewItem && this.isEditable) {
+      this.esImagenActualizable = true;
+    }
+  }
+
+  updateItem() {
+    this.db.updateImage(this.currentImg, this.route, this.currentItem.imgData.key).then(imgData => {
+      this.currentItem.imgData = imgData;
+      // console.log(this.currentItem.imgData);
+      this.db.updateItem(this.ITEM_TYPE, this.currentItem).then(value => {
+        this.isEditable = false;
+        this.modalActualizar.close();
       });
     });
   }
 
-  onFileChanged(imagen: any) {
-    this.img = imagen;
-  }
-
-  eliminarMaquina() {
-    console.log('jojojojo');
-    // DbMainService.deleteImg(this.currentItem.imgUrl).then(value => {
-    //   // console.log('se elimina la imagen D:');
-    //   // this.db.deleteSpecificModel('maqs', this.maqSelected).then(value1 => {
-    //   //   this.router.navigateByUrl('caracteristicas/maqs');
-    //   //
-    //   // });
-    // });
-  }
-
-  escribirNombre($event: any) {
-    // si bien la base de datos está basada en
-    // español, la información multi-idioma, deber+a estar en la
-    // carpeta de codigoo correspondiente, sin embargo, si o  si debe
-    // haber un nombre que será basado en el español,
+  writing($event: any) {
     this.currentItem[this.idiomaSeleccionado.codigo].nombre = $event;
     if (this.idiomaSeleccionado.codigo === 'es') {
-      this.currentItem['nombre'] = $event;
+      this.currentItem.nombre = $event;
     }
-    console.log(this.currentItem);
   }
 
-  private comprobarVar(maqSelected: any) {
-    if (maqSelected === 'nuevo-item') {
-      console.log('se va a registrar una nueva caja ;)');
-      this.esNuevoItem = true;
-      this.esEditable = true;
-      this.currentItem = {...this.current.multiLangStructure};
-    } else if (maqSelected !== '') {
-      // buscar los datos de la maquinaria
-      this.db.getItem('cajas', maqSelected).subscribe(value => {
-        this.currentItem = value;
-      });
-    }
+  newItem() {
+    // console.log('se va a registrar una nueva caja ;)');
+    this.isNewItem = true;
+    this.idiomaSeleccionado = this.current.idiomaDefault;
+    this.currentItem = {};
+    this.currentItem = {imgData: {}, ...this.current.multiLangStructure};
+    this.isEditable = true;
+    // console.log('el item', this.currentItem);
+  }
+
+  deletItem() {
+    this.db.deleteItem(this.ITEM_TYPE, this.currentItem).then(value => {
+      this.currentItem = undefined;
+      this.modalEliminar.close();
+    });
+  }
+
+  writingName($event: any) {
+    this.currentItem.nombre = $event;
+    this.currentItem['es'].nombre = $event;
+  }
+
+  selectItem(item: any) {
+    this.currentItem = item;
+    this.isNewItem = false;
+  }
+
+  cancelEditing() {
+    this.currentItem = this._currentItem;
+    this.isEditable = !this.isEditable;
+  }
+
+  startEditing() {
+    // console.log('iniciando edición');
+    this.isEditable = !this.isEditable;
+    this._currentItem = Object.assign({}, this.currentItem);
+  }
+
+  cancelNewItem() {
+    this.currentItem = undefined;
+    this.isNewItem = false;
+    this.isEditable = false;
   }
 }

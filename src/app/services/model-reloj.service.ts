@@ -11,7 +11,7 @@ export class ModelRelojService {
   }
 }
 //   // estructuras_________
-//   modelos: any[] = [
+//   models: any[] = [
 //     {
 //       salt: 'G', id: 0, name: 'Origen',
 //       colecciones: [

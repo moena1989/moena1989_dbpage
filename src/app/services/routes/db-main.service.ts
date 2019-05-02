@@ -97,7 +97,6 @@ export class DbMainService {
 
     this.mainStorage = new AngularFireStorage(environment.main, 'main',
       'moena-1989.appspot.com', null, zone);
-
   }
 
   getNewKey() {
@@ -106,16 +105,16 @@ export class DbMainService {
 
 // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  PUSHES
   pushCaja(serialCaja: string, caja: MCaja) {
-    return this.afs.collection('cajas').doc(serialCaja).set(caja);
+    return this.afs.collection('cases').doc(serialCaja).set(caja);
   }
 
   pushLote(serialLote: string, lote: MLote) {
-    return this.afs.collection<MLote>('lotes').doc(serialLote).set(lote);
+    return this.afs.collection<MLote>('lots').doc(serialLote).set(lote);
   }
 
   pushReloj(serial: string, reloj: MReloj) {
     // aquí se hará el proceso de generación de nuevo serial;
-    return this.afs.collection('relojes').doc(serial).set(reloj);
+    return this.afs.collection('watches').doc(serial).set(reloj);
   }
 
 // ::::::::::::::::::::::::::::::: METODO IMPORTANTISIMO E INTOCABLE UNA VEZ EN PRODUCCIÓN.
@@ -151,7 +150,7 @@ export class DbMainService {
   }
 
   getReloj(serial: string) {
-    return this.afs.collection<MReloj>('relojes').doc(serial).get();
+    return this.afs.collection<MReloj>('watches').doc(serial).get();
   }
 
   pushImage(img: File, route: any, alFinalizar: (url: string) => void) {
@@ -208,6 +207,10 @@ export class DbMainService {
     });
   }
 
+  deleteImage(route: any, imgData: any) {
+    const finalRoute = route + '/' + imgData.key + '.' + imgData.extension;
+    return this.mainStorage.ref(finalRoute).delete();
+  }
 
 // hay que buscar una manera mas optima de organizar los contadores,
 // no sé como pasar el subSubscripción, por ende, lo resolveré por callback
@@ -243,7 +246,7 @@ export class DbMainService {
   // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  GETS
 
   // getCajasDisponibles(filtros: MFiltro[]) {
-  //   return this.afs.collection('cajas', ref => {
+  //   return this.afs.collection('cases', ref => {
   //     let item = ref;
   //     filtros.forEach(value => {
   //       // @ts-ignore
@@ -254,7 +257,7 @@ export class DbMainService {
   // }
 
   getCajasDisponibles(filtroCaja: MFiltro) {
-    return this.afs.collection<MCaja>('cajas', ref => {
+    return this.afs.collection<MCaja>('cases', ref => {
       return ref
         .where('estado', '==', this.est.ESTADOS_CAJA.DISPONIBLE)
         .where('modelo', '==', filtroCaja.modelo)
@@ -275,33 +278,29 @@ export class DbMainService {
   }
 
   getItems(tipoItem: string) {
-    return this.dbMain.collection('datosProductos/' + 'relojes/' + tipoItem).valueChanges();
+    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).valueChanges();
   }
 
   getItem(tipoItem: string, keyItem: string) {
-    return this.dbMain.collection('datosProductos/' + 'relojes/' + tipoItem).doc(keyItem).valueChanges();
+    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(keyItem).valueChanges();
   }
 
   setItem(tipoItem: string, item: any) {
     item = this.agregarMetadata(item);
-    return this.dbMain.collection('datosProductos/' + 'relojes/' + tipoItem).doc(item.metadata.key).set(item);
+    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.key).set(item);
   }
 
   updateItem(tipoItem: string, item: any) {
-    return this.dbMain.collection('datosProductos/' + 'relojes/' + tipoItem).doc(item.metadata.key).set(item);
+    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.key).set(item);
   }
 
   // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  DELETES
-  deleteImg(downloadUrl) {
-    return this.storage.ref('').child(downloadUrl).delete();
-  }
-
-  deleteSpecificModel(tipoModel: string, nombreModel: string) {
-    return this.dbMain.collection('relojes').doc('modelos').collection(tipoModel).doc(nombreModel).delete();
-  }
+  // deleteImg(downloadUrl) {
+  //   return this.storage.ref('').child(downloadUrl).delete();
+  // }
 
   deleteItem(tipoItem: string, item: any) {
-    return this.dbMain.collection('datosProductos/' + 'relojes/' + tipoItem).doc(item.metadata.key).delete();
+    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.key).delete();
   }
 
 }

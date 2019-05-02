@@ -79,19 +79,19 @@ export class DbManagerService {
   }
 
   cambiar_estado_caja(modelo: any, key_caja: any, estado: any) {
-    this.db.object('data/cases/' + modelo + '/cajas' + '/' + key_caja + '/estado')
+    this.db.object('data/cases/' + modelo + '/cases' + '/' + key_caja + '/estado')
       .set(estado);
   }
 
 
   push_nueva_caja(nueva_caja: any) {
-    nueva_caja.my_key = this.db.list('data/cases/' + nueva_caja.modelo + '/cajas').push(nueva_caja).key;
+    nueva_caja.my_key = this.db.list('data/cases/' + nueva_caja.modelo + '/cases').push(nueva_caja).key;
     this.update_caja(nueva_caja);
     return nueva_caja.my_key;
   }
 
   update_caja(nueva_caja: any) {
-    this.db.object('data/cases/' + nueva_caja.modelo + '/cajas/' + nueva_caja.my_key).update(nueva_caja);
+    this.db.object('data/cases/' + nueva_caja.modelo + '/cases/' + nueva_caja.my_key).update(nueva_caja);
   }
 
   push_reloj(reloj: any) {
@@ -123,7 +123,7 @@ export class DbManagerService {
   }
 
   buscar_cajas_por_registrar(modelo: string) {
-    return this.db.list('data/cases/' + modelo + '/cajas',
+    return this.db.list('data/cases/' + modelo + '/cases',
       ref => ref.orderByChild('estado').equalTo(this.estructura.ESTADOS_CAJA.DISPONIBLE)).valueChanges();
   }
 
