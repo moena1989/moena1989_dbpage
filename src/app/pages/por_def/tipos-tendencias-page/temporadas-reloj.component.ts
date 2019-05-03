@@ -42,7 +42,7 @@ export class TemporadasRelojComponent implements OnInit {
 
   constructor(private route: ActivatedRoute,
               private db: DBPublicService, private settings: SettingsService, public currentStorageService: CurrentStorageService) {
-    this.idiomaSeleccionado = this.currentStorageService.idiomaDefault;
+    this.idiomaSeleccionado = this.currentStorageService.defaultSelectedLang;
 
     route.params.subscribe(params => {
       this.tipoProducto = params.tipoProductoSeleccionado;
@@ -58,10 +58,10 @@ export class TemporadasRelojComponent implements OnInit {
 
   ngOnInit() {
     this.settings.tituloTopbar = 'Temporadas';
-    this.idiomaSeleccionado = this.currentStorageService.idiomaDefault;
+    this.idiomaSeleccionado = this.currentStorageService.defaultSelectedLang;
     this.nuevaTemporada = {...this.currentStorageService.multiLangStructure};
     this.getTendencias();
-    this.idiomaSeleccionado = this.currentStorageService.idiomaDefault;
+    this.idiomaSeleccionado = this.currentStorageService.defaultSelectedLang;
   }
 
   getTendencias() {
@@ -73,7 +73,7 @@ export class TemporadasRelojComponent implements OnInit {
         });
         // console.log('tendencias traidas', this.tendencias);
         if (this.tendencias.length !== 0) {
-          this.idiomaSeleccionado = this.currentStorageService.idiomaDefault;
+          this.idiomaSeleccionado = this.currentStorageService.defaultSelectedLang;
           this.seleccionarTendencia(this.tendencias[0]);
         }
       } else {

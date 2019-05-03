@@ -31,11 +31,11 @@ export class ConfigCajaComponent implements OnInit {
   constructor(private route: ActivatedRoute, private router: Router, private db: DbMainService,
               public current: CurrentStorageService, public tools: SettingsService) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
-    this.idiomaSeleccionado = this.current.idiomaDefault;
+    this.idiomaSeleccionado = this.current.defaultSelectedLang;
   }
 
   ngOnInit() {
-    this.idiomaSeleccionado = this.current.idiomaDefault;
+    this.idiomaSeleccionado = this.current.defaultSelectedLang;
   }
 
   selectLanguage(t: any) {
@@ -84,7 +84,7 @@ export class ConfigCajaComponent implements OnInit {
   newItem() {
     // console.log('se va a registrar una nueva caja ;)');
     this.isNewItem = true;
-    this.idiomaSeleccionado = this.current.idiomaDefault;
+    this.idiomaSeleccionado = this.current.defaultSelectedLang;
     this.currentItem = {};
     this.currentItem = {imgData: {}, ...this.current.multiLangStructure};
     this.isEditable = true;

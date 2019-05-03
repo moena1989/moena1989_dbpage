@@ -109,7 +109,7 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     AngularFireAuthModule, AngularFireStorageModule, HttpClientModule, AngularFireModule,
     BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
   ],
-  providers: [{
+  providers: [SettingsService, {
     provide: externalUrlProvider,
     useValue: (route: ActivatedRouteSnapshot) => {
       const externalUrl = route.paramMap.get('externalUrl');
@@ -121,7 +121,7 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     deps: [CurrentStorageService],
     multi: true
   }, NgxSmartModalService, {provide: StorageBucket, useValue: 'testing-this-shit'},
-    SettingsService, ModelsSevice, AuthService, AngularFireDatabase, DbMainService, AngularFirestore, HasherService],
+    ModelsSevice, AuthService, AngularFireDatabase, DbMainService, AngularFirestore, HasherService],
   bootstrap: [AppComponent]
 })
 

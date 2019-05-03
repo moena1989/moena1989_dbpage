@@ -1,12 +1,12 @@
 <div class="selc">
-  <div class="sl-ttl">{{ttl}}</div>
+  <div class="sl-ttl">{{tittle}}</div>
   <div class="custom-select">
     <label>
-      <select class="ss" [(ngModel)]="itemSeleccionado" [disabled]="disable || current_opciones?.length===1">
-        <option *ngIf="current_opciones?.length!==1" [ngValue]="undefined" hidden>{{default.nombre}}</option>
-        <option *ngIf="current_opciones?.length===1" [ngValue]="undefined" hidden>{{current_opciones[0]?.nombre}}
+      <select class="ss" [(ngModel)]="selectedItem" [disabled]="isDisabled || currentOps?.length===1">
+        <option *ngIf="currentOps?.length!==1" [ngValue]="undefined" hidden>{{defaultOp.name}}</option>
+        <option *ngIf="currentOps?.length===1" [ngValue]="undefined" hidden>{{currentOps[0]?.name}}
         </option>
-        <option *ngFor="let opc of current_opciones" [ngValue]="opc">{{opc.nombre}}</option>
+        <option *ngFor="let opc of currentOps" [ngValue]="opc">{{opc.name}}</option>
       </select>
     </label>
   </div>

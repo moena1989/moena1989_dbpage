@@ -7,20 +7,21 @@ import {Ng2ImgMaxService} from 'ng2-img-max';
   providedIn: 'root'
 })
 export class SettingsService implements CanActivate {
+  static SHOW_WINDOWS_TITTLE_BAR = false;
+  public MAX_SIZE_IN_PX = 2500;
+  public MAX_SIZE_IN_MB = 0.7;
+  // --
   public snack: SnackbarComponent;
-  public top_tittle = 'holi';
-  public show_menu = true;
+  public isMenuOpened = true;
   public gUser: any = {};
   public version = 'M89DB-1.1a';
   public urlDomain = 'http://localhost:4200';
-  public show_windows_tittle_bar = false;
   //////
   public localApp = 'es';
-  public idiomaApp: any = {'codigo': 'es', 'nombre': 'Español', 'nombreNativo': 'Español'};
   //////
   public tituloTopbar = 'Testing';
-  private MAX_SIZE_IN_PX = 2500;
-  private MAX_SIZE_IN_MB = 0.7;
+  public defaultCodeLang = 'es';
+  public defaultSymbolCurr = 'US$';
 
   constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService) {
 
@@ -34,7 +35,10 @@ export class SettingsService implements CanActivate {
     return true;
   }
 
-  comprimir(file, al_finalizar: (result: any) => void) {
+  beforeInit() {
+  }
+
+  compressImage(file, al_finalizar: (result: any) => void) {
     const mimeType = file.type;
     if (mimeType.match(/image\/*/) == null) {
       // this.message = 'Only images are supported.';
@@ -60,15 +64,8 @@ export class SettingsService implements CanActivate {
         );
       },
       error => {
-        console.log('😢 Oh no! error al comprimir', error);
+        console.log('😢 Oh no! error al compressImage', error);
       }
     );
-  }
-
-  cerrarSesion() {
-    //   console.log('redireccionando a login...');
-    //   this.authService.signOut().then(value => {
-    //     this.router.navigate(['/logIn']);
-    //   });
   }
 }

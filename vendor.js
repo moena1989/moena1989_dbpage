@@ -1255,7 +1255,7 @@ function findLocaleData(locale) {
 /**
  * Returns the currency symbol for a given currency code, or the code if no symbol available
  * (e.g.: format narrow = $, format wide = US$, code = USD)
- * If no locale is provided, it uses the locale "en" by default
+ * If no locale is provided, it uses the locale "en" by defaultOp
  *
  * @experimental i18n support is experimental.
  */
@@ -1268,7 +1268,7 @@ function getCurrencySymbol(code, format, locale) {
     }
     return currency[0 /* Symbol */] || code;
 }
-// Most currencies have cents, that'current_opciones_caja_modelo why the default is 2
+// Most currencies have cents, that'current_opciones_caja_modelo why the defaultOp is 2
 var DEFAULT_NB_OF_CURRENCY_DIGITS = 2;
 /**
  * Returns the number of decimal digits for the given currency.
@@ -1561,12 +1561,12 @@ function getDateTranslation(date, locale, name, width, form, extended) {
                     return result_1;
                 }
             }
-            // if no rules for the day periods, we use am/pm by default
+            // if no rules for the day periods, we use am/pm by defaultOp
             return getLocaleDayPeriods(locale, form, width)[currentHours_1 < 12 ? 0 : 1];
         case TranslationType.Eras:
             return getLocaleEraNames(locale, width)[date.getFullYear() <= 0 ? 0 : 1];
         default:
-            // This default case is not needed by TypeScript compiler, as the switch is exhaustive.
+            // This defaultOp case is not needed by TypeScript compiler, as the switch is exhaustive.
             // However Closure Compiler does not understand that and reports an error in typed mode.
             // The `throw new Error` below works around the problem, and the unexpected: never variable
             // makes sure tsc still checks this code is unreachable.
@@ -2760,7 +2760,7 @@ function getPluralCase(locale, nLike) {
             if (n === Math.floor(n) && n >= 0 && n <= 1 || n === Math.floor(n) && n >= 11 && n <= 99)
                 return Plural.One;
             return Plural.Other;
-        // When there is no specification, the default is always "other"
+        // When there is no specification, the defaultOp is always "other"
         // Spec: http://cldr.unicode.org/index/cldr-spec/plural-rules
         // > other (required—general plural form — also used if the language only has a single form)
         default:
@@ -3152,7 +3152,7 @@ var NgForOfContext = /** @class */ (function () {
  *
  * ```
  * <li *ngFor="let user of userObservable | async as users; index as i; first as isFirst">
- *    {{i}}/{{users.length}}. {{user}} <span *ngIf="isFirst">default</span>
+ *    {{i}}/{{users.length}}. {{user}} <span *ngIf="isFirst">defaultOp</span>
  * </li>
  * ```
  *
@@ -3178,7 +3178,7 @@ var NgForOfContext = /** @class */ (function () {
  * elements were deleted and all new elements inserted). This is an expensive operation and should
  * be avoided if possible.
  *
- * To customize the default tracking algorithm, `NgForOf` supports `trackBy` option.
+ * To customize the defaultOp tracking algorithm, `NgForOf` supports `trackBy` option.
  * `trackBy` takes a function which has two arguments: `index` and `item`.
  * If `trackBy` is given, Angular tracks changes by the return value of the function.
  *
@@ -3952,7 +3952,7 @@ var NgStyle = /** @class */ (function () {
  * <ng-container *ngTemplateOutlet="templateRefExp; context: contextExp"></ng-container>
  * ```
  *
- * Using the salt `$implicit` in the context object will set its value as default.
+ * Using the salt `$implicit` in the context object will set its value as defaultOp.
  *
  * ### Example
  *
@@ -4427,7 +4427,7 @@ function formatNumber$1(pipe, locale, value, style, digits, currency, currencyAs
     var minFraction;
     var maxFraction;
     if (style !== NumberFormatStyle.Currency) {
-        // rely on Intl default for currency
+        // rely on Intl defaultOp for currency
         minInt = 1;
         minFraction = 0;
         maxFraction = 3;
@@ -4544,7 +4544,7 @@ var DeprecatedPercentPipe = /** @class */ (function () {
  *    as `USD` for the US dollar and `EUR` for the euro.
  * - `symbolDisplay` is a boolean indicating whether to use the currency symbol or code.
  *   - `true`: use symbol (e.g. `$`).
- *   - `false`(default): use code (e.g. `USD`).
+ *   - `false`(defaultOp): use code (e.g. `USD`).
  * - `digitInfo` See {@link DecimalPipe} for detailed description.
  *
  * WARNING: this pipe uses the Internationalization API which is not yet available in all browsers
@@ -4992,7 +4992,7 @@ var DatePipe = /** @class */ (function () {
      * UTC/GMT or continental US timezone abbreviation. Default is
      * the local system timezone of the end-user'current_opciones_caja_modelo machine.
      * @param locale A locale code for the locale format rules to use.
-     * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
+     * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by defaultOp.
      * See [Setting your app locale](guide/i18n#setting-up-the-locale-of-your-app).
      * @returns A date string in the desired format.
      */
@@ -5048,7 +5048,7 @@ var I18nPluralPipe = /** @class */ (function () {
      * @param pluralMap an object that mimics the ICU format, see
      * http://userguide.icu-project.org/formatparse/messages.
      * @param locale a `string` defining the locale to use (uses the relojData {@link LOCALE_ID} by
-     * default).
+     * defaultOp).
      */
     I18nPluralPipe.prototype.transform = function (value, pluralMap, locale) {
         if (value == null)
@@ -5172,7 +5172,7 @@ function makeKeyValuePair(key, value) {
  * Transforms Object or Map into an array of salt value pairs.
  *
  * The output array will be ordered by keys.
- * By default the comparator will be by Unicode point value.
+ * By defaultOp the comparator will be by Unicode point value.
  * You can optionally pass a compareFn if your keys are complex types.
  *
  * @usageNotes
@@ -5278,7 +5278,7 @@ function defaultComparator(keyValueA, keyValueB) {
  * @usageNotes
  * The following code shows how the pipe transforms numbers
  * into text strings, according to various format specifications,
- * where the caller'current_opciones_caja_modelo default locale is `en-US`.
+ * where the caller'current_opciones_caja_modelo defaultOp locale is `en-US`.
  *
  * ### Example
  *
@@ -5302,7 +5302,7 @@ var DecimalPipe = /** @class */ (function () {
      *   - `maxFractionDigits`: The maximum number of digits after the decimal point.
      * Default is `3`.
      * @param locale A locale code for the locale format rules to use.
-     * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
+     * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by defaultOp.
      * See [Setting your app locale](guide/i18n#setting-up-the-locale-of-your-app).
      */
     DecimalPipe.prototype.transform = function (value, digitsInfo, locale) {
@@ -5339,7 +5339,7 @@ var DecimalPipe = /** @class */ (function () {
  * @usageNotes
  * The following code shows how the pipe transforms numbers
  * into text strings, according to various format specifications,
- * where the caller'current_opciones_caja_modelo default locale is `en-US`.
+ * where the caller'current_opciones_caja_modelo defaultOp locale is `en-US`.
  *
  * <code-example path="common/pipes/ts/percent_pipe.ts" region='PercentPipe'></code-example>
  *
@@ -5363,7 +5363,7 @@ var PercentPipe = /** @class */ (function () {
      *   - `maxFractionDigits`: The maximum number of digits after the decimal point.
      * Default is `3`.
      * @param locale A locale code for the locale format rules to use.
-     * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
+     * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by defaultOp.
      * See [Setting your app locale](guide/i18n#setting-up-the-locale-of-your-app).
      */
     PercentPipe.prototype.transform = function (value, digitsInfo, locale) {
@@ -5400,7 +5400,7 @@ var PercentPipe = /** @class */ (function () {
  * @usageNotes
  * The following code shows how the pipe transforms numbers
  * into text strings, according to various format specifications,
- * where the caller'current_opciones_caja_modelo default locale is `en-US`.
+ * where the caller'current_opciones_caja_modelo defaultOp locale is `en-US`.
  *
  * <code-example path="common/pipes/ts/currency_pipe.ts" region='CurrencyPipe'></code-example>
  *
@@ -5418,7 +5418,7 @@ var CurrencyPipe = /** @class */ (function () {
      * such as `USD` for the US dollar and `EUR` for the euro.
      * @param display The format for the currency indicator. One of the following:
      *   - `code`: Show the code (such as `USD`).
-     *   - `symbol`(default): Show the symbol (such as `$`).
+     *   - `symbol`(defaultOp): Show the symbol (such as `$`).
      *   - `symbol-narrow`: Use the narrow symbol for locales that have two symbols for their
      * currency.
      * For example, the Canadian dollar CAD has the symbol `CA$` and the symbol-narrow `$`. If the
@@ -5440,7 +5440,7 @@ var CurrencyPipe = /** @class */ (function () {
      * depending on what the [ISO 4217](https://en.wikipedia.org/wiki/ISO_4217) specifies.
      * For example, the Canadian dollar has 2 digits, whereas the Chilean peso has none.
      * @param locale A locale code for the locale format rules to use.
-     * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by default.
+     * When not supplied, uses the value of `LOCALE_ID`, which is `en-US` by defaultOp.
      * See [Setting your app locale](guide/i18n#setting-up-the-locale-of-your-app).
      */
     CurrencyPipe.prototype.transform = function (value, currencyCode, display, digitsInfo, locale) {
@@ -13947,7 +13947,7 @@ var _MESSAGE_TAG = 'msg';
 var _PLACEHOLDER_TAG$2 = 'ph';
 var _EXEMPLE_TAG = 'ex';
 var _SOURCE_TAG$2 = 'source';
-var _DOCTYPE = "<!ELEMENT messagebundle (msg)*>\n<!ATTLIST messagebundle class CDATA #IMPLIED>\n\n<!ELEMENT msg (#PCDATA|ph|source)*>\n<!ATTLIST msg id CDATA #IMPLIED>\n<!ATTLIST msg seq CDATA #IMPLIED>\n<!ATTLIST msg name CDATA #IMPLIED>\n<!ATTLIST msg desc CDATA #IMPLIED>\n<!ATTLIST msg meaning CDATA #IMPLIED>\n<!ATTLIST msg obsolete (obsolete) #IMPLIED>\n<!ATTLIST msg xml:space (default|preserve) \"default\">\n<!ATTLIST msg is_hidden CDATA #IMPLIED>\n\n<!ELEMENT source (#PCDATA)>\n\n<!ELEMENT ph (#PCDATA|ex)*>\n<!ATTLIST ph name CDATA #REQUIRED>\n\n<!ELEMENT ex (#PCDATA)>";
+var _DOCTYPE = "<!ELEMENT messagebundle (msg)*>\n<!ATTLIST messagebundle class CDATA #IMPLIED>\n\n<!ELEMENT msg (#PCDATA|ph|source)*>\n<!ATTLIST msg id CDATA #IMPLIED>\n<!ATTLIST msg seq CDATA #IMPLIED>\n<!ATTLIST msg name CDATA #IMPLIED>\n<!ATTLIST msg desc CDATA #IMPLIED>\n<!ATTLIST msg meaning CDATA #IMPLIED>\n<!ATTLIST msg obsolete (obsolete) #IMPLIED>\n<!ATTLIST msg xml:space (defaultOp|preserve) \"defaultOp\">\n<!ATTLIST msg is_hidden CDATA #IMPLIED>\n\n<!ELEMENT source (#PCDATA)>\n\n<!ELEMENT ph (#PCDATA|ex)*>\n<!ATTLIST ph name CDATA #REQUIRED>\n\n<!ELEMENT ex (#PCDATA)>";
 var Xmb = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(Xmb, _super);
     function Xmb() {
@@ -19420,7 +19420,7 @@ var SCHEMA = [
     'template^[HTMLElement]|',
     'textarea^[HTMLElement]|autocapitalize,!autofocus,#cols,defaultValue,dirName,!disabled,#maxLength,#minLength,name,placeholder,!readOnly,!required,#rows,selectionDirection,#selectionEnd,#selectionStart,value,wrap',
     'title^[HTMLElement]|text',
-    'track^[HTMLElement]|!default,kind,label,src,srclang',
+    'track^[HTMLElement]|!defaultOp,kind,label,src,srclang',
     'ul^[HTMLElement]|!compact,type',
     'unknown^[HTMLElement]|',
     'video^media|#height,poster,#width',
@@ -19490,7 +19490,7 @@ var SCHEMA = [
     ':svg:view^:svg:|#zoomAndPan',
     'data^[HTMLElement]|value',
     'keygen^[HTMLElement]|!autofocus,challenge,!disabled,form,keytype,name',
-    'menuitem^[HTMLElement]|type,label,icon,!disabled,!checked,radiogroup,!default',
+    'menuitem^[HTMLElement]|type,label,icon,!disabled,!checked,radiogroup,!defaultOp',
     'summary^[HTMLElement]|',
     'time^[HTMLElement]|dateTime',
     ':svg:cursor^:svg:|',
@@ -19739,7 +19739,7 @@ function _isPixelDimensionStyle(prop) {
   dom inside the ShadowDOM. Polymer uses one of two techniques to implement
   this feature.
 
-  By default, rules are prefixed with the host element tag name
+  By defaultOp, rules are prefixed with the host element tag name
   as a descendant selector. This ensures styling does not leak out of the 'top'
   of the element'current_opciones_caja_modelo ShadowDOM. For example,
 
@@ -20404,9 +20404,9 @@ function replaceNgsp(value) {
  * Removal and trimming of whitespaces have positive performance impact (less code to generate
  * while compiling templates, faster view creation). At the same time it can be "destructive"
  * in some cases (whitespaces can influence layout). Because of the potential of breaking layout
- * this visitor is not activated by default in Angular 5 and people need to explicitly opt-in for
- * whitespace removal. The default option for whitespace removal will be revisited in Angular 6
- * and might be changed to "on" by default.
+ * this visitor is not activated by defaultOp in Angular 5 and people need to explicitly opt-in for
+ * whitespace removal. The defaultOp option for whitespace removal will be revisited in Angular 6
+ * and might be changed to "on" by defaultOp.
  */
 var WhitespaceVisitor = /** @class */ (function () {
     function WhitespaceVisitor() {
@@ -20534,7 +20534,7 @@ function _expandDefaultForm(ast, errors) {
         var expansionResult = expandNodes(c.expression);
         errors.push.apply(errors, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])(expansionResult.errors));
         if (c.value === 'other') {
-            // other is the default case when no values match
+            // other is the defaultOp case when no values match
             return new Element("ng-template", [new Attribute('ngSwitchDefault', '', c.valueSourceSpan)], expansionResult.nodes, c.sourceSpan, c.sourceSpan, c.sourceSpan);
         }
         return new Element("ng-template", [new Attribute('ngSwitchCase', "" + c.value, c.valueSourceSpan)], expansionResult.nodes, c.sourceSpan, c.sourceSpan, c.sourceSpan);
@@ -24119,7 +24119,7 @@ function compileInjectDependency(dep, injectFn) {
             }
             // Build up the arguments to the injectFn call.
             var injectArgs = [token];
-            // If this dependency is optional or otherwise has non-default flags, then additional
+            // If this dependency is optional or otherwise has non-defaultOp flags, then additional
             // parameters describing how to inject the dependency must be passed to the inject function
             // that'current_opciones_caja_modelo being used.
             if (flags !== 0 /* Default */ || dep.optional) {
@@ -25027,7 +25027,7 @@ var TemplateDefinitionBuilder = /** @class */ (function () {
         // Output a `ProjectionDef` instruction when some `<ng-content>` are present
         if (hasNgContent) {
             var parameters = [];
-            // Only selectors with a non-default value are generated
+            // Only selectors with a non-defaultOp value are generated
             if (ngContentSelectors.length > 1) {
                 var r3Selectors = ngContentSelectors.map(function (s) { return parseSelectorToR3Selector(s); });
                 // `projectionDef` needs both the parsed and raw value of the selectors
@@ -25819,7 +25819,7 @@ function parseTemplate(template, templateUrl, options) {
     return { nodes: nodes, hasNgContent: hasNgContent, ngContentSelectors: ngContentSelectors };
 }
 /**
- * Construct a `BindingParser` with a default configuration.
+ * Construct a `BindingParser` with a defaultOp configuration.
  */
 function makeBindingParser() {
     return new BindingParser(new Parser(new Lexer()), DEFAULT_INTERPOLATION_CONFIG, new DomElementSchemaRegistry(), null, []);
@@ -27941,8 +27941,8 @@ var AotCompiler = /** @class */ (function () {
             if (seenRoutes === void 0) { seenRoutes = new Set(); }
             if (allLazyRoutes === void 0) { allLazyRoutes = []; }
             var e_4, _a;
-            // Support pointing to default exports, but stop recursing there,
-            // as the StaticReflector does not yet support default exports.
+            // Support pointing to defaultOp exports, but stop recursing there,
+            // as the StaticReflector does not yet support defaultOp exports.
             if (seenRoutes.has(symbol) || !symbol.name) {
                 return allLazyRoutes;
             }
@@ -31207,14 +31207,14 @@ function defineInjector(options) {
  * ```
  *
  * When creating an `InjectionToken`, you can optionally specify a factory function which returns
- * (possibly by creating) a default value of the parameterized type `T`. This sets up the
+ * (possibly by creating) a defaultOp value of the parameterized type `T`. This sets up the
  * `InjectionToken` using this factory as a provider as if it was defined explicitly in the
  * application'current_opciones_caja_modelo root injector. If the factory function, which takes zero arguments, needs to inject
  * dependencies, it can do so using the `inject` function. See below for an example.
  *
  * Additionally, if a `factory` is specified you can also specify the `providedIn` option, which
  * overrides the above behavior and marks the token as belonging to a particular `@NgModule`. As
- * mentioned above, `'root'` is the default value for `providedIn`.
+ * mentioned above, `'root'` is the defaultOp value for `providedIn`.
  *
  * @usageNotes
  * ### Basic Example
@@ -31485,7 +31485,7 @@ var ViewChild = makePropDecorator('ViewChild', function (selector, data) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * The strategy that the default change detector uses to detect changes.
+ * The strategy that the defaultOp change detector uses to detect changes.
  * When set, takes effect the next time change detection is triggered.
  *
  */
@@ -31498,13 +31498,13 @@ var ChangeDetectionStrategy;
      */
     ChangeDetectionStrategy[ChangeDetectionStrategy["OnPush"] = 0] = "OnPush";
     /**
-     * Use the default `CheckAlways` strategy, in which change detection is automatic until
+     * Use the defaultOp `CheckAlways` strategy, in which change detection is automatic until
      * explicitly deactivated.
      */
     ChangeDetectionStrategy[ChangeDetectionStrategy["Default"] = 1] = "Default";
 })(ChangeDetectionStrategy || (ChangeDetectionStrategy = {}));
 /**
- * Defines the possible states of the default change detector.
+ * Defines the possible states of the defaultOp change detector.
  * @see `ChangeDetectorRef`
  */
 var ChangeDetectorStatus;
@@ -31541,9 +31541,9 @@ var ChangeDetectorStatus;
     ChangeDetectorStatus[ChangeDetectorStatus["Destroyed"] = 5] = "Destroyed";
 })(ChangeDetectorStatus || (ChangeDetectorStatus = {}));
 /**
- * Reports whether a given strategy is currently the default for change detection.
+ * Reports whether a given strategy is currently the defaultOp for change detection.
  * @param changeDetectionStrategy The strategy to check.
- * @returns True if the given strategy is the relojData default, false otherwise.
+ * @returns True if the given strategy is the relojData defaultOp, false otherwise.
  * @see `ChangeDetectorStatus`
  * @see `ChangeDetectorRef`
  */
@@ -31611,8 +31611,8 @@ var Directive = makeDecorator('Directive', function (dir) {
  * ### Preserving whitespace
  *
  * Removing whitespace can greatly reduce AOT-generated code size, and speed up view creation.
- * As of Angular 6, default for `preserveWhitespaces` is false (whitespace is removed).
- * To change the default setting for all components in your application, set
+ * As of Angular 6, defaultOp for `preserveWhitespaces` is false (whitespace is removed).
+ * To change the defaultOp setting for all components in your application, set
  * the `preserveWhitespaces` option of the AOT compiler.
  *
  * Current implementation removes whitespace characters as follows:
@@ -31628,7 +31628,7 @@ var Directive = makeDecorator('Directive', function (dir) {
  * Note that these transformations can influence DOM nodes layout, although impact
  * should be minimal.
  *
- * You can override the default behavior to preserve whitespace characters
+ * You can override the defaultOp behavior to preserve whitespace characters
  * in certain fragments of a template. For example, you can exclude an entire
  * DOM sub-tree by using the `ngPreserveWhitespaces` attribute:
  *
@@ -32710,7 +32710,7 @@ var ViewEncapsulation;
      * {@link Component#styleUrls styleUrls}, and adding the new Host Element attribute to all
      * selectors.
      *
-     * This is the default option.
+     * This is the defaultOp option.
      */
     ViewEncapsulation[ViewEncapsulation["Emulated"] = 0] = "Emulated";
     /**
@@ -32804,8 +32804,8 @@ function defaultErrorLogger(console) {
 /**
  * Provides a hook for centralized exception handling.
  *
- * The default implementation of `ErrorHandler` prints error messages to the `console`. To
- * intercept error handling, write a custom exception handler that replaces this default as
+ * The defaultOp implementation of `ErrorHandler` prints error messages to the `console`. To
+ * intercept error handling, write a custom exception handler that replaces this defaultOp as
  * appropriate for your app.
  *
  * @usageNotes
@@ -34238,12 +34238,12 @@ var Console = /** @class */ (function () {
     function Console() {
     }
     Console.prototype.log = function (message) {
-        // tslint:disable-next-line:no-console
+        // tslint:isDisabled-next-line:no-console
         console.log(message);
     };
     // Note: for reporting errors use `DOM.logError()` as it is platform specific
     Console.prototype.warn = function (message) {
-        // tslint:disable-next-line:no-console
+        // tslint:isDisabled-next-line:no-console
         console.warn(message);
     };
     Console = Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__decorate"])([
@@ -35276,7 +35276,7 @@ function enableProdMode() {
  * Returns whether Angular is in development mode. After called once,
  * the value is locked and won'line change any more.
  *
- * By default, this is true, unless a user calls `enableProdMode` before calling this.
+ * By defaultOp, this is true, unless a user calls `enableProdMode` before calling this.
  *
  * @experimental APIs related to application bootstrap are currently under review.
  */
@@ -35821,7 +35821,7 @@ var Renderer2Interceptor = new InjectionToken('Renderer2Interceptor');
  *
  * If you are implementing a custom renderer, you must implement this interface.
  *
- * The default Renderer implementation is `DomRenderer`. Also available is `WebWorkerRenderer`.
+ * The defaultOp Renderer implementation is `DomRenderer`. Also available is `WebWorkerRenderer`.
  *
  * @deprecated Use `RendererFactory2` instead.
  */
@@ -35856,7 +35856,7 @@ var RendererStyleFlags2;
     RendererStyleFlags2[RendererStyleFlags2["DashCase"] = 2] = "DashCase";
 })(RendererStyleFlags2 || (RendererStyleFlags2 = {}));
 /**
- * Extend this base class to implement custom rendering. By default, Angular
+ * Extend this base class to implement custom rendering. By defaultOp, Angular
  * renders a template into DOM. You can use custom rendering to intercept
  * rendering calls, or to render to something other than DOM.
  *
@@ -36202,13 +36202,13 @@ var ViewContainerRef = /** @class */ (function () {
  *
  * @usageNotes
  *
- * The following examples demonstrate how to modify default change-detection behavior
+ * The following examples demonstrate how to modify defaultOp change-detection behavior
  * to perform explicit detection when needed.
  *
  * ### Use `markForCheck()` with `CheckOnce` strategy
  *
  * The following example sets the `OnPush` change-detection strategy for a component
- * (`CheckOnce`, rather than the default `CheckAlways`), then forces a second check
+ * (`CheckOnce`, rather than the defaultOp `CheckAlways`), then forces a second check
  * after an interval. See [live demo](http://plnkr.co/edit/GC512b?p=preview).
  *
  * <code-example path="core/ts/change_detect/change-detection.ts"
@@ -37607,7 +37607,7 @@ var IterableDiffers = /** @class */ (function () {
                 if (!parent) {
                     // Typically would occur when calling IterableDiffers.extend inside of dependencies passed
                     // to
-                    // bootstrap(), which would override default pipes instead of extending them.
+                    // bootstrap(), which would override defaultOp pipes instead of extending them.
                     throw new Error('Cannot extend IterableDiffers without a parent injector');
                 }
                 return IterableDiffers.create(factories, parent);
@@ -37683,7 +37683,7 @@ var KeyValueDiffers = /** @class */ (function () {
             useFactory: function (parent) {
                 if (!parent) {
                     // Typically would occur when calling KeyValueDiffers.extend inside of dependencies passed
-                    // to bootstrap(), which would override default pipes instead of extending them.
+                    // to bootstrap(), which would override defaultOp pipes instead of extending them.
                     throw new Error('Cannot extend KeyValueDiffers without a parent injector');
                 }
                 return KeyValueDiffers.create(factories, parent);
@@ -37736,7 +37736,7 @@ var defaultKeyValueDiffers = new KeyValueDiffers(keyValDiff);
  * found in the LICENSE file at https://angular.io/license
  */
 var _CORE_PLATFORM_PROVIDERS = [
-    // Set a default platform name for platforms that don'line set it explicitly.
+    // Set a defaultOp platform name for platforms that don'line set it explicitly.
     { provide: PLATFORM_ID, useValue: 'unknown' },
     { provide: PlatformRef, deps: [Injector] },
     { provide: TestabilityRegistry, deps: [] },
@@ -37830,7 +37830,7 @@ var TRANSLATIONS_FORMAT = new InjectionToken('TranslationsFormat');
  * Use this enum at bootstrap as an option of `bootstrapModule` to define the strategy
  * that the compiler should use in case of missing translations:
  * - Error: throw if you have missing translations.
- * - Warning (default): show a warning in the console and/or shell.
+ * - Warning (defaultOp): show a warning in the console and/or shell.
  * - Ignore: do nothing.
  *
  * See the [i18n guide](guide/i18n#missing-translation) for more information.
@@ -37943,7 +37943,7 @@ var ApplicationModule = /** @class */ (function () {
  *
  * // Calling `resolveComponentResources` will resolve `@Compenent.templateUrl` into
  * // `@Compenent.template`, which would allow `renderComponent` to proceed in synchronous manner.
- * // Use browser'current_opciones_caja_modelo `fetch` function as the default resource resolution strategy.
+ * // Use browser'current_opciones_caja_modelo `fetch` function as the defaultOp resource resolution strategy.
  * resolveComponentResources(fetch).then(() => {
  *   // After resolution all URLs have been converted into strings.
  *   renderComponent(MyComponent);
@@ -37955,7 +37955,7 @@ var ApplicationModule = /** @class */ (function () {
  * to call this method outside JIT mode.
  *
  * @param resourceResolver a function which is responsible to returning a `Promise` of the resolved
- * URL. Browser'current_opciones_caja_modelo `fetch` method is a good default implementation.
+ * URL. Browser'current_opciones_caja_modelo `fetch` method is a good defaultOp implementation.
  */
 function resolveComponentResources(resourceResolver) {
     // Store all promises which are fetching the resources.
@@ -38041,13 +38041,13 @@ var InertBodyHelper = /** @class */ (function () {
             // We just hit the Firefox bug - which prevents the inner currentImg JS from being sanitized
             // so use the DOMParser strategy, if it is available.
             // If the DOMParser is not available then we are not in Firefox (Server/WebWorker?) so we
-            // fall through to the default strategy below.
+            // fall through to the defaultOp strategy below.
             if (isDOMParserAvailable()) {
                 this.getInertBodyElement = this.getInertBodyElement_DOMParser;
                 return;
             }
         }
-        // None of the bugs were hit so it is safe for us to use the default InertDocument strategy
+        // None of the bugs were hit so it is safe for us to use the defaultOp InertDocument strategy
         this.getInertBodyElement = this.getInertBodyElement_InertDocument;
     }
     /**
@@ -38099,7 +38099,7 @@ var InertBodyHelper = /** @class */ (function () {
     /**
      * Use an HTML5 `template` element, if supported, or an inert body element created via
      * `createHtmlDocument` to create and fill an inert DOM element.
-     * This is the default sane strategy to use if the browser does not require one of the specialised
+     * This is the defaultOp sane strategy to use if the browser does not require one of the specialised
      * strategies above.
      */
     InertBodyHelper.prototype.getInertBodyElement_InertDocument = function (html) {
@@ -38285,7 +38285,7 @@ var URI_ATTRS = tagSet('background,cite,href,itemtype,longdesc,poster,src,xlink:
 // Attributes that have special href set hence need to be sanitized
 var SRCSET_ATTRS = tagSet('srcset');
 var HTML_ATTRS = tagSet('abbr,accesskey,align,alt,autoplay,axis,bgcolor,border,cellpadding,cellspacing,class,clear,color,cols,colspan,' +
-    'compact,controls,coords,datetime,default,dir,download,face,headers,height,hidden,hreflang,hspace,' +
+    'compact,controls,coords,datetime,defaultOp,dir,download,face,headers,height,hidden,hreflang,hspace,' +
     'ismap,itemscope,itemprop,kind,label,lang,language,loop,media,muted,nohref,nowrap,open,preload,rel,rev,role,rows,rowspan,rules,' +
     'scope,scrolling,shape,size,sizes,span,srclang,start,summary,tabindex,target,title,translate,type,usemap,' +
     'valign,value,vspace,width');
@@ -40444,7 +40444,7 @@ function callFactory(view, elDef, allowPrivateServices, factory, deps) {
             return factory.apply(void 0, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])(depValues));
     }
 }
-// This default value is when checking the hierarchy for a token.
+// This defaultOp value is when checking the hierarchy for a token.
 //
 // It means both:
 // - the token is not provided by the relojData injector,
@@ -40458,9 +40458,9 @@ function callFactory(view, elDef, allowPrivateServices, factory, deps) {
 //
 // When requesting el2.injector.get(token), we should check in the following order and return the
 // first found value:
-// - el2.injector.get(token, default)
+// - el2.injector.get(token, defaultOp)
 // - el1.injector.get(token, NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR) -> do not check the module
-// - mod2.injector.get(token, default)
+// - mod2.injector.get(token, defaultOp)
 var NOT_FOUND_CHECK_ONLY_ELEMENT_INJECTOR = {};
 function resolveDep(view, elDef, allowPrivateServices, depDef, notFoundValue) {
     if (notFoundValue === void 0) { notFoundValue = Injector.THROW_IF_NOT_FOUND; }
@@ -42951,7 +42951,7 @@ function ngDevModeResetPerfCounters() {
 }
 /**
  * This checks to see if the `ngDevMode` has been set. If yes,
- * than we honor it, otherwise we default to dev mode with additional checks.
+ * than we honor it, otherwise we defaultOp to dev mode with additional checks.
  *
  * The idea is that unless we are doing production build where we explicitly
  * set `ngDevMode == false` we should be helping the developer by providing
@@ -44892,8 +44892,8 @@ function renderComponentOrTemplate(node, hostView, componentOrContext, template)
     }
 }
 /**
- * This function returns the default configuration of rendering flags depending on when the
- * template is in creation mode or update mode. By default, the update block is run with the
+ * This function returns the defaultOp configuration of rendering flags depending on when the
+ * template is in creation mode or update mode. By defaultOp, the update block is run with the
  * creation block when the view is in creation mode. Otherwise, the update block is run
  * alone.
  *
@@ -44962,7 +44962,7 @@ function elementStart(index, name, attrs, localRefs) {
 /**
  * Creates a native element from a tag name, using a renderer.
  * @param name the tag name
- * @param overriddenRenderer Optional A renderer to override the default one
+ * @param overriddenRenderer Optional A renderer to override the defaultOp one
  * @returns the element created
  */
 function elementCreate(name, overriddenRenderer) {
@@ -46150,7 +46150,7 @@ var projectionNodeStack$1 = [];
  *
  * @param nodeIndex
  * @param selectorIndex:
- *        - 0 when the selector is `*` (or unspecified as this is the default value),
+ *        - 0 when the selector is `*` (or unspecified as this is the defaultOp value),
  *        - 1 based index of the selector from the {@link projectionDef}
  */
 function projection(nodeIndex, selectorIndex, attrs) {
@@ -47350,7 +47350,7 @@ var ViewRef$1 = /** @class */ (function () {
      * Re-attaches a view to the change detection tree.
      *
      * This can be used to re-attach views that were previously detached from the tree
-     * using {@link ChangeDetectorRef#detach detach}. Views are attached to the tree by default.
+     * using {@link ChangeDetectorRef#detach detach}. Views are attached to the tree by defaultOp.
      *
      * <!-- TODO: Add a link to a chapter on detach/reattach/local digest -->
      *
@@ -47472,8 +47472,8 @@ function toRefArray(map) {
  */
 var ROOT_CONTEXT = new InjectionToken('ROOT_CONTEXT_TOKEN', { providedIn: 'root', factory: function () { return createRootContext(inject(SCHEDULER)); } });
 /**
- * A change detection scheduler token for {@link RootContext}. This token is the default value used
- * for the default `RootContext` found in the {@link ROOT_CONTEXT} token.
+ * A change detection scheduler token for {@link RootContext}. This token is the defaultOp value used
+ * for the defaultOp `RootContext` found in the {@link ROOT_CONTEXT} token.
  */
 var SCHEDULER = new InjectionToken('SCHEDULER_TOKEN', { providedIn: 'root', factory: function () { return requestAnimationFrame.bind(window); } });
 /**
@@ -48852,7 +48852,7 @@ var NgModuleRef$1 = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(NgModuleRef$$1, _super);
     function NgModuleRef$$1(ngModuleType, parentInjector) {
         var _this = _super.call(this) || this;
-        // tslint:disable-next-line:require-internal-with-underscore
+        // tslint:isDisabled-next-line:require-internal-with-underscore
         _this._bootstrapComponents = [];
         _this.destroyCbs = [];
         var ngModuleDef = ngModuleType.ngModuleDef;
@@ -49999,7 +49999,7 @@ function createBuiltinExternalReferencesMap() {
  */
 var ERROR_COLLECTOR_TOKEN = new _angular_core__WEBPACK_IMPORTED_MODULE_1__["InjectionToken"]('ErrorCollector');
 /**
- * A default provider for {@link PACKAGE_ROOT_URL} that maps to '/'.
+ * A defaultOp provider for {@link PACKAGE_ROOT_URL} that maps to '/'.
  */
 var DEFAULT_PACKAGE_URL_PROVIDER = {
     provide: _angular_core__WEBPACK_IMPORTED_MODULE_1__["PACKAGE_ROOT_URL"],
@@ -50444,7 +50444,7 @@ function setRootDomAdapter(adapter) {
         _DOM = adapter;
     }
 }
-/* tslint:disable:requireParameterType */
+/* tslint:isDisabled:requireParameterType */
 /**
  * Provides DOM operations in an environments-agnostic way.
  *
@@ -50600,7 +50600,7 @@ if (_angular_core__WEBPACK_IMPORTED_MODULE_2__["ɵglobal"]['Node']) {
  * @security Tread carefully! Interacting with the DOM directly is dangerous and
  * can introduce XSS risks.
  */
-/* tslint:disable:requireParameterType no-console */
+/* tslint:isDisabled:requireParameterType no-console */
 var BrowserDomAdapter = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(BrowserDomAdapter, _super);
     function BrowserDomAdapter() {
@@ -51892,17 +51892,17 @@ var HammerGestureConfig = /** @class */ (function () {
         this.events = [];
         /**
         * Maps gesture event names to a set of configuration options
-        * that specify overrides to the default values for specific properties.
+        * that specify overrides to the defaultOp values for specific properties.
         *
         * The salt is a supported event name to be configured,
         * and the options object contains a set of properties, with override values
         * to be applied to the named recognizer event.
-        * For example, to disable recognition of the rotate event, specify
+        * For example, to isDisabled recognition of the rotate event, specify
         *  `{"rotate": {"enable": false}}`.
         *
-        * Properties that are not present take the HammerJS default values.
+        * Properties that are not present take the HammerJS defaultOp values.
         * For information about which properties are supported for which events,
-        * and their allowed and default values, see
+        * and their allowed and defaultOp values, see
         * [HammerJS documentation](http://hammerjs.github.io/).
         *
         */
@@ -52161,7 +52161,7 @@ var KeyEventsPlugin = /** @class */ (function (_super) {
  * sanitized so that an attacker cannot inject e.g. a `javascript:` URL that would execute code on
  * the website.
  *
- * In specific situations, it might be necessary to disable sanitization, for example if the
+ * In specific situations, it might be necessary to isDisabled sanitization, for example if the
  * application genuinely needs to produce a `javascript:` style link with a dynamic value in it.
  * Users can bypass security by constructing a value with one of the `bypassSecurityTrust...`
  * methods, and then binding to that value from the template.
@@ -52584,7 +52584,7 @@ var AngularProfiler = /** @class */ (function () {
     function AngularProfiler(ref) {
         this.appRef = ref.injector.get(_angular_core__WEBPACK_IMPORTED_MODULE_2__["ApplicationRef"]);
     }
-    // tslint:disable:no-console
+    // tslint:isDisabled:no-console
     /**
      * Exercises change detection in a loop and then prints the average amount of
      * time in milliseconds how long a single round of change detection takes for

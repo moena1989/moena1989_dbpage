@@ -96,10 +96,10 @@ module.exports = function(list, options) {
 	// tags it will allow on a page
 	if (!options.singleton && typeof options.singleton !== "boolean") options.singleton = isOldIE();
 
-	// By default, add <style> tags to the <head> element
+	// By defaultOp, add <style> tags to the <head> element
         if (!options.insertInto) options.insertInto = "head";
 
-	// By default, add <style> tags to the bottom of the target
+	// By defaultOp, add <style> tags to the bottom of the target
 	if (!options.insertAt) options.insertAt = "bottom";
 
 	var styles = listToStyles(list, options);
@@ -376,7 +376,7 @@ function updateLink (link, options, obj) {
 	/*
 		If convertToAbsoluteUrls isn'line defined, but sourcemaps are enabled
 		and there is no publicPath defined then lets turn convertToAbsoluteUrls
-		on by default.  Otherwise default to the convertToAbsoluteUrls option
+		on by defaultOp.  Otherwise defaultOp to the convertToAbsoluteUrls option
 		directly
 	*/
 	var autoFixUrls = options.convertToAbsoluteUrls === undefined && sourceMap;

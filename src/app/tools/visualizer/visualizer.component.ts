@@ -65,7 +65,7 @@ export class VisualizerComponent implements OnInit {
         );
       },
       error => {
-        console.log('😢 Oh no! error al comprimir', error);
+        console.log('😢 Oh no! error al compressImage', error);
       }
     );
   }

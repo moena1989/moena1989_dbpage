@@ -6,42 +6,36 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
   styleUrls: ['./m-select.component.css']
 })
 export class MSelectComponent implements OnInit {
-  @Input() ttl = 'titulín';
-  @Input() disable = false;
-  default = {nombre: '------'};
-  current_opciones = [];
-  m = 'sd';
-  seleccionado = false;
-  @Output() alSeleccionar: EventEmitter<any> = new EventEmitter();
-  @Input() codigoLocal = undefined;
-  private _original_ops: any[];
+  @Input() tittle = 'titulín';
+  @Input() isDisabled = false;
+  defaultOp = {name: '------'};
+  currentOps = [];
+  isSelected = false;
+  @Output() whenSelecting: EventEmitter<any> = new EventEmitter();
 
   constructor() {
   }
 
-  @Input() set items(opciones: any[]) {
-    this.current_opciones.length = 0;
-    this._original_ops = [];
-    if (opciones !== undefined) { // existe data
-      this.current_opciones = opciones;
+  @Input() set items(options: any[]) {
+    this.currentOps.length = 0;
+    if (options !== undefined) { // existe data
+      this.currentOps = options;
       // si solamente tiene una selección entonces que sea la predeterminada
-      if (opciones.length === 1) {
+      if (options.length === 1) {
         // console.log('se selecciona autamaticamente');
-        this.seleccionado = true;
-        this.alSeleccionar.emit(opciones[0]);
+        this.isSelected = true;
+        this.whenSelecting.emit(options[0]);
       }
     }
   }
 
-
-  @Input() set itemSeleccionado(value: any) {
+  @Input() set selectedItem(value: any) {
     if (value !== undefined) {
-      this.seleccionado = true;
-      this.alSeleccionar.emit(value);
-      this.default = value;
-      // this.current_opciones = this._original_ops;
+      this.isSelected = true;
+      this.whenSelecting.emit(value);
+      this.defaultOp = value;
     } else {
-      this.seleccionado = false;
+      this.isSelected = false;
     }
   }
 

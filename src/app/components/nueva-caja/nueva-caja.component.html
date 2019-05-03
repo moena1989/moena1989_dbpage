@@ -42,7 +42,7 @@
   </div>
 
   <!--<div class="modal-bottom-cnt">-->
-  <!--<div class="modal-bottom-button bt-disable" (click)="modalAlert.close()">Cancelar</div>-->
+  <!--<div class="modal-bottom-button bt-isDisabled" (click)="modalAlert.close()">Cancelar</div>-->
   <!--</div>-->
 
 </ngx-smart-modal>
@@ -61,22 +61,22 @@
     <div class="opciones_caja">
       <app-input [disable]="lote_iniciado" ttl="No. Cajas" placeholder="#"
                  (alEscribir)="seleccionarTotalCajas($event)"></app-input>
-      <app-m-select [disable]="lote_iniciado" ttl="Modelo" [items]="estructura.MODELOS"
-                    (alSeleccionar)="seleccionarModeloCaja($event)">
+      <app-m-select [isDisabled]="lote_iniciado" tittle="Modelo" [items]="estructura.MODELOS"
+                    (whenSelecting)="seleccionarModeloCaja($event)">
       </app-m-select>
       <div class="ln_v"></div>
       <app-m-select
         *ngIf="current_opciones_caja_modelo.diametro_externo"
-        [disable]="lote_iniciado" ttl="Diámetro Externo"
+        [isDisabled]="lote_iniciado" tittle="Diámetro Externo"
         [items]="current_opciones_caja_modelo.diametro_externo"
-        (alSeleccionar)="seleccionarDiametroExterno($event)">
+        (whenSelecting)="seleccionarDiametroExterno($event)">
       </app-m-select>
 
       <app-m-select
         *ngIf="current_opciones_caja_modelo.diametro_interno"
-        [disable]="lote_iniciado" ttl="Diámetro Interno"
+        [isDisabled]="lote_iniciado" tittle="Diámetro Interno"
         [items]="current_opciones_caja_modelo.diametro_interno"
-        (alSeleccionar)="seleccionarDiametroInterno($event)">
+        (whenSelecting)="seleccionarDiametroInterno($event)">
       </app-m-select>
 
     </div>
@@ -91,9 +91,9 @@
     <div class="opciones_caja" *ngIf="current_opciones_caja_modelo.diametro_externo">
       <ng-container *ngFor="let n of current_opciones_caja_modelo.materiales; let i = index">
         <app-m-select
-          [disable]="lote_iniciado" ttl="Material {{i+1}}"
+          [isDisabled]="lote_iniciado" tittle="Material {{i+1}}"
           [items]="n"
-          (alSeleccionar)="seleccionarMaterial($event,i)">
+          (whenSelecting)="seleccionarMaterial($event,i)">
         </app-m-select>
       </ng-container>
     </div>

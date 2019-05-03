@@ -17,383 +17,369 @@ export class CurrentStorageService {
   public cases: any[];
   public crystals = [];
   public straps = [];
+  public supportedLangs = [];
+  public supportedCurrs: any[];
   //
   public opcsEstadosTendencias = {publica: {nombre: 'Pública'}, privada: {nombre: 'Privada'}};
   relojDisponible: ClockModel;
-  public idiomas: any[] = [];
-  public idiomaApp: any;
   public caja = [];
-  public IDIOMAS = [
-    // {'codigo': 'ab', 'nombre': 'Abkhaz', 'nombreNativo': 'аҧсуа'},
-    // {'codigo': 'aa', 'nombre': 'Afar', 'nombreNativo': 'Afaraf'},
-    // {'codigo': 'af', 'nombre': 'Afrikaans', 'nombreNativo': 'Afrikaans'},
-    // {'codigo': 'ak', 'nombre': 'Akan', 'nombreNativo': 'Akan'},
-    // {'codigo': 'sq', 'nombre': 'Albanian', 'nombreNativo': 'Shqip'},
-    // {'codigo': 'am', 'nombre': 'Amharic', 'nombreNativo': 'አማርኛ'},
-    // {'codigo': 'ar', 'nombre': 'Arabic', 'nombreNativo': 'العربية'},
-    // {'codigo': 'an', 'nombre': 'Aragonese', 'nombreNativo': 'Aragonés'},
-    // {'codigo': 'hy', 'nombre': 'Armenian', 'nombreNativo': 'Հայերեն'},
-    // {'codigo': 'as', 'nombre': 'Assamese', 'nombreNativo': 'অসমীয়া'},
-    // {'codigo': 'av', 'nombre': 'Avaric', 'nombreNativo': 'авар мацӀ, магӀарул мацӀ'},
-    // {'codigo': 'ae', 'nombre': 'Avestan', 'nombreNativo': 'avesta'},
-    // {'codigo': 'ay', 'nombre': 'Aymara', 'nombreNativo': 'aymar aru'},
-    // {'codigo': 'az', 'nombre': 'Azerbaijani', 'nombreNativo': 'azərbaycan dili'},
-    // {'codigo': 'bm', 'nombre': 'Bambara', 'nombreNativo': 'bamanankan'},
-    // {'codigo': 'ba', 'nombre': 'Bashkir', 'nombreNativo': 'башҡорт теле'},
-    // {'codigo': 'eu', 'nombre': 'Basque', 'nombreNativo': 'euskara, euskera'},
-    // {'codigo': 'be', 'nombre': 'Belarusian', 'nombreNativo': 'Беларуская'},
-    // {'codigo': 'bn', 'nombre': 'Bengali', 'nombreNativo': 'বাংলা'},
-    // {'codigo': 'bh', 'nombre': 'Bihari', 'nombreNativo': 'भोजपुरी'},
-    // {'codigo': 'bi', 'nombre': 'Bislama', 'nombreNativo': 'Bislama'},
-    // {'codigo': 'bs', 'nombre': 'Bosnian', 'nombreNativo': 'bosanski jezik'},
-    // {'codigo': 'br', 'nombre': 'Breton', 'nombreNativo': 'brezhoneg'},
-    // {'codigo': 'bg', 'nombre': 'Bulgarian', 'nombreNativo': 'български език'},
-    // {'codigo': 'my', 'nombre': 'Burmese', 'nombreNativo': 'ဗမာစာ'},
-    {'codigo': 'ca', 'nombre': 'Catalán', 'nombreNativo': 'Català'},
-    // {'codigo': 'ch', 'nombre': 'Chamorro', 'nombreNativo': 'Chamoru'},
-    // {'codigo': 'ce', 'nombre': 'Chechen', 'nombreNativo': 'нохчийн мотт'},
-    // {'codigo': 'ny', 'nombre': 'Chichewa; Chewa; Nyanja', 'nombreNativo': 'chiCheŵa, chinyanja'},
-    // {'codigo': 'zh', 'nombre': 'Chinese', 'nombreNativo': '中文 (Zhōngwén), 汉语, 漢語'},
-    // {'codigo': 'cv', 'nombre': 'Chuvash', 'nombreNativo': 'чӑваш чӗлхи'},
-    // {'codigo': 'kw', 'nombre': 'Cornish', 'nombreNativo': 'Kernewek'},
-    // {'codigo': 'co', 'nombre': 'Corsican', 'nombreNativo': 'corsu, lingua corsa'},
-    // {'codigo': 'cr', 'nombre': 'Cree', 'nombreNativo': 'ᓀᐦᐃᔭᐍᐏᐣ'},
-    // {'codigo': 'hr', 'nombre': 'Croatian', 'nombreNativo': 'hrvatski'},
-    // {'codigo': 'cs', 'nombre': 'Czech', 'nombreNativo': 'česky, čeština'},
-    // {'codigo': 'da', 'nombre': 'Danish', 'nombreNativo': 'dansk'},
-    // {'codigo': 'dv', 'nombre': 'Divehi; Dhivehi; Maldivian;', 'nombreNativo': 'ދިވެހި'},
-    // {'codigo': 'nl', 'nombre': 'Dutch', 'nombreNativo': 'Nederlands, Vlaams'},
-    {'codigo': 'en', 'nombre': 'Inglés', 'nombreNativo': 'English'},
-    // {'codigo': 'eo', 'nombre': 'Esperanto', 'nombreNativo': 'Esperanto'},
-    // {'codigo': 'et', 'nombre': 'Estonian', 'nombreNativo': 'eesti, eesti keel'},
-    // {'codigo': 'ee', 'nombre': 'Ewe', 'nombreNativo': 'Eʋegbe'},
-    // {'codigo': 'fo', 'nombre': 'Faroese', 'nombreNativo': 'føroyskt'},
-    // {'codigo': 'fj', 'nombre': 'Fijian', 'nombreNativo': 'vosa Vakaviti'},
-    // {'codigo': 'fi', 'nombre': 'Finnish', 'nombreNativo': 'suomi, suomen kieli'},
-    {'codigo': 'fr', 'nombre': 'Francés', 'nombreNativo': 'français, langue française'},
-    // {'codigo': 'ff', 'nombre': 'Fula; Fulah; Pulaar; Pular', 'nombreNativo': 'Fulfulde, Pulaar, Pular'},
-    // {'codigo': 'gl', 'nombre': 'Galician', 'nombreNativo': 'Galego'},
-    // {'codigo': 'ka', 'nombre': 'Georgian', 'nombreNativo': 'ქართული'},
-    {'codigo': 'de', 'nombre': 'Alemán', 'nombreNativo': 'Deutsch'},
-    // {'codigo': 'el', 'nombre': 'Greek, Modern', 'nombreNativo': 'Ελληνικά'},
-    // {'codigo': 'gn', 'nombre': 'Guaraní', 'nombreNativo': 'Avañeẽ'},
-    // {'codigo': 'gu', 'nombre': 'Gujarati', 'nombreNativo': 'ગુજરાતી'},
-    // {'codigo': 'ht', 'nombre': 'Haitian; Haitian Creole', 'nombreNativo': 'Kreyòl ayisyen'},
-    // {'codigo': 'ha', 'nombre': 'Hausa', 'nombreNativo': 'Hausa, هَوُسَ'},
-    // {'codigo': 'he', 'nombre': 'Hebrew (modern)', 'nombreNativo': 'עברית'},
-    // {'codigo': 'hz', 'nombre': 'Herero', 'nombreNativo': 'Otjiherero'},
-    // {'codigo': 'hi', 'nombre': 'Hindi', 'nombreNativo': 'हिन्दी, हिंदी'},
-    // {'codigo': 'ho', 'nombre': 'Hiri Motu', 'nombreNativo': 'Hiri Motu'},
-    // {'codigo': 'hu', 'nombre': 'Hungarian', 'nombreNativo': 'Magyar'},
-    // {'codigo': 'ia', 'nombre': 'Interlingua', 'nombreNativo': 'Interlingua'},
-    // {'codigo': 'id', 'nombre': 'Indonesian', 'nombreNativo': 'Bahasa Indonesia'},
-    // {'codigo': 'ie', 'nombre': 'Interlingue', 'nombreNativo': 'Originally called Occidental; then Interlingue after WWII'},
-    // {'codigo': 'ga', 'nombre': 'Irish', 'nombreNativo': 'Gaeilge'},
-    // {'codigo': 'ig', 'nombre': 'Igbo', 'nombreNativo': 'Asụsụ Igbo'},
-    // {'codigo': 'ik', 'nombre': 'Inupiaq', 'nombreNativo': 'Iñupiaq, Iñupiatun'},
-    // {'codigo': 'io', 'nombre': 'Ido', 'nombreNativo': 'Ido'},
-    // {'codigo': 'is', 'nombre': 'Icelandic', 'nombreNativo': 'Íslenska'},
-    // {'codigo': 'it', 'nombre': 'Italian', 'nombreNativo': 'Italiano'},
-    // {'codigo': 'iu', 'nombre': 'Inuktitut', 'nombreNativo': 'ᐃᓄᒃᑎᑐᑦ'},
-    {'codigo': 'ja', 'nombre': 'Japonés', 'nombreNativo': '日本語'},
-    // {'codigo': 'jv', 'nombre': 'Javanese', 'nombreNativo': 'basa Jawa'},
-    // {'codigo': 'kl', 'nombre': 'Kalaallisut, Greenlandic', 'nombreNativo': 'kalaallisut, kalaallit oqaasii'},
-    // {'codigo': 'kn', 'nombre': 'Kannada', 'nombreNativo': 'ಕನ್ನಡ'},
-    // {'codigo': 'kr', 'nombre': 'Kanuri', 'nombreNativo': 'Kanuri'},
-    // {'codigo': 'ks', 'nombre': 'Kashmiri', 'nombreNativo': 'कश्मीरी, كشميري‎'},
-    // {'codigo': 'kk', 'nombre': 'Kazakh', 'nombreNativo': 'Қазақ тілі'},
-    // {'codigo': 'km', 'nombre': 'Khmer', 'nombreNativo': 'ភាសាខ្មែរ'},
-    // {'codigo': 'ki', 'nombre': 'Kikuyu, Gikuyu', 'nombreNativo': 'Gĩkũyũ'},
-    // {'codigo': 'rw', 'nombre': 'Kinyarwanda', 'nombreNativo': 'Ikinyarwanda'},
-    // {'codigo': 'ky', 'nombre': 'Kirghiz, Kyrgyz', 'nombreNativo': 'кыргыз тили'},
-    // {'codigo': 'kv', 'nombre': 'Komi', 'nombreNativo': 'коми кыв'},
-    // {'codigo': 'kg', 'nombre': 'Kongo', 'nombreNativo': 'KiKongo'},
-    // {'codigo': 'ko', 'nombre': 'Korean', 'nombreNativo': '한국어 (韓國語), 조선말 (朝鮮語)'},
-    // {'codigo': 'ku', 'nombre': 'Kurdish', 'nombreNativo': 'Kurdî, كوردی‎'},
-    // {'codigo': 'kj', 'nombre': 'Kwanyama, Kuanyama', 'nombreNativo': 'Kuanyama'},
-    // {'codigo': 'la', 'nombre': 'Latin', 'nombreNativo': 'latine, lingua latina'},
-    // {'codigo': 'lb', 'nombre': 'Luxembourgish, Letzeburgesch', 'nombreNativo': 'Lëtzebuergesch'},
-    // {'codigo': 'lg', 'nombre': 'Luganda', 'nombreNativo': 'Luganda'},
-    // {'codigo': 'li', 'nombre': 'Limburgish, Limburgan, Limburger', 'nombreNativo': 'Limburgs'},
-    // {'codigo': 'ln', 'nombre': 'Lingala', 'nombreNativo': 'Lingála'},
-    // {'codigo': 'lo', 'nombre': 'Lao', 'nombreNativo': 'ພາສາລາວ'},
-    // {'codigo': 'lt', 'nombre': 'Lithuanian', 'nombreNativo': 'lietuvių kalba'},
-    // {'codigo': 'lu', 'nombre': 'Luba-Katanga', 'nombreNativo': ''},
-    // {'codigo': 'lv', 'nombre': 'Latvian', 'nombreNativo': 'latviešu valoda'},
-    // {'codigo': 'gv', 'nombre': 'Manx', 'nombreNativo': 'Gaelg, Gailck'},
-    // {'codigo': 'mk', 'nombre': 'Macedonian', 'nombreNativo': 'македонски јазик'},
-    // {'codigo': 'mg', 'nombre': 'Malagasy', 'nombreNativo': 'Malagasy fiteny'},
-    // {'codigo': 'ms', 'nombre': 'Malay', 'nombreNativo': 'bahasa Melayu, بهاس ملايو‎'},
-    // {'codigo': 'ml', 'nombre': 'Malayalam', 'nombreNativo': 'മലയാളം'},
-    // {'codigo': 'mt', 'nombre': 'Maltese', 'nombreNativo': 'Malti'},
-    // {'codigo': 'mi', 'nombre': 'Māori', 'nombreNativo': 'te reo Māori'},
-    // {'codigo': 'mr', 'nombre': 'Marathi (Marāṭhī)', 'nombreNativo': 'मराठी'},
-    // {'codigo': 'mh', 'nombre': 'Marshallese', 'nombreNativo': 'Kajin M̧ajeļ'},
-    // {'codigo': 'mn', 'nombre': 'Mongolian', 'nombreNativo': 'монгол'},
-    // {'codigo': 'na', 'nombre': 'Nauru', 'nombreNativo': 'Ekakairũ Naoero'},
-    // {'codigo': 'nv', 'nombre': 'Navajo, Navaho', 'nombreNativo': 'Diné bizaad, Dinékʼehǰí'},
-    // {'codigo': 'nb', 'nombre': 'Norwegian Bokmål', 'nombreNativo': 'Norsk bokmål'},
-    // {'codigo': 'nd', 'nombre': 'North Ndebele', 'nombreNativo': 'isiNdebele'},
-    // {'codigo': 'ne', 'nombre': 'Nepali', 'nombreNativo': 'नेपाली'},
-    // {'codigo': 'ng', 'nombre': 'Ndonga', 'nombreNativo': 'Owambo'},
-    // {'codigo': 'nn', 'nombre': 'Norwegian Nynorsk', 'nombreNativo': 'Norsk nynorsk'},
-    // {'codigo': 'no', 'nombre': 'Norwegian', 'nombreNativo': 'Norsk'},
-    // {'codigo': 'ii', 'nombre': 'Nuosu', 'nombreNativo': 'ꆈꌠ꒿ Nuosuhxop'},
-    // {'codigo': 'nr', 'nombre': 'South Ndebele', 'nombreNativo': 'isiNdebele'},
-    // {'codigo': 'oc', 'nombre': 'Occitan', 'nombreNativo': 'Occitan'},
-    // {'codigo': 'oj', 'nombre': 'Ojibwe, Ojibwa', 'nombreNativo': 'ᐊᓂᔑᓈᐯᒧᐎᓐ'},
+  public LANGS = [
+    // {code: 'ab', name: 'Abkhaz', nativeName: 'аҧсуа'},
+    // {code: 'aa', name: 'Afar', nativeName: 'Afaraf'},
+    // {code: 'af', name: 'Afrikaans', nativeName: 'Afrikaans'},
+    // {code: 'ak', name: 'Akan', nativeName: 'Akan'},
+    // {code: 'sq', name: 'Albanian', nativeName: 'Shqip'},
+    // {code: 'am', name: 'Amharic', nativeName: 'አማርኛ'},
+    // {code: 'ar', name: 'Arabic', nativeName: 'العربية'},
+    // {code: 'an', name: 'Aragonese', nativeName: 'Aragonés'},
+    // {code: 'hy', name: 'Armenian', nativeName: 'Հայերեն'},
+    // {code: 'as', name: 'Assamese', nativeName: 'অসমীয়া'},
+    // {code: 'av', name: 'Avaric', nativeName: 'авар мацӀ, магӀарул мацӀ'},
+    // {code: 'ae', name: 'Avestan', nativeName: 'avesta'},
+    // {code: 'ay', name: 'Aymara', nativeName: 'aymar aru'},
+    // {code: 'az', name: 'Azerbaijani', nativeName: 'azərbaycan dili'},
+    // {code: 'bm', name: 'Bambara', nativeName: 'bamanankan'},
+    // {code: 'ba', name: 'Bashkir', nativeName: 'башҡорт теле'},
+    // {code: 'eu', name: 'Basque', nativeName: 'euskara, euskera'},
+    // {code: 'be', name: 'Belarusian', nativeName: 'Беларуская'},
+    // {code: 'bn', name: 'Bengali', nativeName: 'বাংলা'},
+    // {code: 'bh', name: 'Bihari', nativeName: 'भोजपुरी'},
+    // {code: 'bi', name: 'Bislama', nativeName: 'Bislama'},
+    // {code: 'bs', name: 'Bosnian', nativeName: 'bosanski jezik'},
+    // {code: 'br', name: 'Breton', nativeName: 'brezhoneg'},
+    // {code: 'bg', name: 'Bulgarian', nativeName: 'български език'},
+    // {code: 'my', name: 'Burmese', nativeName: 'ဗမာစာ'},
+    {code: 'ca', name: 'Catalán', nativeName: 'Català'},
+    // {code: 'ch', name: 'Chamorro', nativeName: 'Chamoru'},
+    // {code: 'ce', name: 'Chechen', nativeName: 'нохчийн мотт'},
+    // {code: 'ny', name: 'Chichewa; Chewa; Nyanja', nativeName: 'chiCheŵa, chinyanja'},
+    {code: 'zh', name: 'Mandarín', nativeName: '中文 (Zhōngwén), 汉语, 漢語'},
+    // {code: 'cv', name: 'Chuvash', nativeName: 'чӑваш чӗлхи'},
+    // {code: 'kw', name: 'Cornish', nativeName: 'Kernewek'},
+    // {code: 'co', name: 'Corsican', nativeName: 'corsu, lingua corsa'},
+    // {code: 'cr', name: 'Cree', nativeName: 'ᓀᐦᐃᔭᐍᐏᐣ'},
+    // {code: 'hr', name: 'Croatian', nativeName: 'hrvatski'},
+    // {code: 'cs', name: 'Czech', nativeName: 'česky, čeština'},
+    // {code: 'da', name: 'Danish', nativeName: 'dansk'},
+    // {code: 'dv', name: 'Divehi; Dhivehi; Maldivian;', nativeName: 'ދިވެހި'},
+    // {code: 'nl', name: 'Dutch', nativeName: 'Nederlands, Vlaams'},
+    {code: 'en', name: 'Inglés', nativeName: 'English'},
+    {code: 'eo', name: 'Esperanto', nativeName: 'Esperanto'},
+    // {code: 'et', name: 'Estonian', nativeName: 'eesti, eesti keel'},
+    // {code: 'ee', name: 'Ewe', nativeName: 'Eʋegbe'},
+    // {code: 'fo', name: 'Faroese', nativeName: 'føroyskt'},
+    // {code: 'fj', name: 'Fijian', nativeName: 'vosa Vakaviti'},
+    // {code: 'fi', name: 'Finnish', nativeName: 'suomi, suomen kieli'},
+    {code: 'fr', name: 'Francés', nativeName: 'français, langue française'},
+    // {code: 'ff', name: 'Fula; Fulah; Pulaar; Pular', nativeName: 'Fulfulde, Pulaar, Pular'},
+    // {code: 'gl', name: 'Galician', nativeName: 'Galego'},
+    // {code: 'ka', name: 'Georgian', nativeName: 'ქართული'},
+    {code: 'de', name: 'Alemán', nativeName: 'Deutsch'},
+    // {code: 'el', name: 'Greek, Modern', nativeName: 'Ελληνικά'},
+    // {code: 'gn', name: 'Guaraní', nativeName: 'Avañeẽ'},
+    // {code: 'gu', name: 'Gujarati', nativeName: 'ગુજરાતી'},
+    // {code: 'ht', name: 'Haitian; Haitian Creole', nativeName: 'Kreyòl ayisyen'},
+    // {code: 'ha', name: 'Hausa', nativeName: 'Hausa, هَوُسَ'},
+    // {code: 'he', name: 'Hebrew (modern)', nativeName: 'עברית'},
+    // {code: 'hz', name: 'Herero', nativeName: 'Otjiherero'},
+    // {code: 'hi', name: 'Hindi', nativeName: 'हिन्दी, हिंदी'},
+    // {code: 'ho', name: 'Hiri Motu', nativeName: 'Hiri Motu'},
+    // {code: 'hu', name: 'Hungarian', nativeName: 'Magyar'},
+    // {code: 'ia', name: 'Interlingua', nativeName: 'Interlingua'},
+    // {code: 'id', name: 'Indonesian', nativeName: 'Bahasa Indonesia'},
+    // {code: 'ie', name: 'Interlingue', nativeName: 'Originally called Occidental; then Interlingue after WWII'},
+    // {code: 'ga', name: 'Irish', nativeName: 'Gaeilge'},
+    // {code: 'ig', name: 'Igbo', nativeName: 'Asụsụ Igbo'},
+    // {code: 'ik', name: 'Inupiaq', nativeName: 'Iñupiaq, Iñupiatun'},
+    // {code: 'io', name: 'Ido', nativeName: 'Ido'},
+    // {code: 'is', name: 'Icelandic', nativeName: 'Íslenska'},
+    // {code: 'it', name: 'Italian', nativeName: 'Italiano'},
+    // {code: 'iu', name: 'Inuktitut', nativeName: 'ᐃᓄᒃᑎᑐᑦ'},
+    {code: 'ja', name: 'Japonés', nativeName: '日本語'},
+    // {code: 'jv', name: 'Javanese', nativeName: 'basa Jawa'},
+    // {code: 'kl', name: 'Kalaallisut, Greenlandic', nativeName: 'kalaallisut, kalaallit oqaasii'},
+    // {code: 'kn', name: 'Kannada', nativeName: 'ಕನ್ನಡ'},
+    // {code: 'kr', name: 'Kanuri', nativeName: 'Kanuri'},
+    // {code: 'ks', name: 'Kashmiri', nativeName: 'कश्मीरी, كشميري‎'},
+    // {code: 'kk', name: 'Kazakh', nativeName: 'Қазақ тілі'},
+    // {code: 'km', name: 'Khmer', nativeName: 'ភាសាខ្មែរ'},
+    // {code: 'ki', name: 'Kikuyu, Gikuyu', nativeName: 'Gĩkũyũ'},
+    // {code: 'rw', name: 'Kinyarwanda', nativeName: 'Ikinyarwanda'},
+    // {code: 'ky', name: 'Kirghiz, Kyrgyz', nativeName: 'кыргыз тили'},
+    // {code: 'kv', name: 'Komi', nativeName: 'коми кыв'},
+    // {code: 'kg', name: 'Kongo', nativeName: 'KiKongo'},
+    // {code: 'ko', name: 'Korean', nativeName: '한국어 (韓國語), 조선말 (朝鮮語)'},
+    // {code: 'ku', name: 'Kurdish', nativeName: 'Kurdî, كوردی‎'},
+    // {code: 'kj', name: 'Kwanyama, Kuanyama', nativeName: 'Kuanyama'},
+    // {code: 'la', name: 'Latin', nativeName: 'latine, lingua latina'},
+    // {code: 'lb', name: 'Luxembourgish, Letzeburgesch', nativeName: 'Lëtzebuergesch'},
+    // {code: 'lg', name: 'Luganda', nativeName: 'Luganda'},
+    // {code: 'li', name: 'Limburgish, Limburgan, Limburger', nativeName: 'Limburgs'},
+    // {code: 'ln', name: 'Lingala', nativeName: 'Lingála'},
+    // {code: 'lo', name: 'Lao', nativeName: 'ພາສາລາວ'},
+    // {code: 'lt', name: 'Lithuanian', nativeName: 'lietuvių kalba'},
+    // {code: 'lu', name: 'Luba-Katanga', nativeName: ''},
+    // {code: 'lv', name: 'Latvian', nativeName: 'latviešu valoda'},
+    // {code: 'gv', name: 'Manx', nativeName: 'Gaelg, Gailck'},
+    // {code: 'mk', name: 'Macedonian', nativeName: 'македонски јазик'},
+    // {code: 'mg', name: 'Malagasy', nativeName: 'Malagasy fiteny'},
+    // {code: 'ms', name: 'Malay', nativeName: 'bahasa Melayu, بهاس ملايو‎'},
+    // {code: 'ml', name: 'Malayalam', nativeName: 'മലയാളം'},
+    // {code: 'mt', name: 'Maltese', nativeName: 'Malti'},
+    // {code: 'mi', name: 'Māori', nativeName: 'te reo Māori'},
+    // {code: 'mr', name: 'Marathi (Marāṭhī)', nativeName: 'मराठी'},
+    // {code: 'mh', name: 'Marshallese', nativeName: 'Kajin M̧ajeļ'},
+    // {code: 'mn', name: 'Mongolian', nativeName: 'монгол'},
+    // {code: 'na', name: 'Nauru', nativeName: 'Ekakairũ Naoero'},
+    // {code: 'nv', name: 'Navajo, Navaho', nativeName: 'Diné bizaad, Dinékʼehǰí'},
+    // {code: 'nb', name: 'Norwegian Bokmål', nativeName: 'Norsk bokmål'},
+    // {code: 'nd', name: 'North Ndebele', nativeName: 'isiNdebele'},
+    // {code: 'ne', name: 'Nepali', nativeName: 'नेपाली'},
+    // {code: 'ng', name: 'Ndonga', nativeName: 'Owambo'},
+    // {code: 'nn', name: 'Norwegian Nynorsk', nativeName: 'Norsk nynorsk'},
+    // {code: 'no', name: 'Norwegian', nativeName: 'Norsk'},
+    // {code: 'ii', name: 'Nuosu', nativeName: 'ꆈꌠ꒿ Nuosuhxop'},
+    // {code: 'nr', name: 'South Ndebele', nativeName: 'isiNdebele'},
+    // {code: 'oc', name: 'Occitan', nativeName: 'Occitan'},
+    // {code: 'oj', name: 'Ojibwe, Ojibwa', nativeName: 'ᐊᓂᔑᓈᐯᒧᐎᓐ'},
     // {
-    //   'codigo': 'cu',
-    //   'nombre': 'Old Church Slavonic, Church Slavic, Church Slavonic, Old Bulgarian, Old Slavonic',
-    //   'nombreNativo': 'ѩзыкъ словѣньскъ'
+    //   code: 'cu',
+    //   name: 'Old Church Slavonic, Church Slavic, Church Slavonic, Old Bulgarian, Old Slavonic',
+    //   nativeName: 'ѩзыкъ словѣньскъ'
     // },
-    // {'codigo': 'om', 'nombre': 'Oromo', 'nombreNativo': 'Afaan Oromoo'},
-    // {'codigo': 'or', 'nombre': 'Oriya', 'nombreNativo': 'ଓଡ଼ିଆ'},
-    // {'codigo': 'os', 'nombre': 'Ossetian, Ossetic', 'nombreNativo': 'ирон æвзаг'},
-    // {'codigo': 'pa', 'nombre': 'Panjabi, Punjabi', 'nombreNativo': 'ਪੰਜਾਬੀ, پنجابی‎'},
-    // {'codigo': 'pi', 'nombre': 'Pāli', 'nombreNativo': 'पाऴि'},
-    // {'codigo': 'fa', 'nombre': 'Persian', 'nombreNativo': 'فارسی'},
-    // {'codigo': 'pl', 'nombre': 'Polish', 'nombreNativo': 'polski'},
-    // {'codigo': 'ps', 'nombre': 'Pashto, Pushto', 'nombreNativo': 'پښتو'},
-    // {'codigo': 'pt', 'nombre': 'Portuguese', 'nombreNativo': 'Português'},
-    // {'codigo': 'qu', 'nombre': 'Quechua', 'nombreNativo': 'Runa Simi, Kichwa'},
-    // {'codigo': 'rm', 'nombre': 'Romansh', 'nombreNativo': 'rumantsch grischun'},
-    // {'codigo': 'rn', 'nombre': 'Kirundi', 'nombreNativo': 'kiRundi'},
-    // {'codigo': 'ro', 'nombre': 'Romanian, Moldavian, Moldovan', 'nombreNativo': 'română'},
-    // {'codigo': 'ru', 'nombre': 'Russian', 'nombreNativo': 'русский язык'},
-    // {'codigo': 'sa', 'nombre': 'Sanskrit (Saṁskṛta)', 'nombreNativo': 'संस्कृतम्'},
-    // {'codigo': 'sc', 'nombre': 'Sardinian', 'nombreNativo': 'sardu'},
-    // {'codigo': 'sd', 'nombre': 'Sindhi', 'nombreNativo': 'सिन्धी, سنڌي، سندھی‎'},
-    // {'codigo': 'se', 'nombre': 'Northern Sami', 'nombreNativo': 'Davvisámegiella'},
-    // {'codigo': 'sm', 'nombre': 'Samoan', 'nombreNativo': 'gagana faa Samoa'},
-    // {'codigo': 'sg', 'nombre': 'Sango', 'nombreNativo': 'yângâ tî sängö'},
-    // {'codigo': 'sr', 'nombre': 'Serbian', 'nombreNativo': 'српски језик'},
-    // {'codigo': 'gd', 'nombre': 'Scottish Gaelic; Gaelic', 'nombreNativo': 'Gàidhlig'},
-    // {'codigo': 'sn', 'nombre': 'Shona', 'nombreNativo': 'chiShona'},
-    // {'codigo': 'si', 'nombre': 'Sinhala, Sinhalese', 'nombreNativo': 'සිංහල'},
-    // {'codigo': 'sk', 'nombre': 'Slovak', 'nombreNativo': 'slovenčina'},
-    // {'codigo': 'sl', 'nombre': 'Slovene', 'nombreNativo': 'slovenščina'},
-    // {'codigo': 'so', 'nombre': 'Somali', 'nombreNativo': 'Soomaaliga, af Soomaali'},
-    // {'codigo': 'st', 'nombre': 'Southern Sotho', 'nombreNativo': 'Sesotho'},
-    {'codigo': 'es', 'nombre': 'Español', 'nombreNativo': 'Español'},
-    // {'codigo': 'su', 'nombre': 'Sundanese', 'nombreNativo': 'Basa Sunda'},
-    // {'codigo': 'sw', 'nombre': 'Swahili', 'nombreNativo': 'Kiswahili'},
-    // {'codigo': 'ss', 'nombre': 'Swati', 'nombreNativo': 'SiSwati'},
-    // {'codigo': 'sv', 'nombre': 'Swedish', 'nombreNativo': 'svenska'},
-    // {'codigo': 'ta', 'nombre': 'Tamil', 'nombreNativo': 'தமிழ்'},
-    // {'codigo': 'te', 'nombre': 'Telugu', 'nombreNativo': 'తెలుగు'},
-    // {'codigo': 'tg', 'nombre': 'Tajik', 'nombreNativo': 'тоҷикӣ, toğikī, تاجیکی‎'},
-    // {'codigo': 'th', 'nombre': 'Thai', 'nombreNativo': 'ไทย'},
-    // {'codigo': 'ti', 'nombre': 'Tigrinya', 'nombreNativo': 'ትግርኛ'},
-    // {'codigo': 'bo', 'nombre': 'Tibetan Standard, Tibetan, Central', 'nombreNativo': 'བོད་ཡིག'},
-    // {'codigo': 'tk', 'nombre': 'Turkmen', 'nombreNativo': 'Türkmen, Түркмен'},
-    // {'codigo': 'tl', 'nombre': 'Tagalog', 'nombreNativo': 'Wikang Tagalog, ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔'},
-    // {'codigo': 'tn', 'nombre': 'Tswana', 'nombreNativo': 'Setswana'},
-    // {'codigo': 'to', 'nombre': 'Tonga (Tonga Islands)', 'nombreNativo': 'faka Tonga'},
-    // {'codigo': 'tr', 'nombre': 'Turkish', 'nombreNativo': 'Türkçe'},
-    // {'codigo': 'ts', 'nombre': 'Tsonga', 'nombreNativo': 'Xitsonga'},
-    // {'codigo': 'tt', 'nombre': 'Tatar', 'nombreNativo': 'татарча, tatarça, تاتارچا‎'},
-    // {'codigo': 'tw', 'nombre': 'Twi', 'nombreNativo': 'Twi'},
-    // {'codigo': 'ty', 'nombre': 'Tahitian', 'nombreNativo': 'Reo Tahiti'},
-    // {'codigo': 'ug', 'nombre': 'Uighur, Uyghur', 'nombreNativo': 'Uyƣurqə, ئۇيغۇرچە‎'},
-    // {'codigo': 'uk', 'nombre': 'Ukrainian', 'nombreNativo': 'українська'},
-    // {'codigo': 'ur', 'nombre': 'Urdu', 'nombreNativo': 'اردو'},
-    // {'codigo': 'uz', 'nombre': 'Uzbek', 'nombreNativo': 'zbek, Ўзбек, أۇزبېك‎'},
-    // {'codigo': 've', 'nombre': 'Venda', 'nombreNativo': 'Tshivenḓa'},
-    // {'codigo': 'vi', 'nombre': 'Vietnamese', 'nombreNativo': 'Tiếng Việt'},
-    // {'codigo': 'vo', 'nombre': 'Volapük', 'nombreNativo': 'Volapük'},
-    // {'codigo': 'wa', 'nombre': 'Walloon', 'nombreNativo': 'Walon'},
-    // {'codigo': 'cy', 'nombre': 'Welsh', 'nombreNativo': 'Cymraeg'},
-    // {'codigo': 'wo', 'nombre': 'Wolof', 'nombreNativo': 'Wollof'},
-    // {'codigo': 'fy', 'nombre': 'Western Frisian', 'nombreNativo': 'Frysk'},
-    // {'codigo': 'xh', 'nombre': 'Xhosa', 'nombreNativo': 'isiXhosa'},
-    // {'codigo': 'yi', 'nombre': 'Yiddish', 'nombreNativo': 'ייִדיש'},
-    // {'codigo': 'yo', 'nombre': 'Yoruba', 'nombreNativo': 'Yorùbá'},
-    // {'codigo': 'za', 'nombre': 'Zhuang, Chuang', 'nombreNativo': 'Saɯ cueŋƅ, Saw cuengh'}
+    // {code: 'om', name: 'Oromo', nativeName: 'Afaan Oromoo'},
+    // {code: 'or', name: 'Oriya', nativeName: 'ଓଡ଼ିଆ'},
+    // {code: 'os', name: 'Ossetian, Ossetic', nativeName: 'ирон æвзаг'},
+    // {code: 'pa', name: 'Panjabi, Punjabi', nativeName: 'ਪੰਜਾਬੀ, پنجابی‎'},
+    // {code: 'pi', name: 'Pāli', nativeName: 'पाऴि'},
+    // {code: 'fa', name: 'Persian', nativeName: 'فارسی'},
+    // {code: 'pl', name: 'Polish', nativeName: 'polski'},
+    // {code: 'ps', name: 'Pashto, Pushto', nativeName: 'پښتو'},
+    {code: 'pt', name: 'Portugués', nativeName: 'Português'},
+    // {code: 'qu', name: 'Quechua', nativeName: 'Runa Simi, Kichwa'},
+    // {code: 'rm', name: 'Romansh', nativeName: 'rumantsch grischun'},
+    // {code: 'rn', name: 'Kirundi', nativeName: 'kiRundi'},
+    // {code: 'ro', name: 'Romanian, Moldavian, Moldovan', nativeName: 'română'},
+    {code: 'ru', name: 'Ruso', nativeName: 'русский язык'},
+    // {code: 'sa', name: 'Sanskrit (Saṁskṛta)', nativeName: 'संस्कृतम्'},
+    // {code: 'sc', name: 'Sardinian', nativeName: 'sardu'},
+    // {code: 'sd', name: 'Sindhi', nativeName: 'सिन्धी, سنڌي، سندھی‎'},
+    // {code: 'se', name: 'Northern Sami', nativeName: 'Davvisámegiella'},
+    // {code: 'sm', name: 'Samoan', nativeName: 'gagana faa Samoa'},
+    // {code: 'sg', name: 'Sango', nativeName: 'yângâ tî sängö'},
+    // {code: 'sr', name: 'Serbian', nativeName: 'српски језик'},
+    // {code: 'gd', name: 'Scottish Gaelic; Gaelic', nativeName: 'Gàidhlig'},
+    // {code: 'sn', name: 'Shona', nativeName: 'chiShona'},
+    // {code: 'si', name: 'Sinhala, Sinhalese', nativeName: 'සිංහල'},
+    // {code: 'sk', name: 'Slovak', nativeName: 'slovenčina'},
+    // {code: 'sl', name: 'Slovene', nativeName: 'slovenščina'},
+    // {code: 'so', name: 'Somali', nativeName: 'Soomaaliga, af Soomaali'},
+    // {code: 'st', name: 'Southern Sotho', nativeName: 'Sesotho'},
+    {code: 'es', name: 'Español', nativeName: 'Español'},
+    // {code: 'su', name: 'Sundanese', nativeName: 'Basa Sunda'},
+    // {code: 'sw', name: 'Swahili', nativeName: 'Kiswahili'},
+    // {code: 'ss', name: 'Swati', nativeName: 'SiSwati'},
+    // {code: 'sv', name: 'Swedish', nativeName: 'svenska'},
+    // {code: 'ta', name: 'Tamil', nativeName: 'தமிழ்'},
+    // {code: 'te', name: 'Telugu', nativeName: 'తెలుగు'},
+    // {code: 'tg', name: 'Tajik', nativeName: 'тоҷикӣ, toğikī, تاجیکی‎'},
+    // {code: 'th', name: 'Thai', nativeName: 'ไทย'},
+    // {code: 'ti', name: 'Tigrinya', nativeName: 'ትግርኛ'},
+    // {code: 'bo', name: 'Tibetan Standard, Tibetan, Central', nativeName: 'བོད་ཡིག'},
+    // {code: 'tk', name: 'Turkmen', nativeName: 'Türkmen, Түркмен'},
+    // {code: 'tl', name: 'Tagalog', nativeName: 'Wikang Tagalog, ᜏᜒᜃᜅ᜔ ᜆᜄᜎᜓᜄ᜔'},
+    // {code: 'tn', name: 'Tswana', nativeName: 'Setswana'},
+    // {code: 'to', name: 'Tonga (Tonga Islands)', nativeName: 'faka Tonga'},
+    {code: 'tr', name: 'Turco', nativeName: 'Türkçe'},
+    // {code: 'ts', name: 'Tsonga', nativeName: 'Xitsonga'},
+    // {code: 'tt', name: 'Tatar', nativeName: 'татарча, tatarça, تاتارچا‎'},
+    // {code: 'tw', name: 'Twi', nativeName: 'Twi'},
+    // {code: 'ty', name: 'Tahitian', nativeName: 'Reo Tahiti'},
+    // {code: 'ug', name: 'Uighur, Uyghur', nativeName: 'Uyƣurqə, ئۇيغۇرچە‎'},
+    // {code: 'uk', name: 'Ukrainian', nativeName: 'українська'},
+    // {code: 'ur', name: 'Urdu', nativeName: 'اردو'},
+    // {code: 'uz', name: 'Uzbek', nativeName: 'zbek, Ўзбек, أۇزبېك‎'},
+    // {code: 've', name: 'Venda', nativeName: 'Tshivenḓa'},
+    // {code: 'vi', name: 'Vietnamese', nativeName: 'Tiếng Việt'},
+    // {code: 'vo', name: 'Volapük', nativeName: 'Volapük'},
+    // {code: 'wa', name: 'Walloon', nativeName: 'Walon'},
+    // {code: 'cy', name: 'Welsh', nativeName: 'Cymraeg'},
+    // {code: 'wo', name: 'Wolof', nativeName: 'Wollof'},
+    // {code: 'fy', name: 'Western Frisian', nativeName: 'Frysk'},
+    // {code: 'xh', name: 'Xhosa', nativeName: 'isiXhosa'},
+    // {code: 'yi', name: 'Yiddish', nativeName: 'ייִדיש'},
+    // {code: 'yo', name: 'Yoruba', nativeName: 'Yorùbá'},
+    // {code: 'za', name: 'Zhuang, Chuang', nativeName: 'Saɯ cueŋƅ, Saw cuengh'}
   ];
-  public DIVISAS = [
-    // {'cc': 'AED', 'simbolo': '\u062f.\u0625;', 'nombre': 'UAE dirham'},
-    // {'cc': 'AFN', 'simbolo': 'Afs', 'nombre': 'Afghan afghani'},
-    // {'cc': 'ALL', 'simbolo': 'L', 'nombre': 'Albanian lek'},
-    // {'cc': 'AMD', 'simbolo': 'AMD', 'nombre': 'Armenian dram'},
-    // {'cc': 'ANG', 'simbolo': 'NA\u0192', 'nombre': 'Netherlands Antillean gulden'},
-    // {'cc': 'AOA', 'simbolo': 'Kz', 'nombre': 'Angolan kwanza'},
-    // {'cc': 'ARS', 'simbolo': '$', 'nombre': 'Argentine peso'},
-    // {'cc': 'AUD', 'simbolo': '$', 'nombre': 'Australian dollar'},
-    // {'cc': 'AWG', 'simbolo': '\u0192', 'nombre': 'Aruban florin'},
-    // {'cc': 'AZN', 'simbolo': 'AZN', 'nombre': 'Azerbaijani manat'},
-    // {'cc': 'BAM', 'simbolo': 'KM', 'nombre': 'Bosnia and Herzegovina konvertibilna marka'},
-    // {'cc': 'BBD', 'simbolo': 'Bds$', 'nombre': 'Barbadian dollar'},
-    // {'cc': 'BDT', 'simbolo': '\u09f3', 'nombre': 'Bangladeshi taka'},
-    // {'cc': 'BGN', 'simbolo': 'BGN', 'nombre': 'Bulgarian lev'},
-    // {'cc': 'BHD', 'simbolo': '.\u062f.\u0628', 'nombre': 'Bahraini dinar'},
-    // {'cc': 'BIF', 'simbolo': 'FBu', 'nombre': 'Burundi franc'},
-    // {'cc': 'BMD', 'simbolo': 'BD$', 'nombre': 'Bermudian dollar'},
-    // {'cc': 'BND', 'simbolo': 'B$', 'nombre': 'Brunei dollar'},
-    // {'cc': 'BOB', 'simbolo': 'Bs.', 'nombre': 'Bolivian boliviano'},
-    // {'cc': 'BRL', 'simbolo': 'R$', 'nombre': 'Brazilian real'},
-    // {'cc': 'BSD', 'simbolo': 'B$', 'nombre': 'Bahamian dollar'},
-    // {'cc': 'BTN', 'simbolo': 'Nu.', 'nombre': 'Bhutanese ngultrum'},
-    // {'cc': 'BWP', 'simbolo': 'P', 'nombre': 'Botswana pula'},
-    // {'cc': 'BYR', 'simbolo': 'Br', 'nombre': 'Belarusian ruble'},
-    // {'cc': 'BZD', 'simbolo': 'BZ$', 'nombre': 'Belize dollar'},
-    // {'cc': 'CAD', 'simbolo': '$', 'nombre': 'Canadian dollar'},
-    // {'cc': 'CDF', 'simbolo': 'F', 'nombre': 'Congolese franc'},
-    // {'cc': 'CHF', 'simbolo': 'Fr.', 'nombre': 'Swiss franc'},
-    // {'cc': 'CLP', 'simbolo': '$', 'nombre': 'Chilean peso'},
-    // {'cc': 'CNY', 'simbolo': '\u00a5', 'nombre': 'Chinese/Yuan renminbi'},
-    {'cc': 'COP', 'simbolo': 'Col$', 'nombre': 'Peso Colombiano'},
-    // {'cc': 'CRC', 'simbolo': '\u20a1', 'nombre': 'Costa Rican colon'},
-    // {'cc': 'CUC', 'simbolo': '$', 'nombre': 'Cuban peso'},
-    // {'cc': 'CVE', 'simbolo': 'Esc', 'nombre': 'Cape Verdean escudo'},
-    // {'cc': 'CZK', 'simbolo': 'K\u010d', 'nombre': 'Czech koruna'},
-    // {'cc': 'DJF', 'simbolo': 'Fdj', 'nombre': 'Djiboutian franc'},
-    // {'cc': 'DKK', 'simbolo': 'Kr', 'nombre': 'Danish krone'},
-    // {'cc': 'DOP', 'simbolo': 'RD$', 'nombre': 'Dominican peso'},
-    // {'cc': 'DZD', 'simbolo': '\u062f.\u062c', 'nombre': 'Algerian dinar'},
-    // {'cc': 'EEK', 'simbolo': 'KR', 'nombre': 'Estonian kroon'},
-    // {'cc': 'EGP', 'simbolo': '\u00a3', 'nombre': 'Egyptian pound'},
-    // {'cc': 'ERN', 'simbolo': 'Nfa', 'nombre': 'Eritrean nakfa'},
-    // {'cc': 'ETB', 'simbolo': 'Br', 'nombre': 'Ethiopian birr'},
-    {'cc': 'EUR', 'simbolo': '\u20ac', 'nombre': 'Euro'},
-    // {'cc': 'FJD', 'simbolo': 'FJ$', 'nombre': 'Fijian dollar'},
-    // {'cc': 'FKP', 'simbolo': '\u00a3', 'nombre': 'Falkland Islands pound'},
-    // {'cc': 'GBP', 'simbolo': '\u00a3', 'nombre': 'British pound'},
-    // {'cc': 'GEL', 'simbolo': 'GEL', 'nombre': 'Georgian lari'},
-    // {'cc': 'GHS', 'simbolo': 'GH\u20b5', 'nombre': 'Ghanaian cedi'},
-    // {'cc': 'GIP', 'simbolo': '\u00a3', 'nombre': 'Gibraltar pound'},
-    // {'cc': 'GMD', 'simbolo': 'D', 'nombre': 'Gambian dalasi'},
-    // {'cc': 'GNF', 'simbolo': 'FG', 'nombre': 'Guinean franc'},
-    // {'cc': 'GQE', 'simbolo': 'CFA', 'nombre': 'Central African CFA franc'},
-    // {'cc': 'GTQ', 'simbolo': 'Q', 'nombre': 'Guatemalan quetzal'},
-    // {'cc': 'GYD', 'simbolo': 'GY$', 'nombre': 'Guyanese dollar'},
-    // {'cc': 'HKD', 'simbolo': 'HK$', 'nombre': 'Hong Kong dollar'},
-    // {'cc': 'HNL', 'simbolo': 'L', 'nombre': 'Honduran lempira'},
-    // {'cc': 'HRK', 'simbolo': 'kn', 'nombre': 'Croatian kuna'},
-    // {'cc': 'HTG', 'simbolo': 'G', 'nombre': 'Haitian gourde'},
-    // {'cc': 'HUF', 'simbolo': 'Ft', 'nombre': 'Hungarian forint'},
-    // {'cc': 'IDR', 'simbolo': 'Rp', 'nombre': 'Indonesian rupiah'},
-    // {'cc': 'ILS', 'simbolo': '\u20aa', 'nombre': 'Israeli new sheqel'},
-    // {'cc': 'INR', 'simbolo': '\u20B9', 'nombre': 'Indian rupee'},
-    // {'cc': 'IQD', 'simbolo': '\u062f.\u0639', 'nombre': 'Iraqi dinar'},
-    // {'cc': 'IRR', 'simbolo': 'IRR', 'nombre': 'Iranian rial'},
-    // {'cc': 'ISK', 'simbolo': 'kr', 'nombre': 'Icelandic kr\u00f3na'},
-    // {'cc': 'JMD', 'simbolo': 'J$', 'nombre': 'Jamaican dollar'},
-    // {'cc': 'JOD', 'simbolo': 'JOD', 'nombre': 'Jordanian dinar'},
-    // {'cc': 'JPY', 'simbolo': '\u00a5', 'nombre': 'Japanese yen'},
-    // {'cc': 'KES', 'simbolo': 'KSh', 'nombre': 'Kenyan shilling'},
-    // {'cc': 'KGS', 'simbolo': '\u0441\u043e\u043c', 'nombre': 'Kyrgyzstani som'},
-    // {'cc': 'KHR', 'simbolo': '\u17db', 'nombre': 'Cambodian riel'},
-    // {'cc': 'KMF', 'simbolo': 'KMF', 'nombre': 'Comorian franc'},
-    // {'cc': 'KPW', 'simbolo': 'W', 'nombre': 'North Korean won'},
-    // {'cc': 'KRW', 'simbolo': 'W', 'nombre': 'South Korean won'},
-    // {'cc': 'KWD', 'simbolo': 'KWD', 'nombre': 'Kuwaiti dinar'},
-    // {'cc': 'KYD', 'simbolo': 'KY$', 'nombre': 'Cayman Islands dollar'},
-    // {'cc': 'KZT', 'simbolo': 'T', 'nombre': 'Kazakhstani tenge'},
-    // {'cc': 'LAK', 'simbolo': 'KN', 'nombre': 'Lao kip'},
-    // {'cc': 'LBP', 'simbolo': '\u00a3', 'nombre': 'Lebanese lira'},
-    // {'cc': 'LKR', 'simbolo': 'Rs', 'nombre': 'Sri Lankan rupee'},
-    // {'cc': 'LRD', 'simbolo': 'L$', 'nombre': 'Liberian dollar'},
-    // {'cc': 'LSL', 'simbolo': 'M', 'nombre': 'Lesotho loti'},
-    // {'cc': 'LTL', 'simbolo': 'Lt', 'nombre': 'Lithuanian litas'},
-    // {'cc': 'LVL', 'simbolo': 'Ls', 'nombre': 'Latvian lats'},
-    // {'cc': 'LYD', 'simbolo': 'LD', 'nombre': 'Libyan dinar'},
-    // {'cc': 'MAD', 'simbolo': 'MAD', 'nombre': 'Moroccan dirham'},
-    // {'cc': 'MDL', 'simbolo': 'MDL', 'nombre': 'Moldovan leu'},
-    // {'cc': 'MGA', 'simbolo': 'FMG', 'nombre': 'Malagasy ariary'},
-    // {'cc': 'MKD', 'simbolo': 'MKD', 'nombre': 'Macedonian denar'},
-    // {'cc': 'MMK', 'simbolo': 'K', 'nombre': 'Myanma kyat'},
-    // {'cc': 'MNT', 'simbolo': '\u20ae', 'nombre': 'Mongolian tugrik'},
-    // {'cc': 'MOP', 'simbolo': 'P', 'nombre': 'Macanese pataca'},
-    // {'cc': 'MRO', 'simbolo': 'UM', 'nombre': 'Mauritanian ouguiya'},
-    // {'cc': 'MUR', 'simbolo': 'Rs', 'nombre': 'Mauritian rupee'},
-    // {'cc': 'MVR', 'simbolo': 'Rf', 'nombre': 'Maldivian rufiyaa'},
-    // {'cc': 'MWK', 'simbolo': 'MK', 'nombre': 'Malawian kwacha'},
-    // {'cc': 'MXN', 'simbolo': '$', 'nombre': 'Mexican peso'},
-    // {'cc': 'MYR', 'simbolo': 'RM', 'nombre': 'Malaysian ringgit'},
-    // {'cc': 'MZM', 'simbolo': 'MTn', 'nombre': 'Mozambican metical'},
-    // {'cc': 'NAD', 'simbolo': 'N$', 'nombre': 'Namibian dollar'},
-    // {'cc': 'NGN', 'simbolo': '\u20a6', 'nombre': 'Nigerian naira'},
-    // {'cc': 'NIO', 'simbolo': 'C$', 'nombre': 'Nicaraguan c\u00f3rdoba'},
-    // {'cc': 'NOK', 'simbolo': 'kr', 'nombre': 'Norwegian krone'},
-    // {'cc': 'NPR', 'simbolo': 'NRs', 'nombre': 'Nepalese rupee'},
-    // {'cc': 'NZD', 'simbolo': 'NZ$', 'nombre': 'New Zealand dollar'},
-    // {'cc': 'OMR', 'simbolo': 'OMR', 'nombre': 'Omani rial'},
-    // {'cc': 'PAB', 'simbolo': 'B./', 'nombre': 'Panamanian balboa'},
-    // {'cc': 'PEN', 'simbolo': 'S/.', 'nombre': 'Peruvian nuevo sol'},
-    // {'cc': 'PGK', 'simbolo': 'K', 'nombre': 'Papua New Guinean kina'},
-    // {'cc': 'PHP', 'simbolo': '\u20b1', 'nombre': 'Philippine peso'},
-    // {'cc': 'PKR', 'simbolo': 'Rs.', 'nombre': 'Pakistani rupee'},
-    // {'cc': 'PLN', 'simbolo': 'z\u0142', 'nombre': 'Polish zloty'},
-    // {'cc': 'PYG', 'simbolo': '\u20b2', 'nombre': 'Paraguayan guarani'},
-    // {'cc': 'QAR', 'simbolo': 'QR', 'nombre': 'Qatari riyal'},
-    // {'cc': 'RON', 'simbolo': 'L', 'nombre': 'Romanian leu'},
-    // {'cc': 'RSD', 'simbolo': 'din.', 'nombre': 'Serbian dinar'},
-    // {'cc': 'RUB', 'simbolo': 'R', 'nombre': 'Russian ruble'},
-    // {'cc': 'SAR', 'simbolo': 'SR', 'nombre': 'Saudi riyal'},
-    // {'cc': 'SBD', 'simbolo': 'SI$', 'nombre': 'Solomon Islands dollar'},
-    // {'cc': 'SCR', 'simbolo': 'SR', 'nombre': 'Seychellois rupee'},
-    // {'cc': 'SDG', 'simbolo': 'SDG', 'nombre': 'Sudanese pound'},
-    // {'cc': 'SEK', 'simbolo': 'kr', 'nombre': 'Swedish krona'},
-    // {'cc': 'SGD', 'simbolo': 'S$', 'nombre': 'Singapore dollar'},
-    // {'cc': 'SHP', 'simbolo': '\u00a3', 'nombre': 'Saint Helena pound'},
-    // {'cc': 'SLL', 'simbolo': 'Le', 'nombre': 'Sierra Leonean leone'},
-    // {'cc': 'SOS', 'simbolo': 'Sh.', 'nombre': 'Somali shilling'},
-    // {'cc': 'SRD', 'simbolo': '$', 'nombre': 'Surinamese dollar'},
-    // {'cc': 'SYP', 'simbolo': 'LS', 'nombre': 'Syrian pound'},
-    // {'cc': 'SZL', 'simbolo': 'E', 'nombre': 'Swazi lilangeni'},
-    // {'cc': 'THB', 'simbolo': '\u0e3f', 'nombre': 'Thai baht'},
-    // {'cc': 'TJS', 'simbolo': 'TJS', 'nombre': 'Tajikistani somoni'},
-    // {'cc': 'TMT', 'simbolo': 'm', 'nombre': 'Turkmen manat'},
-    // {'cc': 'TND', 'simbolo': 'DT', 'nombre': 'Tunisian dinar'},
-    // {'cc': 'TRY', 'simbolo': 'TRY', 'nombre': 'Turkish new lira'},
-    // {'cc': 'TTD', 'simbolo': 'TT$', 'nombre': 'Trinidad and Tobago dollar'},
-    // {'cc': 'TWD', 'simbolo': 'NT$', 'nombre': 'New Taiwan dollar'},
-    // {'cc': 'TZS', 'simbolo': 'TZS', 'nombre': 'Tanzanian shilling'},
-    // {'cc': 'UAH', 'simbolo': 'UAH', 'nombre': 'Ukrainian hryvnia'},
-    // {'cc': 'UGX', 'simbolo': 'USh', 'nombre': 'Ugandan shilling'},
-    {'cc': 'USD', 'simbolo': 'US$', 'nombre': 'Dólar estadounidense'},
-    // {'cc': 'UYU', 'simbolo': '$U', 'nombre': 'Uruguayan peso'},
-    // {'cc': 'UZS', 'simbolo': 'UZS', 'nombre': 'Uzbekistani som'},
-    // {'cc': 'VEB', 'simbolo': 'Bs', 'nombre': 'Venezuelan bolivar'},
-    // {'cc': 'VND', 'simbolo': '\u20ab', 'nombre': 'Vietnamese dong'},
-    // {'cc': 'VUV', 'simbolo': 'VT', 'nombre': 'Vanuatu vatu'},
-    // {'cc': 'WST', 'simbolo': 'WS$', 'nombre': 'Samoan tala'},
-    // {'cc': 'XAF', 'simbolo': 'CFA', 'nombre': 'Central African CFA franc'},
-    // {'cc': 'XCD', 'simbolo': 'EC$', 'nombre': 'East Caribbean dollar'},
-    // {'cc': 'XDR', 'simbolo': 'SDR', 'nombre': 'Special Drawing Rights'},
-    // {'cc': 'XOF', 'simbolo': 'CFA', 'nombre': 'West African CFA franc'},
-    // {'cc': 'XPF', 'simbolo': 'F', 'nombre': 'CFP franc'},
-    // {'cc': 'YER', 'simbolo': 'YER', 'nombre': 'Yemeni rial'},
-    // {'cc': 'ZAR', 'simbolo': 'R', 'nombre': 'South African rand'},
-    // {'cc': 'ZMK', 'simbolo': 'ZK', 'nombre': 'Zambian kwacha'},
-    // {'cc': 'ZWR', 'simbolo': 'Z$', 'nombre': 'Zimbabwean dollar'}
+  public CURRENCIES = [
+    // {'cc': 'AED', symbol: '\u062f.\u0625;', name: 'UAE dirham'},
+    // {'cc': 'AFN', symbol: 'Afs', name: 'Afghan afghani'},
+    // {'cc': 'ALL', symbol: 'L', name: 'Albanian lek'},
+    // {'cc': 'AMD', symbol: 'AMD', name: 'Armenian dram'},
+    // {'cc': 'ANG', symbol: 'NA\u0192', name: 'Netherlands Antillean gulden'},
+    // {'cc': 'AOA', symbol: 'Kz', name: 'Angolan kwanza'},
+    // {'cc': 'ARS', symbol: '$', name: 'Argentine peso'},
+    // {'cc': 'AUD', symbol: '$', name: 'Australian dollar'},
+    // {'cc': 'AWG', symbol: '\u0192', name: 'Aruban florin'},
+    // {'cc': 'AZN', symbol: 'AZN', name: 'Azerbaijani manat'},
+    // {'cc': 'BAM', symbol: 'KM', name: 'Bosnia and Herzegovina konvertibilna marka'},
+    // {'cc': 'BBD', symbol: 'Bds$', name: 'Barbadian dollar'},
+    // {'cc': 'BDT', symbol: '\u09f3', name: 'Bangladeshi taka'},
+    // {'cc': 'BGN', symbol: 'BGN', name: 'Bulgarian lev'},
+    // {'cc': 'BHD', symbol: '.\u062f.\u0628', name: 'Bahraini dinar'},
+    // {'cc': 'BIF', symbol: 'FBu', name: 'Burundi franc'},
+    // {'cc': 'BMD', symbol: 'BD$', name: 'Bermudian dollar'},
+    // {'cc': 'BND', symbol: 'B$', name: 'Brunei dollar'},
+    // {'cc': 'BOB', symbol: 'Bs.', name: 'Bolivian boliviano'},
+    // {'cc': 'BRL', symbol: 'R$', name: 'Brazilian real'},
+    // {'cc': 'BSD', symbol: 'B$', name: 'Bahamian dollar'},
+    // {'cc': 'BTN', symbol: 'Nu.', name: 'Bhutanese ngultrum'},
+    // {'cc': 'BWP', symbol: 'P', name: 'Botswana pula'},
+    // {'cc': 'BYR', symbol: 'Br', name: 'Belarusian ruble'},
+    // {'cc': 'BZD', symbol: 'BZ$', name: 'Belize dollar'},
+    // {'cc': 'CAD', symbol: '$', name: 'Canadian dollar'},
+    // {'cc': 'CDF', symbol: 'F', name: 'Congolese franc'},
+    // {'cc': 'CHF', symbol: 'Fr.', name: 'Swiss franc'},
+    // {'cc': 'CLP', symbol: '$', name: 'Chilean peso'},
+    // {'cc': 'CNY', symbol: '\u00a5', name: 'Chinese/Yuan renminbi'},
+    {'cc': 'COP', symbol: 'Col$', name: 'Peso Colombiano'},
+    // {'cc': 'CRC', symbol: '\u20a1', name: 'Costa Rican colon'},
+    // {'cc': 'CUC', symbol: '$', name: 'Cuban peso'},
+    // {'cc': 'CVE', symbol: 'Esc', name: 'Cape Verdean escudo'},
+    // {'cc': 'CZK', symbol: 'K\u010d', name: 'Czech koruna'},
+    // {'cc': 'DJF', symbol: 'Fdj', name: 'Djiboutian franc'},
+    // {'cc': 'DKK', symbol: 'Kr', name: 'Danish krone'},
+    // {'cc': 'DOP', symbol: 'RD$', name: 'Dominican peso'},
+    // {'cc': 'DZD', symbol: '\u062f.\u062c', name: 'Algerian dinar'},
+    // {'cc': 'EEK', symbol: 'KR', name: 'Estonian kroon'},
+    // {'cc': 'EGP', symbol: '\u00a3', name: 'Egyptian pound'},
+    // {'cc': 'ERN', symbol: 'Nfa', name: 'Eritrean nakfa'},
+    // {'cc': 'ETB', symbol: 'Br', name: 'Ethiopian birr'},
+    {'cc': 'EUR', symbol: '\u20ac', name: 'Euro'},
+    // {'cc': 'FJD', symbol: 'FJ$', name: 'Fijian dollar'},
+    // {'cc': 'FKP', symbol: '\u00a3', name: 'Falkland Islands pound'},
+    // {'cc': 'GBP', symbol: '\u00a3', name: 'British pound'},
+    // {'cc': 'GEL', symbol: 'GEL', name: 'Georgian lari'},
+    // {'cc': 'GHS', symbol: 'GH\u20b5', name: 'Ghanaian cedi'},
+    // {'cc': 'GIP', symbol: '\u00a3', name: 'Gibraltar pound'},
+    // {'cc': 'GMD', symbol: 'D', name: 'Gambian dalasi'},
+    // {'cc': 'GNF', symbol: 'FG', name: 'Guinean franc'},
+    // {'cc': 'GQE', symbol: 'CFA', name: 'Central African CFA franc'},
+    // {'cc': 'GTQ', symbol: 'Q', name: 'Guatemalan quetzal'},
+    // {'cc': 'GYD', symbol: 'GY$', name: 'Guyanese dollar'},
+    // {'cc': 'HKD', symbol: 'HK$', name: 'Hong Kong dollar'},
+    // {'cc': 'HNL', symbol: 'L', name: 'Honduran lempira'},
+    // {'cc': 'HRK', symbol: 'kn', name: 'Croatian kuna'},
+    // {'cc': 'HTG', symbol: 'G', name: 'Haitian gourde'},
+    // {'cc': 'HUF', symbol: 'Ft', name: 'Hungarian forint'},
+    // {'cc': 'IDR', symbol: 'Rp', name: 'Indonesian rupiah'},
+    // {'cc': 'ILS', symbol: '\u20aa', name: 'Israeli new sheqel'},
+    // {'cc': 'INR', symbol: '\u20B9', name: 'Indian rupee'},
+    // {'cc': 'IQD', symbol: '\u062f.\u0639', name: 'Iraqi dinar'},
+    // {'cc': 'IRR', symbol: 'IRR', name: 'Iranian rial'},
+    // {'cc': 'ISK', symbol: 'kr', name: 'Icelandic kr\u00f3na'},
+    // {'cc': 'JMD', symbol: 'J$', name: 'Jamaican dollar'},
+    // {'cc': 'JOD', symbol: 'JOD', name: 'Jordanian dinar'},
+    // {'cc': 'JPY', symbol: '\u00a5', name: 'Japanese yen'},
+    // {'cc': 'KES', symbol: 'KSh', name: 'Kenyan shilling'},
+    // {'cc': 'KGS', symbol: '\u0441\u043e\u043c', name: 'Kyrgyzstani som'},
+    // {'cc': 'KHR', symbol: '\u17db', name: 'Cambodian riel'},
+    // {'cc': 'KMF', symbol: 'KMF', name: 'Comorian franc'},
+    // {'cc': 'KPW', symbol: 'W', name: 'North Korean won'},
+    // {'cc': 'KRW', symbol: 'W', name: 'South Korean won'},
+    // {'cc': 'KWD', symbol: 'KWD', name: 'Kuwaiti dinar'},
+    // {'cc': 'KYD', symbol: 'KY$', name: 'Cayman Islands dollar'},
+    // {'cc': 'KZT', symbol: 'T', name: 'Kazakhstani tenge'},
+    // {'cc': 'LAK', symbol: 'KN', name: 'Lao kip'},
+    // {'cc': 'LBP', symbol: '\u00a3', name: 'Lebanese lira'},
+    // {'cc': 'LKR', symbol: 'Rs', name: 'Sri Lankan rupee'},
+    // {'cc': 'LRD', symbol: 'L$', name: 'Liberian dollar'},
+    // {'cc': 'LSL', symbol: 'M', name: 'Lesotho loti'},
+    // {'cc': 'LTL', symbol: 'Lt', name: 'Lithuanian litas'},
+    // {'cc': 'LVL', symbol: 'Ls', name: 'Latvian lats'},
+    // {'cc': 'LYD', symbol: 'LD', name: 'Libyan dinar'},
+    // {'cc': 'MAD', symbol: 'MAD', name: 'Moroccan dirham'},
+    // {'cc': 'MDL', symbol: 'MDL', name: 'Moldovan leu'},
+    // {'cc': 'MGA', symbol: 'FMG', name: 'Malagasy ariary'},
+    // {'cc': 'MKD', symbol: 'MKD', name: 'Macedonian denar'},
+    // {'cc': 'MMK', symbol: 'K', name: 'Myanma kyat'},
+    // {'cc': 'MNT', symbol: '\u20ae', name: 'Mongolian tugrik'},
+    // {'cc': 'MOP', symbol: 'P', name: 'Macanese pataca'},
+    // {'cc': 'MRO', symbol: 'UM', name: 'Mauritanian ouguiya'},
+    // {'cc': 'MUR', symbol: 'Rs', name: 'Mauritian rupee'},
+    // {'cc': 'MVR', symbol: 'Rf', name: 'Maldivian rufiyaa'},
+    // {'cc': 'MWK', symbol: 'MK', name: 'Malawian kwacha'},
+    // {'cc': 'MXN', symbol: '$', name: 'Mexican peso'},
+    // {'cc': 'MYR', symbol: 'RM', name: 'Malaysian ringgit'},
+    // {'cc': 'MZM', symbol: 'MTn', name: 'Mozambican metical'},
+    // {'cc': 'NAD', symbol: 'N$', name: 'Namibian dollar'},
+    // {'cc': 'NGN', symbol: '\u20a6', name: 'Nigerian naira'},
+    // {'cc': 'NIO', symbol: 'C$', name: 'Nicaraguan c\u00f3rdoba'},
+    // {'cc': 'NOK', symbol: 'kr', name: 'Norwegian krone'},
+    // {'cc': 'NPR', symbol: 'NRs', name: 'Nepalese rupee'},
+    // {'cc': 'NZD', symbol: 'NZ$', name: 'New Zealand dollar'},
+    // {'cc': 'OMR', symbol: 'OMR', name: 'Omani rial'},
+    // {'cc': 'PAB', symbol: 'B./', name: 'Panamanian balboa'},
+    // {'cc': 'PEN', symbol: 'S/.', name: 'Peruvian nuevo sol'},
+    // {'cc': 'PGK', symbol: 'K', name: 'Papua New Guinean kina'},
+    // {'cc': 'PHP', symbol: '\u20b1', name: 'Philippine peso'},
+    // {'cc': 'PKR', symbol: 'Rs.', name: 'Pakistani rupee'},
+    // {'cc': 'PLN', symbol: 'z\u0142', name: 'Polish zloty'},
+    // {'cc': 'PYG', symbol: '\u20b2', name: 'Paraguayan guarani'},
+    // {'cc': 'QAR', symbol: 'QR', name: 'Qatari riyal'},
+    // {'cc': 'RON', symbol: 'L', name: 'Romanian leu'},
+    // {'cc': 'RSD', symbol: 'din.', name: 'Serbian dinar'},
+    // {'cc': 'RUB', symbol: 'R', name: 'Russian ruble'},
+    // {'cc': 'SAR', symbol: 'SR', name: 'Saudi riyal'},
+    // {'cc': 'SBD', symbol: 'SI$', name: 'Solomon Islands dollar'},
+    // {'cc': 'SCR', symbol: 'SR', name: 'Seychellois rupee'},
+    // {'cc': 'SDG', symbol: 'SDG', name: 'Sudanese pound'},
+    // {'cc': 'SEK', symbol: 'kr', name: 'Swedish krona'},
+    // {'cc': 'SGD', symbol: 'S$', name: 'Singapore dollar'},
+    // {'cc': 'SHP', symbol: '\u00a3', name: 'Saint Helena pound'},
+    // {'cc': 'SLL', symbol: 'Le', name: 'Sierra Leonean leone'},
+    // {'cc': 'SOS', symbol: 'Sh.', name: 'Somali shilling'},
+    // {'cc': 'SRD', symbol: '$', name: 'Surinamese dollar'},
+    // {'cc': 'SYP', symbol: 'LS', name: 'Syrian pound'},
+    // {'cc': 'SZL', symbol: 'E', name: 'Swazi lilangeni'},
+    // {'cc': 'THB', symbol: '\u0e3f', name: 'Thai baht'},
+    // {'cc': 'TJS', symbol: 'TJS', name: 'Tajikistani somoni'},
+    // {'cc': 'TMT', symbol: 'm', name: 'Turkmen manat'},
+    // {'cc': 'TND', symbol: 'DT', name: 'Tunisian dinar'},
+    // {'cc': 'TRY', symbol: 'TRY', name: 'Turkish new lira'},
+    // {'cc': 'TTD', symbol: 'TT$', name: 'Trinidad and Tobago dollar'},
+    // {'cc': 'TWD', symbol: 'NT$', name: 'New Taiwan dollar'},
+    // {'cc': 'TZS', symbol: 'TZS', name: 'Tanzanian shilling'},
+    // {'cc': 'UAH', symbol: 'UAH', name: 'Ukrainian hryvnia'},
+    // {'cc': 'UGX', symbol: 'USh', name: 'Ugandan shilling'},
+    {'cc': 'USD', symbol: 'US$', name: 'Dólar estadounidense'},
+    // {'cc': 'UYU', symbol: '$U', name: 'Uruguayan peso'},
+    // {'cc': 'UZS', symbol: 'UZS', name: 'Uzbekistani som'},
+    // {'cc': 'VEB', symbol: 'Bs', name: 'Venezuelan bolivar'},
+    // {'cc': 'VND', symbol: '\u20ab', name: 'Vietnamese dong'},
+    // {'cc': 'VUV', symbol: 'VT', name: 'Vanuatu vatu'},
+    // {'cc': 'WST', symbol: 'WS$', name: 'Samoan tala'},
+    // {'cc': 'XAF', symbol: 'CFA', name: 'Central African CFA franc'},
+    // {'cc': 'XCD', symbol: 'EC$', name: 'East Caribbean dollar'},
+    // {'cc': 'XDR', symbol: 'SDR', name: 'Special Drawing Rights'},
+    // {'cc': 'XOF', symbol: 'CFA', name: 'West African CFA franc'},
+    // {'cc': 'XPF', symbol: 'F', name: 'CFP franc'},
+    // {'cc': 'YER', symbol: 'YER', name: 'Yemeni rial'},
+    // {'cc': 'ZAR', symbol: 'R', name: 'South African rand'},
+    // {'cc': 'ZMK', symbol: 'ZK', name: 'Zambian kwacha'},
+    // {'cc': 'ZWR', symbol: 'Z$', name: 'Zimbabwean dollar'}
   ];
   public multiLangStructure = {};
-  idiomaDefault: any = {codigo: 'es', nombre: 'Español', nombreNativo: 'Español'};
-  datosUsuario: any = {};
+  public defaultSelectedLang: any = {};
+  public userData: any = {};
+  private defaultCodeLang = 'es';
+  private defaultSymbolCurr = 'US$';
 
   constructor(private dbMain: DbMainService, private dbPublic: DBPublicService) {
   }
 
-  iniciar() {
-    console.log('SE TRAEN LOS DATOS INICIALES');
-    this.getLanguages();
-    this.getModelos();
-    this.getCrowns();
-    this.getCrystals();
-    this.getBuckles();
-    this.getStraps();
-    this.getCaseBacks();
-    this.getCases();
-    this.getMovements();
-  }
-
   init() {
     // todo esta zona es útil para iniciar todo lo que se requiera ANTES DE QUE LA APLICACIÓN INICIE
-
-
-    // todo de manera obligatoria necesito los idiomas, por eso es la que está resolviendo la promesa.
     return new Promise((resolve) => {
       Promise.all([
         this.getModelos(),
@@ -405,8 +391,9 @@ export class CurrentStorageService {
         this.getCases(),
         this.getMovements(),
         this.getLanguages(),
+        this.getCurrencies()
       ]).then(value => {
-        console.log('se traen metadatos iniciales.');
+        console.log('se traen todos los datos necesarios para iniciar.');
         resolve();
       });
     });
@@ -420,63 +407,122 @@ export class CurrentStorageService {
   }
 
   getLanguages() {
-    return this.dbPublic.getIdiomas().subscribe(value => {
-      this.idiomas = value;
-      this.idiomaDefault = this.idiomas.filter(value1 => value1.codigo === 'es')[0];
-      let esLang = {};
-      for (let i = 0; i < this.idiomas.length; i++) {
-        if (this.idiomas[i].codigo === 'es') {
-          esLang = this.idiomas[i];
-          this.idiomas.splice(i, 1);
-          break;
+    return new Promise(resolve => {
+      this.dbPublic.getSupportedLangs().subscribe(langs => {
+        this.supportedLangs = langs;
+
+        if (this.supportedLangs[0]) {
+          let esLang = {};
+          for (let i = 0; i < this.supportedLangs.length; i++) {
+            if (this.supportedLangs[i].code === this.defaultCodeLang) {
+              esLang = this.supportedLangs[i];
+              this.supportedLangs.splice(i, 1);
+              break;
+            }
+          }
+          this.supportedLangs.unshift(esLang);
+          this.supportedLangs.forEach(value1 => {
+            this.LANGS = this.LANGS.filter(function (obj) {
+              return obj.code !== value1.code;
+            });
+            this.multiLangStructure[value1.code] = {};
+          });
         }
-      }
-      this.idiomas.unshift(esLang);
-      this.idiomas.forEach(value1 => {
-        this.multiLangStructure[value1.codigo] = {};
+        this.defaultSelectedLang = this.supportedLangs.filter(value1 => value1.code === this.defaultCodeLang)[0];
+        resolve();
+      });
+    });
+  }
+
+  getCurrencies() {
+    return new Promise(resolve => {
+      this.dbPublic.getSupportedCurrencies().subscribe(value => {
+        this.supportedCurrs = value;
+
+        if (this.supportedCurrs[0]) {
+          let defCur = {};
+          for (let i = 0; i < this.supportedCurrs.length; i++) {
+            if (this.supportedCurrs[i].symbol === this.defaultSymbolCurr) {
+              defCur = this.supportedCurrs[i];
+              this.supportedCurrs.splice(i, 1);
+              break;
+            }
+          }
+          this.supportedCurrs.unshift(defCur);
+          this.supportedCurrs.forEach(value1 => {
+            this.CURRENCIES = this.CURRENCIES.filter(function (obj) {
+              return obj.symbol !== value1.symbol;
+            });
+          });
+        }
+
+
+        resolve();
       });
     });
   }
 
   getBuckles() {
-    return this.dbMain.getItems('buckles').subscribe(value => {
-      this.buckles = value;
+    return new Promise(resolve => {
+      this.dbMain.getItems('buckles').subscribe(value => {
+        this.buckles = value;
+        resolve();
+      });
     });
   }
 
   getCrowns() {
-    return this.dbMain.getItems('crowns').subscribe(value => {
-      this.crowns = value;
+    return new Promise(resolve => {
+      this.dbMain.getItems('crowns').subscribe(value => {
+        this.crowns = value;
+        resolve();
+
+      });
     });
   }
 
   getMovements() {
-    return this.dbMain.getItems('movements').subscribe(value => {
-      this.movements = value;
+    return new Promise(resolve => {
+      this.dbMain.getItems('movements').subscribe(value => {
+        this.movements = value;
+        resolve();
+      });
     });
   }
 
   getCaseBacks() {
-    return this.dbMain.getItems('caseBacks').subscribe(value => {
-      this.caseBacks = value;
+    return new Promise(resolve => {
+      this.dbMain.getItems('caseBacks').subscribe(value => {
+        this.caseBacks = value;
+        resolve();
+      });
     });
   }
 
   getCases() {
-    return this.dbMain.getItems('cases').subscribe(value => {
-      this.cases = value;
+    return new Promise(resolve => {
+      this.dbMain.getItems('cases').subscribe(value => {
+        this.cases = value;
+        resolve();
+      });
     });
   }
 
   getCrystals() {
-    return this.dbMain.getItems('crystals').subscribe(value => {
-      this.crystals = value;
+    return new Promise(resolve => {
+      this.dbMain.getItems('crystals').subscribe(value => {
+        this.crystals = value;
+        resolve();
+      });
     });
   }
 
   getStraps() {
-    return this.dbMain.getItems('straps').subscribe(value => {
-      this.straps = value;
+    return new Promise(resolve => {
+      return this.dbMain.getItems('straps').subscribe(value => {
+        this.straps = value;
+        resolve();
+      });
     });
   }
 }

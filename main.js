@@ -215,7 +215,7 @@ module.exports = ":host {\r\n  width: auto;\r\n  height: auto;\r\n  /*background
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>REGISTRO DE NUEVOS RELOJES</h1>\n\n\n\n<div class=\"opt_txt_txtions\">\n  <app-selecter [ttl]=\"'Mano'\" [items]=\"['FCM']\"></app-selecter>\n  <app-selecter [ttl]=\"'# Lote'\" [items]=\"['1']\"></app-selecter>\n  <app-selecter [ttl]=\"'No. piezas'\" [items]=\"['1-100']\"></app-selecter>\n</div>\n\n<div class=\"opt_txtions\">\n  <app-selecter [ttl]=\"'Modelo'\" [items]=\"['Origen',' Slim',' Vira',' Inti',' Aros',' One']\"></app-selecter>\n  <app-selecter [ttl]=\"'Colección'\"\n                [items]=\"['Luxury',' Hawaii',' Animal Print',' Frutas, Telas',' Vintage',' Edición Especial']\"></app-selecter>\n  <app-selecter [ttl]=\"'Material'\"\n                [items]=\"['Madera', 'Acero inoxidable',' Oro', 'Plata',' Esmeraldas',' Tagua']\"></app-selecter>\n  <app-selecter [ttl]=\"'Maquinaria'\" [items]=\"['Miy ota','Seagull','ETA']\"></app-selecter>\n  <app-selecter [ttl]=\"'Color Maq.'\" [items]=\"['Oro',' Plata']\"></app-selecter>\n  <app-selecter [ttl]=\"'material pulso'\" [items]=\"['Acero inoxidable',' Cuero']\"></app-selecter>\n\n  <app-selecter [ttl]=\"'Tipo de Madera'\"\n                [items]=\"['Granadillo',' Nazareno', 'Palo de Mora','Palo de Sangre','Nogal','Cedro','Achapo','Ébano','Flor Morado','Teka','Canelo Moena','Zapan','Amargo','Comino crespo','Pino', 'Abarco','algarrobo','Cumaru']\"></app-selecter>\n\n  <app-selecter [ttl]=\"'Color pulso'\"\n                [items]=\"['Negro','Azul','Gris', 'Blanco','Amarillo','Rojo','Verde','Naranja','Café','Violeta','Oro','Plata','Multicolor']\"></app-selecter>\n\n</div>\n\n\n<button class=\"bt-n-ref\">\n  Crear nuevo registro\n</button>\n\n\n"
+module.exports = "<h1>REGISTRO DE NUEVOS RELOJES</h1>\n\n\n\n<div class=\"opt_txt_txtions\">\n  <app-selecter [tittle]=\"'Mano'\" [items]=\"['FCM']\"></app-selecter>\n  <app-selecter [tittle]=\"'# Lote'\" [items]=\"['1']\"></app-selecter>\n  <app-selecter [tittle]=\"'No. piezas'\" [items]=\"['1-100']\"></app-selecter>\n</div>\n\n<div class=\"opt_txtions\">\n  <app-selecter [tittle]=\"'Modelo'\" [items]=\"['Origen',' Slim',' Vira',' Inti',' Aros',' One']\"></app-selecter>\n  <app-selecter [tittle]=\"'Colección'\"\n                [items]=\"['Luxury',' Hawaii',' Animal Print',' Frutas, Telas',' Vintage',' Edición Especial']\"></app-selecter>\n  <app-selecter [tittle]=\"'Material'\"\n                [items]=\"['Madera', 'Acero inoxidable',' Oro', 'Plata',' Esmeraldas',' Tagua']\"></app-selecter>\n  <app-selecter [tittle]=\"'Maquinaria'\" [items]=\"['Miy ota','Seagull','ETA']\"></app-selecter>\n  <app-selecter [tittle]=\"'Color Maq.'\" [items]=\"['Oro',' Plata']\"></app-selecter>\n  <app-selecter [tittle]=\"'material pulso'\" [items]=\"['Acero inoxidable',' Cuero']\"></app-selecter>\n\n  <app-selecter [tittle]=\"'Tipo de Madera'\"\n                [items]=\"['Granadillo',' Nazareno', 'Palo de Mora','Palo de Sangre','Nogal','Cedro','Achapo','Ébano','Flor Morado','Teka','Canelo Moena','Zapan','Amargo','Comino crespo','Pino', 'Abarco','algarrobo','Cumaru']\"></app-selecter>\n\n  <app-selecter [tittle]=\"'Color pulso'\"\n                [items]=\"['Negro','Azul','Gris', 'Blanco','Amarillo','Rojo','Verde','Naranja','Café','Violeta','Oro','Plata','Multicolor']\"></app-selecter>\n\n</div>\n\n\n<button class=\"bt-n-ref\">\n  Crear nuevo registro\n</button>\n\n\n"
 
 /***/ }),
 
@@ -267,7 +267,7 @@ var NuevoIngresoRelojComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\r\n\r\n  height: 4em;\r\n  /*background: aquamarine;*/\r\n  /*margin: 1em;*/\r\n  padding: 0;\r\n  margin: .5em;\r\n}\r\n\r\n.sl-ttl {\r\n  size: .1em;\r\n  font-weight: normal;\r\n  font-size: 1.2em;\r\n  margin-bottom: .5em;\r\n}\r\n\r\n.selt {\r\n  size: .8em;\r\n  font-weight: lighter;\r\n}\r\n\r\n.ss {\r\n  -webkit-appearance: none;\r\n  padding: .5em;\r\n  font-family: 'K2D', sans-serif;\r\n  border: none;\r\n  background: #f7f7f7;\r\n  width: 10em;\r\n}\r\n\r\n\r\n\r\n\r\n"
+module.exports = ":host {\r\n\r\n  height: 4em;\r\n  /*background: aquamarine;*/\r\n  /*margin: 1em;*/\r\n  padding: 0;\r\n  margin: .5em;\r\n}\r\n\r\n.sl-tittle {\r\n  size: .1em;\r\n  font-weight: normal;\r\n  font-size: 1.2em;\r\n  margin-bottom: .5em;\r\n}\r\n\r\n.selt {\r\n  size: .8em;\r\n  font-weight: lighter;\r\n}\r\n\r\n.ss {\r\n  -webkit-appearance: none;\r\n  padding: .5em;\r\n  font-family: 'K2D', sans-serif;\r\n  border: none;\r\n  background: #f7f7f7;\r\n  width: 10em;\r\n}\r\n\r\n\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -278,7 +278,7 @@ module.exports = ":host {\r\n\r\n  height: 4em;\r\n  /*background: aquamarine;*/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p class=\"sl-ttl\">\n  {{ttl}}\n</p>\n\n<div class=\"custom-select\">\n\n\n  <select class=\"ss\">\n    <option *ngFor=\"let opc of items\">{{opc}}</option>\n  </select>\n\n</div>\n"
+module.exports = "<p class=\"sl-tittle\">\n  {{tittle}}\n</p>\n\n<div class=\"custom-select\">\n\n\n  <select class=\"ss\">\n    <option *ngFor=\"let opc of items\">{{opc}}</option>\n  </select>\n\n</div>\n"
 
 /***/ }),
 
@@ -313,7 +313,7 @@ var SelecterComponent = /** @class */ (function () {
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)
-    ], SelecterComponent.prototype, "ttl", void 0);
+    ], SelecterComponent.prototype, "tittle", void 0);
     __decorate([
         Object(_angular_core__WEBPACK_IMPORTED_MODULE_0__["Input"])(),
         __metadata("design:type", Object)

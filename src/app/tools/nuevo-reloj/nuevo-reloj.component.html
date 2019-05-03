@@ -40,7 +40,7 @@
   </div>
 
   <!--<div class="modal-bottom-cnt">-->
-  <!--<div class="modal-bottom-button bt-disable" (click)="modalAlert.close()">Cancelar</div>-->
+  <!--<div class="modal-bottom-button bt-isDisabled" (click)="modalAlert.close()">Cancelar</div>-->
   <!--</div>-->
 
 </ngx-smart-modal>
@@ -61,25 +61,25 @@
         <div class="ttt">1. Modelo y caracteristicas de la caja</div>
 
         <div class="cnt_opts">
-          <app-m-select [disable]="false" ttl="Modelo" [items]="estructuras.MODELOS"
-                        (alSeleccionar)="seleccionarModelo($event)">
+          <app-m-select [isDisabled]="false" tittle="Modelo" [items]="estructuras.MODELOS"
+                        (whenSelecting)="seleccionarModelo($event)">
           </app-m-select>
           <div class="ln_v"></div>
 
           <ng-container *ngIf="current_opciones.opciones_caja">
-            <!--<div class="options" *ngIf="current_opciones.opciones_caja">-->
+            <!--<div class="options" *ngIf="currentOps.opciones_caja">-->
             <app-m-select
               *ngIf="current_opciones.opciones_caja.diametro_externo"
-              ttl="Diámetro Externo"
+              tittle="Diámetro Externo"
               [items]="current_opciones.opciones_caja.diametro_externo"
-              (alSeleccionar)="seleccionarDiametroExterno($event)">
+              (whenSelecting)="seleccionarDiametroExterno($event)">
             </app-m-select>
 
             <app-m-select
               *ngIf="current_opciones.opciones_caja.diametro_interno"
-              ttl="Diámetro Interno"
+              tittle="Diámetro Interno"
               [items]="current_opciones.opciones_caja.diametro_interno"
-              (alSeleccionar)="seleccionarDiametroInterno($event)">
+              (whenSelecting)="seleccionarDiametroInterno($event)">
             </app-m-select>
           </ng-container>
         </div>
@@ -96,11 +96,11 @@
             <img alt="preview caja seleccionada" [src]="photoUrl" *ngIf="photoUrl!==''" class="img_caja"/>
           </div>
           <div>
-            <app-m-select ttl="Lote" [items]="current_opciones.lotes"
-                          (alSeleccionar)="seleccionarLote($event)"></app-m-select>
-            <app-m-select ttl="No. Caja" [items]="current_opciones.cases"
-                          (alSeleccionar)="seleccionarCaja($event)"></app-m-select>
-            <app-m-select ttl="Serial Caja" [items]="[{name:current_reloj.serialCaja}]"></app-m-select>
+            <app-m-select tittle="Lote" [items]="current_opciones.lotes"
+                          (whenSelecting)="seleccionarLote($event)"></app-m-select>
+            <app-m-select tittle="No. Caja" [items]="current_opciones.cases"
+                          (whenSelecting)="seleccionarCaja($event)"></app-m-select>
+            <app-m-select tittle="Serial Caja" [items]="[{name:current_reloj.serialCaja}]"></app-m-select>
           </div>
         </div>
 
@@ -112,24 +112,24 @@
           tipo de material y dejar un solo campo con todas
           las configuracioness en estructura <strong>MATERIAL-COLOR</strong></div>
         <div class="cnt_opts" *ngIf="msjCajas!=='' || current_reloj.modelo">
-          <app-m-select ttl="Colección" [items]="current_opciones.colecciones"
-                        (alSeleccionar)="seleccionarColeccion($event)"></app-m-select>
+          <app-m-select tittle="Colección" [items]="current_opciones.colecciones"
+                        (whenSelecting)="seleccionarColeccion($event)"></app-m-select>
           <div class="ln_v"></div>
 
           <ng-container *ngIf="current_opciones.opciones_reloj">
 
-            <app-m-select ttl="Color Maquinaria" *ngIf="current_opciones.opciones_reloj"
-                          [items]="this.current_opciones.opciones_reloj.COLOR_MAQUINARIA"
-                          (alSeleccionar)="seleccionarColorMaquinaria($event)"></app-m-select>
+            <app-m-select tittle="Color Maquinaria" *ngIf="current_opciones.opciones_reloj"
+                          [items]="this.currentOps.opciones_reloj.COLOR_MAQUINARIA"
+                          (whenSelecting)="seleccionarColorMaquinaria($event)"></app-m-select>
 
-            <app-m-select ttl="Pulso:" *ngIf="current_opciones.opciones_reloj"
-                          [items]="this.current_opciones.opciones_reloj.TIPO_PULSO"
-                          (alSeleccionar)="seleccionarTipoPulso($event)"></app-m-select>
+            <app-m-select tittle="Pulso:" *ngIf="current_opciones.opciones_reloj"
+                          [items]="this.currentOps.opciones_reloj.TIPO_PULSO"
+                          (whenSelecting)="seleccionarTipoPulso($event)"></app-m-select>
 
-            <!--<app-m-select ttl="Color Pulso"-->
-            <!--*ngIf="current_opciones.opciones_reloj && current_opciones.opciones_reloj.straps"-->
-            <!--[items]="this.current_opciones.opciones_reloj.straps"-->
-            <!--(alSeleccionar)="seleccionarColorPulso($event)"></app-m-select>-->
+            <!--<app-m-select tittle="Color Pulso"-->
+            <!--*ngIf="currentOps.opciones_reloj && currentOps.opciones_reloj.straps"-->
+            <!--[items]="this.currentOps.opciones_reloj.straps"-->
+            <!--(whenSelecting)="seleccionarColorPulso($event)"></app-m-select>-->
 
 
           </ng-container>

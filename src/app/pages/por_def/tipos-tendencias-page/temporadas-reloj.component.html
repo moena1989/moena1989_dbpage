@@ -25,9 +25,9 @@
 
   <ng-container *ngIf="temporadaSeleccionda">
     <div class="tmp-opts-temp" *ngIf="_tendenciaSeleccionada">
-      <app-m-select ttl="Estado"
-                    (alSeleccionar)="_tendenciaSeleccionada.estado= $event.nombre"
-                    [itemSeleccionado]="{nombre: _tendenciaSeleccionada.estado}"
+      <app-m-select tittle="Estado"
+                    (whenSelecting)="_tendenciaSeleccionada.estado= $event.nombre"
+                    [selectedItem]="{nombre: _tendenciaSeleccionada.estado}"
                     [items]="[relojData.opcsEstadosTendencias.privada,relojData.opcsEstadosTendencias.publica]">
       </app-m-select>
       <app-form-button text="Eliminar temporada" (click)="mdEliminarTemp.open()">
@@ -69,9 +69,9 @@
             <app-visualizer ttl="Frontal" [imgURL]="_coleccionSeleccionada['imgUrl']" [lock]="true"
                             (alSeleccionar)="currentFileColection=$event"></app-visualizer>
           </div>
-          <app-m-select ttl="Estado"
-                        (alSeleccionar)="_coleccionSeleccionada.estado= $event.nombre"
-                        [itemSeleccionado]="{nombre: _coleccionSeleccionada.estado}"
+          <app-m-select tittle="Estado"
+                        (whenSelecting)="_coleccionSeleccionada.estado= $event.nombre"
+                        [selectedItem]="{nombre: _coleccionSeleccionada.estado}"
                         [items]="[relojData.opcsEstadosTendencias.publica,relojData.opcsEstadosTendencias.privada]">
           </app-m-select>
 
@@ -125,11 +125,11 @@
   </div>
 
   <div class="md-cnt">
-    <app-m-select ttl="Estado" (alSeleccionar)="nuevaTemporada.estado=$event.nombre" disable="{{true}}"
+    <app-m-select tittle="Estado" (whenSelecting)="nuevaTemporada.estado=$event.nombre" isDisabled="{{true}}"
                   [items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>
     <app-tabs>
       <div class="tab-opt"
-           *ngFor="let t of currentStorageService?.idiomas"
+           *ngFor="let t of currentStorageService?.supportedLangs"
            [class.tab-opt-act]="idiomaSeleccionado.codigo===t.codigo" (click)="seleccionarIdiomaTendencia(t)">
         <div>{{t?.nombre}}</div>
       </div>
@@ -144,34 +144,34 @@
       ></app-input>
     </div>
     <!--<div class="i-v" *ngIf="selectedLanguage.local==='de'">-->
-    <!--<app-m-select ttl="Estado" (alSeleccionar)="nuevaTemporada.estado=$event.nombre" disable="{{true}}"-->
+    <!--<app-m-select tittle="Estado" (whenSelecting)="nuevaTemporada.estado=$event.nombre" isDisabled="{{true}}"-->
     <!--[items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>-->
 
-    <!--<app-input [disable]="!isEditable" [value]="nuevaTemporada.nombre" ttl="Nombre"-->
+    <!--<app-input [isDisabled]="!isEditable" [value]="nuevaTemporada.nombre" tittle="Nombre"-->
     <!--(writing)="nuevaTemporada.nombre= $event"></app-input>-->
     <!--</div>-->
 
     <!--<div class="i-v" *ngIf="selectedLanguage.local==='es'">-->
-    <!--<app-m-select ttl="Estado" (alSeleccionar)="nuevaTemporada.estado=$event.nombre" disable="{{true}}"-->
+    <!--<app-m-select tittle="Estado" (whenSelecting)="nuevaTemporada.estado=$event.nombre" isDisabled="{{true}}"-->
     <!--[items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>-->
 
-    <!--<app-input [disable]="!isEditable" [value]="nuevaTemporada.nombre" ttl="Nombre"-->
+    <!--<app-input [isDisabled]="!isEditable" [value]="nuevaTemporada.nombre" tittle="Nombre"-->
     <!--(writing)="nuevaTemporada.nombre= $event"></app-input>-->
     <!--</div>-->
 
     <!--<div class="i-v" *ngIf="selectedLanguage.local==='fr'">-->
-    <!--<app-m-select ttl="Estado" (alSeleccionar)="nuevaTemporada.estado=$event.nombre" disable="{{true}}"-->
+    <!--<app-m-select tittle="Estado" (whenSelecting)="nuevaTemporada.estado=$event.nombre" isDisabled="{{true}}"-->
     <!--[items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>-->
 
-    <!--<app-input [disable]="!isEditable" [value]="nuevaTemporada.nombre" ttl="Nombre"-->
+    <!--<app-input [isDisabled]="!isEditable" [value]="nuevaTemporada.nombre" tittle="Nombre"-->
     <!--(writing)="nuevaTemporada.nombre= $event"></app-input>-->
     <!--</div>-->
 
     <!--<div class="i-v" *ngIf="selectedLanguage.local==='it'">-->
-    <!--<app-m-select ttl="Estado" (alSeleccionar)="nuevaTemporada.estado=$event.nombre" disable="{{true}}"-->
+    <!--<app-m-select tittle="Estado" (whenSelecting)="nuevaTemporada.estado=$event.nombre" isDisabled="{{true}}"-->
     <!--[items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>-->
 
-    <!--<app-input [disable]="!isEditable" [value]="nuevaTemporada.nombre" ttl="Nombre"-->
+    <!--<app-input [isDisabled]="!isEditable" [value]="nuevaTemporada.nombre" tittle="Nombre"-->
     <!--(writing)="nuevaTemporada.nombre= $event"></app-input>-->
     <!--</div>-->
   </div>
@@ -192,7 +192,7 @@
     <div class="t-r-side">
       <app-tabs>
         <div class="tab-opt"
-             *ngFor="let t of currentStorageService?.idiomas"
+             *ngFor="let t of currentStorageService?.supportedLangs"
              [class.tab-opt-act]="idiomaSeleccionado.codigo===t.codigo" (click)="seleccionarIdiomaTendencia(t)">
           <div>{{t?.nombre}}</div>
         </div>
@@ -204,13 +204,13 @@
                    placeholder="Nombre ({{idiomaSeleccionado.codigo}})"
                    (alEscribir)="nombreColeccion($event)"></app-input>
 
-        <app-m-select ttl="Estado"
-                      (alSeleccionar)="nuevaColeccion.estado= $event.nombre"
+        <app-m-select tittle="Estado"
+                      (whenSelecting)="nuevaColeccion.estado= $event.nombre"
                       [items]="[relojData.opcsEstadosTendencias.privada]"></app-m-select>
 
-        <app-m-select ttl="Modelo de Reloj"
-                      [disable]="!esEditable"
-                      (alSeleccionar)="nuevaColeccion.modelo = $event.nombre"
+        <app-m-select tittle="Modelo de Reloj"
+                      [isDisabled]="!esEditable"
+                      (whenSelecting)="nuevaColeccion.modelo = $event.nombre"
                       [items]="relojData.models">
         </app-m-select>
 
@@ -268,39 +268,39 @@
                [value]="nuevaConfiguracion.precio"
                (alEscribir)="nuevaConfiguracion.precio= $event"></app-input>
 
-    <app-m-select ttl="Modelo de Reloj"
-                  [disable]="!esEditable"
-                  (alSeleccionar)="nuevaConfiguracion.modelo = $event"
+    <app-m-select tittle="Modelo de Reloj"
+                  [isDisabled]="!esEditable"
+                  (whenSelecting)="nuevaConfiguracion.modelo = $event"
                   [items]="relojData.models">
     </app-m-select>
 
-    <app-m-select ttl="Hebilla"
-                  [disable]="!esEditable"
-                  (alSeleccionar)="nuevaConfiguracion.hebilla= $event"
+    <app-m-select tittle="Hebilla"
+                  [isDisabled]="!esEditable"
+                  (whenSelecting)="nuevaConfiguracion.hebilla= $event"
                   [items]="relojData.buckles"></app-m-select>
 
-    <app-m-select ttl="Maquinaria"
-                  [disable]="!esEditable"
-                  (alSeleccionar)="nuevaConfiguracion.maquinaria= $event"
+    <app-m-select tittle="Maquinaria"
+                  [isDisabled]="!esEditable"
+                  (whenSelecting)="nuevaConfiguracion.maquinaria= $event"
                   [items]="relojData.movements"></app-m-select>
-    <!--Todo Hay que filtrar las cases de acuerdo al modelo seleccionado-->
-    <app-m-select ttl="Caja"
-                  [disable]="!esEditable"
-                  (alSeleccionar)="nuevaConfiguracion.caja= $event"
+    <!--Todo Hay que filtrar las cases de acuerdo al modelo isSelected-->
+    <app-m-select tittle="Caja"
+                  [isDisabled]="!esEditable"
+                  (whenSelecting)="nuevaConfiguracion.caja= $event"
                   [items]="relojData.cases"></app-m-select>
 
-    <app-m-select ttl="Tapa"
-                  [disable]="!esEditable"
-                  (alSeleccionar)="nuevaConfiguracion.tapa= $event"
+    <app-m-select tittle="Tapa"
+                  [isDisabled]="!esEditable"
+                  (whenSelecting)="nuevaConfiguracion.tapa= $event"
                   [items]="relojData.caseBacks"></app-m-select>
 
-    <app-m-select ttl="Pulso"
-                  (alSeleccionar)="nuevaConfiguracion.pulso= $event"
+    <app-m-select tittle="Pulso"
+                  (whenSelecting)="nuevaConfiguracion.pulso= $event"
                   [items]="relojData.straps">
     </app-m-select>
 
-    <app-m-select ttl="Cristal"
-                  (alSeleccionar)="nuevaConfiguracion.cristal= $event"
+    <app-m-select tittle="Cristal"
+                  (whenSelecting)="nuevaConfiguracion.cristal= $event"
                   [items]="relojData.crystals"></app-m-select>
   </div>
 

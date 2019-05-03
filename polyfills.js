@@ -105,10 +105,10 @@ module.exports = function (IS_INCLUDES) {
     var index = toAbsoluteIndex(fromIndex, length);
     var value;
     // Array#includes uses SameValueZero equality algorithm
-    // eslint-disable-next-line no-self-compare
+    // eslint-isDisabled-next-line no-self-compare
     if (IS_INCLUDES && el != el) while (length > index) {
       value = O[index++];
-      // eslint-disable-next-line no-self-compare
+      // eslint-isDisabled-next-line no-self-compare
       if (value != value) return true;
     // Array#indexOf ignores holes, Array#includes - not
     } else for (;length > index; index++) if (IS_INCLUDES || index in O) {
@@ -577,7 +577,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
     // V8 ~  Chromium 40- weak-collections throws on primitives, but should return false
     var THROWS_ON_PRIMITIVES = fails(function () { instance.has(1); });
     // most early implementations doesn'line supports iterables, most modern - not close it correctly
-    var ACCEPT_ITERABLES = $iterDetect(function (iter) { new C(iter); }); // eslint-disable-line no-new
+    var ACCEPT_ITERABLES = $iterDetect(function (iter) { new C(iter); }); // eslint-isDisabled-line no-new
     // for early implementations -0 and +0 not the same
     var BUGGY_ZERO = !IS_WEAK && fails(function () {
       // V8 ~ Chromium 42- fails only with 5+ elements
@@ -627,7 +627,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
 /***/ (function(module, exports) {
 
 var core = module.exports = { version: '2.5.7' };
-if (typeof __e == 'number') __e = core; // eslint-disable-line no-undef
+if (typeof __e == 'number') __e = core; // eslint-isDisabled-line no-undef
 
 
 /***/ }),
@@ -820,7 +820,7 @@ var exports = module.exports = function (iterable, entries, fn, that, ITERATOR) 
   var index = 0;
   var length, step, iterator, result;
   if (typeof iterFn != 'function') throw TypeError(iterable + ' is not iterable!');
-  // fast case for arrays with default iterator
+  // fast case for arrays with defaultOp iterator
   if (isArrayIter(iterFn)) for (length = toLength(iterable.length); length > index; index++) {
     result = entries ? f(anObject(step = iterable[index])[0], step[1]) : f(iterable[index]);
     if (result === BREAK || result === RETURN) return result;
@@ -845,9 +845,9 @@ exports.RETURN = RETURN;
 // https://github.com/zloirock/core-js/issues/86#issuecomment-115759028
 var global = module.exports = typeof window != 'undefined' && window.Math == Math
   ? window : typeof self != 'undefined' && self.Math == Math ? self
-  // eslint-disable-next-line no-new-func
+  // eslint-isDisabled-next-line no-new-func
   : Function('return this')();
-if (typeof __g == 'number') __g = global; // eslint-disable-line no-undef
+if (typeof __g == 'number') __g = global; // eslint-isDisabled-line no-undef
 
 
 /***/ }),
@@ -942,7 +942,7 @@ module.exports = function (that, target, C) {
 
 // fallback for non-array-like ES3 and non-enumerable old V8 strings
 var cof = __webpack_require__(/*! ./_cof */ "./node_modules/core-js/modules/_cof.js");
-// eslint-disable-next-line no-prototype-builtins
+// eslint-isDisabled-next-line no-prototype-builtins
 module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
   return cof(it) == 'String' ? it.split('') : Object(it);
 };
@@ -957,7 +957,7 @@ module.exports = Object('z').propertyIsEnumerable(0) ? Object : function (it) {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-// check on default Array iterator
+// check on defaultOp Array iterator
 var Iterators = __webpack_require__(/*! ./_iterators */ "./node_modules/core-js/modules/_iterators.js");
 var ITERATOR = __webpack_require__(/*! ./_wks */ "./node_modules/core-js/modules/_wks.js")('iterator');
 var ArrayProto = Array.prototype;
@@ -1141,7 +1141,7 @@ var SAFE_CLOSING = false;
 try {
   var riter = [7][ITERATOR]();
   riter['return'] = function () { SAFE_CLOSING = true; };
-  // eslint-disable-next-line no-throw-literal
+  // eslint-isDisabled-next-line no-throw-literal
   Array.from(riter, function () { throw 2; });
 } catch (e) { /* empty */ }
 
@@ -1346,13 +1346,13 @@ var $assign = Object.assign;
 module.exports = !$assign || __webpack_require__(/*! ./_fails */ "./node_modules/core-js/modules/_fails.js")(function () {
   var A = {};
   var B = {};
-  // eslint-disable-next-line no-undef
+  // eslint-isDisabled-next-line no-undef
   var S = Symbol();
   var K = 'abcdefghijklmnopqrst';
   A[S] = 7;
   K.split('').forEach(function (k) { B[k] = k; });
   return $assign({}, A)[S] != 7 || Object.keys($assign({}, B)).join('') != K;
-}) ? function assign(target, source) { // eslint-disable-line no-unused-vars
+}) ? function assign(target, source) { // eslint-isDisabled-line no-unused-vars
   var T = toObject(target);
   var aLen = arguments.length;
   var index = 1;
@@ -1396,7 +1396,7 @@ var createDict = function () {
   var iframeDocument;
   iframe.style.display = 'none';
   __webpack_require__(/*! ./_html */ "./node_modules/core-js/modules/_html.js").appendChild(iframe);
-  iframe.src = 'javascript:'; // eslint-disable-line no-script-url
+  iframe.src = 'javascript:'; // eslint-isDisabled-line no-script-url
   // createDict = iframe.contentWindow.Object;
   // html.removeChild(iframe);
   iframeDocument = iframe.contentWindow.document;
@@ -1680,7 +1680,7 @@ __webpack_require__(/*! ./_core */ "./node_modules/core-js/modules/_core.js").in
 /***/ (function(module, exports, __webpack_require__) {
 
 // Works with __proto__ only. Old v8 can'line work with null proto objects.
-/* eslint-disable no-proto */
+/* eslint-isDisabled no-proto */
 var isObject = __webpack_require__(/*! ./_is-object */ "./node_modules/core-js/modules/_is-object.js");
 var anObject = __webpack_require__(/*! ./_an-object */ "./node_modules/core-js/modules/_an-object.js");
 var check = function (O, proto) {
@@ -1688,7 +1688,7 @@ var check = function (O, proto) {
   if (!isObject(proto) && proto !== null) throw TypeError(proto + ": can'line set as prototype!");
 };
 module.exports = {
-  set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-disable-line
+  set: Object.setPrototypeOf || ('__proto__' in {} ? // eslint-isDisabled-line
     function (test, buggy, set) {
       try {
         set = __webpack_require__(/*! ./_ctx */ "./node_modules/core-js/modules/_ctx.js")(Function.call, __webpack_require__(/*! ./_object-gopd */ "./node_modules/core-js/modules/_object-gopd.js").f(Object.prototype, '__proto__').set, 2);
@@ -3569,7 +3569,7 @@ function patchProperty(obj, prop, prototype) {
             target[eventNameSymbol] = null;
         }
     };
-    // The getter would return undefined for unassigned properties but the default value of an
+    // The getter would return undefined for unassigned properties but the defaultOp value of an
     // unassigned property is null
     desc.get = function () {
         // in some of windows'current_opciones_caja_modelo onproperty callback, this is undefined
@@ -4955,7 +4955,7 @@ function canPatchViaPropertyDescriptor() {
     var XMLHttpRequestPrototype = XMLHttpRequest.prototype;
     var xhrDesc = ObjectGetOwnPropertyDescriptor(XMLHttpRequestPrototype, ON_READY_STATE_CHANGE);
     // add enumerable and configurable here because in opera
-    // by default XMLHttpRequest.prototype.onreadystatechange is undefined
+    // by defaultOp XMLHttpRequest.prototype.onreadystatechange is undefined
     // without adding enumerable and configurable will cause onreadystatechange
     // non-configurable
     // and if XMLHttpRequest.prototype.onreadystatechange is undefined,
@@ -5444,19 +5444,19 @@ __webpack_require__.r(__webpack_exports__);
  **/
 // import 'web-animations-js';  // Run `npm install --save web-animations-js`.
 /**
- * By default, zone.js will patch all possible macroTask and DomEvents
- * user can disable parts of macroTask/DomEvents patch by setting following flags
+ * By defaultOp, zone.js will patch all possible macroTask and DomEvents
+ * user can isDisabled parts of macroTask/DomEvents patch by setting following flags
  */
-// (window as any).__Zone_disable_requestAnimationFrame = true; // disable patch requestAnimationFrame
-// (window as any).__Zone_disable_on_property = true; // disable patch onProperty such as onclick
-// (window as any).__zone_symbol__BLACK_LISTED_EVENTS = ['scroll', 'mousemove']; // disable patch specified eventNames
+// (window as any).__Zone_disable_requestAnimationFrame = true; // isDisabled patch requestAnimationFrame
+// (window as any).__Zone_disable_on_property = true; // isDisabled patch onProperty such as onclick
+// (window as any).__zone_symbol__BLACK_LISTED_EVENTS = ['scroll', 'mousemove']; // isDisabled patch specified eventNames
 /*
 * in IE/Edge developer tools, the addEventListener will also be wrapped by zone.js
 * with the following flag, it will bypass `zone.js` patch for IE/Edge
 */
 // (window as any).__Zone_enable_cross_context_check = true;
 /***************************************************************************************************
- * Zone JS is required by default for Angular itself.
+ * Zone JS is required by defaultOp for Angular itself.
  */
  // Included with Angular CLI.
 /***************************************************************************************************

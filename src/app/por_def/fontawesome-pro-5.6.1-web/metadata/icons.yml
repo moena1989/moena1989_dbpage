@@ -16210,7 +16210,7 @@ microphone-alt-slash:
   label: Alternate Microphone Slash
   search:
     terms:
-      - disable
+      - isDisabled
       - mute
       - record
       - sound
@@ -16229,7 +16229,7 @@ microphone-slash:
   label: Microphone Slash
   search:
     terms:
-      - disable
+      - isDisabled
       - mute
       - record
       - sound

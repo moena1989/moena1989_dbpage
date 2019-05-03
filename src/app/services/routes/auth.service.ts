@@ -25,8 +25,8 @@ export class AuthService {
       (user) => {
         if (user) {
           this.traerDatosUsuario(user.uid).subscribe(datosUsuario => {
-            this.current.datosUsuario = datosUsuario;
-            console.log(this.current.datosUsuario);
+            this.current.userData = datosUsuario;
+            console.log(this.current.userData);
           });
           this.userDetails = user;
           tools.gUser = this.userDetails;
@@ -49,9 +49,9 @@ export class AuthService {
         if (value) {
           // this.pushDevData(value.user.uid);
           this.traerDatosUsuario(value.user.uid).subscribe(datosUsuario => {
-            this.current.datosUsuario = datosUsuario;
+            this.current.userData = datosUsuario;
             resolve(true);
-            console.log(this.current.datosUsuario);
+            console.log(this.current.userData);
           });
         } else {
           resolve(false);

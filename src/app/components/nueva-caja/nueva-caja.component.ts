@@ -33,7 +33,6 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
   constructor(public estructura: ModelsSevice, public db: DbManagerService,
               private tools: SettingsService, public fs: DbMainService) {
     this.currentLote.numeroDeLote = 0;
-    this.tools.top_tittle = 'Nueva caja';
   }
 
   ngOnInit() {
@@ -227,7 +226,7 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
     this.msg_img = 'Procesando imagenes...';
 
     for (let i = 0; i < TOTAL_FILES; i++) {
-      this.tools.comprimir(files[i], result => {
+      this.tools.compressImage(files[i], result => {
         console.log('Finalizar currentImg ' + result.name);
         console.log(result);
         this.imagenesProcesadas[i] = result;

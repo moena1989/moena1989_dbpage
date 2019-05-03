@@ -25,6 +25,6 @@ export class TopBarComponent implements OnInit {
   }
 
   alPresionarMenu() {
-    this.tools.show_menu = !this.tools.show_menu;
+    this.tools.isMenuOpened = !this.tools.isMenuOpened;
   }
 }
