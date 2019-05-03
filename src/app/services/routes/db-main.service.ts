@@ -156,6 +156,7 @@ export class DbMainService {
     return this.afs.collection<MReloj>('watches').doc(serial).get();
   }
 
+  // todo ELIMINAR TODO LUGAR DONDE SE USA ESTE METODO Y REMPLAZARLO POR SetNewImage
   pushImage(img: File, route: any, alFinalizar: (url: string) => void) {
     const id = this.getNewid();
     const array = img.name.split('.');
@@ -190,15 +191,18 @@ export class DbMainService {
     });
   }
 
-  updateImage(img: File, route: any, id: string): Promise<any> {
+  deleteImage(route: any, imgData: any) {
+    const finalRoute = route + '/' + imgData.id + '.' + imgData.extension;
+    return this.mainStorage.ref(finalRoute).delete();
+  }
+
+  updateImage(img: any, route: any, id: string) {
     return new Promise(resolve => {
       const array = img.name.split('.');
       const l = array.length;
       const ext = array[l - 1];
       const finalRoute = route + '/' + id + '.' + ext;
       this.mainStorage.upload(finalRoute, img).then(a => {
-        console.log('se subió');
-        console.log(a);
         this.mainStorage.ref(finalRoute).getDownloadURL().toPromise().then(value => {
           resolve({
             url: value,
@@ -208,11 +212,6 @@ export class DbMainService {
         });
       });
     });
-  }
-
-  deleteImage(route: any, imgData: any) {
-    const finalRoute = route + '/' + imgData.id + '.' + imgData.extension;
-    return this.mainStorage.ref(finalRoute).delete();
   }
 
 // hay que buscar una manera mas optima de organizar los contadores,

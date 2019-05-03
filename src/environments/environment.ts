@@ -10,6 +10,18 @@ export const DEFAULT_SYMBOL_CURRENCY = 'US$';
 export const SHOW_WINDOWS_BAR = false;
 export const MAX_SIZE_IN_PX = 2500;
 export const MAX_SIZE_IN_MB = 0.7;
+
+export const WATCH_TYPES = {
+  movement: 'movements',
+  model: 'models',
+  strap: 'straps',
+  bunckle: 'bunckles',
+  case: 'cases',
+  crystal: 'crystals',
+  crowns: 'crowns',
+  caseBack: 'casesBack',
+};
+
 export const DBS = {
   // real: {
   //   apiKey: 'AIzaSyAh48TUW_EdI6fI6om3EMRCdlCC4U3n9U8',

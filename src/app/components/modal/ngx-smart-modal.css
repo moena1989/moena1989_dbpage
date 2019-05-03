@@ -112,7 +112,6 @@ body.dialog-open {
   left: 50vw;
   top: 50vh;
   transform: translate(-50%, -70%);
-
 }
 
 .modal-tittle-bar {
@@ -122,6 +121,13 @@ body.dialog-open {
   align-items: center;
   font-size: 1.1em;
   color: var(--icon-color-selected);
+}
+
+.gwre {
+  background: #71ff60;
+  width: 100%;
+  height: 100%;
+  position: relative;
 }
 
 .nsm-body {

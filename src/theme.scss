@@ -121,7 +121,65 @@
   box-sizing: border-box;
 }
 
+.cono {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  display: flex;
+  background: rgba(255, 255, 255, 0.8);
+  transition: all 1s;
+  align-items: center;
+  justify-content: center;
+}
 
+///////////////////////////////////////////////////
+.spinner {
+  width: 150px;
+  text-align: center;
+}
+
+.spinner > div {
+  width: 18px;
+  height: 18px;
+  background-color: var(--icon-color-hover);
+  border-radius: 100%;
+  display: inline-block;
+  -webkit-animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  animation: sk-bouncedelay 1.4s infinite ease-in-out both;
+  margin: .5em;
+}
+
+.spinner .bounce1 {
+  -webkit-animation-delay: -0.32s;
+  animation-delay: -0.32s;
+}
+
+.spinner .bounce2 {
+  -webkit-animation-delay: -0.16s;
+  animation-delay: -0.16s;
+}
+
+@-webkit-keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0)
+  }
+  40% {
+    -webkit-transform: scale(1.0)
+  }
+}
+
+@keyframes sk-bouncedelay {
+  0%, 80%, 100% {
+    -webkit-transform: scale(0);
+    transform: scale(0);
+  }
+  40% {
+    -webkit-transform: scale(1.0);
+    transform: scale(1.0);
+  }
+}
+
+//////////////////////////////////////////////
 .tab-opt {
   margin-right: 1.5em;
   padding: .5em 0em .5em 0em;

@@ -1,7 +1,8 @@
 <div class="cnttnt">
   <app-vertical-bar *ngIf="!isEditable && !isNewItem">
     <div class="tt">Items</div>
-    <div class="side-opt" *ngFor="let item of current.cases" [class.side-act]="item===currentItem"
+    <div class="side-opt" *ngFor="let item of current.cases"
+         [class.side-act]="item.name===currentItem?.name"
          (click)="selectItem(item)">
       <i class="fal fa-file-alt  icoss_op"></i>
       <div>{{item.name}}</div>
@@ -44,13 +45,13 @@
           <div class="part-txt">Eliminar registro</div>
         </div>
 
-        <div class="opt-t" *ngIf="!isNewItem && isEditable" (click)="cancelEditing()">
+        <div class="opt-t" *ngIf="!isNewItem && isEditable" (click)="mdCancel.open()">
           <div class="fal fa-times as"></div>
           <div class="part-txt">Cancelar
           </div>
         </div>
 
-        <div class="opt-t" *ngIf="isNewItem && isEditable" (click)="cancelNewItem()">
+        <div class="opt-t" *ngIf="isNewItem && isEditable" (click)="mdCancel2.open()">
           <div class="fal fa-times as"></div>
           <div class="part-txt">Cancelar
           </div>
@@ -115,6 +116,14 @@
 
 
 <ngx-smart-modal #mdDeleteItemWarn identifier="mdEliminarItem">
+  <div class="cono" *ngIf="isUploading">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+
   <div class="modal-tittle-bar">
     <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
     Advertencia
@@ -131,6 +140,13 @@
 
 
 <ngx-smart-modal #mdSaveItemWarn identifier="mdGuardarItem">
+  <div class="cono" *ngIf="isUploading">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
   <div class="modal-tittle-bar">
     <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
     Advertencia
@@ -146,6 +162,14 @@
 </ngx-smart-modal>
 
 <ngx-smart-modal #mdUpdateItemWan identifier="mdGuardarItem">
+  <div class="cono" *ngIf="isUploading">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+
   <div class="modal-tittle-bar">
     <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
     Advertencia
@@ -155,7 +179,45 @@
   </div>
 
   <div class="modal-bottom-cnt">
-    <div class="modal-bottom-button bt-ok" (click)="mdDeleteItemWarn.close()">Cancelar</div>
+    <div class="modal-bottom-button bt-ok" (click)="mdUpdateItemWan.close()">Cancelar</div>
     <div class="modal-bottom-button bt-ok" (click)="updateItem()">SI</div>
+  </div>
+</ngx-smart-modal>
+
+
+<ngx-smart-modal #mdCancel identifier="mdCancel">
+  <!--<div class="gwre">-->
+  <div class="cono" *ngIf="isUploading">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+  <div class="modal-tittle-bar">
+    <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
+    Advertencia
+  </div>
+  <div class="md-cnt">¿Cancelar edición del ítem?
+  </div>
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="mdCancel.close()">NO</div>
+    <div class="modal-bottom-button bt-ok" (click)="cancelEditing()">SI</div>
+  </div>
+  <!--</div>-->
+</ngx-smart-modal>
+
+<ngx-smart-modal #mdCancel2 identifier="mdCancel2">
+
+  <div class="modal-tittle-bar">
+    <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
+    Advertencia
+  </div>
+  <div class="md-cnt">¿Cancelar nuevo ítem?
+  </div>
+
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="mdCancel2.close()">NO</div>
+    <div class="modal-bottom-button bt-ok" (click)="cancelNewItem()">SI</div>
   </div>
 </ngx-smart-modal>

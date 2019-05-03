@@ -84,7 +84,7 @@ export const routes: Routes = [
           {path: 'models', component: ConfigModeloComponent},
           {path: 'crowns', component: ConfigCoronaComponent},
           {path: 'crystals', component: ConfigCristalComponent},
-          {path: 'buckles', component: ConfigHebillaComponent},
+          {path: 'bunckles', component: ConfigHebillaComponent},
           {path: 'caseBacks', component: ConfigTapaComponent}
         ]
       }]

@@ -373,10 +373,10 @@ export class CurrentStorageService {
   }
 
   /*CLASE ENCARGADA DE TENER TODAS LAS VARIABLES IMPORTANTES SIEMPRE ACTUALIZADAS */
-  private _buckles = [];
+  private _bunckles = [];
 
-  get buckles(): any[] {
-    return this._buckles;
+  get bunckles(): any[] {
+    return this._bunckles;
   }
 
   private _crowns = [];
@@ -441,7 +441,7 @@ export class CurrentStorageService {
         this.getModelos(),
         this.getCrowns(),
         this.getCrystals(),
-        this.getBuckles(),
+        this.getBunckles(),
         this.getStraps(),
         this.getCaseBacks(),
         this.getCases(),
@@ -475,7 +475,7 @@ export class CurrentStorageService {
 
   private getModelos() {
     return new Promise(resolve => {
-      this.dbMain.getItems('_models').subscribe(value => {
+      this.dbMain.getItems('models').subscribe(value => {
         this._models = value;
         resolve();
       });
@@ -537,10 +537,10 @@ export class CurrentStorageService {
     });
   }
 
-  private getBuckles() {
+  private getBunckles() {
     return new Promise(resolve => {
-      this.dbMain.getItems('buckles').subscribe(value => {
-        this._buckles = value;
+      this.dbMain.getItems('bunckles').subscribe(value => {
+        this._bunckles = value;
         resolve();
       });
     });
