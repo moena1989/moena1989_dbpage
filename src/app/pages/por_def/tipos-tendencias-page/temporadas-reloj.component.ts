@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
-import {SettingsService} from '../../../services/settings.service';
+import {ToolsServices} from '../../../services/tools-services.service';
 import {DBPublicService} from '../../../services/routes/d-b-public.service';
 import {CurrentStorageService} from '../../../services/current-storage.service';
 
@@ -41,7 +41,7 @@ export class TemporadasRelojComponent implements OnInit {
   _coleccionSeleccionada: any = {};
 
   constructor(private route: ActivatedRoute,
-              private db: DBPublicService, private settings: SettingsService, public currentStorageService: CurrentStorageService) {
+              private db: DBPublicService, private settings: ToolsServices, public currentStorageService: CurrentStorageService) {
     this.idiomaSeleccionado = this.currentStorageService.defaultSelectedLang;
 
     route.params.subscribe(params => {

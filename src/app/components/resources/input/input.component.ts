@@ -14,7 +14,7 @@ export class InputComponent implements OnInit {
   @Input() disable: boolean;
   val: any = '';
   @Input() capitalizar = true;
-  @Input() multiLanguage: string = undefined;
+  @Input() langCode: string = undefined;
   @Input() staticPlaceHolder = undefined;
   private cc: any;
 
@@ -44,7 +44,7 @@ export class InputComponent implements OnInit {
       this.alEscribir.emit(this.capitalize(this.val));
       // switch (this.type) {
       //   case'text':
-      //     // this.writing.emit(this.capitalize(this.val));
+      //     // this.whenWriting.emit(this.capitalize(this.val));
       //     break;
       //   case 'number':
       //     if (isNumeric(evt)) {
@@ -53,7 +53,7 @@ export class InputComponent implements OnInit {
       //     }
       //     break;
       //   case 'email':
-      //     // this.writing.emit(this.capitalize(this.val));
+      //     // this.whenWriting.emit(this.capitalize(this.val));
       //     break;
       //
       // }

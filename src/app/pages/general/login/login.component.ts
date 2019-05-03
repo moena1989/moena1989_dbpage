@@ -1,8 +1,9 @@
 import {Component, NgZone, OnInit} from '@angular/core';
 import {DbManagerService} from '../../../services/db-manager.service';
-import {SettingsService} from '../../../services/settings.service';
+import {ToolsServices} from '../../../services/tools-services.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../services/routes/auth.service';
+import {SHOW_WINDOWS_BAR} from '../../../environment/enviroment';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,9 @@ import {AuthService} from '../../../services/routes/auth.service';
 })
 export class LoginComponent implements OnInit {
   err_msg = '';
+  publix;
 
-  constructor(private db: DbManagerService, public tool: SettingsService,
+  constructor(private db: DbManagerService, public tool: ToolsServices,
               private router: Router, private auth: AuthService, private ngZone: NgZone) {
   }
 

@@ -3,10 +3,10 @@ import {Router} from '@angular/router';
 import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {SettingsService} from '../settings.service';
+import {ToolsServices} from '../tools-services.service';
 import {HttpClient} from '@angular/common/http';
 import {AngularFirestore} from '@angular/fire/firestore';
-import {environment} from '../../environment/dbs';
+import {DBS} from '../../environment/enviroment';
 import {CurrentStorageService} from '../current-storage.service';
 
 @Injectable()
@@ -17,8 +17,8 @@ export class AuthService {
   private dbMain: AngularFirestore;
 
   constructor(private _firebaseAuth: AngularFireAuth, private router: Router,
-              tools: SettingsService, private http: HttpClient, zone: NgZone, private current: CurrentStorageService) {
-    this.dbMain = new AngularFirestore(environment.main, 'main',
+              tools: ToolsServices, private http: HttpClient, zone: NgZone, private current: CurrentStorageService) {
+    this.dbMain = new AngularFirestore(DBS.main, 'main',
       false, null, null, zone, null);
     this.user = _firebaseAuth.authState;
     this.user.subscribe(
@@ -47,7 +47,7 @@ export class AuthService {
     return new Promise(resolve => {
       this._firebaseAuth.auth.signInWithEmailAndPassword(user, pass).then(value => {
         if (value) {
-          // this.pushDevData(value.user.uid);
+          this.pushDevData(value.user.uid);
           this.traerDatosUsuario(value.user.uid).subscribe(datosUsuario => {
             this.current.userData = datosUsuario;
             resolve(true);
@@ -83,16 +83,18 @@ export class AuthService {
   }
 
   private pushDevData(uid: string) {
+    // este es el borrador de nuevo usuario
+    // todo: Buscar toda la información que se debe tener de un empleado real, es irla anexando aquí para ir pprobando.
     const user = {
-      uid: uid,
-      correo: 'anfgc01@gmail.com',
-      apellidos: 'González Castro',
-      nombre: 'Andrés Fernando',
-      tipoDocumento: 'Andrés Fernando',
-      cargo: 'Administrador Supremo',
-      documento: 'Andrés Fernando',
-      sexo: 'Masculino',
-      fechaCreacion: new Date(),
+      id: uid,
+      email: 'anfgc01@gmail.com',
+      lastname: 'González Castro',
+      name: 'Andrés Fernando',
+      docType: 'Cédula',
+      bussinesPosition: 'Administrador Supremo',
+      document: '65564594598',
+      sex: 'Masculino',
+      creationDate: new Date(),
     };
     this.dbMain.collection('usuarios').doc(uid).set(user);
   }

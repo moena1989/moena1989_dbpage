@@ -2,7 +2,7 @@ import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute, Router} from '@angular/router';
 import {DbMainService} from '../../services/routes/db-main.service';
 import {CurrentStorageService} from '../../services/current-storage.service';
-import {SettingsService} from '../../services/settings.service';
+import {ToolsServices} from '../../services/tools-services.service';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
 
 @Component({
@@ -29,7 +29,7 @@ export class ConfigCajaComponent implements OnInit {
   private _currentItem: any = {};
 
   constructor(private route: ActivatedRoute, private router: Router, private db: DbMainService,
-              public current: CurrentStorageService, public tools: SettingsService) {
+              public current: CurrentStorageService, public tools: ToolsServices) {
     this.router.routeReuseStrategy.shouldReuseRoute = () => false;
     this.idiomaSeleccionado = this.current.defaultSelectedLang;
   }

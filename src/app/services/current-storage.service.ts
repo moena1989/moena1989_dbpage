@@ -2,6 +2,7 @@ import {Injectable} from '@angular/core';
 import {ClockModel} from '../models/clockModel';
 import {DbMainService} from './routes/db-main.service';
 import {DBPublicService} from './routes/d-b-public.service';
+import {DEFAULT_CODE_LANG, DEFAULT_SYMBOL_CURRENCY} from '../environment/enviroment';
 
 @Injectable({
   providedIn: 'root'
@@ -372,8 +373,6 @@ export class CurrentStorageService {
   public multiLangStructure = {};
   public defaultSelectedLang: any = {};
   public userData: any = {};
-  private defaultCodeLang = 'es';
-  private defaultSymbolCurr = 'US$';
 
   constructor(private dbMain: DbMainService, private dbPublic: DBPublicService) {
   }
@@ -414,7 +413,7 @@ export class CurrentStorageService {
         if (this.supportedLangs[0]) {
           let esLang = {};
           for (let i = 0; i < this.supportedLangs.length; i++) {
-            if (this.supportedLangs[i].code === this.defaultCodeLang) {
+            if (this.supportedLangs[i].code === DEFAULT_CODE_LANG) {
               esLang = this.supportedLangs[i];
               this.supportedLangs.splice(i, 1);
               break;
@@ -428,7 +427,7 @@ export class CurrentStorageService {
             this.multiLangStructure[value1.code] = {};
           });
         }
-        this.defaultSelectedLang = this.supportedLangs.filter(value1 => value1.code === this.defaultCodeLang)[0];
+        this.defaultSelectedLang = this.supportedLangs.filter(value1 => value1.code === DEFAULT_CODE_LANG)[0];
         resolve();
       });
     });
@@ -442,7 +441,7 @@ export class CurrentStorageService {
         if (this.supportedCurrs[0]) {
           let defCur = {};
           for (let i = 0; i < this.supportedCurrs.length; i++) {
-            if (this.supportedCurrs[i].symbol === this.defaultSymbolCurr) {
+            if (this.supportedCurrs[i].symbol === DEFAULT_SYMBOL_CURRENCY) {
               defCur = this.supportedCurrs[i];
               this.supportedCurrs.splice(i, 1);
               break;

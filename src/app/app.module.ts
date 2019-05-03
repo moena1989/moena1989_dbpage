@@ -12,10 +12,8 @@ import {VerTendenciasPageComponent} from './pages/por_def/ver-tendencias-page/ve
 import {PartesPageComponent} from './pages/caracteristicas-page/partes-page.component';
 import {SnackbarComponent} from './tools/snackbar/snackbar.component';
 import {PublicacionesPageComponent} from './pages/marketing/publicaciones-page/publicaciones-page.component';
-import {AngularFireStorageModule, StorageBucket} from '@angular/fire/storage';
-import {far} from '@fortawesome/free-regular-svg-icons';
+import {AngularFireStorageModule} from '@angular/fire/storage';
 import {ConfigModeloComponent} from './components/visualizador-config-modelo-caja/config-modelo.component';
-import {fas} from '@fortawesome/free-solid-svg-icons';
 import {VerTendenciaPageComponent} from './pages/por_def/ver-tendencia-page/ver-tendencia-page.component';
 import {NgxSmartModalModule, NgxSmartModalService} from 'ngx-smart-modal';
 import {FontAwesomeModule} from '@fortawesome/angular-fontawesome';
@@ -31,7 +29,6 @@ import {ModelsSevice} from './services/models/model-cajas.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import {NuevaCajaComponent} from './components/nueva-caja/nueva-caja.component';
 import {MainComponent} from './components/main/main.component';
-import {SettingsService} from './services/settings.service';
 import {RelojBuscadoComponent} from './tools/reloj-buscado/reloj-buscado.component';
 import {LoadbarComponent} from './components/resources/loadbar/loadbar.component';
 import {ConfigTapaComponent} from './components/visualizador-config-tapa/config-tapa.component';
@@ -42,7 +39,6 @@ import {VentasPageComponent} from './pages/por_def/ventas-page/ventas-page.compo
 import {AngularFireAuthModule} from '@angular/fire/auth';
 import {LoginComponent} from './pages/general/login/login.component';
 import {MSelectComponent} from './tools/m-select/m-select.component';
-import {library} from '@fortawesome/fontawesome-svg-core';
 import {AuthService} from './services/routes/auth.service';
 import {RegistroPageComponent} from './pages/por_def/registro-page/registro-page.component';
 import {TopBarComponent} from './components/environment/top-bar/top-bar.component';
@@ -66,7 +62,7 @@ import {TemporadasRelojComponent} from './pages/por_def/tipos-tendencias-page/te
 import {ConfigCoronaComponent} from './components/visualizador-config-corona/config-corona.component';
 import {AdderComponent} from './components/resources/adder/adder.component';
 import {HttpClientModule} from '@angular/common/http';
-import {environment} from './environment/dbs';
+import {DBS} from './environment/enviroment';
 import {AngularFireDatabaseModule} from '@angular/fire/database-deprecated';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {UsuariosPageComponent} from './usuarios-page/usuarios-page.component';
@@ -75,6 +71,8 @@ import {ConfigCristalComponent} from './config-cristal/config-cristal.component'
 import {AjustesWebComponent} from './idiomas-page/ajustes-web.component';
 import {PedidosPageComponent} from './pedidos-page/pedidos-page.component';
 import {ConfigCajaComponent} from './components/visualizador-config-caja/config-caja.component';
+import {DBPublicService} from './services/routes/d-b-public.service';
+import {ToolsServices} from './services/tools-services.service';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -103,31 +101,30 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
   ],
   imports: [
     RouterModule.forRoot(routes, {enableTracing: false}),
-    AngularFireModule.initializeApp(environment.public, 'public'),
-    AngularFireModule.initializeApp(environment.main, 'main'),
+    AngularFireModule.initializeApp(DBS.public, 'public'),
+    AngularFireModule.initializeApp(DBS.main, 'main'),
     AngularFireDatabaseModule, BrowserAnimationsModule,
     AngularFireAuthModule, AngularFireStorageModule, HttpClientModule, AngularFireModule,
     BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
   ],
-  providers: [SettingsService, {
-    provide: externalUrlProvider,
-    useValue: (route: ActivatedRouteSnapshot) => {
-      const externalUrl = route.paramMap.get('externalUrl');
-      window.open(externalUrl, '_self');
-    },
-  }, {
-    provide: APP_INITIALIZER,
-    useFactory: currentServiceFactory,
-    deps: [CurrentStorageService],
-    multi: true
-  }, NgxSmartModalService, {provide: StorageBucket, useValue: 'testing-this-shit'},
-    ModelsSevice, AuthService, AngularFireDatabase, DbMainService, AngularFirestore, HasherService],
+  providers: [
+    {
+      provide: externalUrlProvider,
+      useValue: (route: ActivatedRouteSnapshot) => {
+        const externalUrl = route.paramMap.get('externalUrl');
+        window.open(externalUrl, '_self');
+      },
+    }, {
+      provide: APP_INITIALIZER,
+      useFactory: currentServiceFactory,
+      deps: [CurrentStorageService],
+      multi: true
+    }, NgxSmartModalService,
+    ModelsSevice, AuthService, AngularFireDatabase, DbMainService, DBPublicService, ToolsServices, AngularFirestore, HasherService],
   bootstrap: [AppComponent]
 })
 
 export class AppModule {
   constructor() {
-    // TODO simplificaar y utilizar iconos base
-    library.add(fas, far);
   }
 }

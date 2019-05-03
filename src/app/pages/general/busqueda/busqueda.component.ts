@@ -1,7 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 
 import {Router} from '@angular/router';
-import {SettingsService} from '../../../services/settings.service';
+import {ToolsServices} from '../../../services/tools-services.service';
 import {CurrentStorageService} from '../../../services/current-storage.service';
 import {DbMainService} from '../../../services/routes/db-main.service';
 
@@ -21,7 +21,7 @@ export class BusquedaComponent implements OnInit {
   TODO buscar una manera más opptima sin tener que guardarlo y traerlo de db.
    */
   constructor(
-    public fs: DbMainService, private tools: SettingsService,
+    public fs: DbMainService, private tools: ToolsServices,
     public currentStorage: CurrentStorageService, private router: Router) {
   }
 

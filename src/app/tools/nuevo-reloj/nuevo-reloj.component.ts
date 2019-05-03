@@ -3,7 +3,7 @@ import {DbManagerService} from '../../services/db-manager.service';
 import {MSelectComponent} from '../m-select/m-select.component';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
 import {CajaM, ModelsSevice} from '../../services/models/model-cajas.service';
-import {SettingsService} from '../../services/settings.service';
+import {ToolsServices} from '../../services/tools-services.service';
 import {DbMainService, MCaja, MFiltro, MReloj} from '../../services/routes/db-main.service';
 
 class Rmodel {
@@ -56,7 +56,7 @@ export class NuevoRelojComponent implements OnInit {
   constructor(
     public estructuras: ModelsSevice,
     public db: DbManagerService,
-    public tools: SettingsService,
+    public tools: ToolsServices,
     public fs: DbMainService
   ) {
   }

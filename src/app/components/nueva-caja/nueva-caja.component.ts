@@ -2,7 +2,7 @@ import {Component, OnDestroy, OnInit, ViewChild} from '@angular/core';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
 import {DbMainService, MCaja, MetaLote} from '../../services/routes/db-main.service';
 import {DbManagerService} from '../../services/db-manager.service';
-import {SettingsService} from '../../services/settings.service';
+import {ToolsServices} from '../../services/tools-services.service';
 import {CajaM, ModelsSevice} from '../../services/models/model-cajas.service';
 import {MetadataAttr} from '../../models/clockModel';
 import {Subscription} from 'rxjs';
@@ -16,7 +16,6 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
   lote_iniciado = false;
   // nuevo_lote = new LoteCajaModel();
   current_opciones_caja_modelo: CajaM = new CajaM();
-
   currentLote: any = {};
   // currentLote: MLote = new MLote();
   imagenesProcesadas: any[] = [];
@@ -31,7 +30,7 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
   private _info_material: Subscription;
 
   constructor(public estructura: ModelsSevice, public db: DbManagerService,
-              private tools: SettingsService, public fs: DbMainService) {
+              private tools: ToolsServices, public fs: DbMainService) {
     this.currentLote.numeroDeLote = 0;
   }
 
@@ -77,7 +76,7 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
     //
     this.porcentaje_registro = 5;
     //
-    this.currentLote.id = this.fs.getNewKey();
+    this.currentLote.id = this.fs.getNewid();
     this.currentLote.cajasTotales = this.imagenesProcesadas.length;
     this.currentLote.idsCajas = [];
     this.currentLote.fechaCreacion = new Date();

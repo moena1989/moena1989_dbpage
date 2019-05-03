@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {fadeAnimation} from '../../animations/Animation';
-import {SettingsService} from '../../services/settings.service';
+import {ToolsServices} from '../../services/tools-services.service';
 
 @Component({
   selector: 'app-main',
@@ -9,7 +9,7 @@ import {SettingsService} from '../../services/settings.service';
 })
 
 export class MainComponent implements OnInit {
-  constructor(public tools: SettingsService) {
+  constructor(public tools: ToolsServices) {
   }
 
   ngOnInit(): void {

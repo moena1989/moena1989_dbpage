@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {DbManagerService} from '../../../services/db-manager.service';
-import {SettingsService} from '../../../services/settings.service';
+import {ToolsServices} from '../../../services/tools-services.service';
 import {AuthService} from '../../../services/routes/auth.service';
 import {CurrentStorageService} from '../../../services/current-storage.service';
 
@@ -13,7 +13,7 @@ import {CurrentStorageService} from '../../../services/current-storage.service';
 export class TopBarComponent implements OnInit {
   titulo_actual;
 
-  constructor(public db: DbManagerService, public tools: SettingsService,
+  constructor(public db: DbManagerService, public tools: ToolsServices,
               public current: CurrentStorageService, private auth: AuthService) {
   }
 

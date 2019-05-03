@@ -1,4 +1,10 @@
-export const environment = {
+// ARCHIVO PARA  PONER TOAS LAS VARIABLES ESTATICAS GLOBALES
+export const DEFAULT_CODE_LANG = 'es';
+export const DEFAULT_SYMBOL_CURRENCY = 'US$';
+export const SHOW_WINDOWS_BAR = false;
+export const MAX_SIZE_IN_PX = 2500;
+export const MAX_SIZE_IN_MB = 0.7;
+export const DBS: any = {
   // real: {
   //   apiKey: 'AIzaSyAh48TUW_EdI6fI6om3EMRCdlCC4U3n9U8',
   //   authDomain: 'moenamaindb.firebaseapp.com',

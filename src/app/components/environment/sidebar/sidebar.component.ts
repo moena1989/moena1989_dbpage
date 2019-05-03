@@ -3,7 +3,7 @@ import {Router} from '@angular/router';
 
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
 import {DbManagerService} from '../../../services/db-manager.service';
-import {SettingsService} from '../../../services/settings.service';
+import {ToolsServices} from '../../../services/tools-services.service';
 import {CurrentStorageService} from '../../../services/current-storage.service';
 
 @Component({
@@ -20,7 +20,7 @@ export class SidebarComponent implements OnInit {
 
   constructor(public db: DbManagerService,
               public router: Router,
-              public tools: SettingsService,
+              public tools: ToolsServices,
               private currentStorage: CurrentStorageService) {
   }
 

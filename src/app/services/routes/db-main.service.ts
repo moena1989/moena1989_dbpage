@@ -3,7 +3,7 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 import {HasherService} from '../hasher.service';
 import {ModelsSevice} from '../models/model-cajas.service';
 import {AngularFireStorage} from '@angular/fire/storage';
-import {environment} from '../../environment/dbs';
+import {DBS} from '../../environment/enviroment';
 
 
 export interface MCaja {
@@ -92,14 +92,14 @@ export class DbMainService {
   // private mainAfs: AngularFirestore;
 
   constructor(private hasher: HasherService, private est: ModelsSevice, private storage: AngularFireStorage, zone: NgZone) {
-    this.dbMain = new AngularFirestore(environment.main, 'main',
+    this.dbMain = new AngularFirestore(DBS.main, 'main',
       false, null, null, zone, null);
 
-    this.mainStorage = new AngularFireStorage(environment.main, 'main',
+    this.mainStorage = new AngularFireStorage(DBS.main, 'main',
       'moena-1989.appspot.com', null, zone);
   }
 
-  getNewKey() {
+  getNewid() {
     return this.dbMain.createId();
   }
 
@@ -154,11 +154,11 @@ export class DbMainService {
   }
 
   pushImage(img: File, route: any, alFinalizar: (url: string) => void) {
-    const key = this.getNewKey();
+    const id = this.getNewid();
     const array = img.name.split('.');
     const l = array.length;
     const extension = array[l - 1];
-    const finalRoute = route + '/' + key + '.' + extension;
+    const finalRoute = route + '/' + id + '.' + extension;
     this.mainStorage.upload(finalRoute, img).then(a => {
       console.log('se subió');
       console.log(a);
@@ -170,29 +170,29 @@ export class DbMainService {
 
   setNewImage(img: File, route: any): Promise<any> {
     return new Promise(resolve => {
-      const key = this.dbMain.createId();
+      const id = this.dbMain.createId();
       const array = img.name.split('.');
       const l = array.length;
       const ext = array[l - 1];
-      const finalRoute = route + '/' + key + '.' + ext;
+      const finalRoute = route + '/' + id + '.' + ext;
       this.mainStorage.upload(finalRoute, img).then(a => {
         this.mainStorage.ref(finalRoute).getDownloadURL().toPromise().then(value => {
           resolve({
             url: value,
             extension: ext,
-            key: key
+            id: id
           });
         });
       });
     });
   }
 
-  updateImage(img: File, route: any, key: string): Promise<any> {
+  updateImage(img: File, route: any, id: string): Promise<any> {
     return new Promise(resolve => {
       const array = img.name.split('.');
       const l = array.length;
       const ext = array[l - 1];
-      const finalRoute = route + '/' + key + '.' + ext;
+      const finalRoute = route + '/' + id + '.' + ext;
       this.mainStorage.upload(finalRoute, img).then(a => {
         console.log('se subió');
         console.log(a);
@@ -200,7 +200,7 @@ export class DbMainService {
           resolve({
             url: value,
             extension: ext,
-            key: key
+            id: id
           });
         });
       });
@@ -208,7 +208,7 @@ export class DbMainService {
   }
 
   deleteImage(route: any, imgData: any) {
-    const finalRoute = route + '/' + imgData.key + '.' + imgData.extension;
+    const finalRoute = route + '/' + imgData.id + '.' + imgData.extension;
     return this.mainStorage.ref(finalRoute).delete();
   }
 
@@ -267,13 +267,17 @@ export class DbMainService {
   }
 
 
-  agregarMetadata(obj: any) {
-    console.log(this.dbMain.createId());
+  addMeta(obj: any) {
+    // SI EL OBJETO TIENE METADATA, ES PORQUE YA EXISTE EN LA BASE DE DATOS.
     obj['metadata'] = {
-      key: this.dbMain.createId(),
-      fechaCreacion: new Date(),
-      idUsuario: 'sda',
+      id: this.dbMain.createId(),
+      creationDate: new Date(),
+      lastModificationDate: new Date(),
+      by: {}
     };
+    // id: this.current.userData.id,
+    // name: this.current.userData.name,
+    // lastname: this.current.userData.lastname,
     return obj;
   }
 
@@ -281,26 +285,25 @@ export class DbMainService {
     return this.dbMain.collection('productData/' + 'watches/' + tipoItem).valueChanges();
   }
 
-  getItem(tipoItem: string, keyItem: string) {
-    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(keyItem).valueChanges();
+  getItem(tipoItem: string, idItem: string) {
+    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(idItem).valueChanges();
   }
 
   setItem(tipoItem: string, item: any) {
-    item = this.agregarMetadata(item);
-    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.key).set(item);
+    item = this.addMeta(item);
+    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.id).set(item);
   }
 
   updateItem(tipoItem: string, item: any) {
-    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.key).set(item);
+    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.id).set(item);
   }
-
   // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  DELETES
   // deleteImg(downloadUrl) {
   //   return this.storage.ref('').child(downloadUrl).delete();
   // }
 
   deleteItem(tipoItem: string, item: any) {
-    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.key).delete();
+    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.id).delete();
   }
 
 }

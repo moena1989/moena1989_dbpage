@@ -2584,7 +2584,7 @@ blog:
       - post
       - web 2.0
       - wordpress
-      - writing
+      - whenWriting
   styles:
     - solid
     - regular
@@ -4518,7 +4518,7 @@ chalkboard:
       - school
       - teaching
       - whiteboard
-      - writing
+      - whenWriting
   styles:
     - solid
     - regular
@@ -4537,7 +4537,7 @@ chalkboard-teacher:
       - professor
       - school
       - whiteboard
-      - writing
+      - whenWriting
   styles:
     - solid
     - regular
@@ -21079,7 +21079,7 @@ signature:
       - John Hancock
       - cursive
       - name
-      - writing
+      - whenWriting
   styles:
     - solid
     - regular
