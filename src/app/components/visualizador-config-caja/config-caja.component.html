@@ -4,13 +4,14 @@
     <div class="side-opt" *ngFor="let item of current.cases" [class.side-act]="item===currentItem"
          (click)="selectItem(item)">
       <i class="fal fa-file-alt  icoss_op"></i>
-      <div>{{item.nombre}}</div>
+      <div>{{item.name}}</div>
     </div>
     <div class="side-opt" [class.side-act]="isNewItem" (click)="newItem()">
       <i class="fal fa-plus icoss_op"></i>
       <div>Nuevo Ítem</div>
     </div>
   </app-vertical-bar>
+
   <div class="c-v" *ngIf="currentItem">
     <div class="item-top-ttl">
       <div class="part-sub-ttl">
@@ -18,7 +19,7 @@
         <div>
           <div class="lil-sub">{{typeItem}}</div>
           <div class="part-ttl" *ngIf="isNewItem">{{MSG_NEW_ITEM}}</div>
-          <div class="part-ttl" *ngIf="!isNewItem">{{currentItem.nombre}}</div>
+          <div class="part-ttl" *ngIf="!isNewItem">{{currentItem.name}}</div>
         </div>
       </div>
 
@@ -28,17 +29,17 @@
           <div class="part-txt">Editar</div>
         </div>
 
-        <div class="opt-t" (click)="mdGuardarItem.open()" *ngIf="isNewItem && isEditable">
+        <div class="opt-t" (click)="mdSaveItemWarn.open()" *ngIf="isNewItem && isEditable && hasImg">
           <div class="fal fa-save as"></div>
           <div class="part-txt">Finalizar Registro</div>
         </div>
 
-        <div class="opt-t" *ngIf="!isNewItem && isEditable" (click)="mdActualizarItem.open()">
+        <div class="opt-t" *ngIf="!isNewItem && isEditable" (click)="mdUpdateItemWan.open()">
           <div class="fal fa-save as"></div>
           <div class="part-txt">Guardar cambios</div>
         </div>
 
-        <div class="opt-t" *ngIf="!isNewItem && !isEditable" (click)="mdEliminarItem.open()">
+        <div class="opt-t" *ngIf="!isNewItem && !isEditable" (click)="mdDeleteItemWarn.open()">
           <div class="fal fa-trash-alt as"></div>
           <div class="part-txt">Eliminar registro</div>
         </div>
@@ -69,13 +70,13 @@
           <div class="ttl"><strong>Datos generales</strong></div>
         </div>
         <div class="cnt-inputs">
-          <app-input [disable]="!isEditable" [value]="currentItem.nombre" ttl="Nombre"
+          <app-input [disable]="!isEditable" [value]="currentItem.name" ttl="Nombre"
                      placeholder="Nombre"
                      (alEscribir)="writingName($event)"></app-input>
 
-          <app-input [disable]="!isEditable" [value]="currentItem.id" ttl="Identificador"
+          <app-input [disable]="!isEditable" [value]="currentItem.code" ttl="Código ID"
                      placeholder="###"
-                     (alEscribir)="currentItem.id= $event"></app-input>
+                     (alEscribir)="currentItem.code= $event"></app-input>
         </div>
 
         <div class="part-sub-tttl">
@@ -86,20 +87,22 @@
         <app-tabs>
           <div class="tab-opt"
                *ngFor="let t of current.supportedLangs"
-               [class.tab-opt-act]="idiomaSeleccionado===t" (click)="selectLanguage(t)">
-            <div>{{t.nombre}}</div>
+               [class.tab-opt-act]="selectedLanguage===t" (click)="selectLanguage(t)">
+            <div>{{t.name}}</div>
           </div>
         </app-tabs>
 
         <div class="cnt-inputs">
-          <app-input [disable]="!isEditable" [value]="currentItem[idiomaSeleccionado.codigo]?.nombre" ttl="Nombre"
-                     (alEscribir)="writing($event)"
-                     placeholder="{{idiomaSeleccionado?.codigo}} Nombre">
+          <app-input [disable]="!isEditable" [value]="currentItem[selectedLanguage.code]?.name" ttl="Nombre"
+                     (alEscribir)="whenWriting($event)"
+                     langCode="{{selectedLanguage.code}}"
+                     placeholder="Nombre">
           </app-input>
 
-          <app-input [disable]="!isEditable" [value]="currentItem[idiomaSeleccionado.codigo]?.modelo" ttl="Modelo"
-                     (alEscribir)="currentItem[idiomaSeleccionado.codigo].modelo=$event"
-                     placeholder="{{idiomaSeleccionado?.codigo}} Modelo">
+          <app-input [disable]="!isEditable" [value]="currentItem[selectedLanguage.code]?.model" ttl="Modelo"
+                     (alEscribir)="currentItem[selectedLanguage.code].model=$event"
+                     langCode="{{selectedLanguage.code}}"
+                     placeholder="Modelo">
           </app-input>
         </div>
       </div>
@@ -111,7 +114,7 @@
 </div>
 
 
-<ngx-smart-modal #mdEliminarItem identifier="mdEliminarItem">
+<ngx-smart-modal #mdDeleteItemWarn identifier="mdEliminarItem">
   <div class="modal-tittle-bar">
     <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
     Advertencia
@@ -121,13 +124,13 @@
   </div>
 
   <div class="modal-bottom-cnt">
-    <div class="modal-bottom-button bt-ok" (click)="mdEliminarItem.close()">NO</div>
+    <div class="modal-bottom-button bt-ok" (click)="mdDeleteItemWarn.close()">NO</div>
     <div class="modal-bottom-button bt-ok" (click)="deletItem()">ELIMINAR</div>
   </div>
 </ngx-smart-modal>
 
 
-<ngx-smart-modal #mdGuardarItem identifier="mdGuardarItem">
+<ngx-smart-modal #mdSaveItemWarn identifier="mdGuardarItem">
   <div class="modal-tittle-bar">
     <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
     Advertencia
@@ -137,12 +140,12 @@
   </div>
 
   <div class="modal-bottom-cnt">
-    <div class="modal-bottom-button bt-ok" (click)="mdEliminarItem.close()">Cancelar</div>
+    <div class="modal-bottom-button bt-ok" (click)="mdDeleteItemWarn.close()">Cancelar</div>
     <div class="modal-bottom-button bt-ok" (click)="pushNewItem()">SI</div>
   </div>
 </ngx-smart-modal>
 
-<ngx-smart-modal #mdActualizarItem identifier="mdGuardarItem">
+<ngx-smart-modal #mdUpdateItemWan identifier="mdGuardarItem">
   <div class="modal-tittle-bar">
     <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
     Advertencia
@@ -152,7 +155,7 @@
   </div>
 
   <div class="modal-bottom-cnt">
-    <div class="modal-bottom-button bt-ok" (click)="mdEliminarItem.close()">Cancelar</div>
+    <div class="modal-bottom-button bt-ok" (click)="mdDeleteItemWarn.close()">Cancelar</div>
     <div class="modal-bottom-button bt-ok" (click)="updateItem()">SI</div>
   </div>
 </ngx-smart-modal>

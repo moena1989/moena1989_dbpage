@@ -3,7 +3,6 @@ import {DbManagerService} from '../../../services/db-manager.service';
 import {ToolsServices} from '../../../services/tools-services.service';
 import {Router} from '@angular/router';
 import {AuthService} from '../../../services/routes/auth.service';
-import {SHOW_WINDOWS_BAR} from '../../../environment/enviroment';
 
 @Component({
   selector: 'app-login',

@@ -3,38 +3,18 @@ import {Router} from '@angular/router';
 import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {ToolsServices} from '../tools-services.service';
 import {HttpClient} from '@angular/common/http';
-import {AngularFirestore} from '@angular/fire/firestore';
-import {DBS} from '../../environment/enviroment';
-import {CurrentStorageService} from '../current-storage.service';
+import {DbMainService} from './db-main.service';
 
 @Injectable()
 export class AuthService {
   userDetails: firebase.User = null;
   uri = 'http://localhost:4000/auth';
   private user: Observable<firebase.User>;
-  private dbMain: AngularFirestore;
 
-  constructor(private _firebaseAuth: AngularFireAuth, private router: Router,
-              tools: ToolsServices, private http: HttpClient, zone: NgZone, private current: CurrentStorageService) {
-    this.dbMain = new AngularFirestore(DBS.main, 'main',
-      false, null, null, zone, null);
-    this.user = _firebaseAuth.authState;
-    this.user.subscribe(
-      (user) => {
-        if (user) {
-          this.traerDatosUsuario(user.uid).subscribe(datosUsuario => {
-            this.current.userData = datosUsuario;
-            console.log(this.current.userData);
-          });
-          this.userDetails = user;
-          tools.gUser = this.userDetails;
-        } else {
-          this.userDetails = null;
-        }
-      }
-    );
+  constructor(private _firebaseAuth: AngularFireAuth,
+              private router: Router, private http: HttpClient,
+              zone: NgZone, private  dbMain: DbMainService) {
   }
 
   signInWithGoogle() {
@@ -47,11 +27,11 @@ export class AuthService {
     return new Promise(resolve => {
       this._firebaseAuth.auth.signInWithEmailAndPassword(user, pass).then(value => {
         if (value) {
-          this.pushDevData(value.user.uid);
-          this.traerDatosUsuario(value.user.uid).subscribe(datosUsuario => {
-            this.current.userData = datosUsuario;
+          // this.pushDevData(value.user.uid);
+          this.dbMain.getUserData(value.user.uid).subscribe(datosUsuario => {
+            // this.current.userData = datosUsuario;
             resolve(true);
-            console.log(this.current.userData);
+            // console.log(this.current.userData);
           });
         } else {
           resolve(false);
@@ -78,10 +58,6 @@ export class AuthService {
       .then((res) => this.router.navigate(['/']));
   }
 
-  traerDatosUsuario(uid: string) {
-    return this.dbMain.collection('usuarios').doc(uid).valueChanges();
-  }
-
   private pushDevData(uid: string) {
     // este es el borrador de nuevo usuario
     // todo: Buscar toda la información que se debe tener de un empleado real, es irla anexando aquí para ir pprobando.
@@ -96,6 +72,6 @@ export class AuthService {
       sex: 'Masculino',
       creationDate: new Date(),
     };
-    this.dbMain.collection('usuarios').doc(uid).set(user);
+    this.dbMain.setUserData(uid, user);
   }
 }

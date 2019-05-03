@@ -3,8 +3,7 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 import {HasherService} from '../hasher.service';
 import {ModelsSevice} from '../models/model-cajas.service';
 import {AngularFireStorage} from '@angular/fire/storage';
-import {DBS} from '../../environment/enviroment';
-
+import {DBS} from '../../../environments/environment';
 
 export interface MCaja {
   numeroDeLote: number;
@@ -86,13 +85,13 @@ export interface MFiltro {
 })
 export class DbMainService {
   private afs: AngularFirestoreDocument<any>;
-  private dbMain: AngularFirestore;
+  private mainDb: AngularFirestore;
   private mainStorage: AngularFireStorage;
   // private afs: AngularFirestoreDocument<any>;
   // private mainAfs: AngularFirestore;
 
   constructor(private hasher: HasherService, private est: ModelsSevice, private storage: AngularFireStorage, zone: NgZone) {
-    this.dbMain = new AngularFirestore(DBS.main, 'main',
+    this.mainDb = new AngularFirestore(DBS.main, 'main',
       false, null, null, zone, null);
 
     this.mainStorage = new AngularFireStorage(DBS.main, 'main',
@@ -100,10 +99,14 @@ export class DbMainService {
   }
 
   getNewid() {
-    return this.dbMain.createId();
+    return this.mainDb.createId();
   }
 
-// ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  PUSHES
+  getUserData(uid: string) {
+    return this.mainDb.collection('users').doc(uid).valueChanges();
+  }
+
+  // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  PUSHES
   pushCaja(serialCaja: string, caja: MCaja) {
     return this.afs.collection('cases').doc(serialCaja).set(caja);
   }
@@ -170,7 +173,7 @@ export class DbMainService {
 
   setNewImage(img: File, route: any): Promise<any> {
     return new Promise(resolve => {
-      const id = this.dbMain.createId();
+      const id = this.mainDb.createId();
       const array = img.name.split('.');
       const l = array.length;
       const ext = array[l - 1];
@@ -237,7 +240,7 @@ export class DbMainService {
 
 
   cargarModeloColeccion(tipoProducto: string, nombreTendencia: string) {
-    return this.dbMain.collection(tipoProducto).doc('tendencias').collection(nombreTendencia).valueChanges();
+    return this.mainDb.collection(tipoProducto).doc('tendencias').collection(nombreTendencia).valueChanges();
   }
 
   // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  UPDATE
@@ -266,11 +269,10 @@ export class DbMainService {
     }).get();
   }
 
-
   addMeta(obj: any) {
     // SI EL OBJETO TIENE METADATA, ES PORQUE YA EXISTE EN LA BASE DE DATOS.
     obj['metadata'] = {
-      id: this.dbMain.createId(),
+      id: this.mainDb.createId(),
       creationDate: new Date(),
       lastModificationDate: new Date(),
       by: {}
@@ -282,29 +284,32 @@ export class DbMainService {
   }
 
   getItems(tipoItem: string) {
-    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).valueChanges();
+    return this.mainDb.collection('productData/' + 'watches/' + tipoItem).valueChanges();
   }
 
   getItem(tipoItem: string, idItem: string) {
-    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(idItem).valueChanges();
+    return this.mainDb.collection('productData/' + 'watches/' + tipoItem).doc(idItem).valueChanges();
   }
 
   setItem(tipoItem: string, item: any) {
     item = this.addMeta(item);
-    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.id).set(item);
+    return this.mainDb.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.id).set(item);
   }
 
   updateItem(tipoItem: string, item: any) {
-    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.id).set(item);
+    return this.mainDb.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.id).set(item);
   }
+
   // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  DELETES
-  // deleteImg(downloadUrl) {
-  //   return this.storage.ref('').child(downloadUrl).delete();
-  // }
-
   deleteItem(tipoItem: string, item: any) {
-    return this.dbMain.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.id).delete();
+    return this.mainDb.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.id).delete();
   }
 
+  setUserData(uid: string, user: any) {
+    // esta linea solo funcionará cuando se creer nuevos usuarios desde el admin final.
+    // user= this.addMeta(user);
+    //
+    return this.mainDb.collection('users').doc(uid).set(user);
+  }
 }
 

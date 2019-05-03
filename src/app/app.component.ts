@@ -1,7 +1,7 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
 import {SnackbarComponent} from './tools/snackbar/snackbar.component';
 import {ToolsServices} from './services/tools-services.service';
-import {DEFAULT_CODE_LANG} from './environment/enviroment';
+import {SHOW_WINDOWS_BAR} from '../environments/environment';
 
 @Component({
   selector: 'app-root',
@@ -11,7 +11,7 @@ import {DEFAULT_CODE_LANG} from './environment/enviroment';
 export class AppComponent implements OnInit {
   @ViewChild(SnackbarComponent)
   public snack: SnackbarComponent;
-  public showBar = DEFAULT_CODE_LANG;
+  public showBar = SHOW_WINDOWS_BAR;
 
   /**
    * Esta clase se encarga de iniciar toods los sevicios apenas alguien entre a la pag.

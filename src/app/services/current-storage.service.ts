@@ -2,24 +2,13 @@ import {Injectable} from '@angular/core';
 import {ClockModel} from '../models/clockModel';
 import {DbMainService} from './routes/db-main.service';
 import {DBPublicService} from './routes/d-b-public.service';
-import {DEFAULT_CODE_LANG, DEFAULT_SYMBOL_CURRENCY} from '../environment/enviroment';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {DEFAULT_CODE_LANG, DEFAULT_SYMBOL_CURRENCY} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrentStorageService {
-  /*CLASE ENCARGADA DE TENER TODAS LAS VARIABLES IMPORTANTES SIEMPRE ACTUALIZADAS */
-  // about Watches
-  public models = [];
-  public buckles = [];
-  public crowns = [];
-  public movements = [];
-  public caseBacks = [];
-  public cases: any[];
-  public crystals = [];
-  public straps = [];
-  public supportedLangs = [];
-  public supportedCurrs: any[];
   //
   public opcsEstadosTendencias = {publica: {nombre: 'Pública'}, privada: {nombre: 'Privada'}};
   relojDisponible: ClockModel;
@@ -372,15 +361,83 @@ export class CurrentStorageService {
   ];
   public multiLangStructure = {};
   public defaultSelectedLang: any = {};
-  public userData: any = {};
 
-  constructor(private dbMain: DbMainService, private dbPublic: DBPublicService) {
+  constructor(private dbMain: DbMainService, private dbPublic: DBPublicService, private _firebaseAuth: AngularFireAuth) {
+  }
+
+  // about Watches
+  private _models = [];
+
+  get models(): any[] {
+    return this._models;
+  }
+
+  /*CLASE ENCARGADA DE TENER TODAS LAS VARIABLES IMPORTANTES SIEMPRE ACTUALIZADAS */
+  private _buckles = [];
+
+  get buckles(): any[] {
+    return this._buckles;
+  }
+
+  private _crowns = [];
+
+  get crowns(): any[] {
+    return this._crowns;
+  }
+
+  private _movements = [];
+
+  get movements(): any[] {
+    return this._movements;
+  }
+
+  private _caseBacks = [];
+
+  get caseBacks(): any[] {
+    return this._caseBacks;
+  }
+
+  private _cases: any[];
+
+  get cases(): any[] {
+    return this._cases;
+  }
+
+  private _crystals = [];
+
+  get crystals(): any[] {
+    return this._crystals;
+  }
+
+  private _straps = [];
+
+  get straps(): any[] {
+    return this._straps;
+  }
+
+  private _supportedLangs = [];
+
+  get supportedLangs(): any[] {
+    return this._supportedLangs;
+  }
+
+  private _supportedCurrs: any[];
+
+  get supportedCurrs(): any[] {
+    return this._supportedCurrs;
+  }
+
+  private _userData: any = {};
+
+  get userData(): any {
+    return this._userData;
   }
 
   init() {
     // todo esta zona es útil para iniciar todo lo que se requiera ANTES DE QUE LA APLICACIÓN INICIE
     return new Promise((resolve) => {
       Promise.all([
+        this.automaticAuth(),
         this.getModelos(),
         this.getCrowns(),
         this.getCrystals(),
@@ -398,57 +455,76 @@ export class CurrentStorageService {
     });
   }
 
-  getModelos() {
-    this.dbMain.getItems('models').subscribe(value => {
-      this.models = value;
-      console.log('modelo', this.models);
+  automaticAuth() {
+    return new Promise(resolve => {
+      this._firebaseAuth.authState.subscribe(
+        (user) => {
+          if (user) {
+            this.dbMain.getUserData(user.uid).subscribe(datosUsuario => {
+              this._userData = datosUsuario;
+              resolve();
+            });
+          } else {
+            resolve();
+            this._userData = undefined;
+          }
+        }
+      );
     });
   }
 
-  getLanguages() {
+  private getModelos() {
+    return new Promise(resolve => {
+      this.dbMain.getItems('_models').subscribe(value => {
+        this._models = value;
+        resolve();
+      });
+    });
+  }
+
+  private getLanguages() {
     return new Promise(resolve => {
       this.dbPublic.getSupportedLangs().subscribe(langs => {
-        this.supportedLangs = langs;
-
-        if (this.supportedLangs[0]) {
+        this._supportedLangs = langs;
+        if (this._supportedLangs[0]) {
           let esLang = {};
-          for (let i = 0; i < this.supportedLangs.length; i++) {
-            if (this.supportedLangs[i].code === DEFAULT_CODE_LANG) {
-              esLang = this.supportedLangs[i];
-              this.supportedLangs.splice(i, 1);
+          for (let i = 0; i < this._supportedLangs.length; i++) {
+            if (this._supportedLangs[i].code === DEFAULT_CODE_LANG) {
+              esLang = this._supportedLangs[i];
+              this._supportedLangs.splice(i, 1);
               break;
             }
           }
-          this.supportedLangs.unshift(esLang);
-          this.supportedLangs.forEach(value1 => {
+          this._supportedLangs.unshift(esLang);
+          this._supportedLangs.forEach(value1 => {
             this.LANGS = this.LANGS.filter(function (obj) {
               return obj.code !== value1.code;
             });
             this.multiLangStructure[value1.code] = {};
           });
         }
-        this.defaultSelectedLang = this.supportedLangs.filter(value1 => value1.code === DEFAULT_CODE_LANG)[0];
+        this.defaultSelectedLang = this._supportedLangs.filter(value1 => value1.code === DEFAULT_CODE_LANG)[0];
         resolve();
       });
     });
   }
 
-  getCurrencies() {
+  private getCurrencies() {
     return new Promise(resolve => {
       this.dbPublic.getSupportedCurrencies().subscribe(value => {
-        this.supportedCurrs = value;
+        this._supportedCurrs = value;
 
-        if (this.supportedCurrs[0]) {
+        if (this._supportedCurrs[0]) {
           let defCur = {};
-          for (let i = 0; i < this.supportedCurrs.length; i++) {
-            if (this.supportedCurrs[i].symbol === DEFAULT_SYMBOL_CURRENCY) {
-              defCur = this.supportedCurrs[i];
-              this.supportedCurrs.splice(i, 1);
+          for (let i = 0; i < this._supportedCurrs.length; i++) {
+            if (this._supportedCurrs[i].symbol === DEFAULT_SYMBOL_CURRENCY) {
+              defCur = this._supportedCurrs[i];
+              this._supportedCurrs.splice(i, 1);
               break;
             }
           }
-          this.supportedCurrs.unshift(defCur);
-          this.supportedCurrs.forEach(value1 => {
+          this._supportedCurrs.unshift(defCur);
+          this._supportedCurrs.forEach(value1 => {
             this.CURRENCIES = this.CURRENCIES.filter(function (obj) {
               return obj.symbol !== value1.symbol;
             });
@@ -461,65 +537,65 @@ export class CurrentStorageService {
     });
   }
 
-  getBuckles() {
+  private getBuckles() {
     return new Promise(resolve => {
       this.dbMain.getItems('buckles').subscribe(value => {
-        this.buckles = value;
+        this._buckles = value;
         resolve();
       });
     });
   }
 
-  getCrowns() {
+  private getCrowns() {
     return new Promise(resolve => {
       this.dbMain.getItems('crowns').subscribe(value => {
-        this.crowns = value;
+        this._crowns = value;
         resolve();
 
       });
     });
   }
 
-  getMovements() {
+  private getMovements() {
     return new Promise(resolve => {
       this.dbMain.getItems('movements').subscribe(value => {
-        this.movements = value;
+        this._movements = value;
         resolve();
       });
     });
   }
 
-  getCaseBacks() {
+  private getCaseBacks() {
     return new Promise(resolve => {
       this.dbMain.getItems('caseBacks').subscribe(value => {
-        this.caseBacks = value;
+        this._caseBacks = value;
         resolve();
       });
     });
   }
 
-  getCases() {
+  private getCases() {
     return new Promise(resolve => {
       this.dbMain.getItems('cases').subscribe(value => {
-        this.cases = value;
+        this._cases = value;
         resolve();
       });
     });
   }
 
-  getCrystals() {
+  private getCrystals() {
     return new Promise(resolve => {
       this.dbMain.getItems('crystals').subscribe(value => {
-        this.crystals = value;
+        this._crystals = value;
         resolve();
       });
     });
   }
 
-  getStraps() {
+  private getStraps() {
     return new Promise(resolve => {
       return this.dbMain.getItems('straps').subscribe(value => {
-        this.straps = value;
+        this._straps = value;
         resolve();
       });
     });

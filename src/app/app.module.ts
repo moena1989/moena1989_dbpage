@@ -62,7 +62,6 @@ import {TemporadasRelojComponent} from './pages/por_def/tipos-tendencias-page/te
 import {ConfigCoronaComponent} from './components/visualizador-config-corona/config-corona.component';
 import {AdderComponent} from './components/resources/adder/adder.component';
 import {HttpClientModule} from '@angular/common/http';
-import {DBS} from './environment/enviroment';
 import {AngularFireDatabaseModule} from '@angular/fire/database-deprecated';
 import {AngularFireDatabase} from '@angular/fire/database';
 import {UsuariosPageComponent} from './usuarios-page/usuarios-page.component';
@@ -73,6 +72,7 @@ import {PedidosPageComponent} from './pedidos-page/pedidos-page.component';
 import {ConfigCajaComponent} from './components/visualizador-config-caja/config-caja.component';
 import {DBPublicService} from './services/routes/d-b-public.service';
 import {ToolsServices} from './services/tools-services.service';
+import {DBS} from '../environments/environment';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -120,7 +120,7 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
       deps: [CurrentStorageService],
       multi: true
     }, NgxSmartModalService,
-    ModelsSevice, AuthService, AngularFireDatabase, DbMainService, DBPublicService, ToolsServices, AngularFirestore, HasherService],
+    ModelsSevice, AngularFireDatabase, DbMainService, DBPublicService, AuthService, ToolsServices, AngularFirestore, HasherService],
   bootstrap: [AppComponent]
 })
 

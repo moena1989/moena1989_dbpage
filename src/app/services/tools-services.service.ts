@@ -2,7 +2,7 @@ import {Injectable} from '@angular/core';
 import {SnackbarComponent} from '../tools/snackbar/snackbar.component';
 import {CanActivate, Router} from '@angular/router';
 import {Ng2ImgMaxService} from 'ng2-img-max';
-import {MAX_SIZE_IN_MB, MAX_SIZE_IN_PX} from '../environment/enviroment';
+import {MAX_SIZE_IN_MB, MAX_SIZE_IN_PX} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'

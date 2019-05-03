@@ -1,27 +1,23 @@
 import {Injectable} from '@angular/core';
 import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from '@angular/router';
 import {Observable} from 'rxjs';
-import {DbManagerService} from './db-manager.service';
-import {ToolsServices} from './tools-services.service';
-import {AuthService} from './routes/auth.service';
+import {CurrentStorageService} from './current-storage.service';
 
 @Injectable({
   providedIn: 'root'
 })
 export class AuthGuardService implements CanActivate {
-  constructor(private router: Router, private db: DbManagerService, private tools: ToolsServices, private auth: AuthService) {
+  constructor(private router: Router, private current: CurrentStorageService) {
   }
 
   canActivate(next: ActivatedRouteSnapshot, state: RouterStateSnapshot): Observable<boolean> | Promise<boolean> | boolean {
-    return true;
-    if (!this.auth.isLoggedIn()) {
-      this.router.navigate(['logIn']);
+    if (!this.current.userData) {
+      this.router.navigate(['login']);
+      console.error('USUARIO NO HABILITADO');
       return false;
     } else {
-      console.log('el guardia te habilitó ');
+      console.log('USUARIO HABILITADO');
       return true;
-      // this.tools.gUser = this.db.currentUser();
-      // return this.isEmailValido(this.tools.gUser.email);
     }
   }
 

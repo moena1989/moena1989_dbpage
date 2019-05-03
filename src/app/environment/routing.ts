@@ -34,9 +34,9 @@ import {ConfigCristalComponent} from '../config-cristal/config-cristal.component
 
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
-  {path: 'logIn', component: LoginComponent},
+  {path: 'login', component: LoginComponent},
   {path: 'sign_up', component: WorkerRegComponent},
-  {path: 'OAuthCallback', component: OAuthCallbackComponent},
+  // {path: 'OAuthCallback', component: OAuthCallbackComponent},
   {
     path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
       {path: 'home', component: HomeComponent},
