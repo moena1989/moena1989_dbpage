@@ -283,31 +283,32 @@ export class DbMainService {
   }
 
   getItems(tipoItem: string) {
-    return this.mainDb.collection('productData/' + 'watches/' + tipoItem).valueChanges();
+    return this.mainDb.collection('productsData/' + 'watches/' + tipoItem).valueChanges();
   }
 
   getItem(tipoItem: string, idItem: string) {
-    return this.mainDb.collection('productData/' + 'watches/' + tipoItem).doc(idItem).valueChanges();
+    return this.mainDb.collection('productsData/' + 'watches/' + tipoItem).doc(idItem).valueChanges();
   }
 
-  setItem(tipoItem: string, item: any) {
+  setItem(productType: string, partType: string, item: any) {
     item = this.addMeta(item);
-    return this.mainDb.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.id).set(item);
+    return new Promise(resolve => {
+      this.mainDb.collection('productsData/' + productType + '/' + partType).doc(item.metadata.id).set(item).then(value => {
+        resolve(item);
+      });
+    });
   }
 
-  updateItem(tipoItem: string, item: any) {
-    return this.mainDb.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.id).set(item);
+  updateItem(productType: string, partType: string, item: any) {
+    return this.mainDb.collection('productsData/' + productType + '/' + partType).doc(item.metadata.id).set(item);
   }
 
   // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  DELETES
-  deleteItem(tipoItem: string, item: any) {
-    return this.mainDb.collection('productData/' + 'watches/' + tipoItem).doc(item.metadata.id).delete();
+  deleteItem(productType: string, partType: string, item: any) {
+    return this.mainDb.collection('productsData/' + productType + '/' + partType).doc(item.metadata.id).delete();
   }
 
   setUserData(uid: string, user: any) {
-    // esta linea solo funcionará cuando se creer nuevos usuarios desde el admin final.
-    // user= this.addMeta(user);
-    //
     return this.mainDb.collection('users').doc(uid).set(user);
   }
 }

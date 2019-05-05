@@ -17,7 +17,7 @@ export class ModelRelojService {
 //       collections: [
 //         {
 //           id_coleccion: 0,
-//           items: [
+//           item: [
 //             {id_opc: 5, ids: [0, 1, 2]},
 //             {id_opc: 6, ids: [0, 1]},
 //             {id_opc: 7, ids: [1]},
@@ -26,7 +26,7 @@ export class ModelRelojService {
 //         },
 //         {
 //           id_coleccion: 1,
-//           items: [
+//           item: [
 //             {id_opc: 5, ids: [0]},
 //             {id_opc: 6, ids: [1]},
 //             {id_opc: 7, ids: [1]},
@@ -34,7 +34,7 @@ export class ModelRelojService {
 //         },
 //         {
 //           id_coleccion: 2,
-//           items: [
+//           item: [
 //             {id_opc: 5, ids: [0]},
 //             {id_opc: 6, ids: [1]},
 //             {id_opc: 7, ids: [1]},
@@ -42,7 +42,7 @@ export class ModelRelojService {
 //         },
 //         {
 //           id_coleccion: 3,
-//           items: [
+//           item: [
 //             {id_opc: 5, ids: [0]},
 //             {id_opc: 6, ids: [1]},
 //             {id_opc: 7, ids: [1]},
@@ -50,7 +50,7 @@ export class ModelRelojService {
 //         },
 //         {
 //           id_coleccion: 4,
-//           items: [
+//           item: [
 //             {id_opc: 5, ids: [0]},
 //             {id_opc: 6, ids: [1]},
 //             {id_opc: 7, ids: [2]},
@@ -59,7 +59,7 @@ export class ModelRelojService {
 //         },
 //         {
 //           id_coleccion: 5,
-//           items: [
+//           item: [
 //             // {id_opc: 0, ids: [0, 5, 6, 8, 9, 10, 14]},
 //             {id_opc: 5, ids: [0]},
 //             {id_opc: 6, ids: [0, 1]},
@@ -74,7 +74,7 @@ export class ModelRelojService {
 //       collections: [
 //         {
 //           id_coleccion: 0,
-//           items: [
+//           item: [
 //             // {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 13, 15, 16, 17]},
 //             {id_opc: 5, ids: [0, 1, 2]},
 //             {id_opc: 6, ids: [0, 1]},
@@ -90,7 +90,7 @@ export class ModelRelojService {
 //       collections: [
 //         {
 //           id_coleccion: 0,
-//           items: [
+//           item: [
 //             // {id_opc: 0, ids: [0, 4, 5, 6, 7, 8, 9, 11, 12, 15, 16, 17]},
 //             {id_opc: 5, ids: [0, 1, 2]},
 //             {id_opc: 6, ids: [0, 1]},
@@ -105,7 +105,7 @@ export class ModelRelojService {
 //       collections: [
 //         {
 //           id_coleccion: 0,
-//           items: [
+//           item: [
 //             {id_opc: 5, ids: [0, 1, 2]},
 //             {id_opc: 6, ids: [0, 1]},
 //             {id_opc: 7, ids: [1]},
@@ -114,7 +114,7 @@ export class ModelRelojService {
 //         },
 //         {
 //           id_coleccion: 1,
-//           items: [
+//           item: [
 //             {id_opc: 5, ids: [0]},
 //             {id_opc: 6, ids: [1]},
 //             {id_opc: 7, ids: [1]},
@@ -123,7 +123,7 @@ export class ModelRelojService {
 //         },
 //         {
 //           id_coleccion: 2,
-//           items: [
+//           item: [
 //             {id_opc: 5, ids: [0]},
 //             {id_opc: 6, ids: [1]},
 //             {id_opc: 7, ids: [1]},
@@ -131,14 +131,14 @@ export class ModelRelojService {
 //         },
 //         {
 //           id_coleccion: 3,
-//           items: [
+//           item: [
 //             {id_opc: 5, ids: [0]},
 //             {id_opc: 6, ids: [1]},
 //             {id_opc: 7, ids: [1]},
 //             {id_opc: 8, ids: [1, 4, 5, 6, 7, 9]}]
 //         }, {
 //           id_coleccion: 4,
-//           items: [
+//           item: [
 //             {id_opc: 5, ids: [0]},
 //             {id_opc: 6, ids: [1]},
 //             {id_opc: 7, ids: [2]},
@@ -147,7 +147,7 @@ export class ModelRelojService {
 //         }
 //         , {
 //           id_coleccion: 5,
-//           items: [
+//           item: [
 //             {id_opc: 5, ids: [0]},
 //             {id_opc: 6, ids: [0, 1]},
 //             {id_opc: 7, ids: [1]},
@@ -158,7 +158,7 @@ export class ModelRelojService {
 //       salt: 'N', id: 5, name: 'One',
 //       collections: [{
 //         id_coleccion: 0,
-//         items: [
+//         item: [
 //           {id_opc: 5, ids: [0, 1, 2]},
 //           {id_opc: 6, ids: [0, 1]},
 //           {id_opc: 7, ids: [0, 1]},
@@ -180,7 +180,7 @@ export class ModelRelojService {
 //   ///////////////////////////////////////////
 //   manos: any[] = [{name: 'FCM', salt: 'FCM'}];
 //
-//   items: any[] = [{
+//   item: any[] = [{
 //     id: 5, nombre: 'Tipo de maquinaria', ops: [
 //       {salt: 'MY', id: 0, name: 'Miyota'},
 //       {salt: 'SG', id: 1, name: 'Seagull'},

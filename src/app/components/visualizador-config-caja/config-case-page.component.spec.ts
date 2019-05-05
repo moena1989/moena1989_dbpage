@@ -1,20 +1,20 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
-import { ConfigCajaComponent } from './config-caja.component';
+import { ConfigCasePageComponent } from './config-case-page.component';
 
-describe('ConfigCajaComponent', () => {
-  let component: ConfigCajaComponent;
-  let fixture: ComponentFixture<ConfigCajaComponent>;
+describe('ConfigCasePageComponent', () => {
+  let component: ConfigCasePageComponent;
+  let fixture: ComponentFixture<ConfigCasePageComponent>;
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [ ConfigCajaComponent ]
+      declarations: [ ConfigCasePageComponent ]
     })
     .compileComponents();
   }));
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(ConfigCajaComponent);
+    fixture = TestBed.createComponent(ConfigCasePageComponent);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });

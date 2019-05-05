@@ -23,14 +23,14 @@ import {InventarioPageComponent} from '../pages/accounting/inventario-page/inven
 import {UsuariosPageComponent} from '../usuarios-page/usuarios-page.component';
 import {AjustesWebComponent} from '../idiomas-page/ajustes-web.component';
 import {PedidosPageComponent} from '../pedidos-page/pedidos-page.component';
-import {ConfigMaqComponent} from '../components/visualizador-config-maq/config-maq.component';
-import {ConfigCajaComponent} from '../components/visualizador-config-caja/config-caja.component';
-import {ConfigTapaComponent} from '../components/visualizador-config-tapa/config-tapa.component';
-import {ConfigModeloComponent} from '../components/visualizador-config-modelo-caja/config-modelo.component';
-import {ConfigCoronaComponent} from '../components/visualizador-config-corona/config-corona.component';
-import {ConfigHebillaComponent} from '../components/visualizador-config-hebilla/config-hebilla.component';
-import {ConfigPulsoComponent} from '../components/visualizador-config-pulso/config-pulso.component';
-import {ConfigCristalComponent} from '../config-cristal/config-cristal.component';
+import {ConfigMovementPage} from '../components/visualizador-config-maq/config-movement-page.component';
+import {ConfigCasePageComponent} from '../components/visualizador-config-caja/config-case-page.component';
+import {ConfigCasebackPageComponent} from '../components/visualizador-config-tapa/config-caseback-page.component';
+import {ConfigModelPageComponent} from '../components/visualizador-config-modelo-caja/config-model-page.component';
+import {ConfigCrownPageComponent} from '../components/visualizador-config-corona/config-crown-page.component';
+import {ConfigBuncklePageComponent} from '../components/visualizador-config-hebilla/config-bunckle-page.component';
+import {ConfigStrapPageComponent} from '../components/visualizador-config-pulso/config-strap-page.component';
+import {ConfigCrystalPageComponent} from '../config-cristal/config-crystal-page.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -78,14 +78,14 @@ export const routes: Routes = [
       {
         path: 'parts', component: PartesPageComponent,
         children: [
-          {path: 'movements', component: ConfigMaqComponent},
-          {path: 'cases', component: ConfigCajaComponent},
-          {path: 'straps', component: ConfigPulsoComponent},
-          {path: 'models', component: ConfigModeloComponent},
-          {path: 'crowns', component: ConfigCoronaComponent},
-          {path: 'crystals', component: ConfigCristalComponent},
-          {path: 'bunckles', component: ConfigHebillaComponent},
-          {path: 'caseBacks', component: ConfigTapaComponent}
+          {path: 'movements', component: ConfigMovementPage},
+          {path: 'cases', component: ConfigCasePageComponent},
+          {path: 'straps', component: ConfigStrapPageComponent},
+          {path: 'models', component: ConfigModelPageComponent},
+          {path: 'crowns', component: ConfigCrownPageComponent},
+          {path: 'crystals', component: ConfigCrystalPageComponent},
+          {path: 'bunckles', component: ConfigBuncklePageComponent},
+          {path: 'caseBacks', component: ConfigCasebackPageComponent}
         ]
       }]
   }];

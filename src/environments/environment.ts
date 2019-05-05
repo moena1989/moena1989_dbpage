@@ -11,26 +11,98 @@ export const SHOW_WINDOWS_BAR = false;
 export const MAX_SIZE_IN_PX = 2500;
 export const MAX_SIZE_IN_MB = 0.7;
 
-export const WATCH_TYPES = {
-  movement: 'movements',
-  model: 'models',
-  strap: 'straps',
-  bunckle: 'bunckles',
-  case: 'cases',
-  crystal: 'crystals',
-  crowns: 'crowns',
-  caseBack: 'casesBack',
+export const WATCH_PARTS = {
+  MOVEMENT: {
+    name: 'Maquinaria',
+    productType: 'watches',
+    productTypeId: 'watch',
+    type: 'movements',
+    typeId: 'movement'
+  },
+  CASE: {
+    name: 'Caja',
+    productType: 'watches',
+    productTypeId: 'watch',
+    type: 'cases',
+    typeId: 'case'
+  },
+  MODEL: {
+    name: 'Modelo',
+    productType: 'watches',
+    productTypeId: 'watch',
+    type: 'models',
+    typeId: 'model'
+  },
+  STRAP: {
+    name: 'Pulso',
+    productType: 'watches',
+    productTypeId: 'watch',
+    type: '',
+    typeId: ''
+  },
+  BUNCKLE: {
+    name: 'Hebilla',
+    productType: 'watches',
+    productTypeId: 'watch',
+    type: 'bunckles',
+    typeId: 'bunckle'
+  },
+  CROWN: {
+    name: 'Corona',
+    productType: 'watches',
+    productTypeId: 'watch',
+    type: 'crowns',
+    typeId: 'crown'
+  },
+  CASEBACK: {
+    name: 'Tapa',
+    productType: 'watches',
+    productTypeId: 'watch',
+    type: 'casebacks',
+    typeId: 'caseback'
+  },
+  CRYSTAL: {
+    name: 'Cristal',
+    productType: 'watches',
+    productTypeId: 'watch',
+    type: 'crystals',
+    typeId: 'crystal'
+  }
 };
-
+//   MODEL: {
+//     name: 'Modelo',
+//     productType: 'models',
+//   },
+//   STRAP: {
+//     name: 'Pulso',
+//     productType: 'models',
+//     imgDbRoute: 'products/watches/parts/strap'
+//   },
+//   BUNCKLE: {
+//     name: 'Hebilla',
+//     productType: 'models',
+//     imgDbRoute: 'products/watches/parts/bunckles'
+//   },
+//   CASE: {
+//     name: 'Caja',
+//     imgDbRoute: 'products/watches/parts/cases'
+//   },
+//   CRYSTAL: {
+//     name: 'Cristal',
+//     imgDbRoute: 'products/watches/parts/crystals'
+//   },
+//   CROWN: {
+//     name: 'Corona',
+//     productId: 'crown',
+//     imgDbRoute: 'products/watches/parts/crowns'
+//   },
+//   CASEBACK: {
+//     name: 'Tapa',
+//     productId: 'caseBack',
+//     imgDbRoute: 'products/watches/parts/caseBacks'
+//   }
+// };
 export const DBS = {
-  // real: {
-  //   apiKey: 'AIzaSyAh48TUW_EdI6fI6om3EMRCdlCC4U3n9U8',
-  //   authDomain: 'moenamaindb.firebaseapp.com',
-  //   databaseURL: 'https://moenamaindb.firebaseio.com',
-  //   projectId: 'moenamaindb',
-  //   storageBucket: 'moenamaindb.appspot.com',
-  //   messagingSenderId: '427343243507'
-  // },
   public: {
     apiKey: 'AIzaSyAZcu9JauJIWtaGQnDgLnJ3ZFg7RcEweAo',
     authDomain: 'publicpage-5b145-68fbf.firebaseapp.com',

@@ -3140,7 +3140,7 @@ var NgForOfContext = /** @class */ (function () {
  *
  * `NgForOf` provides several exported values that can be aliased to local variables:
  *
- * - `$implicit: T`: The value of the individual items in the iterable (`ngForOf`).
+ * - `$implicit: T`: The value of the individual item in the iterable (`ngForOf`).
  * - `ngForOf: NgIterable<T>`: The value of the iterable expression. Useful when the expression is
  * more complex then a property access, for example when using the async pipe (`userStreams |
  * async`).
@@ -3162,7 +3162,7 @@ var NgForOfContext = /** @class */ (function () {
  *
  * * When an item is added, a new instance of the template is added to the DOM.
  * * When an item is removed, its template instance is removed from the DOM.
- * * When items are reordered, their respective templates are reordered in the DOM.
+ * * When item are reordered, their respective templates are reordered in the DOM.
  * * Otherwise, the DOM element for that item will remain the same.
  *
  * Angular uses object identity to track insertions and deletions within the iterator and reproduce
@@ -3184,12 +3184,12 @@ var NgForOfContext = /** @class */ (function () {
  *
  * ### Syntax
  *
- * - `<li *ngFor="let item of items; index as i; trackBy: trackByFn">...</li>`
+ * - `<li *ngFor="let item of item; index as i; trackBy: trackByFn">...</li>`
  *
  * With `<ng-template>` element:
  *
  * ```
- * <ng-template ngFor let-item [ngForOf]="items" let-i="index" [ngForTrackBy]="trackByFn">
+ * <ng-template ngFor let-item [ngForOf]="item" let-i="index" [ngForTrackBy]="trackByFn">
  *   <li>...</li>
  * </ng-template>
  * ```
@@ -5544,17 +5544,17 @@ var SlicePipe = /** @class */ (function () {
     /**
      * @param value a list or a string to be sliced.
      * @param start the starting index of the subset to return:
-     *   - **a positive integer**: return the item at `start` index and all items after
+     *   - **a positive integer**: return the item at `start` index and all item after
      *     in the list or string expression.
-     *   - **a negative integer**: return the item at `start` index from the end and all items after
+     *   - **a negative integer**: return the item at `start` index from the end and all item after
      *     in the list or string expression.
      *   - **if positive and greater than the size of the expression**: return an empty list or
      * string.
      *   - **if negative and greater than the size of the expression**: return entire list or string.
      * @param end the ending index of the subset to return:
-     *   - **omitted**: return all items until the end.
-     *   - **if positive**: return all items before `end` index of the list or string.
-     *   - **if negative**: return all items before `end` index from the end of the list or string.
+     *   - **omitted**: return all item until the end.
+     *   - **if positive**: return all item before `end` index of the list or string.
+     *   - **if negative**: return all item before `end` index from the end of the list or string.
      */
     SlicePipe.prototype.transform = function (value, start, end) {
         if (value == null)
@@ -25497,7 +25497,7 @@ var TemplateDefinitionBuilder = /** @class */ (function () {
         }
         // e.g. C(1, C1Template)
         this.instruction.apply(this, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])([this._creationCode, template.sourceSpan, Identifiers$1.containerCreate], trimTrailingNulls(parameters)));
-        // e.g. p(1, 'forOf', ɵb(ctx.items));
+        // e.g. p(1, 'forOf', ɵb(ctx.item));
         var context = variable(CONTEXT_NAME);
         template.inputs.forEach(function (input) {
             var convertedBinding = _this.convertPropertyBinding(context, input.value);
@@ -33093,7 +33093,7 @@ function mixingMultiProvidersWithRegularProvidersError(provider1, provider2) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * A unique object used for retrieving items from the {@link ReflectiveInjector}.
+ * A unique object used for retrieving item from the {@link ReflectiveInjector}.
  *
  * Keys have:
  * - a system-wide unique `id`.
@@ -35962,14 +35962,14 @@ function getModuleFactory(id) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * An unmodifiable list of items that Angular keeps up to date when the state
+ * An unmodifiable list of item that Angular keeps up to date when the state
  * of the application changes.
  *
  * The type of object that {@link ViewChildren}, {@link ContentChildren}, and {@link QueryList}
  * provide.
  *
  * Implements an iterable interface, therefore it can be used in both ES6
- * javascript `for (var i of items)` loops as well as in Angular templates with
+ * javascript `for (var i of item)` loops as well as in Angular templates with
  * `*ngFor="let i of myList"`.
  *
  * Changes can be observed by subscribing to the changes `Observable`.
@@ -35981,7 +35981,7 @@ function getModuleFactory(id) {
  * ```typescript
  * @Component({...})
  * class Container {
- *   @ViewChildren(Item) items:QueryList<Item>;
+ *   @ViewChildren(Item) item:QueryList<Item>;
  * }
  * ```
  */
@@ -36281,18 +36281,18 @@ var ViewRef = /** @class */ (function (_super) {
  * an outer one and an inner one.
  *
  * ```
- * Count: {{items.length}}
+ * Count: {{item.length}}
  * <ul>
- *   <li *ngFor="let  item of items">{{item}}</li>
+ *   <li *ngFor="let  item of item">{{item}}</li>
  * </ul>
  * ```
  *
  * This is the outer `TemplateRef`:
  *
  * ```
- * Count: {{items.length}}
+ * Count: {{item.length}}
  * <ul>
- *   <ng-template ngFor let-item [ngForOf]="items"></ng-template>
+ *   <ng-template ngFor let-item [ngForOf]="item"></ng-template>
  * </ul>
  * ```
  *
@@ -36837,7 +36837,7 @@ var DefaultIterableDiffer = /** @class */ (function () {
     /**
      * Reset the state of the change objects to show no changes. This means set previousKey to
      * currentKey, and clear all of the queues (additions, moves, removals).
-     * Set the previousIndexes of moved and added items to their currentIndexes
+     * Set the previousIndexes of moved and added item to their currentIndexes
      * Reset the list of additions, moves and removals
      *
      * @internal
@@ -37488,7 +37488,7 @@ var DefaultKeyValueDiffer = /** @class */ (function () {
                 record._nextPrevious = record._next;
             }
             // Update `record.previousValue` with the value of the item before the changes
-            // We need to update all changed items (that'current_opciones_caja_modelo those which have been added and changed)
+            // We need to update all changed item (that'current_opciones_caja_modelo those which have been added and changed)
             for (record = this._changesHead; record !== null; record = record._nextChanged) {
                 record.previousValue = record.currentValue;
             }
