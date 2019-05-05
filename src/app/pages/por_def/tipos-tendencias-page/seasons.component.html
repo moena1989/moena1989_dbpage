@@ -1,0 +1,491 @@
+<div class="doc">
+  <div class="doc-top">
+    <div class="d-l-s">
+      <i class="fal fa-chart-network doc-top-ico"></i>
+      <div class="doc-top-ttl">Temporadas</div>
+    </div>
+    <div class="d-r-s">
+      <i class="fal fa-question-circle clickss"></i>
+    </div>
+  </div>
+  <app-tabs>
+    <div class="tab-item-content"
+         *ngFor="let t of tendencias"
+         [class.tab-opt-act]="selectedSeason?.metadata.id===t.metadata.id"
+         (click)="selectSeason(t)">
+      <i [class.dot-active]="t.state===current.states.public.name"
+         class="fas fa-circle tab-ido"></i>
+      <div> {{t.name}}</div>
+    </div>
+    <div class="tab-opt-new" (click)="mdTrendEdit.open()">
+      <i class="fal fa-plus tab-io"></i>
+      <div>Nueva Temporada</div>
+    </div>
+  </app-tabs>
+
+  <ng-container *ngIf="selectedSeason?.metadata?.id">
+    <div class="tmp-opts-temp" *ngIf="selectedSeasonCopy">
+      <div class="qweewq">Estado:</div>
+      <div class="opt-st">
+        <i [class.dot-active]="selectedSeason.state===current.states.public.name"
+           class="fas fa-circle tab-ido"></i>
+        <div class="part-txt">{{selectedSeason.state}}</div>
+      </div>
+
+      <div class="opt-t" *ngIf="selectedSeason.state===current.states.private.name"
+           (click)="mdPublicTrendProgram.open()">
+        <div class="fal fa-calendar-day as"></div>
+        <div class="part-txt">Programar publicación</div>
+      </div>
+
+      <div class="opt-t" *ngIf="selectedSeason.state===current.states.public.name">
+        <div class="fal fa-lock-alt as"></div>
+        <div class="part-txt">Privatizar tendencia</div>
+      </div>
+
+      <div class="opt-t" (click)="initSeasonUpdate()">
+        <div class="fal fa-edit as"></div>
+        <div class="part-txt">Editar Tendencia</div>
+      </div>
+
+      <div class="opt-t" (click)="mdEliminarTemp.open()">
+        <div class="fal fa-trash-alt as"></div>
+        <div class="part-txt">Eliminar Tendencia</div>
+      </div>
+      <!--<app-m-select tittle="Estado"-->
+      <!--(whenSelecting)="selectedSeasonCopy.estado= $event.name"-->
+      <!--[selectedItem]="{name: selectedSeasonCopy.estado}"-->
+      <!--[items]="[current.states.private,current.states.public]">-->
+      <!--</app-m-select>-->
+      <!--<app-form-button text="Eliminar temporada" (click)="mdEliminarTemp.open()">-->
+      <!--</app-form-button>-->
+      <!---->
+      <!--<app-form-button text="Guardar Cambios" (click)="updateSeason(selectedSeasonCopy)"></app-form-button>-->
+    </div>
+    <div class="ln"></div>
+    <div class="ctasd">
+      <app-vertical-bar>
+        <div class="tt">Colecciones</div>
+        <div class="side-opt " *ngFor="let c of collections" [class.side-act]="c===selectedCollection"
+             (click)="selectCollection(c)">
+          <i class="fas fa-cubes icoss_op"></i>
+          <div>
+            <div>{{c.name}} </div>
+            <div class="mm">
+              {{c.model.name}}
+            </div>
+          </div>
+        </div>
+        <div class="side-opt" *ngIf="selectedSeason" (click)="mdNuevaColeccion.open()">
+          <i class="fal fa-plus icoss_op"></i>
+          <div>Nuevo Ítem</div>
+        </div>
+      </app-vertical-bar>
+
+      <div class="tr-cnt-config" *ngIf="selectedCollection?.metadata?.id">
+        <div class="item-top-ttl">
+          <div class="part-sub-ttl">
+            <i class="fas fa-cubes  icoss_op"></i>
+            <div>
+              <div class="lil-sub">{{selectedCollection?.model.name}}</div>
+              <div class="part-ttl">{{selectedCollection?.name}}</div>
+            </div>
+
+            <div class="div-it"></div>
+            <div class="opt-st">
+              <i [class.dot-active]="selectedCollection.state===current.states.public.name"
+                 class="fas fa-circle tab-ido"></i>
+              <div class="part-txt">{{selectedCollectionCopy.state}}</div>
+            </div>
+
+            <div class="opt-t"
+                 *ngIf="selectedCollection.state===current.states.private.name">
+              <div class="fal fa-calendar-day as"></div>
+              <div class="part-txt">Programar publicación</div>
+            </div>
+
+            <div class="opt-t" *ngIf="selectedCollection.state===current.states.public.name">
+              <div class="fal fa-lock-alt as"></div>
+              <div class="part-txt">Privatizar tendencia</div>
+            </div>
+
+            <div class="opt-t">
+              <div class="fal fa-edit as"></div>
+              <div class="part-txt">Editar Colección</div>
+            </div>
+
+            <div class="opt-t">
+              <div class="fal fa-trash-alt as"></div>
+              <div class="part-txt">Eliminar Colección</div>
+            </div>
+          </div>
+        </div>
+
+        <!--<div class="col-vis">-->
+        <!--<app-visualizer ttl="Frontal" [scaleImg]="1" [imgURL]="selectedCollectionCopy?.imgData?.url" [lock]="true"-->
+        <!--(alSeleccionar)="currentFileCollection=$event"></app-visualizer>-->
+        <!--</div>-->
+
+        <!--<div class="ln"></div>-->
+        <div class="ln"></div>
+        <div class="tt">Configuraciones de Reloj</div>
+        <div class="s-wsc-cnt">
+          <app-watch-setting-card class="tab-item-content" [watchSettingData]="c"
+                                  *ngFor="let c of watchSettings"></app-watch-setting-card>
+
+
+          <div class="asdbt" (click)="mdNuevaConfiguracion.open()">
+            <i class="fal fa-plus-circle doc-top-ico"></i>
+            <div>
+              Nueva configuracion
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<!--////////////////////////////////////////////////////////////////////////////////////////////////////////////-->
+<ngx-smart-modal #mdTrendEdit identifier="mdNuevaTendencia">
+  <div class="cono" *ngIf="isUploading">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+  <div class="modal-tittle-bar">
+    <i class="fal fa-plus modal-tittle-ico"></i>
+    Nueva Temporada
+  </div>
+
+  <div class="md-cnt">Las tendencias serán privates, hasta que exista por lo menos una colección con una configuración
+    de reloj
+  </div>
+
+  <div class="md-cnt aefq">
+    <div class="l-s">
+      <div class="part-sub-tttl">
+        <i class="fal fa-database doc-top-ico"></i>
+        <div class="ttl"><strong>Datos generales</strong></div>
+      </div>
+      <div class="cnt-inputs">
+        <app-input [disable]="!isEditable" [value]="currentSeason.name" ttl="Nombre"
+                   placeholder="Nombre"
+                   (alEscribir)="newNameSeason($event)"></app-input>
+
+        <app-m-select tittle="Estado inicial"
+                      [isDisabled]="!isEditable"
+                      (whenSelecting)="currentSeason.state = $event.name"
+                      [items]="[current.states.private]">
+        </app-m-select>
+      </div>
+
+      <div class="part-sub-tttl">
+        <i class="fal fa-language doc-top-ico"></i>
+        <div class="ttl"><strong>Datos multi-idioma</strong></div>
+      </div>
+
+      <app-tabs>
+        <div class="tab-item-content"
+             *ngFor="let t of current.supportedLangs"
+             [class.tab-opt-act]="selectedLang===t" (click)="seleccionarIdiomaTendencia(t)">
+          <div>{{t.name}}</div>
+        </div>
+      </app-tabs>
+      <div class="cnt-inputs">
+        <app-input [disable]="!isEditable" [value]="currentSeason[selectedLang.code]?.name" ttl="Nombre"
+                   (alEscribir)="newNameSeason($event)"
+                   langCode="{{selectedLang.code}}"
+                   placeholder="Nombre">
+        </app-input>
+
+        <app-input [disable]="!isEditable" [value]="currentSeason[selectedLang.code]?.model" ttl="Modelo"
+                   (alEscribir)="currentSeason[selectedLang.code].model=$event"
+                   langCode="{{selectedLang.code}}"
+                   placeholder="Modelo">
+        </app-input>
+      </div>
+    </div>
+  </div>
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok"
+         *ngIf="!isSeasonUpdating"
+         (click)="pushSeason(currentSeason)">
+      Iniciar nueva temporada
+    </div>
+    <div class="modal-bottom-button bt-ok"
+         *ngIf="isSeasonUpdating"
+         (click)="updateSeason(currentSeason)">
+      Actualizar Temporada
+    </div>
+  </div>
+</ngx-smart-modal>
+
+<ngx-smart-modal #mdNuevaColeccion identifier="modalNewTrends">
+  <div class="cono" *ngIf="isUploading">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+  <div class="modal-tittle-bar">
+    <i class="far fa-ballot-watch modal-tittle-ico"></i>
+    Nueva colección
+  </div>
+
+  <div class="md-cnt aefq">
+    <div class="se-imgs-current-col">
+      <app-visualizer ttl="Frontal" [imgURL]="nwCollection?.imgData?.url" [lock]="false"
+                      (alSeleccionar)="currentFileCollection=$event"></app-visualizer>
+    </div>
+    <div class="l-s">
+      <div class="part-sub-tttl">
+        <i class="fal fa-database doc-top-ico"></i>
+        <div class="ttl"><strong>Datos generales</strong></div>
+      </div>
+      <div class="cnt-inputs">
+        <app-m-select tittle="Modelo de Reloj"
+                      [isDisabled]="!isEditable"
+                      (whenSelecting)="nwCollection.model = $event"
+                      [items]="current.models">
+        </app-m-select>
+
+        <app-input [disable]="!isEditable" [value]="nwCollection.name" ttl="Colección"
+                   placeholder="Nombre"
+                   (alEscribir)="nwNameCollection($event)"></app-input>
+
+        <app-m-select tittle="Estado inicial"
+                      [isDisabled]="!isEditable"
+                      (whenSelecting)="nwCollection.state = $event.name"
+                      [items]="[current.states.private]">
+        </app-m-select>
+
+
+      </div>
+
+      <div class="part-sub-tttl">
+        <i class="fal fa-language doc-top-ico"></i>
+        <div class="ttl"><strong>Datos multi-idioma</strong></div>
+      </div>
+
+      <app-tabs>
+        <div class="tab-item-content"
+             *ngFor="let t of current.supportedLangs"
+             [class.tab-opt-act]="selectedLang===t" (click)="seleccionarIdiomaTendencia(t)">
+          <div>{{t.name}}</div>
+        </div>
+      </app-tabs>
+      <div class="cnt-inputs">
+        <app-input [disable]="!isEditable" [value]="nwCollection[selectedLang.code]?.name" ttl="Nombre"
+                   (alEscribir)="nwNameCollection($event)"
+                   langCode="{{selectedLang.code}}"
+                   placeholder="Nombre">
+        </app-input>
+
+        <app-input [disable]="!isEditable" [value]="nwCollection[selectedLang.code]?.model" ttl="Modelo"
+                   (alEscribir)="nwCollection[selectedLang.code].model=$event"
+                   langCode="{{selectedLang.code}}"
+                   placeholder="Modelo">
+        </app-input>
+      </div>
+
+
+    </div>
+  </div>
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="pushCollection()">Iniciar nuevo registro</div>
+  </div>
+
+</ngx-smart-modal>
+<ngx-smart-modal #mdNuevaConfiguracion identifier="mdNuevaConfiguracion">
+
+  <div class="modal-tittle-bar">
+    <i class="far fa-ballot-check modal-tittle-ico"></i>
+    Nueva configuración
+  </div>
+
+  <div class="md-cnt item-opt-cnt">
+    <div class="se-imgs-current-con" *ngIf="nwWatchSetting">
+      <img *ngIf="nwWatchSetting?.strap" [src]="nwWatchSetting?.strap?.imgData?.url" alt="strap" class="mk-im-m">
+      <img *ngIf="nwWatchSetting?.movement" [src]="nwWatchSetting?.movement.imgData.url" alt="movement"
+           class="mk-im-m ">
+      <img *ngIf="nwWatchSetting?.case" [src]="nwWatchSetting?.case.imgData.url" alt="case" class="mk-im-m">
+    </div>
+
+    <div class="l-s">
+      <div class="part-sub-tttl">
+        <i class="fal fa-database doc-top-ico"></i>
+        <div class="ttl"><strong>Datos generales</strong></div>
+      </div>
+      <div class="cnt-inputs">
+        <app-input [disable]="true" [value]="selectedSeason?.name" ttl="Temporada"
+                   placeholder="Temporada"
+                   (alEscribir)="nwWatchSetting.season = $event"></app-input>
+
+        <app-input [disable]="true" [value]="selectedCollection?.name" ttl="Colección"
+                   placeholder="Nombre"
+                   (alEscribir)="nwNameCollection($event)"></app-input>
+
+
+        <app-input [disable]="!isEditable" [value]="nwWatchSetting.name" ttl="Nombre"
+                   placeholder="Nombre"
+                   (alEscribir)="nwNameConfig($event)"></app-input>
+
+        <app-m-select tittle="Estado inicial"
+                      [isDisabled]="!isEditable"
+                      (whenSelecting)="nwWatchSetting.state = $event.name"
+                      [items]="[current.states.private]">
+        </app-m-select>
+      </div>
+
+      <div class="part-sub-tttl">
+        <i class="fal fa-puzzle-piece doc-top-ico"></i>
+        <div class="ttl"><strong>Partes</strong></div>
+      </div>
+
+      <div class="cnt-inputs">
+        <app-m-select tittle="Modelo de Reloj"
+                      [isDisabled]="!isEditable"
+                      (whenSelecting)="nwWatchSetting.model = $event"
+                      [items]="current.models">
+        </app-m-select>
+        <!--TODO: ¿Cómo se gestionan los precios de forma internacional?-->
+        <!--<app-input ttl="Precio"-->
+        <!--[value]="nwWatchSetting.precio"-->
+        <!--(alEscribir)="nwWatchSetting.precio= $event"></app-input>-->
+
+        <app-m-select tittle="Hebilla"
+                      [isDisabled]="!isEditable"
+                      (whenSelecting)="nwWatchSetting.bunckle= $event"
+                      [items]="current.bunckles"></app-m-select>
+
+        <app-m-select tittle="Maquinaria"
+                      [isDisabled]="!isEditable"
+                      (whenSelecting)="nwWatchSetting.movement= $event"
+                      [items]="current.movements"></app-m-select>
+        <!--Todo Hay que filtrar las cases de acuerdo al modelo isSelected-->
+        <app-m-select tittle="Caja"
+                      [isDisabled]="!isEditable"
+                      (whenSelecting)="nwWatchSetting.case= $event"
+                      [items]="current.cases"></app-m-select>
+
+        <app-m-select tittle="Tapa"
+                      [isDisabled]="!isEditable"
+                      (whenSelecting)="nwWatchSetting.caseBacks= $event"
+                      [items]="current.caseBacks"></app-m-select>
+
+        <app-m-select tittle="Pulso"
+                      (whenSelecting)="nwWatchSetting.strap= $event"
+                      [items]="current.straps">
+        </app-m-select>
+
+        <app-m-select tittle="Cristal"
+                      (whenSelecting)="nwWatchSetting.crystal= $event"
+                      [items]="current.crystals"></app-m-select>
+      </div>
+
+      <div class="part-sub-tttl">
+        <i class="fal fa-language doc-top-ico"></i>
+        <div class="ttl"><strong>Datos multi-idioma</strong></div>
+      </div>
+
+      <app-tabs>
+        <div class="tab-item-content"
+             *ngFor="let t of current.supportedLangs"
+             [class.tab-opt-act]="selectedLang===t" (click)="seleccionarIdiomaTendencia(t)">
+          <div>{{t.name}}</div>
+        </div>
+      </app-tabs>
+      <div class="cnt-inputs">
+        <app-input [disable]="!isEditable" [value]="nwWatchSetting[selectedLang.code]?.name" ttl="Nombre"
+                   (alEscribir)="nwNameCollection($event)"
+                   langCode="{{selectedLang.code}}"
+                   placeholder="Nombre">
+        </app-input>
+
+        <app-input [disable]="!isEditable" [value]="nwWatchSetting[selectedLang.code]?.model" ttl="Modelo"
+                   (alEscribir)="nwWatchSetting[selectedLang.code].model=$event"
+                   langCode="{{selectedLang.code}}"
+                   placeholder="Modelo">
+        </app-input>
+      </div>
+      <div class="part-sub-tttl">
+        <i class="fal fa-money-bill doc-top-ico"></i>
+        <div class="ttl"><strong>Datos multi-divisa</strong></div>
+      </div>
+
+      <app-tabs>
+        <div class="tab-item-content"
+             *ngFor="let t of current.supportedCurrs" (click)="selectedCurr=t"
+             [class.tab-opt-act]="selectedCurr===t">
+          <div>{{t.name}}</div>
+        </div>
+      </app-tabs>
+      <div class="cnt-inputs">
+
+        <app-input [disable]="!isEditable" [value]="" ttl="Nombre"
+                   (alEscribir)="nwNameCollection($event)"
+                   langCode="{{selectedCurr?.symbol}}"
+                   placeholder="{{selectedCurr?.symbol}}">
+        </app-input>
+
+      </div>
+
+    </div>
+  </div>
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="pushWatchSetting()">Iniciar nuevo registro</div>
+  </div>
+</ngx-smart-modal>
+<!--///////////////////////////////////////////////////////////////////////////////////////////-->
+
+<ngx-smart-modal #mdEliminarTemp identifier="mdEliminarTempo">
+  <div class="cono" *ngIf="isUploading">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+
+  <div class="modal-tittle-bar">
+    <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
+    Advertencia
+  </div>
+
+  <div class="md-cnt">¿Deseas eliminar la temporada? las colecciones y tendencias incluidas se eliminarán
+  </div>
+
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="mdEliminarTemp.close()">NO</div>
+    <div class="modal-bottom-button bt-ok" (click)="deleteSeason(selectedSeason)">ELIMINAR</div>
+  </div>
+</ngx-smart-modal>
+
+<ngx-smart-modal #mdPublicTrendProgram identifier="mdPublicTrendProgram">
+  <div class="cono" *ngIf="isUploading">
+    <div></div>
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+
+  <div class="modal-tittle-bar">
+    <i class="fal fa-calendar-day modal-tittle-ico"></i>
+    Programar publicación
+  </div>
+
+
+  <div class="md-cnt">
+    <input type="datetime-local" name="bdaytime">
+  </div>
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="mdEliminarTemp.close()">NO</div>
+    <div class="modal-bottom-button bt-ok" (click)="updateSeason(selectedSeason)">ELIMINAR</div>
+  </div>
+</ngx-smart-modal>

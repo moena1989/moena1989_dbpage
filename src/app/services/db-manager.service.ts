@@ -15,8 +15,6 @@ export class DbManagerService {
   /*
   Servicio encargado de traer, y organizar los datos para la creación de cada reloj, contiene la estructura de cada uno de los registros.
    */
-  /// TODO buscar una manera mas organizada de manejar, los objetos de las páginas routiadas.
-  authState = null;
 
   constructor(public db: AngularFireDatabase, private afStorage: AngularFireStorage,
               private firebaseAuth: AngularFireAuth, private router: Router,
@@ -43,22 +41,6 @@ export class DbManagerService {
     return this.db.object(last_route).valueChanges();
   }
 
-  private pushAllNewUserInfo(user: any, uid: string) {
-    const itemRef = this.db.object('workers/' + uid);
-    itemRef.set({
-      email: user.email,
-      name: user.name,
-      last_name: user.last_name,
-      sex: 'asd',
-      cargo: user.cargo
-    });
-    this.router.navigate(['/logIn']);
-  }
-
-  get authenticated(): boolean {
-    return (this.authState !== null);
-  }
-
   // ________________________PUSHESS
   pushNuevoUsuario(usr: any, pass: string) {
     this.firebaseAuth
@@ -82,7 +64,6 @@ export class DbManagerService {
     this.db.object('data/cases/' + modelo + '/cases' + '/' + key_caja + '/estado')
       .set(estado);
   }
-
 
   push_nueva_caja(nueva_caja: any) {
     nueva_caja.my_key = this.db.list('data/cases/' + nueva_caja.modelo + '/cases').push(nueva_caja).key;
@@ -130,7 +111,6 @@ export class DbManagerService {
   push_nuevo_lote(current_lote: any) {
     const key = this.db.list('/data/lotes').push(current_lote).key;
     // actualizar numero del numeroDeLote
-    // TODO veeeeeeeerrr como resolver esta metadata de una forma un poco mas coqueta.
     const meta = new MetadataAttr();
     meta.fechaRegistro = Date();
     meta.numeroDeLote = current_lote.numeroDeLote;
@@ -147,8 +127,19 @@ export class DbManagerService {
     return this.db.object('/data/lotes/' + current_lote.my_key).update(current_lote);
   }
 
-
   get_lote(key_lote: string) {
     this.db.object('/data/lotes/' + key_lote).valueChanges();
+  }
+
+  private pushAllNewUserInfo(user: any, uid: string) {
+    const itemRef = this.db.object('workers/' + uid);
+    itemRef.set({
+      email: user.email,
+      name: user.name,
+      last_name: user.last_name,
+      sex: 'asd',
+      cargo: user.cargo
+    });
+    this.router.navigate(['/logIn']);
   }
 }

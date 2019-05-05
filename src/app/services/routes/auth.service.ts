@@ -5,6 +5,7 @@ import {Observable} from 'rxjs';
 import {AngularFireAuth} from '@angular/fire/auth';
 import {HttpClient} from '@angular/common/http';
 import {DbMainService} from './db-main.service';
+import {CurrentStorageService} from '../current-storage.service';
 
 @Injectable()
 export class AuthService {
@@ -14,7 +15,7 @@ export class AuthService {
 
   constructor(private _firebaseAuth: AngularFireAuth,
               private router: Router, private http: HttpClient,
-              zone: NgZone, private  dbMain: DbMainService) {
+              zone: NgZone, private  dbMain: DbMainService, private current: CurrentStorageService) {
   }
 
   signInWithGoogle() {
@@ -27,11 +28,10 @@ export class AuthService {
     return new Promise(resolve => {
       this._firebaseAuth.auth.signInWithEmailAndPassword(user, pass).then(value => {
         if (value) {
+          console.log(value);
           // this.pushDevData(value.user.uid);
-          this.dbMain.getUserData(value.user.uid).subscribe(datosUsuario => {
-            // this.current.userData = datosUsuario;
+          this.current.automaticAuth().then(value1 => {
             resolve(true);
-            // console.log(this.current.userData);
           });
         } else {
           resolve(false);

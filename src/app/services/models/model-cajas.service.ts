@@ -380,7 +380,7 @@ export class ModelsSevice {
       {salt: 'V', id: 10, nombre: 'A', opciones_reloj: this.CONFIG_RELOJ_ORIGEN_VINTAGE}
   };
 
-// LAS SALT, JAMAS DEBEN REPETIRSE, Y SE DEBEN AGREGAR A MANO, PUES ESTRUCTURAN EL SERIAL todo buscar como comprobar esto...
+// LAS SALT, JAMAS DEBEN REPETIRSE, Y SE DEBEN AGREGAR A MANO, PUES ESTRUCTURAN EL SERIAL
   _modelos: any = {
     ORIGEN: {
       salt: 'G',

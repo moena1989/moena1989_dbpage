@@ -9,8 +9,7 @@ import {DEFAULT_CODE_LANG, DEFAULT_SYMBOL_CURRENCY} from '../../environments/env
   providedIn: 'root'
 })
 export class CurrentStorageService {
-  //
-  public opcsEstadosTendencias = {publica: {nombre: 'Pública'}, privada: {nombre: 'Privada'}};
+  public states = {public: {name: 'Pública'}, private: {name: 'Privada'}};
   relojDisponible: ClockModel;
   public caja = [];
   public LANGS = [
@@ -433,8 +432,8 @@ export class CurrentStorageService {
     return this._userData;
   }
 
-  init() {
-    // todo esta zona es útil para iniciar todo lo que se requiera ANTES DE QUE LA APLICACIÓN INICIE
+  beforeInit() {
+    // PROMESAS QUE SE RESOLVERAN ANTES DE INICIAR LA APLICACIÓN
     return new Promise((resolve) => {
       Promise.all([
         this.automaticAuth(),

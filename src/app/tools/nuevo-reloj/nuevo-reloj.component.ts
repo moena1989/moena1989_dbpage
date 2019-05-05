@@ -169,7 +169,7 @@ export class NuevoRelojComponent implements OnInit {
 
   seleccionarModelo(_modelo: any) {
     this.modelo_seleccionado = _modelo;
-    this.current_opciones.colecciones = _modelo.items;
+    this.current_opciones.collections = _modelo.items;
     this.current_opciones.opciones_caja = _modelo.opciones_caja;
     this.current_reloj.modelo = _modelo.name;
     this.filtrosCaja.modelo = _modelo.name;

@@ -14,7 +14,7 @@ export class ModelRelojService {
 //   models: any[] = [
 //     {
 //       salt: 'G', id: 0, name: 'Origen',
-//       colecciones: [
+//       collections: [
 //         {
 //           id_coleccion: 0,
 //           items: [
@@ -71,7 +71,7 @@ export class ModelRelojService {
 //     },
 //     {
 //       salt: 'S', id: 1, name: 'Slim',
-//       colecciones: [
+//       collections: [
 //         {
 //           id_coleccion: 0,
 //           items: [
@@ -87,7 +87,7 @@ export class ModelRelojService {
 //     {
 //       salt: 'A', id: 2, name: 'Vira Aros',
 //
-//       colecciones: [
+//       collections: [
 //         {
 //           id_coleccion: 0,
 //           items: [
@@ -102,7 +102,7 @@ export class ModelRelojService {
 //     },
 //     {
 //       salt: 'I', id: 3, name: 'Inti',
-//       colecciones: [
+//       collections: [
 //         {
 //           id_coleccion: 0,
 //           items: [
@@ -156,7 +156,7 @@ export class ModelRelojService {
 //     },
 //     {
 //       salt: 'N', id: 5, name: 'One',
-//       colecciones: [{
+//       collections: [{
 //         id_coleccion: 0,
 //         items: [
 //           {id_opc: 5, ids: [0, 1, 2]},
@@ -167,7 +167,7 @@ export class ModelRelojService {
 //       }]
 //     }];
 //
-//   colecciones: any[] = [
+//   collections: any[] = [
 //     {salt: 'X', id: 0, name: 'Luxury'},
 //     {salt: 'H', id: 1, name: 'Hawaii'},
 //     {salt: 'A', id: 2, name: 'Animal Print'},

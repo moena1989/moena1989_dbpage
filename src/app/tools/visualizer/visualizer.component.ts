@@ -11,7 +11,7 @@ export class VisualizerComponent implements OnInit {
   public imagePath;
   @Input() imgURL: any = '';
   @Input() lock = false;
-  @Input() scaleImg = 2;
+  @Input() scaleImg = 1;
   public message = 'Seleccionar Imagen';
 
   @Output() alSeleccionar: EventEmitter<any> = new EventEmitter();

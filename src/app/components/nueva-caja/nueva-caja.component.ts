@@ -110,7 +110,7 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
       this.currentLote.serial += '-' + metadataLote.lotesTotales;
 
       for (let i = 0; i < this.currentLote.cajasTotales; i++) {
-        // init SUBIENDO LA IMAGEN DE CADA CAJA...
+        // beforeInit SUBIENDO LA IMAGEN DE CADA CAJA...
         const serialCaja = (this.currentLote.serial + '-' + (i + 1));
         serialesCajas.push(serialCaja);
         this.fs.pushImage(this.imagenesProcesadas[i], 'cases/' + serialCaja, url => {

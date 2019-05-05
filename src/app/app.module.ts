@@ -58,7 +58,7 @@ import {TrendCntComponent} from './components/resources/trend-cnt/trend-cnt.comp
 import {FormButtonComponent} from './components/resources/form-button/form-button.component';
 import {NoticiasPageComponent} from './pages/noticias-page/noticias-page.component';
 import {OpCntComponent} from './components/op-cnt/op-cnt.component';
-import {TemporadasRelojComponent} from './pages/por_def/tipos-tendencias-page/temporadas-reloj.component';
+import {SeasonsComponent} from './pages/por_def/tipos-tendencias-page/seasons.component';
 import {ConfigCoronaComponent} from './components/visualizador-config-corona/config-corona.component';
 import {AdderComponent} from './components/resources/adder/adder.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -73,12 +73,13 @@ import {ConfigCajaComponent} from './components/visualizador-config-caja/config-
 import {DBPublicService} from './services/routes/d-b-public.service';
 import {ToolsServices} from './services/tools-services.service';
 import {DBS} from '../environments/environment';
+import { WatchSettingCardComponent } from './watch-setting-card/watch-setting-card.component';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
 export function currentServiceFactory(provider: CurrentStorageService): () => Promise<any> {
-  return (): Promise<any> => provider.init();
+  return (): Promise<any> => provider.beforeInit();
 }
 
 @NgModule({
@@ -91,13 +92,13 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     PublicacionesPageComponent, VentasPageComponent, NuevaCajaComponent, InputComponent, FormButtonComponent,
     VerLoteComponent, TittlebarComponent, TopBarComponent, LoadbarComponent,
     OAuthCallbackComponent, TendenciasPageComponent, TrendCntComponent, NoticiasPageComponent,
-    TemporadasRelojComponent, VerTendenciasPageComponent, VerTendenciaPageComponent,
+    SeasonsComponent, VerTendenciasPageComponent, VerTendenciaPageComponent,
     VerTiposProductosComponent, OpCntComponent, PartesPageComponent, TabsComponent,
     ConfigPulsoComponent, ConfigMaqComponent,
     ConfigMaderaComponent, ConfigModeloComponent,
     ConfigTapaComponent, ConfigHebillaComponent,
     ConfigCoronaComponent, AdderComponent, UsuariosPageComponent, VerticalBarComponent,
-    ConfigCajaComponent, ConfigCristalComponent, AjustesWebComponent, PedidosPageComponent
+    ConfigCajaComponent, ConfigCristalComponent, AjustesWebComponent, PedidosPageComponent, WatchSettingCardComponent
   ],
   imports: [
     RouterModule.forRoot(routes, {enableTracing: false}),

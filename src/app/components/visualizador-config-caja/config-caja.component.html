@@ -86,7 +86,7 @@
         </div>
 
         <app-tabs>
-          <div class="tab-opt"
+          <div class="tab-item-content"
                *ngFor="let t of current.supportedLangs"
                [class.tab-opt-act]="selectedLanguage===t" (click)="selectLanguage(t)">
             <div>{{t.name}}</div>

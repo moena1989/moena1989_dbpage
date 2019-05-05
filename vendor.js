@@ -38618,8 +38618,8 @@ function shiftInitState(view, priorInitState, newInitState) {
     }
     return initState === newInitState;
 }
-// Returns true if the lifecycle init method should be called for the node with
-// the given init index.
+// Returns true if the lifecycle beforeInit method should be called for the node with
+// the given beforeInit index.
 function shouldCallLifecycleInitHook(view, initState, index) {
     if ((view.state & 1792 /* InitState_Mask */) === initState && view.initIndex <= index) {
         view.initIndex = index + 1;
@@ -42892,7 +42892,7 @@ function executeHooks(data, allHooks, checkHooks, creationMode) {
     }
 }
 /**
- * Calls lifecycle hooks with their contexts, skipping init hooks if it'current_opciones_caja_modelo not
+ * Calls lifecycle hooks with their contexts, skipping beforeInit hooks if it'current_opciones_caja_modelo not
  * creation mode.
  *
  * @param currentView The relojData view
@@ -44647,7 +44647,7 @@ function leaveView(newView, creationOnly) {
 }
 /**
  * Refreshes the view, executing the following steps in that order:
- * triggers init hooks, refreshes dynamic embedded views, triggers content hooks, sets host
+ * triggers beforeInit hooks, refreshes dynamic embedded views, triggers content hooks, sets host
  * bindings,
  * refreshes child components.
  * Note: view hooks are triggered later when leaving the view.
@@ -45925,7 +45925,7 @@ function containerRefreshStart(index) {
     isParent = true;
     previousOrParentNode.data[ACTIVE_INDEX] = 0;
     if (!checkNoChangesMode) {
-        // We need to execute init hooks here so ngOnInit hooks are called in top level views
+        // We need to execute beforeInit hooks here so ngOnInit hooks are called in top level views
         // before they are called in embedded views (for backwards compatibility).
         executeInitHooks(viewData, tView, creationMode);
     }
@@ -47200,7 +47200,7 @@ function NgOnChangesFeature(definition) {
         _loop_1(declaredName);
     }
     // If an onInit hook is defined, it will need to wrap the ngOnChanges call
-    // so the call order is changes-init-check in creation mode. In subsequent
+    // so the call order is changes-beforeInit-check in creation mode. In subsequent
     // change detection runs, only the check wrapper will be called.
     if (definition.onInit != null) {
         definition.onInit = onChangesWrapper(definition.onInit);

@@ -18,7 +18,7 @@ import {PublicacionesPageComponent} from '../pages/marketing/publicaciones-page/
 import {PortadaPageComponent} from '../pages/general/portada-page/portada-page.component';
 import {NoticiasPageComponent} from '../pages/noticias-page/noticias-page.component';
 import {NuevoRelojComponent} from '../tools/nuevo-reloj/nuevo-reloj.component';
-import {TemporadasRelojComponent} from '../pages/por_def/tipos-tendencias-page/temporadas-reloj.component';
+import {SeasonsComponent} from '../pages/por_def/tipos-tendencias-page/seasons.component';
 import {InventarioPageComponent} from '../pages/accounting/inventario-page/inventario-page.component';
 import {UsuariosPageComponent} from '../usuarios-page/usuarios-page.component';
 import {AjustesWebComponent} from '../idiomas-page/ajustes-web.component';
@@ -56,10 +56,10 @@ export const routes: Routes = [
               {path: '', component: VerTiposProductosComponent},
               {
                 path: ':tipoProductoSeleccionado',
-                component: TemporadasRelojComponent,
+                component: SeasonsComponent,
               },
               {
-                path: ':tipoProductoSeleccionado/:temporadaSeleccionda',
+                path: ':tipoProductoSeleccionado/:selectedSeason',
                 component: VerTendenciasPageComponent,
               }
             ]

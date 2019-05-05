@@ -20,7 +20,7 @@
 // import {MainComponent} from './components/main/main.component';
 // import {PortadaPageComponent} from './pages/general/portada-page/portada-page.component';
 // import {NoticiasPageComponent} from './pages/noticias-page/noticias-page.component';
-// import {TemporadasRelojComponent} from './pages/por_def/tipos-tendencias-page/tipos-tendencias-page.component';
+// import {SeasonsComponent} from './pages/por_def/tipos-tendencias-page/tipos-tendencias-page.component';
 //
 //
 // const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -50,10 +50,10 @@
 //                 {path: '', component: VerTiposProductosComponent},
 //                 {
 //                   path: ':tipoProductoSeleccionado',
-//                   component: TemporadasRelojComponent,
+//                   component: SeasonsComponent,
 //                 },
 //                 {
-//                   path: ':tipoProductoSeleccionado/:temporadaSeleccionda',
+//                   path: ':tipoProductoSeleccionado/:selectedSeason',
 //                   component: VerTendenciasPageComponent,
 //                 }
 //               ]

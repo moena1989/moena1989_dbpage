@@ -10,7 +10,8 @@
   font-size: .8em;
   margin-bottom: .5em;
   margin-top: .5em;
-  font-weight: 600;
+  opacity: .6;
+  /*font-weight: 600;*/
 }
 
 .selt {
@@ -25,7 +26,6 @@
   width: 12em;
   border-radius: .3em;
   background: rgba(247, 247, 247, 0);
-
 }
 
 select#fixed {

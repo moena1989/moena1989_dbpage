@@ -36,6 +36,7 @@
   display: flex;
   width: available;
   height: available;
+
 }
 
 .item-ttl {
@@ -50,20 +51,55 @@
   padding-bottom: 1em;
 }
 
+.asdbt {
+  box-sizing: border-box;
+  height: 100%;
+  display: flex;
+  border: 1px solid #f0f0f0;
+  border-radius: .2em;
+  width: 10em;
+  padding: 1em;
+  align-items: center;
+  flex-direction: column;
+  background: #fefefe;
+  margin-left: .5em;
+  justify-content: center;
+  opacity: .5;
+  cursor: pointer;
+  text-align: center;
+
+  &:hover {
+    transition: all .5s;
+    opacity: .8;
+  }
+}
+
 .item-top-ttl {
   width: 100%;
+  //height: 100%;
   display: flex;
   justify-content: space-between;
-  height: 3em;
+  //height: 3em;
   align-items: center;
   margin-bottom: 1em;
   //border: 1px solid rgba(44, 46, 62, 0.3);
 }
 
+.s-wsc-cnt {
+  height: 40vh;
+  width: 100%;
+  display: flex;
+}
+
 .as {
+  margin-right: .5em;
+  cursor: pointer;
+}
+
+.artg {
   margin: .5em;
   cursor: pointer;
-
+  font-size: 1.1em;
 }
 
 .maq-ttl {
@@ -97,7 +133,8 @@
   align-items: center;
   opacity: .5;
   cursor: pointer;
-  margin-left: .5em;
+  margin-left: 1em;
+  margin-right: .5em;
 
   &:hover {
     opacity: .8;
@@ -108,6 +145,7 @@
 .cnt-inputs {
   display: flex;
   margin-bottom: 1em;
+  flex-wrap: wrap;
 }
 
 .tab-dv {
@@ -180,7 +218,7 @@
 }
 
 //////////////////////////////////////////////
-.tab-opt {
+.tab-item-content {
   margin-right: 1.5em;
   padding: .5em 0em .5em 0em;
   cursor: pointer;
@@ -191,6 +229,7 @@
   transition: all .5s;
   display: flex;
   align-items: center;
+  font-size: .9em;
 
   &:hover {
     transition: all .5s;
@@ -211,10 +250,8 @@
   top: 0;
   margin: auto;
   padding-top: 2.2em;
-  //margin-right: auto;
   height: 22em;
-  //background: #ff253a;
-  //transform: scale(1.8);
+  transform: scale(2.5);
 }
 
 .bqe {
@@ -231,7 +268,6 @@
   overflow: hidden;
   display: flex;
   margin: .5em;
-
 }
 
 .tab-opt-new {
@@ -368,7 +404,11 @@
 
 .tt {
   font-weight: bold;
-  margin-bottom: .5em;
+  margin-bottom: 1em;
+  opacity: .7;
+  margin-left: 1em;
+  font-size: .9em;
+  //background: #71ff60;
 }
 
 .maq-ttl {
@@ -401,6 +441,14 @@
   font-size: 1.2em;
   margin-right: 1em;
 }
+
+.l-s {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  width: auto;
+}
+
 
 .doc-top-ttl {
   font-weight: 600;
@@ -443,14 +491,34 @@
   font-weight: bold;
 }
 
+.aefq {
+  flex-wrap: nowrap;
+}
+
 .md-cnt {
   display: flex;
   padding: 1em 2em 0em 2em;
-  flex-wrap: wrap;
   //background: #71ff60;
   box-sizing: border-box;
+  //background: #71ff60;
 }
 
+.div-it {
+  width: 1px;
+  height: 2em;
+  display: flex;
+  margin-left: 2em;
+  margin-right: 1em;
+  background: rgba(44, 46, 62, 0.25);
+}
+
+.tab-dv {
+  width: 1px;
+  height: 100%;
+  display: flex;
+  margin: 1em;
+  background: #2C2E3E;
+}
 
 .side-opt {
   width: 100%;

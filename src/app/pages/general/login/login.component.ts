@@ -35,6 +35,7 @@ export class LoginComponent implements OnInit {
   ingresarConUsuario(email: string, pass: string) {
     this.auth.signInWithEmail(email, pass).then(result => {
       if (result) {
+        console.log(' si entro ');
         this.router.navigateByUrl('/home').then(value => {
         });
       }
@@ -43,14 +44,6 @@ export class LoginComponent implements OnInit {
 
   salir(value: string, value2: string) {
     console.log('mierdad !!, parece que ya entendí como funciona la joda de github con VSCode');
-  }
-
-  signInWithZoho() {
-    // console.log(window.location.pathname);
-    this.router.navigate(['/externalRedirect', {externalUrl: 'https://accounts.zoho.com/oauth/v2/auth?scope=ZohoCRM.users.ALL&client_id=1000.A67SKNS3UDRO530634DXY89X5CFYNO&response_type=code&access_type=online&redirect_uri=' + this.tool.urlDomain + '/OAuthCallback'}], {
-      skipLocationChange: true,
-    });
-    // this.auth.signInWithZoho();
   }
 }
 
