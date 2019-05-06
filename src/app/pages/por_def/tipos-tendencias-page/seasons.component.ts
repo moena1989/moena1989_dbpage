@@ -19,7 +19,7 @@ export class SeasonsComponent implements OnInit {
   @ViewChild('mdEliminarCollection') modalDeleteCol: NgxSmartModalComponent;
   public isEditable = true;
   selectedSeason = undefined;
-  nwCollection: any = {};
+  currenCollection: any = {};
   currentSeason: any = {};
   nwWatchSetting: any = {};
   public tendencias: any[] = [];
@@ -36,18 +36,19 @@ export class SeasonsComponent implements OnInit {
   selectedCurr: any = undefined;
   private newSeason = {...this.current.multiLangStructure, state: 'Privada'};
   private isSeasonUpdating: boolean;
+  private isCollectionUpdating = false;
 
   constructor(private route: ActivatedRoute,
               private db: DBPublicService, private settings: ToolsServices, public current: CurrentStorageService) {
     this.localApp = settings.localApp;
+    this.getSeasons();
   }
 
   ngOnInit() {
     this.settings.tituloTopbar = 'Temporadas';
     this.selectedLang = this.current.defaultSelectedLang;
-    this.getSeasons();
     this.currentSeason = Object.assign({}, this.newSeason);
-    this.nwCollection = {...this.current.multiLangStructure};
+    this.currenCollection = {...this.current.multiLangStructure};
     this.nwWatchSetting = {...this.current.multiLangStructure};
     this.selectedLang = this.current.defaultSelectedLang;
   }
@@ -88,7 +89,6 @@ export class SeasonsComponent implements OnInit {
     console.log(coleccionSeleccionada);
     this.selectedCollection = coleccionSeleccionada;
     this.selectedCollectionCopy = Object.assign({}, coleccionSeleccionada);
-    // console.log('cooollections', selectedCollection);
     this.getWatchSettings(this.productType, coleccionSeleccionada.metadata.id);
   }
 
@@ -130,39 +130,27 @@ export class SeasonsComponent implements OnInit {
       this.isUploading = false;
       this.currentSeason = Object.assign({}, this.newSeason);
     });
-    this.getSeasons();
+    // this.getSeasons();
   }
 
-  updateSeason(tendencia: any) {
-    this.isUploading = true;
-    this.db.updateTemporada(this.productType, tendencia).then(value => {
-      this.modalSeason.close();
-      this.isUploading = false;
-    });
-    this.getSeasons();
-  }
+
 
   pushCollection() {
     this.isUploading = true;
     this.db.setNewImage(this.currentFileCollection, 'products/watches/collections').then(imgData => {
       {
-        this.nwCollection.imgData = imgData;
-        this.nwCollection.idSeason = this.selectedSeason.metadata.id;
-        this.db.setCollection(this.productType, this.selectedSeason, this.nwCollection).then(value => {
+        this.currenCollection.imgData = imgData;
+        this.currenCollection.idSeason = this.selectedSeason.metadata.id;
+        this.db.setCollection(this.productType, this.selectedSeason, this.currenCollection).then(value => {
           this.modalCollection.close();
           this.isUploading = false;
-          this.nwCollection = {...this.current.multiLangStructure};
+          this.currenCollection = {...this.current.multiLangStructure};
           this.currentFileCollection = undefined;
         });
       }
     });
   }
 
-  actualizarColeccion(coleccionSeleccionada: any) {
-    this.db.updateColeccion(this.productType, this.selectedSeason, coleccionSeleccionada).then(value => {
-      // console.log('colección actualizada');
-    });
-  }
 
   eliminarConfig(selectedConfig: any) {
     this.db.deleteItem('configuracionesReloj', selectedConfig).then(value => {
@@ -199,17 +187,12 @@ export class SeasonsComponent implements OnInit {
 
 
   nwNameCollection($event: any) {
-    this.nwCollection[this.selectedLang.code].name = $event;
+    this.currenCollection[this.selectedLang.code].name = $event;
     if (this.selectedLang.code === DEFAULT_CODE_LANG) {
-      this.nwCollection.name = $event;
+      this.currenCollection.name = $event;
     }
   }
 
-  initSeasonUpdate() {
-    this.currentSeason = Object.assign({}, this.selectedSeason);
-    this.modalSeason.open();
-    this.isSeasonUpdating = true;
-  }
 
   nwNameConfig($event: any) {
     this.nwWatchSetting[this.selectedLang.code].name = $event;
@@ -219,14 +202,49 @@ export class SeasonsComponent implements OnInit {
   }
 
   deleteCollection(selectedCollection: any) {
-    this.db.deleteCollection(this.productType, selectedCollection);
-    this.modalDeleteCol.close();
-    this.selectedCollection = undefined;
+    this.db.deleteCollection(this.productType, selectedCollection).then(value => {
+      this.modalDeleteCol.close();
+      this.selectedCollection = undefined;
+    });
   }
 
   initCollectionUpdate() {
-    // this.cur = Object.assign({}, this.selectedSeason);
+    this.currenCollection = Object.assign({}, this.selectedCollection);
+    this.modalCollection.open();
+    this.isCollectionUpdating = true;
+  }
+
+  initSeasonUpdate() {
+    this.currentSeason = Object.assign({}, this.selectedSeason);
     this.modalSeason.open();
     this.isSeasonUpdating = true;
+  }
+
+  updateCollection() {
+    this.isUploading = true;
+    this.db.updateColeccion(this.productType, this.currenCollection).then(value => {
+      this.modalCollection.close();
+      this.isUploading = false;
+      this.currenCollection = {imgData: {}, ...this.current.multiLangStructure};
+    });
+  }
+
+  updateSeason(tendencia: any) {
+    this.isUploading = true;
+    this.db.updateTemporada(this.productType, tendencia).then(value => {
+      this.modalSeason.close();
+      this.isUploading = false;
+      this.currentSeason = {imgData: {}, ...this.current.multiLangStructure};
+    });
+  }
+
+  cancelCollectionUpdate() {
+    this.currenCollection = {imgData: {}, ...this.current.multiLangStructure};
+    this.modalCollection.close();
+  }
+
+  cancelSeasonUpdate() {
+    this.currentSeason = {imgData: {}, ...this.current.multiLangStructure};
+    this.modalSeason.close();
   }
 }

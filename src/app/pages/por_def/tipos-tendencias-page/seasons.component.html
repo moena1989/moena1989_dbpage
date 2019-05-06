@@ -17,6 +17,7 @@
          class="fas fa-circle tab-ido"></i>
       <div> {{t.name}}</div>
     </div>
+
     <div class="tab-opt-new" (click)="mdTrendEdit.open()">
       <i class="fal fa-plus tab-io"></i>
       <div>Nueva Temporada</div>
@@ -133,7 +134,7 @@
           <div class="asdbt" (click)="mdNuevaConfiguracion.open()">
             <i class="fal fa-plus-circle doc-top-ico"></i>
             <div>
-              Nueva configuracion
+              Nueva configuración
             </div>
           </div>
         </div>
@@ -211,7 +212,8 @@
          (click)="pushSeason(currentSeason)">
       Iniciar nueva temporada
     </div>
-    <div class="modal-bottom-button bt-ok" (click)="mdTrendEdit.close()"
+
+    <div class="modal-bottom-button bt-ok" (click)="cancelSeasonUpdate()"
          *ngIf="isSeasonUpdating">
       Cancelar
     </div>
@@ -221,7 +223,6 @@
          (click)="updateSeason(currentSeason)">
       Actualizar Temporada
     </div>
-
 
   </div>
 </ngx-smart-modal>
@@ -241,7 +242,7 @@
 
   <div class="md-cnt aefq">
     <div class="se-imgs-current-col">
-      <app-visualizer ttl="Frontal" [imgURL]="nwCollection?.imgData?.url" [lock]="false"
+      <app-visualizer ttl="Frontal" [imgURL]="currenCollection?.imgData?.url" [lock]="false"
                       (alSeleccionar)="currentFileCollection=$event"></app-visualizer>
     </div>
 
@@ -253,21 +254,17 @@
       <div class="cnt-inputs">
         <app-m-select tittle="Modelo de Reloj"
                       [isDisabled]="!isEditable"
-                      (whenSelecting)="nwCollection.model = $event"
+                      (whenSelecting)="currenCollection.model = $event"
                       [items]="current.models">
         </app-m-select>
-
-        <app-input [disable]="!isEditable" [value]="nwCollection.name" ttl="Colección"
+        <app-input [disable]="!isEditable" [value]="currenCollection.name" ttl="Colección"
                    placeholder="Nombre"
                    (alEscribir)="nwNameCollection($event)"></app-input>
-
         <app-m-select tittle="Estado inicial"
                       [isDisabled]="!isEditable"
-                      (whenSelecting)="nwCollection.state = $event.name"
+                      (whenSelecting)="currenCollection.state = $event.name"
                       [items]="[current.states.private]">
         </app-m-select>
-
-
       </div>
 
       <div class="part-sub-tttl">
@@ -283,14 +280,13 @@
         </div>
       </app-tabs>
       <div class="cnt-inputs">
-        <app-input [disable]="!isEditable" [value]="nwCollection[selectedLang.code]?.name" ttl="Nombre"
+        <app-input [disable]="!isEditable" [value]="currenCollection[selectedLang.code]?.name" ttl="Nombre"
                    (alEscribir)="nwNameCollection($event)"
                    langCode="{{selectedLang.code}}"
                    placeholder="Nombre">
         </app-input>
-
-        <app-input [disable]="!isEditable" [value]="nwCollection[selectedLang.code]?.model" ttl="Modelo"
-                   (alEscribir)="nwCollection[selectedLang.code].model=$event"
+        <app-input [disable]="!isEditable" [value]="currenCollection[selectedLang.code]?.model" ttl="Modelo"
+                   (alEscribir)="currenCollection[selectedLang.code].model=$event"
                    langCode="{{selectedLang.code}}"
                    placeholder="Modelo">
         </app-input>
@@ -299,8 +295,21 @@
 
     </div>
   </div>
+
   <div class="modal-bottom-cnt">
-    <div class="modal-bottom-button bt-ok" (click)="pushCollection()">Iniciar nuevo registro</div>
+  </div>
+
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="cancelCollectionUpdate()">Cancelar</div>
+    <div class="modal-bottom-button bt-ok" *ngIf="isCollectionUpdating" (click)="updateCollection()">
+      Actualizar colección
+    </div>
+    <div class="modal-bottom-button bt-ok" *ngIf="!isCollectionUpdating" (click)="pushCollection()">
+      Iniciar nueva colección
+    </div>
+  </div>
+
+  <div class="modal-bottom-cnt">
   </div>
 
 </ngx-smart-modal>
