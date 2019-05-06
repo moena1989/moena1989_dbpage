@@ -1,222 +1,60 @@
 <div class="cnttnt">
-  <app-vertical-bar *ngIf="!isEditable && !isNewItem">
-    <div class="tt">Items</div>
-    <div class="side-opt" *ngFor="let item of current.cases"
-         [class.side-act]="item.name===currentItem?.name"
-         (click)="selectItem(item)">
-      <i class="fal fa-file-alt  icoss_op"></i>
-      <div>{{item.name}}</div>
+  <app-item-config #item [partType]="partType" [items]="current.cases">
+    <div class="visualizador">
+      <app-visualizer ttl="Frontal" scaleImg="2" [imgURL]="item.currentItem?.imgData.url" [lock]="!item.isEditable"
+                      (alSeleccionar)="item.onFileChanged($event)"></app-visualizer>
     </div>
-    <div class="side-opt" [class.side-act]="isNewItem" (click)="newItem()">
-      <i class="fal fa-plus icoss_op"></i>
-      <div>Nuevo Ítem</div>
-    </div>
-  </app-vertical-bar>
-
-  <div class="c-v" *ngIf="currentItem">
-    <div class="item-top-ttl">
-      <div class="part-sub-ttl">
-        <i class="fal fa-file-alt  icoss_op"></i>
-        <div>
-          <div class="lil-sub">{{typeItem}}</div>
-          <div class="part-ttl" *ngIf="isNewItem">{{MSG_NEW_ITEM}}</div>
-          <div class="part-ttl" *ngIf="!isNewItem">{{currentItem.name}}</div>
-        </div>
+    <div class="l-s">
+      <div class="part-sub-tttl">
+        <i class="fal fa-database doc-top-ico"></i>
+        <div class="ttl"><strong>Datos generales</strong></div>
       </div>
-      <div class="item-ttl">
-        <div class="opt-t" *ngIf="!isNewItem && !isEditable" (click)="startEditing()">
-          <div class="fal fa-edit as"></div>
-          <div class="part-txt">Editar</div>
-        </div>
+      <div class="cnt-inputs">
+        <app-input [disable]="!item.isEditable" [value]="item.currentItem?.name" ttl="Nombre"
+                   placeholder="Nombre"
+                   (alEscribir)="item.writingName($event)"></app-input>
 
-        <div class="opt-t" (click)="mdSaveItemWarn.open()" *ngIf="isNewItem && isEditable && hasImg">
-          <div class="fal fa-save as"></div>
-          <div class="part-txt">Finalizar Registro</div>
-        </div>
+        <app-m-select [items]="current.models" [isDisabled]="!item.isEditable"
+                      tittle="Modelo"
+                      (whenSelecting)="item.currentItem.model= $event"></app-m-select>
 
-        <div class="opt-t" *ngIf="!isNewItem && isEditable" (click)="mdUpdateItemWan.open()">
-          <div class="fal fa-save as"></div>
-          <div class="part-txt">Guardar cambios</div>
-        </div>
-
-        <div class="opt-t" *ngIf="!isNewItem && !isEditable" (click)="mdDeleteItemWarn.open()">
-          <div class="fal fa-trash-alt as"></div>
-          <div class="part-txt">Eliminar registro</div>
-        </div>
-
-        <div class="opt-t" *ngIf="!isNewItem && isEditable" (click)="mdCancel.open()">
-          <div class="fal fa-times as"></div>
-          <div class="part-txt">Cancelar
-          </div>
-        </div>
-
-        <div class="opt-t" *ngIf="isNewItem && isEditable" (click)="mdCancel2.open()">
-          <div class="fal fa-times as"></div>
-          <div class="part-txt">Cancelar
-          </div>
-        </div>
+        <app-input [disable]="!item.isEditable" [value]="item.currentItem?.code" ttl="Código ID"
+                   placeholder="###"
+                   (alEscribir)="item.currentItem.code= $event"></app-input>
       </div>
-    </div>
-    <!--<div class="ln"></div>-->
-    <div class="item-opt-cnt">
-      <div class="visualizador">
-        <app-visualizer ttl="Frontal" scaleImg="2" [imgURL]="currentItem?.imgData.url" [lock]="!isEditable"
-                        (alSeleccionar)="onFileChanged($event)"></app-visualizer>
+
+      <div class="part-sub-tttl">
+        <i class="fal fa-language doc-top-ico"></i>
+        <div class="ttl"><strong>Datos multi-idioma</strong></div>
       </div>
-      <div class="l-s">
 
-        <div class="part-sub-tttl">
-          <i class="fal fa-database doc-top-ico"></i>
-          <div class="ttl"><strong>Datos generales</strong></div>
+      <app-tabs>
+        <div class="tab-item-content"
+             *ngFor="let t of current.supportedLangs"
+             [class.tab-opt-act]="item.selectedLanguage===t" (click)="item.selectLanguage(t)">
+          <div>{{t.name}}</div>
         </div>
-        <div class="cnt-inputs">
-          <app-input [disable]="!isEditable" [value]="currentItem.name" ttl="Nombre"
-                     placeholder="Nombre"
-                     (alEscribir)="writingName($event)"></app-input>
+      </app-tabs>
 
-          <app-input [disable]="!isEditable" [value]="currentItem.code" ttl="Código ID"
-                     placeholder="###"
-                     (alEscribir)="currentItem.code= $event"></app-input>
-        </div>
+      <div class="cnt-inputs">
+        <app-input
+          ttl="Nombre"
+          placeholder="Nombre"
+          langCode="{{item.selectedLanguage?.code}}"
+          [value]="item.currentItem[item.selectedLanguage.code]?.name"
+          [disable]="!item.isEditable"
+          (alEscribir)="item.whenWriting($event)">
+        </app-input>
 
-        <div class="part-sub-tttl">
-          <i class="fal fa-language doc-top-ico"></i>
-          <div class="ttl"><strong>Datos multi-idioma</strong></div>
-        </div>
-
-        <app-tabs>
-          <div class="tab-item-content"
-               *ngFor="let t of current.supportedLangs"
-               [class.tab-opt-act]="selectedLanguage===t" (click)="selectLanguage(t)">
-            <div>{{t.name}}</div>
-          </div>
-        </app-tabs>
-
-        <div class="cnt-inputs">
-          <app-input [disable]="!isEditable" [value]="currentItem[selectedLanguage.code]?.name" ttl="Nombre"
-                     (alEscribir)="whenWriting($event)"
-                     langCode="{{selectedLanguage.code}}"
-                     placeholder="Nombre">
-          </app-input>
-
-          <app-input [disable]="!isEditable" [value]="currentItem[selectedLanguage.code]?.model" ttl="Modelo"
-                     (alEscribir)="currentItem[selectedLanguage.code].model=$event"
-                     langCode="{{selectedLanguage.code}}"
-                     placeholder="Modelo">
-          </app-input>
-        </div>
+        <app-input
+          ttl="Modelo"
+          placeholder="Modelo"
+          [disable]="!item.isEditable"
+          [value]="item.currentItem[item.selectedLanguage.code]?.model"
+          langCode="{{item.selectedLanguage.code}}"
+          (alEscribir)="item.currentItem[item.selectedLanguage.code].model=$event">
+        </app-input>
       </div>
     </div>
-  </div>
-  <div class="c-v part-msg-no-item" *ngIf="!currentItem">
-    <div>No se ha seleccionado ningún ítem.</div>
-  </div>
+  </app-item-config>
 </div>
-
-
-<ngx-smart-modal #mdDeleteItemWarn identifier="mdEliminarItem">
-  <div class="cono" *ngIf="isUploading">
-    <div class="spinner">
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
-    </div>
-  </div>
-
-  <div class="modal-tittle-bar">
-    <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
-    Advertencia
-  </div>
-
-  <div class="md-cnt">¿Seguro que deseas eliminar este ítem?
-  </div>
-
-  <div class="modal-bottom-cnt">
-    <div class="modal-bottom-button bt-ok" (click)="mdDeleteItemWarn.close()">NO</div>
-    <div class="modal-bottom-button bt-ok" (click)="deletItem()">ELIMINAR</div>
-  </div>
-</ngx-smart-modal>
-
-
-<ngx-smart-modal #mdSaveItemWarn identifier="mdGuardarItem">
-  <div class="cono" *ngIf="isUploading">
-    <div class="spinner">
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
-    </div>
-  </div>
-  <div class="modal-tittle-bar">
-    <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
-    Advertencia
-  </div>
-
-  <div class="md-cnt">¿Estás seguro que deseas finalizar y guardar?
-  </div>
-
-  <div class="modal-bottom-cnt">
-    <div class="modal-bottom-button bt-ok" (click)="mdDeleteItemWarn.close()">Cancelar</div>
-    <div class="modal-bottom-button bt-ok" (click)="pushNewItem()">SI</div>
-  </div>
-</ngx-smart-modal>
-
-<ngx-smart-modal #mdUpdateItemWan identifier="mdGuardarItem">
-  <div class="cono" *ngIf="isUploading">
-    <div class="spinner">
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
-    </div>
-  </div>
-
-  <div class="modal-tittle-bar">
-    <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
-    Advertencia
-  </div>
-
-  <div class="md-cnt">¿Actualizár ítem?
-  </div>
-
-  <div class="modal-bottom-cnt">
-    <div class="modal-bottom-button bt-ok" (click)="mdUpdateItemWan.close()">Cancelar</div>
-    <div class="modal-bottom-button bt-ok" (click)="updateItem()">SI</div>
-  </div>
-</ngx-smart-modal>
-
-
-<ngx-smart-modal #mdCancel identifier="mdCancel">
-  <!--<div class="gwre">-->
-  <div class="cono" *ngIf="isUploading">
-    <div class="spinner">
-      <div class="bounce1"></div>
-      <div class="bounce2"></div>
-      <div class="bounce3"></div>
-    </div>
-  </div>
-  <div class="modal-tittle-bar">
-    <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
-    Advertencia
-  </div>
-  <div class="md-cnt">¿Cancelar edición del ítem?
-  </div>
-  <div class="modal-bottom-cnt">
-    <div class="modal-bottom-button bt-ok" (click)="mdCancel.close()">NO</div>
-    <div class="modal-bottom-button bt-ok" (click)="cancelEditing()">SI</div>
-  </div>
-  <!--</div>-->
-</ngx-smart-modal>
-
-<ngx-smart-modal #mdCancel2 identifier="mdCancel2">
-
-  <div class="modal-tittle-bar">
-    <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
-    Advertencia
-  </div>
-  <div class="md-cnt">¿Cancelar nuevo ítem?
-  </div>
-
-  <div class="modal-bottom-cnt">
-    <div class="modal-bottom-button bt-ok" (click)="mdCancel2.close()">NO</div>
-    <div class="modal-bottom-button bt-ok" (click)="cancelNewItem()">SI</div>
-  </div>
-</ngx-smart-modal>

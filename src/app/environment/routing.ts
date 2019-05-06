@@ -23,7 +23,7 @@ import {InventarioPageComponent} from '../pages/accounting/inventario-page/inven
 import {UsuariosPageComponent} from '../usuarios-page/usuarios-page.component';
 import {AjustesWebComponent} from '../idiomas-page/ajustes-web.component';
 import {PedidosPageComponent} from '../pedidos-page/pedidos-page.component';
-import {ConfigMovementPage} from '../components/visualizador-config-maq/config-movement-page.component';
+import {ConfigMovementPageComponent} from '../components/visualizador-config-maq/config-movement-page.component';
 import {ConfigCasePageComponent} from '../components/visualizador-config-caja/config-case-page.component';
 import {ConfigCasebackPageComponent} from '../components/visualizador-config-tapa/config-caseback-page.component';
 import {ConfigModelPageComponent} from '../components/visualizador-config-modelo-caja/config-model-page.component';
@@ -78,7 +78,7 @@ export const routes: Routes = [
       {
         path: 'parts', component: PartesPageComponent,
         children: [
-          {path: 'movements', component: ConfigMovementPage},
+          {path: 'movements', component: ConfigMovementPageComponent},
           {path: 'cases', component: ConfigCasePageComponent},
           {path: 'straps', component: ConfigStrapPageComponent},
           {path: 'models', component: ConfigModelPageComponent},

@@ -45,7 +45,7 @@ import {TopBarComponent} from './components/environment/top-bar/top-bar.componen
 import {SidebarComponent} from './components/environment/sidebar/sidebar.component';
 import {InputComponent} from './components/resources/input/input.component';
 import {OAuthCallbackComponent} from './components/o-auth-callback/o-auth-callback.component';
-import {ConfigMovementPage} from './components/visualizador-config-maq/config-movement-page.component';
+import {ConfigMovementPageComponent} from './components/visualizador-config-maq/config-movement-page.component';
 import {WorkerRegComponent} from './pages/worker-reg/worker-reg.component';
 import {TendenciasPageComponent} from './components/products/tendencias-page.component';
 import {BrowserModule} from '@angular/platform-browser';
@@ -95,7 +95,7 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     OAuthCallbackComponent, TendenciasPageComponent, TrendCntComponent, NoticiasPageComponent,
     SeasonsComponent, VerTendenciasPageComponent, VerTendenciaPageComponent,
     VerTiposProductosComponent, OpCntComponent, PartesPageComponent, TabsComponent,
-    ConfigStrapPageComponent, ConfigMovementPage,
+    ConfigStrapPageComponent, ConfigMovementPageComponent,
     ConfigMaderaComponent, ConfigModelPageComponent,
     ConfigCasebackPageComponent, ConfigBuncklePageComponent,
     ConfigCrownPageComponent, AdderComponent, UsuariosPageComponent, VerticalBarComponent,

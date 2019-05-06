@@ -566,7 +566,7 @@ export class CurrentStorageService {
 
   private getCaseBacks() {
     return new Promise(resolve => {
-      this.dbMain.getItems('caseBacks').subscribe(value => {
+      this.dbMain.getItems('casebacks').subscribe(value => {
         this._caseBacks = value;
         resolve();
       });

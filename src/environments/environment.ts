@@ -37,8 +37,8 @@ export const WATCH_PARTS = {
     name: 'Pulso',
     productType: 'watches',
     productTypeId: 'watch',
-    type: '',
-    typeId: ''
+    type: 'straps',
+    typeId: 'strap'
   },
   BUNCKLE: {
     name: 'Hebilla',
