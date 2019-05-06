@@ -5,7 +5,8 @@ import {ToolsServices} from '../../services/tools-services.service';
 @Component({
   selector: 'app-main',
   templateUrl: './main.component.html',
-  styleUrls: ['./main.component.css'], animations: [fadeAnimation]
+  styleUrls: ['./main.component.css'],
+  animations: [fadeAnimation]
 })
 
 export class MainComponent implements OnInit {

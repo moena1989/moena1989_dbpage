@@ -1,9 +1,10 @@
-.main_cnt {
+.main-cnt-main {
   padding-left: var(--sidebar-width);
-  height: 100%;
   width: 100%;
+  height: auto;
   box-sizing: border-box;
   display: flex;
+  background: white;
   flex-direction: column;
 }
 
@@ -12,6 +13,7 @@
   height: 100vh;
   position: relative;
   display: flex;
+  background: white;
 }
 
 @media (min-width: 40em) {
@@ -42,7 +44,6 @@
     font-weight: 400;
     margin-left: 1em;
     cursor: pointer;
-    /*background: #cccccc;*/
   }
 
   .sub_opt:hover {

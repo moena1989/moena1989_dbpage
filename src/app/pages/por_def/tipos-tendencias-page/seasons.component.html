@@ -32,11 +32,11 @@
         <div class="part-txt">{{selectedSeason.state}}</div>
       </div>
 
-      <div class="opt-t" *ngIf="selectedSeason.state===current.states.private.name"
-           (click)="mdPublicTrendProgram.open()">
-        <div class="fal fa-calendar-day as"></div>
-        <div class="part-txt">Programar publicación</div>
-      </div>
+      <!--<div class="opt-t" *ngIf="selectedSeason.state===current.states.private.name"-->
+      <!--(click)="mdPublicTrendProgram.open()">-->
+      <!--<div class="fal fa-calendar-day as"></div>-->
+      <!--<div class="part-txt">Programar publicación</div>-->
+      <!--</div>-->
 
       <div class="opt-t" *ngIf="selectedSeason.state===current.states.public.name">
         <div class="fal fa-lock-alt as"></div>
@@ -81,8 +81,7 @@
           <div>Nuevo Ítem</div>
         </div>
       </app-vertical-bar>
-
-      <div class="tr-cnt-config" *ngIf="selectedCollection?.metadata?.id">
+      <div class="tr-cnt-config" *ngIf="selectedCollection">
         <div class="item-top-ttl">
           <div class="part-sub-ttl">
             <i class="fas fa-cubes  icoss_op"></i>
@@ -90,7 +89,6 @@
               <div class="lil-sub">{{selectedCollection?.model.name}}</div>
               <div class="part-ttl">{{selectedCollection?.name}}</div>
             </div>
-
             <div class="div-it"></div>
             <div class="opt-st">
               <i [class.dot-active]="selectedCollection.state===current.states.public.name"
@@ -98,23 +96,23 @@
               <div class="part-txt">{{selectedCollectionCopy.state}}</div>
             </div>
 
-            <div class="opt-t"
-                 *ngIf="selectedCollection.state===current.states.private.name">
-              <div class="fal fa-calendar-day as"></div>
-              <div class="part-txt">Programar publicación</div>
-            </div>
+            <!--<div class="opt-t"-->
+            <!--*ngIf="selectedCollection.state===current.states.private.name">-->
+            <!--<div class="fal fa-calendar-day as"></div>-->
+            <!--<div class="part-txt">Programar publicación</div>-->
+            <!--</div>-->
 
             <div class="opt-t" *ngIf="selectedCollection.state===current.states.public.name">
               <div class="fal fa-lock-alt as"></div>
               <div class="part-txt">Privatizar tendencia</div>
             </div>
 
-            <div class="opt-t">
+            <div class="opt-t" (click)="initCollectionUpdate()">
               <div class="fal fa-edit as"></div>
               <div class="part-txt">Editar Colección</div>
             </div>
 
-            <div class="opt-t">
+            <div class="opt-t" (click)="mdEliminarCollection.open()">
               <div class="fal fa-trash-alt as"></div>
               <div class="part-txt">Eliminar Colección</div>
             </div>
@@ -132,8 +130,6 @@
         <div class="s-wsc-cnt">
           <app-watch-setting-card class="tab-item-content" [watchSettingData]="c"
                                   *ngFor="let c of watchSettings"></app-watch-setting-card>
-
-
           <div class="asdbt" (click)="mdNuevaConfiguracion.open()">
             <i class="fal fa-plus-circle doc-top-ico"></i>
             <div>
@@ -215,11 +211,18 @@
          (click)="pushSeason(currentSeason)">
       Iniciar nueva temporada
     </div>
+    <div class="modal-bottom-button bt-ok" (click)="mdTrendEdit.close()"
+         *ngIf="isSeasonUpdating">
+      Cancelar
+    </div>
+
     <div class="modal-bottom-button bt-ok"
          *ngIf="isSeasonUpdating"
          (click)="updateSeason(currentSeason)">
       Actualizar Temporada
     </div>
+
+
   </div>
 </ngx-smart-modal>
 
@@ -241,6 +244,7 @@
       <app-visualizer ttl="Frontal" [imgURL]="nwCollection?.imgData?.url" [lock]="false"
                       (alSeleccionar)="currentFileCollection=$event"></app-visualizer>
     </div>
+
     <div class="l-s">
       <div class="part-sub-tttl">
         <i class="fal fa-database doc-top-ico"></i>
@@ -465,6 +469,27 @@
   </div>
 </ngx-smart-modal>
 
+<ngx-smart-modal #mdEliminarCollection identifier="mdEliminarCollection">
+  <div class="cono" *ngIf="isUploading">
+    <div class="spinner">
+      <div class="bounce1"></div>
+      <div class="bounce2"></div>
+      <div class="bounce3"></div>
+    </div>
+  </div>
+  <div class="modal-tittle-bar">
+    <i class="fal fa-exclamation-circle modal-tittle-ico"></i>
+    Advertencia
+  </div>
+
+  <div class="md-cnt">¿Eliminar la colección?</div>
+
+  <div class="modal-bottom-cnt">
+    <div class="modal-bottom-button bt-ok" (click)="mdEliminarCollection.close()">NO</div>
+    <div class="modal-bottom-button bt-ok" (click)="deleteCollection(selectedCollection)">ELIMINAR</div>
+  </div>
+</ngx-smart-modal>
+
 <ngx-smart-modal #mdPublicTrendProgram identifier="mdPublicTrendProgram">
   <div class="cono" *ngIf="isUploading">
     <div></div>
@@ -475,10 +500,10 @@
     </div>
   </div>
 
-  <div class="modal-tittle-bar">
-    <i class="fal fa-calendar-day modal-tittle-ico"></i>
-    Programar publicación
-  </div>
+  <!--<div class="modal-tittle-bar">-->
+  <!--<i class="fal fa-calendar-day modal-tittle-ico"></i>-->
+  <!--Programar publicación-->
+  <!--</div>-->
 
 
   <div class="md-cnt">

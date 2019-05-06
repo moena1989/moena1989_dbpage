@@ -1,7 +1,7 @@
 <app-sidebar></app-sidebar>
 <!--[ngClass]="tools.isMenuOpened ? 'is-opened' : 'is-closed'"-->
-<div class="main_cnt"
-     [@fadeAnimation]="o.isActivated">
+<!--[@fadeAnimation]="o.isActivated"-->
+<div class="main-cnt-main">
   <app-top-bar></app-top-bar>
   <router-outlet #o="outlet"></router-outlet>
 </div>

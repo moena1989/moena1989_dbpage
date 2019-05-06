@@ -1,14 +1,15 @@
-<!--<div class="tb-tittle">{{tools.tituloTopbar}}</div>-->
-<div class="top-busqueda">
-  <i class="far fa-search optsf" (click)="cerrarSesion()"></i>
-  <div>Buscar productos</div>
-</div>
-<div class="r_side">
-  <div class="sssc">
-    <div class="nombre">{{current.userData.name}} {{current.userData.lastname}}</div>
-    <div class="cargo">{{current.userData.bussinesPosition}}</div>
+<div class="top-main-cnt">
+  <div class="top-busqueda">
+    <i class="far fa-search optsf" (click)="cerrarSesion()"></i>
+    <div>Buscar productos</div>
   </div>
-  <i class="fal fa-user-astronaut usr"></i>
-  <!--<currentImg src="{{tools?.gUser.photoURL}}" class="usr" alt="">-->
-  <i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>
+  <div class="r_side">
+    <div class="sssc">
+      <div class="nombre">{{current.userData.name}} {{current.userData.lastname}}</div>
+      <div class="cargo">{{current.userData.bussinesPosition}}</div>
+    </div>
+    <i class="fal fa-user-astronaut usr"></i>
+    <i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>
+  </div>
 </div>
+<div class="magic"></div>

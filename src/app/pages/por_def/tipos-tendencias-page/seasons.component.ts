@@ -16,6 +16,7 @@ export class SeasonsComponent implements OnInit {
   @ViewChild('mdNuevaColeccion') modalCollection: NgxSmartModalComponent;
   @ViewChild('mdNuevaConfiguracion') modalWatchSets: NgxSmartModalComponent;
   @ViewChild('mdEliminarTemp') modalAdvTemporada: NgxSmartModalComponent;
+  @ViewChild('mdEliminarCollection') modalDeleteCol: NgxSmartModalComponent;
   public isEditable = true;
   selectedSeason = undefined;
   nwCollection: any = {};
@@ -24,7 +25,7 @@ export class SeasonsComponent implements OnInit {
   public tendencias: any[] = [];
   public selectedLang: any = {};
   public collections: any[] = [];
-  public tipoProducto = 'watches';
+  public productType = 'watches';
   public selectedCollection: any;
   public localApp: string;
   currentFileCollection: any;
@@ -52,7 +53,7 @@ export class SeasonsComponent implements OnInit {
   }
 
   getSeasons() {
-    this.db.getTemporadas(this.tipoProducto).subscribe(value => {
+    this.db.getSeasons(this.productType).subscribe(value => {
       this.tendencias = [];
       if (value !== undefined) {
         value.forEach(result => {
@@ -88,7 +89,7 @@ export class SeasonsComponent implements OnInit {
     this.selectedCollection = coleccionSeleccionada;
     this.selectedCollectionCopy = Object.assign({}, coleccionSeleccionada);
     // console.log('cooollections', selectedCollection);
-    this.getWatchSettings(this.tipoProducto, coleccionSeleccionada.metadata.id);
+    this.getWatchSettings(this.productType, coleccionSeleccionada.metadata.id);
   }
 
   selectSeason(selectedSeason: any) {
@@ -97,7 +98,7 @@ export class SeasonsComponent implements OnInit {
     this.watchSettings = [];
     this.collections = [];
     console.log(selectedSeason);
-    this.db.getCollections(this.tipoProducto, selectedSeason).subscribe(value => {
+    this.db.getCollections(this.productType, selectedSeason).subscribe(value => {
       this.collections = [];
       if (value[0]) {
         this.collections = value;
@@ -114,7 +115,7 @@ export class SeasonsComponent implements OnInit {
     // console.log('nuevo config', this.nwWatchSetting);
     this.isUploading = true;
 
-    this.db.setConfiguracionReloj(this.tipoProducto, this.selectedSeason,
+    this.db.setConfiguracionReloj(this.productType, this.selectedSeason,
       this.selectedCollection, this.nwWatchSetting).then(value => {
       // console.log('se sube configuración de reloj ;)');
       this.modalWatchSets.close();
@@ -124,7 +125,7 @@ export class SeasonsComponent implements OnInit {
 
   pushSeason(currentSeason: any) {
     this.isUploading = true;
-    this.db.setSeason(this.tipoProducto, currentSeason).then(value => {
+    this.db.setSeason(this.productType, currentSeason).then(value => {
       this.modalSeason.close();
       this.isUploading = false;
       this.currentSeason = Object.assign({}, this.newSeason);
@@ -134,7 +135,7 @@ export class SeasonsComponent implements OnInit {
 
   updateSeason(tendencia: any) {
     this.isUploading = true;
-    this.db.updateTemporada(this.tipoProducto, tendencia).then(value => {
+    this.db.updateTemporada(this.productType, tendencia).then(value => {
       this.modalSeason.close();
       this.isUploading = false;
     });
@@ -147,7 +148,7 @@ export class SeasonsComponent implements OnInit {
       {
         this.nwCollection.imgData = imgData;
         this.nwCollection.idSeason = this.selectedSeason.metadata.id;
-        this.db.setCollection(this.tipoProducto, this.selectedSeason, this.nwCollection).then(value => {
+        this.db.setCollection(this.productType, this.selectedSeason, this.nwCollection).then(value => {
           this.modalCollection.close();
           this.isUploading = false;
           this.nwCollection = {...this.current.multiLangStructure};
@@ -158,7 +159,7 @@ export class SeasonsComponent implements OnInit {
   }
 
   actualizarColeccion(coleccionSeleccionada: any) {
-    this.db.updateColeccion(this.tipoProducto, this.selectedSeason, coleccionSeleccionada).then(value => {
+    this.db.updateColeccion(this.productType, this.selectedSeason, coleccionSeleccionada).then(value => {
       // console.log('colección actualizada');
     });
   }
@@ -173,7 +174,7 @@ export class SeasonsComponent implements OnInit {
 
   deleteSeason(tempo: any) {
     this.isUploading = true;
-    this.db.deleteItem(this.tipoProducto, tempo).then(value => {
+    this.db.deleteItem(this.productType, tempo).then(value => {
       console.log(value);
       this.modalAdvTemporada.close();
       this.currentSeason = Object.assign({}, this.newSeason);
@@ -205,7 +206,7 @@ export class SeasonsComponent implements OnInit {
   }
 
   initSeasonUpdate() {
-    this.currentSeason = this.selectedSeason;
+    this.currentSeason = Object.assign({}, this.selectedSeason);
     this.modalSeason.open();
     this.isSeasonUpdating = true;
   }
@@ -215,5 +216,17 @@ export class SeasonsComponent implements OnInit {
     if (this.selectedLang.code === DEFAULT_CODE_LANG) {
       this.nwWatchSetting.name = $event;
     }
+  }
+
+  deleteCollection(selectedCollection: any) {
+    this.db.deleteCollection(this.productType, selectedCollection);
+    this.modalDeleteCol.close();
+    this.selectedCollection = undefined;
+  }
+
+  initCollectionUpdate() {
+    // this.cur = Object.assign({}, this.selectedSeason);
+    this.modalSeason.open();
+    this.isSeasonUpdating = true;
   }
 }

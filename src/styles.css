@@ -8,9 +8,9 @@
 }
 
 
+
 .material_content {
   display: flex;
-  /*width: 100%;*/
   border-radius: .2em;
   margin-bottom: 1em;
   border: 1px solid #dddddd;

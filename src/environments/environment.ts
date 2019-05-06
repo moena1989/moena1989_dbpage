@@ -10,7 +10,6 @@ export const DEFAULT_SYMBOL_CURRENCY = 'US$';
 export const SHOW_WINDOWS_BAR = false;
 export const MAX_SIZE_IN_PX = 2500;
 export const MAX_SIZE_IN_MB = 0.7;
-
 export const WATCH_PARTS = {
   MOVEMENT: {
     name: 'Maquinaria',
