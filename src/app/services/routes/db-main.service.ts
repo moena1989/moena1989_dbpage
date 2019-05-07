@@ -287,12 +287,24 @@ export class DbMainService {
   }
 
   // ${key}
-  getItemsByFilters(itemType: string, modelId: any, externalDiameter: any) {
+  getCaseByFilters(itemType: string, modelId: any, externalDiameter: any) {
     return this.mainDb.collection('productsData/' + 'watches/' + itemType, ref => {
       // TODO: revisar externalDiameters, pues no es la forma definitiva...
       return ref
         .where('model.metadata.id', '==', modelId)
         .where('externalDiameter.name', '==', externalDiameter);
+    }).valueChanges();
+  }
+
+// TODO: SI O SI ARRAY FILTER ES DE (3)
+  getItemsByWhereFilters(itemType: string, whereFilters: any[]) {
+    return this.mainDb.collection('productsData/' + 'watches/' + itemType, ref => {
+      // TODO: revisar externalDiameters, pues no es la forma definitiva...
+      let s = ref;
+      whereFilters.forEach(value => {
+        s = s.where(value.a, value.b, value.c);
+      });
+      return s;
     }).valueChanges();
   }
 

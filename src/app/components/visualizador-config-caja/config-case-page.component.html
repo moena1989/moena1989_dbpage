@@ -2,22 +2,26 @@
   <div class="plus-opts-item">
     <div><strong>Modelos</strong></div>
     <app-visual-selector>
-      <div
-        class="vsi-item"
-        [class.vsi-item-act]="c===modelSelected"
-        *ngFor="let c of currentData.models"
-        (click)="selectModel(c)"
-      >{{c.name}}</div>
+      <ng-container *ngFor="let c of currentData.models;  let i = index">
+        <div
+          class="vsi-item"
+          [class.vsi-item-act]="c===modelSelected"
+          (click)="selectModel(c)">{{c.name}}</div>
+        <div class="vsi-item-divider" *ngIf="i!==currentData.models.length-1"></div>
+      </ng-container>
     </app-visual-selector>
   </div>
   <div class="plus-opts-divider"></div>
   <div *ngIf="modelSelected" class="plus-opts-item">
     <div><strong>Diámetros externos</strong></div>
     <app-visual-selector>
-      <div class="vsi-item"
-           [class.vsi-item-act]="ed===externalDiameterSelected"
-           (click)="selectExternalDiameter(ed)"
-           *ngFor="let ed of [{name:38},{name:40},{name:42}]">{{ed.name}}</div>
+      <ng-container *ngFor="let ed of [{name:38},{name:42}]; let i = index">
+        <div class="vsi-item"
+             [class.vsi-item-act]="ed===externalDiameterSelected"
+             (click)="selectExternalDiameter(ed)"
+        >{{ed.name}}</div>
+        <div class="vsi-item-divider" *ngIf="i!== [{name:38},{name:42}].length-1"></div>
+      </ng-container>
     </app-visual-selector>
   </div>
 </div>

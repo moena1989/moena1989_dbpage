@@ -34,7 +34,7 @@ export class ConfigCasePageComponent implements OnInit, AfterViewInit {
       this.modelIdFilter,
       this.externalDiameterFilter
     ).pipe(switchMap(([model, ed]) => {
-      return this.db.getItemsByFilters('cases', model, ed);
+      return this.db.getCaseByFilters('cases', model, ed);
     }));
     s.subscribe(value => {
       console.log(value);
@@ -52,6 +52,9 @@ export class ConfigCasePageComponent implements OnInit, AfterViewInit {
   selectModel(model: any) {
     this.modelSelected = model;
     this.itemConfig.currentItem['model'] = model;
+    this.externalDiameterSelected = undefined;
+    this.itemConfig.currentItem['externalDiameter'] = undefined;
+
     this.modelIdFilter.next(model.metadata.id);
   }
 
