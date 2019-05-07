@@ -27,7 +27,7 @@ import {HasherService} from './services/hasher.service';
 import {RegistroComponent} from './pages/por_def/registro/registro.component';
 import {ModelsSevice} from './services/models/model-cajas.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {newCaseComponent} from './components/nueva-caja/new-case.component';
+import {NewCaseComponent} from './components/nueva-caja/new-case.component';
 import {MainComponent} from './components/main/main.component';
 import {RelojBuscadoComponent} from './tools/reloj-buscado/reloj-buscado.component';
 import {LoadbarComponent} from './components/resources/loadbar/loadbar.component';
@@ -75,6 +75,7 @@ import {ToolsServices} from './services/tools-services.service';
 import {DBS} from '../environments/environment';
 import { WatchSettingCardComponent } from './watch-setting-card/watch-setting-card.component';
 import { ItemConfigComponent } from './item-config/item-config.component';
+import { SelectFormComponent } from './select-form/select-form.component';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -90,7 +91,7 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     WorkerRegComponent, SnackbarComponent, RegistroComponent,
     RelojBuscadoComponent, PortadaPageComponent, MSelectComponent, VisualizerComponent,
     HomeComponent, RegistroPageComponent, ExperimentosPageComponent, InventarioPageComponent,
-    PublicacionesPageComponent, VentasPageComponent, newCaseComponent, InputComponent, FormButtonComponent,
+    PublicacionesPageComponent, VentasPageComponent, NewCaseComponent, InputComponent, FormButtonComponent,
     VerLoteComponent, TittlebarComponent, TopBarComponent, LoadbarComponent,
     OAuthCallbackComponent, TendenciasPageComponent, TrendCntComponent, NoticiasPageComponent,
     SeasonsComponent, VerTendenciasPageComponent, VerTendenciaPageComponent,
@@ -99,7 +100,7 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     ConfigMaderaComponent, ConfigModelPageComponent,
     ConfigCasebackPageComponent, ConfigBuncklePageComponent,
     ConfigCrownPageComponent, AdderComponent, UsuariosPageComponent, VerticalBarComponent,
-    ConfigCasePageComponent, ConfigCrystalPageComponent, AjustesWebComponent, PedidosPageComponent, WatchSettingCardComponent, ItemConfigComponent
+    ConfigCasePageComponent, ConfigCrystalPageComponent, AjustesWebComponent, PedidosPageComponent, WatchSettingCardComponent, ItemConfigComponent, SelectFormComponent
   ],
   imports: [
     RouterModule.forRoot(routes, {enableTracing: false}),

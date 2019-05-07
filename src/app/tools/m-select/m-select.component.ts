@@ -21,7 +21,7 @@ export class MSelectComponent implements OnInit {
     if (options !== undefined) { // existe data
       this.currentOps = options;
       // si solamente tiene una selección entonces que sea la predeterminada
-      if (options.length === 1) {
+      if (options[0]) {
         // console.log('se selecciona autamaticamente');
         this.isSelected = true;
         this.whenSelecting.emit(options[0]);

@@ -33,7 +33,7 @@
         <div class="part-txt">{{selectedSeason.state}}</div>
       </div>
 
-      <!--<div class="opt-t" *ngIf="selectedSeason.state===current.states.private.name"-->
+      <!--<div class="opt-t" *ngIf="selectedSeason.state===currentData.states.private.name"-->
       <!--(click)="mdPublicTrendProgram.open()">-->
       <!--<div class="fal fa-calendar-day as"></div>-->
       <!--<div class="part-txt">Programar publicación</div>-->
@@ -56,7 +56,7 @@
       <!--<app-m-select tittle="Estado"-->
       <!--(whenSelecting)="selectedSeasonCopy.estado= $event.name"-->
       <!--[selectedItem]="{name: selectedSeasonCopy.estado}"-->
-      <!--[item]="[current.states.private,current.states.public]">-->
+      <!--[item]="[currentData.states.private,currentData.states.public]">-->
       <!--</app-m-select>-->
       <!--<app-form-button text="Eliminar temporada" (click)="mdEliminarTemp.open()">-->
       <!--</app-form-button>-->
@@ -98,7 +98,7 @@
             </div>
 
             <!--<div class="opt-t"-->
-            <!--*ngIf="selectedCollection.state===current.states.private.name">-->
+            <!--*ngIf="selectedCollection.state===currentData.states.private.name">-->
             <!--<div class="fal fa-calendar-day as"></div>-->
             <!--<div class="part-txt">Programar publicación</div>-->
             <!--</div>-->
@@ -168,7 +168,7 @@
         <div class="ttl"><strong>Datos generales</strong></div>
       </div>
       <div class="cnt-inputs">
-        <app-input [disable]="!isEditable" [value]="currentSeason.name" ttl="Nombre"
+        <app-input [isDisabled]="!isEditable" [value]="currentSeason.name" ttl="Nombre"
                    placeholder="Nombre"
                    (whenWriting)="newNameSeason($event)"></app-input>
 
@@ -192,13 +192,13 @@
         </div>
       </app-tabs>
       <div class="cnt-inputs">
-        <app-input [disable]="!isEditable" [value]="currentSeason[selectedLang.code]?.name" ttl="Nombre"
+        <app-input [isDisabled]="!isEditable" [value]="currentSeason[selectedLang.code]?.name" ttl="Nombre"
                    (whenWriting)="newNameSeason($event)"
                    langCode="{{selectedLang.code}}"
                    placeholder="Nombre">
         </app-input>
 
-        <app-input [disable]="!isEditable" [value]="currentSeason[selectedLang.code]?.model" ttl="Modelo"
+        <app-input [isDisabled]="!isEditable" [value]="currentSeason[selectedLang.code]?.model" ttl="Modelo"
                    (whenWriting)="currentSeason[selectedLang.code].model=$event"
                    langCode="{{selectedLang.code}}"
                    placeholder="Modelo">
@@ -257,7 +257,7 @@
                       (whenSelecting)="currenCollection.model = $event"
                       [items]="current.models">
         </app-m-select>
-        <app-input [disable]="!isEditable" [value]="currenCollection.name" ttl="Colección"
+        <app-input [isDisabled]="!isEditable" [value]="currenCollection.name" ttl="Colección"
                    placeholder="Nombre"
                    (whenWriting)="nwNameCollection($event)"></app-input>
         <app-m-select tittle="Estado inicial"
@@ -280,12 +280,12 @@
         </div>
       </app-tabs>
       <div class="cnt-inputs">
-        <app-input [disable]="!isEditable" [value]="currenCollection[selectedLang.code]?.name" ttl="Nombre"
+        <app-input [isDisabled]="!isEditable" [value]="currenCollection[selectedLang.code]?.name" ttl="Nombre"
                    (whenWriting)="nwNameCollection($event)"
                    langCode="{{selectedLang.code}}"
                    placeholder="Nombre">
         </app-input>
-        <app-input [disable]="!isEditable" [value]="currenCollection[selectedLang.code]?.model" ttl="Modelo"
+        <app-input [isDisabled]="!isEditable" [value]="currenCollection[selectedLang.code]?.model" ttl="Modelo"
                    (whenWriting)="currenCollection[selectedLang.code].model=$event"
                    langCode="{{selectedLang.code}}"
                    placeholder="Modelo">
@@ -334,16 +334,16 @@
         <div class="ttl"><strong>Datos generales</strong></div>
       </div>
       <div class="cnt-inputs">
-        <app-input [disable]="true" [value]="selectedSeason?.name" ttl="Temporada"
+        <app-input [isDisabled]="true" [value]="selectedSeason?.name" ttl="Temporada"
                    placeholder="Temporada"
                    (whenWriting)="nwWatchSetting.season = $event"></app-input>
 
-        <app-input [disable]="true" [value]="selectedCollection?.name" ttl="Colección"
+        <app-input [isDisabled]="true" [value]="selectedCollection?.name" ttl="Colección"
                    placeholder="Nombre"
                    (whenWriting)="nwNameCollection($event)"></app-input>
 
 
-        <app-input [disable]="!isEditable" [value]="nwWatchSetting.name" ttl="Nombre"
+        <app-input [isDisabled]="!isEditable" [value]="nwWatchSetting.name" ttl="Nombre"
                    placeholder="Nombre"
                    (whenWriting)="nwNameConfig($event)"></app-input>
 
@@ -413,13 +413,13 @@
         </div>
       </app-tabs>
       <div class="cnt-inputs">
-        <app-input [disable]="!isEditable" [value]="nwWatchSetting[selectedLang.code]?.name" ttl="Nombre"
+        <app-input [isDisabled]="!isEditable" [value]="nwWatchSetting[selectedLang.code]?.name" ttl="Nombre"
                    (whenWriting)="nwNameCollection($event)"
                    langCode="{{selectedLang.code}}"
                    placeholder="Nombre">
         </app-input>
 
-        <app-input [disable]="!isEditable" [value]="nwWatchSetting[selectedLang.code]?.model" ttl="Modelo"
+        <app-input [isDisabled]="!isEditable" [value]="nwWatchSetting[selectedLang.code]?.model" ttl="Modelo"
                    (whenWriting)="nwWatchSetting[selectedLang.code].model=$event"
                    langCode="{{selectedLang.code}}"
                    placeholder="Modelo">
@@ -439,7 +439,7 @@
       </app-tabs>
       <div class="cnt-inputs">
 
-        <app-input [disable]="!isEditable" [value]="" ttl="Nombre"
+        <app-input [isDisabled]="!isEditable" [value]="" ttl="Nombre"
                    (whenWriting)="nwNameCollection($event)"
                    langCode="{{selectedCurr?.symbol}}"
                    placeholder="{{selectedCurr?.symbol}}">

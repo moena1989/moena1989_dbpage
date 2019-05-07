@@ -67,7 +67,7 @@
                   (whenSelecting)="seleccionarModeloCaja($event)">
     </app-m-select>
 
-    <app-input [disable]="isNewLot" ttl="No. Cajas" placeholder="#"
+    <app-input [isDisabled]="isNewLot" ttl="No. Cajas" placeholder="#"
                (whenWriting)="selectTotalCases($event)"></app-input>
 
     <app-m-select

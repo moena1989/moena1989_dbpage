@@ -276,9 +276,9 @@ export class DbMainService {
       lastModificationDate: new Date(),
       by: {}
     };
-    // id: this.current.userData.id,
-    // name: this.current.userData.name,
-    // lastname: this.current.userData.lastname,
+    // id: this.currentData.userData.id,
+    // name: this.currentData.userData.name,
+    // lastname: this.currentData.userData.lastname,
     return obj;
   }
 
@@ -287,9 +287,12 @@ export class DbMainService {
   }
 
   // ${key}
-  getItemsByModel(itemType: string, modelId: any) {
+  getItemsByFilters(itemType: string, modelId: any, externalDiameter: any) {
     return this.mainDb.collection('productsData/' + 'watches/' + itemType, ref => {
-      return ref.where('model.metadata.id', '==', modelId);
+      // TODO: revisar externalDiameters, pues no es la forma definitiva...
+      return ref
+        .where('model.metadata.id', '==', modelId)
+        .where('externalDiameter.name', '==', externalDiameter);
     }).valueChanges();
   }
 

@@ -16,7 +16,7 @@
 // import {TendenciasPageComponent} from './components/products/tendencias-page.component';
 // import {AuthGuardService} from './services/auth-guard.service';
 // import {BusquedaComponent} from './pages/general/busqueda/busqueda.component';
-// import {newCaseComponent} from './components/nueva-caja/nueva-caja.component';
+// import {NewCaseComponent} from './components/nueva-caja/nueva-caja.component';
 // import {MainComponent} from './components/main/main.component';
 // import {PortadaPageComponent} from './pages/general/portada-page/portada-page.component';
 // import {NoticiasPageComponent} from './pages/noticias-page/noticias-page.component';
@@ -38,7 +38,7 @@
 //         path: 'registro', component: RegistroComponent, children:
 //           [
 //             {path: 'nuevo_reloj', component: NuevoRelojComponent},
-//             {path: 'nueva_caja', component: newCaseComponent}
+//             {path: 'nueva_caja', component: NewCaseComponent}
 //           ]
 //       }, {
 //         path: 'web', component: RegistroComponent, children:

@@ -10,7 +10,7 @@ import {TendenciasPageComponent} from '../components/products/tendencias-page.co
 import {AuthGuardService} from '../services/auth-guard.service';
 import {VerTendenciasPageComponent} from '../pages/por_def/ver-tendencias-page/ver-tendencias-page.component';
 import {BusquedaComponent} from '../pages/general/busqueda/busqueda.component';
-import {newCaseComponent} from '../components/nueva-caja/new-case.component';
+import {NewCaseComponent} from '../components/nueva-caja/new-case.component';
 import {PartesPageComponent} from '../pages/caracteristicas-page/partes-page.component';
 import {MainComponent} from '../components/main/main.component';
 import {PublicacionesPageComponent} from '../pages/marketing/publicaciones-page/publicaciones-page.component';
@@ -42,7 +42,7 @@ export const routes: Routes = [
         path: 'registro', component: RegistroComponent, children:
           [
             {path: 'nuevo_reloj', component: NuevoRelojComponent},
-            {path: 'nueva_caja', component: newCaseComponent}
+            {path: 'nueva_caja', component: NewCaseComponent}
           ]
       }, {
         path: 'web', component: RegistroComponent, children: [
@@ -76,7 +76,7 @@ export const routes: Routes = [
         path: 'parts', component: PartesPageComponent,
         children: [
           {path: 'movements', component: ConfigMovementPageComponent},
-          {path: 'cases/:modelId', component: ConfigCasePageComponent},
+          {path: 'cases', component: ConfigCasePageComponent},
           {path: 'straps', component: ConfigStrapPageComponent},
           {path: 'models', component: ConfigModelPageComponent},
           {path: 'crowns', component: ConfigCrownPageComponent},

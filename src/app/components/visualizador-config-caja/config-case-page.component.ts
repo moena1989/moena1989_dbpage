@@ -1,9 +1,10 @@
-import {Component, OnInit} from '@angular/core';
+import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {WATCH_PARTS} from '../../../environments/environment';
 import {CurrentStorageService} from '../../services/current-storage.service';
-import {BehaviorSubject, Observable} from 'rxjs';
 import {DbMainService} from '../../services/routes/db-main.service';
+import {ItemConfigComponent} from '../../item-config/item-config.component';
+import {combineLatest, Subject} from 'rxjs';
 import {switchMap} from 'rxjs/operators';
 
 @Component({
@@ -11,32 +12,53 @@ import {switchMap} from 'rxjs/operators';
   templateUrl: './config-case-page.component.html',
   styleUrls: ['./config-case-page.component.scss']
 })
-export class ConfigCasePageComponent implements OnInit {
+export class ConfigCasePageComponent implements OnInit, AfterViewInit {
   items: any = [];
-  modelIdFilter: BehaviorSubject<string | null> = new BehaviorSubject(null);
   public partType = {};
   cases: any;
-  private qf: Observable<any[]>;
-  private selectedModel: any;
+  modelSelected: any = undefined;
+  externalDiameterSelected: any = undefined;
+  @ViewChild('caseConfig') itemConfig: ItemConfigComponent;
 
-  constructor(private route: ActivatedRoute, public current: CurrentStorageService, public db: DbMainService) {
-    this.items = [];
+  modelIdFilter = new Subject<string>();
+  externalDiameterFilter = new Subject<string>();
+
+  constructor(private route: ActivatedRoute, public currentData: CurrentStorageService, public db: DbMainService) {
     this.partType = WATCH_PARTS.CASE;
-    this.cases = current.cases;
-    this.modelIdFilter.pipe(switchMap(modelId => {
-      return db.getItemsByModel('cases', modelId);
-    })).subscribe(value => this.items = value);
+    this.cases = currentData.cases;
+    currentData.getCasesEmitter.subscribe(cases => {
+      this.cases = cases;
+      // this.filtrar(this.cases);
+    });
+    const s = combineLatest(
+      this.modelIdFilter,
+      this.externalDiameterFilter
+    ).pipe(switchMap(([model, ed]) => {
+      return this.db.getItemsByFilters('cases', model, ed);
+    }));
+    s.subscribe(value => {
+      console.log(value);
+      this.items = value;
+    });
   }
 
   ngOnInit(): void {
-    this.route.paramMap.subscribe(params => {
-      this.selectedModel = this.current.models.filter(value => {
-        return value.metadata.id === params.get('modelId');
-      })[0];
-      console.log('EL MODELO SELECCIONADO', params.get('modelId'));
-      console.log('el pinche result', this.selectedModel);
-    });
-
-    this.modelIdFilter.next(this.route.snapshot.params.modelId);
   }
+
+  ngAfterViewInit(): void {
+
+  }
+
+  selectModel(model: any) {
+    this.modelSelected = model;
+    this.itemConfig.currentItem['model'] = model;
+    this.modelIdFilter.next(model.metadata.id);
+  }
+
+  selectExternalDiameter(ed: any) {
+    this.externalDiameterSelected = ed;
+    this.itemConfig.currentItem['externalDiameter'] = ed;
+    this.externalDiameterFilter.next(ed.name);
+  }
+
 }

@@ -11,7 +11,7 @@ export class InputComponent implements OnInit {
   @Output() whenWriting = new EventEmitter();
   // number, email, text, pass,
   // @Input() type = 'number';
-  @Input() disable: boolean;
+  @Input() isDisabled: boolean;
   val: any = '';
   @Input() capitalizar = true;
   @Input() langCode: string = undefined;

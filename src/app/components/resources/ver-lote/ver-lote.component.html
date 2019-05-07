@@ -1,17 +1,17 @@
 <div class="opts">
-  <app-input [disable]="true" [value]="_lote.fecha_registro" ttl="Fecha" placeholder="#"></app-input>
-  <app-input [disable]="true" [value]="_lote.modelo" ttl="Modelo" placeholder="#"></app-input>
-  <app-input [disable]="true" [value]="_lote.numeroDeLote" ttl="# Lote" placeholder="#"></app-input>
-  <app-input [disable]="true" [value]="_lote.total_cajas" ttl="# Cajas" placeholder="#"></app-input>
+  <app-input [isDisabled]="true" [value]="_lote.fecha_registro" ttl="Fecha" placeholder="#"></app-input>
+  <app-input [isDisabled]="true" [value]="_lote.modelo" ttl="Modelo" placeholder="#"></app-input>
+  <app-input [isDisabled]="true" [value]="_lote.numeroDeLote" ttl="# Lote" placeholder="#"></app-input>
+  <app-input [isDisabled]="true" [value]="_lote.total_cajas" ttl="# Cajas" placeholder="#"></app-input>
 </div>
 <div class="ln"></div>
 <div class="opts">
-  <app-input [disable]="true" [value]="_lote.diametroInterno" ttl="Diámetro interno" placeholder="#"></app-input>
-  <app-input [disable]="true" [value]="_lote.diametroExterno" ttl="Diámetro externo" placeholder="#"></app-input>
+  <app-input [isDisabled]="true" [value]="_lote.diametroInterno" ttl="Diámetro interno" placeholder="#"></app-input>
+  <app-input [isDisabled]="true" [value]="_lote.diametroExterno" ttl="Diámetro externo" placeholder="#"></app-input>
 </div>
 <div class="ln"></div>
 <div class="opts">
   <ng-container *ngFor="let m of _lote.materiales; let i = index">
-    <app-input [disable]="true" [value]="m" ttl="Material {{i}}" placeholder="#"></app-input>
+    <app-input [isDisabled]="true" [value]="m" ttl="Material {{i}}" placeholder="#"></app-input>
   </ng-container>
 </div>

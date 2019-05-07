@@ -13,7 +13,7 @@ import {CurrentStorageService} from '../../services/current-storage.service';
   templateUrl: './new-case.component.html',
   styleUrls: ['./new-case.component.scss']
 })
-export class newCaseComponent implements OnInit, OnDestroy {
+export class NewCaseComponent implements OnInit, OnDestroy {
   isNewLot = false;
   // nuevo_lote = new LoteCajaModel();
   current_opciones_caja_modelo: CajaM = new CajaM();
