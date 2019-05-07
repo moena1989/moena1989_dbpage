@@ -25,7 +25,6 @@ export class MetadataAttr {
 }
 
 export class CajaModel {
-
 }
 
 export class LoteCajaModel {

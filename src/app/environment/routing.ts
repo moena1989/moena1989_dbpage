@@ -1,6 +1,5 @@
 import {Routes} from '@angular/router';
 import {VentasPageComponent} from '../pages/por_def/ventas-page/ventas-page.component';
-import {OAuthCallbackComponent} from '../components/o-auth-callback/o-auth-callback.component';
 import {HomeComponent} from '../pages/general/home/home.component';
 import {VerTiposProductosComponent} from '../components/ver-tipos-productos/ver-tipos-productos.component';
 import {ExperimentosPageComponent} from '../pages/dev/experimentos-page/experimentos-page.component';
@@ -11,7 +10,7 @@ import {TendenciasPageComponent} from '../components/products/tendencias-page.co
 import {AuthGuardService} from '../services/auth-guard.service';
 import {VerTendenciasPageComponent} from '../pages/por_def/ver-tendencias-page/ver-tendencias-page.component';
 import {BusquedaComponent} from '../pages/general/busqueda/busqueda.component';
-import {NuevaCajaComponent} from '../components/nueva-caja/nueva-caja.component';
+import {newCaseComponent} from '../components/nueva-caja/new-case.component';
 import {PartesPageComponent} from '../pages/caracteristicas-page/partes-page.component';
 import {MainComponent} from '../components/main/main.component';
 import {PublicacionesPageComponent} from '../pages/marketing/publicaciones-page/publicaciones-page.component';
@@ -35,9 +34,7 @@ import {ConfigCrystalPageComponent} from '../config-cristal/config-crystal-page.
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'sign_up', component: WorkerRegComponent},
-  // {path: 'OAuthCallback', component: OAuthCallbackComponent},
-  {
+  {path: 'sign_up', component: WorkerRegComponent}, {
     path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
       {path: 'home', component: HomeComponent},
       {path: 'busqueda', component: BusquedaComponent},
@@ -45,7 +42,7 @@ export const routes: Routes = [
         path: 'registro', component: RegistroComponent, children:
           [
             {path: 'nuevo_reloj', component: NuevoRelojComponent},
-            {path: 'nueva_caja', component: NuevaCajaComponent}
+            {path: 'nueva_caja', component: newCaseComponent}
           ]
       }, {
         path: 'web', component: RegistroComponent, children: [
@@ -79,7 +76,7 @@ export const routes: Routes = [
         path: 'parts', component: PartesPageComponent,
         children: [
           {path: 'movements', component: ConfigMovementPageComponent},
-          {path: 'cases', component: ConfigCasePageComponent},
+          {path: 'cases/:modelId', component: ConfigCasePageComponent},
           {path: 'straps', component: ConfigStrapPageComponent},
           {path: 'models', component: ConfigModelPageComponent},
           {path: 'crowns', component: ConfigCrownPageComponent},

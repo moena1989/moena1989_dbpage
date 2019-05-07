@@ -1,5 +1,5 @@
 <div class="cnttnt">
-  <app-item-config #item [partType]="partType" [items]="current.cases">
+  <app-item-config #item [partType]="partType" [items]="items">
     <div class="visualizador">
       <app-visualizer ttl="Frontal" scaleImg="2" [imgURL]="item.currentItem?.imgData.url" [lock]="!item.isEditable"
                       (alSeleccionar)="item.onFileChanged($event)"></app-visualizer>
@@ -12,15 +12,16 @@
       <div class="cnt-inputs">
         <app-input [disable]="!item.isEditable" [value]="item.currentItem?.name" ttl="Nombre"
                    placeholder="Nombre"
-                   (alEscribir)="item.writingName($event)"></app-input>
+                   (whenWriting)="item.writingName($event)"></app-input>
 
-        <app-m-select [items]="current.models" [isDisabled]="!item.isEditable"
+        <app-m-select [items]="[selectedModel]"
+                      [isDisabled]="true"
                       tittle="Modelo"
                       (whenSelecting)="item.currentItem.model= $event"></app-m-select>
 
         <app-input [disable]="!item.isEditable" [value]="item.currentItem?.code" ttl="Código ID"
                    placeholder="###"
-                   (alEscribir)="item.currentItem.code= $event"></app-input>
+                   (whenWriting)="item.currentItem.code= $event"></app-input>
       </div>
 
       <div class="part-sub-tttl">
@@ -43,7 +44,7 @@
           langCode="{{item.selectedLanguage?.code}}"
           [value]="item.currentItem[item.selectedLanguage.code]?.name"
           [disable]="!item.isEditable"
-          (alEscribir)="item.whenWriting($event)">
+          (whenWriting)="item.whenWriting($event)">
         </app-input>
 
         <app-input
@@ -52,7 +53,7 @@
           [disable]="!item.isEditable"
           [value]="item.currentItem[item.selectedLanguage.code]?.model"
           langCode="{{item.selectedLanguage.code}}"
-          (alEscribir)="item.currentItem[item.selectedLanguage.code].model=$event">
+          (whenWriting)="item.currentItem[item.selectedLanguage.code].model=$event">
         </app-input>
       </div>
     </div>

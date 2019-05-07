@@ -1,4 +1,4 @@
-import {Injectable} from '@angular/core';
+import {EventEmitter, Injectable} from '@angular/core';
 import {ClockModel} from '../models/clockModel';
 import {DbMainService} from './routes/db-main.service';
 import {DBPublicService} from './routes/d-b-public.service';
@@ -360,6 +360,7 @@ export class CurrentStorageService {
   ];
   public multiLangStructure = {};
   public defaultSelectedLang: any = {};
+  public getCasesEmitter = new EventEmitter();
 
   constructor(private dbMain: DbMainService, private dbPublic: DBPublicService, private _firebaseAuth: AngularFireAuth) {
   }
@@ -577,6 +578,7 @@ export class CurrentStorageService {
     return new Promise(resolve => {
       this.dbMain.getItems('cases').subscribe(value => {
         this._cases = value;
+        this.getCasesEmitter.emit(value);
         resolve();
       });
     });

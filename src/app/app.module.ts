@@ -27,7 +27,7 @@ import {HasherService} from './services/hasher.service';
 import {RegistroComponent} from './pages/por_def/registro/registro.component';
 import {ModelsSevice} from './services/models/model-cajas.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NuevaCajaComponent} from './components/nueva-caja/nueva-caja.component';
+import {newCaseComponent} from './components/nueva-caja/new-case.component';
 import {MainComponent} from './components/main/main.component';
 import {RelojBuscadoComponent} from './tools/reloj-buscado/reloj-buscado.component';
 import {LoadbarComponent} from './components/resources/loadbar/loadbar.component';
@@ -90,7 +90,7 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     WorkerRegComponent, SnackbarComponent, RegistroComponent,
     RelojBuscadoComponent, PortadaPageComponent, MSelectComponent, VisualizerComponent,
     HomeComponent, RegistroPageComponent, ExperimentosPageComponent, InventarioPageComponent,
-    PublicacionesPageComponent, VentasPageComponent, NuevaCajaComponent, InputComponent, FormButtonComponent,
+    PublicacionesPageComponent, VentasPageComponent, newCaseComponent, InputComponent, FormButtonComponent,
     VerLoteComponent, TittlebarComponent, TopBarComponent, LoadbarComponent,
     OAuthCallbackComponent, TendenciasPageComponent, TrendCntComponent, NoticiasPageComponent,
     SeasonsComponent, VerTendenciasPageComponent, VerTendenciaPageComponent,

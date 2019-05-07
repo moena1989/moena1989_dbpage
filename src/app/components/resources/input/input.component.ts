@@ -8,7 +8,7 @@ import {Component, EventEmitter, Input, OnInit, Output} from '@angular/core';
 export class InputComponent implements OnInit {
   @Input() ttl: string;
   @Input() placeholder: string;
-  @Output() alEscribir = new EventEmitter();
+  @Output() whenWriting = new EventEmitter();
   // number, email, text, pass,
   // @Input() type = 'number';
   @Input() disable: boolean;
@@ -41,7 +41,7 @@ export class InputComponent implements OnInit {
   tecla(evt: any) {
     if (this.capitalizar) {
       // this.va = cc;
-      this.alEscribir.emit(this.capitalize(this.val));
+      this.whenWriting.emit(this.capitalize(this.val));
       // switch (this.type) {
       //   case'text':
       //     // this.whenWriting.emit(this.capitalize(this.val));

@@ -11,7 +11,7 @@
   <app-tabs>
     <div class="tab-item-content"
          *ngFor="let t of tendencias"
-         [class.tab-opt-act]="selectedSeason?.metadata.id===t.metadata.id"
+         [class.tab-opt-act]="selectedSeason?.metadata.id===t?.metadata.id"
          (click)="selectSeason(t)">
       <i [class.dot-active]="t.state===current.states.public.name"
          class="fas fa-circle tab-ido"></i>
@@ -170,7 +170,7 @@
       <div class="cnt-inputs">
         <app-input [disable]="!isEditable" [value]="currentSeason.name" ttl="Nombre"
                    placeholder="Nombre"
-                   (alEscribir)="newNameSeason($event)"></app-input>
+                   (whenWriting)="newNameSeason($event)"></app-input>
 
         <app-m-select tittle="Estado inicial"
                       [isDisabled]="!isEditable"
@@ -193,13 +193,13 @@
       </app-tabs>
       <div class="cnt-inputs">
         <app-input [disable]="!isEditable" [value]="currentSeason[selectedLang.code]?.name" ttl="Nombre"
-                   (alEscribir)="newNameSeason($event)"
+                   (whenWriting)="newNameSeason($event)"
                    langCode="{{selectedLang.code}}"
                    placeholder="Nombre">
         </app-input>
 
         <app-input [disable]="!isEditable" [value]="currentSeason[selectedLang.code]?.model" ttl="Modelo"
-                   (alEscribir)="currentSeason[selectedLang.code].model=$event"
+                   (whenWriting)="currentSeason[selectedLang.code].model=$event"
                    langCode="{{selectedLang.code}}"
                    placeholder="Modelo">
         </app-input>
@@ -259,7 +259,7 @@
         </app-m-select>
         <app-input [disable]="!isEditable" [value]="currenCollection.name" ttl="Colección"
                    placeholder="Nombre"
-                   (alEscribir)="nwNameCollection($event)"></app-input>
+                   (whenWriting)="nwNameCollection($event)"></app-input>
         <app-m-select tittle="Estado inicial"
                       [isDisabled]="!isEditable"
                       (whenSelecting)="currenCollection.state = $event.name"
@@ -281,12 +281,12 @@
       </app-tabs>
       <div class="cnt-inputs">
         <app-input [disable]="!isEditable" [value]="currenCollection[selectedLang.code]?.name" ttl="Nombre"
-                   (alEscribir)="nwNameCollection($event)"
+                   (whenWriting)="nwNameCollection($event)"
                    langCode="{{selectedLang.code}}"
                    placeholder="Nombre">
         </app-input>
         <app-input [disable]="!isEditable" [value]="currenCollection[selectedLang.code]?.model" ttl="Modelo"
-                   (alEscribir)="currenCollection[selectedLang.code].model=$event"
+                   (whenWriting)="currenCollection[selectedLang.code].model=$event"
                    langCode="{{selectedLang.code}}"
                    placeholder="Modelo">
         </app-input>
@@ -336,16 +336,16 @@
       <div class="cnt-inputs">
         <app-input [disable]="true" [value]="selectedSeason?.name" ttl="Temporada"
                    placeholder="Temporada"
-                   (alEscribir)="nwWatchSetting.season = $event"></app-input>
+                   (whenWriting)="nwWatchSetting.season = $event"></app-input>
 
         <app-input [disable]="true" [value]="selectedCollection?.name" ttl="Colección"
                    placeholder="Nombre"
-                   (alEscribir)="nwNameCollection($event)"></app-input>
+                   (whenWriting)="nwNameCollection($event)"></app-input>
 
 
         <app-input [disable]="!isEditable" [value]="nwWatchSetting.name" ttl="Nombre"
                    placeholder="Nombre"
-                   (alEscribir)="nwNameConfig($event)"></app-input>
+                   (whenWriting)="nwNameConfig($event)"></app-input>
 
         <app-m-select tittle="Estado inicial"
                       [isDisabled]="!isEditable"
@@ -368,7 +368,7 @@
         <!--TODO: ¿Cómo se gestionan los precios de forma internacional?-->
         <!--<app-input ttl="Precio"-->
         <!--[value]="nwWatchSetting.precio"-->
-        <!--(alEscribir)="nwWatchSetting.precio= $event"></app-input>-->
+        <!--(whenWriting)="nwWatchSetting.precio= $event"></app-input>-->
 
         <app-m-select tittle="Hebilla"
                       [isDisabled]="!isEditable"
@@ -414,13 +414,13 @@
       </app-tabs>
       <div class="cnt-inputs">
         <app-input [disable]="!isEditable" [value]="nwWatchSetting[selectedLang.code]?.name" ttl="Nombre"
-                   (alEscribir)="nwNameCollection($event)"
+                   (whenWriting)="nwNameCollection($event)"
                    langCode="{{selectedLang.code}}"
                    placeholder="Nombre">
         </app-input>
 
         <app-input [disable]="!isEditable" [value]="nwWatchSetting[selectedLang.code]?.model" ttl="Modelo"
-                   (alEscribir)="nwWatchSetting[selectedLang.code].model=$event"
+                   (whenWriting)="nwWatchSetting[selectedLang.code].model=$event"
                    langCode="{{selectedLang.code}}"
                    placeholder="Modelo">
         </app-input>
@@ -440,7 +440,7 @@
       <div class="cnt-inputs">
 
         <app-input [disable]="!isEditable" [value]="" ttl="Nombre"
-                   (alEscribir)="nwNameCollection($event)"
+                   (whenWriting)="nwNameCollection($event)"
                    langCode="{{selectedCurr?.symbol}}"
                    placeholder="{{selectedCurr?.symbol}}">
         </app-input>

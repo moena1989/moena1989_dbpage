@@ -6,16 +6,23 @@ import {ToolsServices} from '../../services/tools-services.service';
 import {CajaM, ModelsSevice} from '../../services/models/model-cajas.service';
 import {MetadataAttr} from '../../models/clockModel';
 import {Subscription} from 'rxjs';
+import {CurrentStorageService} from '../../services/current-storage.service';
 
 @Component({
   selector: 'app-nueva-caja',
-  templateUrl: './nueva-caja.component.html',
-  styleUrls: ['./nueva-caja.component.scss']
+  templateUrl: './new-case.component.html',
+  styleUrls: ['./new-case.component.scss']
 })
-export class NuevaCajaComponent implements OnInit, OnDestroy {
-  lote_iniciado = false;
+export class newCaseComponent implements OnInit, OnDestroy {
+  isNewLot = false;
   // nuevo_lote = new LoteCajaModel();
   current_opciones_caja_modelo: CajaM = new CajaM();
+
+  externalDiameters: any = [
+    {name: 38},
+    {name: 43}
+  ];
+
   currentLote: any = {};
   // currentLote: MLote = new MLote();
   imagenesProcesadas: any[] = [];
@@ -28,9 +35,10 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
   @ViewChild('modalResult') modalResult: NgxSmartModalComponent;
   porcentaje_registro: any = 0;
   private _info_material: Subscription;
+  internalDiameters: any;
 
   constructor(public estructura: ModelsSevice, public db: DbManagerService,
-              private tools: ToolsServices, public fs: DbMainService) {
+              private tools: ToolsServices, public fs: DbMainService, public current: CurrentStorageService) {
     this.currentLote.numeroDeLote = 0;
   }
 
@@ -157,7 +165,7 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
     });
   }
 
-  seleccionarTotalCajas(itemSeleccionado: string) {
+  selectTotalCases(itemSeleccionado: string) {
     this.currentLote.cajasTotales = +itemSeleccionado;
   }
 
@@ -165,20 +173,20 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
   }
 
   seleccionarModeloCaja(_modelo: any) {
-    this.currentLote.modelo = _modelo.name;
-    this.current_opciones_caja_modelo = _modelo.opciones_caja;
-    this.current_opciones_caja_modelo = _modelo.opciones_caja;
-    // inico el tam de los materiales, y lo reinició por si cambia de opción
-    const arr = [];
-    const arrs = [];
-    this.current_opciones_caja_modelo.materiales.forEach(value => {
-      console.log(value);
-      arr.push('');
-      arrs.push('');
-    });
-    this.currentLote.materiales = arrs;
-    this.currentLote.salesMateriales = arr;
-    this.currentLote.sales[0] = _modelo.salt;
+    // this.currentLote.modelo = _modelo.name;
+    // this.current_opciones_caja_modelo = _modelo.opciones_caja;
+    // this.current_opciones_caja_modelo = _modelo.opciones_caja;
+    // // inico el tam de los materiales, y lo reinició por si cambia de opción
+    // const arr = [];
+    // const arrs = [];
+    // this.current_opciones_caja_modelo.materiales.forEach(value => {
+    //   console.log(value);
+    //   arr.push('');
+    //   arrs.push('');
+    // });
+    // this.currentLote.materiales = arrs;
+    // this.currentLote.sales[0] = _modelo.salt;
+    // this.currentLote.salesMateriales = arr;
   }
 
   seleccionarDiametroExterno(_diametro_interno: any) {
@@ -241,9 +249,9 @@ export class NuevaCajaComponent implements OnInit, OnDestroy {
   }
 
   seleccionarMaterial(material_seleccionado: any, i: number) {
-    console.log(material_seleccionado.name);
-    this.currentLote.materiales[i] = material_seleccionado.name;
-    this.currentLote.salesMateriales[i] = material_seleccionado.salt;
+    // console.log(material_seleccionado.name);
+    // this.currentLote.materiales[i] = material_seleccionado.name;
+    // this.currentLote.salesMateriales[i] = material_seleccionado.salt;
   }
 
   iniciarNuevoRegistro() {

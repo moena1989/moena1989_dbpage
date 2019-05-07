@@ -15,7 +15,7 @@ export class SeasonsComponent implements OnInit {
   @ViewChild('mdTrendEdit') modalSeason: NgxSmartModalComponent;
   @ViewChild('mdNuevaColeccion') modalCollection: NgxSmartModalComponent;
   @ViewChild('mdNuevaConfiguracion') modalWatchSets: NgxSmartModalComponent;
-  @ViewChild('mdEliminarTemp') modalAdvTemporada: NgxSmartModalComponent;
+  @ViewChild('mdEliminarTemp') mdSeasonEdit: NgxSmartModalComponent;
   @ViewChild('mdEliminarCollection') modalDeleteCol: NgxSmartModalComponent;
   public isEditable = true;
   selectedSeason = undefined;
@@ -164,10 +164,11 @@ export class SeasonsComponent implements OnInit {
     this.isUploading = true;
     this.db.deleteItem(this.productType, tempo).then(value => {
       console.log(value);
-      this.modalAdvTemporada.close();
+      this.mdSeasonEdit.close();
       this.currentSeason = Object.assign({}, this.newSeason);
       this.selectedSeason = Object.assign({}, this.newSeason);
       this.isUploading = false;
+
     }).catch(reason => {
       console.log(reason);
     });

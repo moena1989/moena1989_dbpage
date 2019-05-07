@@ -286,6 +286,13 @@ export class DbMainService {
     return this.mainDb.collection('productsData/' + 'watches/' + tipoItem).valueChanges();
   }
 
+  // ${key}
+  getItemsByModel(itemType: string, modelId: any) {
+    return this.mainDb.collection('productsData/' + 'watches/' + itemType, ref => {
+      return ref.where('model.metadata.id', '==', modelId);
+    }).valueChanges();
+  }
+
   getItem(tipoItem: string, idItem: string) {
     return this.mainDb.collection('productsData/' + 'watches/' + tipoItem).doc(idItem).valueChanges();
   }
