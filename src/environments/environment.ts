@@ -31,6 +31,12 @@ export const WATCH_PARTS = {
     productTypeId: 'watch',
     type: 'models',
     typeId: 'model'
+  }, COLLECTION: {
+    name: 'Colección',
+    productType: 'watches',
+    productTypeId: 'watch',
+    type: 'collections',
+    typeId: 'collection'
   },
   STRAP: {
     name: 'Pulso',

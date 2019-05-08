@@ -30,6 +30,7 @@ import {ConfigCrownPageComponent} from '../components/visualizador-config-corona
 import {ConfigBuncklePageComponent} from '../components/visualizador-config-hebilla/config-bunckle-page.component';
 import {ConfigStrapPageComponent} from '../components/visualizador-config-pulso/config-strap-page.component';
 import {ConfigCrystalPageComponent} from '../config-cristal/config-crystal-page.component';
+import {ConfigCollectionsComponent} from '../config-collections/config-collections.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -77,6 +78,7 @@ export const routes: Routes = [
         children: [
           {path: 'movements', component: ConfigMovementPageComponent},
           {path: 'cases', component: ConfigCasePageComponent},
+          {path: 'collections', component: ConfigCollectionsComponent},
           {path: 'straps', component: ConfigStrapPageComponent},
           {path: 'models', component: ConfigModelPageComponent},
           {path: 'crowns', component: ConfigCrownPageComponent},

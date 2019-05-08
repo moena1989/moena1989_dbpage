@@ -365,6 +365,16 @@ export class CurrentStorageService {
   constructor(private dbMain: DbMainService, private dbPublic: DBPublicService, private _firebaseAuth: AngularFireAuth) {
   }
 
+  private _collections: any;
+
+  get collections(): any {
+    return this._collections;
+  }
+
+  set collections(value: any) {
+    this._collections = value;
+  }
+
   // about Watches
   private _models = [];
 
@@ -439,6 +449,7 @@ export class CurrentStorageService {
       Promise.all([
         this.automaticAuth(),
         this.getModelos(),
+        this.getCollections(),
         this.getCrowns(),
         this.getCrystals(),
         this.getBunckles(),
@@ -597,6 +608,15 @@ export class CurrentStorageService {
     return new Promise(resolve => {
       return this.dbMain.getItems('straps').subscribe(value => {
         this._straps = value;
+        resolve();
+      });
+    });
+  }
+
+  private getCollections() {
+    return new Promise(resolve => {
+      this.dbMain.getItems('collections').subscribe(value => {
+        this._collections = value;
         resolve();
       });
     });

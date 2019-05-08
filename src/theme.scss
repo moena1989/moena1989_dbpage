@@ -145,16 +145,6 @@
   flex-wrap: wrap;
 }
 
-.tab-dv {
-  height: available;
-  display: flex;
-  width: 1px;
-  background: rgba(44, 46, 62, 0.21);
-  margin-right: 1.5em;
-  margin-top: .8em;
-  margin-bottom: .8em;
-  box-sizing: border-box;
-}
 
 .cono {
   width: 100%;
@@ -558,12 +548,16 @@
   background: rgba(44, 46, 62, 0.25);
 }
 
+
 .tab-dv {
-  width: 1px;
-  height: 100%;
+  height: 1em;
   display: flex;
-  margin: 1em;
-  background: #2C2E3E;
+  width: 1px;
+  background: rgba(44, 46, 62, 0.21);
+  margin-right: 1.5em;
+  margin-top: .8em;
+  margin-bottom: .8em;
+  box-sizing: border-box;
 }
 
 .side-opt {
