@@ -77,6 +77,7 @@ import { WatchSettingCardComponent } from './watch-setting-card/watch-setting-ca
 import { ItemConfigComponent } from './item-config/item-config.component';
 import { SelectFormComponent } from './select-form/select-form.component';
 import { ConfigCollectionsComponent } from './config-collections/config-collections.component';
+import { PushInputComponent } from './push-input/push-input.component';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -101,7 +102,7 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     ConfigMaderaComponent, ConfigModelPageComponent,
     ConfigCasebackPageComponent, ConfigBuncklePageComponent,
     ConfigCrownPageComponent, AdderComponent, UsuariosPageComponent, VerticalBarComponent,
-    ConfigCasePageComponent, ConfigCrystalPageComponent, AjustesWebComponent, PedidosPageComponent, WatchSettingCardComponent, ItemConfigComponent, SelectFormComponent, ConfigCollectionsComponent
+    ConfigCasePageComponent, ConfigCrystalPageComponent, AjustesWebComponent, PedidosPageComponent, WatchSettingCardComponent, ItemConfigComponent, SelectFormComponent, ConfigCollectionsComponent, PushInputComponent
   ],
   imports: [
     RouterModule.forRoot(routes, {enableTracing: false}),

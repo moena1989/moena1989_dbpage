@@ -1,4 +1,4 @@
-import {AfterViewInit, Component, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {ActivatedRoute} from '@angular/router';
 import {WATCH_PARTS} from '../../../environments/environment';
 import {CurrentStorageService} from '../../services/current-storage.service';
@@ -12,8 +12,8 @@ import {switchMap} from 'rxjs/operators';
   templateUrl: './config-case-page.component.html',
   styleUrls: ['./config-case-page.component.scss']
 })
-export class ConfigCasePageComponent implements OnInit, AfterViewInit {
-  items: any = [];
+export class ConfigCasePageComponent implements OnInit {
+  items: any = undefined;
   public partType = {};
   cases: any;
   modelSelected: any = undefined;
@@ -22,6 +22,7 @@ export class ConfigCasePageComponent implements OnInit, AfterViewInit {
 
   modelIdFilter = new Subject<string>();
   externalDiameterFilter = new Subject<string>();
+  diameters = [];
 
   constructor(private route: ActivatedRoute, public currentData: CurrentStorageService, public db: DbMainService) {
     this.partType = WATCH_PARTS.CASE;
@@ -37,16 +38,13 @@ export class ConfigCasePageComponent implements OnInit, AfterViewInit {
       return this.db.getCaseByFilters('cases', model, ed);
     }));
     s.subscribe(value => {
-      console.log(value);
-      this.items = value;
+      if (this.externalDiameterSelected) {
+        this.items = value;
+      }
     });
   }
 
   ngOnInit(): void {
-  }
-
-  ngAfterViewInit(): void {
-
   }
 
   selectModel(model: any) {
@@ -54,14 +52,15 @@ export class ConfigCasePageComponent implements OnInit, AfterViewInit {
     this.itemConfig.currentItem['model'] = model;
     this.externalDiameterSelected = undefined;
     this.itemConfig.currentItem['externalDiameter'] = undefined;
-
+    this.diameters = model.externalDiameters;
+    console.log(this.diameters);
     this.modelIdFilter.next(model.metadata.id);
   }
 
   selectExternalDiameter(ed: any) {
     this.externalDiameterSelected = ed;
     this.itemConfig.currentItem['externalDiameter'] = ed;
-    this.externalDiameterFilter.next(ed.name);
+    this.externalDiameterFilter.next(ed);
   }
 
 }

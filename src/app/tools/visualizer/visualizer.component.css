@@ -5,6 +5,7 @@
   display: flex;
   position: relative;
   overflow: hidden;
+  box-sizing: border-box;
 }
 
 .visual-ttl {
@@ -52,20 +53,17 @@
   width: 100%;
   display: flex;
   object-fit: contain;
-
   flex-direction: column;
-  /*margin: .5em;*/
-  border-radius: .4em;
+  border-radius: .2em;
   flex-grow: 1;
-
   align-items: center;
   justify-content: center;
-  /*opacity: 0;*/
   cursor: pointer;
   opacity: .2;
   color: #000000;
   font-weight: 500;
   border: 1px dashed #3a3a3a;
+  box-sizing: border-box;
 }
 
 .ssas:hover {

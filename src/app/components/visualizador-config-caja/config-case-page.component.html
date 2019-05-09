@@ -1,33 +1,28 @@
 <div class="plus-opts-cnt">
   <div class="plus-opts-item">
-    <div><strong>Modelos</strong></div>
-    <app-visual-selector>
+    <app-visual-selector tittle="Modelo:">
       <ng-container *ngFor="let c of currentData.models;  let i = index">
         <div
           class="vsi-item"
           [class.vsi-item-act]="c===modelSelected"
           (click)="selectModel(c)">{{c.name}}</div>
-        <div class="vsi-item-divider" *ngIf="i!==currentData.models.length-1"></div>
       </ng-container>
     </app-visual-selector>
   </div>
-  <div class="plus-opts-divider"></div>
   <div *ngIf="modelSelected" class="plus-opts-item">
-    <div><strong>Diámetros externos</strong></div>
-    <app-visual-selector>
-      <ng-container *ngFor="let ed of [{name:38},{name:42}]; let i = index">
+    <app-visual-selector tittle="Diámetro externo:">
+      <ng-container *ngFor="let ed of diameters; let i = index">
         <div class="vsi-item"
              [class.vsi-item-act]="ed===externalDiameterSelected"
              (click)="selectExternalDiameter(ed)"
-        >{{ed.name}}</div>
-        <div class="vsi-item-divider" *ngIf="i!== [{name:38},{name:42}].length-1"></div>
+        >{{ed}}</div>
       </ng-container>
     </app-visual-selector>
   </div>
 </div>
+<ng-container >
 <app-item-config
   #caseConfig id='case-config'
-  [hidden]="!externalDiameterSelected"
   [plusData]="{model:modelSelected, externalDiameter: externalDiameterSelected}"
   [partType]="partType"
   [items]="items">
@@ -93,3 +88,4 @@
     </div>
   </div>
 </app-item-config>
+</ng-container>
