@@ -10,6 +10,12 @@ export const DEFAULT_SYMBOL_CURRENCY = 'US$';
 export const SHOW_WINDOWS_BAR = false;
 export const MAX_SIZE_IN_PX = 2500;
 export const MAX_SIZE_IN_MB = 0.7;
+
+export const TYPE_DATA = {
+  INVENTORY: 'inventory',
+  PRODUCT_DATA: 'productsData'
+};
+
 export const WATCH_PARTS = {
   MOVEMENT: {
     name: 'Maquinaria',
@@ -31,12 +37,20 @@ export const WATCH_PARTS = {
     productTypeId: 'watch',
     type: 'models',
     typeId: 'model'
-  }, COLLECTION: {
+  },
+  COLLECTION: {
     name: 'Colección',
     productType: 'watches',
     productTypeId: 'watch',
     type: 'collections',
     typeId: 'collection'
+  },
+  WATCH_SETTING: {
+    name: 'Configuración de reloj',
+    productType: 'watches',
+    productTypeId: 'watch',
+    type: 'watchConfigs',
+    typeId: 'watchConfig'
   },
   STRAP: {
     name: 'Pulso',

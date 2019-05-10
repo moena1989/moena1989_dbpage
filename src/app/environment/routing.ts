@@ -31,6 +31,10 @@ import {ConfigBuncklePageComponent} from '../components/visualizador-config-hebi
 import {ConfigStrapPageComponent} from '../components/visualizador-config-pulso/config-strap-page.component';
 import {ConfigCrystalPageComponent} from '../config-cristal/config-crystal-page.component';
 import {ConfigCollectionsComponent} from '../config-collections/config-collections.component';
+import {ConfigWatchConfigComponent} from '../config-watch-config/config-watch-config.component';
+import {WatchStructurePageComponent} from '../watch-structure-page/watch-structure-page.component';
+import {InventoryWatchConfigPageComponent} from '../inventory-model-page/inventory-watch-config-page.component';
+import {InventoryCasePageComponent} from '../inventory-watch-config/inventory-case-page.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
@@ -65,28 +69,38 @@ export const routes: Routes = [
           {path: 'noticias', component: NoticiasPageComponent},
           {path: 'inventario', component: InventarioPageComponent},
         ]
-      },
-      {path: 'inventario', component: InventarioPageComponent},
-      {path: 'ajustes-web', component: AjustesWebComponent},
+      }, {path: 'ajustes-web', component: AjustesWebComponent},
       {path: 'pedidos', component: PedidosPageComponent},
       {path: 'experimentos', component: ExperimentosPageComponent},
       {path: 'ventas', component: VentasPageComponent},
-      {path: 'equipo', component: UsuariosPageComponent},
-      {path: 'publicaciones', component: PublicacionesPageComponent},
       {
+        path: 'inventory/watch', component: InventarioPageComponent, children: [
+          {path: 'watchConfigs', component: InventoryWatchConfigPageComponent},
+          {path: 'cases', component: InventoryCasePageComponent}
+        ]
+      },
+      {path: 'equipo', component: UsuariosPageComponent},
+      {path: 'publicaciones', component: PublicacionesPageComponent}, {
         path: 'parts', component: PartesPageComponent,
         children: [
           {path: 'movements', component: ConfigMovementPageComponent},
           {path: 'cases', component: ConfigCasePageComponent},
-          {path: 'collections', component: ConfigCollectionsComponent},
           {path: 'straps', component: ConfigStrapPageComponent},
-          {path: 'models', component: ConfigModelPageComponent},
           {path: 'crowns', component: ConfigCrownPageComponent},
           {path: 'crystals', component: ConfigCrystalPageComponent},
           {path: 'bunckles', component: ConfigBuncklePageComponent},
           {path: 'caseBacks', component: ConfigCasebackPageComponent}
         ]
-      }]
+      },
+      {
+        path: 'structures', component: WatchStructurePageComponent,
+        children: [
+          {path: 'watchConfigs', component: ConfigWatchConfigComponent},
+          {path: 'collections', component: ConfigCollectionsComponent},
+          {path: 'models', component: ConfigModelPageComponent}
+        ]
+      }
+    ]
   }];
 // , {
 //   path: 'externalRedirect',

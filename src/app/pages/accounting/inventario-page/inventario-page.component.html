@@ -1,12 +1,20 @@
 <div class="doc">
-  <div class="top_card">
-    <div class="top_ttl">
-      Inventario
+  <div class="doc-top">
+    <div class="d-l-s">
+      <i class="far fa-inventory doc-top-ico"></i>
+      <div class="doc-top-ttl">Inventario</div>
+    </div>
+    <div class="d-r-s">
+      <i class="fal fa-question-circle clickss"></i>
     </div>
   </div>
-  <div class="card_cnt">
-    Lorem ipsum dolor sit amet, consectetur adipisicing elit. Accusantium ad atque consectetur consequatur deleniti
-    deserunt dicta doloremque illum impedit labore, minima natus nostrum nulla placeat quisquam ratione rerum unde
-    veniam?
+  <div class="paragraph">
   </div>
+
+  <app-tabs>
+    <div class="tab-item-content" routerLinkActive="tab-opt-act" routerLink="./cases">Cajas</div>
+    <div class="tab-item-content" routerLinkActive="tab-opt-act" routerLink="./watchConfigs">Configuraciones de reloj</div>
+  </app-tabs>
+
+  <router-outlet></router-outlet>
 </div>

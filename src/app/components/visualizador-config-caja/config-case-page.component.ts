@@ -35,7 +35,11 @@ export class ConfigCasePageComponent implements OnInit {
       this.modelIdFilter,
       this.externalDiameterFilter
     ).pipe(switchMap(([model, ed]) => {
-      return this.db.getCaseByFilters('cases', model, ed);
+      return this.db.getItemsByWhereFilters('cases', [{a: 'model.metadata.id', b: '==', c: model}, {
+        a: 'externalDiameter',
+        b: '==',
+        c: ed
+      }]);
     }));
     s.subscribe(value => {
       if (this.externalDiameterSelected) {

@@ -20,72 +20,70 @@
     </app-visual-selector>
   </div>
 </div>
-<ng-container >
-<app-item-config
-  #caseConfig id='case-config'
-  [plusData]="{model:modelSelected, externalDiameter: externalDiameterSelected}"
-  [partType]="partType"
-  [items]="items">
-  <div class="visualizador">
+<ng-container>
+  <app-item-config
+    #caseConfig id='case-config'
+    [plusData]="{model:modelSelected, externalDiameter: externalDiameterSelected}"
+    [partType]="partType"
+    [items]="items">
+    <div class="visualizador">
 
-    <app-visualizer ttl="Frontal" scaleImg="2" [imgURL]="caseConfig.currentItem?.imgData.url"
-                    [lock]="!caseConfig.isEditable"
-                    (alSeleccionar)="caseConfig.onFileChanged($event)"></app-visualizer>
+      <app-visualizer ttl="Frontal" scaleImg="2" [imgURL]="caseConfig.currentItem?.imgData.url"
+                      [lock]="!caseConfig.isEditable"
+                      (alSeleccionar)="caseConfig.onFileChanged($event)"></app-visualizer>
 
-  </div>
-  <div class="l-s">
-    <div class="part-sub-tttl">
-      <i class="fal fa-database doc-top-ico"></i>
-      <div class="ttl"><strong>Datos generales</strong></div>
     </div>
-    <div class="cnt-inputs">
-
-      <app-input [isDisabled]="!caseConfig.isEditable" [value]="caseConfig.currentItem?.name" ttl="Nombre"
-                 placeholder="Nombre"
-                 (whenWriting)="caseConfig.writingName($event)"></app-input>
-
-      <app-input [isDisabled]="true" [value]="caseConfig.currentItem?.model?.name" ttl="Modelo"
-      ></app-input>
-      <app-input [isDisabled]="true" [value]="caseConfig.currentItem?.externalDiameter?.name"
-                 ttl="Diámetro externo"
-      ></app-input>
-      <!--<app-m-select [filteredStraps]="[itemConfig.currentItem.externalDiameter]"-->
-      <!--[isDisabled]="true"-->
-      <!--tittle="Modelo"-->
-      <!--(whenSelecting)="caseConfig.currentItem.externalDiameter= $event"></app-m-select>-->
-    </div>
-
-    <div class="part-sub-tttl">
-      <i class="fal fa-language doc-top-ico"></i>
-      <div class="ttl"><strong>Datos multi-idioma</strong></div>
-    </div>
-
-    <app-tabs>
-      <div class="tab-item-content"
-           *ngFor="let t of currentData.supportedLangs"
-           [class.tab-opt-act]="caseConfig.selectedLanguage===t" (click)="caseConfig.selectLanguage(t)">
-        <div>{{t.name}}</div>
+    <div class="l-s">
+      <div class="part-sub-tttl">
+        <i class="fal fa-language doc-top-ico"></i>
+        <div class="ttl"><strong>Datos multi-idioma</strong></div>
       </div>
-    </app-tabs>
 
-    <div class="cnt-inputs">
-      <app-input
-        ttl="Nombre"
-        placeholder="Nombre"
-        langCode="{{caseConfig.selectedLanguage?.code}}"
-        [value]="caseConfig.currentItem[caseConfig.selectedLanguage.code]?.name"
-        [isDisabled]="!caseConfig.isEditable"
-        (whenWriting)="caseConfig.whenWriting($event)">
-      </app-input>
-      <app-input
-        ttl="Modelo"
-        placeholder="Modelo"
-        [isDisabled]="!caseConfig.isEditable"
-        [value]="caseConfig.currentItem[caseConfig.selectedLanguage.code]?.model"
-        langCode="{{caseConfig.selectedLanguage.code}}"
-        (whenWriting)="caseConfig.currentItem[caseConfig.selectedLanguage.code].model=$event">
-      </app-input>
+      <app-tabs>
+        <div class="tab-item-content"
+             *ngFor="let t of currentData.supportedLangs"
+             [class.tab-opt-act]="caseConfig.selectedLanguage===t" (click)="caseConfig.selectLanguage(t)">
+          <div>{{t.name}}</div>
+        </div>
+      </app-tabs>
+
+      <div class="cnt-inputs">
+        <app-input
+          ttl="Nombre"
+          placeholder="Nombre"
+          langCode="{{caseConfig.selectedLanguage?.code}}"
+          [value]="caseConfig.currentItem[caseConfig.selectedLanguage.code]?.name"
+          [isDisabled]="!caseConfig.isEditable"
+          (whenWriting)="caseConfig.whenWriting($event)">
+        </app-input>
+      </div>
+
+      <div class="part-sub-tttl">
+        <i class="fal fa-database doc-top-ico"></i>
+        <div class="ttl"><strong>Datos generales</strong></div>
+      </div>
+      <div class="cnt-inputs">
+        <!--<app-input [isDisabled]="!caseConfig.isEditable" [value]="caseConfig.currentItem?.name" ttl="Nombre"-->
+        <!--placeholder="Nombre" (whenWriting)="caseConfig.writingName($event)"></app-input>-->
+        <app-input [isDisabled]="true" [value]="caseConfig.currentItem?.model?.name" ttl="Modelo"></app-input>
+        <app-input [isDisabled]="true" [value]="caseConfig.currentItem?.externalDiameter"
+                   ttl="Diámetro externo"
+        ></app-input>
+        <app-input
+          ttl="Código"
+          placeholder="###"
+          [value]="caseConfig.currentItem?.code"
+          [isDisabled]="!caseConfig.isEditable"
+          (whenWriting)="caseConfig.currentItem.code=$event">
+        </app-input>
+
+        <!--<app-m-select [filteredStraps]="[itemConfig.currentItem.externalDiameter]"-->
+        <!--[isDisabled]="true"-->
+        <!--tittle="Modelo"-->
+        <!--(whenSelecting)="caseConfig.currentItem.externalDiameter= $event"></app-m-select>-->
+      </div>
+
+
     </div>
-  </div>
-</app-item-config>
+  </app-item-config>
 </ng-container>

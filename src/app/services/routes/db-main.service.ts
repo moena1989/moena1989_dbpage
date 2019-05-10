@@ -93,7 +93,6 @@ export class DbMainService {
   constructor(private hasher: HasherService, private est: ModelsSevice, private storage: AngularFireStorage, zone: NgZone) {
     this.mainDb = new AngularFirestore(DBS.main, 'main',
       false, null, null, zone, null);
-
     this.mainStorage = new AngularFireStorage(DBS.main, 'main',
       'moena-1989.appspot.com', null, zone);
   }
@@ -308,6 +307,17 @@ export class DbMainService {
     }).valueChanges();
   }
 
+  getGeneralItemsByWhereFilters(typeData: string, typeProduct: string, itemType: string, whereFilters: any[]) {
+    return this.mainDb.collection(typeData + '/' + typeProduct + '/' + itemType, ref => {
+      // TODO: revisar externalDiameters, pues no es la forma definitiva...
+      let s = ref;
+      whereFilters.forEach(value => {
+        s = s.where(value.a, value.b, value.c);
+      });
+      return s;
+    }).valueChanges();
+  }
+
   getItem(tipoItem: string, idItem: string) {
     return this.mainDb.collection('productsData/' + 'watches/' + tipoItem).doc(idItem).valueChanges();
   }
@@ -321,13 +331,30 @@ export class DbMainService {
     });
   }
 
+  setItemV2(typeData: string, productType: string, partType: string, item: any) {
+    item = this.addMeta(item);
+    return new Promise(resolve => {
+      this.mainDb.collection(typeData + '/' + productType + '/' + partType).doc(item.metadata.id).set(item).then(value => {
+        resolve(item);
+      });
+    });
+  }
+
   updateItem(productType: string, partType: string, item: any) {
     return this.mainDb.collection('productsData/' + productType + '/' + partType).doc(item.metadata.id).set(item);
+  }
+
+  updateItemV2(typeData: string, productType: string, partType: string, item: any) {
+    return this.mainDb.collection(typeData + '/' + productType + '/' + partType).doc(item.metadata.id).set(item);
   }
 
   // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  DELETES
   deleteItem(productType: string, partType: string, item: any) {
     return this.mainDb.collection('productsData/' + productType + '/' + partType).doc(item.metadata.id).delete();
+  }
+
+  deleteItemV2(typeData: string, productType: string, partType: string, item: any) {
+    return this.mainDb.collection(typeData + '/' + productType + '/' + partType).doc(item.metadata.id).delete();
   }
 
   setUserData(uid: string, user: any) {
