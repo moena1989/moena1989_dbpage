@@ -3,7 +3,7 @@ import {ClockModel} from '../models/clockModel';
 import {DbMainService} from './routes/db-main.service';
 import {DBPublicService} from './routes/d-b-public.service';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {DEFAULT_CODE_LANG, DEFAULT_SYMBOL_CURRENCY} from '../../environments/environment';
+import {CATEGORIES, DEFAULT_CODE_LANG, DEFAULT_SYMBOL_CURRENCY, PRODUCT_TYPES} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -486,7 +486,7 @@ export class CurrentStorageService {
 
   private getModelos() {
     return new Promise(resolve => {
-      this.dbMain.getItems('models').subscribe(value => {
+      this.dbMain.getItems(PRODUCT_TYPES.WATCH, CATEGORIES.STRUCTURE, 'models').subscribe(value => {
         this._models = value;
         resolve();
       });
@@ -550,7 +550,7 @@ export class CurrentStorageService {
 
   private getBunckles() {
     return new Promise(resolve => {
-      this.dbMain.getItems('bunckles').subscribe(value => {
+      this.dbMain.getItems(PRODUCT_TYPES.WATCH, CATEGORIES.STRUCTURE, 'bunckles').subscribe(value => {
         this._bunckles = value;
         resolve();
       });
@@ -559,7 +559,7 @@ export class CurrentStorageService {
 
   private getCrowns() {
     return new Promise(resolve => {
-      this.dbMain.getItems('crowns').subscribe(value => {
+      this.dbMain.getItems(PRODUCT_TYPES.WATCH, CATEGORIES.STRUCTURE, 'crowns').subscribe(value => {
         this._crowns = value;
         resolve();
 
@@ -569,7 +569,7 @@ export class CurrentStorageService {
 
   private getMovements() {
     return new Promise(resolve => {
-      this.dbMain.getItems('movements').subscribe(value => {
+      this.dbMain.getItems(PRODUCT_TYPES.WATCH, CATEGORIES.STRUCTURE, 'movements').subscribe(value => {
         this._movements = value;
         resolve();
       });
@@ -578,7 +578,7 @@ export class CurrentStorageService {
 
   private getCaseBacks() {
     return new Promise(resolve => {
-      this.dbMain.getItems('casebacks').subscribe(value => {
+      this.dbMain.getItems(PRODUCT_TYPES.WATCH, CATEGORIES.STRUCTURE, 'casebacks').subscribe(value => {
         this._caseBacks = value;
         resolve();
       });
@@ -587,7 +587,7 @@ export class CurrentStorageService {
 
   private getCases() {
     return new Promise(resolve => {
-      this.dbMain.getItems('cases').subscribe(value => {
+      this.dbMain.getItems(PRODUCT_TYPES.WATCH, CATEGORIES.STRUCTURE, 'cases').subscribe(value => {
         this._cases = value;
         this.getCasesEmitter.emit(value);
         resolve();
@@ -597,7 +597,7 @@ export class CurrentStorageService {
 
   private getCrystals() {
     return new Promise(resolve => {
-      this.dbMain.getItems('crystals').subscribe(value => {
+      this.dbMain.getItems(PRODUCT_TYPES.WATCH, CATEGORIES.STRUCTURE, 'crystals').subscribe(value => {
         this._crystals = value;
         resolve();
       });
@@ -606,7 +606,7 @@ export class CurrentStorageService {
 
   private getStraps() {
     return new Promise(resolve => {
-      return this.dbMain.getItems('straps').subscribe(value => {
+      return this.dbMain.getItems(PRODUCT_TYPES.WATCH, CATEGORIES.STRUCTURE, 'straps').subscribe(value => {
         this._straps = value;
         resolve();
       });
@@ -615,7 +615,7 @@ export class CurrentStorageService {
 
   private getCollections() {
     return new Promise(resolve => {
-      this.dbMain.getItems('collections').subscribe(value => {
+      this.dbMain.getItems(PRODUCT_TYPES.WATCH, CATEGORIES.STRUCTURE, 'collections').subscribe(value => {
         this._collections = value;
         resolve();
       });

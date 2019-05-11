@@ -4,6 +4,8 @@ import {HasherService} from '../hasher.service';
 import {ModelsSevice} from '../models/model-cajas.service';
 import {AngularFireStorage} from '@angular/fire/storage';
 import {DBS} from '../../../environments/environment';
+import * as firebase from 'firebase';
+import {take} from 'rxjs/operators';
 
 export interface MCaja {
   numeroDeLote: number;
@@ -14,7 +16,6 @@ export interface MCaja {
   fechaUltimaModificacion: Date;
   modelo: string;
   materiales: string[];
-  /////////
   estado: string;
   urlImagen: string;
   serial: string;
@@ -281,8 +282,8 @@ export class DbMainService {
     return obj;
   }
 
-  getItems(tipoItem: string) {
-    return this.mainDb.collection('productsData/' + 'watches/' + tipoItem).valueChanges();
+  getItems(productType: string, category: string, itemType: string) {
+    return this.mainDb.collection(productType + '/' + category + '/' + itemType).valueChanges();
   }
 
   // ${key}
@@ -297,7 +298,7 @@ export class DbMainService {
 
 // TODO: SI O SI ARRAY FILTER ES DE (3)
   getItemsByWhereFilters(itemType: string, whereFilters: any[]) {
-    return this.mainDb.collection('productsData/' + 'watches/' + itemType, ref => {
+    return this.mainDb.collection('watches/' + 'structures/' + itemType, ref => {
       // TODO: revisar externalDiameters, pues no es la forma definitiva...
       let s = ref;
       whereFilters.forEach(value => {
@@ -307,8 +308,8 @@ export class DbMainService {
     }).valueChanges();
   }
 
-  getGeneralItemsByWhereFilters(typeData: string, typeProduct: string, itemType: string, whereFilters: any[]) {
-    return this.mainDb.collection(typeData + '/' + typeProduct + '/' + itemType, ref => {
+  getGeneralItemsByWhereFilters(typeProduct: string, category: string, itemType: string, whereFilters: any[]) {
+    return this.mainDb.collection(typeProduct + '/' + category + '/' + itemType, ref => {
       // TODO: revisar externalDiameters, pues no es la forma definitiva...
       let s = ref;
       whereFilters.forEach(value => {
@@ -318,47 +319,55 @@ export class DbMainService {
     }).valueChanges();
   }
 
-  getItem(tipoItem: string, idItem: string) {
-    return this.mainDb.collection('productsData/' + 'watches/' + tipoItem).doc(idItem).valueChanges();
-  }
-
-  setItem(productType: string, partType: string, item: any) {
+  pushItem(productType: string, itemType: string, partType: string, item: any) {
     item = this.addMeta(item);
     return new Promise(resolve => {
-      this.mainDb.collection('productsData/' + productType + '/' + partType).doc(item.metadata.id).set(item).then(value => {
+      this.mainDb.collection(productType + '/' + itemType + '/' + partType).doc(item.metadata.id).set(item).then(value => {
         resolve(item);
       });
     });
   }
 
-  setItemV2(typeData: string, productType: string, partType: string, item: any) {
-    item = this.addMeta(item);
-    return new Promise(resolve => {
-      this.mainDb.collection(typeData + '/' + productType + '/' + partType).doc(item.metadata.id).set(item).then(value => {
-        resolve(item);
-      });
-    });
-  }
-
-  updateItem(productType: string, partType: string, item: any) {
-    return this.mainDb.collection('productsData/' + productType + '/' + partType).doc(item.metadata.id).set(item);
-  }
-
-  updateItemV2(typeData: string, productType: string, partType: string, item: any) {
-    return this.mainDb.collection(typeData + '/' + productType + '/' + partType).doc(item.metadata.id).set(item);
+  updateItemV2(productType: string, category: string, itemType: string, item: any) {
+    console.log('actualizando', productType + '/' + category + '/' + itemType);
+    return this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(item.metadata.id).set(item);
   }
 
   // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  DELETES
-  deleteItem(productType: string, partType: string, item: any) {
-    return this.mainDb.collection('productsData/' + productType + '/' + partType).doc(item.metadata.id).delete();
-  }
-
-  deleteItemV2(typeData: string, productType: string, partType: string, item: any) {
-    return this.mainDb.collection(typeData + '/' + productType + '/' + partType).doc(item.metadata.id).delete();
+  deleteItemV2(productType: string, category: string, itemType: string, item: any) {
+    return this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(item.metadata.id).delete();
   }
 
   setUserData(uid: string, user: any) {
     return this.mainDb.collection('users').doc(uid).set(user);
+  }
+
+  regNewIncrement(productType: string, category: string, itemType: string, currrentCode: any) {
+    return new Promise(resolve => {
+      console.log('aqui');
+      const s = this.mainDb.doc(productType + '/' + category + '/' + itemType + '/' + currrentCode)
+        .valueChanges().pipe(take(1)).subscribe(value => {
+          let counter = 0;
+          if (value !== undefined) {
+            counter = value['numberOfLots'];
+            this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(currrentCode)
+              .update({numberOfLots: firebase.firestore.FieldValue.increment(1)}).then(value1 => {
+              console.log(value);
+              s.unsubscribe();
+              resolve(counter + 1);
+            });
+          } else {
+            console.log('PRIMER REGISTRO DE:' + currrentCode);
+            this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(currrentCode)
+              .set({numberOfLots: firebase.firestore.FieldValue.increment(1)}).then(value1 => {
+              console.log(value);
+              s.unsubscribe();
+              resolve(counter + 1);
+            });
+          }
+        });
+    });
+
   }
 }
 

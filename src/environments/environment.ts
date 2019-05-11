@@ -11,9 +11,9 @@ export const SHOW_WINDOWS_BAR = false;
 export const MAX_SIZE_IN_PX = 2500;
 export const MAX_SIZE_IN_MB = 0.7;
 
-export const TYPE_DATA = {
-  INVENTORY: 'inventory',
-  PRODUCT_DATA: 'productsData'
+
+export const PRODUCT_TYPES = {
+  WATCH: 'watches',
 };
 
 export const WATCH_PARTS = {
@@ -88,6 +88,14 @@ export const WATCH_PARTS = {
     typeId: 'crystal'
   }
 };
+
+export const CATEGORIES = {
+  INVENTORY: 'inventory',
+  STRUCTURE: 'structures',
+  COUNTER: 'counters',
+  LOTS: 'lots'
+};
+
 //   MODEL: {
 //     name: 'Modelo',
 //     productType: 'models',

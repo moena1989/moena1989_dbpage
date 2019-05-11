@@ -22,16 +22,15 @@
 </div>
 <ng-container>
   <app-item-config
+    [category]="category"
     #caseConfig id='case-config'
     [plusData]="{model:modelSelected, externalDiameter: externalDiameterSelected}"
-    [partType]="partType"
+    [itemType]="itemType"
     [items]="items">
     <div class="visualizador">
-
       <app-visualizer ttl="Frontal" scaleImg="2" [imgURL]="caseConfig.currentItem?.imgData.url"
                       [lock]="!caseConfig.isEditable"
                       (alSeleccionar)="caseConfig.onFileChanged($event)"></app-visualizer>
-
     </div>
     <div class="l-s">
       <div class="part-sub-tttl">
@@ -76,14 +75,7 @@
           [isDisabled]="!caseConfig.isEditable"
           (whenWriting)="caseConfig.currentItem.code=$event">
         </app-input>
-
-        <!--<app-m-select [filteredStraps]="[itemConfig.currentItem.externalDiameter]"-->
-        <!--[isDisabled]="true"-->
-        <!--tittle="Modelo"-->
-        <!--(whenSelecting)="caseConfig.currentItem.externalDiameter= $event"></app-m-select>-->
       </div>
-
-
     </div>
   </app-item-config>
 </ng-container>

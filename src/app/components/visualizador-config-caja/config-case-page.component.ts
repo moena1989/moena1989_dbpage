@@ -1,6 +1,5 @@
 import {Component, OnInit, ViewChild} from '@angular/core';
-import {ActivatedRoute} from '@angular/router';
-import {WATCH_PARTS} from '../../../environments/environment';
+import {CATEGORIES, WATCH_PARTS} from '../../../environments/environment';
 import {CurrentStorageService} from '../../services/current-storage.service';
 import {DbMainService} from '../../services/routes/db-main.service';
 import {ItemConfigComponent} from '../../item-config/item-config.component';
@@ -14,7 +13,8 @@ import {switchMap} from 'rxjs/operators';
 })
 export class ConfigCasePageComponent implements OnInit {
   items: any = undefined;
-  public partType = {};
+  public itemType = WATCH_PARTS.CASE;
+  public category = CATEGORIES.STRUCTURE;
   cases: any;
   modelSelected: any = undefined;
   externalDiameterSelected: any = undefined;
@@ -24,12 +24,10 @@ export class ConfigCasePageComponent implements OnInit {
   externalDiameterFilter = new Subject<string>();
   diameters = [];
 
-  constructor(private route: ActivatedRoute, public currentData: CurrentStorageService, public db: DbMainService) {
-    this.partType = WATCH_PARTS.CASE;
+  constructor(public currentData: CurrentStorageService, public db: DbMainService) {
     this.cases = currentData.cases;
     currentData.getCasesEmitter.subscribe(cases => {
       this.cases = cases;
-      // this.filtrar(this.cases);
     });
     const s = combineLatest(
       this.modelIdFilter,
