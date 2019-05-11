@@ -30,6 +30,7 @@ export interface MetaLote {
   cajasTotales: number;
 }
 
+
 export interface MLote {
   numeroDeLote: number;
   diametroInterno: string;
@@ -116,6 +117,7 @@ export class DbMainService {
   }
 
   pushReloj(serial: string, reloj: MReloj) {
+    //
     // aquí se hará el proceso de generación de nuevo serial;
     return this.afs.collection('watches').doc(serial).set(reloj);
   }
