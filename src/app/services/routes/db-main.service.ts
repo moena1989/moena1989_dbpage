@@ -75,7 +75,6 @@ export interface MReloj {
 //   id: string;
 // }
 
-
 export interface MFiltro {
   modelo: string;
   diametroInterno: string;
@@ -86,6 +85,7 @@ export interface MFiltro {
   providedIn: 'root'
 })
 export class DbMainService {
+  currentUser: any;
   private afs: AngularFirestoreDocument<any>;
   private mainDb: AngularFirestore;
   private mainStorage: AngularFireStorage;
@@ -104,7 +104,7 @@ export class DbMainService {
   }
 
   getUserData(uid: string) {
-    return this.mainDb.collection('users').doc(uid).valueChanges();
+    return this.mainDb.collection('dashboard/users/data').doc(uid).valueChanges();
   }
 
   // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  PUSHES
@@ -122,7 +122,6 @@ export class DbMainService {
     return this.afs.collection('watches').doc(serial).set(reloj);
   }
 
-// ::::::::::::::::::::::::::::::: METODO IMPORTANTISIMO E INTOCABLE UNA VEZ EN PRODUCCIÓN.
   getNuevoSerialReloj(reloj: MReloj, resutlt: (serialModeloUnico: string) => void) {
     const serialModelo = reloj.salts.join('');
     this.afs.collection('entorno').doc('intocable')
@@ -173,6 +172,20 @@ export class DbMainService {
       });
     });
   }
+
+  // setSupportedLang(langItem: any) {
+  //   langItem = this.addMeta(langItem);
+  //   return this.afs.doc('languages/' + langItem.metadata.id)
+  //     .set(langItem);
+  // }
+  //
+  // getSupportedLangs() {
+  //   return this.afs.collection('languages/').valueChanges();
+  // }
+  //
+  // getSupportedCurrencies() {
+  //   return this.afs.collection('currencies/').valueChanges();
+  // }
 
   setNewImage(img: File, route: any): Promise<any> {
     return new Promise(resolve => {
@@ -251,12 +264,12 @@ export class DbMainService {
 
   // getCajasDisponibles(filtros: MFiltro[]) {
   //   return this.afs.collection('cases', ref => {
-  //     let item = ref;
+  //     let itemConfig = ref;
   //     filtros.forEach(value => {
   //       // @ts-ignore
-  //       item = item.where(value.nombrePropiedad, '==', value.valor);
+  //       itemConfig = itemConfig.where(value.nombrePropiedad, '==', value.valor);
   //     });
-  //     return item;
+  //     return itemConfig;
   //   }).get();
   // }
 
@@ -275,27 +288,33 @@ export class DbMainService {
     obj['metadata'] = {
       id: this.mainDb.createId(),
       creationDate: new Date(),
-      lastModificationDate: new Date(),
-      by: {}
+      lastModificationDate: new Date()
     };
-    // id: this.currentData.userData.id,
-    // name: this.currentData.userData.name,
-    // lastname: this.currentData.userData.lastname,
     return obj;
   }
 
-  getItems(productType: string, category: string, itemType: string) {
-    return this.mainDb.collection(productType + '/' + category + '/' + itemType).valueChanges();
+  // setSupportedLang(langItem: any) {
+  //   langItem = this.addMeta(langItem);
+  //   return this.mainDb.doc('languages/' + langItem.metadata.id)
+  //     .set(langItem);
+  // }
+  //
+  // getSupportedLangs() {
+  //   return this.mainDb.collection('languages/').valueChanges();
+  // }
+  //
+  getSupportedCurrencies() {
+    return this.mainDb.collection('currencies/').valueChanges();
   }
 
-  // ${key}
-  getCaseByFilters(itemType: string, modelId: any, externalDiameter: any) {
-    return this.mainDb.collection('productsData/' + 'watches/' + itemType, ref => {
-      // TODO: revisar externalDiameters, pues no es la forma definitiva...
-      return ref
-        .where('model.metadata.id', '==', modelId)
-        .where('externalDiameter.name', '==', externalDiameter);
-    }).valueChanges();
+  setSupportedCurrency(supportCurrencyItem: any) {
+    supportCurrencyItem = this.addMeta(supportCurrencyItem);
+    return this.mainDb.collection('currencies/').doc(supportCurrencyItem.metadata.id).set(supportCurrencyItem);
+  }
+
+  getItems(productType: string, category: string, itemType: string) {
+    console.log('get: ', productType + '/' + category + '/' + itemType);
+    return this.mainDb.collection(productType + '/' + category + '/' + itemType).valueChanges();
   }
 
 // TODO: SI O SI ARRAY FILTER ES DE (3)
@@ -304,6 +323,7 @@ export class DbMainService {
       // TODO: revisar externalDiameters, pues no es la forma definitiva...
       let s = ref;
       whereFilters.forEach(value => {
+        // @ts-ignore
         s = s.where(value.a, value.b, value.c);
       });
       return s;
@@ -311,10 +331,12 @@ export class DbMainService {
   }
 
   getGeneralItemsByWhereFilters(typeProduct: string, category: string, itemType: string, whereFilters: any[]) {
+    console.log('se filtra en: ', typeProduct + '/' + category + '/' + itemType, whereFilters);
     return this.mainDb.collection(typeProduct + '/' + category + '/' + itemType, ref => {
       // TODO: revisar externalDiameters, pues no es la forma definitiva...
       let s = ref;
       whereFilters.forEach(value => {
+        // @ts-ignore
         s = s.where(value.a, value.b, value.c);
       });
       return s;
@@ -323,6 +345,7 @@ export class DbMainService {
 
   pushItem(productType: string, itemType: string, partType: string, item: any) {
     item = this.addMeta(item);
+    console.log('post: ', productType + '/' + itemType + '/' + partType);
     return new Promise(resolve => {
       this.mainDb.collection(productType + '/' + itemType + '/' + partType).doc(item.metadata.id).set(item).then(value => {
         resolve(item);
@@ -341,12 +364,17 @@ export class DbMainService {
   }
 
   setUserData(uid: string, user: any) {
-    return this.mainDb.collection('users').doc(uid).set(user);
+    return new Promise(resolve => {
+      user = this.addMeta(user);
+      this.mainDb.collection('dashboard/users/data').doc(uid).set(user).then(value => {
+        resolve(user);
+      });
+    });
   }
 
   regNewIncrement(productType: string, category: string, itemType: string, currrentCode: any) {
     return new Promise(resolve => {
-      console.log('aqui');
+      // console.log('aqui');
       const s = this.mainDb.doc(productType + '/' + category + '/' + itemType + '/' + currrentCode)
         .valueChanges().pipe(take(1)).subscribe(value => {
           let counter = 0;

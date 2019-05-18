@@ -48,7 +48,7 @@ export class CurrentStorageService {
     // {code: 'co', name: 'Corsican', nativeName: 'corsu, lingua corsa'},
     // {code: 'cr', name: 'Cree', nativeName: 'ᓀᐦᐃᔭᐍᐏᐣ'},
     // {code: 'hr', name: 'Croatian', nativeName: 'hrvatski'},
-    // {code: 'cs', name: 'Czech', nativeName: 'česky, čeština'},
+    {code: 'cs', name: 'Checo', nativeName: 'česky, čeština'},
     // {code: 'da', name: 'Danish', nativeName: 'dansk'},
     // {code: 'dv', name: 'Divehi; Dhivehi; Maldivian;', nativeName: 'ދިވެހި'},
     // {code: 'nl', name: 'Dutch', nativeName: 'Nederlands, Vlaams'},
@@ -82,7 +82,7 @@ export class CurrentStorageService {
     // {code: 'ik', name: 'Inupiaq', nativeName: 'Iñupiaq, Iñupiatun'},
     // {code: 'io', name: 'Ido', nativeName: 'Ido'},
     // {code: 'is', name: 'Icelandic', nativeName: 'Íslenska'},
-    // {code: 'it', name: 'Italian', nativeName: 'Italiano'},
+    {code: 'it', name: 'Italiano', nativeName: 'Italiano'},
     // {code: 'iu', name: 'Inuktitut', nativeName: 'ᐃᓄᒃᑎᑐᑦ'},
     {code: 'ja', name: 'Japonés', nativeName: '日本語'},
     // {code: 'jv', name: 'Javanese', nativeName: 'basa Jawa'},
@@ -185,7 +185,7 @@ export class CurrentStorageService {
     // {code: 'tw', name: 'Twi', nativeName: 'Twi'},
     // {code: 'ty', name: 'Tahitian', nativeName: 'Reo Tahiti'},
     // {code: 'ug', name: 'Uighur, Uyghur', nativeName: 'Uyƣurqə, ئۇيغۇرچە‎'},
-    // {code: 'uk', name: 'Ukrainian', nativeName: 'українська'},
+    {code: 'uk', name: 'Ukrainiano', nativeName: 'українська'},
     // {code: 'ur', name: 'Urdu', nativeName: 'اردو'},
     // {code: 'uz', name: 'Uzbek', nativeName: 'zbek, Ўзбек, أۇزبېك‎'},
     // {code: 've', name: 'Venda', nativeName: 'Tshivenḓa'},
@@ -365,6 +365,16 @@ export class CurrentStorageService {
   constructor(private dbMain: DbMainService, private dbPublic: DBPublicService, private _firebaseAuth: AngularFireAuth) {
   }
 
+  private _topBar: any = {faIcon: 'fa-puzzle-piece', typeProduct: 'Relojes', pageTittle: 'Piezas'};
+
+  get topBar(): any {
+    return this._topBar;
+  }
+
+  set topBar(value: any) {
+    this._topBar = value;
+  }
+
   private _collections: any;
 
   get collections(): any {
@@ -444,6 +454,10 @@ export class CurrentStorageService {
   }
 
   beforeInit() {
+
+    // ,
+
+    //
     // PROMESAS QUE SE RESOLVERAN ANTES DE INICIAR LA APLICACIÓN
     return new Promise((resolve) => {
       Promise.all([
@@ -468,11 +482,16 @@ export class CurrentStorageService {
 
   automaticAuth() {
     return new Promise(resolve => {
+      console.log('se intenta autoAuth');
       this._firebaseAuth.authState.subscribe(
         (user) => {
           if (user) {
+            console.log(user.uid);
             this.dbMain.getUserData(user.uid).subscribe(datosUsuario => {
               this._userData = datosUsuario;
+              // todo: ¿Cómo hago para que mainDb vea a current?
+              console.log('se encontró info del usuario', datosUsuario);
+              this.dbMain.currentUser = datosUsuario;
               resolve();
             });
           } else {
@@ -495,7 +514,7 @@ export class CurrentStorageService {
 
   private getLanguages() {
     return new Promise(resolve => {
-      this.dbPublic.getSupportedLangs().subscribe(langs => {
+      this.dbMain.getItems('settings', 'dashboard', 'supportedLanguagesData').subscribe(langs => {
         this._supportedLangs = langs;
         if (this._supportedLangs[0]) {
           let esLang = {};

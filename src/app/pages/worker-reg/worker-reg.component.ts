@@ -1,6 +1,7 @@
 import {Component, OnInit} from '@angular/core';
 import {DbManagerService} from '../../services/db-manager.service';
 import {ToolsServices} from '../../services/tools-services.service';
+import {AuthService} from '../../services/routes/auth.service';
 
 @Component({
   selector: 'app-worker-reg',
@@ -9,7 +10,7 @@ import {ToolsServices} from '../../services/tools-services.service';
 })
 export class WorkerRegComponent implements OnInit {
 
-  constructor(private db: DbManagerService, private tools: ToolsServices) {
+  constructor(private db: AuthService, private tools: ToolsServices) {
   }
 
   ngOnInit() {
@@ -17,7 +18,7 @@ export class WorkerRegComponent implements OnInit {
 
   registrarUser(mail: string, pass: string, name: string, last_name: string, cargo: string) {
     const usr = {name: name, email: mail, last_name: last_name, cargo: cargo};
-    this.db.pushNuevoUsuario(usr, pass);
+    // this.db.pushNuevoUsuario(usr, pass);
     // this.tools.snack.show('Registro exitoso! ;)');
   }
 }

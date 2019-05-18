@@ -18,12 +18,13 @@ export class MSelectComponent implements OnInit {
 
   @Input() set items(options: any[]) {
     this.currentOps.length = 0;
-    if (options !== undefined) { // existe data
+    if (options !== undefined) { // existe d  ata
       this.currentOps = options;
       // si solamente tiene una selección entonces que sea la predeterminada
-      if (options[0]) {
+      if (options.length === 1) {
         // console.log('se selecciona autamaticamente');
         this.isSelected = true;
+        console.error('MALDITA SEA');
         this.whenSelecting.emit(options[0]);
       }
     }

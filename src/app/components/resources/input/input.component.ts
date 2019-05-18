@@ -10,12 +10,15 @@ export class InputComponent implements OnInit {
   @Input() placeholder: string;
   @Output() whenWriting = new EventEmitter();
   // number, email, text, pass,
-  // @Input() type = 'number';
+  @Input() type = 'text';
   @Input() isDisabled: boolean;
   val: any = '';
   @Input() capitalizar = true;
   @Input() langCode: string = undefined;
   @Input() staticPlaceHolder = undefined;
+  @Input() maxLength = 20;
+  @Input() errMsg = '';
+  @Input() upperCase = false;
   private cc: any;
 
   constructor() {
@@ -39,24 +42,27 @@ export class InputComponent implements OnInit {
   }
 
   tecla(evt: any) {
-    if (this.capitalizar) {
-      // this.va = cc;
-      this.whenWriting.emit(this.capitalize(this.val));
-      // switch (this.type) {
-      //   case'text':
-      //     // this.whenWriting.emit(this.capitalize(this.val));
-      //     break;
-      //   case 'number':
-      //     if (isNumeric(evt)) {
-      //       console.log('y pues ajá');
-      //       this.cc = evt;
-      //     }
-      //     break;
-      //   case 'email':
-      //     // this.whenWriting.emit(this.capitalize(this.val));
-      //     break;
-      //
-      // }
+    // todo: tiene que haber una mejor manera de mayusculizar...
+    if (this.upperCase) {
+      this.val = this.val.toUpperCase();
     }
+
+    if (this.capitalizar) {
+      switch (this.type) {
+        case'text':
+          break;
+        case 'number':
+          break;
+        case 'email':
+          break;
+      }
+    }
+
+    this.whenWriting.emit(this.val);
+  }
+
+  clear() {
+    this.val = '';
+    this.whenWriting.emit(this.val);
   }
 }

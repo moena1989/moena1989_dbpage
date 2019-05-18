@@ -4,70 +4,50 @@
     <img class="main_name" src="assets/common/logo_w.svg" alt="Moena 1989"/>
     <div>DASHBOARD</div>
   </div>
-
   <div class="sidebar-scrollable-area">
-    <div class="item" routerLink="/home" [routerLinkActive]="'acti'">
-      <i class="fal fa-home ico_op"></i>
-      <div class="opt_txt">Inicio</div>
-    </div>
     <!--<div class="sub">Producción</div>-->
-    <div class="sub">Producción</div>
-
-    <!--<div class="item" routerLink="/inventory/watch" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-clipboard fa-fw ico_op "></i>-->
-    <!--<div class="opt_txt">Registro</div>-->
+    <!--<div class="item" routerLink="/watch/providers" [routerLinkActive]="'acti'">-->
+    <!--<i class="fal fa-hand-holding-box fa-fw ico_op "></i>-->
+    <!--<div class="opt_txt">Proveedores</div>-->
     <!--</div>-->
 
-    <div class="item" routerLink="/inventory/watch" [routerLinkActive]="'acti'">
-      <i class="fal fa-inventory fa-fw ico_op "></i>
-      <div class="opt_txt">Inventario</div>
-    </div>
-
-    <div *ngIf="regs">
-      <div class="item" routerLink="/registro/nueva_caja" [routerLinkActive]="'acti'">
-        <i class="fal fa-plus fa-fw ico_op "></i>
-        <div class="opt_txt">Caja</div>
-      </div>
-
-      <div class="item" routerLink="/registro/nuevo_reloj" [routerLinkActive]="'acti'">
-        <i class="fal fa-plus fa-fw ico_op "></i>
-        <div class="opt_txt">Reloj</div>
-      </div>
-    </div>
-    <div class="sub">Recursos humanos</div>
-
-    <div class="item" routerLink="/equipo" [routerLinkActive]="'acti'">
+    <div class="item" routerLink="/watch/equipo" [routerLinkActive]="'acti'">
       <i class="fal fa-users fa-fw ico_op"></i>
       <div class="opt_txt">Equipo de trabajo</div>
     </div>
 
+    <div class="sub">Registro</div>
+
+    <!--<div class="item" routerLink="/watch/lots" [routerLinkActive]="'acti'">-->
+    <!--<i class="fal fa-boxes-alt er fa-fw ico_op "></i>-->
+    <!--<div class="opt_txt">Lotes</div>-->
+    <!--</div>-->
+
+    <!--<div class="item" routerLink="/watch/units" [routerLinkActive]="'acti'">-->
+    <!--<i class="fal fa-box-alt fa-fw ico_op "></i>-->
+    <!--<div class="opt_txt">Unidades</div>-->
+    <!--</div>-->
+
     <div class="sub">Mercadeo</div>
 
-    <div class="item" routerLink="/web/inicio" [routerLinkActive]="'acti'">
-      <i class="fal fa-newspaper fa-fw ico_op "></i>
-      <div class="opt_txt">Inicio</div>
-    </div>
+    <!--<div class="item" routerLink="/watch/web/temporadas/relojes" [routerLinkActive]="'acti'">-->
+    <!--<i class="fal fa-chart-network fa-fw ico_op "></i>-->
+    <!--<div class="opt_txt">Temporadas</div>-->
+    <!--</div>-->
 
-    <div class="item" routerLink="/web/temporadas/relojes" [routerLinkActive]="'acti'">
-      <i class="fal fa-chart-network fa-fw ico_op "></i>
-      <div class="opt_txt">Temporadas</div>
-    </div>
-
-
-    <div class="item" routerLink="/ajustes-web" [routerLinkActive]="'acti'">
-      <i class="fal fa-sliders-v fa-fw ico_op"></i>
-      <div class="opt_txt">Ajustes Web</div>
-    </div>
-
-    <div class="sub">Datos Internos</div>
-    <div class="item" routerLink="/parts" [routerLinkActive]="'acti'">
+    <!--<div class="item" routerLink="/watch/ajustes-web" [routerLinkActive]="'acti'">-->
+    <!--<i class="fal fa-sliders-v fa-fw ico_op"></i>-->
+    <!--<div class="opt_txt">Ajustes Web</div>-->
+    <!--</div>-->
+    <div class="sub">Interno</div>
+    <div class="item" routerLink="/watch/structures" [routerLinkActive]="'acti'">
       <i class="fal fa-puzzle-piece fa-fw ico_op"></i>
-      <div class="opt_txt">Partes</div>
+      <div class="opt_txt">Estructuras</div>
     </div>
-    <!--<div class="sub">Estructura</div>-->
-    <div class="item" routerLink="/structures" [routerLinkActive]="'acti'">
-      <i class="fal fa-check-double fa-fw ico_op"></i>
-      <div class="opt_txt">Estructura: Relojes</div>
-    </div>
+
+    <!--<div class="item" routerLink="/watch/watchers" [routerLinkActive]="'acti'">-->
+    <!--<i class="fal fa-low-vision fa-fw ico_op"></i>-->
+    <!--<div class="opt_txt">Puertas de acceso</div>-->
+    <!--</div>-->
   </div>
 </div>

@@ -1,13 +1,4 @@
 <div class="doc">
-  <div class="doc-top">
-    <div class="d-l-s">
-      <i class="fal fa-chart-network doc-top-ico"></i>
-      <div class="doc-top-ttl">Temporadas</div>
-    </div>
-    <div class="d-r-s">
-      <i class="fal fa-question-circle clickss"></i>
-    </div>
-  </div>
   <app-tabs>
     <div class="tab-item-content"
          *ngFor="let t of tendencias"
@@ -56,7 +47,7 @@
       <!--<app-m-select tittle="Estado"-->
       <!--(whenSelecting)="selectedSeasonCopy.estado= $event.name"-->
       <!--[selectedItem]="{name: selectedSeasonCopy.estado}"-->
-      <!--[item]="[currentData.states.private,currentData.states.public]">-->
+      <!--[itemConfig]="[currentData.states.private,currentData.states.public]">-->
       <!--</app-m-select>-->
       <!--<app-form-button text="Eliminar temporada" (click)="mdEliminarTemp.open()">-->
       <!--</app-form-button>-->
@@ -368,7 +359,7 @@
         <!--TODO: ¿Cómo se gestionan los precios de forma internacional?-->
         <!--<app-input ttl="Precio"-->
         <!--[value]="nwWatchSetting.precio"-->
-        <!--(whenWriting)="nwWatchSetting.precio= $event"></app-input>-->
+        <!--(whenWritingName)="nwWatchSetting.precio= $event"></app-input>-->
 
         <app-m-select tittle="Hebilla"
                       [isDisabled]="!isEditable"

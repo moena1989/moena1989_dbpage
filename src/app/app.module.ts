@@ -9,7 +9,7 @@ import {TittlebarComponent} from './components/windowsbar/tittlebar.component';
 import {VisualizerComponent} from './tools/visualizer/visualizer.component';
 import {FormsModule} from '@angular/forms';
 import {VerTendenciasPageComponent} from './pages/por_def/ver-tendencias-page/ver-tendencias-page.component';
-import {PartesPageComponent} from './pages/caracteristicas-page/partes-page.component';
+import {StructuresPageComponent} from './pages/caracteristicas-page/structures-page.component';
 import {SnackbarComponent} from './tools/snackbar/snackbar.component';
 import {PublicacionesPageComponent} from './pages/marketing/publicaciones-page/publicaciones-page.component';
 import {AngularFireStorageModule} from '@angular/fire/storage';
@@ -80,8 +80,19 @@ import {ConfigCollectionsComponent} from './config-collections/config-collection
 import {PushInputComponent} from './push-input/push-input.component';
 import {ConfigWatchConfigComponent} from './config-watch-config/config-watch-config.component';
 import {WatchStructurePageComponent} from './watch-structure-page/watch-structure-page.component';
-import { InventoryWatchConfigPageComponent } from './inventory-model-page/inventory-watch-config-page.component';
-import { InventoryCasePageComponent } from './inventory-watch-config/inventory-case-page.component';
+import {InventoryWatchConfigPageComponent} from './inventory-model-page/inventory-watch-config-page.component';
+import {InventoryCasePageComponent} from './inventory-watch-config/inventory-case-page.component';
+import {LotsPageComponent} from './lots-page/lots-page.component';
+import {UnitsPageComponent} from './units-page/units-page.component';
+import {ProvidersPageComponent} from './providers-page/providers-page.component';
+import {LotsCasesComponent} from './lots-cases/lots-cases.component';
+import {ObservableSelectComponent} from './observable-select/observable-select.component';
+import {NgContentDirective} from './ng-content.directive';
+import {UnitsLeatherComponent} from './units-leather/units-leather.component';
+import {LotsBuncklesComponent} from './lots-bunckles/lots-bunckles.component';
+import {LotsCasebacksComponent} from './lots-casebacks/lots-casebacks.component';
+import {LotsCrystalsComponent} from './lots-crystals/lots-crystals.component';
+import {AngularFireFunctionsModule, FunctionsRegionToken} from '@angular/fire/functions';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -101,7 +112,7 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     VerLoteComponent, TittlebarComponent, TopBarComponent, LoadbarComponent,
     OAuthCallbackComponent, TendenciasPageComponent, TrendCntComponent, NoticiasPageComponent,
     SeasonsComponent, VerTendenciasPageComponent, VerTendenciaPageComponent,
-    VerTiposProductosComponent, OpCntComponent, PartesPageComponent, TabsComponent,
+    VerTiposProductosComponent, OpCntComponent, StructuresPageComponent, TabsComponent,
     ConfigStrapPageComponent, ConfigMovementPageComponent,
     ConfigMaderaComponent, ConfigModelPageComponent,
     ConfigCasebackPageComponent, ConfigBuncklePageComponent,
@@ -110,9 +121,14 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     AjustesWebComponent, PedidosPageComponent, WatchSettingCardComponent,
     ItemConfigComponent, SelectFormComponent,
     ConfigCollectionsComponent, PushInputComponent,
-    ConfigWatchConfigComponent, WatchStructurePageComponent, InventoryWatchConfigPageComponent, InventoryCasePageComponent
+    ConfigWatchConfigComponent, WatchStructurePageComponent,
+    InventoryWatchConfigPageComponent, InventoryCasePageComponent,
+    LotsPageComponent, UnitsPageComponent, ProvidersPageComponent,
+    LotsCasesComponent, ObservableSelectComponent, NgContentDirective,
+    UnitsLeatherComponent, LotsBuncklesComponent, LotsCasebacksComponent, LotsCrystalsComponent
   ],
   imports: [
+    AngularFireFunctionsModule,
     RouterModule.forRoot(routes, {enableTracing: false}),
     AngularFireModule.initializeApp(DBS.public, 'public'),
     AngularFireModule.initializeApp(DBS.main, 'main'),
@@ -121,6 +137,7 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
   ],
   providers: [
+    {provide: FunctionsRegionToken, useValue: 'us-central1'},
     {
       provide: externalUrlProvider,
       useValue: (route: ActivatedRouteSnapshot) => {

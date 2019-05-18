@@ -13,6 +13,11 @@ import {CurrentStorageService} from '../../../services/current-storage.service';
 export class TopBarComponent implements OnInit {
   titulo_actual;
 
+  faIco = 'fa-puzzle-piece';
+  typeProduct = 'Relojes';
+  typeName = 'Piezas';
+  productSelected = 'Relojería';
+
   constructor(public db: DbManagerService, public tools: ToolsServices,
               public current: CurrentStorageService, private auth: AuthService) {
   }
@@ -26,5 +31,9 @@ export class TopBarComponent implements OnInit {
 
   alPresionarMenu() {
     this.tools.isMenuOpened = !this.tools.isMenuOpened;
+  }
+
+  selectProduct(c: any) {
+    this.productSelected = c;
   }
 }

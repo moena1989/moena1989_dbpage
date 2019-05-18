@@ -574,7 +574,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
     var instance = new C();
     // early implementations not supports chaining
     var HASNT_CHAINING = instance[ADDER](IS_WEAK ? {} : -0, 1) != instance;
-    // V8 ~  Chromium 40- weak-collections throws on primitives, but should return false
+    // V8 ~  Chromium 40- weak-bunckles throws on primitives, but should return false
     var THROWS_ON_PRIMITIVES = fails(function () { instance.has(1); });
     // most early implementations doesn'line supports iterables, most modern - not close it correctly
     var ACCEPT_ITERABLES = $iterDetect(function (iter) { new C(iter); }); // eslint-isDisabled-line no-new
@@ -602,7 +602,7 @@ module.exports = function (NAME, wrapper, methods, common, IS_MAP, IS_WEAK) {
       IS_MAP && fixMethod('get');
     }
     if (BUGGY_ZERO || HASNT_CHAINING) fixMethod(ADDER);
-    // weak collections should not contains .clear method
+    // weak bunckles should not contains .clear method
     if (IS_WEAK && proto.clear) delete proto.clear;
   }
 
@@ -1220,7 +1220,7 @@ var FREEZE = !__webpack_require__(/*! ./_fails */ "./node_modules/core-js/module
 var setMeta = function (it) {
   setDesc(it, META, { value: {
     i: 'O' + ++id, // object ID
-    w: {}          // weak collections IDs
+    w: {}          // weak bunckles IDs
   } });
 };
 var fastKey = function (it, create) {
@@ -1244,7 +1244,7 @@ var getWeak = function (it, create) {
     if (!create) return false;
     // add missing metadata
     setMeta(it);
-  // return hash weak collections IDs
+  // return hash weak bunckles IDs
   } return it[META].w;
 };
 // add metadata on freeze-family methods calling

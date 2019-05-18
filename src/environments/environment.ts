@@ -42,10 +42,10 @@ export const WATCH_PARTS = {
     name: 'Colección',
     productType: 'watches',
     productTypeId: 'watch',
-    type: 'collections',
+    type: 'bunckles',
     typeId: 'collection'
   },
-  WATCH_SETTING: {
+  WATCH_CONFIG: {
     name: 'Configuración de reloj',
     productType: 'watches',
     productTypeId: 'watch',

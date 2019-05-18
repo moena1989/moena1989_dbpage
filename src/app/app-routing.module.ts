@@ -5,7 +5,7 @@
 // import {LoginComponent} from './pages/general/login/login.component';
 // import {InjectionToken, NgModule} from '@angular/core';
 // import {VerTendenciasPageComponent} from './pages/por_def/ver-tendencias-page/ver-tendencias-page.component';
-// import {PartesPageComponent} from './pages/caracteristicas-page/caracteristicas-page.component';
+// import {StructuresPageComponent} from './pages/caracteristicas-page/caracteristicas-page.component';
 // import {PublicacionesPageComponent} from './pages/marketing/publicaciones-page/publicaciones-page.component';
 // import {NuevoRelojComponent} from './tools/nuevo-reloj/nuevo-reloj.component';
 // import {InventarioPageComponent} from './pages/accounting/inventario-page/inventario-page.component';
@@ -65,7 +65,7 @@
 //       {path: 'ventas', component: VentasPageComponent},
 //       {path: 'publicaciones', component: PublicacionesPageComponent},
 //       {
-//         path: 'caracteristicas/:tipoItemSelected', component: PartesPageComponent, children: []
+//         path: 'caracteristicas/:tipoItemSelected', component: StructuresPageComponent, children: []
 //       }
 //     ]
 //   }];

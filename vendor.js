@@ -297,7 +297,7 @@ var Location = /** @class */ (function () {
     // TODO: rename this method to pushState
     /**
      * Changes the browsers URL to the normalized version of the given URL, and pushes a
-     * new item onto the platform'current_opciones_caja_modelo history.
+     * new itemConfig onto the platform'current_opciones_caja_modelo history.
      */
     Location.prototype.go = function (path, query, state) {
         if (query === void 0) { query = ''; }
@@ -306,7 +306,7 @@ var Location = /** @class */ (function () {
     };
     /**
      * Changes the browsers URL to the normalized version of the given URL, and replaces
-     * the top item on the platform'current_opciones_caja_modelo history stack.
+     * the top itemConfig on the platform'current_opciones_caja_modelo history stack.
      */
     Location.prototype.replaceState = function (path, query, state) {
         if (query === void 0) { query = ''; }
@@ -2909,7 +2909,7 @@ var NgClass = /** @class */ (function () {
     /**
      * Applies a collection of CSS classes to the DOM element.
      *
-     * For argument of type Set and Array CSS class names contained in those collections are always
+     * For argument of type Set and Array CSS class names contained in those bunckles are always
      * added.
      * For argument of type Map CSS class name in the map'current_opciones_caja_modelo salt is toggled based on the value (added
      * for truthy and removed for falsy).
@@ -3130,9 +3130,9 @@ var NgForOfContext = /** @class */ (function () {
     return NgForOfContext;
 }());
 /**
- * The `NgForOf` directive instantiates a template once per item from an iterable. The context
+ * The `NgForOf` directive instantiates a template once per itemConfig from an iterable. The context
  * for each instantiated template inherits from the outer context with the given loop variable
- * set to the relojData item from the iterable.
+ * set to the relojData itemConfig from the iterable.
  *
  * @usageNotes
  *
@@ -3140,15 +3140,15 @@ var NgForOfContext = /** @class */ (function () {
  *
  * `NgForOf` provides several exported values that can be aliased to local variables:
  *
- * - `$implicit: T`: The value of the individual item in the iterable (`ngForOf`).
+ * - `$implicit: T`: The value of the individual itemConfig in the iterable (`ngForOf`).
  * - `ngForOf: NgIterable<T>`: The value of the iterable expression. Useful when the expression is
  * more complex then a property access, for example when using the async pipe (`userStreams |
  * async`).
- * - `index: number`: The index of the relojData item in the iterable.
- * - `first: boolean`: True when the item is the first item in the iterable.
- * - `last: boolean`: True when the item is the last item in the iterable.
- * - `even: boolean`: True when the item has an even index in the iterable.
- * - `odd: boolean`: True when the item has an odd index in the iterable.
+ * - `index: number`: The index of the relojData itemConfig in the iterable.
+ * - `first: boolean`: True when the itemConfig is the first itemConfig in the iterable.
+ * - `last: boolean`: True when the itemConfig is the last itemConfig in the iterable.
+ * - `even: boolean`: True when the itemConfig has an even index in the iterable.
+ * - `odd: boolean`: True when the itemConfig has an odd index in the iterable.
  *
  * ```
  * <li *ngFor="let user of userObservable | async as users; index as i; first as isFirst">
@@ -3160,10 +3160,10 @@ var NgForOfContext = /** @class */ (function () {
  *
  * When the contents of the iterator changes, `NgForOf` makes the corresponding changes to the DOM:
  *
- * * When an item is added, a new instance of the template is added to the DOM.
- * * When an item is removed, its template instance is removed from the DOM.
- * * When item are reordered, their respective templates are reordered in the DOM.
- * * Otherwise, the DOM element for that item will remain the same.
+ * * When an itemConfig is added, a new instance of the template is added to the DOM.
+ * * When an itemConfig is removed, its template instance is removed from the DOM.
+ * * When itemConfig are reordered, their respective templates are reordered in the DOM.
+ * * Otherwise, the DOM element for that itemConfig will remain the same.
  *
  * Angular uses object identity to track insertions and deletions within the iterator and reproduce
  * those changes in the DOM. This has important implications for animations and any stateful
@@ -3179,17 +3179,17 @@ var NgForOfContext = /** @class */ (function () {
  * be avoided if possible.
  *
  * To customize the defaultOp tracking algorithm, `NgForOf` supports `trackBy` option.
- * `trackBy` takes a function which has two arguments: `index` and `item`.
+ * `trackBy` takes a function which has two arguments: `index` and `itemConfig`.
  * If `trackBy` is given, Angular tracks changes by the return value of the function.
  *
  * ### Syntax
  *
- * - `<li *ngFor="let item of item; index as i; trackBy: trackByFn">...</li>`
+ * - `<li *ngFor="let itemConfig of itemConfig; index as i; trackBy: trackByFn">...</li>`
  *
  * With `<ng-template>` element:
  *
  * ```
- * <ng-template ngFor let-item [ngForOf]="item" let-i="index" [ngForTrackBy]="trackByFn">
+ * <ng-template ngFor let-itemConfig [ngForOf]="itemConfig" let-i="index" [ngForTrackBy]="trackByFn">
  *   <li>...</li>
  * </ng-template>
  * ```
@@ -5544,17 +5544,17 @@ var SlicePipe = /** @class */ (function () {
     /**
      * @param value a list or a string to be sliced.
      * @param start the starting index of the subset to return:
-     *   - **a positive integer**: return the item at `start` index and all item after
+     *   - **a positive integer**: return the itemConfig at `start` index and all itemConfig after
      *     in the list or string expression.
-     *   - **a negative integer**: return the item at `start` index from the end and all item after
+     *   - **a negative integer**: return the itemConfig at `start` index from the end and all itemConfig after
      *     in the list or string expression.
      *   - **if positive and greater than the size of the expression**: return an empty list or
      * string.
      *   - **if negative and greater than the size of the expression**: return entire list or string.
      * @param end the ending index of the subset to return:
-     *   - **omitted**: return all item until the end.
-     *   - **if positive**: return all item before `end` index of the list or string.
-     *   - **if negative**: return all item before `end` index from the end of the list or string.
+     *   - **omitted**: return all itemConfig until the end.
+     *   - **if positive**: return all itemConfig before `end` index of the list or string.
+     *   - **if negative**: return all itemConfig before `end` index from the end of the list or string.
      */
     SlicePipe.prototype.transform = function (value, start, end) {
         if (value == null)
@@ -19847,12 +19847,12 @@ var ShadowCss = /** @class */ (function () {
      *
      * For example, we convert this rule:
      *
-     * polyfill-next-selector { content: ':host menu-item'; }
-     * ::content menu-item {
+     * polyfill-next-selector { content: ':host menu-itemConfig'; }
+     * ::content menu-itemConfig {
      *
      * to this:
      *
-     * scopeName menu-item {
+     * scopeName menu-itemConfig {
      *
     **/
     ShadowCss.prototype._insertPolyfillDirectivesInCssText = function (cssText) {
@@ -19871,13 +19871,13 @@ var ShadowCss = /** @class */ (function () {
      * For example, we convert this rule:
      *
      * polyfill-rule {
-     *   content: ':host menu-item';
+     *   content: ':host menu-itemConfig';
      * ...
      * }
      *
      * to this:
      *
-     * scopeName menu-item {...}
+     * scopeName menu-itemConfig {...}
      *
     **/
     ShadowCss.prototype._insertPolyfillRulesInCssText = function (cssText) {
@@ -19919,12 +19919,12 @@ var ShadowCss = /** @class */ (function () {
      * For example, we convert this rule:
      *
      * @polyfill-unscoped-rule {
-     *   content: 'menu-item';
+     *   content: 'menu-itemConfig';
      * ... }
      *
      * to this:
      *
-     * menu-item {...}
+     * menu-itemConfig {...}
      *
     **/
     ShadowCss.prototype._extractUnscopedRulesFromCssText = function (cssText) {
@@ -23415,7 +23415,7 @@ function elementEventNameAndTarget(eventAst, dirAst) {
 }
 function calcStaticDynamicQueryFlags(queryIds, queryId, isFirst) {
     var flags = 0 /* None */;
-    // Note: We only make queries static that query for a single item.
+    // Note: We only make queries static that query for a single itemConfig.
     // This is because of backwards compatibility with the old view compiler...
     if (isFirst && (queryIds.staticQueryIds.has(queryId) || !queryIds.dynamicQueryIds.has(queryId))) {
         flags |= 268435456 /* StaticQuery */;
@@ -25497,7 +25497,7 @@ var TemplateDefinitionBuilder = /** @class */ (function () {
         }
         // e.g. C(1, C1Template)
         this.instruction.apply(this, Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__spread"])([this._creationCode, template.sourceSpan, Identifiers$1.containerCreate], trimTrailingNulls(parameters)));
-        // e.g. p(1, 'forOf', ɵb(ctx.item));
+        // e.g. p(1, 'forOf', ɵb(ctx.itemConfig));
         var context = variable(CONTEXT_NAME);
         template.inputs.forEach(function (input) {
             var convertedBinding = _this.convertPropertyBinding(context, input.value);
@@ -33093,7 +33093,7 @@ function mixingMultiProvidersWithRegularProvidersError(provider1, provider2) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * A unique object used for retrieving item from the {@link ReflectiveInjector}.
+ * A unique object used for retrieving itemConfig from the {@link ReflectiveInjector}.
  *
  * Keys have:
  * - a system-wide unique `id`.
@@ -35962,14 +35962,14 @@ function getModuleFactory(id) {
  * found in the LICENSE file at https://angular.io/license
  */
 /**
- * An unmodifiable list of item that Angular keeps up to date when the state
+ * An unmodifiable list of itemConfig that Angular keeps up to date when the state
  * of the application changes.
  *
  * The type of object that {@link ViewChildren}, {@link ContentChildren}, and {@link QueryList}
  * provide.
  *
  * Implements an iterable interface, therefore it can be used in both ES6
- * javascript `for (var i of item)` loops as well as in Angular templates with
+ * javascript `for (var i of itemConfig)` loops as well as in Angular templates with
  * `*ngFor="let i of myList"`.
  *
  * Changes can be observed by subscribing to the changes `Observable`.
@@ -35981,7 +35981,7 @@ function getModuleFactory(id) {
  * ```typescript
  * @Component({...})
  * class Container {
- *   @ViewChildren(Item) item:QueryList<Item>;
+ *   @ViewChildren(Item) itemConfig:QueryList<Item>;
  * }
  * ```
  */
@@ -36281,25 +36281,25 @@ var ViewRef = /** @class */ (function (_super) {
  * an outer one and an inner one.
  *
  * ```
- * Count: {{item.length}}
+ * Count: {{itemConfig.length}}
  * <ul>
- *   <li *ngFor="let  item of item">{{item}}</li>
+ *   <li *ngFor="let  itemConfig of itemConfig">{{itemConfig}}</li>
  * </ul>
  * ```
  *
  * This is the outer `TemplateRef`:
  *
  * ```
- * Count: {{item.length}}
+ * Count: {{itemConfig.length}}
  * <ul>
- *   <ng-template ngFor let-item [ngForOf]="item"></ng-template>
+ *   <ng-template ngFor let-itemConfig [ngForOf]="itemConfig"></ng-template>
  * </ul>
  * ```
  *
  * This is the inner `TemplateRef`:
  *
  * ```
- *   <li>{{item}}</li>
+ *   <li>{{itemConfig}}</li>
  * ```
  *
  * The outer and inner `TemplateRef` instances are assembled into views as follows:
@@ -36665,7 +36665,7 @@ var DefaultIterableDiffer = /** @class */ (function () {
         this._movesTail = null;
         this._removalsHead = null;
         this._removalsTail = null;
-        // Keeps track of records where custom track by is the same, but item identity has changed
+        // Keeps track of records where custom track by is the same, but itemConfig identity has changed
         this._identityChangesHead = null;
         this._identityChangesTail = null;
         this._trackByFn = trackByFn || trackByIdentity;
@@ -36692,7 +36692,7 @@ var DefaultIterableDiffer = /** @class */ (function () {
                 nextRemove;
             var adjPreviousIndex = getPreviousIndex(record, addRemoveOffset, moveOffsets);
             var currentIndex = record.currentIndex;
-            // consume the item, and adjust the addRemoveOffset and update moveDistance if necessary
+            // consume the itemConfig, and adjust the addRemoveOffset and update moveDistance if necessary
             if (record === nextRemove) {
                 addRemoveOffset--;
                 nextRemove = nextRemove._nextRemoved;
@@ -36837,7 +36837,7 @@ var DefaultIterableDiffer = /** @class */ (function () {
     /**
      * Reset the state of the change objects to show no changes. This means set previousKey to
      * currentKey, and clear all of the queues (additions, moves, removals).
-     * Set the previousIndexes of moved and added item to their currentIndexes
+     * Set the previousIndexes of moved and added itemConfig to their currentIndexes
      * Reset the list of additions, moves and removals
      *
      * @internal
@@ -36865,12 +36865,12 @@ var DefaultIterableDiffer = /** @class */ (function () {
         }
     };
     /**
-     * This is the core function which handles differences between collections.
+     * This is the core function which handles differences between bunckles.
      *
      * - `record` is the record which we saw at this position last time. If null then it is a new
-     *   item.
-     * - `item` is the relojData item in the collection
-     * - `index` is the position of the item in the collection
+     *   itemConfig.
+     * - `itemConfig` is the relojData itemConfig in the collection
+     * - `index` is the position of the itemConfig in the collection
      *
      * @internal
      */
@@ -36882,10 +36882,10 @@ var DefaultIterableDiffer = /** @class */ (function () {
         }
         else {
             previousRecord = record._prev;
-            // Remove the record from the collection since we know it does not match the item.
+            // Remove the record from the collection since we know it does not match the itemConfig.
             this._remove(record);
         }
-        // Attempt to see if we have seen the item before.
+        // Attempt to see if we have seen the itemConfig before.
         record = this._linkedRecords === null ? null : this._linkedRecords.get(itemTrackBy, index);
         if (record !== null) {
             // We have seen this before, we need to move it forward in the collection.
@@ -36898,14 +36898,14 @@ var DefaultIterableDiffer = /** @class */ (function () {
             // Never seen it, check evicted list.
             record = this._unlinkedRecords === null ? null : this._unlinkedRecords.get(itemTrackBy, null);
             if (record !== null) {
-                // It is an item which we have evicted earlier: reinsert it back into the list.
+                // It is an itemConfig which we have evicted earlier: reinsert it back into the list.
                 // But first we need to check if identity changed, so we can update in view if necessary
                 if (!looseIdentical(record.item, item))
                     this._addIdentityChange(record, item);
                 this._reinsertAfter(record, previousRecord, index);
             }
             else {
-                // It is a new item: add it.
+                // It is a new itemConfig: add it.
                 record =
                     this._addAfter(new IterableChangeRecord_(item, itemTrackBy), previousRecord, index);
             }
@@ -36930,7 +36930,7 @@ var DefaultIterableDiffer = /** @class */ (function () {
      *   3) move `a` at from `1` to `2`.
      *
      *
-     * Double check that we have not evicted a duplicate item. We need to check if the item type may
+     * Double check that we have not evicted a duplicate itemConfig. We need to check if the itemConfig type may
      * have already been removed:
      * The insertion of b will evict the first 'a'. If we don'line reinsert it now it will be reinserted
      * at the end. Which will show up as the two 'a'current_opciones_caja_modelo switching position. This is incorrect, since a
@@ -37171,7 +37171,7 @@ var IterableChangeRecord_ = /** @class */ (function () {
     }
     return IterableChangeRecord_;
 }());
-// A linked list of CollectionChangeRecords with the same IterableChangeRecord_.item
+// A linked list of CollectionChangeRecords with the same IterableChangeRecord_.itemConfig
 var _DuplicateItemRecordList = /** @class */ (function () {
     function _DuplicateItemRecordList() {
         /** @internal */
@@ -37182,7 +37182,7 @@ var _DuplicateItemRecordList = /** @class */ (function () {
     /**
      * Append the record to the list of duplicates.
      *
-     * Note: by design all records in the list of duplicates hold the same value in record.item.
+     * Note: by design all records in the list of duplicates hold the same value in record.itemConfig.
      */
     _DuplicateItemRecordList.prototype.add = function (record) {
         if (this._head === null) {
@@ -37192,8 +37192,8 @@ var _DuplicateItemRecordList = /** @class */ (function () {
         }
         else {
             // TODO(vicb):
-            // assert(record.item ==  _head.item ||
-            //       record.item is num && record.item.isNaN && _head.item is num && _head.item.isNaN);
+            // assert(record.itemConfig ==  _head.itemConfig ||
+            //       record.itemConfig is num && record.itemConfig.isNaN && _head.itemConfig is num && _head.itemConfig.isNaN);
             this._tail._nextDup = record;
             record._prevDup = this._tail;
             record._nextDup = null;
@@ -37487,8 +37487,8 @@ var DefaultKeyValueDiffer = /** @class */ (function () {
             for (record = this._previousMapHead; record !== null; record = record._next) {
                 record._nextPrevious = record._next;
             }
-            // Update `record.previousValue` with the value of the item before the changes
-            // We need to update all changed item (that'current_opciones_caja_modelo those which have been added and changed)
+            // Update `record.previousValue` with the value of the itemConfig before the changes
+            // We need to update all changed itemConfig (that'current_opciones_caja_modelo those which have been added and changed)
             for (record = this._changesHead; record !== null; record = record._nextChanged) {
                 record.previousValue = record.currentValue;
             }

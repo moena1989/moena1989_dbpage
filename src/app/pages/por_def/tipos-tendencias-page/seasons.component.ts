@@ -45,7 +45,8 @@ export class SeasonsComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.settings.tituloTopbar = 'Temporadas';
+    this.current.topBar.pageTittle = 'Temporadas';
+    this.current.topBar.faIcon = 'fa-chart-network';
     this.selectedLang = this.current.defaultSelectedLang;
     this.currentSeason = Object.assign({}, this.newSeason);
     this.currenCollection = {...this.current.multiLangStructure};
@@ -134,10 +135,9 @@ export class SeasonsComponent implements OnInit {
   }
 
 
-
   pushCollection() {
     this.isUploading = true;
-    this.db.setNewImage(this.currentFileCollection, 'products/watches/collections').then(imgData => {
+    this.db.setNewImage(this.currentFileCollection, 'products/watches/bunckles').then(imgData => {
       {
         this.currenCollection.imgData = imgData;
         this.currenCollection.idSeason = this.selectedSeason.metadata.id;

@@ -32,11 +32,12 @@ export class LoginComponent implements OnInit {
     });
   }
 
-  ingresarConUsuario(email: string, pass: string) {
+  signIn(email: string, pass: string) {
+    console.log('se intenta');
     this.auth.signInWithEmail(email, pass).then(result => {
+      console.log(' si entro ');
       if (result) {
-        console.log(' si entro ');
-        this.router.navigateByUrl('/home').then(value => {
+        this.router.navigateByUrl('/watch/home').then(value => {
         });
       }
     });

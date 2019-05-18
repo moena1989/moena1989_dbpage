@@ -1,5 +1,5 @@
 .selc {
-  margin-right: .5em;
+  margin-right: 1em;
 }
 
 .ss:disabled {
@@ -13,7 +13,6 @@
   margin-bottom: .5em;
   margin-top: .5em;
   opacity: .6;
-  //font-weight: 500;
 }
 
 .selt {
@@ -31,12 +30,67 @@
   opacity: .5;
 }
 
-.ss {
+.inpt-cnt {
+  display: flex;
   -webkit-appearance: none;
-  padding: .5em;
-  //font-family: 'K2D', sans-serif;
+  padding: .3em;
   border: 1px solid #d6d6d6;
   width: 10em;
+  align-items: center;
   border-radius: .2em;
-  //background: rgba(247, 247, 247, 0);
+  position: relative;
+}
+
+.elinput {
+  background: rgba(221, 221, 221, 0);
+  border: rgba(95, 158, 160, 0);
+  width: 8em;
+
+}
+
+.type-inpt {
+  margin-right: .7em;
+  margin-left: .4em;
+  width: 1em;
+  line-height: .8em;
+  //color: var(--icon-color-hover);
+  font-size: .8em;
+  font-weight: bold;
+  opacity: .5;
+}
+
+.type-inpt-s {
+  right: 0;
+  position: absolute;
+  margin-right: .5em;
+  margin-left: .2em;
+  //color: var(--icon-color-hover);
+  font-size: .8em;
+  font-weight: bold;
+  opacity: .5;
+  cursor: pointer;
+  -webkit-transition: .2s all;
+  -moz-transition: .2s all;
+  -o-transition: .2s all;
+  transition: .2s all;
+
+  &:hover {
+    -webkit-transition: .2s all;
+    -moz-transition: .2s all;
+    -o-transition: .2s all;
+    transition: .2s all;
+    color: #ff253a;
+    opacity: 1;
+  }
+}
+
+.inp-err-msg {
+  display: flex;
+  font-size: .8em;
+  color: #ff253a;
+  margin-left: .4em;
+  align-items: center;
+  height: .9em;
+  //background: #dddddd;
+  padding-top: .4em;
 }

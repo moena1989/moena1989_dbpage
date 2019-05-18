@@ -141,7 +141,7 @@ var AppModule = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: #f7f7f7;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.logo {\r\n  /*align-item: center;*/\r\n  justify-self: center;\r\n  display: flex;\r\n  width: 18em;\r\n  padding: 1em;\r\n  justify-self: center;\r\n}\r\n\r\n\r\n"
+module.exports = ":host {\r\n  width: 100%;\r\n  height: 100%;\r\n  background-color: #f7f7f7;\r\n  display: flex;\r\n  flex-direction: column;\r\n}\r\n\r\n.logo {\r\n  /*align-itemConfig: center;*/\r\n  justify-self: center;\r\n  display: flex;\r\n  width: 18em;\r\n  padding: 1em;\r\n  justify-self: center;\r\n}\r\n\r\n\r\n"
 
 /***/ }),
 
@@ -204,7 +204,7 @@ var NavbarComponent = /** @class */ (function () {
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = ":host {\r\n  width: auto;\r\n  height: auto;\r\n  /*background: #7a7543;*/\r\n  margin: 1em;\r\n  display: flex;\r\n  font-weight: bold;\r\n  font-size: 1em;\r\n  flex-direction: column;\r\n}\r\n\r\n.text {\r\n  font-weight: lighter;\r\n}\r\n\r\n.selector {\r\n  display: flex;\r\n  width: 4em;\r\n  height: 4em;\r\n  margin-left: 1em;\r\n  border-radius: .2em;\r\n  background: #f7f7f7;\r\n}\r\n\r\n.select {\r\n  margin-left: .5em;\r\n  padding: 2em;\r\n}\r\n\r\n.options {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-item: center;\r\n  /*background: aqua;*/\r\n}\r\n\r\n.subt {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\n.bt-n-ref {\r\n  margin: 2em;\r\n  background: #f7f7f7;\r\n  border: 1px solid black;\r\n  border-radius: .2em;\r\n  padding: .5em;\r\n  cursor: pointer;\r\n}\r\n\r\n.bt-n-ref:hover {\r\n  background: #3a3a3a;\r\n  color: #f7f7f7;\r\n}\r\n"
+module.exports = ":host {\r\n  width: auto;\r\n  height: auto;\r\n  /*background: #7a7543;*/\r\n  margin: 1em;\r\n  display: flex;\r\n  font-weight: bold;\r\n  font-size: 1em;\r\n  flex-direction: column;\r\n}\r\n\r\n.text {\r\n  font-weight: lighter;\r\n}\r\n\r\n.selector {\r\n  display: flex;\r\n  width: 4em;\r\n  height: 4em;\r\n  margin-left: 1em;\r\n  border-radius: .2em;\r\n  background: #f7f7f7;\r\n}\r\n\r\n.select {\r\n  margin-left: .5em;\r\n  padding: 2em;\r\n}\r\n\r\n.options {\r\n  display: flex;\r\n  flex-direction: row;\r\n  align-itemConfig: center;\r\n  /*background: aqua;*/\r\n}\r\n\r\n.subt {\r\n  margin: 0;\r\n  padding: 0;\r\n}\r\n\r\n.bt-n-ref {\r\n  margin: 2em;\r\n  background: #f7f7f7;\r\n  border: 1px solid black;\r\n  border-radius: .2em;\r\n  padding: .5em;\r\n  cursor: pointer;\r\n}\r\n\r\n.bt-n-ref:hover {\r\n  background: #3a3a3a;\r\n  color: #f7f7f7;\r\n}\r\n"
 
 /***/ }),
 
@@ -215,7 +215,7 @@ module.exports = ":host {\r\n  width: auto;\r\n  height: auto;\r\n  /*background
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<h1>REGISTRO DE NUEVOS RELOJES</h1>\n\n\n\n<div class=\"opt_txt_txtions\">\n  <app-selecter [tittle]=\"'Mano'\" [item]=\"['FCM']\"></app-selecter>\n  <app-selecter [tittle]=\"'# Lote'\" [item]=\"['1']\"></app-selecter>\n  <app-selecter [tittle]=\"'No. piezas'\" [item]=\"['1-100']\"></app-selecter>\n</div>\n\n<div class=\"opt_txtions\">\n  <app-selecter [tittle]=\"'Modelo'\" [item]=\"['Origen',' Slim',' Vira',' Inti',' Aros',' One']\"></app-selecter>\n  <app-selecter [tittle]=\"'Colección'\"\n                [item]=\"['Luxury',' Hawaii',' Animal Print',' Frutas, Telas',' Vintage',' Edición Especial']\"></app-selecter>\n  <app-selecter [tittle]=\"'Material'\"\n                [item]=\"['Madera', 'Acero inoxidable',' Oro', 'Plata',' Esmeraldas',' Tagua']\"></app-selecter>\n  <app-selecter [tittle]=\"'Maquinaria'\" [item]=\"['Miy ota','Seagull','ETA']\"></app-selecter>\n  <app-selecter [tittle]=\"'Color Maq.'\" [item]=\"['Oro',' Plata']\"></app-selecter>\n  <app-selecter [tittle]=\"'material pulso'\" [item]=\"['Acero inoxidable',' Cuero']\"></app-selecter>\n\n  <app-selecter [tittle]=\"'Tipo de Madera'\"\n                [item]=\"['Granadillo',' Nazareno', 'Palo de Mora','Palo de Sangre','Nogal','Cedro','Achapo','Ébano','Flor Morado','Teka','Canelo Moena','Zapan','Amargo','Comino crespo','Pino', 'Abarco','algarrobo','Cumaru']\"></app-selecter>\n\n  <app-selecter [tittle]=\"'Color pulso'\"\n                [item]=\"['Negro','Azul','Gris', 'Blanco','Amarillo','Rojo','Verde','Naranja','Café','Violeta','Oro','Plata','Multicolor']\"></app-selecter>\n\n</div>\n\n\n<button class=\"bt-n-ref\">\n  Crear nuevo registro\n</button>\n\n\n"
+module.exports = "<h1>REGISTRO DE NUEVOS RELOJES</h1>\n\n\n\n<div class=\"opt_txt_txtions\">\n  <app-selecter [tittle]=\"'Mano'\" [itemConfig]=\"['FCM']\"></app-selecter>\n  <app-selecter [tittle]=\"'# Lote'\" [itemConfig]=\"['1']\"></app-selecter>\n  <app-selecter [tittle]=\"'No. piezas'\" [itemConfig]=\"['1-100']\"></app-selecter>\n</div>\n\n<div class=\"opt_txtions\">\n  <app-selecter [tittle]=\"'Modelo'\" [itemConfig]=\"['Origen',' Slim',' Vira',' Inti',' Aros',' One']\"></app-selecter>\n  <app-selecter [tittle]=\"'Colección'\"\n                [itemConfig]=\"['Luxury',' Hawaii',' Animal Print',' Frutas, Telas',' Vintage',' Edición Especial']\"></app-selecter>\n  <app-selecter [tittle]=\"'Material'\"\n                [itemConfig]=\"['Madera', 'Acero inoxidable',' Oro', 'Plata',' Esmeraldas',' Tagua']\"></app-selecter>\n  <app-selecter [tittle]=\"'Maquinaria'\" [itemConfig]=\"['Miy ota','Seagull','ETA']\"></app-selecter>\n  <app-selecter [tittle]=\"'Color Maq.'\" [itemConfig]=\"['Oro',' Plata']\"></app-selecter>\n  <app-selecter [tittle]=\"'material pulso'\" [itemConfig]=\"['Acero inoxidable',' Cuero']\"></app-selecter>\n\n  <app-selecter [tittle]=\"'Tipo de Madera'\"\n                [itemConfig]=\"['Granadillo',' Nazareno', 'Palo de Mora','Palo de Sangre','Nogal','Cedro','Achapo','Ébano','Flor Morado','Teka','Canelo Moena','Zapan','Amargo','Comino crespo','Pino', 'Abarco','algarrobo','Cumaru']\"></app-selecter>\n\n  <app-selecter [tittle]=\"'Color pulso'\"\n                [itemConfig]=\"['Negro','Azul','Gris', 'Blanco','Amarillo','Rojo','Verde','Naranja','Café','Violeta','Oro','Plata','Multicolor']\"></app-selecter>\n\n</div>\n\n\n<button class=\"bt-n-ref\">\n  Crear nuevo registro\n</button>\n\n\n"
 
 /***/ }),
 
@@ -278,7 +278,7 @@ module.exports = ":host {\r\n\r\n  height: 4em;\r\n  /*background: aquamarine;*/
 /*! no static exports found */
 /***/ (function(module, exports) {
 
-module.exports = "<p class=\"sl-tittle\">\n  {{tittle}}\n</p>\n\n<div class=\"custom-select\">\n\n\n  <select class=\"ss\">\n    <option *ngFor=\"let opc of item\">{{opc}}</option>\n  </select>\n\n</div>\n"
+module.exports = "<p class=\"sl-tittle\">\n  {{tittle}}\n</p>\n\n<div class=\"custom-select\">\n\n\n  <select class=\"ss\">\n    <option *ngFor=\"let opc of itemConfig\">{{opc}}</option>\n  </select>\n\n</div>\n"
 
 /***/ }),
 

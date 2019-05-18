@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ToolsServices} from '../../../services/tools-services.service';
-import {DBPublicService} from '../../../services/routes/d-b-public.service';
+import {CurrentStorageService} from '../../../services/current-storage.service';
 
 @Component({
   selector: 'app-home',
@@ -8,11 +8,12 @@ import {DBPublicService} from '../../../services/routes/d-b-public.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(public tools: ToolsServices, public pdb: DBPublicService) {
+  constructor(public tools: ToolsServices, public current: CurrentStorageService) {
   }
 
   ngOnInit() {
-    this.tools.tituloTopbar = 'Inicio';
+    this.current.topBar.pageTittle = 'Inicio';
+    this.current.topBar.faIcon = 'fa-home';
   }
 
   probar() {

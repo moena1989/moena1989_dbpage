@@ -1,81 +1,60 @@
-<div class="plus-opts-cnt">
-  <div class="plus-opts-item">
-    <app-visual-selector tittle="Modelo:">
-      <ng-container *ngFor="let c of currentData.models;  let i = index">
-        <div
-          class="vsi-item"
-          [class.vsi-item-act]="c===modelSelected"
-          (click)="selectModel(c)">{{c.name}}</div>
-      </ng-container>
-    </app-visual-selector>
-  </div>
-  <div *ngIf="modelSelected" class="plus-opts-item">
-    <app-visual-selector tittle="Diámetro externo:">
-      <ng-container *ngFor="let ed of diameters; let i = index">
-        <div class="vsi-item"
-             [class.vsi-item-act]="ed===externalDiameterSelected"
-             (click)="selectExternalDiameter(ed)"
-        >{{ed}}</div>
-      </ng-container>
-    </app-visual-selector>
-  </div>
-</div>
-<ng-container>
-  <app-item-config
-    [category]="category"
-    #caseConfig id='case-config'
-    [plusData]="{model:modelSelected, externalDiameter: externalDiameterSelected}"
-    [itemType]="itemType"
-    [items]="items">
-    <div class="visualizador">
-      <app-visualizer ttl="Frontal" scaleImg="2" [imgURL]="caseConfig.currentItem?.imgData.url"
-                      [lock]="!caseConfig.isEditable"
-                      (alSeleccionar)="caseConfig.onFileChanged($event)"></app-visualizer>
+<app-item-config #item
+                 [productType]="productType"
+                 [category]="category"
+                 [itemType]="itemType"
+                 [items]="current.models"
+                 [itemTypeName]="typeName"
+                 [msgNewItem]="msgNewItem">
+  <div class="l-s">
+    <div class="part-sub-tttl">
+      <i class="fal fa-language doc-top-ico"></i>
+      <div class="ttl">Datos Multi-idioma</div>
     </div>
-    <div class="l-s">
-      <div class="part-sub-tttl">
-        <i class="fal fa-language doc-top-ico"></i>
-        <div class="ttl"><strong>Datos multi-idioma</strong></div>
-      </div>
 
-      <app-tabs>
-        <div class="tab-item-content"
-             *ngFor="let t of currentData.supportedLangs"
-             [class.tab-opt-act]="caseConfig.selectedLanguage===t" (click)="caseConfig.selectLanguage(t)">
-          <div>{{t.name}}</div>
-        </div>
-      </app-tabs>
+    <app-tabs class="min-tab">
+      <div class="tab-item-content"
+           *ngFor="let t of current.supportedLangs"
+           [class.tab-opt-act]="itemConfig.selectedLanguage===t" (click)="itemConfig.selectLanguage(t)">
+        <div>{{t.name}}</div>
+      </div>
+    </app-tabs>
 
-      <div class="cnt-inputs">
-        <app-input
-          ttl="Nombre"
-          placeholder="Nombre"
-          langCode="{{caseConfig.selectedLanguage?.code}}"
-          [value]="caseConfig.currentItem[caseConfig.selectedLanguage.code]?.name"
-          [isDisabled]="!caseConfig.isEditable"
-          (whenWriting)="caseConfig.whenWriting($event)">
-        </app-input>
-      </div>
+    <div class="cnt-inputs">
 
-      <div class="part-sub-tttl">
-        <i class="fal fa-database doc-top-ico"></i>
-        <div class="ttl"><strong>Datos generales</strong></div>
-      </div>
-      <div class="cnt-inputs">
-        <!--<app-input [isDisabled]="!caseConfig.isEditable" [value]="caseConfig.currentItem?.name" ttl="Nombre"-->
-        <!--placeholder="Nombre" (whenWriting)="caseConfig.writingName($event)"></app-input>-->
-        <app-input [isDisabled]="true" [value]="caseConfig.currentItem?.model?.name" ttl="Modelo"></app-input>
-        <app-input [isDisabled]="true" [value]="caseConfig.currentItem?.externalDiameter"
-                   ttl="Diámetro externo"
-        ></app-input>
-        <app-input
-          ttl="Código"
-          placeholder="###"
-          [value]="caseConfig.currentItem?.code"
-          [isDisabled]="!caseConfig.isEditable"
-          (whenWriting)="caseConfig.currentItem.code=$event">
-        </app-input>
-      </div>
+      <app-input
+        ttl="Nombre"
+        placeholder="Nombre"
+        langCode="{{itemConfig.selectedLanguage?.code}}"
+        [value]="itemConfig.currentItem[itemConfig.selectedLanguage.code]?.name"
+        [isDisabled]="!itemConfig.isEditable"
+        (whenWriting)="itemConfig.whenWritingName($event)">
+      </app-input>
+
     </div>
-  </app-item-config>
-</ng-container>
+
+    <div class="part-sub-tttl">
+      <i class="fal fa-database doc-top-ico"></i>
+      <div class="ttl">Datos Generales</div>
+    </div>
+
+    <div class="cnt-inputs">
+      <app-m-select tittle="Modelo" [items]="current.models" [selectedItem]="item.currentItem?.model"
+                    (whenSelecting)="selectingModel($event)" [isDisabled]="!itemConfig.isEditable"></app-m-select>
+
+      <app-m-select tittle="Colección" [items]="collections" [isDisabled]="!itemConfig.isEditable"
+                    [selectedItem]="item.currentItem?.bunckles"
+                    (whenSelecting)="selectingCollection($event)"></app-m-select>
+
+      <app-input [isDisabled]="!itemConfig.isEditable"
+                 [value]="itemConfig.currentItem?.code"
+                 ttl="Código de Especie"
+                 [maxLength]="2"
+                 placeholder="##"
+                 (whenWriting)="whenWrittingCode($event)"
+                 [errMsg]="errMsg"
+                 [upperCase]="true">
+      </app-input>
+
+    </div>
+  </div>
+</app-item-config>

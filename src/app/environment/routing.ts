@@ -11,7 +11,7 @@ import {AuthGuardService} from '../services/auth-guard.service';
 import {VerTendenciasPageComponent} from '../pages/por_def/ver-tendencias-page/ver-tendencias-page.component';
 import {BusquedaComponent} from '../pages/general/busqueda/busqueda.component';
 import {NewCaseComponent} from '../components/nueva-caja/new-case.component';
-import {PartesPageComponent} from '../pages/caracteristicas-page/partes-page.component';
+import {StructuresPageComponent} from '../pages/caracteristicas-page/structures-page.component';
 import {MainComponent} from '../components/main/main.component';
 import {PublicacionesPageComponent} from '../pages/marketing/publicaciones-page/publicaciones-page.component';
 import {PortadaPageComponent} from '../pages/general/portada-page/portada-page.component';
@@ -25,88 +25,96 @@ import {PedidosPageComponent} from '../pedidos-page/pedidos-page.component';
 import {ConfigMovementPageComponent} from '../components/visualizador-config-maq/config-movement-page.component';
 import {ConfigCasePageComponent} from '../components/visualizador-config-caja/config-case-page.component';
 import {ConfigCasebackPageComponent} from '../components/visualizador-config-tapa/config-caseback-page.component';
-import {ConfigModelPageComponent} from '../components/visualizador-config-modelo-caja/config-model-page.component';
 import {ConfigCrownPageComponent} from '../components/visualizador-config-corona/config-crown-page.component';
 import {ConfigBuncklePageComponent} from '../components/visualizador-config-hebilla/config-bunckle-page.component';
 import {ConfigStrapPageComponent} from '../components/visualizador-config-pulso/config-strap-page.component';
 import {ConfigCrystalPageComponent} from '../config-cristal/config-crystal-page.component';
+import {LotsPageComponent} from '../lots-page/lots-page.component';
+import {UnitsPageComponent} from '../units-page/units-page.component';
+import {ProvidersPageComponent} from '../providers-page/providers-page.component';
 import {ConfigCollectionsComponent} from '../config-collections/config-collections.component';
-import {ConfigWatchConfigComponent} from '../config-watch-config/config-watch-config.component';
-import {WatchStructurePageComponent} from '../watch-structure-page/watch-structure-page.component';
+import {ConfigModelPageComponent} from '../components/visualizador-config-modelo-caja/config-model-page.component';
+import {LotsCasesComponent} from '../lots-cases/lots-cases.component';
+import {UnitsLeatherComponent} from '../units-leather/units-leather.component';
+import {LotsCrystalsComponent} from '../lots-crystals/lots-crystals.component';
+import {LotsCasebacksComponent} from '../lots-casebacks/lots-casebacks.component';
 import {InventoryWatchConfigPageComponent} from '../inventory-model-page/inventory-watch-config-page.component';
-import {InventoryCasePageComponent} from '../inventory-watch-config/inventory-case-page.component';
+import {LotsBuncklesComponent} from '../lots-bunckles/lots-bunckles.component';
 
 export const routes: Routes = [
   {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
-  {path: 'sign_up', component: WorkerRegComponent}, {
-    path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
-      {path: 'home', component: HomeComponent},
-      {path: 'busqueda', component: BusquedaComponent},
-      {
-        path: 'registro', component: RegistroComponent, children:
-          [
-            {path: 'nuevo_reloj', component: NuevoRelojComponent},
-            {path: 'nueva_caja', component: NewCaseComponent}
+  {path: 'sign_up', component: WorkerRegComponent},
+  {
+    path: 'watch', children: [{
+      path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
+        {path: 'home', component: HomeComponent},
+        {path: 'busqueda', component: BusquedaComponent},
+        {
+          path: 'lots', component: LotsPageComponent, children: [
+            {path: 'cases', component: LotsCasesComponent},
+            {path: 'leathers', component: UnitsLeatherComponent},
+            {path: 'bunckles', component: LotsBuncklesComponent},
+            {path: 'casebacks', component: LotsCasebacksComponent},
+            {path: 'crystals', component: LotsCrystalsComponent}
           ]
-      }, {
-        path: 'web', component: RegistroComponent, children: [
-          {path: 'inicio', component: PortadaPageComponent},
-          {
-            path: 'temporadas', component: TendenciasPageComponent,
-            children: [
-              {path: '', component: VerTiposProductosComponent},
-              {
-                path: ':tipoProductoSeleccionado',
-                component: SeasonsComponent,
-              },
-              {
-                path: ':tipoProductoSeleccionado/:selectedSeason',
-                component: VerTendenciasPageComponent,
-              }
+        }, {
+          path: 'providers',
+          component: ProvidersPageComponent,
+          children: []
+        }, {
+          path: 'units',
+          component: UnitsPageComponent,
+          children: [
+            {path: 'leather', component: UnitsLeatherComponent},
+            {path: 'watchConfig', component: InventoryWatchConfigPageComponent}]
+        }, {
+          path: 'registro', component: RegistroComponent, children:
+            [
+              {path: 'nuevo_reloj', component: NuevoRelojComponent},
+              {path: 'nueva_caja', component: NewCaseComponent}
             ]
-          },
-          {path: 'noticias', component: NoticiasPageComponent},
-          {path: 'inventario', component: InventarioPageComponent},
-        ]
-      }, {path: 'ajustes-web', component: AjustesWebComponent},
-      {path: 'pedidos', component: PedidosPageComponent},
-      {path: 'experimentos', component: ExperimentosPageComponent},
-      {path: 'ventas', component: VentasPageComponent},
-      {
-        path: 'inventory/watch', component: InventarioPageComponent, children: [
-          {path: 'watchConfigs', component: InventoryWatchConfigPageComponent},
-          {path: 'cases', component: InventoryCasePageComponent}
-        ]
-      },
-      {path: 'equipo', component: UsuariosPageComponent},
-      {path: 'publicaciones', component: PublicacionesPageComponent}, {
-        path: 'parts', component: PartesPageComponent,
-        children: [
-          {path: 'movements', component: ConfigMovementPageComponent},
-          {path: 'cases', component: ConfigCasePageComponent},
-          {path: 'straps', component: ConfigStrapPageComponent},
-          {path: 'crowns', component: ConfigCrownPageComponent},
-          {path: 'crystals', component: ConfigCrystalPageComponent},
-          {path: 'bunckles', component: ConfigBuncklePageComponent},
-          {path: 'caseBacks', component: ConfigCasebackPageComponent}
-        ]
-      },
-      {
-        path: 'structures', component: WatchStructurePageComponent,
-        children: [
-          {path: 'watchConfigs', component: ConfigWatchConfigComponent},
-          {path: 'collections', component: ConfigCollectionsComponent},
-          {path: 'models', component: ConfigModelPageComponent}
-        ]
-      }
-    ]
+        }, {
+          path: 'web', component: RegistroComponent, children: [
+            {path: 'inicio', component: PortadaPageComponent},
+            {
+              path: 'temporadas', component: TendenciasPageComponent,
+              children: [
+                {path: '', component: VerTiposProductosComponent},
+                {
+                  path: ':tipoProductoSeleccionado',
+                  component: SeasonsComponent,
+                },
+                {
+                  path: ':tipoProductoSeleccionado/:selectedSeason',
+                  component: VerTendenciasPageComponent,
+                }
+              ]
+            },
+            {path: 'noticias', component: NoticiasPageComponent}]
+        }, {path: 'ajustes-web', component: AjustesWebComponent},
+        {path: 'pedidos', component: PedidosPageComponent},
+        {path: 'experimentos', component: ExperimentosPageComponent},
+        {path: 'ventas', component: VentasPageComponent},
+        {
+          path: 'inventory/watch', component: InventarioPageComponent
+        },
+        {path: 'equipo', component: UsuariosPageComponent},
+        {path: 'publicaciones', component: PublicacionesPageComponent}, {
+          path: 'structures', component: StructuresPageComponent,
+          children: [
+            {path: 'movements', component: ConfigMovementPageComponent},
+            {path: 'cases', component: ConfigCasePageComponent},
+            {path: 'straps', component: ConfigStrapPageComponent},
+            {path: 'crowns', component: ConfigCrownPageComponent},
+            {path: 'crystals', component: ConfigCrystalPageComponent},
+            {path: 'bunckles', component: ConfigBuncklePageComponent},
+            {path: 'casebacks', component: ConfigCasebackPageComponent},
+            {path: 'bunckles', component: ConfigCollectionsComponent},
+            {path: 'models', component: ConfigModelPageComponent}
+          ]
+        }
+      ]
+    }]
   }];
-// , {
-//   path: 'externalRedirect',
-//     resolve: {
-//     url: externalUrlProvider,
-//   },
-//   // We need a component here because we cannot define the route otherwise
-//   component: LoginComponent,
-// }
+
