@@ -7,6 +7,7 @@ import {HttpClient} from '@angular/common/http';
 import {DbMainService} from './db-main.service';
 import {CurrentStorageService} from '../current-storage.service';
 import {DBS} from '../../../environments/environment';
+import {HasherService} from '../hasher.service';
 
 @Injectable()
 export class AuthService {
@@ -44,14 +45,12 @@ export class AuthService {
     });
   }
 
-  createInsideUser(user, pass) {
+  createInsideUser(email, pass) {
     return new Promise(resolve => {
-      // crear la cuenta primero
-      this.mn.auth().createUserWithEmailAndPassword(user.email, pass).then(value => {
+      this.mn.auth().createUserWithEmailAndPassword(email, pass).then(value => {
         if (value) {
-          // crear la carpeta de información del usuario!
-          this.organizeWorkerData(user, value.user.uid).then(finalDataUser => {
-            resolve(value.user.uid);
+          this.dbMain.incrementV2('dashboard', 'users', 'counters', 'internalUsers').then(counter => {
+            resolve({uid: value.user.uid, codeId: HasherService.createUserCode(counter)});
           });
         } else {
           resolve(false);
@@ -61,6 +60,27 @@ export class AuthService {
       });
     });
   }
+
+  // createInsideUser(user, pass) {
+  //   return new Promise(resolve => {
+  //     // crear la cuenta primero
+  //     this.mn.auth().createUserWithEmailAndPassword(user.email, pass).then(value => {
+  //       if (value) {
+  //         this.dbMain.incrementV2('dashboard', 'users', 'counters', 'internalUsers').then(counter => {
+  //           // crear la carpeta de información del usuario!
+  //           user['codeId'] = HasherService.createUserCode(counter);
+  //           this.organizeWorkerData(user, value.user.uid).then(finalDataUser => {
+  //             resolve(value.user.uid);
+  //           });
+  //         });
+  //       } else {
+  //         resolve(false);
+  //       }
+  //     }).catch(reason => {
+  //       resolve(false);
+  //     });
+  //   });
+  // }
 
   createDevUser(email, pass) {
     return new Promise(resolve => {
@@ -126,9 +146,8 @@ export class AuthService {
       name: userData.name,
       bussinesPosition: userData.bussinesPosition,
       creationDate: new Date(),
+      codeId: userData.codeId
     };
     return this.dbMain.setUserData(uid, user);
   }
-
-
 }

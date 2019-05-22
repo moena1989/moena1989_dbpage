@@ -1,12 +1,25 @@
 .main_login {
   position: absolute;
-  width: 100%;
+  width: 100vw;
+  height: 100vh;
 }
 
 .log_input {
-  background: white;
+  background: rgba(255, 255, 255, 0.8);
   color: #0c0019;
-  margin: 1em;
+  margin-top: .3em;
+  width: 20em;
+  height: 2.5em;
+  box-sizing: border-box;
+  padding: 1em;
+
+}
+
+.log-input-cnt {
+  margin-top: 2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .ttl_active {
@@ -20,7 +33,7 @@
 .lg-sub {
   /*font-family: 'Homemade Apple', cursive;*/
   /*font-size: 2em;*/
-  font-weight: 700;
+  /*font-weight: 700;*/
   color: #dddddd;
 }
 
@@ -31,35 +44,31 @@
 
 .bg_img {
   position: absolute;
-  width: 100%;
-  height: calc(100%);
+  width: 100vw;
+  height: 100vh;
   background-image: url("/assets/log_in/background_log_in.jpg");
   background-size: cover;
-  /*filter: blur(.2em);*/
 }
 
 ._overlay {
-  /*display: 100%;*/
   overflow: auto;
   width: 100%;
-  height: calc(100%);
-  /* will be "on top", if browser supports it */
+  height: 100vh;
   background-image: linear-gradient(var(--background-sidebar), #242935);
-  /* these will reset other properties, like background-position, but it does know what you mean */
   background: red;
-
   background: linear-gradient(var(--background-sidebar), #242935);
-
-  /*background-image: linear-gradient(60deg, #29323c 0%, #485563 100%);*/
   opacity: 1;
 }
 
 .logo {
-  width: 20em;
+  width: 15em;
   margin: 1em;
-  /*margin: 0 auto;*/
 }
 
+/*.logo {*/
+/*width: 25em;*/
+/*margin: 1em;*/
+/*}*/
 .txt-log {
   text-align: center;
   font-family: 'PT Sans Narrow', sans-serif;
@@ -73,7 +82,6 @@
   flex-direction: column;
   width: 50%;
   padding: 5px;
-  /*align-itemConfig: center;*/
   box-sizing: border-box;
   text-align: center;
 }
@@ -86,23 +94,26 @@
 }
 
 .las {
-  padding: .5em 1em .5em 1em;
-  margin-top: 8em;
-  height: 2.5em;
+  /*padding: .5em 1em .5em 1em;*/
+  margin-top: 3em;
+  text-align: center;
+  height: 2em;
+  width: 14.5em;
+  padding: 1em;
   display: flex;
   align-items: center;
-  border-radius: .3em;
+  border-radius: .2em;
   color: rgba(255, 255, 255, 0.2);
-  border: 1px solid rgba(255, 255, 255, 0.2);
-  /*background-color: #1d1d1d;*/
+  /*border: 1px solid rgba(255, 255, 255, 0.2);*/
   cursor: pointer;
+  justify-content: center;
 }
-
 
 .las:hover {
   color: white;
-  background: var(--icon-color-selected);
+  /*background: var(--icon-color-selected);*/
 }
+
 
 input {
   border-radius: .2em;
@@ -115,7 +126,6 @@ input {
   margin: 0;
   color: white;
   box-sizing: border-box;
-  /*background-color: #f7f7f7;*/
 }
 
 .lgn_logo_conatiner {
@@ -127,20 +137,19 @@ input {
 }
 
 .btn-work {
-  margin-left: 1em;
-  font-weight: 400;
+  /*margin-left: 1em;*/
+  /*font-weight: 400;*/
 }
 
 .card_login {
-  width: 90%;
+  width: 80%;
   position: absolute;
   display: flex;
   flex-direction: column;
   align-items: center;
   left: 50%;
-  top: 60%;
-  transform: translate(-50%, -70%);
-  /*background-color: #DB3650;*/
+  top: 50%;
+  transform: translate(-50%, -50%);
 }
 
 .asdv {
@@ -153,27 +162,6 @@ input {
 .casd {
   margin-left: 1.5em;
   color: white;
-  /*margin-right: 1em;*/
 }
-
-
-@media (min-width: 40em) {
-  .card_login {
-    width: 40em;
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -70%);
-    /*background-color: #3a3a3a;*/
-  }
-
-  .logo {
-    width: 25em;
-    margin: 1em;
-    /*background:url('assets/common/logo_w.svg') no-repeat center center;*/
-
-  }
-}
-
 
 

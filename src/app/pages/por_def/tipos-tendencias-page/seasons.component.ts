@@ -11,7 +11,7 @@ import {DEFAULT_CODE_LANG} from '../../../../environments/environment';
   templateUrl: './seasons.component.html',
   styleUrls: ['./seasons.component.scss']
 })
-export class SeasonsComponent implements OnInit {
+export class PublicSeasonsComponent implements OnInit {
   @ViewChild('mdTrendEdit') modalSeason: NgxSmartModalComponent;
   @ViewChild('mdNuevaColeccion') modalCollection: NgxSmartModalComponent;
   @ViewChild('mdNuevaConfiguracion') modalWatchSets: NgxSmartModalComponent;
@@ -35,8 +35,8 @@ export class SeasonsComponent implements OnInit {
   isUploading = false;
   selectedCurr: any = undefined;
   private newSeason = {...this.current.multiLangStructure, state: 'Privada'};
-  private isSeasonUpdating: boolean;
-  private isCollectionUpdating = false;
+  public isSeasonUpdating: boolean;
+  public isCollectionUpdating = false;
 
   constructor(private route: ActivatedRoute,
               private db: DBPublicService, private settings: ToolsServices, public current: CurrentStorageService) {

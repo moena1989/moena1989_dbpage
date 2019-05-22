@@ -3,15 +3,15 @@
   <div class="_overlay"></div>
   <div class="card_login">
     <img class="logo" src="assets/common/logo_w.svg" alt="Moena 1989">
-    <div class="lg-sub">LOGIN</div>
-    
-    <div>
+    <div class="lg-sub">DASHBOARD</div>
+
+    <div class="log-input-cnt">
       <input #email placeholder="Email" class="log_input" type="email">
       <input #pass placeholder="Pass" class="log_input" type="password">
     </div>
 
     <div class="las" (click)="signIn(email.value,pass.value)">
-      <i class="fal fa-lock"></i>
+      <i class="fal fa-unlock" style="margin-right: .5em;"></i>
       <div class="btn-work">Ingresar</div>
     </div>
     <div class="err">{{err_msg}}</div>

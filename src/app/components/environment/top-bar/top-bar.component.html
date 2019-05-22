@@ -1,28 +1,28 @@
 <div class="top-main-cnt">
-
   <div class="d-l-sss">
     <i class="far doc-top-ico fa-fw" [ngClass]="[current.topBar.faIcon]"></i>
     <div class="itm-cnt-s">
       <div class="doc-top-miga">{{current.topBar.subPageTittle}}</div>
       <div class="doc-top-ttl">{{current.topBar.pageTittle}}</div>
     </div>
-    <div class="top-dv"></div>
-    <app-visual-selector tittle="">
-      <ng-container *ngFor="let c of ['Relojería','Joyeria', 'Morrales', 'Bolsos']">
-        <div class="vsi-item"
-             (click)="selectProduct(c)"
-             [class.ps-item-act]="c===productSelected">{{c}}</div>
-      </ng-container>
-    </app-visual-selector>
+    <!--<div class="top-dv"></div>-->
   </div>
 
   <div class="r_side">
+    <app-visual-selector tittle="">
+      <ng-container *ngFor="let c of supportedProducts">
+        <div class="vsi-item"
+             (click)="chageTypeProductConfig(c)"
+             [class.ps-item-act]="c===current.productSelected">{{c.name}}</div>
+      </ng-container>
+    </app-visual-selector>
+
     <!--<div class="sssc">-->
-      <!--<div class="nombre">{{current.userData.name}} {{current.userData.lastname}}</div>-->
-      <!--<div class="cargo">{{current.userData.bussinesPosition}}</div>-->
+    <!--<div class="nombre">{{current.userData.name}} {{current.userData.lastname}}</div>-->
+    <!--<div class="cargo">{{current.userData.bussinesPosition}}</div>-->
     <!--</div>-->
-    <i class="fal fa-user-astronaut usr"></i>
-    <i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>
+    <!--<i class="fal fa-user-astronaut usr"></i>-->
+    <!--<i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>-->
   </div>
 </div>
 <div class="magic"></div>

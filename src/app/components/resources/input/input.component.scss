@@ -2,10 +2,9 @@
   margin-right: 1em;
 }
 
-.ss:disabled {
-  padding: .5em;
-  background: rgba(247, 247, 247, 0.4);
-  border: 1px solid rgba(221, 221, 221, 0.5);
+.disabled {
+  background: rgba(247, 247, 247, 0);
+  color: rgba(0, 0, 0, 0.8);
 }
 
 .sl-ttl {
@@ -34,8 +33,9 @@
   display: flex;
   -webkit-appearance: none;
   padding: .3em;
-  border: 1px solid #d6d6d6;
   width: 10em;
+  border: 1px solid #eeeeee;
+
   align-items: center;
   border-radius: .2em;
   position: relative;
@@ -44,7 +44,7 @@
 .elinput {
   background: rgba(221, 221, 221, 0);
   border: rgba(95, 158, 160, 0);
-  width: 8em;
+  width: 15em;
 
 }
 

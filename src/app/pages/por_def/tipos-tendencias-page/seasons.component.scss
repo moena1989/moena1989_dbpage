@@ -165,7 +165,7 @@
   margin-bottom: 1em;
   //padding-left: 2em;
   font-weight: bold;
-  color: var(--icon-color-hover);
+  color: var(--main-color);
   //padding-left: 2em;
 }
 
@@ -194,7 +194,7 @@
 
   &.item-activo {
     background: rgba(20, 20, 20, 0.91);
-    color: var(--icon-color-hover);
+    color: var(--main-color);
   }
 }
 

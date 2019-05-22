@@ -3215,7 +3215,7 @@ broom:
   label: Broom
   search:
     terms:
-      - clean
+      - cleanItem
       - firebolt
       - fly
       - halloween
@@ -21761,7 +21761,7 @@ snowplow:
   label: Snowplow
   search:
     terms:
-      - clean up
+      - cleanItem up
       - cold
       - seasonal
   styles:
@@ -21792,7 +21792,7 @@ solar-panel:
   label: Solar Panel
   search:
     terms:
-      - clean
+      - cleanItem
       - eco-friendly
       - energy
       - green
@@ -24991,7 +24991,7 @@ truck-plow:
   label: Truck Plow
   search:
     terms:
-      - clean up
+      - cleanItem up
       - cold
       - seasonal
       - snow

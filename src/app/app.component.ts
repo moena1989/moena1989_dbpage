@@ -12,6 +12,9 @@ export class AppComponent implements OnInit {
   @ViewChild(SnackbarComponent)
   public snack: SnackbarComponent;
   public showBar = SHOW_WINDOWS_BAR;
+  const;
+
+  // customTitlebar = require('custom-electron-titlebar');
 
   /**
    * Esta clase se encarga de iniciar toods los sevicios apenas alguien entre a la pag.
@@ -21,7 +24,5 @@ export class AppComponent implements OnInit {
   }
 
   ngOnInit() {
-
-    this.tools.snack = this.snack;
   }
 }

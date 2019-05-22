@@ -11,7 +11,6 @@ import {AuthService} from '../../../services/routes/auth.service';
 })
 export class LoginComponent implements OnInit {
   err_msg = '';
-  publix;
 
   constructor(private db: DbManagerService, public tool: ToolsServices,
               private router: Router, private auth: AuthService, private ngZone: NgZone) {
@@ -35,10 +34,12 @@ export class LoginComponent implements OnInit {
   signIn(email: string, pass: string) {
     console.log('se intenta');
     this.auth.signInWithEmail(email, pass).then(result => {
-      console.log(' si entro ');
       if (result) {
-        this.router.navigateByUrl('/watch/home').then(value => {
+        console.log(' si entro ');
+        this.router.navigateByUrl('/home').then(value => {
         });
+      } else {
+        console.error('NARANJAS!');
       }
     });
   }

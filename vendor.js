@@ -33872,7 +33872,7 @@ var R3Injector = /** @class */ (function () {
             return this.parent.get(token, notFoundValue);
         }
         finally {
-            // Lastly, clean up the state by restoring the previous injector.
+            // Lastly, cleanItem up the state by restoring the previous injector.
             setCurrentInjector(previousInjector);
         }
     };
@@ -43331,7 +43331,7 @@ function addRemoveViewFromContainer(container, rootNode, insertMode, beforeNode)
  *  @param rootView The view to destroy
  */
 function destroyViewTree(rootView) {
-    // If the view has no children, we can clean it up and return early.
+    // If the view has no children, we can cleanItem it up and return early.
     if (rootView[TVIEW].childIndex === -1) {
         return cleanUpView(rootView);
     }
@@ -43351,7 +43351,7 @@ function destroyViewTree(rootView) {
                 next = container[VIEWS][0].data;
         }
         if (next == null) {
-            // Only clean up view when moving to the side or up, as destroy hooks
+            // Only cleanItem up view when moving to the side or up, as destroy hooks
             // should be called in order from the bottom up.
             while (viewOrContainer && !viewOrContainer[NEXT] && viewOrContainer !== rootView) {
                 cleanUpView(viewOrContainer);
@@ -43499,7 +43499,7 @@ function getParentState(state, rootView) {
 /**
  * Removes all listeners and call all onDestroys in a given view.
  *
- * @param view The LViewData to clean up
+ * @param view The LViewData to cleanItem up
  */
 function cleanUpView(viewOrContainer) {
     if (viewOrContainer[TVIEW]) {
@@ -43507,7 +43507,7 @@ function cleanUpView(viewOrContainer) {
         removeListeners(view);
         executeOnDestroys(view);
         executePipeOnDestroys(view);
-        // For component views only, the local renderer is destroyed as clean up time.
+        // For component views only, the local renderer is destroyed as cleanItem up time.
         if (view[TVIEW].id === -1 && isProceduralRenderer(view[RENDERER])) {
             ngDevMode && ngDevMode.rendererDestroy++;
             view[RENDERER].destroy();
@@ -44474,7 +44474,7 @@ function hasValueChanged(flag, a, b) {
 var NG_HOST_SYMBOL = '__ngHostLNode__';
 /**
  * A permanent marker promise which signifies that the relojData CD tree is
- * clean.
+ * cleanItem.
  */
 var _CLEAN_PROMISE = Promise.resolve(null);
 /**
@@ -44638,7 +44638,7 @@ function leaveView(newView, creationOnly) {
         if (!checkNoChangesMode) {
             executeHooks(directives, tView.viewHooks, tView.viewCheckHooks, creationMode);
         }
-        // Views are clean and in update mode after being checked, so these bits are cleared
+        // Views are cleanItem and in update mode after being checked, so these bits are cleared
         viewData[FLAGS] &= ~(1 /* CreationMode */ | 4 /* Dirty */);
     }
     viewData[FLAGS] |= 16 /* RunInit */;
@@ -44856,7 +44856,7 @@ function renderEmbeddedTemplate(viewNode, tView, context, rf) {
         }
         finally {
             // renderEmbeddedTemplate() is called twice in fact, once for creation only and then once for
-            // update. When for creation only, leaveView() must not trigger view hooks, nor clean flags.
+            // update. When for creation only, leaveView() must not trigger view hooks, nor cleanItem flags.
             var isCreationOnly = (rf & 1 /* Create */) === 1 /* Create */;
             leaveView(oldView, isCreationOnly);
             isParent = _isParent;
@@ -46799,7 +46799,7 @@ function getRootContext(component) {
  * @returns Promise which resolves when the component is rendered.
  */
 function whenRendered(component) {
-    return getRootContext(component).clean;
+    return getRootContext(component).cleanItem;
 }
 
 /**

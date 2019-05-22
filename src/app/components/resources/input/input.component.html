@@ -7,12 +7,12 @@
       <div class="type-inpt" *ngIf="type!=='number'&& langCode!==undefined">{{langCode?.toLocaleUpperCase()}}</div>
       <!--<div class="type-inpt" *ngIf="type==='number'&& langCode!==''">#</div>-->
 
-      <input class="elinput" [disabled]="isDisabled" value="AIL FAIL FAIL F" (keyup)="tecla($event.value)"
+      <input (keydown.enter)="send($event)" [disabled]="isDisabled" value="AIL FAIL FAIL F"
+             (keyup)="tecla($event.value)"
              maxlength="{{maxLength}}"
              placeholder="{{placeholder}}"
              [(ngModel)]="val"
-             [class.disable]="isDisabled">
-
+             [class.disabled]="isDisabled" class="elinput">
       <i class="fa fa-fw fa-times type-inpt-s" *ngIf="errMsg!=='' && !isDisabled" (click)="clear()"> </i>
     </div>
   </div>

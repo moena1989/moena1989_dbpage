@@ -144,7 +144,7 @@ export class DbMainService {
       }
       console.log(reloj.numeroDeCaja);
       const serial = serialModelo + '-' +
-        this.hasher.encriptarSerial(serialModelo, data.numeroUnico, reloj.numeroDeLote, reloj.numeroDeCaja);
+        HasherService.createWatchCode(serialModelo, data.numeroUnico, reloj.numeroDeLote, reloj.numeroDeCaja);
       this.afs.collection<MLote>('entorno').doc('intocable')
         .collection('contadoresSerialesRelojeria').doc(reloj.salts.join('')).set(data).then(value1 => {
         ////// aquí se completa todo....
@@ -359,8 +359,8 @@ export class DbMainService {
   }
 
   // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  DELETES
-  deleteItemV2(productType: string, category: string, itemType: string, item: any) {
-    return this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(item.metadata.id).delete();
+  deleteItemV2(productType: string, category: string, itemType: string, id: any) {
+    return this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(id).delete();
   }
 
   setUserData(uid: string, user: any) {
@@ -372,24 +372,50 @@ export class DbMainService {
     });
   }
 
-  regNewIncrement(productType: string, category: string, itemType: string, currrentCode: any) {
+  increment(productType: string, category: string, itemType: string, counterId: any) {
     return new Promise(resolve => {
       // console.log('aqui');
-      const s = this.mainDb.doc(productType + '/' + category + '/' + itemType + '/' + currrentCode)
+      const s = this.mainDb.doc(productType + '/' + category + '/' + itemType + '/' + counterId)
         .valueChanges().pipe(take(1)).subscribe(value => {
           let counter = 0;
           if (value !== undefined) {
             counter = value['numberOfLots'];
-            this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(currrentCode)
+            this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(counterId)
               .update({numberOfLots: firebase.firestore.FieldValue.increment(1)}).then(value1 => {
               console.log(value);
               s.unsubscribe();
               resolve(counter + 1);
             });
           } else {
-            console.log('PRIMER REGISTRO DE:' + currrentCode);
-            this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(currrentCode)
+            console.log('PRIMER REGISTRO DE:' + counterId);
+            this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(counterId)
               .set({numberOfLots: firebase.firestore.FieldValue.increment(1)}).then(value1 => {
+              console.log(value);
+              s.unsubscribe();
+              resolve(counter + 1);
+            });
+          }
+        });
+    });
+  }
+
+  incrementV2(productType: string, category: string, itemType: string, counterId: any) {
+    return new Promise(resolve => {
+      // console.log('aqui');
+      const s = this.mainDb.doc(productType + '/' + category + '/' + itemType + '/' + counterId)
+        .valueChanges().pipe(take(1)).subscribe(value => {
+          let counter = 0;
+          if (value !== undefined) {
+            counter = value['counterVariable'];
+            this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(counterId)
+              .update({numberOfLots: firebase.firestore.FieldValue.increment(1)}).then(value1 => {
+              console.log(value);
+              s.unsubscribe();
+              resolve(counter + 1);
+            });
+          } else {
+            this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(counterId)
+              .set({counterVariable: firebase.firestore.FieldValue.increment(1)}).then(value1 => {
               console.log(value);
               s.unsubscribe();
               resolve(counter + 1);

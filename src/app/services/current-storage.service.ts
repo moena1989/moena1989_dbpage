@@ -3,7 +3,7 @@ import {ClockModel} from '../models/clockModel';
 import {DbMainService} from './routes/db-main.service';
 import {DBPublicService} from './routes/d-b-public.service';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {CATEGORIES, DEFAULT_CODE_LANG, DEFAULT_SYMBOL_CURRENCY, PRODUCT_TYPES} from '../../environments/environment';
+import {CATEGORIES, DEFAULT_CODE_LANG, DEFAULT_SYMBOL_CURRENCY, PRODUCT_TYPES, SUPPORTED_PRODUCTS} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -358,11 +358,23 @@ export class CurrentStorageService {
     // {'cc': 'ZMK', symbol: 'ZK', name: 'Zambian kwacha'},
     // {'cc': 'ZWR', symbol: 'Z$', name: 'Zimbabwean dollar'}
   ];
-  public multiLangStructure = {};
   public defaultSelectedLang: any = {};
   public getCasesEmitter = new EventEmitter();
+  productSelected: any = {};
+  whenChange = new EventEmitter();
+  private supportedCodeLangs: any[];
 
   constructor(private dbMain: DbMainService, private dbPublic: DBPublicService, private _firebaseAuth: AngularFireAuth) {
+  }
+
+  private _multiLangStructure = {};
+
+  get multiLangStructure(): {} {
+    return this._multiLangStructure;
+  }
+
+  set multiLangStructure(value: {}) {
+    this._multiLangStructure = value;
   }
 
   private _topBar: any = {faIcon: 'fa-puzzle-piece', typeProduct: 'Relojes', pageTittle: 'Piezas'};
@@ -454,10 +466,7 @@ export class CurrentStorageService {
   }
 
   beforeInit() {
-
-    // ,
-
-    //
+    this.productSelected = SUPPORTED_PRODUCTS[0];
     // PROMESAS QUE SE RESOLVERAN ANTES DE INICIAR LA APLICACIÓN
     return new Promise((resolve) => {
       Promise.all([
@@ -474,7 +483,8 @@ export class CurrentStorageService {
         this.getLanguages(),
         this.getCurrencies()
       ]).then(value => {
-        console.log('se traen todos los datos necesarios para iniciar.');
+        // console.log('se traen todos los datos necesarios para iniciar.');
+        console.log('Ready');
         resolve();
       });
     });
@@ -482,15 +492,15 @@ export class CurrentStorageService {
 
   automaticAuth() {
     return new Promise(resolve => {
-      console.log('se intenta autoAuth');
+      // console.log('se intenta autoAuth');
       this._firebaseAuth.authState.subscribe(
         (user) => {
           if (user) {
-            console.log(user.uid);
+            // console.log(user.uid);
             this.dbMain.getUserData(user.uid).subscribe(datosUsuario => {
               this._userData = datosUsuario;
               // todo: ¿Cómo hago para que mainDb vea a current?
-              console.log('se encontró info del usuario', datosUsuario);
+              // console.log('se encontró info del usuario', datosUsuario);
               this.dbMain.currentUser = datosUsuario;
               resolve();
             });
@@ -501,6 +511,14 @@ export class CurrentStorageService {
         }
       );
     });
+  }
+
+  getSupportedLangStructure() {
+    const l = {};
+    this.supportedCodeLangs.forEach(value => {
+      l[value] = {};
+    });
+    return l;
   }
 
   private getModelos() {
@@ -525,14 +543,17 @@ export class CurrentStorageService {
               break;
             }
           }
+          this.supportedCodeLangs = [];
           this._supportedLangs.unshift(esLang);
           this._supportedLangs.forEach(value1 => {
             this.LANGS = this.LANGS.filter(function (obj) {
               return obj.code !== value1.code;
             });
-            this.multiLangStructure[value1.code] = {};
+            this._multiLangStructure[value1.code] = {};
+            this.supportedCodeLangs.push(value1.code);
           });
         }
+        // console.log('codelags:', this.supportedCodeLangs);
         this.defaultSelectedLang = this._supportedLangs.filter(value1 => value1.code === DEFAULT_CODE_LANG)[0];
         resolve();
       });

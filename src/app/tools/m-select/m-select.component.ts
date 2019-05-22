@@ -11,7 +11,7 @@ export class MSelectComponent implements OnInit {
   defaultOp = {name: '------'};
   currentOps = [];
   isSelected = false;
-  @Output() whenSelecting: EventEmitter<any> = new EventEmitter();
+  @Output() whenSelecting: EventEmitter<any> = new EventEmitter(true);
 
   constructor() {
   }
@@ -24,8 +24,8 @@ export class MSelectComponent implements OnInit {
       if (options.length === 1) {
         // console.log('se selecciona autamaticamente');
         this.isSelected = true;
-        console.error('MALDITA SEA');
-        this.whenSelecting.emit(options[0]);
+        // debo esperar para que no lance el pinche probela
+        setTimeout(() => this.whenSelecting.emit(options[0]), 100);
       }
     }
   }

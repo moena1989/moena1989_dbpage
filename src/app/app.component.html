@@ -1,5 +1,5 @@
-<app-tittlebar *ngIf="showBar"></app-tittlebar>
-<app-snackbar></app-snackbar>
-<div class="view " [ngClass]="showBar ? 'vis' : 'no-vis'">
+<!--<app-tittlebar></app-tittlebar>-->
+<div class="view">
   <router-outlet></router-outlet>
 </div>
+<app-snackbar></app-snackbar>

@@ -1,5 +1,4 @@
 import {Injectable} from '@angular/core';
-import {SnackbarComponent} from '../tools/snackbar/snackbar.component';
 import {CanActivate, Router} from '@angular/router';
 import {Ng2ImgMaxService} from 'ng2-img-max';
 import {MAX_SIZE_IN_MB, MAX_SIZE_IN_PX} from '../../environments/environment';
@@ -8,9 +7,8 @@ import {MAX_SIZE_IN_MB, MAX_SIZE_IN_PX} from '../../environments/environment';
   providedIn: 'root'
 })
 export class ToolsServices implements CanActivate {
-
   // --
-  public snack: SnackbarComponent;
+  public SHOW_WINDOWS_TITTLE_BAR = true;
   public isMenuOpened = true;
   public gUser: any = {};
   public version = 'M89DB-1.1a';

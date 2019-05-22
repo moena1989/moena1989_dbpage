@@ -1,16 +1,18 @@
 // This file can be replaced during build by using the `fileReplacements` array.
 // `ng build --prod` replaces `environments.ts` with `environments.prod.ts`.
 // The list of file replacements can be found in `angular.json`.
-
 export const environment = {
   production: false
 };
 export const DEFAULT_CODE_LANG = 'es';
 export const DEFAULT_SYMBOL_CURRENCY = 'US$';
-export const SHOW_WINDOWS_BAR = false;
+export const SHOW_WINDOWS_BAR = true;
 export const MAX_SIZE_IN_PX = 2500;
 export const MAX_SIZE_IN_MB = 0.7;
-
+export const SUPPORTED_PRODUCTS = [
+  {name: 'Relojería', productId: 'WATCH', color: '#FF920B'},
+  {name: 'Joyería', productId: 'JEWELS', color: '#ff412d'}
+];
 
 export const PRODUCT_TYPES = {
   WATCH: 'watches',

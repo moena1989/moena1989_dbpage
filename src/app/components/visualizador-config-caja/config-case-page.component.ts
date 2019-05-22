@@ -21,7 +21,7 @@ export class ConfigCasePageComponent implements OnInit, OnDestroy {
   private codeFilter: Subject<any> = new Subject();
   private modelIdFilter: Subject<any> = new Subject();
   private obCases: Subscription;
-  private errMsg = '';
+  public errMsg = '';
   private modelSelected: any;
   private obCollections: Subscription;
   private collectionSelected: any;

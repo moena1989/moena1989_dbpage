@@ -17,7 +17,7 @@ import {PublicacionesPageComponent} from '../pages/marketing/publicaciones-page/
 import {PortadaPageComponent} from '../pages/general/portada-page/portada-page.component';
 import {NoticiasPageComponent} from '../pages/noticias-page/noticias-page.component';
 import {NuevoRelojComponent} from '../tools/nuevo-reloj/nuevo-reloj.component';
-import {SeasonsComponent} from '../pages/por_def/tipos-tendencias-page/seasons.component';
+import {PublicSeasonsComponent} from '../pages/por_def/tipos-tendencias-page/seasons.component';
 import {InventarioPageComponent} from '../pages/accounting/inventario-page/inventario-page.component';
 import {UsuariosPageComponent} from '../usuarios-page/usuarios-page.component';
 import {AjustesWebComponent} from '../idiomas-page/ajustes-web.component';
@@ -40,81 +40,79 @@ import {LotsCrystalsComponent} from '../lots-crystals/lots-crystals.component';
 import {LotsCasebacksComponent} from '../lots-casebacks/lots-casebacks.component';
 import {InventoryWatchConfigPageComponent} from '../inventory-model-page/inventory-watch-config-page.component';
 import {LotsBuncklesComponent} from '../lots-bunckles/lots-bunckles.component';
+import {WatchersPageComponent} from '../watchers-page/watchers-page.component';
 
 export const routes: Routes = [
-  {path: '', redirectTo: 'home', pathMatch: 'full'},
   {path: 'login', component: LoginComponent},
   {path: 'sign_up', component: WorkerRegComponent},
   {
-    path: 'watch', children: [{
-      path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
-        {path: 'home', component: HomeComponent},
-        {path: 'busqueda', component: BusquedaComponent},
-        {
-          path: 'lots', component: LotsPageComponent, children: [
-            {path: 'cases', component: LotsCasesComponent},
-            {path: 'leathers', component: UnitsLeatherComponent},
-            {path: 'bunckles', component: LotsBuncklesComponent},
-            {path: 'casebacks', component: LotsCasebacksComponent},
-            {path: 'crystals', component: LotsCrystalsComponent}
+    path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
+      {path: 'home', component: HomeComponent},
+      {path: 'busqueda', component: BusquedaComponent},
+      {
+        path: 'lots', component: LotsPageComponent, children: [
+          {path: 'cases', component: LotsCasesComponent},
+          {path: 'leathers', component: UnitsLeatherComponent},
+          {path: 'bunckles', component: LotsBuncklesComponent},
+          {path: 'casebacks', component: LotsCasebacksComponent},
+          {path: 'crystals', component: LotsCrystalsComponent}
+        ]
+      }, {
+        path: 'providers',
+        component: ProvidersPageComponent,
+        children: []
+      }, {
+        path: 'units',
+        component: UnitsPageComponent,
+        children: [
+          {path: 'leather', component: UnitsLeatherComponent},
+          {path: 'watchConfig', component: InventoryWatchConfigPageComponent}]
+      }, {
+        path: 'registro', component: RegistroComponent, children:
+          [
+            {path: 'nuevo_reloj', component: NuevoRelojComponent},
+            {path: 'nueva_caja', component: NewCaseComponent}
           ]
-        }, {
-          path: 'providers',
-          component: ProvidersPageComponent,
-          children: []
-        }, {
-          path: 'units',
-          component: UnitsPageComponent,
-          children: [
-            {path: 'leather', component: UnitsLeatherComponent},
-            {path: 'watchConfig', component: InventoryWatchConfigPageComponent}]
-        }, {
-          path: 'registro', component: RegistroComponent, children:
-            [
-              {path: 'nuevo_reloj', component: NuevoRelojComponent},
-              {path: 'nueva_caja', component: NewCaseComponent}
+      }, {
+        path: 'web', component: RegistroComponent, children: [
+          {path: 'inicio', component: PortadaPageComponent},
+          {
+            path: 'temporadas', component: TendenciasPageComponent,
+            children: [
+              {path: '', component: VerTiposProductosComponent},
+              {
+                path: ':tipoProductoSeleccionado',
+                component: PublicSeasonsComponent,
+              },
+              {
+                path: ':tipoProductoSeleccionado/:selectedSeason',
+                component: VerTendenciasPageComponent,
+              }
             ]
-        }, {
-          path: 'web', component: RegistroComponent, children: [
-            {path: 'inicio', component: PortadaPageComponent},
-            {
-              path: 'temporadas', component: TendenciasPageComponent,
-              children: [
-                {path: '', component: VerTiposProductosComponent},
-                {
-                  path: ':tipoProductoSeleccionado',
-                  component: SeasonsComponent,
-                },
-                {
-                  path: ':tipoProductoSeleccionado/:selectedSeason',
-                  component: VerTendenciasPageComponent,
-                }
-              ]
-            },
-            {path: 'noticias', component: NoticiasPageComponent}]
-        }, {path: 'ajustes-web', component: AjustesWebComponent},
-        {path: 'pedidos', component: PedidosPageComponent},
-        {path: 'experimentos', component: ExperimentosPageComponent},
-        {path: 'ventas', component: VentasPageComponent},
-        {
-          path: 'inventory/watch', component: InventarioPageComponent
-        },
-        {path: 'equipo', component: UsuariosPageComponent},
-        {path: 'publicaciones', component: PublicacionesPageComponent}, {
-          path: 'structures', component: StructuresPageComponent,
-          children: [
-            {path: 'movements', component: ConfigMovementPageComponent},
-            {path: 'cases', component: ConfigCasePageComponent},
-            {path: 'straps', component: ConfigStrapPageComponent},
-            {path: 'crowns', component: ConfigCrownPageComponent},
-            {path: 'crystals', component: ConfigCrystalPageComponent},
-            {path: 'bunckles', component: ConfigBuncklePageComponent},
-            {path: 'casebacks', component: ConfigCasebackPageComponent},
-            {path: 'bunckles', component: ConfigCollectionsComponent},
-            {path: 'models', component: ConfigModelPageComponent}
-          ]
-        }
-      ]
-    }]
+          },
+          {path: 'noticias', component: NoticiasPageComponent}]
+      }, {path: 'ajustes-web', component: AjustesWebComponent},
+      {path: 'pedidos', component: PedidosPageComponent},
+      {path: 'experimentos', component: ExperimentosPageComponent},
+      {path: 'ventas', component: VentasPageComponent},
+      {
+        path: 'inventory/watch', component: InventarioPageComponent
+      },
+      {path: 'equipo', component: UsuariosPageComponent},
+      {path: 'watchers', component: WatchersPageComponent},
+      {path: 'publicaciones', component: PublicacionesPageComponent}, {
+        path: 'structures', component: StructuresPageComponent, children: [
+          {path: 'movements', component: ConfigMovementPageComponent},
+          {path: 'cases', component: ConfigCasePageComponent},
+          {path: 'straps', component: ConfigStrapPageComponent},
+          {path: 'crowns', component: ConfigCrownPageComponent},
+          {path: 'crystals', component: ConfigCrystalPageComponent},
+          {path: 'collections', component: ConfigCollectionsComponent},
+          {path: 'bunckles', component: ConfigBuncklePageComponent},
+          {path: 'casebacks', component: ConfigCasebackPageComponent},
+          {path: 'models', component: ConfigModelPageComponent}
+        ]
+      }
+    ]
   }];
 

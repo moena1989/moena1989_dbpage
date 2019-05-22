@@ -58,7 +58,7 @@ import {TrendCntComponent} from './components/resources/trend-cnt/trend-cnt.comp
 import {FormButtonComponent} from './components/resources/form-button/form-button.component';
 import {NoticiasPageComponent} from './pages/noticias-page/noticias-page.component';
 import {OpCntComponent} from './components/op-cnt/op-cnt.component';
-import {SeasonsComponent} from './pages/por_def/tipos-tendencias-page/seasons.component';
+import {PublicSeasonsComponent} from './pages/por_def/tipos-tendencias-page/seasons.component';
 import {ConfigCrownPageComponent} from './components/visualizador-config-corona/config-crown-page.component';
 import {AdderComponent} from './components/resources/adder/adder.component';
 import {HttpClientModule} from '@angular/common/http';
@@ -93,6 +93,9 @@ import {LotsBuncklesComponent} from './lots-bunckles/lots-bunckles.component';
 import {LotsCasebacksComponent} from './lots-casebacks/lots-casebacks.component';
 import {LotsCrystalsComponent} from './lots-crystals/lots-crystals.component';
 import {AngularFireFunctionsModule, FunctionsRegionToken} from '@angular/fire/functions';
+import {WatchersPageComponent} from './watchers-page/watchers-page.component';
+import {ElectronService} from './electron.service';
+import { DaterPipe } from './dater.pipe';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -111,7 +114,7 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     PublicacionesPageComponent, VentasPageComponent, NewCaseComponent, InputComponent, FormButtonComponent,
     VerLoteComponent, TittlebarComponent, TopBarComponent, LoadbarComponent,
     OAuthCallbackComponent, TendenciasPageComponent, TrendCntComponent, NoticiasPageComponent,
-    SeasonsComponent, VerTendenciasPageComponent, VerTendenciaPageComponent,
+    PublicSeasonsComponent, VerTendenciasPageComponent, VerTendenciaPageComponent,
     VerTiposProductosComponent, OpCntComponent, StructuresPageComponent, TabsComponent,
     ConfigStrapPageComponent, ConfigMovementPageComponent,
     ConfigMaderaComponent, ConfigModelPageComponent,
@@ -125,7 +128,7 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     InventoryWatchConfigPageComponent, InventoryCasePageComponent,
     LotsPageComponent, UnitsPageComponent, ProvidersPageComponent,
     LotsCasesComponent, ObservableSelectComponent, NgContentDirective,
-    UnitsLeatherComponent, LotsBuncklesComponent, LotsCasebacksComponent, LotsCrystalsComponent
+    UnitsLeatherComponent, LotsBuncklesComponent, LotsCasebacksComponent, LotsCrystalsComponent, WatchersPageComponent, DaterPipe
   ],
   imports: [
     AngularFireFunctionsModule,
@@ -150,7 +153,9 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
       deps: [CurrentStorageService],
       multi: true
     }, NgxSmartModalService,
-    ModelsSevice, AngularFireDatabase, DbMainService, DBPublicService, AuthService, ToolsServices, AngularFirestore, HasherService],
+    ModelsSevice, AngularFireDatabase,
+    ElectronService, DbMainService, DBPublicService,
+    AuthService, ToolsServices, AngularFirestore, HasherService],
   bootstrap: [AppComponent]
 })
 

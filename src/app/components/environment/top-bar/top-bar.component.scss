@@ -7,18 +7,21 @@
 .top-main-cnt {
   z-index: 100;
   width: calc(100vw - var(--sidebar-width));
-  display: flex;
+  color: white;
   justify-content: space-between;
+  height: var(--topbar-height);
+  display: flex;
+  background: rgba(0, 0, 0,.05);
   align-items: center;
+  opacity: .8;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
   position: fixed;
-  padding: 0 2em 0 2em;
-  border-bottom: 1px solid #ebebeb;
-  height: var(--topbar-height);
-  background: white;
+  padding: 0 0 0 1.5em;
   -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.03);
   -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.03);
   box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.03);
+
 }
 
 :host {

@@ -1,4 +1,5 @@
 import {Component, OnInit} from '@angular/core';
+import {ElectronService} from '../../electron.service';
 
 @Component({
   selector: 'app-tittlebar',
@@ -6,17 +7,15 @@ import {Component, OnInit} from '@angular/core';
   styleUrls: ['./tittlebar.component.scss']
 })
 export class TittlebarComponent implements OnInit {
-
   constructor() {
   }
 
   ngOnInit() {
   }
 
-
   cerrar() {
-    // ipcRenderer.send('close');
-
+    ElectronService.cerrar();
+    // this.electron.send('close');
   }
 
   maximizar() {

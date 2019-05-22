@@ -9,6 +9,7 @@ export class InputComponent implements OnInit {
   @Input() ttl: string;
   @Input() placeholder: string;
   @Output() whenWriting = new EventEmitter();
+  @Output() enterPressed = new EventEmitter();
   // number, email, text, pass,
   @Input() type = 'text';
   @Input() isDisabled: boolean;
@@ -19,13 +20,13 @@ export class InputComponent implements OnInit {
   @Input() maxLength = 20;
   @Input() errMsg = '';
   @Input() upperCase = false;
-  private cc: any;
 
   constructor() {
   }
 
   @Input() set value(val: string) {
     this.val = '';
+    this.errMsg = '';
     if (val !== undefined) {
       this.val = val;
     }
@@ -64,5 +65,9 @@ export class InputComponent implements OnInit {
   clear() {
     this.val = '';
     this.whenWriting.emit(this.val);
+  }
+
+  send($event) {
+    this.enterPressed.emit(this.val);
   }
 }

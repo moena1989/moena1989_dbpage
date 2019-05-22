@@ -3,6 +3,8 @@ import {DbManagerService} from '../../../services/db-manager.service';
 import {ToolsServices} from '../../../services/tools-services.service';
 import {AuthService} from '../../../services/routes/auth.service';
 import {CurrentStorageService} from '../../../services/current-storage.service';
+import {SUPPORTED_PRODUCTS} from '../../../../environments/environment';
+import {Router} from '@angular/router';
 
 
 @Component({
@@ -16,13 +18,14 @@ export class TopBarComponent implements OnInit {
   faIco = 'fa-puzzle-piece';
   typeProduct = 'Relojes';
   typeName = 'Piezas';
-  productSelected = 'Relojería';
+  supportedProducts = SUPPORTED_PRODUCTS;
 
   constructor(public db: DbManagerService, public tools: ToolsServices,
-              public current: CurrentStorageService, private auth: AuthService) {
+              public current: CurrentStorageService, private auth: AuthService, private router: Router) {
   }
 
   ngOnInit() {
+
   }
 
   cerrarSesion() {
@@ -33,7 +36,9 @@ export class TopBarComponent implements OnInit {
     this.tools.isMenuOpened = !this.tools.isMenuOpened;
   }
 
-  selectProduct(c: any) {
-    this.productSelected = c;
+  chageTypeProductConfig(c: any) {
+    document.body.style.setProperty(`--main-color`, c.color);
+    this.current.whenChange.emit(c);
+    this.current.productSelected = c;
   }
 }

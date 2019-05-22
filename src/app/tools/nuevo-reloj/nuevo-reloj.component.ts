@@ -1,4 +1,4 @@
-import {Component, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
+import {Component, EventEmitter, OnInit, QueryList, ViewChild, ViewChildren} from '@angular/core';
 import {DbManagerService} from '../../services/db-manager.service';
 import {MSelectComponent} from '../m-select/m-select.component';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
@@ -90,7 +90,7 @@ export class NuevoRelojComponent implements OnInit {
     this.porcentaje_registro = 50;
 
     this.fs.pushImage(this.watch_img, 'watches/' + 'asdasd', url => {
-      // const serial = this.hasher.encriptarSerial('aquí irán un serial chingón',
+      // const serial = this.hasher.createWatchCode('aquí irán un serial chingón',
       //    Math.round(Math.random() * 500), Math.round(Math.random() * 500));
       const relojFinal: MReloj = {
         coleccion: this.current_reloj.coleccion,
@@ -147,12 +147,6 @@ export class NuevoRelojComponent implements OnInit {
     this.filtrosCaja.diametroExterno = diametro_selected.name;
   }
 
-  private buscarCajasDisponibles() {
-    this.current_opciones.lotes = [{name: 'Esperando...'}];
-    this.current_opciones.cases = [{name: 'Esperando...'}];
-
-  }
-
   seleccionarCaja(_cajaSeleccionada: any) {
     console.error('se selecciona la caja!');
     console.log(_cajaSeleccionada);
@@ -191,6 +185,12 @@ export class NuevoRelojComponent implements OnInit {
   seleccionarTipoPulso(tipo_pulso: any) {
     this.current_opciones.opciones_reloj.straps = tipo_pulso.items;
     this.current_reloj.tipoPulso = tipo_pulso.name;
+
+  }
+
+  private buscarCajasDisponibles() {
+    this.current_opciones.lotes = [{name: 'Esperando...'}];
+    this.current_opciones.cases = [{name: 'Esperando...'}];
 
   }
 
