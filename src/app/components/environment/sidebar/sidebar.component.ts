@@ -1,10 +1,10 @@
-import {Component, HostListener, OnInit, ViewChild} from '@angular/core';
+import {Component, OnInit, ViewChild} from '@angular/core';
 import {Router} from '@angular/router';
-
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
 import {DbManagerService} from '../../../services/db-manager.service';
 import {ToolsServices} from '../../../services/tools-services.service';
 import {CurrentStorageService} from '../../../services/current-storage.service';
+import {SUPPORTED_LINES_PRODUCTS} from '../../../../environments/environment';
 
 @Component({
   selector: 'app-sidebar',
@@ -17,6 +17,13 @@ export class SidebarComponent implements OnInit {
   is_menu_opened = true;
   regs = false;
   tendencias: boolean;
+  isOptionsOpened = false;
+  optionSelected: any = {};
+  supportedDataLines = [];
+  lineSelected: any;
+  currentOpt: any = [];
+  iconStyle = ToolsServices.iconStyle;
+  private r = false;
 
   constructor(public db: DbManagerService,
               public router: Router,
@@ -25,20 +32,29 @@ export class SidebarComponent implements OnInit {
   }
 
   ngOnInit() {
-    this.comprobarMenu();
+    this.supportedDataLines = SUPPORTED_LINES_PRODUCTS;
+    this.optionSelected = this.currentStorage.productSelected;
+    console.log(this.router.url);
+    this.tools.setNewTabsWithUrl(this.router.url);
   }
 
-  @HostListener('window:resize', ['$event'])
-  onResize(event) {
-    this.comprobarMenu();
+  selectLineP(line: any) {
+    document.body.style.setProperty(`--main-color`, line.color);
+    this.isOptionsOpened = !this.isOptionsOpened;
+    this.currentStorage.productSelected = line;
+    this.optionSelected = this.currentStorage.productSelected;
+    console.log(this.currentStorage.productSelected);
   }
 
-  comprobarMenu() {  // el menú siempre estará abierto en modo escritorio
-    if (window.innerWidth > 640) {
-      this.is_menu_opened = true;
-    } else {
-      this.is_menu_opened = false;
-    }
+  selectR(o: any, category: string) {
+    this.tools.setNewTabs(o, category);
+    // this.currentOpt = o;
   }
 
+  selectLine(line: any) {
+    this.isOptionsOpened = !this.isOptionsOpened;
+    this.currentStorage.productSelected = line;
+    this.optionSelected = this.currentStorage.productSelected;
+    console.log(this.currentStorage.productSelected);
+  }
 }

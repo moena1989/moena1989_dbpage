@@ -18,10 +18,10 @@ export class ConfigCasePageComponent implements OnInit, OnDestroy {
   typeName = 'Especie';
   msgNewItem = 'Nueva Especie';
   collections: any = undefined;
+  public errMsg = '';
   private codeFilter: Subject<any> = new Subject();
   private modelIdFilter: Subject<any> = new Subject();
   private obCases: Subscription;
-  public errMsg = '';
   private modelSelected: any;
   private obCollections: Subscription;
   private collectionSelected: any;
@@ -37,10 +37,10 @@ export class ConfigCasePageComponent implements OnInit, OnDestroy {
     });
 
     this.obCollections = this.getCollectionsFiltered().subscribe(value => {
+        console.log('LAS COLECCIONES', value);
         if (value !== undefined && value[0]) {
+          this.collections = value;
         }
-        this.collections = value;
-        console.log(value);
       }
     );
   }
@@ -50,9 +50,9 @@ export class ConfigCasePageComponent implements OnInit, OnDestroy {
   }
 
   selectingModel(m) {
-    console.log('se selecciona modelo', m);
     this.modelSelected = m;
     this.modelIdFilter.next(m.metadata.id);
+    console.log('se selecciona modelo y se filtra', m);
     this.itemConfig.currentItem.model = m;
   }
 
@@ -66,6 +66,7 @@ export class ConfigCasePageComponent implements OnInit, OnDestroy {
   beforePush() {
     this.itemConfig.beforePush.subscribe(value => {
       this.itemConfig.promiseBeforePush = new Promise(resolve => {
+        this.itemConfig.currentItem.model = this.modelSelected;
         this.itemConfig.currentItem.name = this.itemConfig.currentItem.model.code
           + this.itemConfig.currentItem.collection.code
           + '-'

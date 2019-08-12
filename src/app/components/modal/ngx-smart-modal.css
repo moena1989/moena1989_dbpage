@@ -29,7 +29,28 @@ body.dialog-open {
 
 .overlay.nsm-overlay-open {
   background: rgb(15, 11, 0);
-  background: linear-gradient(0deg, rgba(15, 11, 0, 0.7) 0%, rgba(0, 0, 0, 0.5) 100%);
+
+  background: linear-gradient(
+    to bottom,
+    hsla(0, 0%, 0%, 0.13) 0%,
+    hsla(0, 0%, 0%, 0.137) 8.2%,
+    hsla(0, 0%, 0%, 0.158) 15.9%,
+    hsla(0, 0%, 0%, 0.19) 23.3%,
+    hsla(0, 0%, 0%, 0.232) 30.3%,
+    hsla(0, 0%, 0%, 0.28) 37%,
+    hsla(0, 0%, 0%, 0.334) 43.6%,
+    hsla(0, 0%, 0%, 0.391) 49.9%,
+    hsla(0, 0%, 0%, 0.45) 56.1%,
+    hsla(0, 0%, 0%, 0.507) 62.2%,
+    hsla(0, 0%, 0%, 0.562) 68.3%,
+    hsla(0, 0%, 0%, 0.611) 74.4%,
+    hsla(0, 0%, 0%, 0.654) 80.6%,
+    hsla(0, 0%, 0%, 0.688) 86.9%,
+    hsla(0, 0%, 0%, 0.71) 93.3%,
+    hsla(0, 0%, 0%, 0.72) 100%
+  );
+
+
 }
 
 .overlay.transparent {

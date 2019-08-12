@@ -22,22 +22,27 @@ export class MSelectComponent implements OnInit {
       this.currentOps = options;
       // si solamente tiene una selección entonces que sea la predeterminada
       if (options.length === 1) {
+        // console.log('SOLO EXISTE UNO');
         // console.log('se selecciona autamaticamente');
         this.isSelected = true;
         // debo esperar para que no lance el pinche probela
-        setTimeout(() => this.whenSelecting.emit(options[0]), 100);
+        this.whenSelecting.emit(options[0]);
+        setTimeout(() => this.whenSelecting.emit(options[0]), 500);
       }
     }
   }
 
   @Input() set selectedItem(value: any) {
+    // console.log('cosa', value);
     if (value !== undefined) {
       this.isSelected = true;
       this.whenSelecting.emit(value);
       this.defaultOp = value;
     } else {
+      this.defaultOp = {name: '------'};
       this.isSelected = false;
     }
+    this.isSelected = false;
   }
 
   ngOnInit() {

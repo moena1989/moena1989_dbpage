@@ -73,6 +73,8 @@
     "devtron": "^1.4.0",
     "electron": "^5.0.1",
     "electron-packager": "^13.1.1",
+    "electron-squirrel-startup": "^1.0.0",
+    "electron-winstaller": "^3.0.4",
     "firebase-functions-test": "^0.1.6",
     "jasmine-core": "~3.3.0",
     "jasmine-spec-reporter": "~4.2.1",

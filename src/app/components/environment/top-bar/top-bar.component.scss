@@ -1,4 +1,4 @@
-.menu_ic {;
+.menu_ic {
   display: flex;
   align-items: center;
   height: 100%
@@ -11,17 +11,17 @@
   justify-content: space-between;
   height: var(--topbar-height);
   display: flex;
-  background: rgba(0, 0, 0,.05);
+  padding-left: .5rem;
+  //background: rgba(0, 0, 0,.05);
   align-items: center;
   opacity: .8;
   border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
   position: fixed;
-  padding: 0 0 0 1.5em;
-  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.03);
-  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.03);
-  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.03);
-
+  //padding: 0 0 0 1em;
+  //-webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.03);
+  //-moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.03);
+  //box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.03);
 }
 
 :host {
@@ -94,16 +94,13 @@
   margin-right: .5em;
   text-align: right;
   line-height: .9em;
+  color: black;
 }
 
 .r_side {
   top: 0;
   display: flex;
-  /*background: #e93c30;*/
   align-items: center;
-  /*bottom: 0;*/
-  /*right: 0;*/
-  opacity: .8;
 }
 
 .nombre {
@@ -119,15 +116,17 @@
 .usr {
   font-size: 2em;
   //color: #e03e3e;
-  padding: .1em;
+  //padding: .1em;
   //width: em;
+  margin-left: .3em;
+  text-align: center;
   color: #2C2E3E;
-  margin-right: .3em;
+  //margin-right: .3em;
   border-radius: 10em;
 }
 
 .itm-cnt-s {
-  width: 10em;
+  width: 15em;
 }
 
 .top-dv {
@@ -144,23 +143,6 @@
   height: 100%;
   display: flex;
   margin: .5em;
-}
-
-.ico_op {
-  width: 3em;
-  height: 100%;
-  cursor: pointer;
-  color: black;
-  opacity: .3;
-  font-size: 1.5em;
-  align-items: center;
-  justify-content: center;
-  display: flex;
-}
-
-.ico_op:hover {
-  opacity: 1;
-  color: #e03e3e;
 }
 
 .miga_ttl {

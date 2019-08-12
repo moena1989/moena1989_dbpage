@@ -61,14 +61,15 @@
 }
 
 .logo {
-  width: 15em;
-  margin: 1em;
+  width: 10em;
+  margin: 3em;
 }
 
 /*.logo {*/
 /*width: 25em;*/
 /*margin: 1em;*/
 /*}*/
+
 .txt-log {
   text-align: center;
   font-family: 'PT Sans Narrow', sans-serif;

@@ -7,8 +7,32 @@
   --background-topbar: none;
   --text-main-color: #2d2d2d;
   --main-color: #FF920B;
-  --icon-color-selected: rgb(255, 146, 11);
+  --icon-color-selected: #FF920B;
   --windows-border-color: #2C2E3E;
+
+  --f-xs: .5rem;
+  --f-s: .8rem;
+  --f-m: 1rem;
+  --f-l: 2rem;
+  --f-xl: 4rem;
+
+
+  //--f-thin: 100;
+  --f-light: 200;
+  --f-regular: 300;
+  --f-medium: 400;
+  --f-bold: 600;
+  //--f-semi-bold: 600;
+  //--f-extra-bold: 800;
+  //--f-black: 900;
+}
+
+
+.ico_op {
+  font-size: 1rem;
+  align-items: center;
+  justify-content: center;
+  display: flex;
 }
 
 .tab-io {
@@ -17,8 +41,6 @@
 
 .multilang-cnt {
   border-bottom: 1px solid #ebebeb;
-  //padding: .5em;
-  //border-radius: .2em;
 }
 
 .tab-ido {
@@ -224,7 +246,7 @@
   transition: all .5s;
   display: flex;
   align-items: center;
-  font-size: .8em;
+  font-size: var(--f-s);
   height: 3em;
   justify-content: center;
   margin-left: 1em;
@@ -354,7 +376,7 @@
 
 .optsf {
   opacity: .8;
-  margin-right: .8em;
+  margin: 0 2em;
   //padding-left: 1em;
   color: rgba(0, 0, 0, .8);
   cursor: pointer;
@@ -414,7 +436,7 @@
 .doc {
   width: 100%;
   display: flex;
-  height: calc(100vh - var(--topbar-height) - 32px);
+  height: calc(100vh - var(--topbar-height));
   flex-direction: column;
   box-sizing: border-box;
   overflow: hidden;
@@ -466,7 +488,7 @@
 }
 
 .doc-top-ico {
-  margin-right: .5em;
+  margin-right: 1em;
   color: var(--main-color);
   display: flex;
   font-size: 1.2em;
@@ -544,7 +566,7 @@
 }
 
 .doc-top-miga {
-  font-size: .7em;
+  font-size: var(--f-s);
   line-height: 1.5em;
   opacity: .5;
   color: black;
@@ -594,10 +616,8 @@
   width: 100%;
   display: flex;
   padding: 1em 2em 0em 2em;
-  //background: #71ff60;
+  margin-bottom: 1em;
   box-sizing: border-box;
-  //flex-direction: column;
-  //background: #71ff60;
 }
 
 .div-it {
@@ -639,10 +659,10 @@
 
 .side-opt {
   width: 100%;
-  font-size: .9em;
-  padding-top: 1em;
-  padding-bottom: 1em;
-  padding-left: 2em;
+  font-size: .9rem;
+  padding-top: 1rem;
+  padding-bottom: 1rem;
+  padding-left: 2rem;
   box-sizing: border-box;
   cursor: pointer;
   opacity: .6;

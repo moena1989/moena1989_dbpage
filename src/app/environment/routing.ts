@@ -1,118 +1,80 @@
 import {Routes} from '@angular/router';
-import {VentasPageComponent} from '../pages/por_def/ventas-page/ventas-page.component';
-import {HomeComponent} from '../pages/general/home/home.component';
-import {VerTiposProductosComponent} from '../components/ver-tipos-productos/ver-tipos-productos.component';
-import {ExperimentosPageComponent} from '../pages/dev/experimentos-page/experimentos-page.component';
 import {WorkerRegComponent} from '../pages/worker-reg/worker-reg.component';
 import {LoginComponent} from '../pages/general/login/login.component';
-import {RegistroComponent} from '../pages/por_def/registro/registro.component';
-import {TendenciasPageComponent} from '../components/products/tendencias-page.component';
-import {AuthGuardService} from '../services/auth-guard.service';
-import {VerTendenciasPageComponent} from '../pages/por_def/ver-tendencias-page/ver-tendencias-page.component';
-import {BusquedaComponent} from '../pages/general/busqueda/busqueda.component';
-import {NewCaseComponent} from '../components/nueva-caja/new-case.component';
-import {StructuresPageComponent} from '../pages/caracteristicas-page/structures-page.component';
 import {MainComponent} from '../components/main/main.component';
-import {PublicacionesPageComponent} from '../pages/marketing/publicaciones-page/publicaciones-page.component';
-import {PortadaPageComponent} from '../pages/general/portada-page/portada-page.component';
-import {NoticiasPageComponent} from '../pages/noticias-page/noticias-page.component';
-import {NuevoRelojComponent} from '../tools/nuevo-reloj/nuevo-reloj.component';
-import {PublicSeasonsComponent} from '../pages/por_def/tipos-tendencias-page/seasons.component';
-import {InventarioPageComponent} from '../pages/accounting/inventario-page/inventario-page.component';
-import {UsuariosPageComponent} from '../usuarios-page/usuarios-page.component';
-import {AjustesWebComponent} from '../idiomas-page/ajustes-web.component';
-import {PedidosPageComponent} from '../pedidos-page/pedidos-page.component';
-import {ConfigMovementPageComponent} from '../components/visualizador-config-maq/config-movement-page.component';
-import {ConfigCasePageComponent} from '../components/visualizador-config-caja/config-case-page.component';
+import {LotsCasesComponent} from '../lots-cases/lots-cases.component';
+import {WatchStrategiesComponent} from '../watch-strategies/watch-strategies.component';
 import {ConfigCasebackPageComponent} from '../components/visualizador-config-tapa/config-caseback-page.component';
-import {ConfigCrownPageComponent} from '../components/visualizador-config-corona/config-crown-page.component';
 import {ConfigBuncklePageComponent} from '../components/visualizador-config-hebilla/config-bunckle-page.component';
+import {ConfigModelPageComponent} from '../components/visualizador-config-modelo-caja/config-model-page.component';
+import {ConfigCrownPageComponent} from '../components/visualizador-config-corona/config-crown-page.component';
 import {ConfigStrapPageComponent} from '../components/visualizador-config-pulso/config-strap-page.component';
 import {ConfigCrystalPageComponent} from '../config-cristal/config-crystal-page.component';
-import {LotsPageComponent} from '../lots-page/lots-page.component';
-import {UnitsPageComponent} from '../units-page/units-page.component';
-import {ProvidersPageComponent} from '../providers-page/providers-page.component';
+import {ConfigCasePageComponent} from '../components/visualizador-config-caja/config-case-page.component';
+import {ConfigMovementPageComponent} from '../components/visualizador-config-maq/config-movement-page.component';
 import {ConfigCollectionsComponent} from '../config-collections/config-collections.component';
-import {ConfigModelPageComponent} from '../components/visualizador-config-modelo-caja/config-model-page.component';
-import {LotsCasesComponent} from '../lots-cases/lots-cases.component';
 import {UnitsLeatherComponent} from '../units-leather/units-leather.component';
-import {LotsCrystalsComponent} from '../lots-crystals/lots-crystals.component';
-import {LotsCasebacksComponent} from '../lots-casebacks/lots-casebacks.component';
 import {InventoryWatchConfigPageComponent} from '../inventory-model-page/inventory-watch-config-page.component';
-import {LotsBuncklesComponent} from '../lots-bunckles/lots-bunckles.component';
-import {WatchersPageComponent} from '../watchers-page/watchers-page.component';
-
+import {AssignableOdersPageComponent} from '../active-orders-page/assignable-oders-page.component';
+import {UsuariosPageComponent} from '../usuarios-page/usuarios-page.component';
+import {DistpachableOrdersPageComponent} from '../distpachable-orders-page/distpachable-orders-page.component';
+import {PackableOrdersPageComponent} from '../packable-orders-page/packable-orders-page.component';
+import {FinishedOrdersPageComponent} from '../finished-orders-page/finished-orders-page.component';
+import {ClockWebCollectionsPageComponent} from '../clock-web-collections-page/clock-web-collections-page.component';
+import {RawMaterialPageComponent} from '../raw-material-page/raw-material-page.component';
+import {SuppliesPageComponent} from '../suplies-page/supplies-page.component';
+import {FurnishingsPageComponent} from '../furnishings-page/furnishings-page.component';
+import {AppliancesPageComponent} from '../appliances-page/appliances-page.component';
+import {EndowmentsPageComponent} from '../endowments-page/endowments-page.component';
+import {RoundsLocalInventoryPageComponent} from '../rounds-local-inventory-page/rounds-local-inventory-page.component';
+import {CasesLocalInventoryPageComponent} from '../cases-local-inventory-page/cases-local-inventory-page.component';
+import {FullWatchlocalInventoryPageComponent} from '../full-watchlocal-inventory-page/full-watchlocal-inventory-page.component';
+import {ArmedLocalInventoryPageComponent} from '../armed-local-inventory-page/armed-local-inventory-page.component';
+// la estructura es buena, pero pierdo modularización.
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'sign_up', component: WorkerRegComponent},
   {
-    path: '', component: MainComponent, canActivate: [AuthGuardService], children: [
-      {path: 'home', component: HomeComponent},
-      {path: 'busqueda', component: BusquedaComponent},
-      {
-        path: 'lots', component: LotsPageComponent, children: [
-          {path: 'cases', component: LotsCasesComponent},
-          {path: 'leathers', component: UnitsLeatherComponent},
-          {path: 'bunckles', component: LotsBuncklesComponent},
-          {path: 'casebacks', component: LotsCasebacksComponent},
-          {path: 'crystals', component: LotsCrystalsComponent}
-        ]
-      }, {
-        path: 'providers',
-        component: ProvidersPageComponent,
-        children: []
-      }, {
-        path: 'units',
-        component: UnitsPageComponent,
-        children: [
-          {path: 'leather', component: UnitsLeatherComponent},
-          {path: 'watchConfig', component: InventoryWatchConfigPageComponent}]
-      }, {
-        path: 'registro', component: RegistroComponent, children:
-          [
-            {path: 'nuevo_reloj', component: NuevoRelojComponent},
-            {path: 'nueva_caja', component: NewCaseComponent}
-          ]
-      }, {
-        path: 'web', component: RegistroComponent, children: [
-          {path: 'inicio', component: PortadaPageComponent},
-          {
-            path: 'temporadas', component: TendenciasPageComponent,
-            children: [
-              {path: '', component: VerTiposProductosComponent},
-              {
-                path: ':tipoProductoSeleccionado',
-                component: PublicSeasonsComponent,
-              },
-              {
-                path: ':tipoProductoSeleccionado/:selectedSeason',
-                component: VerTendenciasPageComponent,
-              }
-            ]
-          },
-          {path: 'noticias', component: NoticiasPageComponent}]
-      }, {path: 'ajustes-web', component: AjustesWebComponent},
-      {path: 'pedidos', component: PedidosPageComponent},
-      {path: 'experimentos', component: ExperimentosPageComponent},
-      {path: 'ventas', component: VentasPageComponent},
-      {
-        path: 'inventory/watch', component: InventarioPageComponent
-      },
-      {path: 'equipo', component: UsuariosPageComponent},
-      {path: 'watchers', component: WatchersPageComponent},
-      {path: 'publicaciones', component: PublicacionesPageComponent}, {
-        path: 'structures', component: StructuresPageComponent, children: [
-          {path: 'movements', component: ConfigMovementPageComponent},
-          {path: 'cases', component: ConfigCasePageComponent},
-          {path: 'straps', component: ConfigStrapPageComponent},
-          {path: 'crowns', component: ConfigCrownPageComponent},
-          {path: 'crystals', component: ConfigCrystalPageComponent},
-          {path: 'collections', component: ConfigCollectionsComponent},
-          {path: 'bunckles', component: ConfigBuncklePageComponent},
-          {path: 'casebacks', component: ConfigCasebackPageComponent},
-          {path: 'models', component: ConfigModelPageComponent}
-        ]
-      }
+    path: '', component: MainComponent,
+    children: [
+      ///////////////////////////////  MANUFACTURE //////////////////////////////////////////////
+      // WAREHOUSE
+      {path: 'manufacture/localWarehouse/rounds', component: RoundsLocalInventoryPageComponent},
+      {path: 'manufacture/localWarehouse/cases', component: CasesLocalInventoryPageComponent},
+      {path: 'manufacture/localWarehouse/armed', component: ArmedLocalInventoryPageComponent},
+      {path: 'manufacture/localWarehouse/serialized', component: LotsCasesComponent},
+      {path: 'manufacture/localWarehouse/fullProducts', component: FullWatchlocalInventoryPageComponent},
+      //
+      {path: 'watch/lots/bunckles', component: ConfigBuncklePageComponent},
+      {path: 'watch/lots/casebacks', component: ConfigCasebackPageComponent},
+      {path: 'watch/lots/crystals', component: ConfigCrystalPageComponent},
+      {path: 'watch/units/leather', component: UnitsLeatherComponent},
+      {path: 'watch/units/watchConfig', component: InventoryWatchConfigPageComponent},
+      //
+      {path: 'watch/marketing/strategies', component: WatchStrategiesComponent},
+      //
+      {path: 'watch/structures/movements', component: ConfigMovementPageComponent},
+      {path: 'watch/structures/cases', component: ConfigCasePageComponent},
+      {path: 'watch/structures/straps', component: ConfigStrapPageComponent},
+      {path: 'watch/structures/crowns', component: ConfigCrownPageComponent},
+      {path: 'watch/structures/crystals', component: ConfigCrystalPageComponent},
+      {path: 'watch/structures/bunckles', component: ConfigBuncklePageComponent},
+      {path: 'watch/structures/casebacks', component: ConfigCasebackPageComponent},
+      {path: 'watch/structures/collections', component: ConfigCollectionsComponent},
+      {path: 'watch/structures/models', component: ConfigModelPageComponent},
+      ////////////////////////////           GLOBAL          ///////////////////
+      {path: 'global/orders/actives', component: AssignableOdersPageComponent},
+      {path: 'global/orders/distpachables', component: DistpachableOrdersPageComponent},
+      {path: 'global/orders/packables', component: PackableOrdersPageComponent},
+      {path: 'global/orders/finished', component: FinishedOrdersPageComponent},
+      {path: 'global/humanResoruces/empoyees', component: UsuariosPageComponent},
+      ////////////////////////////           WEB          ///////////////////
+      {path: 'public/products/watches/model', component: ClockWebCollectionsPageComponent},
+      ////////////////////////////           WAREHOUSE         ///////////////////
+      {path: 'warehouse/inventory/rawMaterial', component: RawMaterialPageComponent},
+      {path: 'warehouse/inventory/supplies', component: SuppliesPageComponent},
+      {path: 'warehouse/inventory/furnishings', component: FurnishingsPageComponent},
+      {path: 'warehouse/inventory/appliances', component: AppliancesPageComponent},
+      {path: 'warehouse/inventory/endowments', component: EndowmentsPageComponent}
     ]
   }];
-

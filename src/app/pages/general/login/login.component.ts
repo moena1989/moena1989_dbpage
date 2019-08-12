@@ -35,9 +35,7 @@ export class LoginComponent implements OnInit {
     console.log('se intenta');
     this.auth.signInWithEmail(email, pass).then(result => {
       if (result) {
-        console.log(' si entro ');
-        this.router.navigateByUrl('/home').then(value => {
-        });
+        this.router.navigateByUrl('./home');
       } else {
         console.error('NARANJAS!');
       }

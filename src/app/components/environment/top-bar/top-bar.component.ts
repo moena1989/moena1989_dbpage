@@ -3,7 +3,6 @@ import {DbManagerService} from '../../../services/db-manager.service';
 import {ToolsServices} from '../../../services/tools-services.service';
 import {AuthService} from '../../../services/routes/auth.service';
 import {CurrentStorageService} from '../../../services/current-storage.service';
-import {SUPPORTED_PRODUCTS} from '../../../../environments/environment';
 import {Router} from '@angular/router';
 
 
@@ -13,12 +12,8 @@ import {Router} from '@angular/router';
   styleUrls: ['./top-bar.component.scss']
 })
 export class TopBarComponent implements OnInit {
-  titulo_actual;
-
-  faIco = 'fa-puzzle-piece';
-  typeProduct = 'Relojes';
   typeName = 'Piezas';
-  supportedProducts = SUPPORTED_PRODUCTS;
+  iconStyle = ToolsServices.iconStyle;
 
   constructor(public db: DbManagerService, public tools: ToolsServices,
               public current: CurrentStorageService, private auth: AuthService, private router: Router) {
@@ -38,7 +33,7 @@ export class TopBarComponent implements OnInit {
 
   chageTypeProductConfig(c: any) {
     document.body.style.setProperty(`--main-color`, c.color);
-    this.current.whenChange.emit(c);
+    // this.current.whenChange.emit(c);
     this.current.productSelected = c;
   }
 }

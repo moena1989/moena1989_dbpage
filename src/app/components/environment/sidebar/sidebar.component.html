@@ -1,58 +1,36 @@
 <!--[ngClass]="tools.isMenuOpened ? 'sidebar-opened' : 'sidebar-closed'"-->
 <div class="main_menu sidebar-opened">
   <div class="lg-cnt">
-    <img class="main_name" src="assets/common/logo_w.svg" alt="Moena 1989"/>
-    <!--<div>DASHBOARD</div>-->
+    <img class="main_name" src="assets/common/logos/logo-full-b.svg" alt="Moena 1989"/>
   </div>
   <div class="sidebar-scrollable-area">
-    <!--<div class="sub">General</div>-->
-    <!--<div class="item" routerLink="/home" [routerLinkActive]="'acti'">-->
-      <!--<i class="fal fa-home fa-fw ico_op "></i>-->
-      <!--<div class="opt_txt">Inicio</div>-->
+    <app-custom-select (whenSelecting)="optionSelected=$event"></app-custom-select>
+    <div class="ssssssss">
+      <!--<div class="ss">{{optionSelected.name}}</div>-->
+      <!--<div class="line-product" *ngFor="let s of supportedDataLines" [class.line-product-selected]="optionSelected===s"-->
+      <!--(click)="selectLine(s)">-->
+      <!--<div>{{s.name}}</div>-->
+      <!--</div>-->
+    </div>
+
+    <!--<div *ngIf="isOptionsOpened" class="ssssssss">-->
+    <!--<div class="line-product" *ngFor="let line of supportedDataLines" (click)="selectLineP(line)">-->
+    <!--<div>{{line.name}}</div>-->
     <!--</div>-->
-    <div class="sub">Producción</div>
-    <!--<div class="item" routerLink="/providers" [routerLinkActive]="'acti'">-->
-      <!--<i class="fal fa-hand-holding-box fa-fw ico_op "></i>-->
-      <!--<div class="opt_txt">Proveedores</div>-->
-    <!--</div>-->
-
-    <div class="item" routerLink="/equipo" [routerLinkActive]="'acti'">
-      <i class="fal fa-users fa-fw ico_op"></i>
-      <div class="opt_txt">Equipo de trabajo</div>
-    </div>
-
-    <div class="sub">Registro</div>
-
-    <div class="item" routerLink="/lots" [routerLinkActive]="'acti'">
-      <i class="fal fa-boxes-alt er fa-fw ico_op "></i>
-      <div class="opt_txt">Lotes</div>
-    </div>
-
-    <div class="item" routerLink="/units" [routerLinkActive]="'acti'">
-      <i class="fal fa-box-alt fa-fw ico_op "></i>
-      <div class="opt_txt">Unidades</div>
-    </div>
-
-    <div class="sub">Mercadeo</div>
-    <!--<div class="item" routerLink="/web/temporadas/relojes" [routerLinkActive]="'acti'">-->
-    <!--<i class="fal fa-chart-network fa-fw ico_op "></i>-->
-    <!--<div class="opt_txt">Temporadas</div>-->
     <!--</div>-->
 
-    <div class="item" routerLink="/ajustes-web" [routerLinkActive]="'acti'">
-      <i class="fal fa-sliders-v fa-fw ico_op"></i>
-      <div class="opt_txt">Ajustes Web</div>
-    </div>
-    <div class="sub">Interno</div>
-
-    <div class="item" routerLink="/structures" [routerLinkActive]="'acti'">
-      <i class="fal fa-puzzle-piece fa-fw ico_op"></i>
-      <div class="opt_txt">Estructuras</div>
-    </div>
-
-    <div class="item" routerLink="/watchers" [routerLinkActive]="'acti'">
-      <i class="fal fa-low-vision fa-fw ico_op"></i>
-      <div class="opt_txt">Puertas de acceso</div>
-    </div>
+    <ng-container *ngFor="let opt of optionSelected?.routes">
+      <div class="sub">{{opt.category}}</div>
+      <div class="item"
+           routerLinkActive="acti"
+           *ngFor="let o of opt.subCategories"
+           [routerLink]="o.path"
+           (click)="selectR(o, opt.category)">
+        <div class="ico_op" style="  margin: 0 1.5rem;">
+          <i class="{{iconStyle}} {{o.icon}} er fa-lg fa-fw"></i>
+        </div>
+        <div class="opt_txt">{{o.name}}</div>
+      </div>
+    </ng-container>
   </div>
 </div>

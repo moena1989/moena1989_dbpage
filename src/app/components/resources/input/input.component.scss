@@ -86,11 +86,12 @@
 
 .inp-err-msg {
   display: flex;
-  font-size: .8em;
-  color: #ff253a;
+  font-size: .7em;
+  //color: #ff253a;
   margin-left: .4em;
   align-items: center;
   height: .9em;
+  opacity: .5;
   //background: #dddddd;
   padding-top: .4em;
 }

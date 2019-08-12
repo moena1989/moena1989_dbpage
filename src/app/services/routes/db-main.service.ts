@@ -86,11 +86,10 @@ export interface MFiltro {
 })
 export class DbMainService {
   currentUser: any;
+  await;
   private afs: AngularFirestoreDocument<any>;
   private mainDb: AngularFirestore;
   private mainStorage: AngularFireStorage;
-  // private afs: AngularFirestoreDocument<any>;
-  // private mainAfs: AngularFirestore;
 
   constructor(private hasher: HasherService, private est: ModelsSevice, private storage: AngularFireStorage, zone: NgZone) {
     this.mainDb = new AngularFirestore(DBS.main, 'main',
@@ -99,212 +98,26 @@ export class DbMainService {
       'moena-1989.appspot.com', null, zone);
   }
 
-  getNewid() {
-    return this.mainDb.createId();
-  }
-
   getUserData(uid: string) {
-    return this.mainDb.collection('dashboard/users/data').doc(uid).valueChanges();
-  }
-
-  // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  PUSHES
-  pushCaja(serialCaja: string, caja: MCaja) {
-    return this.afs.collection('cases').doc(serialCaja).set(caja);
-  }
-
-  pushLote(serialLote: string, lote: MLote) {
-    return this.afs.collection<MLote>('lots').doc(serialLote).set(lote);
-  }
-
-  pushReloj(serial: string, reloj: MReloj) {
-    //
-    // aquí se hará el proceso de generación de nuevo serial;
-    return this.afs.collection('watches').doc(serial).set(reloj);
-  }
-
-  getNuevoSerialReloj(reloj: MReloj, resutlt: (serialModeloUnico: string) => void) {
-    const serialModelo = reloj.salts.join('');
-    this.afs.collection('entorno').doc('intocable')
-      .collection('contadoresSerialesRelojeria').doc(serialModelo).get().subscribe(value => {
-      let data = value.data();
-      if (data) {
-        data = {
-          numeroUnico: +value.data().numeroUnico + 1,
-          fechaUltimoRegistro: new Date(),
-          idEmpleado: '',
-          nombreEmpleado: ''
-        };
-      } else {
-        data = {
-          numeroUnico: 0,
-          fechaUltimoRegistro: new Date(),
-          idEmpleado: '',
-          nombreEmpleado: ''
-        };
-      }
-      console.log(reloj.numeroDeCaja);
-      const serial = serialModelo + '-' +
-        HasherService.createWatchCode(serialModelo, data.numeroUnico, reloj.numeroDeLote, reloj.numeroDeCaja);
-      this.afs.collection<MLote>('entorno').doc('intocable')
-        .collection('contadoresSerialesRelojeria').doc(reloj.salts.join('')).set(data).then(value1 => {
-        ////// aquí se completa todo....
-        resutlt(serial);
-      });
-    });
-  }
-
-  getReloj(serial: string) {
-    return this.afs.collection<MReloj>('watches').doc(serial).get();
-  }
-
-  // todo ELIMINAR TODO LUGAR DONDE SE USA ESTE METODO Y REMPLAZARLO POR SetNewImage
-  pushImage(img: File, route: any, alFinalizar: (url: string) => void) {
-    const id = this.getNewid();
-    const array = img.name.split('.');
-    const l = array.length;
-    const extension = array[l - 1];
-    const finalRoute = route + '/' + id + '.' + extension;
-    this.mainStorage.upload(finalRoute, img).then(a => {
-      console.log('se subió');
-      console.log(a);
-      this.mainStorage.ref(finalRoute).getDownloadURL().toPromise().then(value => {
-        alFinalizar(value);
-      });
-    });
-  }
-
-  // setSupportedLang(langItem: any) {
-  //   langItem = this.addMeta(langItem);
-  //   return this.afs.doc('languages/' + langItem.metadata.id)
-  //     .set(langItem);
-  // }
-  //
-  // getSupportedLangs() {
-  //   return this.afs.collection('languages/').valueChanges();
-  // }
-  //
-  // getSupportedCurrencies() {
-  //   return this.afs.collection('currencies/').valueChanges();
-  // }
-
-  setNewImage(img: File, route: any): Promise<any> {
-    return new Promise(resolve => {
-      const id = this.mainDb.createId();
-      const array = img.name.split('.');
-      const l = array.length;
-      const ext = array[l - 1];
-      const finalRoute = route + '/' + id + '.' + ext;
-      this.mainStorage.upload(finalRoute, img).then(a => {
-        this.mainStorage.ref(finalRoute).getDownloadURL().toPromise().then(value => {
-          resolve({
-            url: value,
-            extension: ext,
-            id: id
-          });
-        });
-      });
-    });
-  }
-
-  deleteImage(route: any, imgData: any) {
-    const finalRoute = route + '/' + imgData.id + '.' + imgData.extension;
-    return this.mainStorage.ref(finalRoute).delete();
-  }
-
-  updateImage(img: any, route: any, id: string) {
-    return new Promise(resolve => {
-      const array = img.name.split('.');
-      const l = array.length;
-      const ext = array[l - 1];
-      const finalRoute = route + '/' + id + '.' + ext;
-      this.mainStorage.upload(finalRoute, img).then(a => {
-        this.mainStorage.ref(finalRoute).getDownloadURL().toPromise().then(value => {
-          resolve({
-            url: value,
-            extension: ext,
-            id: id
-          });
-        });
-      });
-    });
-  }
-
-// hay que buscar una manera mas optima de organizar los contadores,
-// no sé como pasar el subSubscripción, por ende, lo resolveré por callback
-  updateMetadataLote(salesBase: string, salesMateriales, metaLote: MetaLote, callback: (meta: MetaLote) => void) {
-    this.afs.collection<MLote>('entorno').doc('contadores')
-      .collection('lotesCaja').doc(salesBase + '-' + salesMateriales).get().subscribe(value => {
-      console.log('////////////////////////////////////////////////////////////////');
-      if (value.data()) {
-        metaLote.lotesTotales = 1 + (+value.data().lotesTotales);
-        metaLote.cajasTotales = metaLote.cajasTotales + (+value.data().cajasTotales);
-      } else {
-        metaLote.lotesTotales = 1;
-        console.log('noExisto', metaLote.lotesTotales);
-      }
-      // metaLote.serialUltimoLote += '-' + metaLote.lotesTotales;
-      callback(metaLote);
-      this.afs.collection<MLote>('entorno').doc('contadores')
-        .collection('lotesCaja').doc(salesBase + '-' + salesMateriales).set(metaLote).then(value1 => {
-        // se solucionó contador
-        console.log('se intenta counter');
-      });
-    });
-  }
-
-
-  cargarModeloColeccion(tipoProducto: string, nombreTendencia: string) {
-    return this.mainDb.collection(tipoProducto).doc('tendencias').collection(nombreTendencia).valueChanges();
-  }
-
-  // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  UPDATE
-
-
-  // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  GETS
-
-  // getCajasDisponibles(filtros: MFiltro[]) {
-  //   return this.afs.collection('cases', ref => {
-  //     let itemConfig = ref;
-  //     filtros.forEach(value => {
-  //       // @ts-ignore
-  //       itemConfig = itemConfig.where(value.nombrePropiedad, '==', value.valor);
-  //     });
-  //     return itemConfig;
-  //   }).get();
-  // }
-
-  getCajasDisponibles(filtroCaja: MFiltro) {
-    return this.afs.collection<MCaja>('cases', ref => {
-      return ref
-        .where('estado', '==', this.est.ESTADOS_CAJA.DISPONIBLE)
-        .where('modelo', '==', filtroCaja.modelo)
-        .where('diametroInterno', '==', filtroCaja.diametroInterno)
-        .where('diametroExterno', '==', filtroCaja.diametroExterno);
-    }).get();
+    return this.mainDb.collection('dashboard/users/data', ref => {
+      return ref.where('uid', '==', uid);
+    }).valueChanges();
   }
 
   addMeta(obj: any) {
+    console.log('meta:', this.currentUser);
     // SI EL OBJETO TIENE METADATA, ES PORQUE YA EXISTE EN LA BASE DE DATOS.
     obj['metadata'] = {
       id: this.mainDb.createId(),
-      creationDate: new Date(),
-      lastModificationDate: new Date()
+      creationDate: firebase.firestore.Timestamp.fromDate(new Date()),
+      lastModificationDate: firebase.firestore.Timestamp.fromDate(new Date()),
+      creator: {
+        name: this.currentUser.name,
+        lastname: this.currentUser.lastname,
+        uid: this.currentUser.uid
+      }
     };
     return obj;
-  }
-
-  // setSupportedLang(langItem: any) {
-  //   langItem = this.addMeta(langItem);
-  //   return this.mainDb.doc('languages/' + langItem.metadata.id)
-  //     .set(langItem);
-  // }
-  //
-  // getSupportedLangs() {
-  //   return this.mainDb.collection('languages/').valueChanges();
-  // }
-  //
-  getSupportedCurrencies() {
-    return this.mainDb.collection('currencies/').valueChanges();
   }
 
   setSupportedCurrency(supportCurrencyItem: any) {
@@ -317,7 +130,6 @@ export class DbMainService {
     return this.mainDb.collection(productType + '/' + category + '/' + itemType).valueChanges();
   }
 
-// TODO: SI O SI ARRAY FILTER ES DE (3)
   getItemsByWhereFilters(itemType: string, whereFilters: any[]) {
     return this.mainDb.collection('watches/' + 'structures/' + itemType, ref => {
       // TODO: revisar externalDiameters, pues no es la forma definitiva...
@@ -343,7 +155,7 @@ export class DbMainService {
     }).valueChanges();
   }
 
-  pushItem(productType: string, itemType: string, partType: string, item: any) {
+  async pushItem(productType: string, itemType: string, partType: string, item: any) {
     item = this.addMeta(item);
     console.log('post: ', productType + '/' + itemType + '/' + partType);
     return new Promise(resolve => {
@@ -351,16 +163,6 @@ export class DbMainService {
         resolve(item);
       });
     });
-  }
-
-  updateItemV2(productType: string, category: string, itemType: string, item: any) {
-    console.log('actualizando', productType + '/' + category + '/' + itemType);
-    return this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(item.metadata.id).set(item);
-  }
-
-  // ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::  DELETES
-  deleteItemV2(productType: string, category: string, itemType: string, id: any) {
-    return this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(id).delete();
   }
 
   setUserData(uid: string, user: any) {
@@ -372,7 +174,7 @@ export class DbMainService {
     });
   }
 
-  increment(productType: string, category: string, itemType: string, counterId: any) {
+  async increment(productType: string, category: string, itemType: string, counterId: any) {
     return new Promise(resolve => {
       // console.log('aqui');
       const s = this.mainDb.doc(productType + '/' + category + '/' + itemType + '/' + counterId)
@@ -390,7 +192,7 @@ export class DbMainService {
             console.log('PRIMER REGISTRO DE:' + counterId);
             this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(counterId)
               .set({numberOfLots: firebase.firestore.FieldValue.increment(1)}).then(value1 => {
-              console.log(value);
+              console.log(value1);
               s.unsubscribe();
               resolve(counter + 1);
             });
@@ -401,14 +203,13 @@ export class DbMainService {
 
   incrementV2(productType: string, category: string, itemType: string, counterId: any) {
     return new Promise(resolve => {
-      // console.log('aqui');
       const s = this.mainDb.doc(productType + '/' + category + '/' + itemType + '/' + counterId)
         .valueChanges().pipe(take(1)).subscribe(value => {
           let counter = 0;
           if (value !== undefined) {
             counter = value['counterVariable'];
             this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(counterId)
-              .update({numberOfLots: firebase.firestore.FieldValue.increment(1)}).then(value1 => {
+              .update({counterVariable: firebase.firestore.FieldValue.increment(1)}).then(value1 => {
               console.log(value);
               s.unsubscribe();
               resolve(counter + 1);
@@ -423,7 +224,6 @@ export class DbMainService {
           }
         });
     });
-
   }
 }
 

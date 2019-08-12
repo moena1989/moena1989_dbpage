@@ -1,4 +1,15 @@
 const {app, BrowserWindow} = require('electron');
+const electronInstaller = require('electron-winstaller');
+
+const resultPromise = electronInstaller.createWindowsInstaller({
+  appDirectory: '/tmp/build/my-app-64',
+  outputDirectory: '/tmp/build/installer64',
+  authors: 'My App Inc.',
+  exe: 'myapp.exe'
+});
+
+resultPromise.then(() => console.log("It worked!"), (e) => console.log(`No dice: ${e.message}`));
+
 let win;
 
 function createWindow() {
@@ -16,9 +27,8 @@ function createWindow() {
 // and load the index.html of the app.
   win.loadFile('./dist/moenaDbApp/index.html').then(() => {
 
-
 // Open the DevTools.
-    win.webContents.openDevTools();
+//     win.webContents.openDevTools();
 // Emitted when the window is closed.
     win.setMenuBarVisibility(false);
     win.maximize();
@@ -28,7 +38,6 @@ function createWindow() {
   });
 
 }
-
 
 
 // This method will be called when Electron has finished

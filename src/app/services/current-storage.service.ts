@@ -3,7 +3,13 @@ import {ClockModel} from '../models/clockModel';
 import {DbMainService} from './routes/db-main.service';
 import {DBPublicService} from './routes/d-b-public.service';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {CATEGORIES, DEFAULT_CODE_LANG, DEFAULT_SYMBOL_CURRENCY, PRODUCT_TYPES, SUPPORTED_PRODUCTS} from '../../environments/environment';
+import {
+  CATEGORIES,
+  DEFAULT_CODE_LANG,
+  DEFAULT_SYMBOL_CURRENCY,
+  PRODUCT_TYPES,
+  SUPPORTED_LINES_PRODUCTS
+} from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -465,23 +471,28 @@ export class CurrentStorageService {
     return this._userData;
   }
 
+  set userData(value: any) {
+    this._userData = value;
+  }
+
+
   beforeInit() {
-    this.productSelected = SUPPORTED_PRODUCTS[0];
+    this.productSelected = SUPPORTED_LINES_PRODUCTS[0];
     // PROMESAS QUE SE RESOLVERAN ANTES DE INICIAR LA APLICACIÓN
     return new Promise((resolve) => {
       Promise.all([
         this.automaticAuth(),
-        this.getModelos(),
-        this.getCollections(),
-        this.getCrowns(),
-        this.getCrystals(),
-        this.getBunckles(),
-        this.getStraps(),
-        this.getCaseBacks(),
-        this.getCases(),
-        this.getMovements(),
+        // this.getModelos(),
+        // this.getCollections(),
+        // this.getCrowns(),
+        // this.getCrystals(),
+        // this.getBunckles(),
+        // this.getStraps(),
+        // this.getCaseBacks(),
+        // this.getCases(),
+        // this.getMovements(),
         this.getLanguages(),
-        this.getCurrencies()
+        // this.getCurrencies()
       ]).then(value => {
         // console.log('se traen todos los datos necesarios para iniciar.');
         console.log('Ready');
@@ -496,17 +507,16 @@ export class CurrentStorageService {
       this._firebaseAuth.authState.subscribe(
         (user) => {
           if (user) {
-            // console.log(user.uid);
             this.dbMain.getUserData(user.uid).subscribe(datosUsuario => {
-              this._userData = datosUsuario;
+              this.userData = datosUsuario[0];
               // todo: ¿Cómo hago para que mainDb vea a current?
-              // console.log('se encontró info del usuario', datosUsuario);
-              this.dbMain.currentUser = datosUsuario;
+              this.dbMain.currentUser = datosUsuario[0];
+              // console.log('el usuario', datosUsuario[0]);
               resolve();
             });
           } else {
             resolve();
-            this._userData = undefined;
+            this.userData = undefined;
           }
         }
       );

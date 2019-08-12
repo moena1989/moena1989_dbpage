@@ -21,8 +21,6 @@ export class AuthService {
               zone: NgZone, private  dbMain: DbMainService, private current: CurrentStorageService) {
 
     this.mn = firebase.initializeApp(DBS.main, 'Secondary');
-
-
   }
 
   signInWithGoogle() {
@@ -35,7 +33,19 @@ export class AuthService {
     return new Promise(resolve => {
       this._firebaseAuth.auth.signInWithEmailAndPassword(user, pass).then(value => {
         if (value) {
-          resolve(true);
+          const d = this.dbMain.getGeneralItemsByWhereFilters('dashboard', 'user', 'data', [{
+            a: 'uid',
+            b: '==',
+            c: value.user.uid
+          }]).subscribe(value1 => {
+            if (value1[0]) {
+              this.current.userData = value1[0];
+              resolve(true);
+            }
+              d.unsubscribe();
+          });
+
+
         } else {
           resolve(false);
         }
@@ -50,7 +60,18 @@ export class AuthService {
       this.mn.auth().createUserWithEmailAndPassword(email, pass).then(value => {
         if (value) {
           this.dbMain.incrementV2('dashboard', 'users', 'counters', 'internalUsers').then(counter => {
-            resolve({uid: value.user.uid, codeId: HasherService.createUserCode(counter)});
+            console.log('el numero: ', counter);
+            console.log('el code: ', HasherService.createUserCode(counter));
+            console.log(HasherService.createUserCode(1));
+            console.log(HasherService.createUserCode(2));
+            console.log(HasherService.createUserCode(3));
+            console.log(HasherService.createUserCode(5));
+            console.log(HasherService.createUserCode(7));
+            const t = {
+              uid: value.user.uid,
+              codeId: HasherService.createUserCode(counter)
+            };
+            resolve(t);
           });
         } else {
           resolve(false);
@@ -150,4 +171,6 @@ export class AuthService {
     };
     return this.dbMain.setUserData(uid, user);
   }
+
+
 }

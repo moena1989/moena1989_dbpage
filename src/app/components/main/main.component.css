@@ -1,11 +1,18 @@
 .main-cnt-main {
   padding-left: var(--sidebar-width);
   width: 100%;
-  height: auto;
+  height: available;
+  /*background: #71ff60;*/
   box-sizing: border-box;
   display: flex;
-  background: white;
+  /*background: white;*/
   flex-direction: column;
+}
+
+.router-cnt {
+  display: flex;
+  height: 100%;
+  /*background: #71ff60;*/
 }
 
 :host {
@@ -32,13 +39,11 @@
   }
 
 
-  .ico_op {
-    margin-right: 1em;
-    margin-left: .5em;
-    cursor: pointer;
-  }
-
-
+  /*.ico_op {*/
+  /*margin-right: 1em;*/
+  /*margin-left: .5em;*/
+  /*cursor: pointer;*/
+  /*}*/
   .sub_opt {
     opacity: .5;
     font-weight: 400;

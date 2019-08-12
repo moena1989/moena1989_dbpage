@@ -1,7 +1,6 @@
 import {routes} from './environment/routing';
 import {APP_INITIALIZER, InjectionToken, NgModule} from '@angular/core';
 import {AppComponent} from './app.component';
-import {NuevoRelojComponent} from './tools/nuevo-reloj/nuevo-reloj.component';
 import {ActivatedRouteSnapshot, RouterModule} from '@angular/router';
 import {HomeComponent} from './pages/general/home/home.component';
 import {ExperimentosPageComponent} from './pages/dev/experimentos-page/experimentos-page.component';
@@ -27,7 +26,6 @@ import {HasherService} from './services/hasher.service';
 import {RegistroComponent} from './pages/por_def/registro/registro.component';
 import {ModelsSevice} from './services/models/model-cajas.service';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
-import {NewCaseComponent} from './components/nueva-caja/new-case.component';
 import {MainComponent} from './components/main/main.component';
 import {RelojBuscadoComponent} from './tools/reloj-buscado/reloj-buscado.component';
 import {LoadbarComponent} from './components/resources/loadbar/loadbar.component';
@@ -49,7 +47,6 @@ import {ConfigMovementPageComponent} from './components/visualizador-config-maq/
 import {WorkerRegComponent} from './pages/worker-reg/worker-reg.component';
 import {TendenciasPageComponent} from './components/products/tendencias-page.component';
 import {BrowserModule} from '@angular/platform-browser';
-import {BusquedaComponent} from './pages/general/busqueda/busqueda.component';
 import {AngularFirestore} from '@angular/fire/firestore';
 import {PortadaPageComponent} from './pages/general/portada-page/portada-page.component';
 import {ConfigMaderaComponent} from './components/config-madera/config-madera.component';
@@ -95,7 +92,27 @@ import {LotsCrystalsComponent} from './lots-crystals/lots-crystals.component';
 import {AngularFireFunctionsModule, FunctionsRegionToken} from '@angular/fire/functions';
 import {WatchersPageComponent} from './watchers-page/watchers-page.component';
 import {ElectronService} from './electron.service';
-import { DaterPipe } from './dater.pipe';
+import {DaterPipe} from './dater.pipe';
+import {WatchStrategiesComponent} from './watch-strategies/watch-strategies.component';
+import {WatchFinancialStateComponent} from './watch-financial-state/watch-financial-state.component';
+import {WatchReportsComponent} from './watch-reports/watch-reports.component';
+import {PageComponent} from './page/page.component';
+import {AssignableOdersPageComponent} from './active-orders-page/assignable-oders-page.component';
+import { AssignableProductCntComponent } from './assignable-product-cnt/assignable-product-cnt.component';
+import { PackableOrdersPageComponent } from './packable-orders-page/packable-orders-page.component';
+import { DistpachableOrdersPageComponent } from './distpachable-orders-page/distpachable-orders-page.component';
+import { FinishedOrdersPageComponent } from './finished-orders-page/finished-orders-page.component';
+import { ClockWebCollectionsPageComponent } from './clock-web-collections-page/clock-web-collections-page.component';
+import { RawMaterialPageComponent } from './raw-material-page/raw-material-page.component';
+import { SuppliesPageComponent } from './suplies-page/supplies-page.component';
+import { FurnishingsPageComponent } from './furnishings-page/furnishings-page.component';
+import { AppliancesPageComponent } from './appliances-page/appliances-page.component';
+import { EndowmentsPageComponent } from './endowments-page/endowments-page.component';
+import { RoundsLocalInventoryPageComponent } from './rounds-local-inventory-page/rounds-local-inventory-page.component';
+import { CasesLocalInventoryPageComponent } from './cases-local-inventory-page/cases-local-inventory-page.component';
+import { FullWatchlocalInventoryPageComponent } from './full-watchlocal-inventory-page/full-watchlocal-inventory-page.component';
+import { ArmedLocalInventoryPageComponent } from './armed-local-inventory-page/armed-local-inventory-page.component';
+import { CustomSelectComponent } from './custom-select/custom-select.component';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -106,12 +123,11 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
 
 @NgModule({
   declarations: [
-    AppComponent, NuevoRelojComponent, SidebarComponent,
-    BusquedaComponent, LoginComponent, MainComponent,
+    AppComponent, SidebarComponent, LoginComponent, MainComponent,
     WorkerRegComponent, SnackbarComponent, RegistroComponent,
     RelojBuscadoComponent, PortadaPageComponent, MSelectComponent, VisualizerComponent,
     HomeComponent, RegistroPageComponent, ExperimentosPageComponent, InventarioPageComponent,
-    PublicacionesPageComponent, VentasPageComponent, NewCaseComponent, InputComponent, FormButtonComponent,
+    PublicacionesPageComponent, VentasPageComponent, InputComponent, FormButtonComponent,
     VerLoteComponent, TittlebarComponent, TopBarComponent, LoadbarComponent,
     OAuthCallbackComponent, TendenciasPageComponent, TrendCntComponent, NoticiasPageComponent,
     PublicSeasonsComponent, VerTendenciasPageComponent, VerTendenciaPageComponent,
@@ -128,7 +144,9 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     InventoryWatchConfigPageComponent, InventoryCasePageComponent,
     LotsPageComponent, UnitsPageComponent, ProvidersPageComponent,
     LotsCasesComponent, ObservableSelectComponent, NgContentDirective,
-    UnitsLeatherComponent, LotsBuncklesComponent, LotsCasebacksComponent, LotsCrystalsComponent, WatchersPageComponent, DaterPipe
+    UnitsLeatherComponent, LotsBuncklesComponent, LotsCasebacksComponent,
+    LotsCrystalsComponent, WatchersPageComponent, DaterPipe,
+    WatchStrategiesComponent, WatchFinancialStateComponent, WatchReportsComponent, PageComponent, AssignableOdersPageComponent, AssignableProductCntComponent, PackableOrdersPageComponent, DistpachableOrdersPageComponent, FinishedOrdersPageComponent, ClockWebCollectionsPageComponent, RawMaterialPageComponent, SuppliesPageComponent, FurnishingsPageComponent, AppliancesPageComponent, EndowmentsPageComponent, RoundsLocalInventoryPageComponent, CasesLocalInventoryPageComponent, FullWatchlocalInventoryPageComponent, ArmedLocalInventoryPageComponent, CustomSelectComponent
   ],
   imports: [
     AngularFireFunctionsModule,

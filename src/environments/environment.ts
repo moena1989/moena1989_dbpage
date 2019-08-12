@@ -9,9 +9,285 @@ export const DEFAULT_SYMBOL_CURRENCY = 'US$';
 export const SHOW_WINDOWS_BAR = true;
 export const MAX_SIZE_IN_PX = 2500;
 export const MAX_SIZE_IN_MB = 0.7;
-export const SUPPORTED_PRODUCTS = [
-  {name: 'Relojería', productId: 'WATCH', color: '#FF920B'},
-  {name: 'Joyería', productId: 'JEWELS', color: '#ff412d'}
+
+export const designRoutes = [
+  {
+    category: 'Diseño de relojes', subCategories: [
+      {
+        icon: 'fa-watch', path: '/watch/structures', name: 'Estructura de relojes', tabs: [
+          {name: 'Modelos', path: 'watch/structures/models'},
+          {name: '|', path: 'watch/sasdft/models'},
+          {name: 'Origen', path: 'watch/structures/collections'}
+        ]
+      }
+    ]
+  },
+  {
+    category: 'Desarrollo', subCategories: []
+  },
+  {
+    category: 'Fotografía y edición', subCategories: []
+  }
+];
+
+export const manufactureRoute = [
+  // {
+  //   category: 'Producción', subCategories: [
+  //     {
+  //       icon: 'fa-cogs', path: '/watch/marketing', name: 'Fresado', tabs: [
+  //         {name: 'Preforma', path: '/watch/marketing/strategies'},
+  //         {name: 'Limpieza', path: '/watch/marketing/strategies'},
+  //         {name: 'Lado A', path: '/watch/marketing/strategies'},
+  //         {name: 'Lado B', path: '/watch/marketing/strategies'},
+  //         {name: 'Perforación', path: '/watch/marketing/strategies'}
+  //       ]
+  //     },
+  //     {
+  //       icon: 'fa-cogs', path: '/watch/marketing', name: 'Corte CNC', tabs: [
+  //         {name: 'Estrategias', path: '/watch/marketing/strategies'}
+  //       ]
+  //     },
+  //     {
+  //       icon: 'fa-cogs', path: '/watch/marketing', name: 'Canteadora', tabs: [
+  //         {name: 'Estrategias', path: '/watch/marketing/strategies'}
+  //       ]
+  //     },
+  //     {
+  //       icon: 'fa-cogs', path: '/watch/marketing', name: 'Corte laser', tabs: [
+  //         {name: 'Estrategias', path: '/watch/marketing/strategies'}
+  //       ]
+  //     },
+  //     {
+  //       icon: 'fa-cogs', path: '/watch/marketing', name: 'Impresión de rigidos', tabs: [
+  //         {name: 'Estrategias', path: '/watch/marketing/strategies'}
+  //       ]
+  //     },
+  //     {
+  //       icon: 'fa-cogs', path: '/watch/marketing', name: 'Impresión 3D', tabs: [
+  //         {name: 'Estrategias', path: '/watch/marketing/strategies'}
+  //       ]
+  //     }
+  //   ]
+  // },
+  {
+    category: 'Inventario', subCategories: [
+      {
+        icon: 'fa-inventory', path: '/manufacture/localWarehouse', name: 'Registro local', tabs: [
+          {name: 'Ruedas', path: 'manufacture/localWarehouse/rounds'},
+          {name: 'Cajas', path: 'manufacture/localWarehouse/cases'},
+          {name: 'Armados', path: 'manufacture/localWarehouse/armed'},
+          {name: 'Serializados', path: 'manufacture/localWarehouse/serialized'},
+          {name: 'Completos', path: 'manufacture/localWarehouse/fullProducts'}
+        ]
+      }
+    ]
+  }
+];
+
+export const globalRoutes = [
+  {
+    category: 'Despacho', subCategories: [
+      {
+        icon: 'fa-file-edit', name: 'Pedidos', path: '/global/orders/',
+        tabs: [
+          {name: 'Por asignar', path: '/global/orders/actives'},
+          {name: 'Por embalar', path: '/global/orders/packables'},
+          {name: 'Por despachar', path: '/global/orders/distpachables'},
+          {name: 'Finalizadas', path: '/global/orders/finished'}
+        ]
+      }
+    ]
+  }
+];
+
+export const warehouseRoutes = [
+  {
+    category: 'Insumos', subCategories: [
+      {
+        icon: 'fa-boxes-alt', name: 'Insumos generales', path: '/global/ordgers/',
+        tabs: []
+      },
+      {
+        icon: 'fa-phone-laptop', name: 'Equipos', path: '/global/ordgers/',
+        tabs: []
+      },
+      {
+        icon: 'fa-couch', name: 'Muebles', path: '/global/ordgers/',
+        tabs: []
+      },
+      {
+        icon: 'fa-parachute-box', name: 'Dotaciones', path: '/global/ordgers/',
+        tabs: []
+      }
+    ]
+  },
+  {
+    category: 'Materias primas', subCategories: [
+      {
+        icon: 'fa-watch', name: 'Insumos de reloj', path: '/watch/structures/',
+        tabs: [
+          {name: 'Maquinarias', path: 'watch/structures/movements'},
+          {name: 'Pulsos', path: 'watch/structures/straps'},
+          {name: 'Coronas', path: 'watch/structures/crowns'},
+          {name: 'Hebillas', path: 'watch/structures/bunckles'},
+          // {name: 'Herrajes', path: '/warehouse/inventory/furnishings'},
+          {name: 'Cristales', path: 'watch/structures/crystals'},
+          {name: 'Tapas', path: 'watch/structures/casebacks'},
+          {name: 'Cueros', path: 'watch/structures/leather'},
+          {name: 'Maderas', path: '/warehouse/inventory/rawMaterial'}
+        ]
+      }
+    ]
+  },
+  {
+    category: 'Dotaciones de área', subCategories: [
+      {
+        icon: 'fa-hammer', name: 'Producción', path: '/global/orders/',
+        tabs: [
+          {name: 'Fresado', path: '/global/orders/actives'},
+          {name: 'Corte CNC', path: '/global/orders/packables'},
+          {name: 'Corte laser', path: '/global/orders/distpachables'},
+          {name: 'Impresion de rigidos', path: '/global/orders/finished'},
+          {name: 'Impresion 3D', path: '/global/orders/finished'}
+        ]
+      },
+      {
+        icon: 'fa-pencil-ruler', name: 'Diseño', path: '/global/ordgrwers/',
+        tabs: [
+          {name: 'Desarrollo', path: '/global/orders/actives'},
+          {name: 'Desarrollo', path: '/global/orders/actives'},
+          {name: 'Diseño de Producto', path: '/global/orders/packables'},
+          {name: 'Edición y fotografía', path: '/global/orders/distpachables'}
+        ]
+      },
+      {
+        icon: 'fa-file-invoice-dollar', name: 'Financiero', path: '/global/ordgrwers/',
+        tabs: [
+          {name: 'Contabidad', path: '/global/orders/actives'},
+          {name: 'Analisis y proyecciones', path: '/global/orders/packables'}
+        ]
+      },
+      {
+        icon: 'fa-megaphone', name: 'Mercadeo', path: '/global/ordgrwers/',
+        tabs: [
+          {name: 'Contabidad', path: '/global/orders/actives'},
+          {name: 'Analisis y proyecciones', path: '/global/orders/packables'}
+        ]
+      }
+    ]
+  }
+  , {
+    category: 'Producción', subCategories: [
+      {
+        icon: 'fa-watch', path: '/public/products/watches/', name: 'Relojes', tabs: [
+          // {name: 'Origen', path: '/watch/web/strategies'},
+          {name: 'Origen', path: '/public/products/watches/model'},
+          {name: 'Vira', path: '/public/products/watches/mosdel'}
+        ]
+      }
+      // ,
+      // {
+      //   icon: 'fa-ring', path: '/watch/web', name: 'Anillos', tabs: [
+      //     {name: 'Relojes', path: '/watch/web/strategies'},
+      //     {name: 'Anillos', path: '/watch/web/strategies'}
+      //   ]
+      // },
+      // {
+      //   icon: 'fa-shopping-bag', path: '/watch/web', name: 'Sobres', tabs: [
+      //     {name: 'Relojes', path: '/watch/web/strategies'},
+      //     {name: 'Anillos', path: '/watch/web/strategies'}
+      //   ]
+      // }
+    ]
+  }
+];
+
+export const marketingRoutes = [
+  {
+    category: 'Marketing Digital', subCategories: [
+      {
+        icon: 'fa-newspaper', path: '/watch/sfewtructures', name: 'Blog', tabs: [
+          {name: 'Maquinarias', path: 'watch/structures/movements'},
+        ]
+      },
+      {
+        icon: 'fa-inbox-out', path: '/watch/strucqrgtures', name: 'Newsletters', tabs: [
+          {name: 'Maquinarias', path: 'watch/structures/movements'},
+        ]
+      }
+    ]
+  },
+  {
+    category: 'Catalogo de productos', subCategories: [
+      {
+        icon: 'fa-watch', path: '/public/products/watches/', name: 'Relojes', tabs: [
+          // {name: 'Origen', path: '/watch/web/strategies'},
+          {name: 'Origen', path: '/public/products/watches/model'},
+          {name: 'Vira', path: '/public/products/watches/mosdel'}
+        ]
+      },
+      {
+        icon: 'fa-ring', path: '/watch/web', name: 'Anillos', tabs: [
+          {name: 'Relojes', path: '/watch/web/strategies'},
+          {name: 'Anillos', path: '/watch/web/strategies'}
+        ]
+      },
+      {
+        icon: 'fa-shopping-bag', path: '/watch/web', name: 'Sobres', tabs: [
+          {name: 'Relojes', path: '/watch/web/strategies'},
+          {name: 'Anillos', path: '/watch/web/strategies'}
+        ]
+      }
+    ]
+  },
+];
+
+export const availablesRoutes = [
+  {category: 'global', tab: '', icon: '', path: ''},
+  {category: 'ring', tab: '', icon: '', path: ''},
+  {category: '', tab: '', icon: '', path: ''}
+];
+
+export const jewelryRoutes = [
+  {
+    category: 'Producción', subCategories: [
+      {icon: 'fa-boxes-alt', name: 'Lots', path: '/watch/manufacture/lots'},
+      {icon: 'fa-box-alt', name: 'Unidades', path: '/watch/manufacture/units'},
+      {icon: 'fa-puzzle-piece', name: 'Estructuras', path: '/watch/development/structures'},
+      {icon: 'fa-users', name: 'Equipos de trabajo', path: '/watch/development/users'}
+    ]
+  },
+  {
+    category: 'Mercadeo', subCategories: [
+      {icon: 'fa-chess-knight', name: 'Estrategias', path: '/watch/marketing/strategies'}
+    ]
+  },
+  {
+    category: 'Despacho', subCategories: [
+      {icon: 'fa-chess-knight', name: 'Estrategias', path: '/watch/marketing/strategies'}
+    ]
+  },
+  {
+    category: 'Finanzas', subCategories: [
+      {icon: 'fa-file-chart-pie', name: 'Estados financieros', path: '/watch/financies/financialState'}
+      // {icon: 'fa-file-invoice-dollar', name: 'Proyeciones', path: ''},
+      // {icon: 'fa-analytics', name: 'Analiticas', path: ''}
+    ]
+  },
+  {
+    category: 'Contabilidad', subCategories: [
+      {icon: 'fa-users', name: 'Proveedores', path: '/watch/accounting/providers'},
+      {icon: 'fa-hand-holding-box', name: 'Reportes', path: '/watch/accounting/reports'}
+    ]
+  }
+];
+
+export const SUPPORTED_LINES_PRODUCTS = [
+  {name: 'Almacén', productId: 'WAREHOUSE', routes: warehouseRoutes},
+  {name: 'Mercadeo', productId: 'WEB', routes: marketingRoutes},
+  {name: 'Producción', productId: 'MANUFACTURE', routes: manufactureRoute},
+  {name: 'Diseño', productId: 'DESIGN', routes: designRoutes},
+  {name: 'Gerencia', productId: 'GENERAL', routes: globalRoutes}
 ];
 
 export const PRODUCT_TYPES = {
@@ -98,39 +374,6 @@ export const CATEGORIES = {
   LOTS: 'lots'
 };
 
-//   MODEL: {
-//     name: 'Modelo',
-//     productType: 'models',
-//   },
-//   STRAP: {
-//     name: 'Pulso',
-//     productType: 'models',
-//     imgDbRoute: 'products/watches/parts/strap'
-//   },
-//   BUNCKLE: {
-//     name: 'Hebilla',
-//     productType: 'models',
-//     imgDbRoute: 'products/watches/parts/bunckles'
-//   },
-//   CASE: {
-//     name: 'Caja',
-//     imgDbRoute: 'products/watches/parts/cases'
-//   },
-//   CRYSTAL: {
-//     name: 'Cristal',
-//     imgDbRoute: 'products/watches/parts/crystals'
-//   },
-//   CROWN: {
-//     name: 'Corona',
-//     productId: 'crown',
-//     imgDbRoute: 'products/watches/parts/crowns'
-//   },
-//   CASEBACK: {
-//     name: 'Tapa',
-//     productId: 'caseBack',
-//     imgDbRoute: 'products/watches/parts/caseBacks'
-//   }
-// };
 export const DBS = {
   public: {
     apiKey: 'AIzaSyAZcu9JauJIWtaGQnDgLnJ3ZFg7RcEweAo',

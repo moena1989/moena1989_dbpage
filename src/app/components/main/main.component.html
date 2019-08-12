@@ -3,5 +3,15 @@
 <!--[@fadeAnimation]="o.isActivated"-->
 <div class="main-cnt-main">
   <app-top-bar></app-top-bar>
-  <router-outlet #o="outlet"></router-outlet>
+  <div class="doc">
+    <app-tabs>
+      <ng-container>
+        <div *ngFor="let tab of tools.availableTabs" class="tab-item-content" [routerLink]="'/'+tab.path"
+             routerLinkActive="tab-opt-act">{{tab.name}}</div>
+      </ng-container>
+    </app-tabs>
+    <div class="router-cnt">
+      <router-outlet #o="outlet"></router-outlet>
+    </div>
+  </div>
 </div>
