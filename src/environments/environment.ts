@@ -101,19 +101,57 @@ export const globalRoutes = [
 ];
 
 export const warehouseRoutes = [
+   {
+    category: 'Producción', subCategories: [
+      {
+        icon: 'fa-watch', path: '/public/products/watches/', name: 'Relojes', tabs: [
+          // {name: 'Origen', path: '/watch/web/strategies'},
+          {name: 'Origen', path: '/public/products/watches/model'},
+          {name: 'Vira', path: '/public/products/watches/mosdel'}
+        ]
+      }
+      // ,
+      // {
+      //   icon: 'fa-ring', path: '/watch/web', name: 'Anillos', tabs: [
+      //     {name: 'Relojes', path: '/watch/web/strategies'},
+      //     {name: 'Anillos', path: '/watch/web/strategies'}
+      //   ]
+      // },
+      // {
+      //   icon: 'fa-shopping-bag', path: '/watch/web', name: 'Sobres', tabs: [
+      //     {name: 'Relojes', path: '/watch/web/strategies'},
+      //     {name: 'Anillos', path: '/watch/web/strategies'}
+      //   ]
+      // }
+    ]
+  },
   {
     category: 'Insumos', subCategories: [
       {
         icon: 'fa-boxes-alt', name: 'Insumos generales', path: '/global/ordgers/',
         tabs: []
       },
+
       {
-        icon: 'fa-phone-laptop', name: 'Equipos', path: '/global/ordgers/',
+        icon: 'fa-tools', name: 'Herramientas', path: '/global/ordgers/',
         tabs: []
       },
       {
-        icon: 'fa-couch', name: 'Muebles', path: '/global/ordgers/',
-        tabs: []
+        icon: 'fa-phone-laptop', name: 'Equipos', path: '/global/ordgers/',
+        tabs: [
+          {name: 'Máquinas', path: 'watch/strsuctures/mosvements'},
+          {name: 'Computadores', path: 'watch/structuress/movesments'},
+          {name: 'Vehiculos', path: 'watch/strsuctures/mosvements'}
+        ]
+      },
+      {
+        icon: 'fa-couch', name: 'Mobiliario', path: '/global/ordgers/',
+        tabs: [
+          {name: 'Mesas', path: 'watch/strsuctures/mosvements'},
+          {name: 'Decorativos', path: 'watch/strsuctures/mosvements'},
+          {name: 'Sillas', path: 'watch/strsuctures/mosvements'}
+          // {name: 'Máquinas', path: 'watch/strsuctures/mosvements'},
+        ]
       },
       {
         icon: 'fa-parachute-box', name: 'Dotaciones', path: '/global/ordgers/',
@@ -144,6 +182,7 @@ export const warehouseRoutes = [
       {
         icon: 'fa-hammer', name: 'Producción', path: '/global/orders/',
         tabs: [
+          {name: 'Áreas: ', path: '/globalsassd/orders/actives'},
           {name: 'Fresado', path: '/global/orders/actives'},
           {name: 'Corte CNC', path: '/global/orders/packables'},
           {name: 'Corte laser', path: '/global/orders/distpachables'},
@@ -176,30 +215,7 @@ export const warehouseRoutes = [
       }
     ]
   }
-  , {
-    category: 'Producción', subCategories: [
-      {
-        icon: 'fa-watch', path: '/public/products/watches/', name: 'Relojes', tabs: [
-          // {name: 'Origen', path: '/watch/web/strategies'},
-          {name: 'Origen', path: '/public/products/watches/model'},
-          {name: 'Vira', path: '/public/products/watches/mosdel'}
-        ]
-      }
-      // ,
-      // {
-      //   icon: 'fa-ring', path: '/watch/web', name: 'Anillos', tabs: [
-      //     {name: 'Relojes', path: '/watch/web/strategies'},
-      //     {name: 'Anillos', path: '/watch/web/strategies'}
-      //   ]
-      // },
-      // {
-      //   icon: 'fa-shopping-bag', path: '/watch/web', name: 'Sobres', tabs: [
-      //     {name: 'Relojes', path: '/watch/web/strategies'},
-      //     {name: 'Anillos', path: '/watch/web/strategies'}
-      //   ]
-      // }
-    ]
-  }
+
 ];
 
 export const marketingRoutes = [

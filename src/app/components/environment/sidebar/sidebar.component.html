@@ -6,19 +6,7 @@
   <div class="sidebar-scrollable-area">
     <app-custom-select (whenSelecting)="optionSelected=$event"></app-custom-select>
     <div class="ssssssss">
-      <!--<div class="ss">{{optionSelected.name}}</div>-->
-      <!--<div class="line-product" *ngFor="let s of supportedDataLines" [class.line-product-selected]="optionSelected===s"-->
-      <!--(click)="selectLine(s)">-->
-      <!--<div>{{s.name}}</div>-->
-      <!--</div>-->
     </div>
-
-    <!--<div *ngIf="isOptionsOpened" class="ssssssss">-->
-    <!--<div class="line-product" *ngFor="let line of supportedDataLines" (click)="selectLineP(line)">-->
-    <!--<div>{{line.name}}</div>-->
-    <!--</div>-->
-    <!--</div>-->
-
     <ng-container *ngFor="let opt of optionSelected?.routes">
       <div class="sub">{{opt.category}}</div>
       <div class="item"
