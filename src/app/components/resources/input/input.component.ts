@@ -29,6 +29,7 @@ export class InputComponent implements OnInit {
     this.errMsg = '';
     if (val !== undefined) {
       this.val = val;
+      this.tesText();
     }
   }
 
@@ -44,6 +45,10 @@ export class InputComponent implements OnInit {
 
   tecla(evt: any) {
     // todo: tiene que haber una mejor manera de mayusculizar...
+    this.tesText();
+  }
+
+  tesText() {
     if (this.upperCase) {
       this.val = this.val.toUpperCase();
     }

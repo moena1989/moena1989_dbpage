@@ -98,21 +98,27 @@ import {WatchFinancialStateComponent} from './watch-financial-state/watch-financ
 import {WatchReportsComponent} from './watch-reports/watch-reports.component';
 import {PageComponent} from './page/page.component';
 import {AssignableOdersPageComponent} from './active-orders-page/assignable-oders-page.component';
-import { AssignableProductCntComponent } from './assignable-product-cnt/assignable-product-cnt.component';
-import { PackableOrdersPageComponent } from './packable-orders-page/packable-orders-page.component';
-import { DistpachableOrdersPageComponent } from './distpachable-orders-page/distpachable-orders-page.component';
-import { FinishedOrdersPageComponent } from './finished-orders-page/finished-orders-page.component';
-import { ClockWebCollectionsPageComponent } from './clock-web-collections-page/clock-web-collections-page.component';
-import { RawMaterialPageComponent } from './raw-material-page/raw-material-page.component';
-import { SuppliesPageComponent } from './suplies-page/supplies-page.component';
-import { FurnishingsPageComponent } from './furnishings-page/furnishings-page.component';
-import { AppliancesPageComponent } from './appliances-page/appliances-page.component';
-import { EndowmentsPageComponent } from './endowments-page/endowments-page.component';
-import { RoundsLocalInventoryPageComponent } from './rounds-local-inventory-page/rounds-local-inventory-page.component';
-import { CasesLocalInventoryPageComponent } from './cases-local-inventory-page/cases-local-inventory-page.component';
-import { FullWatchlocalInventoryPageComponent } from './full-watchlocal-inventory-page/full-watchlocal-inventory-page.component';
-import { ArmedLocalInventoryPageComponent } from './armed-local-inventory-page/armed-local-inventory-page.component';
-import { CustomSelectComponent } from './custom-select/custom-select.component';
+import {AssignableProductCntComponent} from './assignable-product-cnt/assignable-product-cnt.component';
+import {PackableOrdersPageComponent} from './packable-orders-page/packable-orders-page.component';
+import {DistpachableOrdersPageComponent} from './distpachable-orders-page/distpachable-orders-page.component';
+import {FinishedOrdersPageComponent} from './finished-orders-page/finished-orders-page.component';
+import {ClockWebCollectionsPageComponent} from './clock-web-collections-page/clock-web-collections-page.component';
+import {RawMaterialPageComponent} from './raw-material-page/raw-material-page.component';
+import {SuppliesPageComponent} from './suplies-page/supplies-page.component';
+import {FurnishingsPageComponent} from './furnishings-page/furnishings-page.component';
+import {AppliancesPageComponent} from './appliances-page/appliances-page.component';
+import {EndowmentsPageComponent} from './endowments-page/endowments-page.component';
+import {RoundsLocalInventoryPageComponent} from './rounds-local-inventory-page/rounds-local-inventory-page.component';
+import {CasesLocalInventoryPageComponent} from './cases-local-inventory-page/cases-local-inventory-page.component';
+import {FullWatchlocalInventoryPageComponent} from './full-watchlocal-inventory-page/full-watchlocal-inventory-page.component';
+import {ArmedLocalInventoryPageComponent} from './armed-local-inventory-page/armed-local-inventory-page.component';
+import {CustomSelectComponent} from './custom-select/custom-select.component';
+import {ProductWatchCatalogPageComponent} from './product-watch-catalog-page/product-watch-catalog-page.component';
+import { MarketingWatchCollectionsPageComponent } from './marketing-watch-collections-page/marketing-watch-collections-page.component';
+import { CardCollectionConfigComponent } from './card-collection-config/card-collection-config.component';
+import { InventoryConfigItemComponent } from './inventory-config-item/inventory-config-item.component';
+import { SettingsModalPageComponent } from './settings-modal-page/settings-modal-page.component';
+import { AccountModalPageComponent } from './account-modal-page/account-modal-page.component';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -146,7 +152,13 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     LotsCasesComponent, ObservableSelectComponent, NgContentDirective,
     UnitsLeatherComponent, LotsBuncklesComponent, LotsCasebacksComponent,
     LotsCrystalsComponent, WatchersPageComponent, DaterPipe,
-    WatchStrategiesComponent, WatchFinancialStateComponent, WatchReportsComponent, PageComponent, AssignableOdersPageComponent, AssignableProductCntComponent, PackableOrdersPageComponent, DistpachableOrdersPageComponent, FinishedOrdersPageComponent, ClockWebCollectionsPageComponent, RawMaterialPageComponent, SuppliesPageComponent, FurnishingsPageComponent, AppliancesPageComponent, EndowmentsPageComponent, RoundsLocalInventoryPageComponent, CasesLocalInventoryPageComponent, FullWatchlocalInventoryPageComponent, ArmedLocalInventoryPageComponent, CustomSelectComponent
+    WatchStrategiesComponent, WatchFinancialStateComponent,
+    WatchReportsComponent, PageComponent, AssignableOdersPageComponent, AssignableProductCntComponent,
+    PackableOrdersPageComponent, DistpachableOrdersPageComponent, FinishedOrdersPageComponent,
+    ClockWebCollectionsPageComponent, RawMaterialPageComponent, SuppliesPageComponent, FurnishingsPageComponent,
+    AppliancesPageComponent, EndowmentsPageComponent, RoundsLocalInventoryPageComponent,
+    CasesLocalInventoryPageComponent, FullWatchlocalInventoryPageComponent, ArmedLocalInventoryPageComponent,
+    CustomSelectComponent, ProductWatchCatalogPageComponent, MarketingWatchCollectionsPageComponent, CardCollectionConfigComponent, InventoryConfigItemComponent, SettingsModalPageComponent, AccountModalPageComponent
   ],
   imports: [
     AngularFireFunctionsModule,

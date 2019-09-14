@@ -4,7 +4,21 @@
 
 .disabled {
   background: rgba(247, 247, 247, 0);
-  color: rgba(0, 0, 0, 0.8);
+  border-color: rgba(0, 0, 0, 0.2);
+
+
+}
+
+.ladr {
+  display: flex;
+  -webkit-appearance: none;
+  padding: .3em;
+  width: 10em;
+  border: 1px solid #f8f8f8;
+
+  align-items: center;
+  border-radius: .2em;
+  position: relative;
 }
 
 .sl-ttl {
@@ -35,7 +49,6 @@
   padding: .3em;
   width: 10em;
   border: 1px solid #eeeeee;
-
   align-items: center;
   border-radius: .2em;
   position: relative;
@@ -44,8 +57,7 @@
 .elinput {
   background: rgba(221, 221, 221, 0);
   border: rgba(95, 158, 160, 0);
-  width: 15em;
-
+  width: 15rem;
 }
 
 .type-inpt {
@@ -54,8 +66,8 @@
   width: 1em;
   line-height: .8em;
   //color: var(--icon-color-hover);
-  font-size: .8em;
-  font-weight: bold;
+  font-size: var(--font-size-s);
+  font-weight: var(--font-weight-light);
   opacity: .5;
 }
 

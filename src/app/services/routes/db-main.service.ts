@@ -142,6 +142,13 @@ export class DbMainService {
     }).valueChanges();
   }
 
+
+  getItemById(typeProduct: string, category: string, itemType: string, id: string) {
+    // console.log('TESTING ITEM BY ID');
+    return this.mainDb.doc(typeProduct + '/' + category + '/' + itemType + '/' + id).valueChanges();
+
+  }
+
   getGeneralItemsByWhereFilters(typeProduct: string, category: string, itemType: string, whereFilters: any[]) {
     console.log('se filtra en: ', typeProduct + '/' + category + '/' + itemType, whereFilters);
     return this.mainDb.collection(typeProduct + '/' + category + '/' + itemType, ref => {
@@ -167,8 +174,7 @@ export class DbMainService {
 
   setUserData(uid: string, user: any) {
     return new Promise(resolve => {
-      user = this.addMeta(user);
-      this.mainDb.collection('dashboard/users/data').doc(uid).set(user).then(value => {
+      this.mainDb.collection('system/private/users').doc(uid).set(user).then(value => {
         resolve(user);
       });
     });

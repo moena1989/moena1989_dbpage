@@ -10,9 +10,10 @@
     <ng-container *ngFor="let opt of optionSelected?.routes">
       <div class="sub">{{opt.category}}</div>
       <div class="item"
-           routerLinkActive="acti"
            *ngFor="let o of opt.subCategories"
            [routerLink]="o.path"
+           routerLinkActive="acti"
+           [routerLinkActiveOptions]=""
            (click)="selectR(o, opt.category)">
         <div class="ico_op" style="  margin: 0 1.5rem;">
           <i class="{{iconStyle}} {{o.icon}} er fa-lg fa-fw"></i>

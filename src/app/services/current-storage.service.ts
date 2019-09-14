@@ -10,11 +10,13 @@ import {
   PRODUCT_TYPES,
   SUPPORTED_LINES_PRODUCTS
 } from '../../environments/environment';
+import {InventoryConfigItemComponent} from '../inventory-config-item/inventory-config-item.component';
 
 @Injectable({
   providedIn: 'root'
 })
 export class CurrentStorageService {
+  static inventory: InventoryConfigItemComponent = undefined;
   public states = {public: {name: 'Pública'}, private: {name: 'Privada'}};
   relojDisponible: ClockModel;
   public caja = [];
@@ -475,13 +477,14 @@ export class CurrentStorageService {
     this._userData = value;
   }
 
-
   beforeInit() {
+    this._supportedLangs = [{code: 'es', name: 'Español', nativeName: 'Español'}];
+    this.defaultSelectedLang = {code: 'es', name: 'Español', nativeName: 'Español'};
     this.productSelected = SUPPORTED_LINES_PRODUCTS[0];
     // PROMESAS QUE SE RESOLVERAN ANTES DE INICIAR LA APLICACIÓN
     return new Promise((resolve) => {
       Promise.all([
-        this.automaticAuth(),
+        this.automaticAuth()
         // this.getModelos(),
         // this.getCollections(),
         // this.getCrowns(),
@@ -491,7 +494,7 @@ export class CurrentStorageService {
         // this.getCaseBacks(),
         // this.getCases(),
         // this.getMovements(),
-        this.getLanguages(),
+        // this.getLanguages(),
         // this.getCurrencies()
       ]).then(value => {
         // console.log('se traen todos los datos necesarios para iniciar.');
@@ -511,12 +514,13 @@ export class CurrentStorageService {
               this.userData = datosUsuario[0];
               // todo: ¿Cómo hago para que mainDb vea a current?
               this.dbMain.currentUser = datosUsuario[0];
-              // console.log('el usuario', datosUsuario[0]);
+              console.log('el usuario', datosUsuario[0]);
               resolve();
             });
           } else {
             resolve();
             this.userData = undefined;
+            console.log('el usuario', undefined);
           }
         }
       );
@@ -525,10 +529,11 @@ export class CurrentStorageService {
 
   getSupportedLangStructure() {
     const l = {};
-    this.supportedCodeLangs.forEach(value => {
-      l[value] = {};
-    });
-    return l;
+    // this.supportedCodeLangs.forEach(value => {
+    //   l[value] = {};
+    // });
+    // return l;
+    return {es: {}};
   }
 
   private getModelos() {

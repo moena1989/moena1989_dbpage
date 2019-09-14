@@ -30,7 +30,11 @@ import {RoundsLocalInventoryPageComponent} from '../rounds-local-inventory-page/
 import {CasesLocalInventoryPageComponent} from '../cases-local-inventory-page/cases-local-inventory-page.component';
 import {FullWatchlocalInventoryPageComponent} from '../full-watchlocal-inventory-page/full-watchlocal-inventory-page.component';
 import {ArmedLocalInventoryPageComponent} from '../armed-local-inventory-page/armed-local-inventory-page.component';
+import {MarketingWatchCollectionsPageComponent} from '../marketing-watch-collections-page/marketing-watch-collections-page.component';
+import {HomeComponent} from '../pages/general/home/home.component';
+import {AuthGuardService} from '../services/auth-guard.service';
 // la estructura es buena, pero pierdo modularización.
+// canActivate: [AuthGuardService],
 export const routes: Routes = [
   {path: 'login', component: LoginComponent},
   {path: 'sign_up', component: WorkerRegComponent},
@@ -39,6 +43,7 @@ export const routes: Routes = [
     children: [
       ///////////////////////////////  MANUFACTURE //////////////////////////////////////////////
       // WAREHOUSE
+      {path: '', component: HomeComponent},
       {path: 'manufacture/localWarehouse/rounds', component: RoundsLocalInventoryPageComponent},
       {path: 'manufacture/localWarehouse/cases', component: CasesLocalInventoryPageComponent},
       {path: 'manufacture/localWarehouse/armed', component: ArmedLocalInventoryPageComponent},
@@ -75,6 +80,11 @@ export const routes: Routes = [
       {path: 'warehouse/inventory/supplies', component: SuppliesPageComponent},
       {path: 'warehouse/inventory/furnishings', component: FurnishingsPageComponent},
       {path: 'warehouse/inventory/appliances', component: AppliancesPageComponent},
-      {path: 'warehouse/inventory/endowments', component: EndowmentsPageComponent}
+      {path: 'warehouse/inventory/endowments', component: EndowmentsPageComponent},
+      // MARKETING
+      {path: 'marketing/catalog/watches', component: MarketingWatchCollectionsPageComponent},
+      ////////////////////////////           DESIGN          ///////////////////
+      {path: 'design/watches/models', component: ConfigModelPageComponent},
+      {path: 'design/watches/collections', component: ConfigCollectionsComponent}
     ]
   }];

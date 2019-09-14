@@ -33,19 +33,18 @@ export class AuthService {
     return new Promise(resolve => {
       this._firebaseAuth.auth.signInWithEmailAndPassword(user, pass).then(value => {
         if (value) {
-          const d = this.dbMain.getGeneralItemsByWhereFilters('dashboard', 'user', 'data', [{
+          const d = this.dbMain.getGeneralItemsByWhereFilters('system', 'private', 'users', [{
             a: 'uid',
             b: '==',
             c: value.user.uid
           }]).subscribe(value1 => {
+            console.log(value1);
             if (value1[0]) {
               this.current.userData = value1[0];
               resolve(true);
             }
-              d.unsubscribe();
+            d.unsubscribe();
           });
-
-
         } else {
           resolve(false);
         }
@@ -82,35 +81,12 @@ export class AuthService {
     });
   }
 
-  // createInsideUser(user, pass) {
-  //   return new Promise(resolve => {
-  //     // crear la cuenta primero
-  //     this.mn.auth().createUserWithEmailAndPassword(user.email, pass).then(value => {
-  //       if (value) {
-  //         this.dbMain.incrementV2('dashboard', 'users', 'counters', 'internalUsers').then(counter => {
-  //           // crear la carpeta de información del usuario!
-  //           user['codeId'] = HasherService.createUserCode(counter);
-  //           this.organizeWorkerData(user, value.user.uid).then(finalDataUser => {
-  //             resolve(value.user.uid);
-  //           });
-  //         });
-  //       } else {
-  //         resolve(false);
-  //       }
-  //     }).catch(reason => {
-  //       resolve(false);
-  //     });
-  //   });
-  // }
-
   createDevUser(email, pass) {
     return new Promise(resolve => {
-      // crear la cuenta primero
+      // 1.se crea la cuenta en firebase
       this.mn.auth().createUserWithEmailAndPassword(email, pass).then(value => {
-        if (value) {
-          console.log('se crea usuario');
-          // crear la carpeta de información del usuario!
-          this.pushDevData(value.user.uid).then(finalDataUser => {
+        if (value) {// usuario creado con éxito
+          this.pushDevData(value.user.uid).then(finalDataUser => {// se sube la información base del usuario.
             resolve(value.user.uid);
           });
         } else {
@@ -151,6 +127,7 @@ export class AuthService {
       bussinesPosition: 'Administrador Supremo',
       document: '65564594598',
       sex: 'Masculino',
+      _d: true,
       creationDate: new Date()
     };
     console.log('se inteta push dev data');
@@ -171,6 +148,4 @@ export class AuthService {
     };
     return this.dbMain.setUserData(uid, user);
   }
-
-
 }

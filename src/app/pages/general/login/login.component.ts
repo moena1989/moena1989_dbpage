@@ -24,26 +24,21 @@ export class LoginComponent implements OnInit {
 
   ingresar() {
     this.auth.signInWithGoogle().then(value => {
-      // console.log(value.currentUser);
       this.ngZone.run(args => {
-        // this.router.navigateByUrl('/home');
       });
     });
   }
 
   signIn(email: string, pass: string) {
-    console.log('se intenta');
+    console.log('login... ');
     this.auth.signInWithEmail(email, pass).then(result => {
       if (result) {
-        this.router.navigateByUrl('./home');
+        // console.log('login correcto');
+        this.router.navigateByUrl('/');
       } else {
         console.error('NARANJAS!');
       }
     });
-  }
-
-  salir(value: string, value2: string) {
-    console.log('mierdad !!, parece que ya entendí como funciona la joda de github con VSCode');
   }
 }
 

@@ -14,20 +14,27 @@ export const designRoutes = [
   {
     category: 'Diseño de relojes', subCategories: [
       {
-        icon: 'fa-watch', path: '/watch/structures', name: 'Estructura de relojes', tabs: [
-          {name: 'Modelos', path: 'watch/structures/models'},
-          {name: '|', path: 'watch/sasdft/models'},
-          {name: 'Origen', path: 'watch/structures/collections'}
-        ]
+        icon: 'fa-watch',
+        path: '/design/watches',
+        name: 'Estructura de relojes',
+        tabs: [
+          {name: 'Modelos', path: '/design/watches/models'},
+          {name: '|', path: '#'},
+        ],
+        dynamicTabsData: {
+          path: 'design/watches/collections',
+          dbParams: {iddb: 'main', typeProduct: 'watches', category: 'structures', itemType: 'models'},
+          filterKey: 'metadata.id' // TODO: ESTA VARIABLE SOLO DEBE SER PARA FILTRAR LAS TABS...
+        }
       }
     ]
-  },
-  {
-    category: 'Desarrollo', subCategories: []
-  },
-  {
-    category: 'Fotografía y edición', subCategories: []
   }
+  // , {
+  //   category: 'Desarrollo', subCategories: []
+  // },
+  // {
+  //   category: 'Fotografía y edición', subCategories: []
+  // }
 ];
 
 export const manufactureRoute = [
@@ -101,120 +108,97 @@ export const globalRoutes = [
 ];
 
 export const warehouseRoutes = [
-   {
-    category: 'Producción', subCategories: [
-      {
-        icon: 'fa-watch', path: '/public/products/watches/', name: 'Relojes', tabs: [
-          // {name: 'Origen', path: '/watch/web/strategies'},
-          {name: 'Origen', path: '/public/products/watches/model'},
-          {name: 'Vira', path: '/public/products/watches/mosdel'}
-        ]
-      }
-      // ,
-      // {
-      //   icon: 'fa-ring', path: '/watch/web', name: 'Anillos', tabs: [
-      //     {name: 'Relojes', path: '/watch/web/strategies'},
-      //     {name: 'Anillos', path: '/watch/web/strategies'}
-      //   ]
-      // },
-      // {
-      //   icon: 'fa-shopping-bag', path: '/watch/web', name: 'Sobres', tabs: [
-      //     {name: 'Relojes', path: '/watch/web/strategies'},
-      //     {name: 'Anillos', path: '/watch/web/strategies'}
-      //   ]
-      // }
-    ]
-  },
+  // {
+  //   category: 'Inventario general', subCategories: [
+  //     {
+  //       icon: 'fa-boxes-alt', name: 'Insumos generales', path: '/global/ordgers/',
+  //       tabs: []
+  //     },
+  //     {
+  //       icon: 'fa-tools', name: 'Herramientas', path: '/global/ordgers/',
+  //       tabs: []
+  //     },
+  //     {
+  //       icon: 'fa-phone-laptop', name: 'Equipos', path: '/global/ordgers/',
+  //       tabs: [
+  //         {name: 'Máquinas', path: 'watch/strsuctures/mosvements'},
+  //         {name: 'Computadores', path: 'watch/structuress/movesments'},
+  //         {name: 'Vehiculos', path: 'watch/strsuctures/mosvements'}
+  //       ]
+  //     },
+  //     {
+  //       icon: 'fa-couch', name: 'Mobiliario', path: '/global/ordgers/',
+  //       tabs: [
+  //         {name: 'Mesas', path: 'watch/strsuctures/mosvements'},
+  //         {name: 'Decorativos', path: 'watch/strsuctures/mosvements'},
+  //         {name: 'Sillas', path: 'watch/strsuctures/mosvements'}
+  //         // {name: 'Máquinas', path: 'watch/strsuctures/mosvements'},
+  //       ]
+  //     },
+  //     {
+  //       icon: 'fa-parachute-box', name: 'Dotaciones', path: '/global/ordgers/',
+  //       tabs: []
+  //     }
+  //   ]
+  // },
   {
-    category: 'Insumos', subCategories: [
-      {
-        icon: 'fa-boxes-alt', name: 'Insumos generales', path: '/global/ordgers/',
-        tabs: []
-      },
-
-      {
-        icon: 'fa-tools', name: 'Herramientas', path: '/global/ordgers/',
-        tabs: []
-      },
-      {
-        icon: 'fa-phone-laptop', name: 'Equipos', path: '/global/ordgers/',
-        tabs: [
-          {name: 'Máquinas', path: 'watch/strsuctures/mosvements'},
-          {name: 'Computadores', path: 'watch/structuress/movesments'},
-          {name: 'Vehiculos', path: 'watch/strsuctures/mosvements'}
-        ]
-      },
-      {
-        icon: 'fa-couch', name: 'Mobiliario', path: '/global/ordgers/',
-        tabs: [
-          {name: 'Mesas', path: 'watch/strsuctures/mosvements'},
-          {name: 'Decorativos', path: 'watch/strsuctures/mosvements'},
-          {name: 'Sillas', path: 'watch/strsuctures/mosvements'}
-          // {name: 'Máquinas', path: 'watch/strsuctures/mosvements'},
-        ]
-      },
-      {
-        icon: 'fa-parachute-box', name: 'Dotaciones', path: '/global/ordgers/',
-        tabs: []
-      }
-    ]
-  },
-  {
-    category: 'Materias primas', subCategories: [
+    category: 'Inventario de producción', subCategories: [
       {
         icon: 'fa-watch', name: 'Insumos de reloj', path: '/watch/structures/',
         tabs: [
           {name: 'Maquinarias', path: 'watch/structures/movements'},
           {name: 'Pulsos', path: 'watch/structures/straps'},
           {name: 'Coronas', path: 'watch/structures/crowns'},
-          {name: 'Hebillas', path: 'watch/structures/bunckles'},
+          // {name: 'Hebillas', path: 'watch/structures/bunckles'},
           // {name: 'Herrajes', path: '/warehouse/inventory/furnishings'},
-          {name: 'Cristales', path: 'watch/structures/crystals'},
-          {name: 'Tapas', path: 'watch/structures/casebacks'},
-          {name: 'Cueros', path: 'watch/structures/leather'},
-          {name: 'Maderas', path: '/warehouse/inventory/rawMaterial'}
-        ]
-      }
-    ]
-  },
-  {
-    category: 'Dotaciones de área', subCategories: [
-      {
-        icon: 'fa-hammer', name: 'Producción', path: '/global/orders/',
-        tabs: [
-          {name: 'Áreas: ', path: '/globalsassd/orders/actives'},
-          {name: 'Fresado', path: '/global/orders/actives'},
-          {name: 'Corte CNC', path: '/global/orders/packables'},
-          {name: 'Corte laser', path: '/global/orders/distpachables'},
-          {name: 'Impresion de rigidos', path: '/global/orders/finished'},
-          {name: 'Impresion 3D', path: '/global/orders/finished'}
-        ]
-      },
-      {
-        icon: 'fa-pencil-ruler', name: 'Diseño', path: '/global/ordgrwers/',
-        tabs: [
-          {name: 'Desarrollo', path: '/global/orders/actives'},
-          {name: 'Desarrollo', path: '/global/orders/actives'},
-          {name: 'Diseño de Producto', path: '/global/orders/packables'},
-          {name: 'Edición y fotografía', path: '/global/orders/distpachables'}
-        ]
-      },
-      {
-        icon: 'fa-file-invoice-dollar', name: 'Financiero', path: '/global/ordgrwers/',
-        tabs: [
-          {name: 'Contabidad', path: '/global/orders/actives'},
-          {name: 'Analisis y proyecciones', path: '/global/orders/packables'}
-        ]
-      },
-      {
-        icon: 'fa-megaphone', name: 'Mercadeo', path: '/global/ordgrwers/',
-        tabs: [
-          {name: 'Contabidad', path: '/global/orders/actives'},
-          {name: 'Analisis y proyecciones', path: '/global/orders/packables'}
+          {name: 'Cristales', path: 'watch/structures/crystals'}
+          // {name: 'Tapas', path: 'watch/structures/casebacks'},
+          // {name: 'Cueros', path: 'watch/structures/leather'},
+          // {name: 'Maderas', path: '/warehouse/inventory/rawMaterial'}
         ]
       }
     ]
   }
+  // ,  {
+  //   category: 'Inventario de área', subCategories: [
+  //     {
+  //       icon: 'fa-hammer', name: 'Producción', path: '/global/orders/',
+  //       tabs: [
+  //         {name: 'Áreas: ', path: '/globalsassd/orders/actives'},
+  //         {name: 'Fresado', path: '/global/orders/actives'},
+  //         {name: 'Corte CNC', path: '/global/orders/packables'},
+  //         {name: 'Corte laser', path: '/global/orders/distpachables'},
+  //         {name: 'Impresion de rigidos', path: '/global/orders/finished'},
+  //         {name: 'Impresion 3D', path: '/global/orders/finished'}
+  //       ]
+  //     },
+  //     {
+  //       icon: 'fa-pencil-ruler', name: 'Diseño', path: '/global/ordgrwers/',
+  //       tabs: [
+  //         {name: 'Desarrollo', path: '/global/orders/actives'},
+  //         {name: 'Desarrollo', path: '/global/orders/actives'},
+  //         {name: 'Diseño de Producto', path: '/global/orders/packables'},
+  //         {name: 'Edición y fotografía', path: '/global/orders/distpachables'}
+  //       ]
+  //     }
+  //     ,
+  //     {
+  //       icon: 'fa-file-invoice-dollar', name: 'Financiero', path: '/global/ordgrwers/',
+  //       tabs: [
+  //         {name: 'Contabidad', path: '/global/orders/actives'},
+  //         {name: 'Analisis y proyecciones', path: '/global/orders/packables'}
+  //       ]
+  //     }
+  //     // ,
+  //     // {
+  //     //   icon: 'fa-megaphone', name: 'Mercadeo', path: '/global/ordgrwers/',
+  //     //   tabs: [
+  //     //     {name: 'Contabidad', path: '/global/orders/actives'},
+  //     //     {name: 'Analisis y proyecciones', path: '/global/orders/packables'}
+  //     //   ]
+  //     // }
+  //   ]
+  // }
 
 ];
 
@@ -236,24 +220,28 @@ export const marketingRoutes = [
   {
     category: 'Catalogo de productos', subCategories: [
       {
-        icon: 'fa-watch', path: '/public/products/watches/', name: 'Relojes', tabs: [
-          // {name: 'Origen', path: '/watch/web/strategies'},
-          {name: 'Origen', path: '/public/products/watches/model'},
-          {name: 'Vira', path: '/public/products/watches/mosdel'}
-        ]
-      },
-      {
-        icon: 'fa-ring', path: '/watch/web', name: 'Anillos', tabs: [
-          {name: 'Relojes', path: '/watch/web/strategies'},
-          {name: 'Anillos', path: '/watch/web/strategies'}
-        ]
-      },
-      {
-        icon: 'fa-shopping-bag', path: '/watch/web', name: 'Sobres', tabs: [
-          {name: 'Relojes', path: '/watch/web/strategies'},
-          {name: 'Anillos', path: '/watch/web/strategies'}
-        ]
+        icon: 'fa-watch', path: '/marketing/catalog', name: 'Relojes', tabs: [
+          {name: 'Modelos: ', path: ''}
+        ],
+        dynamicTabsData: {
+          path: '/marketing/catalog/watches',
+          dbParams: {iddb: 'main', typeProduct: 'watches', category: 'structures', itemType: 'models'},
+          filterKey: 'metadata.id'
+        }
+
       }
+      // ,{
+      //   icon: 'fa-ring', path: '/watch/web', name: 'Anillos', tabs: [
+      //     {name: 'Relojes', path: '/watch/web/strategies'},
+      //     {name: 'Anillos', path: '/watch/web/strategies'}
+      //   ]
+      // },
+      // {
+      //   icon: 'fa-shopping-bag', path: '/watch/web', name: 'Sobres', tabs: [
+      //     {name: 'Relojes', path: '/watch/web/strategies'},
+      //     {name: 'Anillos', path: '/watch/web/strategies'}
+      //   ]
+      // }
     ]
   },
 ];
@@ -297,13 +285,28 @@ export const jewelryRoutes = [
     ]
   }
 ];
+export const systemRoutes = [
+  {
+    category: 'Inventario de producción', subCategories: [
+      {
+        icon: 'fa-watch', name: 'Inicio', path: '/watch/structures/',
+        tabs: [
+          {name: 'Inicio', path: ''}
+        ]
+      }
+    ]
+  }
+];
 
-export const SUPPORTED_LINES_PRODUCTS = [
-  {name: 'Almacén', productId: 'WAREHOUSE', routes: warehouseRoutes},
-  {name: 'Mercadeo', productId: 'WEB', routes: marketingRoutes},
-  {name: 'Producción', productId: 'MANUFACTURE', routes: manufactureRoute},
-  {name: 'Diseño', productId: 'DESIGN', routes: designRoutes},
-  {name: 'Gerencia', productId: 'GENERAL', routes: globalRoutes}
+export const SUPPORTED_LINES_PRODUCTS: any[] = [
+  {name: 'Almacén', icon: 'fa-warehouse', productId: 'WAREHOUSE', routes: warehouseRoutes}
+  // {name: 'Sistema', icon: 'fa-terminal', productId: 'WAREdsHOUSE', routes: systemRoutes}
+  // {name: 'System', icon: 'fa-terminal', productId: 'WAREHOUSE', routes: systemRoutes}
+  // ,
+  // {name: 'Mercadeo', icon: 'fa-megaphone', productId: 'WEB', routes: marketingRoutes},
+  // {name: 'Diseño', icon: 'fa-pencil-ruler', productId: 'DESIGN', routes: designRoutes},
+  // {name: 'Producción', icon: 'fa-pallet-alt', productId: 'MANUFACTURE', routes: manufactureRoute},
+  // {name: 'Gerencia', icon: 'fa-arrow-from-left', productId: 'GENERAL', routes: globalRoutes}
 ];
 
 export const PRODUCT_TYPES = {
@@ -406,7 +409,16 @@ export const DBS = {
     projectId: 'moena-1989',
     storageBucket: 'moena-1989.appspot.com',
     messagingSenderId: '641564036734'
+  },
+  main_test: { /// remplzar por main para hacer pruebas con datos ficticios
+    apiKey: 'AIzaSyC2yKQPYRZeTnF1rqFNtWkAC8JVBAXEMTI',
+    authDomain: 'moena-1989.firebaseapp.com',
+    databaseURL: 'https://moena-1989.firebaseio.com',
+    projectId: 'moena-1989',
+    storageBucket: 'moena-1989.appspot.com',
+    messagingSenderId: '641564036734'
   }
+
 };
 /*
  * For easier debugging in development mode, you can import the following file
@@ -415,4 +427,4 @@ export const DBS = {
  * This import should be commented out in production mode because it will have a negative impact
  * on performance if an error is thrown.
  */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+import 'zone.js/dist/zone-error'; // Included with Angular CLI.

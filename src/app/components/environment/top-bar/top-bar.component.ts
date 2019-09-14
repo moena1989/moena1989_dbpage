@@ -23,7 +23,7 @@ export class TopBarComponent implements OnInit {
 
   }
 
-  cerrarSesion() {
+  logout() {
     this.auth.logout();
   }
 

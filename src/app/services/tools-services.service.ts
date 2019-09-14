@@ -3,12 +3,14 @@ import {CanActivate, Router} from '@angular/router';
 import {Ng2ImgMaxService} from 'ng2-img-max';
 import {MAX_SIZE_IN_MB, MAX_SIZE_IN_PX, SUPPORTED_LINES_PRODUCTS} from '../../environments/environment';
 import {CurrentStorageService} from './current-storage.service';
+import {DbSelectorService} from '../db-selector.service';
+import {Subscription} from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToolsServices implements CanActivate {
-  public static iconStyle = 'far';
+  public static iconStyle = 'fas';
   // --
   public SHOW_WINDOWS_TITTLE_BAR = true;
   public isMenuOpened = true;
@@ -21,9 +23,13 @@ export class ToolsServices implements CanActivate {
   public tituloTopbar = 'Testing';
   //
   availableTabs: any = ['a', 'b'];
+  dynamicTabs: any = [];
+  currentSelectedTab: any = undefined;
+  private susDynamicData: Subscription = undefined;
+  private currentD: any;
 
-  constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService, private currentData: CurrentStorageService) {
-
+  constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService,
+              private currentData: CurrentStorageService, private dbm: DbSelectorService) {
   }
 
   canActivate(): boolean {
@@ -45,11 +51,8 @@ export class ToolsServices implements CanActivate {
     }
     this.ng2ImgMax.resizeImage(file, 10000, MAX_SIZE_IN_PX).subscribe(
       result => {
-        console.log('probando resize');
-        // this.message = 'Comprimiendo...';
         this.ng2ImgMax.compressImage(result, MAX_SIZE_IN_MB).subscribe(
           _result => {
-            console.log('probando compress');
             al_finalizar(_result);
           },
           error => {
@@ -63,12 +66,40 @@ export class ToolsServices implements CanActivate {
     );
   }
 
+  setUpDynamicData(dynamicTabsData: any) {
+    if (!dynamicTabsData) {
+      this.dynamicTabs = [];
+      console.log('There is no DynamicTabsData... ');
+      return;
+    }
+    if (this.susDynamicData !== undefined) {
+      this.susDynamicData.unsubscribe();
+    }
+    this.susDynamicData = this.dbm.getItems(dynamicTabsData.dbParams.iddb, dynamicTabsData.dbParams.typeProduct,
+      dynamicTabsData.dbParams.category, dynamicTabsData.dbParams.itemType).subscribe(value => {
+      const nTabs = [];
+      value.forEach((value1: any) => {
+        // se crea el objeto dynamic tab
+        const dtab = {
+          path: dynamicTabsData.path,
+          name: value1.name,
+          queryParams: {id: value1.metadata.id}
+        };
+        nTabs.push(dtab);
+      });
+      this.dynamicTabs = nTabs;
+    });
+  }
+
   setNewTabs(file: any, category: string) {
+    // if (t!his.selectedItemTab == file) {
     this.availableTabs = file.tabs;
     this.currentData.topBar.pageTittle = file.name;
     this.currentData.topBar.subPageTittle = category;
     this.currentData.topBar.faIcon = file.icon;
+    this.setUpDynamicData(file.dynamicTabsData);
     this.router.navigate([file.tabs[0].path]);
+    // }
   }
 
   setNewTabsWithUrl(url: string) {
@@ -83,6 +114,7 @@ export class ToolsServices implements CanActivate {
             if (val4.path.includes(s[3])) {
               yes = true;
               this.availableTabs = val3.tabs;
+              this.setUpDynamicData(val3.dynamicTabsData);
               break;
             }
           }

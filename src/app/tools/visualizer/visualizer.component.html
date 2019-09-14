@@ -2,4 +2,5 @@
   <input class="input_file" #file type="file" accept='image/*' (change)="onChange(file.files)">
   {{message }}
 </label>
+<!--<div>y pues aja</div>-->
 <img class="img" [src]="imgURL" *ngIf="imgURL" [style.transform]="'scale('+scaleImg+')'">

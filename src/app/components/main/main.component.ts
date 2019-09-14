@@ -11,15 +11,25 @@ import {Router} from '@angular/router';
 })
 
 export class MainComponent implements OnInit {
+  selectedItemTab: any = undefined;
+
   constructor(public tools: ToolsServices,
               private router: Router) {
   }
 
   ngOnInit(): void {
-    // const url = this.activatedRoute.snapshot.firstChild.url;
+    this.selectedItemTab = this.tools.currentSelectedTab;
   }
 
   selectTab(tab: any) {
+    this.tools.currentSelectedTab = tab;
     this.router.navigateByUrl(tab.path);
+  }
+
+  selectDtab(dynamicTab: any) {
+    if (dynamicTab !== this.tools.currentSelectedTab) {
+      this.tools.currentSelectedTab = dynamicTab;
+      this.router.navigate([dynamicTab.path], {queryParams: dynamicTab.queryParams});
+    }
   }
 }

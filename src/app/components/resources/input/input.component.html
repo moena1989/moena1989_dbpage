@@ -2,11 +2,9 @@
   <div class="sl-ttl">{{ttl}}</div>
   <div class="custom-select">
     <div class="sl-static-ph" *ngIf="staticPlaceHolder">{{staticPlaceHolder + ' -'}}</div>
-    <div class="inpt-cnt">
-
+    <div [class.inpt-cnt]="!isDisabled" [class.ladr]="isDisabled">
       <div class="type-inpt" *ngIf="type!=='number'&& langCode!==undefined">{{langCode?.toLocaleUpperCase()}}</div>
       <!--<div class="type-inpt" *ngIf="type==='number'&& langCode!==''">#</div>-->
-
       <input (keydown.enter)="send($event)" [disabled]="isDisabled" value="AIL FAIL FAIL F"
              (keyup)="tecla($event.value)"
              maxlength="{{maxLength}}"

@@ -1,7 +1,6 @@
 :host {
   height: 100%;
   width: 100%;
-  /*background: #3a3a3a;*/
   display: flex;
   position: relative;
   overflow: hidden;

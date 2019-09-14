@@ -1,33 +1,35 @@
 <div class="top-main-cnt">
   <!--<div style="position: absolute; color: black; font-size: 3em">Web</div>-->
   <div class="d-l-sss">
-
-    <div class="ico_op" style="color: #ff570a; margin: 0 1.5rem">
-      <i class="{{iconStyle}} {{current.topBar.faIcon}} er fa-lg"></i>
+    <div class="ico_op" style="color:var(--main-color); margin-right: .5rem">
+      <i class="{{iconStyle}} {{current.topBar.faIcon}} fa-lg"></i>
     </div>
-
-
-    <!--<i class="far doc-top-ico fa-fw" [ngClass]="[current.topBar.faIcon]"></i>-->
     <div class="itm-cnt-s">
-      <div class="doc-top-miga">Web > {{current.topBar.subPageTittle}}</div>
+      <div class="doc-top-miga">Web /  {{current.topBar.subPageTittle}}</div>
       <div class="doc-top-ttl">{{current.topBar.pageTittle}}</div>
     </div>
   </div>
 
   <div class="r_side">
-    <!--<app-visual-selector tittle="">-->
-    <!--<ng-container *ngFor="let c of supportedProducts">-->
-    <!--<div class="vsi-item"-->
-    <!--(click)="chageTypeProductConfig(c)"-->
-    <!--[class.ps-item-act]="c===current.productSelected">{{c.name}}</div>-->
-    <!--</ng-container>-->
-    <!--</app-visual-selector>-->
-    <div class="sssc">
-      <div class="nombre">{{current.userData.name}} {{current.userData.lastname}}</div>
-      <div class="cargo">{{current.userData.bussinesPosition}}</div>
+    <div class="sssc" (click)="modalSettings.open()">
+      <i class="fal fa-user-circle fa-fw" style=" font-size: 1.2rem; color: var(--main-color)"
+         (click)="modalSettings.open()"></i>
+      <div style="vertical-align: middle; padding: 0 .5rem">
+<!--        {{current.userData.email}}-->
+      </div>
     </div>
-    <i class="fal fa-user-circle usr"></i>
-    <i class="far fa-sign-out optsf" (click)="cerrarSesion()"></i>
+    <i class="fal fa-sign-out optsf fa-fw" style="" (click)="logout()"></i>
   </div>
 </div>
-<div class="magic"></div>
+
+<ngx-smart-modal #modalSettings identifier="modalSettings" customClass="dd">
+  <div style="width: 45vw; height: 60vh">
+    <div class="item-top-ttl-s">
+      <div class="part-sub-ttl">
+        <i class="fal fa-user-circle c-v-ico" style="color: var(--main-color)"></i>
+        <div class="f-s-m f-w-medium">andres.gc@moena1989.com</div>
+      </div>
+    </div>
+    <app-settings-modal-page></app-settings-modal-page>
+  </div>
+</ngx-smart-modal>

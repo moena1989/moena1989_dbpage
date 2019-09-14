@@ -2,12 +2,13 @@
   <div class="sl-ttl">{{tittle}}</div>
   <div class="custom-select">
     <label>
-      <select class="ss" [(ngModel)]="selectedItem" [disabled]="isDisabled || currentOps?.length===1">
-        <option *ngIf="currentOps?.length!==1" [ngValue]="undefined" hidden>{{defaultOp.name}}</option>
-        <option *ngIf="currentOps?.length===1" [ngValue]="undefined" hidden>{{currentOps[0]?.name}}
-        </option>
+      <select class="ss" [(ngModel)]="selectedItem" [disabled]="isDisabled ">
+        <option [ngValue]="undefined" hidden selected>{{defaultOp.name}}</option>
+<!--        <option *ngIf="currentOps?.length===1" [ngValue]="undefined" hidden>{{currentOps[0]?.name}}-->
+<!--        </option>-->
         <option *ngFor="let opc of currentOps" [ngValue]="opc">{{opc.name}}</option>
       </select>
     </label>
   </div>
 </div>
+<!--|| currentOps?.length===1-->

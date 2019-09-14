@@ -83,7 +83,6 @@ input {
   color: white;
   font-size: 1.2em;
   background-color: #3a3a3a;
-  /*border: 2px solid coral;*/
 }
 
 @media (min-width: 40em) {

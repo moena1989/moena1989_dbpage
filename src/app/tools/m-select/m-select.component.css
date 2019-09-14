@@ -31,6 +31,7 @@
 select#fixed {
   -webkit-appearance: none;
 }
+
 input:placeholder-shown {
   -webkit-appearance: none;
   /*user-s;*/
@@ -39,6 +40,6 @@ input:placeholder-shown {
 
 .ss:disabled {
   padding: .5em;
-  background: rgba(247, 247, 247, 0.4);
-  border: 1px solid rgba(221, 221, 221, 0.5);
+  /*background: rgba(247, 247, 247, 0.4);*/
+  border: 1px solid #f8f8f8;
 }

@@ -2360,7 +2360,7 @@ function getPluralCategory(value, cases, ngLocalization, locale) {
  */
 var NgLocaleLocalization = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_1__["__extends"])(NgLocaleLocalization, _super);
-    function NgLocaleLocalization(locale, 
+    function NgLocaleLocalization(locale,
     /** @deprecated from v5 */
     deprecatedPluralFn) {
         var _this = _super.call(this) || this;
@@ -17626,7 +17626,7 @@ var NgModuleProviderAnalyzer = /** @class */ (function () {
             var ngModuleProvider = { token: { identifier: ngModuleType }, useClass: ngModuleType };
             _resolveProviders([ngModuleProvider], ProviderAstType.PublicService, true, sourceSpan, _this._errors, _this._allProviders, /* isModule */ true);
         });
-        _resolveProviders(ngModule.transitiveModule.providers.map(function (entry) { return entry.provider; }).concat(extraProviders), ProviderAstType.PublicService, false, sourceSpan, this._errors, this._allProviders, 
+        _resolveProviders(ngModule.transitiveModule.providers.map(function (entry) { return entry.provider; }).concat(extraProviders), ProviderAstType.PublicService, false, sourceSpan, this._errors, this._allProviders,
         /* isModule */ false);
     }
     NgModuleProviderAnalyzer.prototype.parse = function () {
@@ -19224,7 +19224,7 @@ function SECURITY_SCHEMA() {
         registerContext(SecurityContext.URL, [
             '*|formAction', 'area|href', 'area|ping', 'audio|src', 'a|href',
             'a|ping', 'blockquote|cite', 'body|background', 'del|cite', 'form|action',
-            'currentImg|src', 'currentImg|srcset', 'input|src', 'ins|cite', 'q|cite',
+            'currentImg|src', 'currentImg|srcset', 'input|src', 'ins|cite', 'queryParams|cite',
             'source|src', 'source|srcset', 'track|src', 'video|poster', 'video|src',
         ]);
         registerContext(SecurityContext.RESOURCE_URL, [
@@ -19403,7 +19403,7 @@ var SCHEMA = [
     'picture^[HTMLElement]|',
     'pre^[HTMLElement]|#width',
     'progress^[HTMLElement]|#max,#value',
-    'q,blockquote,cite^[HTMLElement]|',
+    'queryParams,blockquote,cite^[HTMLElement]|',
     'script^[HTMLElement]|!async,charset,%crossOrigin,!defer,event,htmlFor,integrity,src,text,type',
     'select^[HTMLElement]|!autofocus,!disabled,#length,!multiple,name,!required,#selectedIndex,#size,value',
     'shadow^[HTMLElement]|',
@@ -21623,7 +21623,7 @@ var ConvertActionBindingResult = /** @class */ (function () {
     /**
      * Render2 compatible statements,
      */
-    stmts, 
+    stmts,
     /**
      * Variable name used with render2 compatible statements.
      */
@@ -24301,15 +24301,15 @@ function compileNgModuleFromRender2(ctx, ngModule, injectableCompiler) {
     });
     var injectorDef = importExpr(Identifiers$1.defineInjector).callFn([injectorDefArg]);
     ctx.statements.push(new ClassStmt(
-    /* name */ className, 
-    /* parent */ null, 
+    /* name */ className,
+    /* parent */ null,
     /* fields */ [new ClassField(
-        /* name */ 'ngInjectorDef', 
-        /* type */ INFERRED_TYPE, 
-        /* modifiers */ [StmtModifier.Static], 
-        /* initializer */ injectorDef)], 
-    /* getters */ [], 
-    /* constructorMethod */ new ClassMethod(null, [], []), 
+        /* name */ 'ngInjectorDef',
+        /* type */ INFERRED_TYPE,
+        /* modifiers */ [StmtModifier.Static],
+        /* initializer */ injectorDef)],
+    /* getters */ [],
+    /* constructorMethod */ new ClassMethod(null, [], []),
     /* methods */ []));
 }
 function tupleTypeOf(exp) {
@@ -24365,15 +24365,15 @@ function compilePipeFromRender2(outputCtx, pipe, reflector) {
     var res = compilePipeFromMetadata(metadata);
     var definitionField = outputCtx.constantPool.propertyNameOf(3 /* Pipe */);
     outputCtx.statements.push(new ClassStmt(
-    /* name */ name, 
-    /* parent */ null, 
+    /* name */ name,
+    /* parent */ null,
     /* fields */ [new ClassField(
-        /* name */ definitionField, 
-        /* type */ INFERRED_TYPE, 
-        /* modifiers */ [StmtModifier.Static], 
-        /* initializer */ res.expression)], 
-    /* getters */ [], 
-    /* constructorMethod */ new ClassMethod(null, [], []), 
+        /* name */ definitionField,
+        /* type */ INFERRED_TYPE,
+        /* modifiers */ [StmtModifier.Static],
+        /* initializer */ res.expression)],
+    /* getters */ [],
+    /* constructorMethod */ new ClassMethod(null, [], []),
     /* methods */ []));
 }
 
@@ -24805,7 +24805,7 @@ var NonBindableVisitor$1 = /** @class */ (function () {
             return null;
         }
         var children = visitAll(this, ast.children, null);
-        return new Element$1(ast.name, visitAll(this, ast.attrs), 
+        return new Element$1(ast.name, visitAll(this, ast.attrs),
         /* inputs */ [], /* outputs */ [], children, /* references */ [], ast.sourceSpan, ast.startSourceSpan, ast.endSourceSpan);
     };
     NonBindableVisitor.prototype.visitComment = function (comment) { return null; };
@@ -25930,7 +25930,7 @@ function compileComponentFromMetadata(meta, constantPool, bindingParser) {
     if (firstSelector) {
         var selectorAttributes = firstSelector.getAttrs();
         if (selectorAttributes.length) {
-            definitionMap.set('attrs', constantPool.getConstLiteral(literalArr(selectorAttributes.map(function (value) { return value != null ? literal(value) : literal(undefined); })), 
+            definitionMap.set('attrs', constantPool.getConstLiteral(literalArr(selectorAttributes.map(function (value) { return value != null ? literal(value) : literal(undefined); })),
             /* forceShared */ true));
         }
     }
@@ -28328,7 +28328,7 @@ var StaticReflector = /** @class */ (function () {
                     var requiredAnnotationTypes = this.annotationForParentClassWithSummaryKind.get(summary.type.summaryKind);
                     var typeHasRequiredAnnotation = requiredAnnotationTypes.some(function (requiredType) { return ownAnnotations_1.some(function (ann) { return requiredType.isTypeOf(ann); }); });
                     if (!typeHasRequiredAnnotation) {
-                        this.reportError(formatMetadataError(metadataError("Class " + type.name + " in " + type.filePath + " extends from a " + CompileSummaryKind[summary.type.summaryKind] + " in another compilation unit without duplicating the decorator", 
+                        this.reportError(formatMetadataError(metadataError("Class " + type.name + " in " + type.filePath + " extends from a " + CompileSummaryKind[summary.type.summaryKind] + " in another compilation unit without duplicating the decorator",
                         /* summary */ undefined, "Please add a " + requiredAnnotationTypes.map(function (type) { return type.ngMetadataName; }).join(' or ') + " decorator to the class"), type), type);
                     }
                 }
@@ -32403,12 +32403,12 @@ function resolveToken(token, record, records, parent, notFoundValue, flags) {
                     var childRecord = options & 2 /* CheckSelf */ ? records.get(depRecord.token) : undefined;
                     deps.push(tryResolveToken(
                     // Current Token to resolve
-                    depRecord.token, 
+                    depRecord.token,
                     // A record which describes how to resolve the token.
                     // If undefined, this means we don'line have such a record
-                    childRecord, 
+                    childRecord,
                     // Other records we know about.
-                    records, 
+                    records,
                     // If we don'line know how to resolve dependency and we should not check parent for it,
                     // than pass in Null injector.
                     !childRecord && !(options & 4 /* CheckParent */) ? NULL_INJECTOR : parent, options & 1 /* Optional */ ? null : Injector.THROW_IF_NOT_FOUND, 0 /* Default */));
@@ -32672,7 +32672,7 @@ function preR3NgModuleCompile(moduleType, metadata) {
 /**
  * @Annotation
  */
-var NgModule = makeDecorator('NgModule', function (ngModule) { return ngModule; }, undefined, undefined, 
+var NgModule = makeDecorator('NgModule', function (ngModule) { return ngModule; }, undefined, undefined,
 /**
  * Decorator that marks the following class as an NgModule, and supplies
  * configuration metadata for it.
@@ -33256,7 +33256,7 @@ var ResolvedReflectiveFactory = /** @class */ (function () {
     /**
      * Factory function which can return an instance of an object represented by a salt.
      */
-    factory, 
+    factory,
     /**
      * Arguments (dependencies) to the `factory` function.
      */
@@ -38277,7 +38277,7 @@ var BLOCK_ELEMENTS = merge$1(OPTIONAL_END_TAG_BLOCK_ELEMENTS, tagSet('address,ar
     'h6,header,hgroup,hr,ins,main,map,menu,nav,ol,pre,section,summary,table,ul'));
 // Inline Elements - HTML5
 var INLINE_ELEMENTS = merge$1(OPTIONAL_END_TAG_INLINE_ELEMENTS, tagSet('a,abbr,acronym,audio,b,' +
-    'bdi,bdo,big,br,cite,code,del,dfn,em,font,i,currentImg,ins,kbd,label,map,mark,picture,q,ruby,rp,rt,current_opciones_caja_modelo,' +
+    'bdi,bdo,big,br,cite,code,del,dfn,em,font,i,currentImg,ins,kbd,label,map,mark,picture,queryParams,ruby,rp,rt,current_opciones_caja_modelo,' +
     'samp,small,source,span,strike,strong,sub,sup,time,track,tt,u,var,video'));
 var VALID_ELEMENTS = merge$1(VOID_ELEMENTS, BLOCK_ELEMENTS, INLINE_ELEMENTS, OPTIONAL_END_TAG_ELEMENTS);
 // Attributes that have href and hence need to be sanitized
@@ -39731,7 +39731,7 @@ function getComponentViewDefinitionFactory(componentFactory) {
 var ComponentFactory_ = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(ComponentFactory_, _super);
     function ComponentFactory_(selector, componentType, viewDefFactory, _inputs, _outputs, ngContentSelectors) {
-        var _this = 
+        var _this =
         // Attention: this ctor is called as top level function.
         // Putting any logic in here will destroy closure tree shaking!
         _super.call(this) || this;
@@ -42679,7 +42679,7 @@ function cloneNgModuleDefinition(def) {
 var NgModuleFactory_ = /** @class */ (function (_super) {
     Object(tslib__WEBPACK_IMPORTED_MODULE_0__["__extends"])(NgModuleFactory_, _super);
     function NgModuleFactory_(moduleType, _bootstrapComponents, _ngModuleDefFactory) {
-        var _this = 
+        var _this =
         // Attention: this ctor is called as top level function.
         // Putting any logic in here will destroy closure tree shaking!
         _super.call(this) || this;

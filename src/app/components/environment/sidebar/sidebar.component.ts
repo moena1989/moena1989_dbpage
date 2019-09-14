@@ -23,6 +23,7 @@ export class SidebarComponent implements OnInit {
   lineSelected: any;
   currentOpt: any = [];
   iconStyle = ToolsServices.iconStyle;
+  selectedItemTab: any;
   private r = false;
 
   constructor(public db: DbManagerService,
@@ -34,7 +35,6 @@ export class SidebarComponent implements OnInit {
   ngOnInit() {
     this.supportedDataLines = SUPPORTED_LINES_PRODUCTS;
     this.optionSelected = this.currentStorage.productSelected;
-    console.log(this.router.url);
     this.tools.setNewTabsWithUrl(this.router.url);
   }
 
@@ -47,8 +47,9 @@ export class SidebarComponent implements OnInit {
   }
 
   selectR(o: any, category: string) {
+    // this.item = o;
     this.tools.setNewTabs(o, category);
-    // this.currentOpt = o;
+    this.currentOpt = o;
   }
 
   selectLine(line: any) {
