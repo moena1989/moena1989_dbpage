@@ -32,7 +32,8 @@ import {FullWatchlocalInventoryPageComponent} from '../full-watchlocal-inventory
 import {ArmedLocalInventoryPageComponent} from '../armed-local-inventory-page/armed-local-inventory-page.component';
 import {MarketingWatchCollectionsPageComponent} from '../marketing-watch-collections-page/marketing-watch-collections-page.component';
 import {HomeComponent} from '../pages/general/home/home.component';
-import {AuthGuardService} from '../services/auth-guard.service';
+import {NaturalPersonPageComponent} from '../natural-person-page/natural-person-page.component';
+import {JuridicPersonPageComponent} from '../juridic-person-page/juridic-person-page.component';
 // la estructura es buena, pero pierdo modularización.
 // canActivate: [AuthGuardService],
 export const routes: Routes = [
@@ -81,10 +82,13 @@ export const routes: Routes = [
       {path: 'warehouse/inventory/furnishings', component: FurnishingsPageComponent},
       {path: 'warehouse/inventory/appliances', component: AppliancesPageComponent},
       {path: 'warehouse/inventory/endowments', component: EndowmentsPageComponent},
-      // MARKETING
+      ////////////////////////////           MARKETING          ///////////////////
       {path: 'marketing/catalog/watches', component: MarketingWatchCollectionsPageComponent},
       ////////////////////////////           DESIGN          ///////////////////
       {path: 'design/watches/models', component: ConfigModelPageComponent},
-      {path: 'design/watches/collections', component: ConfigCollectionsComponent}
+      {path: 'design/watches/collections', component: ConfigCollectionsComponent},
+      ////////////////////////////           ACCOUTINGG          ///////////////////
+      {path: 'accouting/payments/naturalPerson', component: NaturalPersonPageComponent},
+      {path: 'accouting/payments/juridicPerson', component: JuridicPersonPageComponent}
     ]
   }];

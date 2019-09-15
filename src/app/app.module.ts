@@ -114,11 +114,15 @@ import {FullWatchlocalInventoryPageComponent} from './full-watchlocal-inventory-
 import {ArmedLocalInventoryPageComponent} from './armed-local-inventory-page/armed-local-inventory-page.component';
 import {CustomSelectComponent} from './custom-select/custom-select.component';
 import {ProductWatchCatalogPageComponent} from './product-watch-catalog-page/product-watch-catalog-page.component';
-import { MarketingWatchCollectionsPageComponent } from './marketing-watch-collections-page/marketing-watch-collections-page.component';
-import { CardCollectionConfigComponent } from './card-collection-config/card-collection-config.component';
-import { InventoryConfigItemComponent } from './inventory-config-item/inventory-config-item.component';
-import { SettingsModalPageComponent } from './settings-modal-page/settings-modal-page.component';
-import { AccountModalPageComponent } from './account-modal-page/account-modal-page.component';
+import {MarketingWatchCollectionsPageComponent} from './marketing-watch-collections-page/marketing-watch-collections-page.component';
+import {CardCollectionConfigComponent} from './card-collection-config/card-collection-config.component';
+import {InventoryConfigItemComponent} from './inventory-config-item/inventory-config-item.component';
+import {SettingsModalPageComponent} from './settings-modal-page/settings-modal-page.component';
+import {AccountModalPageComponent} from './account-modal-page/account-modal-page.component';
+import {PaymentsPageComponent} from './payments-page/payments-page.component';
+import {NaturalPersonPageComponent} from './natural-person-page/natural-person-page.component';
+import {JuridicPersonPageComponent} from './juridic-person-page/juridic-person-page.component';
+import {PdfViewerModule} from 'ng2-pdf-viewer';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -158,10 +162,10 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     ClockWebCollectionsPageComponent, RawMaterialPageComponent, SuppliesPageComponent, FurnishingsPageComponent,
     AppliancesPageComponent, EndowmentsPageComponent, RoundsLocalInventoryPageComponent,
     CasesLocalInventoryPageComponent, FullWatchlocalInventoryPageComponent, ArmedLocalInventoryPageComponent,
-    CustomSelectComponent, ProductWatchCatalogPageComponent, MarketingWatchCollectionsPageComponent, CardCollectionConfigComponent, InventoryConfigItemComponent, SettingsModalPageComponent, AccountModalPageComponent
+    CustomSelectComponent, ProductWatchCatalogPageComponent, MarketingWatchCollectionsPageComponent, CardCollectionConfigComponent, InventoryConfigItemComponent, SettingsModalPageComponent, AccountModalPageComponent, PaymentsPageComponent, NaturalPersonPageComponent, JuridicPersonPageComponent
   ],
   imports: [
-    AngularFireFunctionsModule,
+    AngularFireFunctionsModule, PdfViewerModule,
     RouterModule.forRoot(routes, {enableTracing: false}),
     AngularFireModule.initializeApp(DBS.public, 'public'),
     AngularFireModule.initializeApp(DBS.main, 'main'),

@@ -199,7 +199,6 @@ export const warehouseRoutes = [
   //     // }
   //   ]
   // }
-
 ];
 
 export const marketingRoutes = [
@@ -228,7 +227,6 @@ export const marketingRoutes = [
           dbParams: {iddb: 'main', typeProduct: 'watches', category: 'structures', itemType: 'models'},
           filterKey: 'metadata.id'
         }
-
       }
       // ,{
       //   icon: 'fa-ring', path: '/watch/web', name: 'Anillos', tabs: [
@@ -298,15 +296,53 @@ export const systemRoutes = [
   }
 ];
 
+export const accoutingRoutes = [
+  {
+    category: 'Libros Contables', subCategories: [
+      {
+        icon: 'fa-books', name: 'Libros Contables', path: '/watch/structures/',
+        tabs: [
+          {name: 'Mayor', path: ''},
+          {name: 'Diario', path: ''},
+          {name: 'Inventario y cuentas', path: ''}
+        ]
+      }
+    ]
+  },
+  {
+    category: 'Registros', subCategories: [
+      {
+        icon: 'fa-hands-usd', name: 'Pagos', path: '/accouting',
+        tabs: [
+          {name: 'Persona Natural', path: '/accouting/payments/naturalPerson'}
+          // , {name: 'Persona Juridica', path: '/accouting/payments/juridicPerson'}
+        ]
+      }
+      // ,
+      // {
+      //   icon: 'fa-abacus', name: 'Inicio', path: '/watch/structures/',
+      //   tabs: [
+      //     {name: 'Inicio', path: ''}
+      //   ]
+      // },
+      // {
+      //   icon: 'fa-abacus', name: 'Inicio', path: '/watch/structures/',
+      //   tabs: [
+      //     {name: 'Inicio', path: ''}
+      //   ]
+      // }
+    ]
+  }
+
+];
 export const SUPPORTED_LINES_PRODUCTS: any[] = [
-  {name: 'Almacén', icon: 'fa-warehouse', productId: 'WAREHOUSE', routes: warehouseRoutes}
-  // {name: 'Sistema', icon: 'fa-terminal', productId: 'WAREdsHOUSE', routes: systemRoutes}
-  // {name: 'System', icon: 'fa-terminal', productId: 'WAREHOUSE', routes: systemRoutes}
-  // ,
-  // {name: 'Mercadeo', icon: 'fa-megaphone', productId: 'WEB', routes: marketingRoutes},
-  // {name: 'Diseño', icon: 'fa-pencil-ruler', productId: 'DESIGN', routes: designRoutes},
-  // {name: 'Producción', icon: 'fa-pallet-alt', productId: 'MANUFACTURE', routes: manufactureRoute},
-  // {name: 'Gerencia', icon: 'fa-arrow-from-left', productId: 'GENERAL', routes: globalRoutes}
+  {name: 'Contabilidad', icon: 'fa-abacus', productId: 'ACCOUTING', routes: accoutingRoutes},
+  {name: 'Almacén', icon: 'fa-warehouse', productId: 'WAREHOUSE', routes: warehouseRoutes},
+  {name: 'Sistema', icon: 'fa-terminal', productId: 'WAREdsHOUSE', routes: systemRoutes},
+  {name: 'Mercadeo', icon: 'fa-megaphone', productId: 'WEB', routes: marketingRoutes},
+  {name: 'Diseño', icon: 'fa-pencil-ruler', productId: 'DESIGN', routes: designRoutes},
+  {name: 'Producción', icon: 'fa-pallet-alt', productId: 'MANUFACTURE', routes: manufactureRoute},
+  {name: 'Gerencia', icon: 'fa-arrow-from-left', productId: 'GENERAL', routes: globalRoutes}
 ];
 
 export const PRODUCT_TYPES = {

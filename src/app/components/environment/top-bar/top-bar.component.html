@@ -2,7 +2,7 @@
   <!--<div style="position: absolute; color: black; font-size: 3em">Web</div>-->
   <div class="d-l-sss">
     <div class="ico_op" style="color:var(--main-color); margin-right: .5rem">
-      <i class="{{iconStyle}} {{current.topBar.faIcon}} fa-lg"></i>
+      <i class="{{iconStyle}}  {{current.topBar.faIcon}} fa-lg"></i>
     </div>
     <div class="itm-cnt-s">
       <div class="doc-top-miga">Web /  {{current.topBar.subPageTittle}}</div>
@@ -12,13 +12,13 @@
 
   <div class="r_side">
     <div class="sssc" (click)="modalSettings.open()">
-      <i class="fal fa-user-circle fa-fw" style=" font-size: 1.2rem; color: var(--main-color)"
+      <i class="{{iconStyle}} fa-user-circle fa-fw" style=" font-size: 1.2rem; color: var(--main-color)"
          (click)="modalSettings.open()"></i>
       <div style="vertical-align: middle; padding: 0 .5rem">
 <!--        {{current.userData.email}}-->
       </div>
     </div>
-    <i class="fal fa-sign-out optsf fa-fw" style="" (click)="logout()"></i>
+    <i class="{{iconStyle}} fa-sign-out optsf fa-fw" style="" (click)="logout()"></i>
   </div>
 </div>
 
@@ -26,7 +26,7 @@
   <div style="width: 45vw; height: 60vh">
     <div class="item-top-ttl-s">
       <div class="part-sub-ttl">
-        <i class="fal fa-user-circle c-v-ico" style="color: var(--main-color)"></i>
+        <i class="{{iconStyle}} fa-user-circle c-v-ico" style="color: var(--main-color)"></i>
         <div class="f-s-m f-w-medium">andres.gc@moena1989.com</div>
       </div>
     </div>

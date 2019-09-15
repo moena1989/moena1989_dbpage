@@ -10,7 +10,7 @@ import {Subscription} from 'rxjs';
   providedIn: 'root'
 })
 export class ToolsServices implements CanActivate {
-  public static iconStyle = 'fas';
+  public static iconStyle = 'far';
   // --
   public SHOW_WINDOWS_TITTLE_BAR = true;
   public isMenuOpened = true;
