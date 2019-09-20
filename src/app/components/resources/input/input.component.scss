@@ -1,19 +1,18 @@
-.selc {
-  margin-right: 1em;
+:host {
+  //width: 5rem;
+  margin-right: 1rem;
 }
 
 .disabled {
   background: rgba(247, 247, 247, 0);
   border-color: rgba(0, 0, 0, 0.2);
-
-
 }
 
 .ladr {
   display: flex;
   -webkit-appearance: none;
-  padding: .3em;
-  width: 10em;
+  padding: .3rem;
+  width: 100%;
   border: 1px solid #f8f8f8;
 
   align-items: center;
@@ -46,18 +45,19 @@
 .inpt-cnt {
   display: flex;
   -webkit-appearance: none;
-  padding: .3em;
-  width: 10em;
+  padding: .4rem;
+  width: 100%;
   border: 1px solid #eeeeee;
   align-items: center;
-  border-radius: .2em;
+  border-radius: .2rem;
   position: relative;
+  box-sizing: border-box;
 }
 
 .elinput {
   background: rgba(221, 221, 221, 0);
   border: rgba(95, 158, 160, 0);
-  width: 15rem;
+  width: auto;
 }
 
 .type-inpt {

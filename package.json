@@ -52,6 +52,7 @@
     "jquery": "^3.4.1",
     "ng2-img-max": "^2.1.18",
     "ng2-pdf-viewer": "^5.3.4",
+    "ng2-pdfjs-viewer": "^5.0.1",
     "ngx-electron": "^2.1.1",
     "ngx-smart-modal": "^7.1.1",
     "nodemon": "^1.18.10",

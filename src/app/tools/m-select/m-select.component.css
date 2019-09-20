@@ -1,9 +1,7 @@
-.selc {
-  /*height: 4em;*/
-  /*background: aquamarine;*/
+:host {
   margin-right: 1em;
+  width: 12rem;
   padding: 0;
-  /*margin: .5em;*/
 }
 
 .sl-ttl {
@@ -21,9 +19,11 @@
 
 .ss {
   -webkit-appearance: none;
-  padding: .5em;
+  padding: .5rem;
   border: 1px solid rgba(221, 221, 221, 0.5);
-  width: 12em;
+  width: 100%;
+  position: relative;
+  display: flex;
   border-radius: .3em;
   background: rgba(247, 247, 247, 0);
 }
@@ -39,7 +39,8 @@ input:placeholder-shown {
 }
 
 .ss:disabled {
-  padding: .5em;
+  padding: .5rem;
+  width: 100%;
   /*background: rgba(247, 247, 247, 0.4);*/
   border: 1px solid #f8f8f8;
 }

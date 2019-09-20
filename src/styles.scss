@@ -38,10 +38,17 @@ body {
 th {
   font-size: var(--font-size-m);
   font-weight: var(--font-weight-regular);
-  margin-left: 2rem;
+  margin-left: 1rem;
+  text-align: left;
   padding: 0;
+  justify-content: center;
 }
 
+
+input {
+  -webkit-appearance: none;
+  border: none;
+}
 
 .opt-t-b {
   display: flex;
@@ -128,3 +135,7 @@ th {
   margin-right: .5em;
 }
 
+.full-pg {
+  display: flex;
+  flex-grow: 1;
+}

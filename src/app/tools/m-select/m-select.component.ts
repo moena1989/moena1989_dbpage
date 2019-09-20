@@ -28,6 +28,7 @@ export class MSelectComponent implements OnInit, ControlValueAccessor {
 
   @Input() set items(options: any[]) {
     // this.currentOps.length = 0;
+    this.selectedItem = undefined;
     if (options === undefined || options === null) {
       this.currentOps = [];
     } else { // existe d  ata

@@ -17,7 +17,7 @@ export class InputComponent implements OnInit {
   @Input() capitalizar = true;
   @Input() langCode: string = undefined;
   @Input() staticPlaceHolder = undefined;
-  @Input() maxLength = 20;
+  @Input() maxLength = 200;
   @Input() errMsg = '';
   @Input() upperCase = false;
 

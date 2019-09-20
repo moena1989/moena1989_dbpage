@@ -314,8 +314,8 @@ export const accoutingRoutes = [
       {
         icon: 'fa-hands-usd', name: 'Pagos', path: '/accouting',
         tabs: [
-          {name: 'Persona Natural', path: '/accouting/payments/naturalPerson'}
-          // , {name: 'Persona Juridica', path: '/accouting/payments/juridicPerson'}
+          {name: 'Recibos', path: '/accouting/payments/naturalPerson'}
+          , {name: 'Facturas', path: '/accouting/payments/juridicPerson'}
         ]
       }
       // ,
@@ -454,7 +454,6 @@ export const DBS = {
     storageBucket: 'moena-1989.appspot.com',
     messagingSenderId: '641564036734'
   }
-
 };
 /*
  * For easier debugging in development mode, you can import the following file

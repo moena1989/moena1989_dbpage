@@ -50,6 +50,7 @@ export const routes: Routes = [
       {path: 'manufacture/localWarehouse/armed', component: ArmedLocalInventoryPageComponent},
       {path: 'manufacture/localWarehouse/serialized', component: LotsCasesComponent},
       {path: 'manufacture/localWarehouse/fullProducts', component: FullWatchlocalInventoryPageComponent},
+
       //
       {path: 'watch/lots/bunckles', component: ConfigBuncklePageComponent},
       {path: 'watch/lots/casebacks', component: ConfigCasebackPageComponent},

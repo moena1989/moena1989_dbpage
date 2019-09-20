@@ -123,6 +123,8 @@ import {PaymentsPageComponent} from './payments-page/payments-page.component';
 import {NaturalPersonPageComponent} from './natural-person-page/natural-person-page.component';
 import {JuridicPersonPageComponent} from './juridic-person-page/juridic-person-page.component';
 import {PdfViewerModule} from 'ng2-pdf-viewer';
+import {ItemSelectorComponent} from './item-selector/item-selector.component';
+import {PdfJsViewerModule} from 'ng2-pdfjs-viewer';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
@@ -162,9 +164,9 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     ClockWebCollectionsPageComponent, RawMaterialPageComponent, SuppliesPageComponent, FurnishingsPageComponent,
     AppliancesPageComponent, EndowmentsPageComponent, RoundsLocalInventoryPageComponent,
     CasesLocalInventoryPageComponent, FullWatchlocalInventoryPageComponent, ArmedLocalInventoryPageComponent,
-    CustomSelectComponent, ProductWatchCatalogPageComponent, MarketingWatchCollectionsPageComponent, CardCollectionConfigComponent, InventoryConfigItemComponent, SettingsModalPageComponent, AccountModalPageComponent, PaymentsPageComponent, NaturalPersonPageComponent, JuridicPersonPageComponent
+    CustomSelectComponent, ProductWatchCatalogPageComponent, MarketingWatchCollectionsPageComponent, CardCollectionConfigComponent, InventoryConfigItemComponent, SettingsModalPageComponent, AccountModalPageComponent, PaymentsPageComponent, NaturalPersonPageComponent, JuridicPersonPageComponent, ItemSelectorComponent
   ],
-  imports: [
+  imports: [PdfJsViewerModule,
     AngularFireFunctionsModule, PdfViewerModule,
     RouterModule.forRoot(routes, {enableTracing: false}),
     AngularFireModule.initializeApp(DBS.public, 'public'),
