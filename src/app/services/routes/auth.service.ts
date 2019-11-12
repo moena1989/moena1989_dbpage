@@ -2,44 +2,49 @@ import {Injectable, NgZone} from '@angular/core';
 import {Router} from '@angular/router';
 import * as firebase from 'firebase/app';
 import {Observable} from 'rxjs';
-import {AngularFireAuth} from '@angular/fire/auth';
 import {HttpClient} from '@angular/common/http';
 import {DbMainService} from './db-main.service';
-import {CurrentStorageService} from '../current-storage.service';
-import {DBS} from '../../../environments/environment';
-import {HasherService} from '../hasher.service';
+import {BeforeAppInitService} from '../before-app-init.service';
+import {DbSelectorService} from '../../db-selector.service';
+import {AngularFireAuth} from '@angular/fire/auth';
+import {DBS} from '../../../db/dbConfig';
 
 @Injectable()
 export class AuthService {
   userDetails: firebase.User = null;
   uri = 'http://localhost:4000/auth';
   private user: Observable<firebase.User>;
-  private mn: firebase.app.App;
+  private secondary: firebase.app.App;
+  private dbs_auth: AngularFireAuth;
 
-  constructor(private _firebaseAuth: AngularFireAuth,
-              private router: Router, private http: HttpClient,
-              zone: NgZone, private  dbMain: DbMainService, private current: CurrentStorageService) {
-
-    this.mn = firebase.initializeApp(DBS.main, 'Secondary');
+  constructor(
+    private router: Router,
+    private http: HttpClient,
+    zone: NgZone,
+    private fbAuth: AngularFireAuth,
+    private  dbMain: DbMainService,
+    private dbs: DbSelectorService,
+    private current: BeforeAppInitService) {
+    this.secondary = firebase.initializeApp(DBS.main, 'Secondary');
+    // definitivamente solo se puede hacer autoAuth con fbAuth, cargar manualmente desde dbs no funcina :/
+    // todo: revisar esta mondá
+    this.dbs_auth = fbAuth;
   }
 
   signInWithGoogle() {
-    return this._firebaseAuth.auth.signInWithPopup(
+    return this.dbs_auth.auth.signInWithPopup(
       new firebase.auth.GoogleAuthProvider()
     );
   }
 
   signInWithEmail(user, pass) {
     return new Promise(resolve => {
-      this._firebaseAuth.auth.signInWithEmailAndPassword(user, pass).then(value => {
-        if (value) {
-          const d = this.dbMain.getGeneralItemsByWhereFilters('system', 'private', 'users', [{
-            a: 'uid',
-            b: '==',
-            c: value.user.uid
-          }]).subscribe(value1 => {
-            console.log(value1);
-            if (value1[0]) {
+      this.dbs_auth.auth.signInWithEmailAndPassword(user, pass).then(value => {
+        console.log(value.user.uid);
+        if (value.user.uid) {
+          const d = this.dbs.getUserData(value.user.uid).subscribe(value1 => {
+            // console.log(value1);
+            if (value1) {
               this.current.userData = value1[0];
               resolve(true);
             }
@@ -55,23 +60,13 @@ export class AuthService {
   }
 
   createInsideUser(email, pass) {
+    // registra un nuevo usuario y lo cuenta :)
+    // console.log('a');
     return new Promise(resolve => {
-      this.mn.auth().createUserWithEmailAndPassword(email, pass).then(value => {
+      this.secondary.auth().createUserWithEmailAndPassword(email, pass).then(value => {
+        // console.log('b');
         if (value) {
-          this.dbMain.incrementV2('dashboard', 'users', 'counters', 'internalUsers').then(counter => {
-            console.log('el numero: ', counter);
-            console.log('el code: ', HasherService.createUserCode(counter));
-            console.log(HasherService.createUserCode(1));
-            console.log(HasherService.createUserCode(2));
-            console.log(HasherService.createUserCode(3));
-            console.log(HasherService.createUserCode(5));
-            console.log(HasherService.createUserCode(7));
-            const t = {
-              uid: value.user.uid,
-              codeId: HasherService.createUserCode(counter)
-            };
-            resolve(t);
-          });
+          resolve(value.user.uid);
         } else {
           resolve(false);
         }
@@ -84,11 +79,12 @@ export class AuthService {
   createDevUser(email, pass) {
     return new Promise(resolve => {
       // 1.se crea la cuenta en firebase
-      this.mn.auth().createUserWithEmailAndPassword(email, pass).then(value => {
+      this.dbs_auth.auth.createUserWithEmailAndPassword(email, pass).then(value => {
         if (value) {// usuario creado con éxito
-          this.pushDevData(value.user.uid).then(finalDataUser => {// se sube la información base del usuario.
+          this.pushDevData(value.user.uid, email).then(finalDataUser => {// se sube la información base del usuario.
             resolve(value.user.uid);
           });
+
         } else {
           resolve(false);
         }
@@ -110,28 +106,30 @@ export class AuthService {
   }
 
   logout() {
-    // this._firebaseAuth.cha
-    this._firebaseAuth.auth.signOut()
-      .then((res) => this.router.navigate(['/']));
+    return this.dbs_auth.auth.signOut();
   }
 
-  private pushDevData(uid: string) {
+  private pushDevData(_uid: string, email: string) {
     // este es el borrador de nuevo usuario
     // todo: Buscar toda la información que se debe tener de un empleado real, es irla anexando aquí para ir pprobando.
     const user = {
-      uid: uid,
+      uid: _uid,
       email: 'anfgc01@gmail.com',
-      lastname: 'González Castro',
-      name: 'Andrés Fernando',
+      lastname: 'González C',
+      name: 'Andrés',
       docType: 'Cédula',
+      m89id: email.split('@')[0],
+      m89email: email,
+      personalDocument: '65564594598',
       bussinesPosition: 'Administrador Supremo',
-      document: '65564594598',
       sex: 'Masculino',
       _d: true,
       creationDate: new Date()
     };
     console.log('se inteta push dev data');
-    return this.dbMain.setUserData(uid, user);
+    return this.dbs.pushDocument(
+      {iddb: 'main', path: 'dashboard/private/users'},
+      user);
   }
 
   private organizeWorkerData(userData: any, uid: any) {

@@ -30,13 +30,14 @@ export class LoginComponent implements OnInit {
   }
 
   signIn(email: string, pass: string) {
-    console.log('login... ');
+    console.log('login... ', email, pass);
     this.auth.signInWithEmail(email, pass).then(result => {
       if (result) {
-        // console.log('login correcto');
+        console.log('login correcto');
         this.router.navigateByUrl('/');
       } else {
         console.error('NARANJAS!');
+        console.log(result);
       }
     });
   }

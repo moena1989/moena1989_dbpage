@@ -1,22 +1,9 @@
 <app-sidebar></app-sidebar>
-<!--[ngClass]="tools.isMenuOpened ? 'is-opened' : 'is-closed'"-->
+<!--[ngClass]="tools.toggleMenu ? 'is-opened' : 'is-closed'"-->
 <!--[@fadeAnimation]="tab.isActivated"-->
 <div class="main-cnt-main">
   <app-top-bar></app-top-bar>
-  <div class="doc">
-    <app-tabs>
-      <ng-container>
-        <div *ngFor="let tab of tools.availableTabs" class="tab-item-content" (click)="selectTab(tab)"
-             [class.tab-opt-act]="selectedItemTab ===tab">{{tab.name}}</div>
-
-
-        <div *ngFor="let dynamicTab of tools.dynamicTabs" class="tab-item-content"
-             (click)="selectDtab(dynamicTab)"
-             [class.tab-opt-act]="selectedItemTab ===dynamicTab">{{dynamicTab.name}}</div>
-      </ng-container>
-    </app-tabs>
-    <div class="router-cnt">
+    <div class="router-cnt" [@fadeAnimation]="tab.isActivated">
       <router-outlet #tab="outlet"></router-outlet>
     </div>
-  </div>
 </div>

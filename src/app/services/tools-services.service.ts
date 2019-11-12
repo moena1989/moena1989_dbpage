@@ -1,16 +1,18 @@
 import {Injectable} from '@angular/core';
 import {CanActivate, Router} from '@angular/router';
 import {Ng2ImgMaxService} from 'ng2-img-max';
-import {MAX_SIZE_IN_MB, MAX_SIZE_IN_PX, SUPPORTED_LINES_PRODUCTS} from '../../environments/environment';
-import {CurrentStorageService} from './current-storage.service';
+import {BeforeAppInitService} from './before-app-init.service';
 import {DbSelectorService} from '../db-selector.service';
 import {Subscription} from 'rxjs';
+import {DEPARTMENT_ROUTES} from '../../routeConfig/departmentsRoutes';
+import {MAX_SIZE_IN_MB, MAX_SIZE_IN_PX} from '../../db/dbConfig';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ToolsServices implements CanActivate {
   public static iconStyle = 'far';
+  //
   // --
   public SHOW_WINDOWS_TITTLE_BAR = true;
   public isMenuOpened = true;
@@ -21,15 +23,13 @@ export class ToolsServices implements CanActivate {
   public localApp = 'es';
   //////
   public tituloTopbar = 'Testing';
-  //
-  availableTabs: any = ['a', 'b'];
   dynamicTabs: any = [];
   currentSelectedTab: any = undefined;
   private susDynamicData: Subscription = undefined;
   private currentD: any;
 
   constructor(public router: Router, private ng2ImgMax: Ng2ImgMaxService,
-              private currentData: CurrentStorageService, private dbm: DbSelectorService) {
+              private currentData: BeforeAppInitService, private dbm: DbSelectorService) {
   }
 
   canActivate(): boolean {
@@ -75,8 +75,11 @@ export class ToolsServices implements CanActivate {
     if (this.susDynamicData !== undefined) {
       this.susDynamicData.unsubscribe();
     }
-    this.susDynamicData = this.dbm.getItems(dynamicTabsData.dbParams.iddb, dynamicTabsData.dbParams.typeProduct,
-      dynamicTabsData.dbParams.category, dynamicTabsData.dbParams.itemType).subscribe(value => {
+    {
+    }
+    this.susDynamicData = this.dbm.getItems({iddb: 'main', path: 'watches/structures/models'}).subscribe(value => {
+      // this.susDynamicData = this.dbm.getItems(dynamicTabsData.dbParams.iddb, dynamicTabsData.dbParams.typeProduct,
+      //   dynamicTabsData.dbParams.category, dynamicTabsData.dbParams.itemType).subscribe(value => {
       const nTabs = [];
       value.forEach((value1: any) => {
         // se crea el objeto dynamic tab
@@ -93,7 +96,6 @@ export class ToolsServices implements CanActivate {
 
   setNewTabs(file: any, category: string) {
     // if (t!his.selectedItemTab == file) {
-    this.availableTabs = file.tabs;
     this.currentData.topBar.pageTittle = file.name;
     this.currentData.topBar.subPageTittle = category;
     this.currentData.topBar.faIcon = file.icon;
@@ -106,14 +108,13 @@ export class ToolsServices implements CanActivate {
     const s = url.split('/');
     let yes = false;
     // todo: tiene que haber una manera mucho mas óptima de hacer esto.
-    for (const val of SUPPORTED_LINES_PRODUCTS) {
+    for (const val of DEPARTMENT_ROUTES) {
       for (const value of val.routes) {
         for (const val3 of value.subCategories) {
           for (const val4 of val3.tabs) {
             // console.log(val4);
             if (val4.path.includes(s[3])) {
               yes = true;
-              this.availableTabs = val3.tabs;
               this.setUpDynamicData(val3.dynamicTabsData);
               break;
             }

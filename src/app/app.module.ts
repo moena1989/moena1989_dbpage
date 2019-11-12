@@ -31,7 +31,7 @@ import {RelojBuscadoComponent} from './tools/reloj-buscado/reloj-buscado.compone
 import {LoadbarComponent} from './components/resources/loadbar/loadbar.component';
 import {ConfigCasebackPageComponent} from './components/visualizador-config-tapa/config-caseback-page.component';
 import {VerLoteComponent} from './components/resources/ver-lote/ver-lote.component';
-import {CurrentStorageService} from './services/current-storage.service';
+import {BeforeAppInitService} from './services/before-app-init.service';
 import {Ng2ImgMaxModule} from 'ng2-img-max';
 import {VentasPageComponent} from './pages/por_def/ventas-page/ventas-page.component';
 import {AngularFireAuthModule} from '@angular/fire/auth';
@@ -61,7 +61,7 @@ import {AdderComponent} from './components/resources/adder/adder.component';
 import {HttpClientModule} from '@angular/common/http';
 import {AngularFireDatabaseModule} from '@angular/fire/database-deprecated';
 import {AngularFireDatabase} from '@angular/fire/database';
-import {UsuariosPageComponent} from './usuarios-page/usuarios-page.component';
+import {UsersPageComponent} from './usuarios-page/users-page.component';
 import {VerticalBarComponent} from './vertical-bar/vertical-bar.component';
 import {ConfigCrystalPageComponent} from './config-cristal/config-crystal-page.component';
 import {AjustesWebComponent} from './idiomas-page/ajustes-web.component';
@@ -69,7 +69,6 @@ import {PedidosPageComponent} from './pedidos-page/pedidos-page.component';
 import {ConfigCasePageComponent} from './components/visualizador-config-caja/config-case-page.component';
 import {DBPublicService} from './services/routes/d-b-public.service';
 import {ToolsServices} from './services/tools-services.service';
-import {DBS} from '../environments/environment';
 import {WatchSettingCardComponent} from './watch-setting-card/watch-setting-card.component';
 import {ItemConfigComponent} from './item-config/item-config.component';
 import {SelectFormComponent} from './select-form/select-form.component';
@@ -120,16 +119,24 @@ import {InventoryConfigItemComponent} from './inventory-config-item/inventory-co
 import {SettingsModalPageComponent} from './settings-modal-page/settings-modal-page.component';
 import {AccountModalPageComponent} from './account-modal-page/account-modal-page.component';
 import {PaymentsPageComponent} from './payments-page/payments-page.component';
-import {NaturalPersonPageComponent} from './natural-person-page/natural-person-page.component';
+import {InvoicePageComponent} from './natural-person-page/invoice-page.component';
 import {JuridicPersonPageComponent} from './juridic-person-page/juridic-person-page.component';
 import {PdfViewerModule} from 'ng2-pdf-viewer';
 import {ItemSelectorComponent} from './item-selector/item-selector.component';
 import {PdfJsViewerModule} from 'ng2-pdfjs-viewer';
+import {OpenableCardComponent} from './openable-card/openable-card.component';
+import {CurrentDataService} from './current-data.service';
+import {MultipleSelectorComponent} from './multiple-selector/multiple-selector.component';
+import {ItemInventoryLoaderComponent} from './item-inventory-loader/item-inventory-loader.component';
+import {ConfigPackagePageComponent} from './config-package-page/config-package-page.component';
+import {NavbarComponent} from './navbar/navbar.component';
+import {ServiceWorkerModule} from '@angular/service-worker';
+import {DBS} from '../db/dbConfig';
 // ng build --prod --base-href https://moena1989.github.io/moenaDbApp/
 // npx ngh --dir=dist/moenaDbApp
 const externalUrlProvider = new InjectionToken('externalUrlRedirectResolver');
 
-export function currentServiceFactory(provider: CurrentStorageService): () => Promise<any> {
+export function currentServiceFactory(provider: BeforeAppInitService): () => Promise<any> {
   return (): Promise<any> => provider.beforeInit();
 }
 
@@ -147,10 +154,10 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     ConfigStrapPageComponent, ConfigMovementPageComponent,
     ConfigMaderaComponent, ConfigModelPageComponent,
     ConfigCasebackPageComponent, ConfigBuncklePageComponent,
-    ConfigCrownPageComponent, AdderComponent, UsuariosPageComponent, VerticalBarComponent,
+    ConfigCrownPageComponent, AdderComponent, UsersPageComponent, VerticalBarComponent,
     ConfigCasePageComponent, ConfigCrystalPageComponent,
     AjustesWebComponent, PedidosPageComponent, WatchSettingCardComponent,
-    ItemConfigComponent, SelectFormComponent,
+    ItemConfigComponent, SelectFormComponent, OpenableCardComponent,
     ConfigCollectionsComponent, PushInputComponent,
     ConfigWatchConfigComponent, WatchStructurePageComponent,
     InventoryWatchConfigPageComponent, InventoryCasePageComponent,
@@ -164,18 +171,32 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
     ClockWebCollectionsPageComponent, RawMaterialPageComponent, SuppliesPageComponent, FurnishingsPageComponent,
     AppliancesPageComponent, EndowmentsPageComponent, RoundsLocalInventoryPageComponent,
     CasesLocalInventoryPageComponent, FullWatchlocalInventoryPageComponent, ArmedLocalInventoryPageComponent,
-    CustomSelectComponent, ProductWatchCatalogPageComponent, MarketingWatchCollectionsPageComponent, CardCollectionConfigComponent, InventoryConfigItemComponent, SettingsModalPageComponent, AccountModalPageComponent, PaymentsPageComponent, NaturalPersonPageComponent, JuridicPersonPageComponent, ItemSelectorComponent
+    CustomSelectComponent, ProductWatchCatalogPageComponent, MarketingWatchCollectionsPageComponent,
+    CardCollectionConfigComponent, InventoryConfigItemComponent, SettingsModalPageComponent, AccountModalPageComponent,
+    PaymentsPageComponent, InvoicePageComponent, JuridicPersonPageComponent, ItemSelectorComponent,
+    MultipleSelectorComponent, ItemInventoryLoaderComponent, ConfigPackagePageComponent, NavbarComponent
   ],
+
   imports: [PdfJsViewerModule,
     AngularFireFunctionsModule, PdfViewerModule,
     RouterModule.forRoot(routes, {enableTracing: false}),
-    AngularFireModule.initializeApp(DBS.public, 'public'),
     AngularFireModule.initializeApp(DBS.main, 'main'),
     AngularFireDatabaseModule, BrowserAnimationsModule,
     AngularFireAuthModule, AngularFireStorageModule, HttpClientModule, AngularFireModule,
-    BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule, FontAwesomeModule
+    BrowserModule, FormsModule, NgxSmartModalModule.forRoot(), Ng2ImgMaxModule,
+    FontAwesomeModule,
+    ServiceWorkerModule.register('ngsw-worker.js')
   ],
+
   providers: [
+    CurrentDataService,
+
+    {
+      provide: APP_INITIALIZER,
+      useFactory: currentServiceFactory,
+      deps: [BeforeAppInitService],
+      multi: true
+    },
     {provide: FunctionsRegionToken, useValue: 'us-central1'},
     {
       provide: externalUrlProvider,
@@ -183,12 +204,8 @@ export function currentServiceFactory(provider: CurrentStorageService): () => Pr
         const externalUrl = route.paramMap.get('externalUrl');
         window.open(externalUrl, '_self');
       },
-    }, {
-      provide: APP_INITIALIZER,
-      useFactory: currentServiceFactory,
-      deps: [CurrentStorageService],
-      multi: true
-    }, NgxSmartModalService,
+    },
+    NgxSmartModalService,
     ModelsSevice, AngularFireDatabase,
     ElectronService, DbMainService, DBPublicService,
     AuthService, ToolsServices, AngularFirestore, HasherService],

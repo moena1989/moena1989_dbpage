@@ -1,5 +1,8 @@
 <!--<div class="selc">-->
-<div class="sl-ttl">{{ttl}}</div>
+<!--{{ttl}}/-->
+<div class="sl-ttl">
+  <div class="">{{ttl}}</div>
+</div>
 <div class="custom-select">
   <div class="sl-static-ph" *ngIf="staticPlaceHolder">{{staticPlaceHolder + ' -'}}</div>
   <div [class.inpt-cnt]="!isDisabled" [class.ladr]="isDisabled">
@@ -10,6 +13,7 @@
            maxlength="{{maxLength}}"
            placeholder="{{placeholder}}"
            [(ngModel)]="val"
+           [type]="type"
            [class.disabled]="isDisabled" class="elinput">
     <i class="fa fa-fw fa-times type-inpt-s" *ngIf="errMsg!=='' && !isDisabled" (click)="clear()"> </i>
   </div>

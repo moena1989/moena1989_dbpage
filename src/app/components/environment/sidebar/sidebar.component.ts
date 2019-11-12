@@ -3,8 +3,11 @@ import {Router} from '@angular/router';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
 import {DbManagerService} from '../../../services/db-manager.service';
 import {ToolsServices} from '../../../services/tools-services.service';
-import {CurrentStorageService} from '../../../services/current-storage.service';
-import {SUPPORTED_LINES_PRODUCTS} from '../../../../environments/environment';
+import {CurrentDataService} from '../../../current-data.service';
+import {AuthService} from '../../../services/routes/auth.service';
+import {DEPARTMENT_ROUTES} from '../../../../routeConfig/departmentsRoutes';
+
+// import {DEPARTMENT_ROUTES} from '../../../../../../M89Public/src/routeConfig/departmentsRoutes';
 
 @Component({
   selector: 'app-sidebar',
@@ -12,50 +15,40 @@ import {SUPPORTED_LINES_PRODUCTS} from '../../../../environments/environment';
   styleUrls: ['./sidebar.component.scss']
 })
 export class SidebarComponent implements OnInit {
-  @ViewChild('modal') modal: NgxSmartModalComponent;
-  err_msg: string;
-  is_menu_opened = true;
-  regs = false;
-  tendencias: boolean;
-  isOptionsOpened = false;
-  optionSelected: any = {};
-  supportedDataLines = [];
-  lineSelected: any;
-  currentOpt: any = [];
+  @ViewChild('modal', {static: false}) modal: NgxSmartModalComponent;
+  supportedDataLines = [{name: 'lalala'}];
   iconStyle = ToolsServices.iconStyle;
-  selectedItemTab: any;
+  userData = CurrentDataService.userData;
   private r = false;
 
   constructor(public db: DbManagerService,
               public router: Router,
-              public tools: ToolsServices,
-              private currentStorage: CurrentStorageService) {
+              public auth: AuthService,
+              private currentData: CurrentDataService) {
+    this.supportedDataLines = DEPARTMENT_ROUTES;
   }
 
   ngOnInit() {
-    this.supportedDataLines = SUPPORTED_LINES_PRODUCTS;
-    this.optionSelected = this.currentStorage.productSelected;
-    this.tools.setNewTabsWithUrl(this.router.url);
+    this.userData = CurrentDataService.userData;
+    // console.error(this.userData);
+    this.supportedDataLines = DEPARTMENT_ROUTES;
   }
 
-  selectLineP(line: any) {
-    document.body.style.setProperty(`--main-color`, line.color);
-    this.isOptionsOpened = !this.isOptionsOpened;
-    this.currentStorage.productSelected = line;
-    this.optionSelected = this.currentStorage.productSelected;
-    console.log(this.currentStorage.productSelected);
+  toggleMenu() {
+    CurrentDataService.toggleMenu = !CurrentDataService.toggleMenu;
   }
 
-  selectR(o: any, category: string) {
-    // this.item = o;
-    this.tools.setNewTabs(o, category);
-    this.currentOpt = o;
+  getMenuToggle() {
+    return CurrentDataService.toggleMenu;
   }
 
-  selectLine(line: any) {
-    this.isOptionsOpened = !this.isOptionsOpened;
-    this.currentStorage.productSelected = line;
-    this.optionSelected = this.currentStorage.productSelected;
-    console.log(this.currentStorage.productSelected);
+  openAccountInfo() {
+    this.currentData.showAccountInfo();
+  }
+
+  logOut() {
+    this.auth.logout().then(value => {
+      this.router.navigateByUrl('/');
+    });
   }
 }

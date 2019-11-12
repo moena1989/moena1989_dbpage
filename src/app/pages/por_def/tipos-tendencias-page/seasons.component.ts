@@ -3,8 +3,8 @@ import {ActivatedRoute} from '@angular/router';
 import {NgxSmartModalComponent} from 'ngx-smart-modal';
 import {ToolsServices} from '../../../services/tools-services.service';
 import {DBPublicService} from '../../../services/routes/d-b-public.service';
-import {CurrentStorageService} from '../../../services/current-storage.service';
-import {DEFAULT_CODE_LANG} from '../../../../environments/environment';
+import {BeforeAppInitService} from '../../../services/before-app-init.service';
+import {DEFAULT_CODE_LANG} from '../../../../db/dbConfig';
 
 @Component({
   selector: 'app-tipos-tendencias-page',
@@ -12,11 +12,11 @@ import {DEFAULT_CODE_LANG} from '../../../../environments/environment';
   styleUrls: ['./seasons.component.scss']
 })
 export class PublicSeasonsComponent implements OnInit {
-  @ViewChild('mdTrendEdit') modalSeason: NgxSmartModalComponent;
-  @ViewChild('mdNuevaColeccion') modalCollection: NgxSmartModalComponent;
-  @ViewChild('mdNuevaConfiguracion') modalWatchSets: NgxSmartModalComponent;
-  @ViewChild('mdEliminarTemp') mdSeasonEdit: NgxSmartModalComponent;
-  @ViewChild('mdEliminarCollection') modalDeleteCol: NgxSmartModalComponent;
+  @ViewChild('mdTrendEdit', {static: false}) modalSeason: NgxSmartModalComponent;
+  @ViewChild('mdNuevaColeccion', {static: false}) modalCollection: NgxSmartModalComponent;
+  @ViewChild('mdNuevaConfiguracion', {static: false}) modalWatchSets: NgxSmartModalComponent;
+  @ViewChild('mdEliminarTemp', {static: false}) mdSeasonEdit: NgxSmartModalComponent;
+  @ViewChild('mdEliminarCollection', {static: false}) modalDeleteCol: NgxSmartModalComponent;
   public isEditable = true;
   selectedSeason = undefined;
   currenCollection: any = {};
@@ -34,12 +34,12 @@ export class PublicSeasonsComponent implements OnInit {
   selectedCollectionCopy: any = {};
   isUploading = false;
   selectedCurr: any = undefined;
-  private newSeason = {...this.current.multiLangStructure, state: 'Privada'};
   public isSeasonUpdating: boolean;
   public isCollectionUpdating = false;
+  private newSeason = {...this.current.multiLangStructure, state: 'Privada'};
 
   constructor(private route: ActivatedRoute,
-              private db: DBPublicService, private settings: ToolsServices, public current: CurrentStorageService) {
+              private db: DBPublicService, private settings: ToolsServices, public current: BeforeAppInitService) {
     this.localApp = settings.localApp;
     this.getSeasons();
   }

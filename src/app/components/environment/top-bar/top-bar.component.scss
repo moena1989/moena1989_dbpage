@@ -1,3 +1,27 @@
+@import "~src/gc/_breakpoints";
+
+:host {
+  width: 100%;
+  display: flex;
+  position: relative;
+  background: white;
+  flex-direction: column;
+}
+
+.fulltob {
+  width: 100%;
+  display: flex;
+  position: relative;
+  background: white;
+  flex-direction: column;
+  height: auto;
+  -webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05);
+  -moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05);
+  box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.05);
+  z-index: 99;
+  border-bottom: 1px solid var(--border-color);
+}
+
 .menu_ic {
   display: flex;
   align-items: center;
@@ -6,28 +30,16 @@
 
 .top-main-cnt {
   z-index: 100;
-  width: calc(100vw - var(--sidebar-width));
+  width: available;
   color: white;
   justify-content: space-between;
-  //height: var(--topbar-height);
   display: flex;
-  padding: 1rem;
+  padding: 1rem 1rem;
   align-items: center;
-  //border-bottom: 1px solid rgba(0, 0, 0, 0.05);
   box-sizing: border-box;
-  //position: fixed;
 
-  //padding: 0 0 0 1em;
-  //-webkit-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.03);
-  //-moz-box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.03);
-  //box-shadow: 0px 0px 30px 0px rgba(0, 0, 0, 0.03);
 }
 
-:host {
-  width: 100%;
-  display: flex;
-  position: relative;
-}
 
 .magic {
   width: 100%;
@@ -94,9 +106,8 @@
   align-items: center;
   display: flex;
   margin-right: 1rem;
-  text-align: right;
+  //text-align: right;
   line-height: .8rem;
-  border: 1px solid #e2e2e2;
   color: black;
   padding: .5rem .5rem .5rem .5rem;
   cursor: pointer;
@@ -104,10 +115,12 @@
   font-weight: var(--font-weight-medium);
   transition: .2s all;
   border-radius: 1.5rem;
+  //background: #f9f9f9;
+  //border: 1px solid #f0f0f0;
 
   &:hover {
     transition: .2s all;
-    border: 1px solid rgba(var(--main-color-rgb), 0.5);
+    //border: 1px solid rgba(var(--main-color-rgb), 0.5);
   }
 }
 
@@ -175,3 +188,16 @@
   color: rgb(69, 72, 92);
 }
 
+
+.menu-top-bt {
+  color: var(--main-color);
+  margin-right: .5rem;
+  cursor: pointer;
+  visibility: visible;
+  transition: .3s all;
+  display: flex;
+  @include breakpoint("desktop") {
+    transition: .3s all;
+    display: none;
+  }
+}

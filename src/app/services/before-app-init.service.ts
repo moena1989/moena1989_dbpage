@@ -1,24 +1,20 @@
 import {EventEmitter, Injectable} from '@angular/core';
-import {ClockModel} from '../models/clockModel';
 import {DbMainService} from './routes/db-main.service';
 import {DBPublicService} from './routes/d-b-public.service';
 import {AngularFireAuth} from '@angular/fire/auth';
-import {
-  CATEGORIES,
-  DEFAULT_CODE_LANG,
-  DEFAULT_SYMBOL_CURRENCY,
-  PRODUCT_TYPES,
-  SUPPORTED_LINES_PRODUCTS
-} from '../../environments/environment';
 import {InventoryConfigItemComponent} from '../inventory-config-item/inventory-config-item.component';
+import {take} from 'rxjs/operators';
+import {DbSelectorService} from '../db-selector.service';
+import {CATEGORIES, PRODUCT_TYPES} from '../../db/dbConfig';
+
 
 @Injectable({
   providedIn: 'root'
 })
-export class CurrentStorageService {
+export class BeforeAppInitService {
+  // todo: move resources to resourcesServicer to clean this class;
   static inventory: InventoryConfigItemComponent = undefined;
   public states = {public: {name: 'Pública'}, private: {name: 'Privada'}};
-  relojDisponible: ClockModel;
   public caja = [];
   public LANGS = [
     // {code: 'ab', name: 'Abkhaz', nativeName: 'аҧсуа'},
@@ -372,7 +368,12 @@ export class CurrentStorageService {
   whenChange = new EventEmitter();
   private supportedCodeLangs: any[];
 
-  constructor(private dbMain: DbMainService, private dbPublic: DBPublicService, private _firebaseAuth: AngularFireAuth) {
+  // todo: how to add a service to this ***** fucking provider?...
+  constructor(
+    private dbMain: DbMainService,
+    private dbPublic: DBPublicService,
+    private dbs: DbSelectorService,
+    private _firebaseAuth: AngularFireAuth) {
   }
 
   private _multiLangStructure = {};
@@ -407,7 +408,6 @@ export class CurrentStorageService {
 
   // about Watches
   private _models = [];
-
   get models(): any[] {
     return this._models;
   }
@@ -478,43 +478,49 @@ export class CurrentStorageService {
   }
 
   beforeInit() {
-    this._supportedLangs = [{code: 'es', name: 'Español', nativeName: 'Español'}];
+    this._supportedLangs = [
+      {code: 'es', name: 'Español', nativeName: 'Español'},
+      {code: 'en', name: 'Inglés', nativeName: 'English'}
+    ];
     this.defaultSelectedLang = {code: 'es', name: 'Español', nativeName: 'Español'};
-    this.productSelected = SUPPORTED_LINES_PRODUCTS[0];
+    // this.productSelected = SUPPORTED_LINES_PRODUCTS[0];
     // PROMESAS QUE SE RESOLVERAN ANTES DE INICIAR LA APLICACIÓN
     return new Promise((resolve) => {
-      Promise.all([
-        this.automaticAuth()
-        // this.getModelos(),
-        // this.getCollections(),
-        // this.getCrowns(),
-        // this.getCrystals(),
-        // this.getBunckles(),
-        // this.getStraps(),
-        // this.getCaseBacks(),
-        // this.getCases(),
-        // this.getMovements(),
-        // this.getLanguages(),
-        // this.getCurrencies()
-      ]).then(value => {
-        // console.log('se traen todos los datos necesarios para iniciar.');
-        console.log('Ready');
-        resolve();
-      });
+      //   Promise.all([
+      //     // this.initAutoAuth()
+      //     // this.getLanguages(),
+      //     // this.getCurrencies()
+      //   ]).then(value => {
+      //     // console.log('se traen todos los datos necesarios para iniciar.');
+      //     // console.log('Ready');
+      //     // todo: meter la lógica de carga de pestañas aquí :)
+      resolve();
     });
+    // });
   }
 
-  automaticAuth() {
+  initAutoAuth() {
+    console.log('Loading auto auth...');
+    // this.globalData.currentSelectedTab
     return new Promise(resolve => {
-      // console.log('se intenta autoAuth');
+      console.log('initializing autoAuth');
+      // todo: remplzar por this.dbs...
       this._firebaseAuth.authState.subscribe(
         (user) => {
           if (user) {
-            this.dbMain.getUserData(user.uid).subscribe(datosUsuario => {
+            console.log(user.uid);
+            // console.log('auth suscription: actived');
+            // todo: ¿Cómo hago para que mainDb vea a current?
+            this.dbs.getUserData(user.uid).pipe(take(1)).subscribe(datosUsuario => {
+              console.log(datosUsuario);
+              if (datosUsuario) {
+                console.log('user logged');
+              } else {
+                console.log('user not logged');
+              }
               this.userData = datosUsuario[0];
-              // todo: ¿Cómo hago para que mainDb vea a current?
               this.dbMain.currentUser = datosUsuario[0];
-              console.log('el usuario', datosUsuario[0]);
+              // console.log('aquí está el error :D')
               resolve();
             });
           } else {
@@ -545,63 +551,62 @@ export class CurrentStorageService {
     });
   }
 
-  private getLanguages() {
-    return new Promise(resolve => {
-      this.dbMain.getItems('settings', 'dashboard', 'supportedLanguagesData').subscribe(langs => {
-        this._supportedLangs = langs;
-        if (this._supportedLangs[0]) {
-          let esLang = {};
-          for (let i = 0; i < this._supportedLangs.length; i++) {
-            if (this._supportedLangs[i].code === DEFAULT_CODE_LANG) {
-              esLang = this._supportedLangs[i];
-              this._supportedLangs.splice(i, 1);
-              break;
-            }
-          }
-          this.supportedCodeLangs = [];
-          this._supportedLangs.unshift(esLang);
-          this._supportedLangs.forEach(value1 => {
-            this.LANGS = this.LANGS.filter(function (obj) {
-              return obj.code !== value1.code;
-            });
-            this._multiLangStructure[value1.code] = {};
-            this.supportedCodeLangs.push(value1.code);
-          });
-        }
-        // console.log('codelags:', this.supportedCodeLangs);
-        this.defaultSelectedLang = this._supportedLangs.filter(value1 => value1.code === DEFAULT_CODE_LANG)[0];
-        resolve();
-      });
-    });
-  }
-
-  private getCurrencies() {
-    return new Promise(resolve => {
-      this.dbPublic.getSupportedCurrencies().subscribe(value => {
-        this._supportedCurrs = value;
-
-        if (this._supportedCurrs[0]) {
-          let defCur = {};
-          for (let i = 0; i < this._supportedCurrs.length; i++) {
-            if (this._supportedCurrs[i].symbol === DEFAULT_SYMBOL_CURRENCY) {
-              defCur = this._supportedCurrs[i];
-              this._supportedCurrs.splice(i, 1);
-              break;
-            }
-          }
-          this._supportedCurrs.unshift(defCur);
-          this._supportedCurrs.forEach(value1 => {
-            this.CURRENCIES = this.CURRENCIES.filter(function (obj) {
-              return obj.symbol !== value1.symbol;
-            });
-          });
-        }
-
-
-        resolve();
-      });
-    });
-  }
+  // private getLanguages() {
+  //   return new Promise(resolve => {
+  //     this.dbMain.getItems('settings', 'dashboard', 'supportedLanguagesData').subscribe(langs => {
+  //       this._supportedLangs = langs;
+  //       if (this._supportedLangs[0]) {
+  //         let esLang = {};
+  //         for (let i = 0; i < this._supportedLangs.length; i++) {
+  //           if (this._supportedLangs[i].code === DEFAULT_CODE_LANG) {
+  //             esLang = this._supportedLangs[i];
+  //             this._supportedLangs.splice(i, 1);
+  //             break;
+  //           }
+  //         }
+  //         this.supportedCodeLangs = [];
+  //         this._supportedLangs.unshift(esLang);
+  //         this._supportedLangs.forEach(value1 => {
+  //           this.LANGS = this.LANGS.filter(function (obj) {
+  //             return obj.code !== value1.code;
+  //           });
+  //           this._multiLangStructure[value1.code] = {};
+  //           this.supportedCodeLangs.push(value1.code);
+  //         });
+  //       }
+  //       // console.log('codelags:', this.supportedCodeLangs);
+  //       this.defaultSelectedLang = this._supportedLangs.filter(value1 => value1.code === DEFAULT_CODE_LANG)[0];
+  //       resolve();
+  //     });
+  //   });
+  // }
+  // private getCurrencies() {
+  //   return new Promise(resolve => {
+  //     this.dbPublic.getSupportedCurrencies().subscribe(value => {
+  //       this._supportedCurrs = value;
+  //
+  //       if (this._supportedCurrs[0]) {
+  //         let defCur = {};
+  //         for (let i = 0; i < this._supportedCurrs.length; i++) {
+  //           if (this._supportedCurrs[i].symbol === DEFAULT_SYMBOL_CURRENCY) {
+  //             defCur = this._supportedCurrs[i];
+  //             this._supportedCurrs.splice(i, 1);
+  //             break;
+  //           }
+  //         }
+  //         this._supportedCurrs.unshift(defCur);
+  //         this._supportedCurrs.forEach(value1 => {
+  //           this.CURRENCIES = this.CURRENCIES.filter(function (obj) {
+  //             return obj.symbol !== value1.symbol;
+  //           });
+  //         });
+  //       }
+  //
+  //
+  //       resolve();
+  //     });
+  //   });
+  // }
 
   private getBunckles() {
     return new Promise(resolve => {

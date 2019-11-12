@@ -1,5 +1,6 @@
 {
   "projects": {
-    "default": "moena-1989"
+    "default": "moena-1989",
+    "playground-main": "playgroundmain-d6ca7"
   }
 }

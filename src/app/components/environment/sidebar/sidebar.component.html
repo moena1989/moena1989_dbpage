@@ -1,25 +1,59 @@
-<!--[ngClass]="tools.isMenuOpened ? 'sidebar-opened' : 'sidebar-closed'"-->
-<div class="main_menu sidebar-opened">
+<!--<div class="main_menu">-->
+
+<div class="bggg"
+     [class.bg-opened]="getMenuToggle()"
+     [class.bg-closed]="!getMenuToggle()">
+</div>
+
+<div class="cnt_mnt"
+     [class.menu-opened]="getMenuToggle()"
+>
   <div class="lg-cnt">
     <img class="main_name" src="assets/common/logos/logo-full-b.svg" alt="Moena 1989"/>
-  </div>
-  <div class="sidebar-scrollable-area">
-    <app-custom-select (whenSelecting)="optionSelected=$event"></app-custom-select>
-    <div class="ssssssss">
+    <div (click)="toggleMenu()"
+    class="close-menu-cnt">
+      <i class="fal fa-times fa-lg"></i>
     </div>
-    <ng-container *ngFor="let opt of optionSelected?.routes">
-      <div class="sub">{{opt.category}}</div>
-      <div class="item"
-           *ngFor="let o of opt.subCategories"
-           [routerLink]="o.path"
-           routerLinkActive="acti"
-           [routerLinkActiveOptions]=""
-           (click)="selectR(o, opt.category)">
-        <div class="ico_op" style="  margin: 0 1.5rem;">
-          <i class="{{iconStyle}} {{o.icon}} er fa-lg fa-fw"></i>
-        </div>
-        <div class="opt_txt">{{o.name}}</div>
+  </div>
+
+  <!--  <div class="sssc-3 f-s-xs f-w-bold">-->
+  <!--    0.2 ALPHA-->
+  <!--  </div>-->
+
+  <div class="sssc-2" style="" (click)="openAccountInfo()">
+    <i class="{{iconStyle}} fa-user-circle fa-fw " style=" font-size: 1.9rem; color: var(--main-color)"></i>
+    <div style="vertical-align: middle; padding-left: .5rem">
+      <div class="f-w-bold f-s-m"> {{userData.name}} {{userData.lastname}}</div>
+      <div class="f-s-s" style="opacity: .5; margin-top: .1rem">
+        {{userData.m89id}}
       </div>
+    </div>
+  </div>
+
+  <div class="sidebar-scrollable-area">
+    <div class="f-w-black f-s-xs" style="margin-left: 1.5rem;margin-bottom: 1rem">MOENA 1989</div>
+    <ng-container *ngFor="let line of supportedDataLines">
+      <app-openable-card [department]="line">
+      </app-openable-card>
     </ng-container>
   </div>
+  <div
+    class="scf">
+    <i class="far fa-cog fa-fw elicoclickable" (click)="modalSettings.open()"></i>
+    <i class="far fa-power-off fa-fw elicoclickable" (click)="logOut()"></i>
+  </div>
 </div>
+
+<ngx-smart-modal #modalSettings identifier="modalSettings" customClass="dd">
+  <div style="width: 45vw; height: 60vh">
+    <div class="item-top-ttl-s">
+      <div class="part-sub-ttl">
+        <i class="{{iconStyle}} fa-cog c-v-ico" style="color: var(--main-color)"></i>
+        <div>
+          <div class="f-s-m f-w-medium">Ajustes Generales</div>
+        </div>
+      </div>
+    </div>
+    <app-settings-modal-page></app-settings-modal-page>
+  </div>
+</ngx-smart-modal>

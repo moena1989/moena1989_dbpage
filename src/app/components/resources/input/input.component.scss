@@ -1,6 +1,8 @@
+@import "~src/gc/_breakpoints";
+
 :host {
   //width: 5rem;
-  margin-right: 1rem;
+  //margin-right: 1rem;
 }
 
 .disabled {
@@ -42,21 +44,43 @@
   opacity: .5;
 }
 
+
 .inpt-cnt {
   display: flex;
   -webkit-appearance: none;
-  padding: .4rem;
+  padding: .6rem;
   width: 100%;
-  border: 1px solid #eeeeee;
+
+  background: #fdfdfd;
+  border: 1px solid #f5f5f5;
   align-items: center;
-  border-radius: .2rem;
+  border-radius: .8rem;
   position: relative;
   box-sizing: border-box;
+  transition: .3s all;
+
+  &:hover {
+    transition: .3s all;
+    border: 1px solid var(--main-color) !important;
+    -webkit-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.05);
+    -moz-box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.05);
+    box-shadow: 0px 0px 2px 0px rgba(0, 0, 0, 0.05);
+  }
+}
+
+.elinput:focus {
+  .inpt-cnt {
+    border: 1px solid var(--main-color) !important;
+  }
+
 }
 
 .elinput {
   background: rgba(221, 221, 221, 0);
   border: rgba(95, 158, 160, 0);
+  font-family: var(--main-font);
+  font-weight: var(--font-weight-medium);
+  font-size: var(--font-size-m);
   width: auto;
 }
 

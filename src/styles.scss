@@ -1,14 +1,24 @@
 @import "app/components/modal/ngx-smart-modal.css";
-@import url('https://fonts.googleapis.com/css?family=Encode+Sans:100,200,300,400,500,600,700,800,900&display=swap');
+//@import url('https://fonts.googleapis.com/css?family=Encode+Sans:100,200,300,400,500,600,700,800,900&display=swap');
+//@import url('https://fonts.googleapis.com/css?family=Oxygen:300,400,700&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Muli:300,400,600,700,900&display=swap');
 //@import "app/por_def/fontawesome-pro-5.6.1-web/css/all.min.css";
 @import "app/por_def/Font Awesome v5.9.0-Pro/css/all.min.css";
 @import "./theme.scss";
 
 * {
-  font-family: 'Encode Sans', sans-serif;
+  font-family: 'Muli', sans-serif;
+  -webkit-tap-highlight-color: rgba(0,0,0,0) !important;
   //line-height: 1.5rem;
 }
 
+//.far {
+//  transition: .1s all;
+//}
+//
+//.fas {
+//  transition: .1s all;
+//}
 html, body {
   position: absolute; /* this is very important*/
   bottom: 0;
@@ -17,9 +27,10 @@ html, body {
   left: 0;
   margin: 0;
   padding: 0;
-  font-family: 'Poppins', sans-serif;
   width: 100%;
   height: 100%;
+  box-sizing: border-box;
+  //border: 1px solid var(--main-color);
 }
 
 *:focus {
@@ -79,14 +90,14 @@ input {
   align-items: center;
   color: var(--main-color);
   cursor: pointer;
-  margin-left: 1rem;
+  margin-left: .5rem;
   transition: .4s all;
   background: #fdfdfd;
   border: 1px solid #ebebeb;
-  padding: 0 1rem;
+  padding: 0 1rem 0 .5rem;
   border-radius: .4rem;
   height: 2rem;
-  opacity: .7;
+  opacity: .8;
 
   &:hover {
     border: 1px solid rgba(var(--main-color-rgb), .5);
@@ -100,12 +111,12 @@ input {
   //width: 10rem;
   //background: #8d8d8d;
   border-bottom: 1px solid rgba(58, 58, 58, 0.1);
-  padding: 1rem 0;
-  color: #555555;
+  padding: .5rem 0 1rem;
+  color: #000000;
   margin: 0;
   //margin-left: 2rem;
   font-size: var(--font-size-s);
-  font-weight: var(--font-weight-medium);
+  font-weight: var(--font-weight-bold);
 }
 
 .vcc-ttl {

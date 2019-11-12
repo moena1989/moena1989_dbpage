@@ -3,9 +3,9 @@ import {AngularFirestore, AngularFirestoreDocument} from '@angular/fire/firestor
 import {HasherService} from '../hasher.service';
 import {ModelsSevice} from '../models/model-cajas.service';
 import {AngularFireStorage} from '@angular/fire/storage';
-import {DBS} from '../../../environments/environment';
 import * as firebase from 'firebase';
 import {take} from 'rxjs/operators';
+import {DBS} from '../../../db/dbConfig';
 
 export interface MCaja {
   numeroDeLote: number;
@@ -174,7 +174,7 @@ export class DbMainService {
 
   setUserData(uid: string, user: any) {
     return new Promise(resolve => {
-      this.mainDb.collection('system/private/users').doc(uid).set(user).then(value => {
+      this.mainDb.collection('dashboard/private/users/').doc(uid).set(user).then(value => {
         resolve(user);
       });
     });
@@ -207,21 +207,21 @@ export class DbMainService {
     });
   }
 
-  incrementV2(productType: string, category: string, itemType: string, counterId: any) {
+  incrementV2(docPath: string, counterId: any) {
     return new Promise(resolve => {
-      const s = this.mainDb.doc(productType + '/' + category + '/' + itemType + '/' + counterId)
+      const s = this.mainDb.doc(docPath + '/' + counterId)
         .valueChanges().pipe(take(1)).subscribe(value => {
           let counter = 0;
           if (value !== undefined) {
             counter = value['counterVariable'];
-            this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(counterId)
+            this.mainDb.collection(docPath).doc(counterId)
               .update({counterVariable: firebase.firestore.FieldValue.increment(1)}).then(value1 => {
               console.log(value);
               s.unsubscribe();
               resolve(counter + 1);
             });
           } else {
-            this.mainDb.collection(productType + '/' + category + '/' + itemType).doc(counterId)
+            this.mainDb.collection(docPath).doc(counterId)
               .set({counterVariable: firebase.firestore.FieldValue.increment(1)}).then(value1 => {
               console.log(value);
               s.unsubscribe();

@@ -20396,7 +20396,7 @@ function replaceNgsp(value) {
 }
 /**
  * This visitor can walk HTML parse tree and remove / trim text nodes using the following rules:
- * - consider spaces, tabs and new lines as whitespace characters;
+ * - consider spaces, currentTabs and new lines as whitespace characters;
  * - drop text nodes consisting of whitespace characters only;
  * - for all other text nodes replace consecutive whitespace characters with one space;
  * - convert &ngsp; pseudo-entity to a single space;

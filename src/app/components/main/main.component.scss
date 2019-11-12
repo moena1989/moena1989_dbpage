@@ -1,11 +1,18 @@
+@import "~src/gc/_breakpoints";
+
 .main-cnt-main {
-  padding-left: var(--sidebar-width);
   width: 100%;
-  height: available;
-  /*background: #71ff60;*/
+  background: white;
+  margin-left: 0;
+  transition: .2s all ease-in-out;
+  @include breakpoint("desktop") {
+    transition: .2s all ease-in-out;
+    margin-left: var(--sidebar-width);
+  }
+
+  /*background: #f8f8f8;*/
   box-sizing: border-box;
   display: flex;
-  /*background: white;*/
   flex-direction: column;
 }
 

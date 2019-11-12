@@ -1,3 +1,5 @@
+@import "~src/gc/_breakpoints";
+
 body.dialog-open {
   overflow: hidden;
 }
@@ -59,8 +61,8 @@ body.dialog-open {
 
 .nsm-dialog {
   min-height: 15em;
-  min-width: 10em;
-  max-width: 70em;
+  min-width: 100%;
+  max-width: 100%;
   box-sizing: border-box;
 }
 

@@ -1,6 +1,6 @@
 import {Component, OnInit} from '@angular/core';
 import {ToolsServices} from '../../../services/tools-services.service';
-import {CurrentStorageService} from '../../../services/current-storage.service';
+import {BeforeAppInitService} from '../../../services/before-app-init.service';
 
 @Component({
   selector: 'app-home',
@@ -8,12 +8,12 @@ import {CurrentStorageService} from '../../../services/current-storage.service';
   styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
-  constructor(public tools: ToolsServices, public current: CurrentStorageService) {
+  constructor(public tools: ToolsServices, public current: BeforeAppInitService) {
   }
 
   ngOnInit() {
-    this.current.topBar.pageTittle = 'Inicio';
-    this.current.topBar.faIcon = 'fa-home';
+    // this.current.topBar.pageTittle = 'Inicio';
+    // this.current.topBar.faIcon = 'fa-home';
   }
 
   probar() {
